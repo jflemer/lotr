@@ -1,0 +1,7 @@
+*.o
+/pythonspot.h
+/pythonspot.c
+/playcartoon
+/lord
+/lorddemo
+/playav

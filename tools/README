@@ -1,0 +1,8 @@
+This directory contains tools to extract some game data from lord.exe
+
+You do not need to use this tools. They are here only for the developers.
+
+copy lord.exe to this directory, compile the tools and run them
+
+
+

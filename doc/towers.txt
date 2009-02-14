@@ -1,0 +1,36 @@
+
+The Two Towers engine
+=====================
+
+Since version 0.5.5 there is an experimental support for The Two Towers.
+Currently the sound does not work and the game is unplayable.
+
+I do not plan to support TTT at the moment since I never really played
+and liked the game. But it should not be that difficult to make it work -
+so if You like the game it is up to You to make it work.
+
+
+Compilation
+===========
+
+Uncomment the line
+// #define TTT
+in the file lord.h
+
+Then compile the game exactly as described in INSTALL
+
+
+
+
+Installation
+============
+
+The game data are stored in /usr/local/share/games/lord/towers/
+by default.
+
+I reccomend to copy the executable lord to /usr/local/bin/ (or whatever)
+under the name towers
+so 
+cp lord /usr/local/bin/towers
+will make it possible to have both vol. I and vol. II installed at one time.
+

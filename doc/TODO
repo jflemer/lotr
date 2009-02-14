@@ -1,0 +1,19 @@
+
+Battle sounds
+
+FOTR:
+Improve follow_leader
+Fix the Caradhas cave (it is not possible to leave, after defeating Caradhas)
+Fix pits
+Fix GOTO to a different spot
+Revert to original name when leaving spot
+Frodo appears on the last level of Dol Guldur after first loadgame (not subsequent loads)
+
+TTT:
+Implement music
+Outro
+Implement missing spot commands
+Implement faces in Dead Marches in the night
+
+CDVERSION:
+music

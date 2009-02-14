@@ -1,0 +1,89 @@
+
+The Lord of the Rings game engine
+=================================
+
+In order to run the full game You need to obtain game
+The Lord of the Rings from Interplay. The game data are still property
+of Interplay. We do not distribute them.
+
+
+Install
+-------
+
+To compile and install read INSTALL
+
+
+Disclaimer
+----------
+
+This is only a development release. Some things need not work.
+
+
+
+Keyboard
+--------
+
+Mouse support is not yet implemented. You are bound to use keyboard.
+
+Arrows: move leader
+Space:  main menu
+Escape: exit menu, skip cartoon
+
+O:      options menu
+
+A:      attack
+V:      view
+G:      get
+U:      use
+S:      skills
+M:      magic
+T:      talk
+L:      select leader
+C:      choose
+X:      exit menu
+
+
+Cheating:
+W:      wizard menu
+        wizard menu can cause segfaults if used improperly
+	spell H gives some help
+Shift or Ctrl + Arrows: fast movement.
+
+
+
+Playing cartoons and .av files
+------------------------------
+
+In order to view cutscenes compile playcartoon and playav players by
+make playcartoon
+make playav
+
+
+
+Notes
+-----
+
+Look into the file lord.h for some usefull definitions
+The most interesting is probably the Wizard mode and Cheat mode.
+You may want to compile the PIXEL_PRECISE mode to imitate
+the original look more closely.
+
+
+Ask for help
+------------
+
+Any help is welcome. 
+
+
+
+
+Some questions may be answered at the Happypenguin forum
+http://www.happypenguin.org/show?Lord%20of%20the%20Rings%20engine
+
+
+If you can write automake scripts, please send them to me.
+
+
+Enjoy
+
+	Michal

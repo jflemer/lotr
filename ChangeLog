@@ -1,0 +1,87 @@
+
+0.6.2
+	coding style fixes
+	fixed python scripting
+
+0.6.1
+	improved python scripting
+	TTT compiles again
+
+0.6.0
+	python scripting support started
+
+0.5.11
+	title changed to tile
+
+0.5.10
+	cd version support
+	#include<SDL.h> added to lord.c (OS X compile fix)
+	USE command renamed to ACTION command
+	fixed default answer in npc interaction
+	reads paragraphs from para.dat if available
+	fixed questions containing \'
+	
+0.5.9
+	Demo text fix
+
+0.5.8
+	FotR made again to compile
+	spot.c: command 3a implemented
+
+0.5.7
+	map.c: (TTT) gamesaves work in buildings
+	gui.c: (TTT) book background when changing party
+	spot.c: (TTT) "You see items here you might use." message implemented
+	combat.c: enemies can use bows
+	game.c: recruited characters use their weapons by default
+	gui.c: (TTT) new/old game dialog
+	game.c character.c: old games convert
+	map.c: right bound for building displays
+
+0.5.6
+	buildings implemented in TTT
+
+0.5.5
+	experimental support for The Two Towers
+	cartoon.c: opening cartoon fix
+	cartoon.c: Fatty Bolger cartoon fix via dirty hack
+
+0.5.4
+	Game save/load fix
+	various small bugfixes
+	firing with bow implemented
+	demo fixes
+
+0.5.3
+	After-death dialog implemented
+	Trade The Ring bug fixed
+	do not switch cwd to $HOME/.lord/
+	map.c: map_character_move: direction fix
+
+
+0.5.2
+	map.c: pits made impassable
+	spot.c: use command length fixed
+	gui.c: USE_QUESTION bug fixed (Rayf Brogan bug)
+	spot.h, gui.c: SPOT_USE_BUY implemented (Bill Fernys pony)
+	spot.c: unknown parameter in NPC_ENEMY doesn't taken as health anymore
+	characater.c: Bilbo made recruitable
+	game.c: saving game registers implemented
+	spot.c: OBJECT_DEC implemented (Black cloacks subquest now works)
+	combat.c: tentacles fixed
+	combat.c: bonuses for magic weapons
+	map.c: fixed bug when attacking non-enemies during combat
+	character.c: name changes fix
+	map.c, game.c: savegame bug fixed
+
+
+0.5.1
+	spot.c: spot_change_stat: fixed changing of luck and endurance
+	combat skills taken in account during combat
+	spot.c: command 0x21 implemented
+	map.c: lava animations
+	savegames in XML format
+	gui.c: trade item fix
+	map.c: day/night changes fixed
+
+

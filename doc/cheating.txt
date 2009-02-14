@@ -1,0 +1,80 @@
+
+Cheating is controlled mostly in lord.h 
+
+
+You can turn all the cheats on by uncomenting the line
+#define DEBUG
+in lord.h
+
+
+Alternatively You can turn only some cheats by defining
+
+
+
+ENABLE_CHEATS:
+
+<Shift><Arrows>  Fast movement ignoring obstacles
+<Ctrl><Arrows>   same as above only faster
+
+
+
+DRAW_SPOTS:
+
+Draws white rectangles on places where prescripted events happen.
+Also prints the scripts to console.
+
+
+
+WIZARD_MODE:
+
+Press 'W' to enter Wizard mode.
+WARNING: Wizard mode can crash the game easily 
+
+Available spells are
+(<num> means hexadecimal parameter)
+
+H
+	Help
+
+B <num>
+	Enter the building <num> (only TTT)
+
+L
+	Prints current coordinates
+
+T <x> <y>
+	Teleport to coordinates <x> <y>
+
+M <num>
+	Teleport to another map
+
+D
+	make day
+
+N
+	make night
+
+S
+	Show/hide spots
+
+G <id>
+	get item/skill/spell
+	see object_names.h (or object_names_ttt.h) for the list
+
+R <id>
+	recruit character to the party
+
+K
+	kill all enemies (combat mode only)
+
+E <num>
+	switch map register (not usable for game registers)
+
+P <decimal num>
+	show paragraph text (if para.dat file is present)
+	
+
+
+
+You can change SCREEN_WIDTH, SCREEN_HEIGHT to enlarge your map view.
+If you want a really large view consider defining SCREEN_FACT to 1

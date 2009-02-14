@@ -1,0 +1,87 @@
+
+
+
+
+Since version 0.6.0 new spots can be created by editing spots.py in
+your data directory. This works only if the game is compiled in
+EXTENDED mode (set EXTENDED=1 in Makefile)
+
+
+The language used for spots programming is Python (http://www.python.org)
+
+
+In the following, we call an rectangular area on a map with scripted
+event "spot".
+
+
+Spots are instances of the class PythonSpot. All spots must be named 
+spot_0, spot_1, spot_2,.... consecutively and initialized by
+
+spot_<num> = PythonSpot(map, x, y, width, height)
+
+You can also initialize an empty spot by
+
+spot_<num> = emptyspot
+
+
+When the leader enters the spot method start_func(self) is called. 
+To assign a new script to the spot first define a new function by
+
+def spot_<num>_start(self):
+    #some code
+
+and bind it to the spot by
+
+def spot_<num>_cont(self):
+    # some code
+    # return 1 if this function should be called in the next game frame
+    # return 0 if the spot script should end
+
+spot_<num>.start_func = spot_<num>_start
+
+
+
+Sometimes you want to create scripts that are executed in more game
+frames. To do this set spot_<num>.cont_func by
+
+spot_<num>.cont_func = spot_<num>_cont
+
+the cont (shortcut of continue) function is called after the start
+function and in the next game frames as long as it returns 1. Whed the
+continue function returns 0 the script ends.
+
+
+
+
+Beside of all standard python functions, the following functions can
+be used for the interaction with the game engine:
+
+(the default value None means that the function keeps the current value)
+
+
+CURRENT DOCUMENTATION IS INCOMPLETE
+refer pythonspots.pyx for list of all available functions
+or examine spots.py
+
+
+
+#
+# show message
+# no return value
+#
+def message(text):
+
+#
+# ask a Yes/No question
+# returns 1 if the answer was Yes
+# returns 0 otherwise
+#
+def question(text ):
+
+
+#
+# teleport character
+# no return value
+#
+def teleport(who, x, y, relative=0, dir=None, map=None):
+

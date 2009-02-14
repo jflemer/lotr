@@ -1,0 +1,79 @@
+
+Install Instructions for "The Lord of the Rings"
+================================================
+
+
+* If You want to use demo data files, read "Installing the demo" bellow.
+
+* If You want support for the CD version of the game read "CD version" bellow.
+
+* If You want to compile The Two Towers read the file towers.txt
+
+
+
+
+Instaling the full game:
+------------------------
+
+The simple way:
+
+1) compile by typing
+make
+
+2) copy game data to /usr/local/share/games/lord/
+or $HOME/.lord/
+
+3) copy the game executable lord to /usr/local/bin/ or whatever
+
+4) run by typing
+lord
+
+5) Optionally, if you have paragraph texts from the cd version, 
+copy them to /usr/local/share/games/lord/
+this will show the full text of paragraphs during the game	
+
+6) enjoy
+
+
+It is worth to look into lord.h for some usefull definitions
+(like screen scale factor, cheat mode, midi parameters, etc... )
+
+Optionally You can edit Makefile to obtain more optimized code.
+
+
+
+Installing the demo:
+--------------------
+
+
+1) You must define DEMO=1 in Makefile.
+
+2) compile by
+make clean; make
+
+3) copy the compiled executable to directory where you have demo data.
+cd to this directory, type 
+./lord
+
+Alternatively, You can copy the demo data to $HOME/.lord/ and the executable
+lord anywhere to your path.
+
+
+"make lorddemo" does not work at the moment
+
+	Michal
+
+
+
+
+CD version
+----------
+
+In order to compile the support for CD version uncomment 
+#define CD_VERSION
+in lord.h
+
+All data and .av movies must be copied to 
+/usr/local/share/games/lord/cd/
+(or other path defined in lord.h)
+
