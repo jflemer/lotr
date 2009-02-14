@@ -43,7 +43,7 @@ class Action:
     param = None
     npc = None
     func = default_action_func
-    
+
     def __init__(self, type, param, npc, func):
         self.type = type
         self.param = param
@@ -52,7 +52,7 @@ class Action:
         if func == None:
             self.func = default_action_func
 
-    def match(self, type = None, param = None, npc = None):        
+    def match(self, type = None, param = None, npc = None):
         return (self.type == None or self.type == type or type == 0xff) and \
                (self.param == None or self.param == param or param == 0xff) and \
                (self.npc == None or self.npc == npc or npc == 0xff)
@@ -81,7 +81,7 @@ class PythonSpot:
         self.actions = []
         self.start_func(self)
 
- 
+
     def cont(self):
         result = self.cont_func(self)
         if result != None: return result
@@ -100,7 +100,7 @@ class PythonSpot:
             if self.actions[i].match(type, param, npc):
                 self.actions[i].func(self)
                 break
- 
+
 
 emptyspot = PythonSpot(0xffff, 0xffff, 0xffff, 0, 0)
 

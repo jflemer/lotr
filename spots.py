@@ -6,7 +6,7 @@ from spot_definitons import *
 def init_map(id):
     if id == 0:
         add_character (WOMAN_HOBBIT, x=0x25c, y=0xdc, dir=WEST)
-        
+
 
 #################################################################
 
@@ -25,15 +25,15 @@ def spot_1_start(self):
         message("I said do not enter!!! Now go very far away")
         self.numsteps = 30
 
-    
+
 def spot_1_cont(self):
 
     teleport(who=LEADER, x=-4, y=0, relative=1, dir=(self.numsteps / 3) % 4)
     self.numsteps -= 1
 
     return self.numsteps > 0
-        
-    
+
+
 spot_1.start_func = spot_1_start
 spot_1.cont_func = spot_1_cont
 spot_1.enter_num = 0
@@ -59,7 +59,7 @@ spot_3 = PythonSpot(0, 0x1e4, 0xd0, 0xf, 0xf)
 def spot_3_start(self):
     if(self.nazgul_not_here):
         teleport(who=NAZGUL, relative=1, x=0x48, y=0, dir=WEST)
-    
+
 
 def spot_3_cont(self):
     # if Nazgul is still not here move him

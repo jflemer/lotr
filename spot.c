@@ -1,28 +1,28 @@
 /****************************************************************************
- 
+
     spot.c
     game command spots handling
 
 
     Lord of the Rings game engine
-     
+
     Copyright (C) 2003  Michal Benes
- 
+
     Lord of the Rings game engine is free software;
     you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
     version 2.1 of the License, or (at your option) any later version.
- 
+
     This code is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General Public
     License along with this code; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- 
+
 *****************************************************************************/
 
 
@@ -1300,7 +1300,7 @@ spot_goto(CommandSpot * spot, int address)
 
 
 
-/* 
+/*
    change characters stat
 */
 
@@ -1350,7 +1350,7 @@ spot_change_stat(Character * character, int stat, int sign, int value)
 }
 
 
-/* 
+/*
    spot if party command
 */
 
@@ -1583,7 +1583,7 @@ spot_continue(CommandSpot * spot)
             map_remove_character(spot->data[i + 1]);
             character = character_get(spot->data[i + 1]);
             character->map = -1;
-            // FIXME      
+            // FIXME
             // character->actived=1;
             break;
 

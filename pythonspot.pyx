@@ -1,27 +1,27 @@
-	
+
 #     pythonspot.pyx
 #     Python scripting module
 #
 #
 #     Lord of the Rings game engine
-#     
+#
 #     Copyright (C) 2004  Michal Benes
-# 
+#
 #     Lord of the Rings game engine is free software;
 #     you can redistribute it and/or
 #     modify it under the terms of the GNU Lesser General Public
 #     License as published by the Free Software Foundation; either
 #     version 2.1 of the License, or (at your option) any later version.
-# 
+#
 #     This code is distributed in the hope that it will be useful,
 #     but WITHOUT ANY WARRANTY; without even the implied warranty of
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 #     Lesser General Public License for more details.
-# 
+#
 #     You should have received a copy of the GNU Lesser General Public
 #     License along with this code; if not, write to the Free Software
 #     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- 
+
 
 
 
@@ -83,11 +83,11 @@ cdef extern from "spot.h":
         int flag
     Character *spot_character_get(int)
     int spot_question_letter(char)
-    
+
 cdef extern from "map.h":
     void map_add_pythonspot(int, int, int, int, int)
     void map_character_teleport(Character*, int, int, int, int, int)
-    int map_character_move(int, int, int, int)	
+    int map_character_move(int, int, int, int)
     void map_attacking_character(int)
     void map_add_character(Character*)
     CommandSpot* map_get_pythonspot(int)
@@ -123,7 +123,7 @@ cdef public void pythonspot_init():
         spots = PyImport_Import("spots")
     except Exception, e:
         print_error("error loading pythonmodule spots.py or spot_definitons.py", e)
-        
+
     try:
         pythonspots_num = 0
         while 1:
@@ -136,8 +136,8 @@ cdef public void pythonspot_init():
 
     for i in range(256):
         pythontexts[i] = ""
-            
-            
+
+
 
 #
 # shut down the sytem
@@ -185,8 +185,8 @@ cdef public void pythonspot_action(int id, int type, int param, int npc):
 # sets result of an if command
 #
 cdef public void pythonspot_if_result(int result):
-    global if_result	
-    if_result = result	
+    global if_result
+    if_result = result
 
 
 #
@@ -261,7 +261,7 @@ def set_character_pos(who, x=None, y=None):
 #
 def message(text):
     gui_message(text, 0)
-    gui_proceed_frames()	
+    gui_proceed_frames()
 
 #
 # ask a Yes/No question
@@ -270,8 +270,8 @@ def message(text):
 #
 def question(text):
     gui_question(text)
-    gui_proceed_frames()	
-    return if_result	
+    gui_proceed_frames()
+    return if_result
 
 
 #
@@ -283,14 +283,14 @@ def teleport(who, x, y, relative=0, dir=None, map=None):
     if map == None: map = 0xff
     if dir == None: dir = 0xff
     if x < 0: x = x + 0xffff
-    if y < 0: y = y + 0xffff    
+    if y < 0: y = y + 0xffff
     if who != 0xf0:
         character = spot_character_get(who)
     # 0xf0 means whole party in the original data
     if who == 0xf0 or character == game_get_leader():
         game_leader_teleport(relative, x, y, dir, map)
     elif character != NULL:
-        map_character_teleport(character, relative, x, y, dir, map) 
+        map_character_teleport(character, relative, x, y, dir, map)
 
 
 #
@@ -330,7 +330,7 @@ def set_enemy(who):
 #
 def combat():
     combat_start()
-    combat_proceed_frames()	
+    combat_proceed_frames()
 
 
 
@@ -351,8 +351,8 @@ def cartoon(name):
 def add_character(who, x, y, dir, relative=0):
     cdef Character *character
     cdef Character *leader
-    character = spot_character_get(who) 
-    leader = game_get_leader() 
+    character = spot_character_get(who)
+    leader = game_get_leader()
     if relative:
         character.x = leader.x + x
         character.y = leader.y + y
@@ -424,10 +424,10 @@ def set_character_texts(who, greeting=None, \
     if greeting != None:
         character.texts[0] = greeting
 
-    textslen = character_get_talk_len()	
+    textslen = character_get_talk_len()
     pos = 1
     if questions != None:
-        for i in range(len(questions)):	
+        for i in range(len(questions)):
 
             if pos > textslen - 20:
                 print "lord: too many questions in spot script"
@@ -443,9 +443,9 @@ def set_character_texts(who, greeting=None, \
 
             character.texts[pos] = text
             pos = pos + 1
-            
 
-            
+
+
 
     if default_answer != None:
         character.texts[pos] = 0

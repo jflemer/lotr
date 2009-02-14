@@ -1,28 +1,28 @@
 /****************************************************************************
- 
+
     archive.c
-    provides access to idx'ed and ndx'ed data files  
+    provides access to idx'ed and ndx'ed data files
 
 
     Lord of the Rings game engine
-     
+
     Copyright (C) 2003  Michal Benes
- 
+
     Lord of the Rings game engine is free software;
     you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
     version 2.1 of the License, or (at your option) any later version.
- 
+
     This code is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General Public
     License along with this code; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- 
+
 *****************************************************************************/
 
 
@@ -233,7 +233,7 @@ readarchive(Archive * archive, int index)
 
 
 /*
-  return archive data size 
+  return archive data size
 */
 int
 archivedatasize(Archive * archive, int index)
@@ -297,7 +297,7 @@ readnbits(Uint8 * data, int n, int pos)
 
 
 
-/* 
+/*
   decompress idx data file compression
 */
 
@@ -414,7 +414,7 @@ idxdecompressarchive(Archive * archive, int index, int *size)
 
 
 
-/* 
+/*
   decompress ndx data file compression
 */
 
@@ -462,7 +462,7 @@ ndxdecompress(Uint8 * data, int size, int *resultsize)
 
 
                 if (start > bufpos) {
-                    /* it is unclear what to do in this case 
+                    /* it is unclear what to do in this case
                        fprintf( stderr, "lord: wrongly decoded ndx archive %03x, %03x, %x\n", start, bufpos, len ); */
 
                     /* this works */
@@ -476,7 +476,7 @@ ndxdecompress(Uint8 * data, int size, int *resultsize)
                 }
 
                 /* 12 bites can not encode too much:
-                   the real starting position 
+                   the real starting position
                    is in the last segment of size 0x1000 */
 
                 if (start < (bufpos % 0x1000))

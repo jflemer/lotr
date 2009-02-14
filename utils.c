@@ -1,29 +1,29 @@
 /****************************************************************************
- 
+
     utils.c
     various utilities
     (memory management, file manipulation, etc... )
 
 
     Lord of the Rings game engine
-     
+
     Copyright (C) 2003  Michal Benes
- 
+
     Lord of the Rings game engine is free software;
     you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
     version 2.1 of the License, or (at your option) any later version.
- 
+
     This code is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
     Lesser General Public License for more details.
- 
+
     You should have received a copy of the GNU Lesser General Public
     License along with this code; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- 
+
 *****************************************************************************/
 
 #include "lord.h"
@@ -141,8 +141,8 @@ lordfopen(const char *path, const char *mode)
 
 
 
-/* 
-   check if file exists 
+/*
+   check if file exists
 */
 
 int
@@ -175,7 +175,7 @@ fileexists(const char *path)
 
 
 /*
-  adds suffix to a filename 
+  adds suffix to a filename
 */
 
 char *
@@ -200,7 +200,7 @@ addsuffix(const char *name, const char *suffix)
 
 
 /*
-  returns file length, -1 if file==NULL 
+  returns file length, -1 if file==NULL
 */
 
 long
