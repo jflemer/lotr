@@ -174,6 +174,9 @@ extern int terrain_free(int x, int y);
 extern int map_can_move_to(Character *character, int x, int y);
 
 
+/* returns a spot based on address it contains */
+extern CommandSpot *map_get_spot_by_addr(int address);
+
 /* returns a spot character is standing in */
 extern CommandSpot *map_get_spot(Character *character);
 

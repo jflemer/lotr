@@ -827,10 +827,52 @@ spot_string_print(const char *format, ...)
     spot_string_pos += r;
 }
 
+
+/*
+  convert spot action to a readable string
+*/
+static const char*
+spot_action_to_string(int id)
+{
+    switch (id) {
+        case SPOT_ACTION_OBJECT: return "USE";
+        case SPOT_ACTION_SKILL: return "SKILL";
+        case SPOT_ACTION_MAGIC: return "MAGIC";
+        case SPOT_ACTION_MOVE: return "MOVE";
+        case SPOT_ACTION_TIMER: return "TIMER";
+        case SPOT_ACTION_TRADE: return "TRADE";
+        case SPOT_ACTION_ATTACK: return "ATTACK";
+        case SPOT_ACTION_GET: return "GET";
+        case SPOT_ACTION_QUESTION: return "QUESTION";
+        case SPOT_ACTION_BUY: return "BUY";
+        case SPOT_ACTION_TALK: return "TALK";
+        default: return "UNKNOWN";
+    }
+}
+
+
+/*
+  convert direction to a readable string
+*/
+static const char*
+spot_direction_to_string(int dir)
+{
+#ifdef CD_VERSION
+    dir = cddir_to_dir(dir);
+#endif
+    switch (dir) {
+        case CHARACTER_UP: return "NORTH";
+        case CHARACTER_LEFT: return "WEST";
+        case CHARACTER_DOWN: return "SOUTH";
+        case CHARACTER_RIGHT: return "EAST";
+        default: return "UNKNOWN";
+    }
+}
+
+
 /*
   print command spot to a buffer
 */
-
 char *
 spot_get_string(CommandSpot *spot)
 {
@@ -1055,18 +1097,20 @@ spot_get_string(CommandSpot *spot)
         case COMMAND_ACTION:
             spot_string_print("ACTION: %02x", spot->data[i + 1]);
             for (j = 0; j < spot->data[i + 1]; ++j) {
+                const char *param1 = object_name(spot->data[i + 3 + j * 5]);
+                const char *param2 = spot_character_name(spot->data[i + 4 + j * 5]);
                 spot_string_print
-                    ("\n           -- %02x, %02x (%s), %02x (%s): goto %04x",
-                     spot->data[i + 2 + j * 5], spot->data[i + 3 + j * 5],
-                     object_name(spot->data[i + 3 + j * 5]),
-                     spot->data[i + 4 + j * 5],
-                     spot_character_name(spot->data[i + 4 + j * 5]),
+                    ("\n           %s(%02x) %s(%02x), %s(%02x): goto %04x",
+                     spot_action_to_string(spot->data[i + 2 + j * 5]),
+                     spot->data[i + 2 + j * 5],
+                     param1, spot->data[i + 3 + j * 5],
+                     param2, spot->data[i + 4 + j * 5],
                      readint(spot->data + i + 5 + j * 5));
             }
             break;
 
         case COMMAND_IF_PARTY:
-            spot_string_print("IF_PARTY: %02x (%s), %02x, %02x, %02x\n",
+            spot_string_print("IF_PARTY: %02x (%s), %02x, %02x, %02x",
                               spot->data[i + 1],
                               spot_character_name(spot->data[i + 1]),
                               spot->data[i + 2], spot->data[i + 3],
@@ -1108,7 +1152,9 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_IF_DIRECTION:
-            spot_string_print("IF_DIRECTION: %02x", spot->data[i + 1]);
+            spot_string_print("IF_DIRECTION: %s (%02x)",
+                              spot_direction_to_string(spot->data[i + 1]),
+                              spot->data[i + 1]);
             break;
 
         case COMMAND_IF_DAY:
@@ -1344,23 +1390,41 @@ spot_next_on_level(CommandSpot *spot)
 
 /*
   goto address
+  return: -1 nothing important - proceed in script
+           0 script should end immediately
+           1 script should wait for user interaction
  */
-
-void
+int
 spot_goto(CommandSpot *spot, int address)
 {
     int i;
 
+    if (address < spot->label_start
+        || address >= spot->label_start + spot->data_size)
+    {
+        CommandSpot *spot = map_get_spot_by_addr(address);
+        int r;
+
+        if (!spot)
+            goto invalid_address;
+
+        r = spot_goto(spot, address);
+        if (r < 0)
+            return spot_continue(spot);
+
+        return r;
+    }
+
     for (i = 0; i < spot->commands_num; ++i)
         if (spot->command_start[i] + spot->label_start == address) {
             spot->pos = i;
-            return;
+            return -1;
         }
 
+invalid_address:
     spot_print(spot);
     fprintf(stderr, "lord: could not find address %04x\n", address);
-    // exit(1);
-
+    return 0;
 }
 
 
@@ -1493,6 +1557,7 @@ spot_continue(CommandSpot *spot)
 {
     int i, j, jj, n;
     int x, y;
+    int r;
     int relative;
     Character *character = NULL;
     Character *leader;
@@ -1893,7 +1958,9 @@ spot_continue(CommandSpot *spot)
             break;
 
         case COMMAND_GOTO:
-            spot_goto(spot, readint(spot->data + i + 1));
+            r = spot_goto(spot, readint(spot->data + i + 1));
+            if (r >= 0)
+                return r;
             break;
 
         case COMMAND_TEXT:

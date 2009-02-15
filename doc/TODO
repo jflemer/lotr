@@ -5,9 +5,9 @@ FOTR:
 Improve follow_leader
 Fix the Caradhas cave (it is not possible to leave, after defeating Caradhas)
 Fix pits
-Fix GOTO to a different spot
 Revert to original name when leaving spot
 Frodo appears on the last level of Dol Guldur after first loadgame (not subsequent loads)
+Do not allow to talk to uninitialized characters (see what demo does)
 
 TTT:
 Implement music

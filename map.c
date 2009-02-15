@@ -1268,9 +1268,29 @@ map_can_move_to(Character *character, int x, int y)
 
 
 /*
+  returns a spot on address it contains
+*/
+CommandSpot *
+map_get_spot_by_addr(int address)
+{
+    int i;
+
+    for (i = 0; i < map_num_spots; ++i) {
+        CommandSpot *spot = map_spots[i];
+        if (spot->label_start <= address
+            && address <= spot->label_start + spot->data_size)
+        {
+            return spot;
+        }
+    }
+
+    return NULL;
+}
+
+
+/*
   returns a spot character is standing in
 */
-
 CommandSpot *
 map_get_spot(Character *character)
 {
