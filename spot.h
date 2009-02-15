@@ -87,6 +87,9 @@ extern void spot_parse(Uint8 *data, int size,
 extern void spot_free(CommandSpot *spot);
 
 
+/* print command spot to a buffer */
+extern char *spot_get_string(CommandSpot *spot);
+
 /* print command spot */
 extern void spot_print(CommandSpot *spot);
 

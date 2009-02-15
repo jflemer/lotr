@@ -41,6 +41,7 @@
 #define DIALOG_LOAD          5
 #define DIALOG_BOOK          6
 #define DIALOG_PARAGRAPH     7
+#define DIALOG_SPOT_PRINT    8
 
 
 #define MAIN_MENU              100
@@ -106,6 +107,8 @@ extern int gui_if_show_spots(void);
 /* quits all menus */
 extern void quit_menu();
 
+/* draw main menu */
+extern void main_menu_draw();
 
 /* shows a message */
 extern void gui_message(char *text, int small_window);

@@ -945,6 +945,11 @@ map_display(int x, int y)
 
     gui_set_full_window();
 
+    if (combat_get_mode() && SCREEN_WIDTH > 320) {
+        /* Must redraw menu for large screens because
+           it overlaps with the map */
+        main_menu_draw();
+    }
 }
 
 

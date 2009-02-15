@@ -36,6 +36,11 @@
 #define KEY_ENTER       SDLK_RETURN
 #define KEY_BACKSPACE   SDLK_BACKSPACE
 
+#define KEY_UP          SDLK_UP
+#define KEY_DOWN        SDLK_DOWN
+#define KEY_PAGEUP      SDLK_PAGEUP
+#define KEY_PAGEDOWN    SDLK_PAGEDOWN
+
 
 /* initialize SDL */
 extern void lord_system_init(void);

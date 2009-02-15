@@ -964,11 +964,10 @@ game_next_frame(void)
     if (!gui_mode())
         game_draw_map();
 
-  end_next_frame:
+end_next_frame:
 
     map_animate_frame();
     UpdateScreen();
-
 }
 
 

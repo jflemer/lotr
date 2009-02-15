@@ -20,7 +20,7 @@ ENABLE_CHEATS:
 
 DRAW_SPOTS:
 
-Draws white rectangles on places where prescripted events happen.
+Draws white rectangles on the places where scripted events happen.
 Also prints the scripts to console.
 
 
@@ -74,7 +74,7 @@ P <decimal num>
 	show paragraph text (if para.dat file is present)
 	
 
-
+Press <Shift>W to display source code of the active command spot
 
 You can change SCREEN_WIDTH, SCREEN_HEIGHT to enlarge your map view.
 If you want a really large view consider defining SCREEN_FACT to 1

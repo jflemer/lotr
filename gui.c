@@ -399,7 +399,9 @@ gui_set_map_area(int *width, int *height)
 {
 
 
-    if (dialog_mode < MAIN_MENU) {
+    if (dialog_mode < MAIN_MENU
+        || SCREEN_WIDTH > 320 /* Draw whole map for large screens */)
+    {
 
 #if PIXEL_PRECISE
 
@@ -416,8 +418,7 @@ gui_set_map_area(int *width, int *height)
         SetWindow(8, 9, 8 + *width - 1, 9 + *height - 1);
 
 #endif
-    }
-    else {
+    } else {
 #if PIXEL_PRECISE
 
         *width = SCREEN_WIDTH - 16;
@@ -469,9 +470,8 @@ main_menu_draw(void)
 {
     int life;
 
-    gui_clear();
-
-    gui_menu_x = (SCREEN_WIDTH - gui_components[GUI_MENU]->width) / 2;
+    /* Keep x position from standard screen size */
+    gui_menu_x = 0;
     gui_menu_y = SCREEN_HEIGHT - gui_components[GUI_MENU]->height;
 
     pixmap_draw(gui_components[GUI_MENU], gui_menu_x, gui_menu_y);
@@ -486,8 +486,6 @@ main_menu_draw(void)
     pixmap_draw(gui_life_bar, gui_menu_x + 20,
                 gui_menu_y + 9 + MAX_LIFE_BAR - life);
     gui_life_bar->height = 100;
-
-    game_draw_map();
 }
 
 
@@ -509,6 +507,9 @@ main_menu_show(void)
 
     if (!choosed_character)
         choosed_character = game_get_leader();
+
+    gui_clear();
+    game_draw_map();
 
     main_menu_draw();
 }
@@ -745,8 +746,6 @@ gui_paragraph_scroll(void)
         y = 0;
 
     draw_scroll(SCROLL_ELEMENT_SIZE * 4, y, width, lines, formatted_text);
-
-
 }
 
 
@@ -835,8 +834,101 @@ dialog_paragraph_key(int key)
 
 }
 
+#define MAX_SPOTLINES 4096
+static char *spot_formatted_text[MAX_SPOTLINES];
+static int spot_formatted_text_lines = -1;
+static int spot_formatted_text_pos = -1;
+
+/*
+  show the active spot
+*/
+void
+dialog_print_active_spot()
+{
+    Character *leader;
+    CommandSpot *spot;
+    char *spot_string;
+    int width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE - 4;
+    int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE - 4;
+    int lines;
+
+    if (dialog_mode != DIALOG_SPOT_PRINT
+        || spot_formatted_text_lines < 0)
+    {
+        char *buf;
+
+        if ((leader = game_get_leader()) == NULL)
+            return;
+
+        if ((spot = map_get_spot(leader)) == NULL)
+            return;
+
+        spot_string = spot_get_string(spot);
+
+        dialog_mode = DIALOG_SPOT_PRINT;
+
+        /* Format the code */
+        spot_formatted_text_pos = 0;
+        spot_formatted_text_lines = 0;
+        buf = spot_string;
+
+        while (spot_formatted_text_lines < MAX_SPOTLINES && *buf) {
+            spot_formatted_text[spot_formatted_text_lines++] = buf;
+            while (*buf && *buf != '\n')
+                buf++;
+
+            /* new line found */
+            if (*buf) {
+                *buf = 0;
+                buf++;
+            }
+        }
+    }
+
+    lines = min(max_height, spot_formatted_text_lines - spot_formatted_text_pos);
+    draw_scroll(SCROLL_ELEMENT_SIZE, SCROLL_ELEMENT_SIZE, width, lines, spot_formatted_text + spot_formatted_text_pos);
+}
 
 
+/*
+  parse spot print key
+*/
+
+void
+dialog_print_active_spot_key(int key)
+{
+    int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE - 4;
+    int pg_size = max(max_height - 2, 1);
+    int last_pos = spot_formatted_text_pos;
+
+    if (key == KEY_ENTER || key == 'x' || key == 'q') {
+        spot_formatted_text_lines = -1;
+        quit_menu();
+    }
+
+    if (key == KEY_UP) {
+        spot_formatted_text_pos--;
+    } else if (key == KEY_DOWN) {
+        spot_formatted_text_pos++;
+    } else if (key == KEY_PAGEUP) {
+        spot_formatted_text_pos -= pg_size;
+    } else if (key == KEY_PAGEDOWN) {
+        spot_formatted_text_pos += pg_size;
+    }
+
+    if (spot_formatted_text_pos + max_height
+        > spot_formatted_text_lines)
+    {
+        spot_formatted_text_pos = spot_formatted_text_lines - max_height;
+    }
+
+    if (spot_formatted_text_pos < 0)
+        spot_formatted_text_pos = 0;
+
+    /* Redraw the scroll */
+    if (last_pos != spot_formatted_text_pos)
+        dialog_print_active_spot();
+}
 
 
 #ifdef TTT
@@ -2587,14 +2679,9 @@ dialog_list_key(int key)
 
 
 
-
-
 /*
   parse main menu keyboard input
 */
-
-
-
 void
 main_menu_key(int key)
 {
@@ -2629,6 +2716,12 @@ main_menu_key(int key)
         dialog_magic_show();
         break;
 
+    case 'q':
+        gui_confirm_scroll("Quit Game");
+        dialog_mode = DIALOG_OPTIONS;
+        dialog_confirm = 1;
+        break;
+
     case 's':
         dialog_skill_show();
         break;
@@ -2653,7 +2746,10 @@ main_menu_key(int key)
 
 #ifdef WIZARD_MODE
     case 'w':
-        dialog_talk_show(-1, -1);
+        if (lord_key_shift())
+            dialog_print_active_spot();
+        else
+            dialog_talk_show(-1, -1);
         break;
 #endif
 
@@ -2736,6 +2832,12 @@ gui_frame(void)
 #endif
             break;
 
+        case 'q':
+            gui_confirm_scroll("Quit Game");
+            dialog_mode = DIALOG_OPTIONS;
+            dialog_confirm = 1;
+            break;
+
         case 's':
             dialog_skill_show();
             break;
@@ -2758,8 +2860,11 @@ gui_frame(void)
 
 #ifdef WIZARD_MODE
         case 'w':
+        if (lord_key_shift())
+            dialog_print_active_spot();
+        else
             dialog_talk_show(-1, -1);
-            break;
+        break;
 #endif
 
         default:
@@ -2797,6 +2902,10 @@ gui_frame(void)
 
         case DIALOG_PARAGRAPH:
             dialog_paragraph_key(key);
+            break;
+
+        case DIALOG_SPOT_PRINT:
+            dialog_print_active_spot_key(key);
             break;
 
         case DIALOG_MESSAGE_YN:
