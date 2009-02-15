@@ -65,11 +65,11 @@ sound_init(void)
 
     Archive *archive;
 
-    archive = ndxarchiveopen("snd");
+    archive = archive_ndx_open("snd");
 
     for (i = 0; i < SOUNDS_NUM; ++i) {
-        sound_data[i] = readarchive(archive, i);
-        sound_sizes[i] = archivedatasize(archive, i);
+        sound_data[i] = archive_read(archive, i);
+        sound_sizes[i] = archive_data_size(archive, i);
 
         // Fix tempo in midi files
         if (sound_sizes[i] > 13
@@ -87,7 +87,7 @@ sound_init(void)
     music_data = sound_data[MUSIC_MAIN_INDEX];
     music_size = sound_sizes[MUSIC_MAIN_INDEX];
 
-    archiveclose(archive);
+    archive_close(archive);
 
 #else /* ifdef CD_VERSION */
 
@@ -95,7 +95,7 @@ sound_init(void)
 
     for (i = 0; i < SOUNDS_NUM; ++i) {
         adlfile = lord_fopen(sound_names[i], "r");
-        sound_sizes[i] = filelen(adlfile);
+        sound_sizes[i] = lord_filelen(adlfile);
         sound_data[i] = lord_malloc(sound_sizes[i]);
         if (fread(sound_data[i], 1, sound_sizes[i], adlfile) !=
             sound_sizes[i]) {

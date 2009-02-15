@@ -1,6 +1,6 @@
 /****************************************************************************
 
-    playav.c
+    av_play.c
     av file player
 
 
@@ -85,7 +85,7 @@ main(int argc, char *argv[])
 
 
     if (argc != 2) {
-        printf("Usage: playav <av file>\n");
+        printf("Usage: av_play <av file>\n");
         return 1;
     }
 
@@ -96,7 +96,7 @@ main(int argc, char *argv[])
         }
 
 
-    playav(argv[1]);
+    av_play(argv[1]);
 
 
     return 0;

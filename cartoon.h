@@ -52,7 +52,7 @@ typedef struct
 
 
 /* play cartoon */
-extern void playcartoon(char *name);
+extern void cartoon_play(char *name);
 
 /* cartoon decription free */
 extern void cartoondesc_free(CartoonDesc *cartoondesc);

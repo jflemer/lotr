@@ -152,7 +152,7 @@ gui_init(void)
         gui_font[i] = NULL;
 
     pal = lord_fopen("arts.pal", "rb");
-    if (filelen(pal) != sizeof(Palette)) {
+    if (lord_filelen(pal) != sizeof(Palette)) {
         fprintf(stderr, "lord: arts.pal is not a valid palette file\n");
         exit(1);
     }
@@ -172,14 +172,14 @@ gui_init(void)
     gui_set_palette();
 
 
-    archive = ndxarchiveopen("arts");
+    archive = archive_ndx_open("arts");
 
     for (i = 0; i < GUI_COMP_NUM; ++i) {
-        gui_components[i] = pixmap_read_from_ndxarchive(archive, i);
-        pixmap_setwidth(gui_components[i], gui_comp_widths[i]);
+        gui_components[i] = pixmap_read_from_ndx_archive(archive, i);
+        pixmap_set_width(gui_components[i], gui_comp_widths[i]);
     }
 
-    archiveclose(archive);
+    archive_close(archive);
 
     for (j = 0; j < 3; ++j)
         for (i = 0; i < 0x20; ++i)
@@ -195,14 +195,14 @@ gui_init(void)
 
     /* init paragraphs */
 
-    if (fileexists("para.dat")) {
+    if (lord_file_exists("para.dat")) {
         FILE *parfile;
-        int parfilelen;
+        int parlord_filelen;
         int pos, n;
         parfile = lord_fopen("para.dat", "rb");
-        parfilelen = filelen(parfile);
-        paragraphs = lord_malloc(parfilelen);
-        if (fread(paragraphs, 1, parfilelen, parfile) != parfilelen) {
+        parlord_filelen = lord_filelen(parfile);
+        paragraphs = lord_malloc(parlord_filelen);
+        if (fread(paragraphs, 1, parlord_filelen, parfile) != parlord_filelen) {
             fprintf(stderr, "lord: can not read file para.dat\n");
             perror("lord");
             exit(1);
@@ -210,9 +210,9 @@ gui_init(void)
 
         pos = 0;
         n = 0;
-        while (pos < parfilelen && n <= PARAGRAPHS_NUM) {
+        while (pos < parlord_filelen && n <= PARAGRAPHS_NUM) {
             paragraphs_off[n] = pos;
-            while (pos < parfilelen && paragraphs[pos] != 0x10)
+            while (pos < parlord_filelen && paragraphs[pos] != 0x10)
                 ++pos;
             pos += 3;
             ++n;
@@ -271,7 +271,7 @@ gui_close(void)
 void
 gui_set_palette(void)
 {
-    SetPalette(gui_palette, 0x40, 0x20);
+    graphics_set_palette(gui_palette, 0x40, 0x20);
 }
 
 
@@ -287,8 +287,8 @@ gui_clear(void)
     Pixmap *pixmap;
 
 
-    SetWindow(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
-    ClearScreen();
+    graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    graphics_clear_screen();
 
     gui_set_full_window();
 
@@ -400,38 +400,38 @@ gui_set_map_area(int *width, int *height)
 
 
     if (dialog_mode < MAIN_MENU
-        || SCREEN_WIDTH > 320 /* Draw whole map for large screens */)
-    {
+        || SCREEN_WIDTH > 320 /* Draw whole map for large screens */ ) {
 
 #if PIXEL_PRECISE
 
         *width = SCREEN_WIDTH - 16;
         *height = SCREEN_HEIGHT - 16;
 
-        SetWindow(8, 8, 8 + *width - 1, 8 + *height - 1);
+        graphics_set_window(8, 8, 8 + *width - 1, 8 + *height - 1);
 
 #else
 
         *width = SCREEN_WIDTH - 17;
         *height = SCREEN_HEIGHT - 17;
 
-        SetWindow(8, 9, 8 + *width - 1, 9 + *height - 1);
+        graphics_set_window(8, 9, 8 + *width - 1, 9 + *height - 1);
 
 #endif
-    } else {
+    }
+    else {
 #if PIXEL_PRECISE
 
         *width = SCREEN_WIDTH - 16;
         *height = SCREEN_HEIGHT - 8 - gui_components[GUI_MENU]->height;
 
-        SetWindow(8, 8, 8 + *width - 1, 8 + *height - 1);
+        graphics_set_window(8, 8, 8 + *width - 1, 8 + *height - 1);
 
 #else
 
         *width = SCREEN_WIDTH - 17;
         *height = SCREEN_HEIGHT - 8 - gui_components[GUI_MENU]->height - 2;
 
-        SetWindow(8, 9, 8 + *width - 1, 9 + *height - 1);
+        graphics_set_window(8, 9, 8 + *width - 1, 9 + *height - 1);
 
 #endif
     }
@@ -449,9 +449,9 @@ void
 gui_set_full_window(void)
 {
 #if PIXEL_PRECISE
-    SetWindow(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2);
+    graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2);
 #else
-    SetWindow(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
 #endif
 }
 
@@ -852,9 +852,7 @@ dialog_print_active_spot()
     int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE - 4;
     int lines;
 
-    if (dialog_mode != DIALOG_SPOT_PRINT
-        || spot_formatted_text_lines < 0)
-    {
+    if (dialog_mode != DIALOG_SPOT_PRINT || spot_formatted_text_lines < 0) {
         char *buf;
 
         if ((leader = game_get_leader()) == NULL)
@@ -885,8 +883,10 @@ dialog_print_active_spot()
         }
     }
 
-    lines = min(max_height, spot_formatted_text_lines - spot_formatted_text_pos);
-    draw_scroll(SCROLL_ELEMENT_SIZE, SCROLL_ELEMENT_SIZE, width, lines, spot_formatted_text + spot_formatted_text_pos);
+    lines =
+        min(max_height, spot_formatted_text_lines - spot_formatted_text_pos);
+    draw_scroll(SCROLL_ELEMENT_SIZE, SCROLL_ELEMENT_SIZE, width, lines,
+                spot_formatted_text + spot_formatted_text_pos);
 }
 
 
@@ -908,17 +908,18 @@ dialog_print_active_spot_key(int key)
 
     if (key == KEY_UP) {
         spot_formatted_text_pos--;
-    } else if (key == KEY_DOWN) {
+    }
+    else if (key == KEY_DOWN) {
         spot_formatted_text_pos++;
-    } else if (key == KEY_PAGEUP) {
+    }
+    else if (key == KEY_PAGEUP) {
         spot_formatted_text_pos -= pg_size;
-    } else if (key == KEY_PAGEDOWN) {
+    }
+    else if (key == KEY_PAGEDOWN) {
         spot_formatted_text_pos += pg_size;
     }
 
-    if (spot_formatted_text_pos + max_height
-        > spot_formatted_text_lines)
-    {
+    if (spot_formatted_text_pos + max_height > spot_formatted_text_lines) {
         spot_formatted_text_pos = spot_formatted_text_lines - max_height;
     }
 
@@ -941,7 +942,7 @@ void
 gui_book(char *text)
 {
 
-    SetBackground("back");
+    graphics_set_background("back");
     gui_set_palette();
 
     portrait_draw(game_get_leader()->portrait, 168, 51);
@@ -1644,7 +1645,7 @@ dialog_trade_to_show(void)
         dialog_list_num = game_get_party(dialog_list_codes);
 
         if (dialog_list_num <= 1) {
-            playcartoon("cart10");
+            cartoon_play("cart10");
             exit(0);
         }
 
@@ -2860,11 +2861,11 @@ gui_frame(void)
 
 #ifdef WIZARD_MODE
         case 'w':
-        if (lord_key_shift())
-            dialog_print_active_spot();
-        else
-            dialog_talk_show(-1, -1);
-        break;
+            if (lord_key_shift())
+                dialog_print_active_spot();
+            else
+                dialog_talk_show(-1, -1);
+            break;
 #endif
 
         default:
@@ -3046,8 +3047,8 @@ gui_player_dead(Character *who, int show_message)
             lord_poll_events();
             gui_frame();
             map_animate_frame();
-            UpdateScreen();
-            Timer(50);
+            graphics_update_screen();
+            lord_timer(50);
         }
     }
 
@@ -3060,12 +3061,12 @@ gui_player_dead(Character *who, int show_message)
         lord_poll_events();
         gui_frame();
         map_animate_frame();
-        UpdateScreen();
-        Timer(50);
+        graphics_update_screen();
+        lord_timer(50);
     }
 
     if (who->ring_mode) {
-        playcartoon("cart10");
+        cartoon_play("cart10");
         exit(0);
     }
 
@@ -3085,8 +3086,8 @@ gui_proceed_frames(void)
 {
     while (gui_frame()) {
         map_animate_frame();
-        UpdateScreen();
-        Timer(FRAME_TIME);
+        graphics_update_screen();
+        lord_timer(FRAME_TIME);
         lord_poll_events();
     }
 }
@@ -3124,17 +3125,17 @@ gui_ttt_start_dialog(void)
     FILE *testfile;
     int y;
 
-    SetBackground("ongame");
+    graphics_set_background("ongame");
 
     /* set alpha for font */
     c = gui_font[(Uint8)' ']->data[0];
     for (i = 0; i < 0x100; ++i)
         if (gui_font[i])
-            pixmap_setalpha(gui_font[i], c);
+            pixmap_set_alpha(gui_font[i], c);
 
     gui_draw_text("Old or", 30, 45);
     gui_draw_text("New Game (O/N)", 30, 45 + 8);
-    UpdateScreen();
+    graphics_update_screen();
 
     for (i = 0; i < 10; ++i)
         savegames[i] = 0;
@@ -3172,7 +3173,7 @@ gui_ttt_start_dialog(void)
                         }
                     y += 8;
                     gui_draw_text("x.None", 52, y);
-                    UpdateScreen();
+                    graphics_update_screen();
                 }
             }
             if (key == 'o') {
@@ -3196,7 +3197,7 @@ gui_ttt_start_dialog(void)
                             y += 8;
                             gui_draw_text(buf, 52, y);
                         }
-                    UpdateScreen();
+                    graphics_update_screen();
                 }
             }
         }
@@ -3217,7 +3218,7 @@ gui_ttt_start_dialog(void)
                     return key - '0';
         }
         lord_poll_events();
-        Timer(50);
+        lord_timer(50);
     }
 
     /* unset font alpha */

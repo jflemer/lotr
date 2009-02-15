@@ -1,6 +1,6 @@
 /****************************************************************************
 
-    playcartoon.c
+    cartoon_play.c
     cartoon player
 
 
@@ -91,7 +91,7 @@ main(int argc, char *argv[])
 
 
     if (argc != 2) {
-        printf("Usage: playcartoon <cartoon>\n");
+        printf("Usage: cartoon_play <cartoon>\n");
         return 1;
     }
 
@@ -103,7 +103,7 @@ main(int argc, char *argv[])
 
     play_music();
 
-    playcartoon(argv[1]);
+    cartoon_play(argv[1]);
 
 
 

@@ -32,7 +32,7 @@
 
 
 
-int lord_timer;
+static int lord_ticks;
 
 /*
   returns number of second since time 0
@@ -46,7 +46,7 @@ int lord_timer;
 */
 
 void
-Sleep(int delay)
+lord_sleep(int delay)
 {
     SDL_Delay(delay);
 }
@@ -57,30 +57,30 @@ Sleep(int delay)
 */
 
 void
-ResetTimer(void)
+lord_reset_timer(void)
 {
-    lord_timer = SDL_GetTicks();
+    lord_ticks = SDL_GetTicks();
 }
 
 
 /*
-  wait delay milliseconds from the last Timer call
+  wait delay milliseconds from the last lord_timer call
 */
 
 void
-Timer(int delay)
+lord_timer(int delay)
 {
     int timer;
 
     timer = SDL_GetTicks();
 
-    if (lord_timer + delay > timer) {
+    if (lord_ticks + delay > timer) {
         /* we wait some time */
-        SDL_Delay(lord_timer + delay - timer);
-        lord_timer = lord_timer + delay;
+        SDL_Delay(lord_ticks + delay - timer);
+        lord_ticks = lord_ticks + delay;
     }
     else {
-        lord_timer = timer;
+        lord_ticks = timer;
     }
 
 }

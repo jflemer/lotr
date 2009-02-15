@@ -157,7 +157,7 @@ map_init(void)
     Archive *archive;
     int i, j;
 
-    archive = ndxarchiveopen("building");
+    archive = archive_ndx_open("building");
 
     if (archive->size != BUILDINGS_NUM) {
         fprintf(stderr, "lord: expecting %d buildings (%d found)\n",
@@ -166,7 +166,7 @@ map_init(void)
     }
 
     for (i = 0, j = 0; i < BUILDINGS_NUM; ++i)
-        if (archivedatasize(archive, i)) {
+        if (archive_data_size(archive, i)) {
             buildings[i][0] = j;
             buildings[i][1] = building_enters[j][0];
             buildings[i][2] = building_enters[j][1];
@@ -177,7 +177,7 @@ map_init(void)
             buildings[i][0] = -1;
         }
 
-    archiveclose(archive);
+    archive_close(archive);
 
     building_id = -1;
 
@@ -323,7 +323,7 @@ map_set_fade(int fade)
         fade = DAY_FADE;
     map_fade = fade;
 
-    FadePalette(map_fade, 0x00, 0x40);
+    graphics_fade_palette(map_fade, 0x00, 0x40);
 }
 
 
@@ -341,7 +341,7 @@ map_set_tiles(Archive *archive, int basictileindex,
     int size;
     int i, k, l;
 
-    data = ndxdecompressarchive(archive, basictileindex, &size);
+    data = decompress_ndxarchive(archive, basictileindex, &size);
     if (size != BASICTILENUM * TILESIZE * TILESIZE) {
         fprintf(stderr, "lord: basic tiles data corrupted\n");
         exit(1);
@@ -358,7 +358,7 @@ map_set_tiles(Archive *archive, int basictileindex,
     free(data);
 
 
-    data = ndxdecompressarchive(archive, tileindex, &size);
+    data = decompress_ndxarchive(archive, tileindex, &size);
     if (size != TILENUM * 2 * 16) {
         fprintf(stderr, "lord: tiles data corrupted\n");
         exit(1);
@@ -374,7 +374,7 @@ map_set_tiles(Archive *archive, int basictileindex,
 
     free(data);
 
-    data = ndxdecompressarchive(archive, largetileindex, &size);
+    data = decompress_ndxarchive(archive, largetileindex, &size);
     if (size != LARGETILENUM * 2 * 16) {
         fprintf(stderr, "lord: large tiles data corrupted\n");
         exit(1);
@@ -389,7 +389,7 @@ map_set_tiles(Archive *archive, int basictileindex,
 
     free(data);
 
-    data = ndxdecompressarchive(archive, tiletypeindex, &size);
+    data = decompress_ndxarchive(archive, tiletypeindex, &size);
     if (size != BASICTILENUM) {
         fprintf(stderr, "lord: tile terrain data corrupted\n");
         exit(1);
@@ -427,7 +427,7 @@ map_set_palette_resource(Archive *archive, int paletteindex)
         free(map_palette);
 
     map_palette =
-        (Palette *)ndxdecompressarchive(archive, paletteindex, &size);
+        (Palette *)decompress_ndxarchive(archive, paletteindex, &size);
 
     if (size != sizeof(Palette)) {
         fprintf(stderr, "lord: map palette data corrupted\n");
@@ -448,7 +448,7 @@ void
 map_set_palette(void)
 {
     /* 0x00 -- 0x40 are tile colors */
-    SetPalette(map_palette, 0x00, 0x40);
+    graphics_set_palette(map_palette, 0x00, 0x40);
 
     if (map_id % 2 == 0 && map_is_night())
         map_set_fade(NIGHT_FADE);
@@ -476,7 +476,7 @@ map_set_map(Archive *archive, int id, int mapindex)
         map_exit_building();
 #endif
 
-    data = ndxdecompressarchive(archive, mapindex, &size);
+    data = decompress_ndxarchive(archive, mapindex, &size);
     if (size != MAP_WIDTH * MAP_HEIGHT * 2) {
         fprintf(stderr, "lord: map data corrupted size=%d\n", size);
         exit(1);
@@ -525,13 +525,13 @@ map_enter_building(int id)
     if (buildings[id][0] == -1)
         return;
 
-    building_archive = ndxarchiveopen("building");
+    building_archive = archive_ndx_open("building");
 
     /* load the right map for a given building */
     if (buildings[id][1] != map_id)
         game_leader_teleport(1, 0, 0, 0xff, buildings[id][1]);
 
-    building_pal = ndxarchiveopen("buildpal");
+    building_pal = archive_ndx_open("buildpal");
 
     building_tmp_pal = map_palette;
     map_palette = NULL;
@@ -539,7 +539,7 @@ map_enter_building(int id)
 
 
 
-    data = ndxdecompressarchive(building_archive, id, &size);
+    data = decompress_ndxarchive(building_archive, id, &size);
     if (size != BUILDING_WIDTH * BUILDING_HEIGHT * 2) {
         fprintf(stderr, "lord: building data corrupted size=%d\n", size);
         exit(1);
@@ -554,8 +554,8 @@ map_enter_building(int id)
     free(data);
 
 
-    archiveclose(building_archive);
-    archiveclose(building_pal);
+    archive_close(building_archive);
+    archive_close(building_pal);
 
     building_id = id;
 
@@ -640,7 +640,7 @@ map_set_spots(Archive *archive, int index)
         spot_free(map_spots[i]);
     map_num_spots = 0;
 
-    data = ndxdecompressarchive(archive, index, &size);
+    data = decompress_ndxarchive(archive, index, &size);
 
     if (size < 0x100) {
         fprintf(stderr, "lord: corrupted game description data\n");
@@ -861,10 +861,10 @@ map_display(int x, int y)
 
 
     if (map_mode == MAP_DARK)
-        ClearScreen();
+        graphics_clear_screen();
 
     if (map_mode == MAP_FOG)
-        SetScreen(map_mode_param);
+        graphics_set_screen(map_mode_param);
 
 
     /*
@@ -1032,23 +1032,23 @@ map_animate_frame(void)
 
     if (map_id % 2 == 0) {
         /* water animation */
-        RotatePaletteLeftHidden(0x9, 0xe);
-        FadePalette(map_fade, 0x9, 0xe - 0x9 + 1);
+        graphics_rotate_palette_leftHidden(0x9, 0xe);
+        graphics_fade_palette(map_fade, 0x9, 0xe - 0x9 + 1);
 
         /* fire animation */
-        RotatePaletteLeft(0x3c, 0x3f);
+        graphics_rotate_palette_left(0x3c, 0x3f);
     }
     else {
         /* underground water */
-        RotatePaletteLeft(0x31, 0x35);
+        graphics_rotate_palette_left(0x31, 0x35);
 
 #ifndef TTT
         /* lava in Moria and Dol-Guldur */
         if (map_id == 9 || map_id == 0xd)
-            RotatePaletteLeft(0x1c, 0x1e);
+            graphics_rotate_palette_left(0x1c, 0x1e);
 
         /* fire animation */
-        RotatePaletteLeft(0x3c, 0x3f);
+        graphics_rotate_palette_left(0x3c, 0x3f);
 #endif
     }
 

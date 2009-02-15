@@ -51,7 +51,7 @@ main(int argc, char *argv[])
 {
     int game_num = 0;
 
-    Lord_Init();
+    lord_init();
 
 #ifdef TTT
     game_num = gui_ttt_start_dialog();
@@ -67,29 +67,29 @@ main(int argc, char *argv[])
 #if !DEMO
 #ifndef CD_VERSION
     if (game_num == 0)
-        playcartoon("opening");
+        cartoon_play("opening");
 #else
-    playav("sacf");
-    playav("saqf");
+    av_play("sacf");
+    av_play("saqf");
 #endif
 #else
-    playcartoon("democrt0");
+    cartoon_play("democrt0");
 #endif
 #endif
 
 
     game_init_graphics();
 
-    ResetTimer();
+    lord_reset_timer();
     while (!lord_key_esc()) {
         lord_poll_events();
         game_next_frame();
 
-        Timer(FRAME_TIME);
+        lord_timer(FRAME_TIME);
     }
 
 
-    Lord_Close();
+    lord_close();
 
     return 0;
 }

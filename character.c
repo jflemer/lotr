@@ -139,9 +139,9 @@ characters_init()
     Archive *archive;
 
 #if !DEMO
-    archive = ndxarchiveopen("nnpcs");
+    archive = archive_ndx_open("nnpcs");
 #else
-    archive = ndxarchiveopen("npcs");
+    archive = archive_ndx_open("npcs");
 #endif
 
     if (archive->size != CHARACTERS_NUM) {
@@ -158,12 +158,12 @@ characters_init()
 
     for (i = 0; i < CHARACTERS_NUM; ++i) {
 
-        if (archivedatasize(archive, i) != 256) {
+        if (archive_data_size(archive, i) != 256) {
             lord_characters[i] = NULL;
             continue;
         }
 
-        chardata = (NpcsDatEntry *) readarchive(archive, i);
+        chardata = (NpcsDatEntry *) archive_read(archive, i);
 
         lord_characters[i] = lord_malloc(sizeof(Character));
         lord_characters[i]->x = -1;
@@ -272,7 +272,7 @@ characters_init()
 
     }
 
-    archiveclose(archive);
+    archive_close(archive);
 
 #ifdef TTT
     for (i = 0; characters_pos[i][0] != 0xffff; ++i) {

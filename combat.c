@@ -96,7 +96,7 @@ void
 combat_loosed(void)
 {
     combat_mode = 0;
-    playcartoon("cart10");
+    cartoon_play("cart10");
     exit(0);
 }
 
@@ -1162,8 +1162,8 @@ combat_proceed_frames(void)
 {
     while (combat_frame()) {
         map_animate_frame();
-        UpdateScreen();
-        Timer(FRAME_TIME);
+        graphics_update_screen();
+        lord_timer(FRAME_TIME);
         lord_poll_events();
     }
 }

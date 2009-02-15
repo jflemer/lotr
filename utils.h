@@ -44,16 +44,16 @@ extern void *lord_malloc(int size);
 extern FILE *lord_fopen(const char *path, const char *mode);
 
 /* check if file exists */
-extern int fileexists(const char *path);
+extern int lord_file_exists(const char *path);
 
 /* return full path to $HOME/.lord/<name> */
 extern char *lord_homedir_filename(const char *name);
 
 /* adds suffix to a filename */
-extern char *addsuffix(const char *name, const char *suffix);
+extern char *lord_add_suffix(const char *name, const char *suffix);
 
 /* returns file length, -1 if file==NULL */
-extern long filelen(FILE *file);
+extern long lord_filelen(FILE *file);
 
 /* random number */
 extern int lord_rnd(int n);

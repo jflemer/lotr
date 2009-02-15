@@ -73,16 +73,17 @@ typedef struct
 
 
 /* reads a pixmap from idx archive */
-extern Pixmap *pixmap_read_from_idxarchive(Archive *archive, int index);
+extern Pixmap *pixmap_read_from_idx_archive(Archive *archive, int index);
 
 /* reads a pixmap from ndx archive */
-extern Pixmap *pixmap_read_from_ndxarchive(Archive *archive, int index);
+extern Pixmap *pixmap_read_from_ndx_archive(Archive *archive, int index);
 
 /* draws a pixmap to the screen */
 extern void pixmap_draw(Pixmap *pixmap, int x, int y);
 
 /* draws a pixmap to a buffer */
-extern void pixmap_drawtobuffer(Uint8 *buffer, Pixmap *pixmap, int x, int y);
+extern void pixmap_draw_to_buffer(Uint8 *buffer, Pixmap *pixmap, int x,
+                                  int y);
 
 /* frees pixmap */
 extern void pixmap_free(Pixmap *pixmap);
@@ -91,10 +92,10 @@ extern void pixmap_free(Pixmap *pixmap);
 extern Pixmap *pixmap_new(int width, int height);
 
 /* set pixmaps alpha channel */
-extern void pixmap_setalpha(Pixmap *pixmap, Uint8 alpha);
+extern void pixmap_set_alpha(Pixmap *pixmap, Uint8 alpha);
 
 /* set pixmaps width */
-extern void pixmap_setwidth(Pixmap *pixmap, int width);
+extern void pixmap_set_width(Pixmap *pixmap, int width);
 
 /* creates a subpixmap */
 extern Pixmap *pixmap_subpixmap(Pixmap *pixmap, int startx, int starty,
@@ -113,58 +114,59 @@ extern void draw_rectangle(Uint8 c, int x, int y, int xx, int yy);
 
 
 /* reads a cartoon font from an idx archive */
-extern CartoonFont *cartoonfont_read(Archive *archive, int index);
+extern CartoonFont *cartoon_font_read(Archive *archive, int index);
 
 /* frees cartoon font */
-extern void cartoonfont_free(CartoonFont *font);
+extern void cartoon_font_free(CartoonFont *font);
 
 /* writes text */
-extern void cartoonfont_writetext(CartoonFont *font, int x, int y,
-                                  char *text);
+extern void cartoon_font_write_text(CartoonFont *font, int x, int y,
+                                    char *text);
 
 
 
 
 /* updates the screen */
-extern void UpdateScreen(void);
+extern void graphics_update_screen(void);
 
 /* clears the screen */
-extern void ClearScreen(void);
+extern void graphics_clear_screen(void);
 
 /* sets the screen color*/
-extern void SetScreen(int color);
+extern void graphics_set_screen(int color);
 
 /* shows a background image */
-extern void SetBackground(char *name);
+extern void graphics_set_background(char *name);
 
 /* saves the screen */
-extern void SaveScreen(Uint8 *backupscreen);
+extern void graphics_save_screen(Uint8 *backupscreen);
 
 /* loads the screen */
-extern void LoadScreen(Uint8 *backupscreen);
+extern void graphics_load_screen(Uint8 *backupscreen);
 
 /* clears screen area */
-extern void ClearArea(int startx, int starty, int endx, int endy);
+extern void graphics_clear_area(int startx, int starty, int endx, int endy);
 
 /* sets the display window */
-extern void SetWindow(int startx, int starty, int endx, int endy);
+extern void graphics_set_window(int startx, int starty, int endx, int endy);
 
 
 
 /* rotates num colors starting at start */
-extern void RotatePaletteRight(int start, int end);
+extern void graphics_rotate_palette_right(int start, int end);
 
 /* rotates num colors starting at start */
-extern void RotatePaletteLeft(int start, int end);
+extern void graphics_rotate_palette_left(int start, int end);
 
 /* rotates num colors starting at start - do not display */
-extern void RotatePaletteLeftHidden(int start, int end);
+extern void graphics_rotate_palette_leftHidden(int start, int end);
 
 /* sets palette */
-extern void SetPalette(Palette *palette, int firstcolor, int ncolors);
+extern void graphics_set_palette(Palette *palette, int firstcolor,
+                                 int ncolors);
 
 /* fades palette */
-extern void FadePalette(int coef, int firstcolor, int ncolors);
+extern void graphics_fade_palette(int coef, int firstcolor, int ncolors);
 
 /* copies palette colors */
 extern void palette_copy_colors(Palette *palette, int start, int num,

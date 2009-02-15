@@ -155,7 +155,7 @@ get_command_par(CartoonCommand * command, int *registers, int index)
 */
 
 extern void
-playcartoon(char *name)
+cartoon_play(char *name)
 {
     Archive *archive;
     int archivepos = 0;
@@ -184,7 +184,7 @@ playcartoon(char *name)
     }
 
 
-    archive = idxarchiveopen(name);
+    archive = archive_idx_open(name);
 
     /* initialize the resources cache */
     for (i = 0; i < MAXRESOURCES; ++i) {
@@ -199,12 +199,12 @@ playcartoon(char *name)
     bufscreen = pixmap_new(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 
-    ClearScreen();
-    UpdateScreen();
+    graphics_clear_screen();
+    graphics_update_screen();
 
     while (archivepos < archive->size && !lord_key_esc()) {
 
-        data = idxdecompressarchive(archive, archivepos, &size);
+        data = decompress_idxarchive(archive, archivepos, &size);
         /* data are freed by cartoondesc_free */
 
         /* end if do not find next archive command */
@@ -217,17 +217,17 @@ playcartoon(char *name)
         repeats = 0;
 
         /* reset screen */
-        SetWindow(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+        graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
         bzero(bufscreen->data, SCREEN_WIDTH * SCREEN_HEIGHT);
-        ClearScreen();
-        UpdateScreen();
+        graphics_clear_screen();
+        graphics_update_screen();
 
 
         cartoondesc = cartoondesc_create(data, size);
         free(data);
 
 
-        ResetTimer();
+        lord_reset_timer();
 
         while ((command = cartoondesc_next(cartoondesc)) != NULL
                && !lord_key_esc()) {
@@ -281,12 +281,12 @@ playcartoon(char *name)
 
                 checkcommandsize(command, 12);
 
-                ClearArea(get_command_par(command, registers, 0),
-                          get_command_par(command, registers, 2),
-                          get_command_par(command, registers, 4),
-                          get_command_par(command, registers, 6));
+                graphics_clear_area(get_command_par(command, registers, 0),
+                                    get_command_par(command, registers, 2),
+                                    get_command_par(command, registers, 4),
+                                    get_command_par(command, registers, 6));
 
-                UpdateScreen();
+                graphics_update_screen();
 
                 break;
 
@@ -294,7 +294,7 @@ playcartoon(char *name)
 
               /****************************************************/
             case 0x2c:
-                Timer(10);
+                lord_timer(10);
                 break;
 
 
@@ -315,10 +315,10 @@ playcartoon(char *name)
                 //              printf( "type=%02x par=%d\n", command->type, i );
 
                 if (i > 0 && command->type == 0x04)
-                    Sleep(i * 5);
+                    lord_sleep(i * 5);
 
                 if (i < 0 && command->type == 0x27)
-                    Sleep(-i * 5);
+                    lord_sleep(-i * 5);
 
 
 
@@ -371,7 +371,7 @@ playcartoon(char *name)
                             i);
                     exit(1);
                 }
-                fonts[i] = cartoonfont_read(archive, command->data[0]);
+                fonts[i] = cartoon_font_read(archive, command->data[0]);
 
 
                 break;
@@ -398,12 +398,12 @@ playcartoon(char *name)
                 /* terminate text if it was not terminated before */
                 text[TEXTMAX] = 0;
 
-                cartoonfont_writetext(fonts[get_command_par(command, registers, 0)],    /* font used */
-                                      get_command_par(command, registers, 2),   /* x-pos */
-                                      get_command_par(command, registers, 4),   /* y-pos */
-                                      text);
+                cartoon_font_write_text(fonts[get_command_par(command, registers, 0)],  /* font used */
+                                        get_command_par(command, registers, 2), /* x-pos */
+                                        get_command_par(command, registers, 4), /* y-pos */
+                                        text);
 
-                UpdateScreen();
+                graphics_update_screen();
 
                 break;
 
@@ -563,7 +563,7 @@ playcartoon(char *name)
 
                 checkcommandsize(command, 0);
 
-                SaveScreen(bufscreen->data);
+                graphics_save_screen(bufscreen->data);
 
                 break;
 
@@ -578,7 +578,7 @@ playcartoon(char *name)
                 checkcommandsize(command, 0);
 
                 pixmap_draw(bufscreen, 0, 0);
-                UpdateScreen();
+                graphics_update_screen();
 
                 break;
 
@@ -605,19 +605,19 @@ playcartoon(char *name)
                 }
 
                 pixmaps[i] =
-                    pixmap_read_from_idxarchive(archive, command->data[0]);
+                    pixmap_read_from_idx_archive(archive, command->data[0]);
 
                 /* alpha value */
                 if (command->data[3] < 0xff)
-                    pixmap_setalpha(pixmaps[i], command->data[3]);
+                    pixmap_set_alpha(pixmaps[i], command->data[3]);
 
 
                 /* show used pixmaps
-                   ClearScreen();
-                   FadePalette( 100, 0, 0x100 );
+                   graphics_clear_screen();
+                   graphics_fade_palette( 100, 0, 0x100 );
                    printf( "%d\n", i );
                    pixmap_draw( pixmaps[i], 0, 0 );
-                   UpdateScreen();
+                   graphics_update_screen();
                    lord_reset_keyboard();
                    while( !lord_kb_hit() );
                    lord_reset_keyboard();
@@ -638,7 +638,8 @@ playcartoon(char *name)
 
                 checkcommandsize(command, 1);
 
-                data = idxdecompressarchive(archive, command->data[0], &size);
+                data =
+                    decompress_idxarchive(archive, command->data[0], &size);
 
                 if (size != sizeof(Palette)) {
                     fprintf(stderr,
@@ -646,7 +647,7 @@ playcartoon(char *name)
                     exit(1);
                 }
 
-                SetPalette((Palette *)data, 0, 0x100);
+                graphics_set_palette((Palette *)data, 0, 0x100);
                 free(data);
 
                 break;
@@ -666,7 +667,7 @@ playcartoon(char *name)
                 checkcommandsize(command, 6);
 
                 /* wait if we are drawing large pixmaps */
-                Timer(0);
+                lord_timer(0);
 
                 /* cache index */
                 i = get_command_par(command, registers, 0);
@@ -681,11 +682,11 @@ playcartoon(char *name)
 
 
                 if (command->type == 0x18) {    /* draw to buffer */
-                    pixmap_drawtobuffer(bufscreen->data, pixmaps[i],
-                                        get_command_par(command, registers,
-                                                        2),
-                                        get_command_par(command, registers,
-                                                        4));
+                    pixmap_draw_to_buffer(bufscreen->data, pixmaps[i],
+                                          get_command_par(command, registers,
+                                                          2),
+                                          get_command_par(command, registers,
+                                                          4));
                 }
                 else {
                     pixmap_draw(pixmaps[i],
@@ -698,12 +699,12 @@ playcartoon(char *name)
                         pixmap_free(creditpixmap);
                     }
 
-                    UpdateScreen();
+                    graphics_update_screen();
                 }
 
 
                 /* wait if we are drawing large pixmaps */
-                Timer(pixmaps[i]->datasize / 300);
+                lord_timer(pixmaps[i]->datasize / 300);
 
 
                 break;
@@ -914,9 +915,9 @@ playcartoon(char *name)
                 j = get_command_par(command, registers, 2);
 
                 if (get_command_par(command, registers, 4) % 2)
-                    RotatePaletteLeft(i, j);
+                    graphics_rotate_palette_left(i, j);
                 else
-                    RotatePaletteRight(i, j);
+                    graphics_rotate_palette_right(i, j);
 
 
                 break;
@@ -973,7 +974,7 @@ playcartoon(char *name)
                 checkcommandsize(command, 2);
 
                 i = get_command_par(command, registers, 0);
-                FadePalette(i, 0, 0x100);
+                graphics_fade_palette(i, 0, 0x100);
 
                 break;
 
@@ -1050,7 +1051,7 @@ playcartoon(char *name)
                 /* exit(1); */
             }
 
-            Timer(0);
+            lord_timer(0);
 
             if (0 && return_pos == 0) {
                 lord_reset_keyboard();
@@ -1066,7 +1067,7 @@ playcartoon(char *name)
         /* free cached resources */
         for (i = 0; i < MAXRESOURCES; ++i) {
             if (fonts[i] != NULL) {
-                cartoonfont_free(fonts[i]);
+                cartoon_font_free(fonts[i]);
                 fonts[i] = NULL;
             }
             if (pixmaps[i] != NULL) {
@@ -1080,7 +1081,7 @@ playcartoon(char *name)
     /* free resources */
 
     pixmap_free(bufscreen);
-    archiveclose(archive);
+    archive_close(archive);
 
     lord_reset_keyboard();
 

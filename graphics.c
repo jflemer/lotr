@@ -60,14 +60,14 @@ int window_x = 0, window_y = 0, window_w = SCREEN_WIDTH, window_h =
 */
 
 Pixmap *
-pixmap_read_from_idxarchive(Archive *archive, int index)
+pixmap_read_from_idx_archive(Archive *archive, int index)
 {
     Uint8 *compressed;
     Uint8 *data;
     Pixmap *result;
     int w, h, size;
 
-    compressed = readarchive(archive, index);
+    compressed = archive_read(archive, index);
     if (compressed == NULL) {
         fprintf(stderr,
                 "lord: could not find pixmap at index %d in the archive\n",
@@ -79,7 +79,8 @@ pixmap_read_from_idxarchive(Archive *archive, int index)
     h = compressed[3] * 0x100 + compressed[2];
 
     data =
-        idxdecompress(compressed + 4, archivedatasize(archive, index), &size);
+        decompress_idx(compressed + 4, archive_data_size(archive, index),
+                       &size);
     free(compressed);
 
     if (size != w * h) {
@@ -109,14 +110,14 @@ pixmap_read_from_idxarchive(Archive *archive, int index)
 */
 
 Pixmap *
-pixmap_read_from_ndxarchive(Archive *archive, int index)
+pixmap_read_from_ndx_archive(Archive *archive, int index)
 {
     Uint8 *compressed;
     Uint8 *data;
     Pixmap *result;
     int size;
 
-    compressed = readarchive(archive, index);
+    compressed = archive_read(archive, index);
     if (compressed == NULL) {
         fprintf(stderr,
                 "lord: could not find pixmap at index %d in the archive\n",
@@ -124,7 +125,8 @@ pixmap_read_from_ndxarchive(Archive *archive, int index)
         exit(1);
     }
 
-    data = ndxdecompress(compressed, archivedatasize(archive, index), &size);
+    data =
+        decompress_ndx(compressed, archive_data_size(archive, index), &size);
     free(compressed);
 
     result = lord_malloc(sizeof(Pixmap));
@@ -188,7 +190,7 @@ pixmap_free(Pixmap *pixmap)
 void
 pixmap_draw(Pixmap *pixmap, int x, int y)
 {
-    pixmap_drawtobuffer(main_screen, pixmap, x, y);
+    pixmap_draw_to_buffer(main_screen, pixmap, x, y);
 }
 
 
@@ -197,7 +199,7 @@ pixmap_draw(Pixmap *pixmap, int x, int y)
 */
 
 void
-pixmap_drawtobuffer(Uint8 *buffer, Pixmap *pixmap, int x, int y)
+pixmap_draw_to_buffer(Uint8 *buffer, Pixmap *pixmap, int x, int y)
 {
     Uint8 *data = pixmap->data;
     Uint8 *s;
@@ -258,7 +260,7 @@ pixmap_drawtobuffer(Uint8 *buffer, Pixmap *pixmap, int x, int y)
 */
 
 void
-pixmap_setalpha(Pixmap *pixmap, Uint8 alpha)
+pixmap_set_alpha(Pixmap *pixmap, Uint8 alpha)
 {
     pixmap->hasalpha = 1;
     pixmap->alpha = alpha;
@@ -270,7 +272,7 @@ pixmap_setalpha(Pixmap *pixmap, Uint8 alpha)
 */
 
 void
-pixmap_setwidth(Pixmap *pixmap, int width)
+pixmap_set_width(Pixmap *pixmap, int width)
 {
 
     if ((pixmap->datasize % width) != 0) {
@@ -450,7 +452,7 @@ draw_rectangle(Uint8 c, int x, int y, int xx, int yy)
 */
 
 CartoonFont *
-cartoonfont_read(Archive *archive, int index)
+cartoon_font_read(Archive *archive, int index)
 {
 
     Uint8 *compressed;
@@ -465,7 +467,7 @@ cartoonfont_read(Archive *archive, int index)
     int i, j, k, ch, chx, c;
 
 
-    compressed = readarchive(archive, index);
+    compressed = archive_read(archive, index);
     if (compressed == NULL) {
         fprintf(stderr,
                 "lord: could not find font at index %d in the archive\n",
@@ -473,7 +475,8 @@ cartoonfont_read(Archive *archive, int index)
         exit(1);
     }
 
-    data = idxdecompress(compressed, archivedatasize(archive, index), &size);
+    data =
+        decompress_idx(compressed, archive_data_size(archive, index), &size);
     free(compressed);
 
 
@@ -506,7 +509,7 @@ cartoonfont_read(Archive *archive, int index)
 
     for (i = 0; i < result->charnum; ++i) {
         characters[i] = pixmap_new(data[6 + i], height);
-        pixmap_setalpha(characters[i], background);
+        pixmap_set_alpha(characters[i], background);
     }
 
 
@@ -554,7 +557,7 @@ cartoonfont_read(Archive *archive, int index)
 */
 
 void
-cartoonfont_free(CartoonFont *font)
+cartoon_font_free(CartoonFont *font)
 {
     int i;
     for (i = 0; i < font->charnum; ++i)
@@ -569,7 +572,7 @@ cartoonfont_free(CartoonFont *font)
 */
 
 void
-cartoonfont_writetext(CartoonFont *font, int x, int y, char *text)
+cartoon_font_write_text(CartoonFont *font, int x, int y, char *text)
 {
 
     int ch;
@@ -593,7 +596,7 @@ cartoonfont_writetext(CartoonFont *font, int x, int y, char *text)
 */
 
 void
-UpdateScreen(void)
+graphics_update_screen(void)
 {
     lord_show_screen(main_screen);
 }
@@ -605,9 +608,9 @@ UpdateScreen(void)
 */
 
 void
-ClearScreen(void)
+graphics_clear_screen(void)
 {
-    SetScreen(0);
+    graphics_set_screen(0);
 }
 
 
@@ -616,7 +619,7 @@ ClearScreen(void)
 */
 
 void
-SetScreen(int color)
+graphics_set_screen(int color)
 {
     Uint8 *s;
     int j;
@@ -632,7 +635,7 @@ SetScreen(int color)
   shows a background image
 */
 void
-SetBackground(char *name)
+graphics_set_background(char *name)
 {
     Palette palette;
     FILE *pal;
@@ -652,12 +655,12 @@ SetBackground(char *name)
 
     fread(&palette, sizeof(Palette), 1, pal);
 
-    data_size = filelen(dat);
+    data_size = lord_filelen(dat);
     data = lord_malloc(data_size);
 
     fread(data, 1, data_size, dat);
 
-    picture_data = ndxdecompress(data, data_size, &picture_size);
+    picture_data = decompress_ndx(data, data_size, &picture_size);
 
     if (picture_size != 64000) {
         fprintf(stderr, "lord: wrong background picture\n");
@@ -672,13 +675,13 @@ SetBackground(char *name)
     fclose(dat);
     free(data);
 
-    SetPalette(&palette, 0, 0x100);
+    graphics_set_palette(&palette, 0, 0x100);
 
     pixmap_draw(background, 0, 0);
 
     pixmap_free(background);
 
-    UpdateScreen();
+    graphics_update_screen();
 }
 
 
@@ -688,7 +691,7 @@ SetBackground(char *name)
 */
 
 void
-SaveScreen(Uint8 *backupscreen)
+graphics_save_screen(Uint8 *backupscreen)
 {
     memcpy(backupscreen, main_screen, SCREEN_WIDTH * SCREEN_HEIGHT);
 }
@@ -698,7 +701,7 @@ SaveScreen(Uint8 *backupscreen)
 */
 
 void
-LoadScreen(Uint8 *backupscreen)
+graphics_load_screen(Uint8 *backupscreen)
 {
     memcpy(main_screen, backupscreen, SCREEN_WIDTH * SCREEN_HEIGHT);
 }
@@ -709,7 +712,7 @@ LoadScreen(Uint8 *backupscreen)
   clears screen area
 */
 void
-ClearArea(int startx, int starty, int endx, int endy)
+graphics_clear_area(int startx, int starty, int endx, int endy)
 {
 
     Pixmap *pixmap;
@@ -736,7 +739,7 @@ ClearArea(int startx, int starty, int endx, int endy)
 */
 
 void
-SetWindow(int startx, int starty, int endx, int endy)
+graphics_set_window(int startx, int starty, int endx, int endy)
 {
 
     window_x = startx;
@@ -780,7 +783,7 @@ SetWindow(int startx, int starty, int endx, int endy)
  */
 
 void
-RotatePaletteRight(int start, int end)
+graphics_rotate_palette_right(int start, int end)
 {
 
     Uint8 r, g, b;
@@ -816,7 +819,7 @@ RotatePaletteRight(int start, int end)
  */
 
 void
-RotatePaletteLeftHidden(int start, int end)
+graphics_rotate_palette_leftHidden(int start, int end)
 {
 
     Uint8 r, g, b;
@@ -849,7 +852,7 @@ RotatePaletteLeftHidden(int start, int end)
  */
 
 void
-RotatePaletteLeft(int start, int end)
+graphics_rotate_palette_left(int start, int end)
 {
     int num;
 
@@ -858,7 +861,7 @@ RotatePaletteLeft(int start, int end)
     if (num < 2)
         return;
 
-    RotatePaletteLeftHidden(start, end);
+    graphics_rotate_palette_leftHidden(start, end);
     lord_system_set_palette(main_palette, start, num);
 }
 
@@ -869,13 +872,13 @@ RotatePaletteLeft(int start, int end)
 */
 
 void
-SetPalette(Palette *palette, int firstcolor, int ncolors)
+graphics_set_palette(Palette *palette, int firstcolor, int ncolors)
 {
 
     int i, c;
 
     if (firstcolor < 0 || firstcolor + ncolors > 256) {
-        fprintf(stderr, "lord: wrong SetPalette parameters\n");
+        fprintf(stderr, "lord: wrong graphics_set_palette parameters\n");
         exit(1);
     }
 
@@ -910,7 +913,7 @@ SetPalette(Palette *palette, int firstcolor, int ncolors)
 */
 
 void
-FadePalette(int coef, int firstcolor, int ncolors)
+graphics_fade_palette(int coef, int firstcolor, int ncolors)
 {
 
     Uint8 faded[0x300];

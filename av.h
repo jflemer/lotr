@@ -31,10 +31,10 @@
 
 
 /* play av */
-extern void playav(char *name);
+extern void av_play(char *name);
 
 /* play av by number*/
-extern void playavnum(int num);
+extern void av_playnum(int num);
 
 
 

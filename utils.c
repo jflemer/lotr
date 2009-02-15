@@ -146,7 +146,7 @@ lord_fopen(const char *path, const char *mode)
 */
 
 int
-fileexists(const char *path)
+lord_file_exists(const char *path)
 {
     FILE *testfile;
 
@@ -179,7 +179,7 @@ fileexists(const char *path)
 */
 
 char *
-addsuffix(const char *name, const char *suffix)
+lord_add_suffix(const char *name, const char *suffix)
 {
     int len;
     char *result;
@@ -204,7 +204,7 @@ addsuffix(const char *name, const char *suffix)
 */
 
 long
-filelen(FILE *file)
+lord_filelen(FILE *file)
 {
     long currpos;               /* current position */
     long result;

@@ -45,7 +45,7 @@ Uint8 buffer[BUFSIZE];
 */
 
 Archive *
-idxarchiveopen(const char *name)
+archive_idx_open(const char *name)
 {
     FILE *datafile;
     FILE *idxfile;
@@ -54,17 +54,17 @@ idxarchiveopen(const char *name)
     int i, k, n;
     Uint8 tmpbytes[2];
 
-    fullname = addsuffix(name, "dat");
+    fullname = lord_add_suffix(name, "dat");
     datafile = lord_fopen(fullname, "rb");
     free(fullname);
 
-    fullname = addsuffix(name, "idx");
+    fullname = lord_add_suffix(name, "idx");
     idxfile = lord_fopen(fullname, "rb");
     free(fullname);
 
     result = (Archive *)lord_malloc(sizeof(Archive));
 
-    n = filelen(idxfile);
+    n = lord_filelen(idxfile);
 
     result->datafile = datafile;
 
@@ -86,7 +86,7 @@ idxarchiveopen(const char *name)
 
     fclose(idxfile);
 
-    if (result->index[n] != filelen(datafile)) {
+    if (result->index[n] != lord_filelen(datafile)) {
         fprintf(stderr,
                 "lord: %s seems not to be a valid idx'ed data file\n", name);
         exit(1);
@@ -105,7 +105,7 @@ idxarchiveopen(const char *name)
 */
 
 Archive *
-ndxarchiveopen(const char *name)
+archive_ndx_open(const char *name)
 {
     FILE *datafile;
     FILE *ndxfile;
@@ -114,7 +114,7 @@ ndxarchiveopen(const char *name)
     int i, k, n;
     Uint8 tmpbytes[4];
 
-    fullname = addsuffix(name, "dat");
+    fullname = lord_add_suffix(name, "dat");
     datafile = lord_fopen(fullname, "rb");
     free(fullname);
 
@@ -122,13 +122,13 @@ ndxarchiveopen(const char *name)
     if (strcmp(name, "nnpcs") == 0)
         name++;
 
-    fullname = addsuffix(name, "ndx");
+    fullname = lord_add_suffix(name, "ndx");
     ndxfile = lord_fopen(fullname, "rb");
     free(fullname);
 
     result = (Archive *)lord_malloc(sizeof(Archive));
 
-    n = filelen(ndxfile);
+    n = lord_filelen(ndxfile);
 
     result->datafile = datafile;
 
@@ -171,7 +171,7 @@ ndxarchiveopen(const char *name)
     fclose(ndxfile);
 
 
-    result->index[n] = filelen(datafile);
+    result->index[n] = lord_filelen(datafile);
 
     if (result->index[n - 1] > result->index[n]) {
         fprintf(stderr,
@@ -194,7 +194,7 @@ ndxarchiveopen(const char *name)
 */
 
 void
-archiveclose(Archive *archive)
+archive_close(Archive *archive)
 {
     fclose(archive->datafile);
     free(archive->index);
@@ -209,12 +209,12 @@ archiveclose(Archive *archive)
 */
 
 Uint8 *
-readarchive(Archive *archive, int index)
+archive_read(Archive *archive, int index)
 {
     Uint8 *result;
     int size;
 
-    size = archivedatasize(archive, index);
+    size = archive_data_size(archive, index);
 
     if (size == 0)
         return NULL;
@@ -236,7 +236,7 @@ readarchive(Archive *archive, int index)
   return archive data size
 */
 int
-archivedatasize(Archive *archive, int index)
+archive_data_size(Archive *archive, int index)
 {
     if (index < 0 || index >= archive->size)
         return 0;
@@ -302,7 +302,7 @@ readnbits(Uint8 *data, int n, int pos)
 */
 
 Uint8 *
-idxdecompress(Uint8 *data, int size, int *resultsize)
+decompress_idx(Uint8 *data, int size, int *resultsize)
 {
 
     Uint8 *index;
@@ -387,16 +387,17 @@ idxdecompress(Uint8 *data, int size, int *resultsize)
 */
 
 Uint8 *
-idxdecompressarchive(Archive *archive, int index, int *size)
+decompress_idxarchive(Archive *archive, int index, int *size)
 {
     Uint8 *result;
     Uint8 *data;
 
     result = NULL;
-    data = readarchive(archive, index);
+    data = archive_read(archive, index);
 
     if (data != NULL) {
-        result = idxdecompress(data, archivedatasize(archive, index), size);
+        result =
+            decompress_idx(data, archive_data_size(archive, index), size);
         free(data);
     }
 
@@ -419,7 +420,7 @@ idxdecompressarchive(Archive *archive, int index, int *size)
 */
 
 Uint8 *
-ndxdecompress(Uint8 *data, int size, int *resultsize)
+decompress_ndx(Uint8 *data, int size, int *resultsize)
 {
     Uint8 *result;
     int bufpos;
@@ -513,16 +514,17 @@ ndxdecompress(Uint8 *data, int size, int *resultsize)
 */
 
 Uint8 *
-ndxdecompressarchive(Archive *archive, int index, int *size)
+decompress_ndxarchive(Archive *archive, int index, int *size)
 {
     Uint8 *result;
     Uint8 *data;
 
     result = NULL;
-    data = readarchive(archive, index);
+    data = archive_read(archive, index);
 
     if (data != NULL) {
-        result = ndxdecompress(data, archivedatasize(archive, index), size);
+        result =
+            decompress_ndx(data, archive_data_size(archive, index), size);
         free(data);
     }
 

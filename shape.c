@@ -79,7 +79,7 @@ shapes_init(void)
 
 
     pal = lord_fopen("shapes.pal", "rb");
-    if (filelen(pal) != sizeof(Palette)) {
+    if (lord_filelen(pal) != sizeof(Palette)) {
         fprintf(stderr, "lord: arts.pal is not a valid palette file\n");
         exit(1);
     }
@@ -97,7 +97,7 @@ shapes_init(void)
 
     shapes_set_palette();
 
-    archive = ndxarchiveopen("shapes");
+    archive = archive_ndx_open("shapes");
 
     if (archive->size != SHAPES_NUM) {
         fprintf(stderr, "lord: expecting %d shapes (%d found)\n", SHAPES_NUM,
@@ -108,11 +108,11 @@ shapes_init(void)
     w = 16;
 
     for (i = 0; i < archive->size; ++i)
-        if (archivedatasize(archive, i) == 0 || shapes_param[i][0] == 0) {
+        if (archive_data_size(archive, i) == 0 || shapes_param[i][0] == 0) {
             shapes_cache[i] = NULL;
         }
         else {
-            data = ndxdecompressarchive(archive, i, &size);
+            data = decompress_ndxarchive(archive, i, &size);
             shapes_cache[i] = lord_malloc(sizeof(Shape));
 
             w = shapes_param[i][0];
@@ -126,7 +126,7 @@ shapes_init(void)
             for (j = 0; j < shapes_cache[i]->pixmaps_num; ++j) {
                 pixmap = pixmap_new(w, h);
                 memcpy(pixmap->data, data + j * w * h, w * h);
-                pixmap_setalpha(pixmap, 0x9e);
+                pixmap_set_alpha(pixmap, 0x9e);
                 shapes_cache[i]->pixmaps[j] = pixmap;
             }
 
@@ -134,7 +134,7 @@ shapes_init(void)
 
         }
 
-    archiveclose(archive);
+    archive_close(archive);
 
 
 
@@ -142,7 +142,7 @@ shapes_init(void)
 
     /* init portraits cache */
 
-    archive = ndxarchiveopen("portrait");
+    archive = archive_ndx_open("portrait");
 
     if (archive->size != PORTRAITS_NUM) {
         fprintf(stderr, "lord: expecting %d portraits (%d found)\n",
@@ -152,9 +152,9 @@ shapes_init(void)
 
     for (i = 0; i < PORTRAITS_NUM; ++i) {
         portraits_cache[i] = NULL;
-        if (archivedatasize(archive, i) == 0)
+        if (archive_data_size(archive, i) == 0)
             continue;
-        data = ndxdecompressarchive(archive, i, &size);
+        data = decompress_ndxarchive(archive, i, &size);
 
         if (size == 4970 || size == 3768) {
             pixmap = lord_malloc(sizeof(Pixmap));
@@ -192,7 +192,7 @@ shapes_init(void)
         }
     }
 
-    archiveclose(archive);
+    archive_close(archive);
 
 
 
@@ -254,7 +254,7 @@ shapes_close(void)
 void
 shapes_set_palette(void)
 {
-    SetPalette(shapes_palette, 0x80, 0x40);
+    graphics_set_palette(shapes_palette, 0x80, 0x40);
 }
 
 
@@ -325,7 +325,7 @@ portrait_draw(int index, int x, int y)
 
     /* portraits colors are 0x60--0x80 */
 
-    SetPalette(portraits_cache[index]->palette, 0x60, 0x20);
+    graphics_set_palette(portraits_cache[index]->palette, 0x60, 0x20);
     pixmap_draw(portraits_cache[index]->pixmap, x, y);
 
 }

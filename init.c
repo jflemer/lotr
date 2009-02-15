@@ -45,7 +45,7 @@ int initlevel = 0;
 */
 
 void
-Lord_Init(void)
+lord_init(void)
 {
 #ifdef EXTENDED
     FILE *test;
@@ -53,7 +53,7 @@ Lord_Init(void)
     initlevel = 0;
 
     /* Clean up on exit */
-    atexit(Lord_Close);
+    atexit(lord_close);
 
     lord_system_init();
     initlevel++;
@@ -99,7 +99,7 @@ Lord_Init(void)
 */
 
 void
-Lord_Close(void)
+lord_close(void)
 {
 
 #ifdef EXTENDED

@@ -163,7 +163,7 @@ game_parse_texts(Archive *archive, int index)
     if (game_text_data)
         free(game_text_data);
 
-    game_text_data = ndxdecompressarchive(archive, index, &size);
+    game_text_data = decompress_ndxarchive(archive, index, &size);
 
     i = 0;
     game_text_num = 0;
@@ -216,22 +216,22 @@ game_load_map(int map)
     map_exit_building();
 #endif
 
-    SetWindow(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
-    ClearScreen();
-    UpdateScreen();
+    graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    graphics_clear_screen();
+    graphics_update_screen();
     lord_reset_keyboard();
 
     if (game_maps[map][0] != loaded_map_desc) {
 #if !DEMO
         if (game_maps[map][0] > 0xff)
-            archive = ndxarchiveopen("map1");
+            archive = archive_ndx_open("map1");
         else
-            archive = ndxarchiveopen("map0");
+            archive = archive_ndx_open("map0");
 #else
-        archive = ndxarchiveopen("demo");
+        archive = archive_ndx_open("demo");
 #endif
         map_set_map(archive, map, game_maps[map][0] % 0x100);
-        archiveclose(archive);
+        archive_close(archive);
         loaded_map_desc = game_maps[map][0];
     }
 
@@ -239,11 +239,11 @@ game_load_map(int map)
     if (game_maps[map][1] != loaded_map_spots) {
 #if !DEMO
         if (game_maps[map][1] > 0xff)
-            archive = ndxarchiveopen("map1");
+            archive = archive_ndx_open("map1");
         else
-            archive = ndxarchiveopen("map0");
+            archive = archive_ndx_open("map0");
 #else
-        archive = ndxarchiveopen("demo");
+        archive = archive_ndx_open("demo");
 #endif
 
         game_parse_texts(archive, game_maps[map][1] % 0x100 + 1);
@@ -256,7 +256,7 @@ game_load_map(int map)
         if (game_map_saved[map / 2])
             map_load(game_map_saves[map / 2]);
 
-        archiveclose(archive);
+        archive_close(archive);
         loaded_map_spots = game_maps[map][1];
         game_actual_spot = NULL;
         game_spot_running = 0;
@@ -268,18 +268,18 @@ game_load_map(int map)
     if (game_maps[map][2] != loaded_map_graphics) {
 #if !DEMO
         if (game_maps[map][2] > 0xff)
-            archive = ndxarchiveopen("map1");
+            archive = archive_ndx_open("map1");
         else
-            archive = ndxarchiveopen("map0");
+            archive = archive_ndx_open("map0");
 #else
-        archive = ndxarchiveopen("demo");
+        archive = archive_ndx_open("demo");
 #endif
         map_set_tiles(archive, game_maps[map][2] % 0x100,
                       game_maps[map][2] % 0x100 + 1,
                       game_maps[map][2] % 0x100 + 2,
                       game_maps[map][2] % 0x100 + 4);
         map_set_palette_resource(archive, game_maps[map][2] % 0x100 + 3);
-        archiveclose(archive);
+        archive_close(archive);
         loaded_map_graphics = game_maps[map][2];
     }
 
@@ -964,10 +964,10 @@ game_next_frame(void)
     if (!gui_mode())
         game_draw_map();
 
-end_next_frame:
+  end_next_frame:
 
     map_animate_frame();
-    UpdateScreen();
+    graphics_update_screen();
 }
 
 
@@ -1006,8 +1006,8 @@ game_draw_map(void)
 void
 game_init_graphics(void)
 {
-    SetWindow(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
-    ClearScreen();
+    graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    graphics_clear_screen();
 
     gui_clear();
 
@@ -1639,8 +1639,8 @@ demo_frame(void)
 
     case 6:
         ++demo_state;
-        playcartoon("democrt1");
-        ClearScreen();
+        cartoon_play("democrt1");
+        graphics_clear_screen();
         gui_set_palette();
         gui_clear();
         map_set_palette();
@@ -1772,8 +1772,8 @@ demo_frame(void)
         break;
 
     case 99:
-        playcartoon("democrt2");
-        ClearScreen();
+        cartoon_play("democrt2");
+        graphics_clear_screen();
         gui_set_palette();
         gui_clear();
         map_set_palette();

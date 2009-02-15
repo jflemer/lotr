@@ -102,7 +102,7 @@ read_av_audio_sample(Uint8 *audiobuf, int *audiobufpos, FILE *avfile)
    play av
 */
 void
-playav(char *name)
+av_play(char *name)
 {
     FILE *avfile;
     char *fullname;             /* name + suffix */
@@ -121,12 +121,12 @@ playav(char *name)
     int k;
     int pos;
 
-    fullname = addsuffix(name, "av");
+    fullname = lord_add_suffix(name, "av");
     avfile = lord_fopen(fullname, "rb");
     free(fullname);
 
 
-    avlen = filelen(avfile);
+    avlen = lord_filelen(avfile);
 
     if (avlen < 0x300 + 2 * AV_WIDTH * AV_HEIGHT + AV_SAMPLE_LEN * 14) {
         fprintf(stderr, "lord: corrupted av file %s.av len=%ld\n", name,
@@ -134,14 +134,14 @@ playav(char *name)
         exit(1);
     }
 
-    SetBackground("vid");
+    graphics_set_background("vid");
 
     if (fread(&palette, 0x300, 1, avfile) != 1) {
         fprintf(stderr, "lord: corrupted av file %s.av: can't read palette\n",
                 name);
         exit(1);
     }
-    SetPalette(&palette, 9, 0x100 - 9);
+    graphics_set_palette(&palette, 9, 0x100 - 9);
 
 
     pixmap = pixmap_new(8, 8);
@@ -170,7 +170,7 @@ playav(char *name)
     }
 
     lord_reset_keyboard();
-    ResetTimer();
+    lord_reset_timer();
 
     av_frame_num = 0;
     while (!lord_key_esc()) {
@@ -239,8 +239,8 @@ playav(char *name)
 
 
         pixmap_draw(av_frame, 53, 24);
-        UpdateScreen();
-        Timer(66);
+        graphics_update_screen();
+        lord_timer(66);
         lord_poll_events();
 
         //      while( !lord_kb_hit() ) lord_poll_events(); lord_get_key();
@@ -260,7 +260,7 @@ playav(char *name)
     }
 
     while (playing_sample() && !lord_key_esc()) {
-        Timer(10);
+        lord_timer(10);
         lord_poll_events();
     }
 
@@ -284,13 +284,13 @@ playav(char *name)
 */
 
 void
-playavnum(int num)
+av_playnum(int num)
 {
     if (num < 0 || num >= 17) {
         fprintf(stderr, "lord: non-existent av file number=%d\n", num);
         exit(1);
     }
 
-    playav(av_names[num]);
+    av_play(av_names[num]);
 
 }
