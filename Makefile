@@ -9,7 +9,8 @@ PREFIX=/usr/local
 DEBUG=0
 
 # set this to 1 if you want extended version
-EXTENDED=1
+# currently only for testing (use together with debug)
+EXTENDED=0
 
 # set this to 1 if you want to compile as demo
 DEMO=0

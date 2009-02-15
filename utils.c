@@ -44,7 +44,7 @@ char lord_filename[1024];
   allocates memory, exits on error
 */
 void *
-lordmalloc(int size)
+lord_malloc(int size)
 {
     void *result;
     result = malloc(size);
@@ -107,7 +107,7 @@ lord_homedir_filename(const char *name)
 */
 
 FILE *
-lordfopen(const char *path, const char *mode)
+lord_fopen(const char *path, const char *mode)
 {
     FILE *result;
 
@@ -186,7 +186,7 @@ addsuffix(const char *name, const char *suffix)
 
     len = strlen(name) + strlen(suffix) + 2;
 
-    result = lordmalloc(len);
+    result = lord_malloc(len);
 
     sprintf(result, "%s.%s", name, suffix);
 
@@ -269,7 +269,7 @@ lord_save_prop_field(xmlNodePtr node, char *name, Uint8 * value, int len)
     int i, d, e;
     char *buf;
 
-    buf = lordmalloc(2 * len + 1);
+    buf = lord_malloc(2 * len + 1);
 
     for (i = 0; i < len; ++i) {
         d = value[i];

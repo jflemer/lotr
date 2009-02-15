@@ -38,60 +38,60 @@
 
 
 /* initialize SDL */
-extern void System_Init(void);
+extern void lord_system_init(void);
 
 /* quit SDL */
-extern void System_Close(void);
+extern void lord_system_close(void);
 
 
 /* play sound sample */
-extern void PlaySample(Uint8 * data, int size);
+extern void play_sample(Uint8 * data, int size);
 
 /* stop sample */
-extern void StopSample(Uint8 * data);
+extern void stop_sample(Uint8 * data);
 
 /* are we playing a sound? */
-extern int PlayingSample(void);
+extern int playing_sample(void);
 
 
 /* polls all pending events */
-extern void PollEvents(void);
+extern void lord_poll_events(void);
 
 /* resets keyboard status */
-extern void ResetKeyboard(void);
+extern void lord_reset_keyboard(void);
 
 /* was a key pressed? */
-extern int KbHit(void);
+extern int lord_kb_hit(void);
 
 /* get last pressed key - return 0 if none */
-extern int GetKey(void);
+extern int lord_get_key(void);
 
 /* disable keyboard input */
-extern void InputDisable(void);
+extern void lord_input_disable(void);
 
 /* enable keyboard input */
-extern void InputEnable(void);
+extern void lord_input_enable(void);
 
 
 
 /* return key states */
-extern int KeyLeft();
-extern int KeyRight();
-extern int KeyUp();
-extern int KeyDown();
-extern int KeyEsc();
-extern int KeyShift();
-extern int KeyCtrl();
+extern int lord_key_left();
+extern int lord_key_right();
+extern int lord_key_up();
+extern int lord_key_down();
+extern int lord_key_esc();
+extern int lord_key_shift();
+extern int lord_key_ctrl();
 
 
 
 
 /* shows a new screen */
-extern void ShowScreen(Uint8 * newscreen);
+extern void lord_show_screen(Uint8 * newscreen);
 
 
 /* sets palette */
-extern void SystemSetPalette(Uint8 * palette, int firstcolor, int ncolors);
+extern void lord_system_set_palette(Uint8 * palette, int firstcolor, int ncolors);
 
 
 

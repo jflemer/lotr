@@ -40,13 +40,13 @@
 
 
 /* main window */
-SDL_Surface *main_display;
+static SDL_Surface *main_display;
 
 
 /* keyboard buffer */
 #define KEYBOARDBUFFERESIZE 16
-int lord_keybufferpos = 0;
-int lord_keybuffer[KEYBOARDBUFFERESIZE];
+static int lord_keybufferpos = 0;
+static int lord_keybuffer[KEYBOARDBUFFERESIZE];
 
 
 #ifdef HAVE_SDL_MIXER
@@ -56,16 +56,16 @@ Mix_Chunk *sound_samples[MIX_CHANNELS];
 
 /* indicates which keys were pressed */
 
-int lord_input_disabled = 0;
+static int lord_input_disabled = 0;
 
-int lord_key_left;
-int lord_key_right;
-int lord_key_up;
-int lord_key_down;
+static int lord_key_left_pressed;
+static int lord_key_right_pressed;
+static int lord_key_up_pressed;
+static int lord_key_down_pressed;
 
-int lord_key_esc;
-int lord_key_shift;
-int lord_key_ctrl;
+static int lord_key_esc_pressed;
+static int lord_key_shift_pressed;
+static int lord_key_ctrl_pressed;
 
 
 /*
@@ -90,7 +90,7 @@ hook_channel_finished(int channel)
   initialize SDL
 */
 void
-System_Init(void)
+lord_system_init(void)
 {
     SDL_AudioSpec desired;
 
@@ -129,7 +129,7 @@ System_Init(void)
 
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,
                         SDL_DEFAULT_REPEAT_INTERVAL);
-    ResetKeyboard();
+    lord_reset_keyboard();
 
     desired.freq = 22050;
 #ifdef CD_VERSION
@@ -167,7 +167,7 @@ System_Init(void)
   quit SDL
 */
 void
-System_Close(void)
+lord_system_close(void)
 {
 #ifdef HAVE_SDL_MIXER
     if (!midi_disabled)
@@ -184,7 +184,7 @@ System_Close(void)
   play sound sample
 */
 void
-PlaySample(Uint8 * data, int size)
+play_sample(Uint8 * data, int size)
 {
 #ifdef HAVE_SDL_MIXER
     Mix_Chunk *sample;
@@ -219,7 +219,7 @@ PlaySample(Uint8 * data, int size)
    stop sound sample
  */
 void
-StopSample(Uint8 * data)
+stop_sample(Uint8 * data)
 {
 #ifdef HAVE_SDL_MIXER
     int i;
@@ -233,7 +233,7 @@ StopSample(Uint8 * data)
    are we playing a sound?
 */
 int
-PlayingSample(void)
+playing_sample(void)
 {
     int res = 0;
 
@@ -256,7 +256,7 @@ PlayingSample(void)
   polls all pending events
 */
 void
-PollEvents(void)
+lord_poll_events(void)
 {
     SDL_Event event;
 
@@ -273,27 +273,27 @@ PollEvents(void)
 
             switch (event.key.keysym.sym) {
             case SDLK_ESCAPE:
-                lord_key_esc = 1;
+                lord_key_esc_pressed = 1;
                 break;
             case SDLK_LEFT:
-                lord_key_left = 1;
+                lord_key_left_pressed = 1;
                 break;
             case SDLK_RIGHT:
-                lord_key_right = 1;
+                lord_key_right_pressed = 1;
                 break;
             case SDLK_UP:
-                lord_key_up = 1;
+                lord_key_up_pressed = 1;
                 break;
             case SDLK_DOWN:
-                lord_key_down = 1;
+                lord_key_down_pressed = 1;
                 break;
             case SDLK_LSHIFT:
             case SDLK_RSHIFT:
-                lord_key_shift = 1;
+                lord_key_shift_pressed = 1;
                 break;
             case SDLK_LCTRL:
             case SDLK_RCTRL:
-                lord_key_ctrl = 1;
+                lord_key_ctrl_pressed = 1;
                 break;
 
             default:
@@ -306,24 +306,24 @@ PollEvents(void)
         case SDL_KEYUP:
             switch (event.key.keysym.sym) {
             case SDLK_LEFT:
-                lord_key_left = 0;
+                lord_key_left_pressed = 0;
                 break;
             case SDLK_RIGHT:
-                lord_key_right = 0;
+                lord_key_right_pressed = 0;
                 break;
             case SDLK_UP:
-                lord_key_up = 0;
+                lord_key_up_pressed = 0;
                 break;
             case SDLK_DOWN:
-                lord_key_down = 0;
+                lord_key_down_pressed = 0;
                 break;
             case SDLK_LSHIFT:
             case SDLK_RSHIFT:
-                lord_key_shift = 0;
+                lord_key_shift_pressed = 0;
                 break;
             case SDLK_LCTRL:
             case SDLK_RCTRL:
-                lord_key_ctrl = 0;
+                lord_key_ctrl_pressed = 0;
                 break;
             case SDLK_ESCAPE:
                 /* esc can be only reseted */
@@ -352,18 +352,18 @@ PollEvents(void)
   resets keyboard status
 */
 void
-ResetKeyboard(void)
+lord_reset_keyboard(void)
 {
-    PollEvents();
+    lord_poll_events();
 
     lord_keybufferpos = 0;
 
-    lord_key_left = 0;
-    lord_key_right = 0;
-    lord_key_up = 0;
-    lord_key_down = 0;
+    lord_key_left_pressed = 0;
+    lord_key_right_pressed = 0;
+    lord_key_up_pressed = 0;
+    lord_key_down_pressed = 0;
 
-    lord_key_esc = 0;
+    lord_key_esc_pressed = 0;
 
 }
 
@@ -372,9 +372,9 @@ ResetKeyboard(void)
   was a key pressed?
 */
 int
-KbHit(void)
+lord_kb_hit(void)
 {
-    PollEvents();
+    lord_poll_events();
 
     return lord_keybufferpos != 0;
 }
@@ -384,12 +384,12 @@ KbHit(void)
   get last pressed key - return 0 if none
 */
 int
-GetKey(void)
+lord_get_key(void)
 {
     int i;
     int key;
 
-    PollEvents();
+    lord_poll_events();
 
     if (lord_keybufferpos == 0)
         return 0;
@@ -409,7 +409,7 @@ GetKey(void)
   disable keyboard input
 */
 void
-InputDisable(void)
+lord_input_disable(void)
 {
     lord_input_disabled = 1;
 }
@@ -418,7 +418,7 @@ InputDisable(void)
   enable keyboard input
 */
 void
-InputEnable(void)
+lord_input_enable(void)
 {
     lord_input_disabled = 0;
 }
@@ -428,7 +428,7 @@ InputEnable(void)
   shows a new screen
 */
 void
-ShowScreen(Uint8 * newscreen)
+lord_show_screen(Uint8 * newscreen)
 {
     int i, j;
     Uint8 tmpscreen[SCREEN_WIDTH * SCREEN_HEIGHT * SCREEN_FACT];
@@ -464,45 +464,45 @@ ShowScreen(Uint8 * newscreen)
 */
 
 int
-KeyLeft()
+lord_key_left()
 {
-    return lord_key_left;
+    return lord_key_left_pressed;
 }
 
 int
-KeyRight()
+lord_key_right()
 {
-    return lord_key_right;
+    return lord_key_right_pressed;
 }
 
 int
-KeyUp()
+lord_key_up()
 {
-    return lord_key_up;
+    return lord_key_up_pressed;
 }
 
 int
-KeyDown()
+lord_key_down()
 {
-    return lord_key_down;
+    return lord_key_down_pressed;
 }
 
 int
-KeyEsc()
+lord_key_esc()
 {
-    return lord_key_esc;
+    return lord_key_esc_pressed;
 }
 
 int
-KeyShift()
+lord_key_shift()
 {
-    return lord_key_shift;
+    return lord_key_shift_pressed;
 }
 
 int
-KeyCtrl()
+lord_key_ctrl()
 {
-    return lord_key_ctrl;
+    return lord_key_ctrl_pressed;
 }
 
 
@@ -510,7 +510,7 @@ KeyCtrl()
   sets palette
 */
 void
-SystemSetPalette(Uint8 * palette, int firstcolor, int ncolors)
+lord_system_set_palette(Uint8 * palette, int firstcolor, int ncolors)
 {
     int i;
     SDL_Color colors[256];

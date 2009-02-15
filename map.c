@@ -1785,7 +1785,7 @@ map_add_pythonspot(int map, int x, int y, int w, int h)
         exit(1);
     }
 
-    spot = lordmalloc(sizeof(CommandSpot));
+    spot = lord_malloc(sizeof(CommandSpot));
 
     spot->id = map_num_pythonspots;
     spot->pythonspot = 1;
@@ -1799,7 +1799,7 @@ map_add_pythonspot(int map, int x, int y, int w, int h)
 
     spot->data_size = 12;
     spot->headersize = 12;
-    spot->data = lordmalloc(12);
+    spot->data = lord_malloc(12);
     spot->data[0] = 0xc;
     spot->data[1] = 0;
     spot->data[2] = 0xc;

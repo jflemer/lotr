@@ -528,7 +528,7 @@ combat_enemy(Character * character, int x, int y, int dir, int map_id)
         exit(1);
     }
 
-    new_character = lordmalloc(sizeof(Character));
+    new_character = lord_malloc(sizeof(Character));
     memcpy(new_character, character, sizeof(Character));
 
     new_character->id = 0x100 + combat_enemies_num;
@@ -584,7 +584,7 @@ void
 combat_player_move()
 {
 
-    if (KeyLeft() &&
+    if (lord_key_left() &&
         map_can_move_to(active_character, active_character->x / 4 - 1,
                         active_character->y / 4)) {
         character_move_left(active_character);
@@ -592,7 +592,7 @@ combat_player_move()
         return;
     }
 
-    if (KeyRight() &&
+    if (lord_key_right() &&
         map_can_move_to(active_character, active_character->x / 4 + 1,
                         active_character->y / 4)) {
         character_move_right(active_character);
@@ -600,7 +600,7 @@ combat_player_move()
         return;
     }
 
-    if (KeyUp() &&
+    if (lord_key_up() &&
         map_can_move_to(active_character, active_character->x / 4,
                         active_character->y / 4 - 1)) {
         character_move_up(active_character);
@@ -608,7 +608,7 @@ combat_player_move()
         return;
     }
 
-    if (KeyDown() &&
+    if (lord_key_down() &&
         map_can_move_to(active_character, active_character->x / 4,
                         active_character->y / 4 + 1)) {
         character_move_down(active_character);
@@ -898,7 +898,7 @@ combat_character_finished()
     }
 
     gui_set_choosed(active_character);
-    ResetKeyboard();
+    lord_reset_keyboard();
 
 }
 
@@ -1164,6 +1164,6 @@ combat_proceed_frames(void)
         map_animate_frame();
         UpdateScreen();
         Timer(FRAME_TIME);
-        PollEvents();
+        lord_poll_events();
     }
 }

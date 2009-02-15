@@ -641,7 +641,7 @@ spot_parse(Uint8 * data, int size, CommandSpot * spots[], int *spots_num)
         if (i + s > size)
             goto corrupted;
 
-        spot = lordmalloc(sizeof(CommandSpot));
+        spot = lord_malloc(sizeof(CommandSpot));
 
         spot->headersize = readint(data + i + 2);
         if (spot->headersize > s)
@@ -655,7 +655,7 @@ spot_parse(Uint8 * data, int size, CommandSpot * spots[], int *spots_num)
         spot->id = n;
         spot->flag = data[n];
 
-        spot->data = lordmalloc(s);
+        spot->data = lord_malloc(s);
         memcpy(spot->data, data + i, s);
         spot->data_size = s;
 
@@ -1560,8 +1560,8 @@ spot_continue(CommandSpot * spot)
             break;
 
         case COMMAND_NPC_MOVE:
-            InputDisable();
-            ResetKeyboard();
+            lord_input_disable();
+            lord_reset_keyboard();
 #ifndef CD_VERSION
             if (map_character_move
                 (spot->data[i + 1], readint(spot->data + i + 3),
@@ -1575,7 +1575,7 @@ spot_continue(CommandSpot * spot)
                 return 1;
             else
                 spot->pos++;
-            InputEnable();
+            lord_input_enable();
             break;
 
         case COMMAND_NPC_DELETE:

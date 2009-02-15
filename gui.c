@@ -151,13 +151,13 @@ gui_init(void)
     for (i = 0; i < 0x100; ++i)
         gui_font[i] = NULL;
 
-    pal = lordfopen("arts.pal", "rb");
+    pal = lord_fopen("arts.pal", "rb");
     if (filelen(pal) != sizeof(Palette)) {
         fprintf(stderr, "lord: arts.pal is not a valid palette file\n");
         exit(1);
     }
 
-    gui_palette = lordmalloc(sizeof(Palette));
+    gui_palette = lord_malloc(sizeof(Palette));
 
     if (fread(gui_palette, sizeof(Palette), 1, pal) != 1) {
         fprintf(stderr, "lord: can not read arts.pal\n");
@@ -199,9 +199,9 @@ gui_init(void)
         FILE *parfile;
         int parfilelen;
         int pos, n;
-        parfile = lordfopen("para.dat", "rb");
+        parfile = lord_fopen("para.dat", "rb");
         parfilelen = filelen(parfile);
-        paragraphs = lordmalloc(parfilelen);
+        paragraphs = lord_malloc(parfilelen);
         if (fread(paragraphs, 1, parfilelen, parfile) != parfilelen) {
             fprintf(stderr, "lord: can not read file para.dat\n");
             perror("lord");
@@ -533,7 +533,7 @@ quit_menu()
     else {
         gui_clear();
         game_draw_map();
-        ResetKeyboard();
+        lord_reset_keyboard();
     }
 }
 
@@ -554,7 +554,7 @@ format_text(char *_text, int *lines, int width, char *formatted_text[])
     int i, j, line;
 
     n = strlen(_text);
-    t = text = lordmalloc(n + 1);
+    t = text = lord_malloc(n + 1);
     strncpy(text, _text, n);
     text[n] = 0;
 
@@ -679,7 +679,7 @@ void
 gui_question(char *text)
 {
     gui_message(text, 0);
-    ResetKeyboard();
+    lord_reset_keyboard();
     dialog_mode = DIALOG_MESSAGE_YN;
 }
 
@@ -802,7 +802,7 @@ gui_paragraph_question(int num)
     gui_paragraph_isquestion = 1;
 
     if (dialog_mode != DIALOG_PARAGRAPH) {
-        ResetKeyboard();
+        lord_reset_keyboard();
         dialog_mode = DIALOG_MESSAGE_YN;
     }
 }
@@ -821,7 +821,7 @@ dialog_paragraph_key(int key)
         if (paragraphs[gui_paragraph_pos] == 0x10) {
             /* paragraph does not continue */
             if (gui_paragraph_isquestion) {
-                ResetKeyboard();
+                lord_reset_keyboard();
                 dialog_mode = DIALOG_MESSAGE_YN;
             }
             else
@@ -856,7 +856,7 @@ gui_book(char *text)
 
     dialog_mode = DIALOG_BOOK;
     gui_message(text, 0);
-    ResetKeyboard();
+    lord_reset_keyboard();
 }
 
 #endif
@@ -2694,18 +2694,18 @@ gui_frame(void)
     }
 
 
-    key = GetKey();
+    key = lord_get_key();
 
-    if (key == 0 && !KeyEsc())
+    if (key == 0 && !lord_key_esc())
         return dialog_mode;
 
     if (dialog_mode == DIALOG_NONE) {
 
-        if (KeyEsc()) {
+        if (lord_key_esc()) {
 #if DEMO
             exit(0);
 #endif
-            ResetKeyboard();
+            lord_reset_keyboard();
             dialog_options_show();
         }
 
@@ -2768,11 +2768,11 @@ gui_frame(void)
     }
     else {
 
-        if (KeyEsc()) {
+        if (lord_key_esc()) {
 #if DEMO
             exit(0);
 #endif
-            ResetKeyboard();
+            lord_reset_keyboard();
             quit_menu();
         }
 
@@ -2934,7 +2934,7 @@ gui_player_dead(Character * who, int show_message)
         gui_message(message, 1);
 
         while (dialog_mode == DIALOG_MESSAGE) {
-            PollEvents();
+            lord_poll_events();
             gui_frame();
             map_animate_frame();
             UpdateScreen();
@@ -2948,7 +2948,7 @@ gui_player_dead(Character * who, int show_message)
 
     dialog_trade_to_show();
     while (dialog_mode == DIALOG_TRADE_TO || dialog_mode == DIALOG_TRADE) {
-        PollEvents();
+        lord_poll_events();
         gui_frame();
         map_animate_frame();
         UpdateScreen();
@@ -2978,7 +2978,7 @@ gui_proceed_frames(void)
         map_animate_frame();
         UpdateScreen();
         Timer(FRAME_TIME);
-        PollEvents();
+        lord_poll_events();
     }
 }
 
@@ -3031,8 +3031,8 @@ gui_ttt_start_dialog(void)
         savegames[i] = 0;
     numsaves = 0;
 
-    while (!KeyEsc()) {
-        key = GetKey();
+    while (!lord_key_esc()) {
+        key = lord_get_key();
         if (mode == 0) {
             if (key == 'n') {
                 for (i = 0; i < 10; ++i) {
@@ -3107,7 +3107,7 @@ gui_ttt_start_dialog(void)
                 if (savegames[key - '0'])
                     return key - '0';
         }
-        PollEvents();
+        lord_poll_events();
         Timer(50);
     }
 
@@ -3116,7 +3116,7 @@ gui_ttt_start_dialog(void)
         if (gui_font[i])
             gui_font[i]->hasalpha = 0;
 
-    ResetKeyboard();
+    lord_reset_keyboard();
     return 0;
 
 }

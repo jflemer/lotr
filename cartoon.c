@@ -202,7 +202,7 @@ playcartoon(char *name)
     ClearScreen();
     UpdateScreen();
 
-    while (archivepos < archive->size && !KeyEsc()) {
+    while (archivepos < archive->size && !lord_key_esc()) {
 
         data = idxdecompressarchive(archive, archivepos, &size);
         /* data are freed by cartoondesc_free */
@@ -229,9 +229,9 @@ playcartoon(char *name)
 
         ResetTimer();
 
-        while ((command = cartoondesc_next(cartoondesc)) != NULL && !KeyEsc()) {
+        while ((command = cartoondesc_next(cartoondesc)) != NULL && !lord_key_esc()) {
 
-            PollEvents();
+            lord_poll_events();
 
             if (DEBUGCARTOONCOMMANDS) {
                 printf("\n>>> %x (gosub level=%d) ", cartoondesc->pos - 1,
@@ -265,7 +265,7 @@ playcartoon(char *name)
 
                 checkcommandsize(command, 0);
 
-                while (!KbHit());
+                while (!lord_kb_hit());
 
                 break;
 
@@ -519,7 +519,7 @@ playcartoon(char *name)
 
                 checkregister(i);
 
-                registers[i] = GetKey();
+                registers[i] = lord_get_key();
 
 
                 break;
@@ -617,9 +617,9 @@ playcartoon(char *name)
                    printf( "%d\n", i );
                    pixmap_draw( pixmaps[i], 0, 0 );
                    UpdateScreen();
-                   ResetKeyboard();
-                   while( !KbHit() );
-                   ResetKeyboard();
+                   lord_reset_keyboard();
+                   while( !lord_kb_hit() );
+                   lord_reset_keyboard();
                  */
 
 
@@ -1052,9 +1052,9 @@ playcartoon(char *name)
             Timer(0);
 
             if (0 && return_pos == 0) {
-                ResetKeyboard();
-                while (!KbHit());
-                ResetKeyboard();
+                lord_reset_keyboard();
+                while (!lord_kb_hit());
+                lord_reset_keyboard();
             }
 
 
@@ -1081,7 +1081,7 @@ playcartoon(char *name)
     pixmap_free(bufscreen);
     archiveclose(archive);
 
-    ResetKeyboard();
+    lord_reset_keyboard();
 
 }
 
@@ -1101,7 +1101,7 @@ cartoondesc_create(Uint8 * data, int size)
     CartoonCommand *command;
 
 
-    result = lordmalloc(sizeof(CartoonDesc));
+    result = lord_malloc(sizeof(CartoonDesc));
 
 
     for (i = 0; i < MAXCOMMANDS; ++i)
@@ -1109,7 +1109,7 @@ cartoondesc_create(Uint8 * data, int size)
 
     commandnum = 0;
     for (i = 0; i < size - 2 && commandnum < MAXCOMMANDS;) {
-        command = lordmalloc(sizeof(CartoonCommand));
+        command = lord_malloc(sizeof(CartoonCommand));
 
         command->type = data[i] + data[i + 1] * 0x100;
         i += 2;

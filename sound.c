@@ -96,9 +96,9 @@ sound_init(void)
     FILE *adlfile;
 
     for (i = 0; i < SOUNDS_NUM; ++i) {
-        adlfile = lordfopen(sound_names[i], "r");
+        adlfile = lord_fopen(sound_names[i], "r");
         sound_sizes[i] = filelen(adlfile);
-        sound_data[i] = lordmalloc(sound_sizes[i]);
+        sound_data[i] = lord_malloc(sound_sizes[i]);
         if (fread(sound_data[i], 1, sound_sizes[i], adlfile) !=
             sound_sizes[i]) {
             fprintf(stderr, "lord: can not read file %s\n", sound_names[i]);
@@ -155,12 +155,12 @@ sound_play(int index)
 
 #ifndef CD_VERSION
     if (index > 8)
-        PlaySample(sound_data[index - 8], sound_sizes[index - 8]);
+        play_sample(sound_data[index - 8], sound_sizes[index - 8]);
     else
         play_midi(sound_data[index + 8], sound_sizes[index + 8], 0);
 #else
     if (index > 11)
-        PlaySample(sound_data[index - 11], sound_sizes[index - 11]);
+        play_sample(sound_data[index - 11], sound_sizes[index - 11]);
 #endif
 
 }
@@ -200,7 +200,7 @@ music_spell_performed(void)
 #ifndef CD_VERSION
     play_midi(sound_data[15], sound_sizes[15], 0);
 #else
-    PlaySample(sound_data[0], sound_sizes[0]);
+    play_sample(sound_data[0], sound_sizes[0]);
 #endif
 }
 
@@ -215,7 +215,7 @@ music_spell_failed(void)
 #ifndef CD_VERSION
     play_midi(sound_data[16], sound_sizes[16], 0);
 #else
-    PlaySample(sound_data[1], sound_sizes[1]);
+    play_sample(sound_data[1], sound_sizes[1]);
 #endif
 }
 

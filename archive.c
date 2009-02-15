@@ -55,14 +55,14 @@ idxarchiveopen(const char *name)
     Uint8 tmpbytes[2];
 
     fullname = addsuffix(name, "dat");
-    datafile = lordfopen(fullname, "rb");
+    datafile = lord_fopen(fullname, "rb");
     free(fullname);
 
     fullname = addsuffix(name, "idx");
-    idxfile = lordfopen(fullname, "rb");
+    idxfile = lord_fopen(fullname, "rb");
     free(fullname);
 
-    result = (Archive *) lordmalloc(sizeof(Archive));
+    result = (Archive *) lord_malloc(sizeof(Archive));
 
     n = filelen(idxfile);
 
@@ -71,7 +71,7 @@ idxarchiveopen(const char *name)
     n = (n + 1) / 2;
     result->size = n;
 
-    result->index = lordmalloc((n + 1) * sizeof(int));
+    result->index = lord_malloc((n + 1) * sizeof(int));
 
     result->index[0] = 0;
 
@@ -115,7 +115,7 @@ ndxarchiveopen(const char *name)
     Uint8 tmpbytes[4];
 
     fullname = addsuffix(name, "dat");
-    datafile = lordfopen(fullname, "rb");
+    datafile = lord_fopen(fullname, "rb");
     free(fullname);
 
     /* ndx file from nnpcs is npcs.ndx */
@@ -123,10 +123,10 @@ ndxarchiveopen(const char *name)
         name++;
 
     fullname = addsuffix(name, "ndx");
-    ndxfile = lordfopen(fullname, "rb");
+    ndxfile = lord_fopen(fullname, "rb");
     free(fullname);
 
-    result = (Archive *) lordmalloc(sizeof(Archive));
+    result = (Archive *) lord_malloc(sizeof(Archive));
 
     n = filelen(ndxfile);
 
@@ -135,7 +135,7 @@ ndxarchiveopen(const char *name)
     n = (n + 3) / 4;
     result->size = n;
 
-    result->index = lordmalloc((n + 1) * sizeof(int));
+    result->index = lord_malloc((n + 1) * sizeof(int));
 
     result->index[0] = 0;
 
@@ -219,7 +219,7 @@ readarchive(Archive * archive, int index)
     if (size == 0)
         return NULL;
 
-    result = lordmalloc(size);
+    result = lord_malloc(size);
 
     fseek(archive->datafile, archive->index[index], SEEK_SET);
 
@@ -374,7 +374,7 @@ idxdecompress(Uint8 * data, int size, int *resultsize)
     }                           /* while(datapos+8<=n*8) */
 
     *resultsize = bufpos;
-    result = lordmalloc(*resultsize);
+    result = lord_malloc(*resultsize);
     memcpy(result, buffer, *resultsize);
 
     return result;
@@ -500,7 +500,7 @@ ndxdecompress(Uint8 * data, int size, int *resultsize)
 
 
     *resultsize = bufpos;
-    result = lordmalloc(*resultsize);
+    result = lord_malloc(*resultsize);
     memcpy(result, buffer, *resultsize);
 
     return result;

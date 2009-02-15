@@ -81,8 +81,8 @@ main(int argc, char *argv[])
     game_init_graphics();
 
     ResetTimer();
-    while (!KeyEsc()) {
-        PollEvents();
+    while (!lord_key_esc()) {
+        lord_poll_events();
         game_next_frame();
 
         Timer(FRAME_TIME);

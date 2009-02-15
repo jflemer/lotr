@@ -78,13 +78,13 @@ shapes_init(void)
     int w, h;
 
 
-    pal = lordfopen("shapes.pal", "rb");
+    pal = lord_fopen("shapes.pal", "rb");
     if (filelen(pal) != sizeof(Palette)) {
         fprintf(stderr, "lord: arts.pal is not a valid palette file\n");
         exit(1);
     }
 
-    shapes_palette = lordmalloc(sizeof(Palette));
+    shapes_palette = lord_malloc(sizeof(Palette));
 
     if (fread(shapes_palette, sizeof(Palette), 1, pal) != 1) {
         fprintf(stderr, "lord: can not read arts.pal\n");
@@ -113,7 +113,7 @@ shapes_init(void)
         }
         else {
             data = ndxdecompressarchive(archive, i, &size);
-            shapes_cache[i] = lordmalloc(sizeof(Shape));
+            shapes_cache[i] = lord_malloc(sizeof(Shape));
 
             w = shapes_param[i][0];
             h = size / shapes_param[i][0] / shapes_param[i][1];
@@ -157,7 +157,7 @@ shapes_init(void)
         data = ndxdecompressarchive(archive, i, &size);
 
         if (size == 4970 || size == 3768) {
-            pixmap = lordmalloc(sizeof(Pixmap));
+            pixmap = lord_malloc(sizeof(Pixmap));
             pixmap->width = 68;
             pixmap->height = 54;
             pixmap->datasize = pixmap->width * pixmap->height;
@@ -165,7 +165,7 @@ shapes_init(void)
             pixmap->data = data;
 
 
-            portraits_cache[i] = lordmalloc(sizeof(Portrait));
+            portraits_cache[i] = lord_malloc(sizeof(Portrait));
 
             portraits_cache[i]->pixmap = pixmap;
 
@@ -182,7 +182,7 @@ shapes_init(void)
             }
             else {
                 portraits_cache[i]->freepalette = 0;
-                portraits_cache[i]->palette = lordmalloc(sizeof(Palette));
+                portraits_cache[i]->palette = lord_malloc(sizeof(Palette));
 
                 /* portraits palette is stored in 0x60--0x80 */
                 memcpy((void *) portraits_cache[i]->palette + 3 * 0x60,

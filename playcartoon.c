@@ -53,7 +53,7 @@ Cartoon_Close(void)
         sound_close();
 
     if (initlevel-- >= 1)
-        System_Close();
+        lord_system_close();
 
 }
 
@@ -67,7 +67,7 @@ Cartoon_Init(void)
     /* Clean up on exit */
     atexit(Cartoon_Close);
 
-    System_Init();
+    lord_system_init();
     initlevel++;
 
     sound_init();

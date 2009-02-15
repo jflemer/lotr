@@ -55,7 +55,7 @@ Lord_Init(void)
     /* Clean up on exit */
     atexit(Lord_Close);
 
-    System_Init();
+    lord_system_init();
     initlevel++;
 
     sound_init();
@@ -75,9 +75,9 @@ Lord_Init(void)
 
 #ifdef EXTENDED
     /* test if spots.py and spot_definitons.py is present */
-    test = lordfopen("spots.py", "r");
+    test = lord_fopen("spots.py", "r");
     fclose(test);
-    test = lordfopen("spot_definitons.py", "r");
+    test = lord_fopen("spot_definitons.py", "r");
     fclose(test);
     Py_Initialize();
     initpythonspot();           // pyrex module initialization
@@ -125,6 +125,6 @@ Lord_Close(void)
         sound_close();
 
     if (initlevel-- >= 1)
-        System_Close();
+        lord_system_close();
 
 }

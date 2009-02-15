@@ -49,7 +49,7 @@ AV_Close(void)
 {
 
     if (initlevel-- >= 1)
-        System_Close();
+        lord_system_close();
 
 }
 
@@ -63,7 +63,7 @@ AV_Init(void)
     /* Clean up on exit */
     atexit(AV_Close);
 
-    System_Init();
+    lord_system_init();
     initlevel++;
 
 

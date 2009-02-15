@@ -219,7 +219,7 @@ game_load_map(int map)
     SetWindow(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
     ClearScreen();
     UpdateScreen();
-    ResetKeyboard();
+    lord_reset_keyboard();
 
     if (game_maps[map][0] != loaded_map_desc) {
 #if !DEMO
@@ -647,30 +647,30 @@ game_leader_movement(void)
 #endif
 
 #ifdef ENABLE_CHEATS
-    if (KeyShift() || KeyCtrl())
+    if (lord_key_shift() || lord_key_ctrl())
 #else
     if (0)
 #endif
     {
-        if (KeyShift()) {
-            if (KeyLeft() && leader->x >= 4)
+        if (lord_key_shift()) {
+            if (lord_key_left() && leader->x >= 4)
                 leader->x -= 4;
-            if (KeyRight() && leader->x < MAP_WIDTH * 16 * 4 - 20)
+            if (lord_key_right() && leader->x < MAP_WIDTH * 16 * 4 - 20)
                 leader->x += 4;
-            if (KeyUp() && leader->y >= 4)
+            if (lord_key_up() && leader->y >= 4)
                 leader->y -= 4;
-            if (KeyDown() && leader->y < MAP_HEIGHT * 16 * 4 - 20)
+            if (lord_key_down() && leader->y < MAP_HEIGHT * 16 * 4 - 20)
                 leader->y += 4;
             map_character_update(leader);
         }
         else {
-            if (KeyLeft() && leader->x >= 0x20)
+            if (lord_key_left() && leader->x >= 0x20)
                 leader->x -= 0x20;
-            if (KeyRight() && leader->x < MAP_WIDTH * 16 * 4 - 20 - 0x20)
+            if (lord_key_right() && leader->x < MAP_WIDTH * 16 * 4 - 20 - 0x20)
                 leader->x += 0x20;
-            if (KeyUp() && leader->y >= 0x20)
+            if (lord_key_up() && leader->y >= 0x20)
                 leader->y -= 0x20;
-            if (KeyDown() && leader->y < MAP_HEIGHT * 16 * 4 - 20 - 0x20)
+            if (lord_key_down() && leader->y < MAP_HEIGHT * 16 * 4 - 20 - 0x20)
                 leader->y += 0x20;
             map_character_update(leader);
         }
@@ -698,19 +698,19 @@ game_leader_movement(void)
 
         }
 
-        if (KeyLeft()
+        if (lord_key_left()
             && map_can_move_to(leader, leader->x / 4 - 1, leader->y / 4))
             character_move_left(leader);
 
-        if (KeyRight()
+        if (lord_key_right()
             && map_can_move_to(leader, leader->x / 4 + 1, leader->y / 4))
             character_move_right(leader);
 
-        if (KeyUp()
+        if (lord_key_up()
             && map_can_move_to(leader, leader->x / 4, leader->y / 4 - 1))
             character_move_up(leader);
 
-        if (KeyDown()
+        if (lord_key_down()
             && map_can_move_to(leader, leader->x / 4, leader->y / 4 + 1))
             character_move_down(leader);
 
@@ -890,7 +890,7 @@ game_next_frame(void)
 #ifdef TTT
         if (leader->action == CHARACTER_STAY)
 #ifdef ENABLE_CHEATS
-            if (!KeyShift() && !KeyCtrl())
+            if (!lord_key_shift() && !lord_key_ctrl())
 #endif
             {
                 int terrain;
@@ -1644,7 +1644,7 @@ demo_frame(void)
         gui_clear();
         map_set_palette();
         shapes_set_palette();
-        ResetKeyboard();
+        lord_reset_keyboard();
         break;
 
     case 7:
@@ -1778,7 +1778,7 @@ demo_frame(void)
         map_set_palette();
         shapes_set_palette();
         demo_state = 128;
-        ResetKeyboard();
+        lord_reset_keyboard();
         break;
 
     case 128:

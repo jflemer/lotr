@@ -165,7 +165,7 @@ characters_init()
 
         chardata = (NpcsDatEntry *) readarchive(archive, i);
 
-        lord_characters[i] = lordmalloc(sizeof(Character));
+        lord_characters[i] = lord_malloc(sizeof(Character));
         lord_characters[i]->x = -1;
         lord_characters[i]->y = -1;
         lord_characters[i]->direction = CHARACTER_DOWN;

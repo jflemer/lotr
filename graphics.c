@@ -88,7 +88,7 @@ pixmap_read_from_idxarchive(Archive * archive, int index)
         exit(1);
     }
 
-    result = lordmalloc(sizeof(Pixmap));
+    result = lord_malloc(sizeof(Pixmap));
 
     result->width = w;
     result->height = h;
@@ -127,7 +127,7 @@ pixmap_read_from_ndxarchive(Archive * archive, int index)
     data = ndxdecompress(compressed, archivedatasize(archive, index), &size);
     free(compressed);
 
-    result = lordmalloc(sizeof(Pixmap));
+    result = lord_malloc(sizeof(Pixmap));
 
     result->width = 1;
     result->height = size;
@@ -151,13 +151,13 @@ pixmap_new(int width, int height)
 {
     Pixmap *result;
 
-    result = lordmalloc(sizeof(Pixmap));
+    result = lord_malloc(sizeof(Pixmap));
 
     result->width = width;
     result->height = height;
     result->datasize = width * height;
     result->hasalpha = 0;
-    result->data = lordmalloc(width * height);
+    result->data = lord_malloc(width * height);
     bzero(result->data, width * height);
 
     return result;
@@ -346,7 +346,7 @@ pixmap_subscreen(int startx, int starty, int endx, int endy)
     Pixmap *screen;
     Pixmap *result;
 
-    screen = lordmalloc(sizeof(Pixmap));
+    screen = lord_malloc(sizeof(Pixmap));
 
     screen->width = SCREEN_WIDTH;
     screen->height = SCREEN_HEIGHT;
@@ -477,7 +477,7 @@ cartoonfont_read(Archive * archive, int index)
     free(compressed);
 
 
-    result = lordmalloc(sizeof(CartoonFont));
+    result = lord_malloc(sizeof(CartoonFont));
 
     foreground = 1;
     background = 0;
@@ -496,7 +496,7 @@ cartoonfont_read(Archive * archive, int index)
         exit(1);
     }
 
-    characters = lordmalloc(result->charnum * sizeof(Pixmap *));
+    characters = lord_malloc(result->charnum * sizeof(Pixmap *));
     result->characters = characters;
 
     if (result->charnum == 0) {
@@ -595,7 +595,7 @@ cartoonfont_writetext(CartoonFont * font, int x, int y, char *text)
 void
 UpdateScreen(void)
 {
-    ShowScreen(main_screen);
+    lord_show_screen(main_screen);
 }
 
 
@@ -646,14 +646,14 @@ SetBackground(char *name)
     Pixmap *background;
 
     sprintf(palname, "%s.pal", name);
-    pal = lordfopen(palname, "rb");
+    pal = lord_fopen(palname, "rb");
     sprintf(datname, "%s.dat", name);
-    dat = lordfopen(datname, "rb");
+    dat = lord_fopen(datname, "rb");
 
     fread(&palette, sizeof(Palette), 1, pal);
 
     data_size = filelen(dat);
-    data = lordmalloc(data_size);
+    data = lord_malloc(data_size);
 
     fread(data, 1, data_size, dat);
 
@@ -805,7 +805,7 @@ RotatePaletteRight(int start, int end)
     main_palette[start * 3 + 1] = g;
     main_palette[start * 3 + 2] = b;
 
-    SystemSetPalette(main_palette, start, num);
+    lord_system_set_palette(main_palette, start, num);
 
 }
 
@@ -859,7 +859,7 @@ RotatePaletteLeft(int start, int end)
         return;
 
     RotatePaletteLeftHidden(start, end);
-    SystemSetPalette(main_palette, start, num);
+    lord_system_set_palette(main_palette, start, num);
 }
 
 
@@ -897,7 +897,7 @@ SetPalette(Palette * palette, int firstcolor, int ncolors)
         }
     }
 
-    SystemSetPalette(main_palette, firstcolor, ncolors);
+    lord_system_set_palette(main_palette, firstcolor, ncolors);
 
 }
 
@@ -925,7 +925,7 @@ FadePalette(int coef, int firstcolor, int ncolors)
 
 
 
-    SystemSetPalette(faded, firstcolor, ncolors);
+    lord_system_set_palette(faded, firstcolor, ncolors);
 
 }
 

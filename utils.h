@@ -38,10 +38,10 @@
 
 
 /* allocates memory, exits on error */
-extern void *lordmalloc(int size);
+extern void *lord_malloc(int size);
 
 /* opens a file, exits on error */
-extern FILE *lordfopen(const char *path, const char *mode);
+extern FILE *lord_fopen(const char *path, const char *mode);
 
 /* check if file exists */
 extern int fileexists(const char *path);

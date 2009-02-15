@@ -122,7 +122,7 @@ playav(char *name)
     int pos;
 
     fullname = addsuffix(name, "av");
-    avfile = lordfopen(fullname, "rb");
+    avfile = lord_fopen(fullname, "rb");
     free(fullname);
 
 
@@ -147,7 +147,7 @@ playav(char *name)
     av_frame = pixmap_new(8 * AV_WIDTH, 8 * AV_HEIGHT);
     av_frame_old = pixmap_new(8 * AV_WIDTH, 8 * AV_HEIGHT);
 
-    audiobuf = lordmalloc(MAX_SAMPLE_GROWTH);
+    audiobuf = lord_malloc(MAX_SAMPLE_GROWTH);
     bzero(audiobuf, MAX_SAMPLE_GROWTH);
 
     for (i = 0; i < 14; ++i) {
@@ -157,18 +157,18 @@ playav(char *name)
         }
     }
 
-    PlaySample(audiobuf, MAX_SAMPLE_GROWTH);
+    play_sample(audiobuf, MAX_SAMPLE_GROWTH);
 
     if (fread(index, 2 * AV_WIDTH * AV_HEIGHT, 1, avfile) != 1) {
         fprintf(stderr, "lord: corrupted av file %s.av: can't read first frame\n", name);
         exit(1);
     }
 
-    ResetKeyboard();
+    lord_reset_keyboard();
     ResetTimer();
 
     av_frame_num = 0;
-    while (!KeyEsc()) {
+    while (!lord_key_esc()) {
 
         /* draw new 8x8 squares */
         for (j = 0; j < AV_HEIGHT; ++j)
@@ -234,9 +234,9 @@ playav(char *name)
         pixmap_draw(av_frame, 53, 24);
         UpdateScreen();
         Timer(66);
-        PollEvents();
+        lord_poll_events();
 
-        //      while( !KbHit() ) PollEvents(); GetKey();
+        //      while( !lord_kb_hit() ) lord_poll_events(); lord_get_key();
 
         if (!read_av_audio_sample(audiobuf, &audiobufpos, avfile))
             break;
@@ -252,12 +252,12 @@ playav(char *name)
 
     }
 
-    while (PlayingSample() && !KeyEsc()) {
+    while (playing_sample() && !lord_key_esc()) {
         Timer(10);
-        PollEvents();
+        lord_poll_events();
     }
 
-    StopSample(audiobuf);
+    stop_sample(audiobuf);
 
     free(audiobuf);
 
@@ -265,7 +265,7 @@ playav(char *name)
     pixmap_free(av_frame);
     pixmap_free(av_frame_old);
 
-    ResetKeyboard();
+    lord_reset_keyboard();
 
 }
 
