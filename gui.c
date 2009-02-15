@@ -848,8 +848,8 @@ dialog_print_active_spot()
     Character *leader;
     CommandSpot *spot;
     char *spot_string;
-    int width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE - 4;
-    int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE - 4;
+    int width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE;
+    int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE;
     int lines;
 
     if (dialog_mode != DIALOG_SPOT_PRINT || spot_formatted_text_lines < 0) {
@@ -885,7 +885,7 @@ dialog_print_active_spot()
 
     lines =
         min(max_height, spot_formatted_text_lines - spot_formatted_text_pos);
-    draw_scroll(SCROLL_ELEMENT_SIZE, SCROLL_ELEMENT_SIZE, width, lines,
+    draw_scroll(-SCROLL_ELEMENT_SIZE, -SCROLL_ELEMENT_SIZE, width, lines,
                 spot_formatted_text + spot_formatted_text_pos);
 }
 
@@ -897,7 +897,7 @@ dialog_print_active_spot()
 void
 dialog_print_active_spot_key(int key)
 {
-    int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE - 4;
+    int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE;
     int pg_size = max(max_height - 2, 1);
     int last_pos = spot_formatted_text_pos;
 
