@@ -42,7 +42,7 @@
 #define AV_HEIGHT 18
 #define AV_SAMPLE_LEN 732
 
-// Longest sample in AV file 2208444 (in 11khz)
+/* Longest sample in AV file 2208444 (in 11khz) */
 #define MAX_SAMPLE_GROWTH (6 * 1024 * 1024)
 
 char *av_names[] = { "sacf",
@@ -84,7 +84,8 @@ read_av_audio_sample(Uint8 *audiobuf, int *audiobufpos, FILE *avfile)
 
     buf = audiobuf + *audiobufpos;
 
-    // AV samples are in 11khz but other sounds in 22khz, we need to resample
+    /* AV samples are in 11khz but other sounds in 22khz,
+       we need to resample */
     *(buf++) = sample[0];
     *(buf++) = sample[0];
     for (i = 1; i < AV_SAMPLE_LEN; ++i) {

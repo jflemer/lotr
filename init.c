@@ -80,7 +80,7 @@ lord_init(void)
     test = lord_fopen("spot_definitons.py", "r");
     fclose(test);
     Py_Initialize();
-    initpythonspot();           // pyrex module initialization
+    initpythonspot();           /* pyrex module initialization */
     pythonspot_init();
     initlevel++;
 #endif
