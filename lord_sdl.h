@@ -37,7 +37,6 @@
 #define KEY_BACKSPACE   SDLK_BACKSPACE
 
 
-
 /* initialize SDL */
 extern void System_Init(void);
 
@@ -48,8 +47,8 @@ extern void System_Close(void);
 /* play sound sample */
 extern void PlaySample(Uint8 * data, int size);
 
-/* resize sound sample */
-extern void ResizeSample(Uint8 * data, int size);
+/* stop sample */
+extern void StopSample(Uint8 * data);
 
 /* are we playing a sound? */
 extern int PlayingSample(void);

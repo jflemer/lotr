@@ -54,12 +54,6 @@
 /* frame time in milliseconds */
 #define FRAME_TIME 50
 
-
-/* Choose midi player */
-#define PLAYMIDI_COMMAND "esddsp timidity -T 250"
-// #define PLAYMIDI_COMMAND "playmidi -t 0.4"
-
-
 #if DEMO
 #define DATA_DIRECTORY "./"
 #else
@@ -74,7 +68,8 @@
 #endif
 #endif
 
-/* should we produce pixel-precise interface or improve the original a bit */
+/* should we produce pixel-precise interface ass original
+   or improve the original a bit */
 #define PIXEL_PRECISE 0
 
 /* uncomment to turn on debugging */

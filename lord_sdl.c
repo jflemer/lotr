@@ -28,7 +28,11 @@
 
 #include "lord.h"
 #include "lord_sdl.h"
+#include "midi.h"
 #include <SDL.h>
+#ifdef HAVE_SDL_MIXER
+#include <SDL_mixer.h>
+#endif
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -45,6 +49,9 @@ int lord_keybufferpos = 0;
 int lord_keybuffer[KEYBOARDBUFFERESIZE];
 
 
+#ifdef HAVE_SDL_MIXER
+Mix_Chunk *sound_samples[MIX_CHANNELS];
+#endif
 
 
 /* indicates which keys were pressed */
@@ -65,47 +72,27 @@ int lord_key_ctrl;
   audio
 */
 
-#define AUDIO_BUF 1024
-Uint8 *lord_audio_data;
-volatile int lord_audio_size;
-volatile int lord_audio_pos;
-
-
-/*
-  update sound
- */
-
+#ifdef HAVE_SDL_MIXER
 void
-SDL_Sound_Update(void *userdata, Uint8 * stream, int len)
+hook_channel_finished(int channel)
 {
+    if (channel < 0 || channel > MIX_CHANNELS || !sound_samples[channel]) {
+        fprintf(stderr, "Non-existend or non-playing sound channel finished?\n");
+        return;
+    }
 
-    int l;
-
-    l = lord_audio_size - lord_audio_pos;
-
-    if (len > l)
-        len = l;
-
-    if (len == 0)
-        SDL_PauseAudio(1);
-
-    SDL_MixAudio(stream, lord_audio_data + lord_audio_pos, len,
-                 SDL_MIX_MAXVOLUME);
-    lord_audio_pos += len;
+    Mix_FreeChunk(sound_samples[channel]);
+    sound_samples[channel] = 0;
 }
-
-
-
+#endif
 
 /*
   initialize SDL
 */
-
 void
 System_Init(void)
 {
-
-    SDL_AudioSpec desired, obtained;
+    SDL_AudioSpec desired;
 
 #ifdef DEBUG
     if ((SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_NOPARACHUTE) ==
@@ -136,48 +123,57 @@ System_Init(void)
         exit(1);
     }
 
-    SDL_WM_SetCaption("Lord of the Rings", "LotR");
-    SDL_WM_SetIcon(SDL_LoadBMP("ring.bmp"), NULL);
+    SDL_WM_SetCaption("Lord of the Rings", "LoTR");
+    // SDL_WM_SetIcon(SDL_LoadBMP("ring.bmp"), NULL);
 
 
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,
                         SDL_DEFAULT_REPEAT_INTERVAL);
     ResetKeyboard();
 
-#ifndef CD_VERSION
     desired.freq = 22050;
+#ifdef CD_VERSION
     desired.format = AUDIO_S8;
 #else
-    desired.freq = 11025;
     desired.format = AUDIO_U8;
 #endif
-    desired.samples = AUDIO_BUF;
-    desired.callback = SDL_Sound_Update;
+    desired.samples = 4096;
     desired.userdata = NULL;
     desired.channels = 1;
 
-    if (SDL_OpenAudio(&desired, &obtained) < 0) {
-        fprintf(stderr, "lord: could not open audio, sfx disabled\n");
+#ifdef HAVE_SDL_MIXER
+    int i;
+
+    if (Mix_OpenAudio(desired.freq, desired.format, 1, desired.samples) < 0) {
+        fprintf(stderr, "lord: could not initialize mixer: %s\n", SDL_GetError());
+        fprintf(stderr, "lord: sfx and music disabled\n");
+        midi_disabled = 1;
     }
+
+    for (i = 0; i < MIX_CHANNELS; ++i)
+        sound_samples[i] = 0;
+
+    Mix_ChannelFinished(hook_channel_finished);
+#endif
 
     lord_input_disabled = 0;
 
     srand(time(NULL));
-
 }
-
-
-
 
 
 
 /*
   quit SDL
 */
-
 void
 System_Close(void)
 {
+#ifdef HAVE_SDL_MIXER
+    if (!midi_disabled)
+        Mix_CloseAudio();
+#endif
+
     /* Shutdown all subsystems */
     SDL_Quit();
 }
@@ -187,59 +183,71 @@ System_Close(void)
 /*
   play sound sample
 */
-
 void
 PlaySample(Uint8 * data, int size)
 {
+#ifdef HAVE_SDL_MIXER
+    Mix_Chunk *sample;
+    int channel;
 
-    if (data == NULL)
+    /* Do not play non-existent or too short samples */
+    if (data == NULL || size <= 0)
         return;
 
-    SDL_PauseAudio(0);
-    lord_audio_data = data;
-    lord_audio_size = size;
-    lord_audio_pos = 0;
-}
+    if ((sample = Mix_QuickLoad_RAW(data, (Uint32)size)) == NULL) {
+        fprintf(stderr, "Can not load sound sample: %s\n", Mix_GetError());
+        return;
+    }
 
+    if ((channel = Mix_PlayChannel(-1, sample, 0)) < 0) {
+        fprintf(stderr, "Can not play sound sample: %s\n", Mix_GetError());
+        Mix_FreeChunk(sample);
+        return;
+    }
+
+    if (channel >= MIX_CHANNELS) {
+        fprintf(stderr, "Mix_PlayChannel returned too big channel number\n");
+        return;
+    }
+
+    sound_samples[channel] = sample;
+#endif
+}
 
 
 /*
-  resize sound sample
-*/
-
+   stop sound sample
+ */
 void
-ResizeSample(Uint8 * data, int size)
+StopSample(Uint8 * data)
 {
-    if (data == NULL) {
-        SDL_PauseAudio(1);
-        lord_audio_pos = lord_audio_size;
-        return;
-    }
-
-    lord_audio_data = data;
-
-    if (size < lord_audio_pos) {
-        SDL_PauseAudio(1);
-        lord_audio_size = lord_audio_pos = size;
-        return;
-    }
-
-    if (lord_audio_pos == lord_audio_size && size > lord_audio_size)
-        SDL_PauseAudio(0);
-
-    lord_audio_size = size;
-
+#ifdef HAVE_SDL_MIXER
+    int i;
+    for (i = 0; i < MIX_CHANNELS; ++i)
+        if (sound_samples[i] && sound_samples[i]->abuf == data)
+            Mix_HaltChannel(i);
+#endif
 }
-
 
 /*
    are we playing a sound?
 */
-
 int
 PlayingSample(void)
 {
-    return lord_audio_pos < lord_audio_size;
+    int res = 0;
+
+#ifdef HAVE_SDL_MIXER
+    int i;
+    for (i = 0; i < MIX_CHANNELS; ++i) {
+        if (sound_samples[i]) {
+            res = 1;
+            break;
+        }
+    }
+#endif
+
+    return res;
 }
 
 
@@ -247,7 +255,6 @@ PlayingSample(void)
 /*
   polls all pending events
 */
-
 void
 PollEvents(void)
 {
@@ -341,13 +348,9 @@ PollEvents(void)
 }
 
 
-
-
-
 /*
   resets keyboard status
 */
-
 void
 ResetKeyboard(void)
 {
@@ -364,10 +367,10 @@ ResetKeyboard(void)
 
 }
 
+
 /*
   was a key pressed?
 */
-
 int
 KbHit(void)
 {
@@ -380,7 +383,6 @@ KbHit(void)
 /*
   get last pressed key - return 0 if none
 */
-
 int
 GetKey(void)
 {
@@ -403,11 +405,9 @@ GetKey(void)
 }
 
 
-
 /*
   disable keyboard input
 */
-
 void
 InputDisable(void)
 {
@@ -417,7 +417,6 @@ InputDisable(void)
 /*
   enable keyboard input
 */
-
 void
 InputEnable(void)
 {
@@ -425,13 +424,9 @@ InputEnable(void)
 }
 
 
-
-
-
 /*
   shows a new screen
 */
-
 void
 ShowScreen(Uint8 * newscreen)
 {
@@ -462,8 +457,6 @@ ShowScreen(Uint8 * newscreen)
                    SCREEN_HEIGHT * SCREEN_FACT);
 
 }
-
-
 
 
 /*
@@ -513,13 +506,9 @@ KeyCtrl()
 }
 
 
-
-
-
 /*
   sets palette
 */
-
 void
 SystemSetPalette(Uint8 * palette, int firstcolor, int ncolors)
 {

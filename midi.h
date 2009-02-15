@@ -32,13 +32,14 @@
 
 #include "lord.h"
 
-/* stops music return nonzero if music was not playing*/
-extern int StopMidi(void);
+/* controls if midi is disabled */
+extern int midi_disabled;
 
+/* stops music return nonzero if music was not playing */
+extern int stop_midi(void);
 
 /* start music */
-extern void PlayMidi(Uint8 * data, int size);
-
+extern void play_midi(Uint8 * data, int size, int loop);
 
 
 

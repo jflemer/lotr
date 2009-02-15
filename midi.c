@@ -29,52 +29,68 @@
 
 #include "lord.h"
 #include "midi.h"
+#ifdef HAVE_SDL_MIXER
+#include <SDL_mixer.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <signal.h>
-#include <unistd.h>
 
+int midi_disabled = 0;
 
-int playmidi_pid = -1;
-int midifile = -1;
-char miditmpname[] = "/tmp/lordXXXXXX";
+#ifdef HAVE_SDL_MIXER
+static Mix_Music *music = 0;
+#endif
+
+static int music_running = 0;
+static char miditmpname[] = "/tmp/lordXXXXXX";
+
 
 /*
-  stops music return nonzero if music was not playing
+  hook for music finished event
  */
-
-int
-StopMidi(void)
+void hook_music_finished()
 {
+    unlink(miditmpname);
+    music_running = 0;
+}
 
-    int unlink_result;
+/*
+  stops music return nonzero if music was playing
+ */
+int
+stop_midi(void)
+{
+    int was_running = music_running;
 
-    unlink_result = unlink(miditmpname);
+#ifdef HAVE_SDL_MIXER
+    if (!music)
+        return 0;
 
-    if (unlink_result == 0) {
-        kill(playmidi_pid, SIGTERM);
-        /* this should be the playmidi process */
-        kill(playmidi_pid + 1, SIGTERM);
-        usleep(250000);
-        kill(playmidi_pid, SIGKILL);
-        kill(playmidi_pid + 1, SIGKILL);
-    }
+    Mix_HaltMusic();
+    Mix_FreeMusic(music);
+    music = 0;
+#endif
 
-    return unlink_result;
+    /* HACK: hook_music_finished should be called on Mix_HaltMusic
+       according to documentation but it is not */
+    hook_music_finished();
 
+    return was_running;
 }
 
 
 /*
   start music
 */
-
 void
-PlayMidi(Uint8 * data, int size)
+play_midi(Uint8 * data, int size, int loop)
 {
 
-    char shellcommand[256];
+    int midifile = -1;
+
+    if (midi_disabled)
+        return;
 
     if (data == NULL || size == 0) {
 #ifdef CD_VERSION
@@ -89,7 +105,7 @@ PlayMidi(Uint8 * data, int size)
 #endif
     }
 
-    StopMidi();
+    stop_midi();
 
     miditmpname[9] = miditmpname[10] = miditmpname[11] = miditmpname[12] =
         miditmpname[13] = miditmpname[14] = 'X';
@@ -101,12 +117,23 @@ PlayMidi(Uint8 * data, int size)
 
     close(midifile);
 
-    playmidi_pid = fork();
-    if (!playmidi_pid) {
-        sprintf(shellcommand, "%s %s 1>/dev/null; rm -f %s",
-                PLAYMIDI_COMMAND, miditmpname, miditmpname);
-        execlp("/bin/sh", "/bin/sh", "-c", shellcommand, NULL);
-        raise(SIGKILL);
+#ifdef HAVE_SDL_MIXER
+    Mix_HookMusicFinished(hook_music_finished);
+
+    music = Mix_LoadMUS(miditmpname);
+    if (!music) {
+        fprintf(stderr, "Can't start midi file %s: %s\n", miditmpname, Mix_GetError());
+        return;
     }
+
+    music_running = 1;
+
+    if (Mix_PlayMusic(music, loop ? -1 : 1) < 0) {
+        printf("Can't play midifile: %s\n", Mix_GetError());
+        hook_music_finished();
+    }
+#else
+    hook_music_finished();
+#endif
 
 }

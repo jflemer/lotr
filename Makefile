@@ -5,8 +5,8 @@ CC = gcc
 
 PREFIX=/usr/local
 
-# set this to 1 if you want dbug version (including cheats)
-DEBUG=1
+# set this to 1 if you want debug version (including cheats)
+DEBUG=0
 
 # set this to 1 if you want extended version
 EXTENDED=1
@@ -14,7 +14,8 @@ EXTENDED=1
 # set this to 1 if you want to compile as demo
 DEMO=0
 
-
+# use SDL mixeer?
+USE_SDL_MIXER=1
 
 INCLUDES = `sdl-config --cflags` `xml2-config --cflags`
 LIBRARIES = `sdl-config --libs` `xml2-config --libs`
@@ -28,8 +29,13 @@ DEFINITIONS = -DDEMO=$(DEMO) -DPREFIX=\"$(PREFIX)\"
 
 HEADERFILES = archive.h av.h cartoon.h character.h combat.h credit.h lord.h lord_sdl.h map.h midi.h game.h graphics.h gui.h init.h object.h shape.h sound.h spot.h timing.h utils.h
 PLAYCARTOONOBJ = archive.o cartoon.o lord_sdl.o midi.o graphics.o sound.o timing.o utils.o
-PLAYAVOBJ = archive.o av.o lord_sdl.o graphics.o timing.o utils.o
+PLAYAVOBJ = archive.o av.o lord_sdl.o midi.o graphics.o timing.o utils.o
 OBJFILES = archive.o av.o cartoon.o character.o combat.o lord_sdl.o map.o midi.o game.o gui.o graphics.o init.o object.o shape.o sound.o spot.o timing.o utils.o
+
+ifeq ($(USE_SDL_MIXER),1)
+LIBRARIES += -lSDL_mixer
+DEFINITIONS += -DHAVE_SDL_MIXER
+endif
 
 ifeq ($(EXTENDED),1)
 OBJFILES += $(OBJFILES_C) pythonspot.o
@@ -42,7 +48,7 @@ HEADERFILES += pythonspot.h
 endif
 
 ifeq ($(DEBUG),1)
-CFLAGS += -DDEBUG
+DEFINITIONS += -DDEBUG
 endif
 
 all: lord

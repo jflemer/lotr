@@ -42,7 +42,8 @@
 #define AV_HEIGHT 18
 #define AV_SAMPLE_LEN 732
 
-
+// Longest sample in AV file 2208444 (in 11khz)
+#define MAX_SAMPLE_GROWTH (6 * 1024 * 1024)
 
 char *av_names[] = { "sacf",
     "sadf",
@@ -64,21 +65,52 @@ char *av_names[] = { "sacf",
 };
 
 /*
+  play one audio sample
+ */
+static int
+read_av_audio_sample(Uint8 *audiobuf, int *audiobufpos, FILE *avfile)
+{
+    Uint8 sample[AV_SAMPLE_LEN];
+    Uint8 *buf;
+    int i;
+
+    if (fread(sample, AV_SAMPLE_LEN, 1, avfile) != 1)
+        return 0;
+
+    if (*audiobufpos + 2 * AV_SAMPLE_LEN > MAX_SAMPLE_GROWTH) {
+        fprintf(stderr, "lord: Too long AV video\n");
+        exit(1);
+    }
+
+    buf = audiobuf + *audiobufpos;
+
+    // AV samples are in 11khz but other sounds in 22khz, we need to resample
+    *(buf++) = sample[0];
+    *(buf++) = sample[0];
+    for (i = 1; i < AV_SAMPLE_LEN; ++i) {
+        *(buf++) = (sample[i - 1] + sample[i]) / 2;
+        *(buf++) = sample[i];
+    }
+    buf = audiobuf + *audiobufpos;
+
+    *audiobufpos += 2 * AV_SAMPLE_LEN;
+    return 1;
+}
+
+
+/*
    play av
 */
-//TODO robust freads
 void
 playav(char *name)
 {
     FILE *avfile;
     char *fullname;             /* name + suffix */
     Uint8 index[2 * AV_WIDTH * AV_HEIGHT];
-    Uint8 sample[AV_SAMPLE_LEN];
     Palette palette;
     Uint8 *src, *dst;
 
     Uint8 *audiobuf;
-    int audiobufsize = 0;
     int audiobufpos = 0;
 
     Pixmap *pixmap;
@@ -102,13 +134,12 @@ playav(char *name)
         exit(1);
     }
 
-
-
     SetBackground("vid");
 
-
-
-    fread(&palette, 0x300, 1, avfile);
+    if (fread(&palette, 0x300, 1, avfile) != 1) {
+        fprintf(stderr, "lord: corrupted av file %s.av: can't read palette\n", name);
+        exit(1);
+    }
     SetPalette(&palette, 9, 0x100 - 9);
 
 
@@ -116,41 +147,40 @@ playav(char *name)
     av_frame = pixmap_new(8 * AV_WIDTH, 8 * AV_HEIGHT);
     av_frame_old = pixmap_new(8 * AV_WIDTH, 8 * AV_HEIGHT);
 
-    audiobufsize = 60 * AV_SAMPLE_LEN;
-    audiobuf = lordmalloc(audiobufsize);
+    audiobuf = lordmalloc(MAX_SAMPLE_GROWTH);
+    bzero(audiobuf, MAX_SAMPLE_GROWTH);
 
     for (i = 0; i < 14; ++i) {
-        fread(sample, AV_SAMPLE_LEN, 1, avfile);
-        memcpy(audiobuf + audiobufpos, sample, AV_SAMPLE_LEN);
-        audiobufpos += AV_SAMPLE_LEN;
+        if (!read_av_audio_sample(audiobuf, &audiobufpos, avfile)) {
+            fprintf(stderr, "lord: corrupted av file %s.av: can't read audio data\n", name);
+            exit(1);
+        }
     }
 
-    PlaySample(audiobuf, audiobufpos);
+    PlaySample(audiobuf, MAX_SAMPLE_GROWTH);
 
-    fread(index, 2 * AV_WIDTH * AV_HEIGHT, 1, avfile);
-
-
+    if (fread(index, 2 * AV_WIDTH * AV_HEIGHT, 1, avfile) != 1) {
+        fprintf(stderr, "lord: corrupted av file %s.av: can't read first frame\n", name);
+        exit(1);
+    }
 
     ResetKeyboard();
     ResetTimer();
 
-
-
-
     av_frame_num = 0;
     while (!KeyEsc()) {
 
-
         /* draw new 8x8 squares */
-
         for (j = 0; j < AV_HEIGHT; ++j)
             for (i = 0; i < AV_WIDTH; ++i) {
                 x = index[(j * AV_WIDTH + i) * 2];
                 y = index[(j * AV_WIDTH + i) * 2 + 1];
+
                 if (x == 0xff && y == 0xff) {
-
-
-                    fread(pixmap->data, 1, 8 * 8, avfile);
+                    if (fread(pixmap->data, 8 * 8, 1, avfile) != 1) {
+                        fprintf(stderr, "lord: corrupted av file %s.av: can't read block data\n", name);
+                        exit(1);
+                    }
 
                     src = pixmap->data;
                     dst = av_frame->data + j * AV_WIDTH * 8 * 8 + i * 8;
@@ -160,15 +190,11 @@ playav(char *name)
                         dst += AV_WIDTH * 8;
                         src += 8;
                     }
-
                 }
             }
 
 
-
         /* recycle old 8x8 squares */
-
-
         for (j = 0; j < AV_HEIGHT; ++j)
             for (i = 0; i < AV_WIDTH; ++i) {
                 x = index[(j * AV_WIDTH + i) * 2];
@@ -212,23 +238,8 @@ playav(char *name)
 
         //      while( !KbHit() ) PollEvents(); GetKey();
 
-
-        if (fread(sample, AV_SAMPLE_LEN, 1, avfile) != 1)
+        if (!read_av_audio_sample(audiobuf, &audiobufpos, avfile))
             break;
-
-
-        if (audiobufpos + AV_SAMPLE_LEN > audiobufsize) {
-
-            audiobufsize += 60 * AV_SAMPLE_LEN;
-
-            if ((audiobuf = realloc(audiobuf, audiobufsize)) == NULL) {
-                fprintf(stderr, "lord: can not allocate memory.\n");
-                exit(1);
-            }
-        }
-        memcpy(audiobuf + audiobufpos, sample, AV_SAMPLE_LEN);
-        audiobufpos += AV_SAMPLE_LEN;
-        ResizeSample(audiobuf, audiobufpos);
 
         if (fread(index, 2 * AV_WIDTH * AV_HEIGHT, 1, avfile) != 1)
             break;
@@ -245,7 +256,8 @@ playav(char *name)
         Timer(10);
         PollEvents();
     }
-    ResizeSample(NULL, 0);
+
+    StopSample(audiobuf);
 
     free(audiobuf);
 
