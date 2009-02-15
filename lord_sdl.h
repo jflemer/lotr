@@ -45,10 +45,10 @@ extern void lord_system_close(void);
 
 
 /* play sound sample */
-extern void play_sample(Uint8 * data, int size);
+extern void play_sample(Uint8 *data, int size);
 
 /* stop sample */
-extern void stop_sample(Uint8 * data);
+extern void stop_sample(Uint8 *data);
 
 /* are we playing a sound? */
 extern int playing_sample(void);
@@ -87,11 +87,12 @@ extern int lord_key_ctrl();
 
 
 /* shows a new screen */
-extern void lord_show_screen(Uint8 * newscreen);
+extern void lord_show_screen(Uint8 *newscreen);
 
 
 /* sets palette */
-extern void lord_system_set_palette(Uint8 * palette, int firstcolor, int ncolors);
+extern void lord_system_set_palette(Uint8 *palette, int firstcolor,
+                                    int ncolors);
 
 
 

@@ -173,7 +173,7 @@ shapes_init(void)
             if (size == 4970) {
                 portraits_cache[i]->freepalette = 0;
                 portraits_cache[i]->palette =
-                    (Palette *) (data + pixmap->datasize);
+                    (Palette *)(data + pixmap->datasize);
 
                 /* portraits colors are 0x60--0x80 */
                 palette_copy_colors(portraits_cache[i]->palette, 0, 0x20,
@@ -185,7 +185,7 @@ shapes_init(void)
                 portraits_cache[i]->palette = lord_malloc(sizeof(Palette));
 
                 /* portraits palette is stored in 0x60--0x80 */
-                memcpy((void *) portraits_cache[i]->palette + 3 * 0x60,
+                memcpy((void *)portraits_cache[i]->palette + 3 * 0x60,
                        data + pixmap->datasize, 0x60);
             }
 
@@ -282,7 +282,7 @@ shape_get(int i)
 */
 
 void
-shape_draw(Shape * shape, int state, int x, int y)
+shape_draw(Shape *shape, int state, int x, int y)
 {
 
     Pixmap *pixmap;

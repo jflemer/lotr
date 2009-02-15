@@ -50,7 +50,8 @@ static char miditmpname[] = "/tmp/lordXXXXXX";
 /*
   hook for music finished event
  */
-void hook_music_finished()
+void
+hook_music_finished()
 {
     unlink(miditmpname);
     music_running = 0;
@@ -85,7 +86,7 @@ stop_midi(void)
   start music
 */
 void
-play_midi(Uint8 * data, int size, int loop)
+play_midi(Uint8 *data, int size, int loop)
 {
 
     int midifile = -1;
@@ -123,7 +124,8 @@ play_midi(Uint8 * data, int size, int loop)
 
     music = Mix_LoadMUS(miditmpname);
     if (!music) {
-        fprintf(stderr, "Can't start midi file %s: %s\n", miditmpname, Mix_GetError());
+        fprintf(stderr, "Can't start midi file %s: %s\n", miditmpname,
+                Mix_GetError());
         return;
     }
 

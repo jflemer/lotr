@@ -155,7 +155,7 @@ int demo_state = 0;
 */
 
 void
-game_parse_texts(Archive * archive, int index)
+game_parse_texts(Archive *archive, int index)
 {
     int size;
     int i;
@@ -168,7 +168,7 @@ game_parse_texts(Archive * archive, int index)
     i = 0;
     game_text_num = 0;
     while (i < size) {
-        if ((Uint8) game_text_data[i] == 0xff)
+        if ((Uint8)game_text_data[i] == 0xff)
             break;
         if (game_text_num == GAME_TEXTS_MAX) {
             fprintf(stderr, "lord: too many game texts\n");
@@ -179,7 +179,7 @@ game_parse_texts(Archive * archive, int index)
         printf("%02x %s\n", game_text_num, game_text_data + i);
 #endif
 
-        game_texts[game_text_num++] = (char *) game_text_data + i;
+        game_texts[game_text_num++] = (char *)game_text_data + i;
         while (game_text_data[i])
             ++i;
         ++i;
@@ -377,11 +377,11 @@ game_save(int n)
     xmlNodePtr node;
     xmlNodePtr subnode;
 
-    doc = xmlNewDoc((const xmlChar *) "1.0");
+    doc = xmlNewDoc((const xmlChar *)"1.0");
     xmlSetDocCompressMode(doc, 6);
 
 
-    root = xmlNewNode(NULL, (const xmlChar *) "lord_savegame");
+    root = xmlNewNode(NULL, (const xmlChar *)"lord_savegame");
     xmlDocSetRootElement(doc, root);
 
 #ifndef TTT
@@ -391,7 +391,7 @@ game_save(int n)
 #endif
 
 
-    node = xmlNewNode(NULL, (const xmlChar *) "characters");
+    node = xmlNewNode(NULL, (const xmlChar *)"characters");
     xmlAddChild(root, node);
 
     characters_save(node);
@@ -399,7 +399,7 @@ game_save(int n)
 
 
 
-    node = xmlNewNode(NULL, (const xmlChar *) "map_saves");
+    node = xmlNewNode(NULL, (const xmlChar *)"map_saves");
     xmlAddChild(root, node);
 
     map_save(game_map_saves[game_map_id / 2]);
@@ -407,7 +407,7 @@ game_save(int n)
 
     for (i = 0; i < 8; ++i)
         if (game_map_saved[i]) {
-            subnode = xmlNewNode(NULL, (const xmlChar *) "map");
+            subnode = xmlNewNode(NULL, (const xmlChar *)"map");
             lord_save_prop_int(subnode, "map_num", i);
             lord_save_prop_field(subnode, "map_data", game_map_saves[i],
                                  0x100);
@@ -421,7 +421,7 @@ game_save(int n)
 
 
 
-    node = xmlNewNode(NULL, (const xmlChar *) "map");
+    node = xmlNewNode(NULL, (const xmlChar *)"map");
     xmlAddChild(root, node);
 
     map_save_mode(node);
@@ -431,7 +431,7 @@ game_save(int n)
     lord_save_prop_field(root, "game_registers", game_registers, 256);
 
 
-    node = xmlNewNode(NULL, (const xmlChar *) "party");
+    node = xmlNewNode(NULL, (const xmlChar *)"party");
     xmlAddChild(root, node);
 
     lord_save_prop_int(node, "silver", silver_pennies);
@@ -502,11 +502,11 @@ game_load(int n)
         return 0;
 #endif
 
-    node = lord_get_subnode(root, (const xmlChar *) "characters", 1);
+    node = lord_get_subnode(root, (const xmlChar *)"characters", 1);
     characters_load(node);
 
 
-    node = lord_get_subnode(root, (const xmlChar *) "map_saves", 1);
+    node = lord_get_subnode(root, (const xmlChar *)"map_saves", 1);
 
     for (i = 0; i < 8; ++i)
         game_map_saved[i] = 0;
@@ -533,18 +533,18 @@ game_load(int n)
     game_load_map(lord_load_prop_int(root, "game_map_id"));
 
 
-    node = lord_get_subnode(root, (const xmlChar *) "map", 1);
+    node = lord_get_subnode(root, (const xmlChar *)"map", 1);
     map_load_mode(node);
 
 
-    if (lord_get_subnode(root, (const xmlChar *) "game_registers", 0))
+    if (lord_get_subnode(root, (const xmlChar *)"game_registers", 0))
         lord_load_prop_field(root, "game_registers", game_registers, 256);
     else
         for (i = 0; i < 256; ++i)
             game_registers[i] = 0;
 
 
-    node = lord_get_subnode(root, (const xmlChar *) "party", 1);
+    node = lord_get_subnode(root, (const xmlChar *)"party", 1);
 
     silver_pennies = lord_load_prop_int(node, "silver");
     game_moving = lord_load_prop_int(node, "moving");
@@ -601,13 +601,13 @@ game_convert(int game_id)
     if (vol != 1)
         return;
 
-    node = lord_get_subnode(root, (const xmlChar *) "party", 1);
+    node = lord_get_subnode(root, (const xmlChar *)"party", 1);
     /* give silver to Aragorn */
     character_get(0xa4)->silver = lord_load_prop_int(node, "silver");
 
     party_size = lord_load_prop_field(node, "party", buf, 11);
 
-    node = lord_get_subnode(root, (const xmlChar *) "characters", 1);
+    node = lord_get_subnode(root, (const xmlChar *)"characters", 1);
 
     character_convert(node, 0xa0);
     for (i = 0; i < party_size; ++i)
@@ -666,11 +666,13 @@ game_leader_movement(void)
         else {
             if (lord_key_left() && leader->x >= 0x20)
                 leader->x -= 0x20;
-            if (lord_key_right() && leader->x < MAP_WIDTH * 16 * 4 - 20 - 0x20)
+            if (lord_key_right()
+                && leader->x < MAP_WIDTH * 16 * 4 - 20 - 0x20)
                 leader->x += 0x20;
             if (lord_key_up() && leader->y >= 0x20)
                 leader->y -= 0x20;
-            if (lord_key_down() && leader->y < MAP_HEIGHT * 16 * 4 - 20 - 0x20)
+            if (lord_key_down()
+                && leader->y < MAP_HEIGHT * 16 * 4 - 20 - 0x20)
                 leader->y += 0x20;
             map_character_update(leader);
         }
@@ -1049,7 +1051,7 @@ game_get_leader(void)
 */
 
 int
-game_set_leader(Character * character)
+game_set_leader(Character *character)
 {
     int i;
 
@@ -1157,7 +1159,7 @@ game_get_paragraph_text(int index, int question)
 */
 
 int
-game_in_party(Character * character)
+game_in_party(Character *character)
 {
     int i;
     for (i = 0; i < game_party_size; ++i)
@@ -1192,7 +1194,7 @@ game_get_party(int codes[10])
 */
 
 int
-game_get_party_characters(Character * party[11])
+game_get_party_characters(Character *party[11])
 {
     int i;
 
@@ -1208,7 +1210,7 @@ game_get_party_characters(Character * party[11])
 */
 
 void
-game_set_party_characters(Character * party[11], int size)
+game_set_party_characters(Character *party[11], int size)
 {
     int i;
     int has_leader = 0;
@@ -1253,7 +1255,7 @@ game_party_activate(int id)
 */
 
 int
-game_recruit(Character * character, int force)
+game_recruit(Character *character, int force)
 {
 
     int i;
@@ -1317,7 +1319,7 @@ game_recruit(Character * character, int force)
 */
 
 int
-game_dismiss(Character * character)
+game_dismiss(Character *character)
 {
     int i;
 
@@ -1493,7 +1495,7 @@ game_set_timer(int ticks)
  */
 
 void
-game_set_tmp_leader(Character * tmp_leader)
+game_set_tmp_leader(Character *tmp_leader)
 {
     if (game_tmp_leader) {
         fprintf(stderr, "lord: game tmp leader already active\n");

@@ -125,37 +125,37 @@ extern void character_draw(int index, int x, int y, int dir);
 
 
 /* set character attack */
-extern void character_attack(Character * character, int direction);
+extern void character_attack(Character *character, int direction);
 
 
 /* set characters moving direction */
-extern void character_move_left(Character * character);
-extern void character_move_right(Character * character);
-extern void character_move_up(Character * character);
-extern void character_move_down(Character * character);
+extern void character_move_left(Character *character);
+extern void character_move_right(Character *character);
+extern void character_move_up(Character *character);
+extern void character_move_down(Character *character);
 
 /* next characters frame */
-extern void character_frame(Character * character);
+extern void character_frame(Character *character);
 
 
 /* discards character item */
-extern void character_discard_item(Character * character, int index);
+extern void character_discard_item(Character *character, int index);
 
 /* adds character item */
-extern int character_add_item(Character * character, int item);
+extern int character_add_item(Character *character, int item);
 
 /* adds character spell */
-extern int character_add_spell(Character * character, int item);
+extern int character_add_spell(Character *character, int item);
 
 /* adds character skill */
-extern int character_add_skill(Character * character, int item);
+extern int character_add_skill(Character *character, int item);
 
 /* perform COMMAND_NPC_INIT */
-extern void character_command_npc_init(Character * character, int type,
+extern void character_command_npc_init(Character *character, int type,
                                        int value);
 
 /* let character use object */
-extern void character_use(Character * character, int index);
+extern void character_use(Character *character, int index);
 
 /* get ringbearer */
 extern Character *character_get_ringbearer();

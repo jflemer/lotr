@@ -39,7 +39,7 @@ extern int midi_disabled;
 extern int stop_midi(void);
 
 /* start music */
-extern void play_midi(Uint8 * data, int size, int loop);
+extern void play_midi(Uint8 *data, int size, int loop);
 
 
 

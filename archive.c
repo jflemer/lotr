@@ -62,7 +62,7 @@ idxarchiveopen(const char *name)
     idxfile = lord_fopen(fullname, "rb");
     free(fullname);
 
-    result = (Archive *) lord_malloc(sizeof(Archive));
+    result = (Archive *)lord_malloc(sizeof(Archive));
 
     n = filelen(idxfile);
 
@@ -126,7 +126,7 @@ ndxarchiveopen(const char *name)
     ndxfile = lord_fopen(fullname, "rb");
     free(fullname);
 
-    result = (Archive *) lord_malloc(sizeof(Archive));
+    result = (Archive *)lord_malloc(sizeof(Archive));
 
     n = filelen(ndxfile);
 
@@ -194,7 +194,7 @@ ndxarchiveopen(const char *name)
 */
 
 void
-archiveclose(Archive * archive)
+archiveclose(Archive *archive)
 {
     fclose(archive->datafile);
     free(archive->index);
@@ -209,7 +209,7 @@ archiveclose(Archive * archive)
 */
 
 Uint8 *
-readarchive(Archive * archive, int index)
+readarchive(Archive *archive, int index)
 {
     Uint8 *result;
     int size;
@@ -236,7 +236,7 @@ readarchive(Archive * archive, int index)
   return archive data size
 */
 int
-archivedatasize(Archive * archive, int index)
+archivedatasize(Archive *archive, int index)
 {
     if (index < 0 || index >= archive->size)
         return 0;
@@ -250,7 +250,7 @@ archivedatasize(Archive * archive, int index)
  */
 
 inline int
-readbit(Uint8 * data, int pos)
+readbit(Uint8 *data, int pos)
 {
     Uint8 c = data[pos / 8];
 
@@ -282,7 +282,7 @@ readbit(Uint8 * data, int pos)
  */
 
 inline int
-readnbits(Uint8 * data, int n, int pos)
+readnbits(Uint8 *data, int n, int pos)
 {
     Uint8 result = 0;
     int i;
@@ -302,7 +302,7 @@ readnbits(Uint8 * data, int n, int pos)
 */
 
 Uint8 *
-idxdecompress(Uint8 * data, int size, int *resultsize)
+idxdecompress(Uint8 *data, int size, int *resultsize)
 {
 
     Uint8 *index;
@@ -387,7 +387,7 @@ idxdecompress(Uint8 * data, int size, int *resultsize)
 */
 
 Uint8 *
-idxdecompressarchive(Archive * archive, int index, int *size)
+idxdecompressarchive(Archive *archive, int index, int *size)
 {
     Uint8 *result;
     Uint8 *data;
@@ -419,7 +419,7 @@ idxdecompressarchive(Archive * archive, int index, int *size)
 */
 
 Uint8 *
-ndxdecompress(Uint8 * data, int size, int *resultsize)
+ndxdecompress(Uint8 *data, int size, int *resultsize)
 {
     Uint8 *result;
     int bufpos;
@@ -446,19 +446,19 @@ ndxdecompress(Uint8 * data, int size, int *resultsize)
             else {
                 /* if the pattern bit == 0 we copy some substring of decoded data */
 
-                i = (Uint8) (data[datapos++]);
+                i = (Uint8)(data[datapos++]);
                 if (!(datapos < size))
                     break;
-                j = (Uint8) (data[datapos++]);
+                j = (Uint8)(data[datapos++]);
 
 
                 /* next 12 bites are starting position */
-                start = (Uint8) (i) + 16 * (Uint8) (j & 0xf0);
+                start = (Uint8)(i) + 16 * (Uint8)(j & 0xf0);
                 /* we add 0x12 (it is part of ndx format) */
                 start = (start + 0x12) & 0xfff;
 
                 /* next 4 bites are length-3 */
-                len = (Uint8) (j & 0x0f) + 3;
+                len = (Uint8)(j & 0x0f) + 3;
 
 
                 if (start > bufpos) {
@@ -513,7 +513,7 @@ ndxdecompress(Uint8 * data, int size, int *resultsize)
 */
 
 Uint8 *
-ndxdecompressarchive(Archive * archive, int index, int *size)
+ndxdecompressarchive(Archive *archive, int index, int *size)
 {
     Uint8 *result;
     Uint8 *data;

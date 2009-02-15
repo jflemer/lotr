@@ -130,13 +130,13 @@ extern void gui_book(char *text);
 extern Character *gui_choosed(void);
 
 /* set choose character */
-extern void gui_set_choosed(Character * choosed);
+extern void gui_set_choosed(Character *choosed);
 
 /* get gui font */
 extern Pixmap **gui_get_font(void);
 
 /* player is dead dialog */
-extern void gui_player_dead(Character * who, int show_message);
+extern void gui_player_dead(Character *who, int show_message);
 
 /* proceed all gui frames */
 extern void gui_proceed_frames(void);

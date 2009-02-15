@@ -136,7 +136,7 @@ combat_won(void)
  */
 
 void
-combat_enemy_remove(Character * character)
+combat_enemy_remove(Character *character)
 {
     int i;
     for (i = 0; i < combat_enemies_num; ++i)
@@ -167,7 +167,7 @@ combat_enemy_remove(Character * character)
  */
 
 void
-combat_character_remove(Character * character)
+combat_character_remove(Character *character)
 {
     int i;
 
@@ -342,7 +342,7 @@ combat_stack_proceed(void)
 */
 
 void
-combat_move_to_area(Character * character)
+combat_move_to_area(Character *character)
 {
     int xx = -1, yy = -1, d = 1000;
     int x, y;
@@ -519,7 +519,7 @@ combat_genocide(void)
 */
 
 int
-combat_enemy(Character * character, int x, int y, int dir, int map_id)
+combat_enemy(Character *character, int x, int y, int dir, int map_id)
 {
     Character *new_character;
 
@@ -931,7 +931,7 @@ combat_if_hits(int who_dex, int whom_dex, int tohit)
 */
 
 int
-combat_in_bow_range(Character * character, int codes[10])
+combat_in_bow_range(Character *character, int codes[10])
 {
     int i;
 
@@ -954,7 +954,7 @@ combat_in_bow_range(Character * character, int codes[10])
 
 
 void
-combat_attack(Character * who, Character * whom)
+combat_attack(Character *who, Character *whom)
 {
 
     int dir;

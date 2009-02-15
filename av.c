@@ -137,7 +137,8 @@ playav(char *name)
     SetBackground("vid");
 
     if (fread(&palette, 0x300, 1, avfile) != 1) {
-        fprintf(stderr, "lord: corrupted av file %s.av: can't read palette\n", name);
+        fprintf(stderr, "lord: corrupted av file %s.av: can't read palette\n",
+                name);
         exit(1);
     }
     SetPalette(&palette, 9, 0x100 - 9);
@@ -152,7 +153,9 @@ playav(char *name)
 
     for (i = 0; i < 14; ++i) {
         if (!read_av_audio_sample(audiobuf, &audiobufpos, avfile)) {
-            fprintf(stderr, "lord: corrupted av file %s.av: can't read audio data\n", name);
+            fprintf(stderr,
+                    "lord: corrupted av file %s.av: can't read audio data\n",
+                    name);
             exit(1);
         }
     }
@@ -160,7 +163,9 @@ playav(char *name)
     play_sample(audiobuf, MAX_SAMPLE_GROWTH);
 
     if (fread(index, 2 * AV_WIDTH * AV_HEIGHT, 1, avfile) != 1) {
-        fprintf(stderr, "lord: corrupted av file %s.av: can't read first frame\n", name);
+        fprintf(stderr,
+                "lord: corrupted av file %s.av: can't read first frame\n",
+                name);
         exit(1);
     }
 
@@ -178,7 +183,9 @@ playav(char *name)
 
                 if (x == 0xff && y == 0xff) {
                     if (fread(pixmap->data, 8 * 8, 1, avfile) != 1) {
-                        fprintf(stderr, "lord: corrupted av file %s.av: can't read block data\n", name);
+                        fprintf(stderr,
+                                "lord: corrupted av file %s.av: can't read block data\n",
+                                name);
                         exit(1);
                     }
 

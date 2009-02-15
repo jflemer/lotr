@@ -90,15 +90,15 @@ extern void map_load_mode(xmlNodePtr node);
 extern void map_set_palette(void);
 
 /* set map graphics */
-extern void map_set_tiles(Archive * archive, int basictileindex,
+extern void map_set_tiles(Archive *archive, int basictileindex,
                           int tileindex,
                           int largetileindex, int tiletypeindex);
 
 /* set map palette */
-extern void map_set_palette_resource(Archive * archive, int paletteindex);
+extern void map_set_palette_resource(Archive *archive, int paletteindex);
 
 /* set map description */
-extern void map_set_map(Archive * archive, int id, int mapindex);
+extern void map_set_map(Archive *archive, int id, int mapindex);
 
 
 #ifdef TTT
@@ -121,13 +121,13 @@ extern int map_get_building_id(void);
 
 
 /* set map command spots */
-extern void map_set_spots(Archive * archive, int index);
+extern void map_set_spots(Archive *archive, int index);
 
 /* load map */
-extern void map_load(Uint8 * data);
+extern void map_load(Uint8 *data);
 
 /* save map */
-extern void map_save(Uint8 * data);
+extern void map_save(Uint8 *data);
 
 /* display map - center at x, y */
 extern void map_display(int x, int y);
@@ -146,10 +146,10 @@ extern int map_get_frame(void);
 extern int map_is_night(void);
 
 /* adds character to the map */
-extern void map_add_character(Character * character);
+extern void map_add_character(Character *character);
 
 /* adds unique character to the map */
-extern void map_unique_add_character(Character * character);
+extern void map_unique_add_character(Character *character);
 
 /* remove all characters */
 extern void map_remove_all_characters(void);
@@ -158,7 +158,7 @@ extern void map_remove_all_characters(void);
 extern void map_remove_character(int id);
 
 /* updates character position */
-extern void map_character_update(Character * character);
+extern void map_character_update(Character *character);
 
 
 
@@ -171,23 +171,23 @@ extern int terrain_get(int x, int y);
 extern int terrain_free(int x, int y);
 
 /* can character move to (x,y)? */
-extern int map_can_move_to(Character * character, int x, int y);
+extern int map_can_move_to(Character *character, int x, int y);
 
 
 /* returns a spot character is standing in */
-extern CommandSpot *map_get_spot(Character * character);
+extern CommandSpot *map_get_spot(Character *character);
 
 /* get a spot by its number */
 extern CommandSpot *map_get_spot_number(int index);
 
 
 /* is character standing in the spot? */
-extern int map_is_in_spot(Character * character, CommandSpot * spot, int *w,
+extern int map_is_in_spot(Character *character, CommandSpot *spot, int *w,
                           int *h);
 
 
 /* get npcs who stand near the given character */
-extern int map_npc_stay_near(Character * character, int codes[10],
+extern int map_npc_stay_near(Character *character, int codes[10],
                              int in_party);
 
 
@@ -202,7 +202,7 @@ extern void map_set_register(int index, int value);
 
 
 /* teleport character */
-extern void map_character_teleport(Character * character, int rel, int x,
+extern void map_character_teleport(Character *character, int rel, int x,
                                    int y, int dir, int map);
 
 /* turn character */

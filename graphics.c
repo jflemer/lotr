@@ -60,7 +60,7 @@ int window_x = 0, window_y = 0, window_w = SCREEN_WIDTH, window_h =
 */
 
 Pixmap *
-pixmap_read_from_idxarchive(Archive * archive, int index)
+pixmap_read_from_idxarchive(Archive *archive, int index)
 {
     Uint8 *compressed;
     Uint8 *data;
@@ -109,7 +109,7 @@ pixmap_read_from_idxarchive(Archive * archive, int index)
 */
 
 Pixmap *
-pixmap_read_from_ndxarchive(Archive * archive, int index)
+pixmap_read_from_ndxarchive(Archive *archive, int index)
 {
     Uint8 *compressed;
     Uint8 *data;
@@ -172,7 +172,7 @@ pixmap_new(int width, int height)
 */
 
 void
-pixmap_free(Pixmap * pixmap)
+pixmap_free(Pixmap *pixmap)
 {
     free(pixmap->data);
     free(pixmap);
@@ -186,7 +186,7 @@ pixmap_free(Pixmap * pixmap)
 */
 
 void
-pixmap_draw(Pixmap * pixmap, int x, int y)
+pixmap_draw(Pixmap *pixmap, int x, int y)
 {
     pixmap_drawtobuffer(main_screen, pixmap, x, y);
 }
@@ -197,7 +197,7 @@ pixmap_draw(Pixmap * pixmap, int x, int y)
 */
 
 void
-pixmap_drawtobuffer(Uint8 * buffer, Pixmap * pixmap, int x, int y)
+pixmap_drawtobuffer(Uint8 *buffer, Pixmap *pixmap, int x, int y)
 {
     Uint8 *data = pixmap->data;
     Uint8 *s;
@@ -258,7 +258,7 @@ pixmap_drawtobuffer(Uint8 * buffer, Pixmap * pixmap, int x, int y)
 */
 
 void
-pixmap_setalpha(Pixmap * pixmap, Uint8 alpha)
+pixmap_setalpha(Pixmap *pixmap, Uint8 alpha)
 {
     pixmap->hasalpha = 1;
     pixmap->alpha = alpha;
@@ -270,7 +270,7 @@ pixmap_setalpha(Pixmap * pixmap, Uint8 alpha)
 */
 
 void
-pixmap_setwidth(Pixmap * pixmap, int width)
+pixmap_setwidth(Pixmap *pixmap, int width)
 {
 
     if ((pixmap->datasize % width) != 0) {
@@ -297,7 +297,7 @@ pixmap_setwidth(Pixmap * pixmap, int width)
 */
 
 Pixmap *
-pixmap_subpixmap(Pixmap * pixmap, int startx, int starty, int endx, int endy)
+pixmap_subpixmap(Pixmap *pixmap, int startx, int starty, int endx, int endy)
 {
     Pixmap *result;
     int w, h;
@@ -450,7 +450,7 @@ draw_rectangle(Uint8 c, int x, int y, int xx, int yy)
 */
 
 CartoonFont *
-cartoonfont_read(Archive * archive, int index)
+cartoonfont_read(Archive *archive, int index)
 {
 
     Uint8 *compressed;
@@ -554,7 +554,7 @@ cartoonfont_read(Archive * archive, int index)
 */
 
 void
-cartoonfont_free(CartoonFont * font)
+cartoonfont_free(CartoonFont *font)
 {
     int i;
     for (i = 0; i < font->charnum; ++i)
@@ -569,7 +569,7 @@ cartoonfont_free(CartoonFont * font)
 */
 
 void
-cartoonfont_writetext(CartoonFont * font, int x, int y, char *text)
+cartoonfont_writetext(CartoonFont *font, int x, int y, char *text)
 {
 
     int ch;
@@ -688,7 +688,7 @@ SetBackground(char *name)
 */
 
 void
-SaveScreen(Uint8 * backupscreen)
+SaveScreen(Uint8 *backupscreen)
 {
     memcpy(backupscreen, main_screen, SCREEN_WIDTH * SCREEN_HEIGHT);
 }
@@ -698,7 +698,7 @@ SaveScreen(Uint8 * backupscreen)
 */
 
 void
-LoadScreen(Uint8 * backupscreen)
+LoadScreen(Uint8 *backupscreen)
 {
     memcpy(main_screen, backupscreen, SCREEN_WIDTH * SCREEN_HEIGHT);
 }
@@ -869,7 +869,7 @@ RotatePaletteLeft(int start, int end)
 */
 
 void
-SetPalette(Palette * palette, int firstcolor, int ncolors)
+SetPalette(Palette *palette, int firstcolor, int ncolors)
 {
 
     int i, c;
@@ -920,7 +920,7 @@ FadePalette(int coef, int firstcolor, int ncolors)
     f = faded + firstcolor * 3;
     p = main_palette + firstcolor * 3;
     for (i = 0; i < 3 * ncolors; ++i)
-        *(f++) = (Uint8) (*(p++)) * coef / 100;
+        *(f++) = (Uint8)(*(p++)) * coef / 100;
 
 
 
@@ -937,7 +937,7 @@ FadePalette(int coef, int firstcolor, int ncolors)
 */
 
 void
-palette_copy_colors(Palette * palette, int start, int num, int newstart)
+palette_copy_colors(Palette *palette, int start, int num, int newstart)
 {
     if (start < 0 || num < 0 || start + num > 0xff || newstart < 0
         || newstart + num > 0xff) {

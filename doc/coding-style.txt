@@ -1,1 +1,1 @@
-indent --gnu-style --no-tabs --braces-on-if-line --no-space-after-function-call-names -i4
+Format using indent.sh script

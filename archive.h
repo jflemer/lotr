@@ -50,25 +50,25 @@ extern Archive *idxarchiveopen(const char *name);
 extern Archive *ndxarchiveopen(const char *name);
 
 /* close archive file */
-extern void archiveclose(Archive * archive);
+extern void archiveclose(Archive *archive);
 
 /* reads data from the archive */
-extern Uint8 *readarchive(Archive * archive, int index);
+extern Uint8 *readarchive(Archive *archive, int index);
 
 /* return archive data size */
-extern int archivedatasize(Archive * archive, int index);
+extern int archivedatasize(Archive *archive, int index);
 
 /* decompress idx data file compression */
-extern Uint8 *idxdecompress(Uint8 * data, int size, int *resultsize);
+extern Uint8 *idxdecompress(Uint8 *data, int size, int *resultsize);
 
 /* reads decompressed data from the archive */
-extern Uint8 *idxdecompressarchive(Archive * archive, int index, int *size);
+extern Uint8 *idxdecompressarchive(Archive *archive, int index, int *size);
 
 /* decompress ndx data file compression */
-extern Uint8 *ndxdecompress(Uint8 * data, int size, int *resultsize);
+extern Uint8 *ndxdecompress(Uint8 *data, int size, int *resultsize);
 
 /* reads decompressed data from the archive */
-extern Uint8 *ndxdecompressarchive(Archive * archive, int index, int *size);
+extern Uint8 *ndxdecompressarchive(Archive *archive, int index, int *size);
 
 
 #endif /* _ARCHIVE_H */

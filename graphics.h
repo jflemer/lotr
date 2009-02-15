@@ -73,32 +73,31 @@ typedef struct
 
 
 /* reads a pixmap from idx archive */
-extern Pixmap *pixmap_read_from_idxarchive(Archive * archive, int index);
+extern Pixmap *pixmap_read_from_idxarchive(Archive *archive, int index);
 
 /* reads a pixmap from ndx archive */
-extern Pixmap *pixmap_read_from_ndxarchive(Archive * archive, int index);
+extern Pixmap *pixmap_read_from_ndxarchive(Archive *archive, int index);
 
 /* draws a pixmap to the screen */
-extern void pixmap_draw(Pixmap * pixmap, int x, int y);
+extern void pixmap_draw(Pixmap *pixmap, int x, int y);
 
 /* draws a pixmap to a buffer */
-extern void pixmap_drawtobuffer(Uint8 * buffer, Pixmap * pixmap, int x,
-                                int y);
+extern void pixmap_drawtobuffer(Uint8 *buffer, Pixmap *pixmap, int x, int y);
 
 /* frees pixmap */
-extern void pixmap_free(Pixmap * pixmap);
+extern void pixmap_free(Pixmap *pixmap);
 
 /* creates pixmap */
 extern Pixmap *pixmap_new(int width, int height);
 
 /* set pixmaps alpha channel */
-extern void pixmap_setalpha(Pixmap * pixmap, Uint8 alpha);
+extern void pixmap_setalpha(Pixmap *pixmap, Uint8 alpha);
 
 /* set pixmaps width */
-extern void pixmap_setwidth(Pixmap * pixmap, int width);
+extern void pixmap_setwidth(Pixmap *pixmap, int width);
 
 /* creates a subpixmap */
-extern Pixmap *pixmap_subpixmap(Pixmap * pixmap, int startx, int starty,
+extern Pixmap *pixmap_subpixmap(Pixmap *pixmap, int startx, int starty,
                                 int endx, int endy);
 
 /* creates a pixmap from the screen */
@@ -114,13 +113,13 @@ extern void draw_rectangle(Uint8 c, int x, int y, int xx, int yy);
 
 
 /* reads a cartoon font from an idx archive */
-extern CartoonFont *cartoonfont_read(Archive * archive, int index);
+extern CartoonFont *cartoonfont_read(Archive *archive, int index);
 
 /* frees cartoon font */
-extern void cartoonfont_free(CartoonFont * font);
+extern void cartoonfont_free(CartoonFont *font);
 
 /* writes text */
-extern void cartoonfont_writetext(CartoonFont * font, int x, int y,
+extern void cartoonfont_writetext(CartoonFont *font, int x, int y,
                                   char *text);
 
 
@@ -139,10 +138,10 @@ extern void SetScreen(int color);
 extern void SetBackground(char *name);
 
 /* saves the screen */
-extern void SaveScreen(Uint8 * backupscreen);
+extern void SaveScreen(Uint8 *backupscreen);
 
 /* loads the screen */
-extern void LoadScreen(Uint8 * backupscreen);
+extern void LoadScreen(Uint8 *backupscreen);
 
 /* clears screen area */
 extern void ClearArea(int startx, int starty, int endx, int endy);
@@ -162,13 +161,13 @@ extern void RotatePaletteLeft(int start, int end);
 extern void RotatePaletteLeftHidden(int start, int end);
 
 /* sets palette */
-extern void SetPalette(Palette * palette, int firstcolor, int ncolors);
+extern void SetPalette(Palette *palette, int firstcolor, int ncolors);
 
 /* fades palette */
 extern void FadePalette(int coef, int firstcolor, int ncolors);
 
 /* copies palette colors */
-extern void palette_copy_colors(Palette * palette, int start, int num,
+extern void palette_copy_colors(Palette *palette, int start, int num,
                                 int newstart);
 
 

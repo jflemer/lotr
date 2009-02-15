@@ -206,7 +206,7 @@ map_init(void)
 */
 
 void
-map_load(Uint8 * data)
+map_load(Uint8 *data)
 {
     int i;
     for (i = 0; i < map_num_spots; ++i)
@@ -222,7 +222,7 @@ map_load(Uint8 * data)
 */
 
 void
-map_save(Uint8 * data)
+map_save(Uint8 *data)
 {
     int i;
     for (i = 0; i < map_num_spots; ++i)
@@ -334,7 +334,7 @@ map_set_fade(int fade)
 */
 
 void
-map_set_tiles(Archive * archive, int basictileindex,
+map_set_tiles(Archive *archive, int basictileindex,
               int tileindex, int largetileindex, int tiletypeindex)
 {
     Uint8 *data;
@@ -418,7 +418,7 @@ map_set_tiles(Archive * archive, int basictileindex,
 /* set map palette */
 
 void
-map_set_palette_resource(Archive * archive, int paletteindex)
+map_set_palette_resource(Archive *archive, int paletteindex)
 {
 
     int size;
@@ -427,7 +427,7 @@ map_set_palette_resource(Archive * archive, int paletteindex)
         free(map_palette);
 
     map_palette =
-        (Palette *) ndxdecompressarchive(archive, paletteindex, &size);
+        (Palette *)ndxdecompressarchive(archive, paletteindex, &size);
 
     if (size != sizeof(Palette)) {
         fprintf(stderr, "lord: map palette data corrupted\n");
@@ -464,7 +464,7 @@ map_set_palette(void)
 */
 
 void
-map_set_map(Archive * archive, int id, int mapindex)
+map_set_map(Archive *archive, int id, int mapindex)
 {
     Uint8 *data;
     int size;
@@ -630,7 +630,7 @@ map_building_enter_coords(int id, int *x, int *y)
 */
 
 void
-map_set_spots(Archive * archive, int index)
+map_set_spots(Archive *archive, int index)
 {
     int i;
     int size;
@@ -722,7 +722,7 @@ map_compar_char_pos(const void *a, const void *b)
  */
 
 void
-map_draw_spot(CommandSpot * spot, int x, int y, int color)
+map_draw_spot(CommandSpot *spot, int x, int y, int color)
 {
     int j;
     int sx, sy, sh, sw;
@@ -1058,7 +1058,7 @@ map_animate_frame(void)
 */
 
 void
-map_add_character(Character * character)
+map_add_character(Character *character)
 {
     if (map_characters_num + 1 > MAX_CHARACTERS) {
         fprintf(stderr, "lord: too many characters\n");
@@ -1078,7 +1078,7 @@ map_add_character(Character * character)
 */
 
 void
-map_unique_add_character(Character * character)
+map_unique_add_character(Character *character)
 {
     int i;
     for (i = 0; i < map_characters_num; ++i)
@@ -1128,7 +1128,7 @@ map_remove_character(int id)
 */
 
 void
-map_character_update(Character * character)
+map_character_update(Character *character)
 {
     int id = character->map_id;
     map_characters[id][MAP_CHAR_X] = character->x;
@@ -1237,7 +1237,7 @@ terrain_free(int x, int y)
 */
 
 int
-map_can_move_to(Character * character, int x, int y)
+map_can_move_to(Character *character, int x, int y)
 {
     int i, id;
     int isleader;
@@ -1267,7 +1267,7 @@ map_can_move_to(Character * character, int x, int y)
 */
 
 CommandSpot *
-map_get_spot(Character * character)
+map_get_spot(Character *character)
 {
     int i;
     int w = 0x1000, h = 0x1000;
@@ -1323,7 +1323,7 @@ map_get_spot_number(int index)
 */
 
 int
-map_is_in_spot(Character * character, CommandSpot * spot, int *w, int *h)
+map_is_in_spot(Character *character, CommandSpot *spot, int *w, int *h)
 {
 
     int sx, sy, sh, sw;
@@ -1380,7 +1380,7 @@ map_is_in_spot(Character * character, CommandSpot * spot, int *w, int *h)
 */
 
 int
-map_npc_stay_near(Character * character, int codes[10], int in_party)
+map_npc_stay_near(Character *character, int codes[10], int in_party)
 {
     int i;
     int n = 0;
@@ -1472,7 +1472,7 @@ map_set_register(int index, int value)
   teleport character
 */
 void
-map_character_teleport(Character * character, int rel, int x, int y, int dir,
+map_character_teleport(Character *character, int rel, int x, int y, int dir,
                        int map)
 {
 

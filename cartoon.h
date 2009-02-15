@@ -55,13 +55,13 @@ typedef struct
 extern void playcartoon(char *name);
 
 /* cartoon decription free */
-extern void cartoondesc_free(CartoonDesc * cartoondesc);
+extern void cartoondesc_free(CartoonDesc *cartoondesc);
 
 /* cartoon decrition goto command */
-extern void cartoondesc_goto(CartoonDesc * cartoondesc, int pos);
+extern void cartoondesc_goto(CartoonDesc *cartoondesc, int pos);
 
 /* cartoon decription finish (jumps to the end) */
-extern void cartoondesc_finish(CartoonDesc * cartoondesc);
+extern void cartoondesc_finish(CartoonDesc *cartoondesc);
 
 
 

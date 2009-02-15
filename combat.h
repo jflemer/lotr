@@ -38,7 +38,7 @@ extern void combat_start(void);
 extern void combat_genocide(void);
 
 /* add new enemy -- returns new id */
-extern int combat_enemy(Character * character, int x, int y, int dir,
+extern int combat_enemy(Character *character, int x, int y, int dir,
                         int map_id);
 
 /* return enemy */
@@ -54,10 +54,10 @@ extern int combat_frame();
 extern void combat_character_finished();
 
 /* character attack another character */
-extern void combat_attack(Character * who, Character * whom);
+extern void combat_attack(Character *who, Character *whom);
 
 /* get enemies in bow range */
-extern int combat_in_bow_range(Character * character, int codes[10]);
+extern int combat_in_bow_range(Character *character, int codes[10]);
 
 /* proceed all combat frames */
 extern void combat_proceed_frames(void);

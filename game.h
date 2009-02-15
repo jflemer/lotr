@@ -61,7 +61,7 @@ extern void game_init_graphics(void);
 extern Character *game_get_leader();
 
 /* set leader character */
-extern int game_set_leader(Character * character);
+extern int game_set_leader(Character *character);
 
 
 /* set how much siver pennies has the group */
@@ -85,16 +85,16 @@ extern char *game_get_paragraph_text(int index, int question);
 
 
 /* is character in the party? */
-extern int game_in_party(Character * character);
+extern int game_in_party(Character *character);
 
 /* get the game party */
 extern int game_get_party(int codes[10]);
 
 /* get the game party characters */
-extern int game_get_party_characters(Character * party[11]);
+extern int game_get_party_characters(Character *party[11]);
 
 /* set game party characters */
-extern void game_set_party_characters(Character * party[11], int size);
+extern void game_set_party_characters(Character *party[11], int size);
 
 
 /* loads a map */
@@ -102,10 +102,10 @@ extern void game_load_map(int map);
 
 
 /* recruit character to the party */
-extern int game_recruit(Character * character, int force);
+extern int game_recruit(Character *character, int force);
 
 /* dismiss character */
-extern int game_dismiss(Character * character);
+extern int game_dismiss(Character *character);
 
 /* teleport leader return 1 if the map was changed */
 extern int game_leader_teleport(int rel, int x, int y, int dir, int map);
@@ -127,7 +127,7 @@ extern void game_set_register(int index, int value);
 extern void game_set_timer(int ticks);
 
 /* set game tmp leader */
-extern void game_set_tmp_leader(Character * tmp_leader);
+extern void game_set_tmp_leader(Character *tmp_leader);
 
 /* dismiss game tmp leader */
 extern void game_dismiss_tmp_leader(void);

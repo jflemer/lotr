@@ -13,57 +13,57 @@ int start[4] = { 'I', 'N', 'T', 'R' };
 
 char name[128];
 
-int main( void )
+int
+main(void)
 {
 
-  FILE *in;
-  int n, k, c;
+    FILE *in;
+    int n, k, c;
 
-  in = fopen( "towers.exe", "rb" );
+    in = fopen("towers.exe", "rb");
 
-  n=0;
+    n = 0;
 
-  /* find start sequence  */
+    /* find start sequence  */
 
-  while( n<4 )
-    {
-      if( fgetc(in)==start[n] )
-	++n;
-      else
-	n=0;
+    while (n < 4) {
+        if (fgetc(in) == start[n])
+            ++n;
+        else
+            n = 0;
     }
 
 
-  name[0]='i';
-  name[1]='n';
-  name[2]='t';
-  name[3]='r';
-  k=4;
+    name[0] = 'i';
+    name[1] = 'n';
+    name[2] = 't';
+    name[3] = 'r';
+    k = 4;
 
-  printf( "char *sound_names[] =  { " );
+    printf("char *sound_names[] =  { ");
 
-  n=0;
+    n = 0;
 
-  while( 1 )
-    {
+    while (1) {
 
-      c=fgetc(in);
-      if( c>='A' && c<='Z' ) c=c-'A'+'a';
-      name[k++]=c;
+        c = fgetc(in);
+        if (c >= 'A' && c <= 'Z')
+            c = c - 'A' + 'a';
+        name[k++] = c;
 
-      if( c==0 )
-	{
-	  for( k=0; name[k]!='.' &&  name[k]!=0; ++k );
-	  name[k]=0;
-	  printf( "/* %2x */ \"%s\",\n                         ", n++, name );
-	  if( !strcmp( name, "magicf" ) ) break;
-	  k=0;
-	}
+        if (c == 0) {
+            for (k = 0; name[k] != '.' && name[k] != 0; ++k);
+            name[k] = 0;
+            printf("/* %2x */ \"%s\",\n                         ", n++, name);
+            if (!strcmp(name, "magicf"))
+                break;
+            k = 0;
+        }
 
 
     }
-  
-  printf( "\"\" };\n" );
 
-  return 0;
+    printf("\"\" };\n");
+
+    return 0;
 }

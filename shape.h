@@ -72,7 +72,7 @@ extern int shape_get_weapon_shape_id(int character_shape_id,
                                      int weapon_class);
 
 /* draw shape */
-extern void shape_draw(Shape * shape, int state, int x, int y);
+extern void shape_draw(Shape *shape, int state, int x, int y);
 
 /* draw portrait */
 extern void portrait_draw(int index, int x, int y);

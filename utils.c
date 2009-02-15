@@ -204,7 +204,7 @@ addsuffix(const char *name, const char *suffix)
 */
 
 long
-filelen(FILE * file)
+filelen(FILE *file)
 {
     long currpos;               /* current position */
     long result;
@@ -232,7 +232,7 @@ int
 lord_rnd(int n)
 {
     int k;
-    k = ((double) n) * rand() / (RAND_MAX + 1.0);
+    k = ((double)n) * rand() / (RAND_MAX + 1.0);
     if (k < 0)
         k = 0;
     ++k;
@@ -254,8 +254,7 @@ lord_save_prop_int(xmlNodePtr node, char *name, int value)
 
     sprintf(buf, "%d", value);
 
-    xmlNewTextChild(node, NULL, (const xmlChar *) name,
-                    (const xmlChar *) buf);
+    xmlNewTextChild(node, NULL, (const xmlChar *)name, (const xmlChar *)buf);
 }
 
 
@@ -264,7 +263,7 @@ lord_save_prop_int(xmlNodePtr node, char *name, int value)
 */
 
 void
-lord_save_prop_field(xmlNodePtr node, char *name, Uint8 * value, int len)
+lord_save_prop_field(xmlNodePtr node, char *name, Uint8 *value, int len)
 {
     int i, d, e;
     char *buf;
@@ -288,8 +287,7 @@ lord_save_prop_field(xmlNodePtr node, char *name, Uint8 * value, int len)
 
     buf[2 * len] = 0;
 
-    xmlNewTextChild(node, NULL, (const xmlChar *) name,
-                    (const xmlChar *) buf);
+    xmlNewTextChild(node, NULL, (const xmlChar *)name, (const xmlChar *)buf);
 
     free(buf);
 
@@ -302,7 +300,7 @@ lord_save_prop_field(xmlNodePtr node, char *name, Uint8 * value, int len)
  */
 
 xmlNodePtr
-lord_get_subnode(xmlNodePtr node, const xmlChar * name, int force)
+lord_get_subnode(xmlNodePtr node, const xmlChar *name, int force)
 {
     xmlNodePtr cur = node->xmlChildrenNode;
     while (cur != NULL) {
@@ -329,9 +327,9 @@ int
 lord_load_prop_int(xmlNodePtr node, char *name)
 {
     xmlNodePtr cur;
-    cur = lord_get_subnode(node, (const xmlChar *) name, 1);
+    cur = lord_get_subnode(node, (const xmlChar *)name, 1);
 
-    return atoi((char *) xmlNodeGetContent(cur));
+    return atoi((char *)xmlNodeGetContent(cur));
 }
 
 
@@ -343,12 +341,12 @@ int
 lord_load_prop_int_default(xmlNodePtr node, char *name, int default_value)
 {
     xmlNodePtr cur;
-    cur = lord_get_subnode(node, (const xmlChar *) name, 0);
+    cur = lord_get_subnode(node, (const xmlChar *)name, 0);
 
     if (cur == NULL)
         return default_value;
 
-    return atoi((char *) xmlNodeGetContent(cur));
+    return atoi((char *)xmlNodeGetContent(cur));
 }
 
 
@@ -357,7 +355,7 @@ lord_load_prop_int_default(xmlNodePtr node, char *name, int default_value)
 */
 
 int
-lord_load_prop_field(xmlNodePtr node, char *name, Uint8 * value, int maxlen)
+lord_load_prop_field(xmlNodePtr node, char *name, Uint8 *value, int maxlen)
 {
     xmlChar *buf;
     int len;
@@ -365,7 +363,7 @@ lord_load_prop_field(xmlNodePtr node, char *name, Uint8 * value, int maxlen)
     int d, r;
 
     xmlNodePtr cur;
-    cur = lord_get_subnode(node, (const xmlChar *) name, 1);
+    cur = lord_get_subnode(node, (const xmlChar *)name, 1);
 
     buf = xmlNodeGetContent(cur);
     len = xmlStrlen(buf) / 2;

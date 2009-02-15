@@ -373,8 +373,8 @@ draw_scroll(int x, int y, int width, int height, char *text[])
     /* next draw the text */
     for (j = 0; j < height; ++j)
         for (i = 0; i < width; ++i) {
-            if (gui_font[(Uint8) text[j][i]])
-                pixmap_draw(gui_font[(Uint8) text[j][i]],
+            if (gui_font[(Uint8)text[j][i]])
+                pixmap_draw(gui_font[(Uint8)text[j][i]],
                             x + (i + 1) * size, y + (j + 1) * size);
             if (text[j][i] == 0)
                 break;
@@ -1867,7 +1867,7 @@ dialog_talk_show(int character_id, int text_id)
         }
         else {
             if (text_id < 0)
-                text_id = (Uint8) character->texts[0];
+                text_id = (Uint8)character->texts[0];
 #ifdef EXTENDED
             if (character->pythontexts)
                 text = pythonspot_get_text(text_id);
@@ -1909,7 +1909,7 @@ dialog_talk_show(int character_id, int text_id)
     }
 
     if (!wizard_mode &&
-        ((Uint8) character->texts[1] == 0xff ||
+        ((Uint8)character->texts[1] == 0xff ||
          (dialog_talk_character_text >= 0
           && dialog_talk_character_text < 0x100
           && spot_has_action(game_get_actual_spot(), SPOT_ACTION_QUESTION,
@@ -2020,7 +2020,7 @@ dialog_question_key(int key)
                         j = i + len + 1;
                 }
 
-                ans = (Uint8) texts[j - 1];
+                ans = (Uint8)texts[j - 1];
 
                 if (len == 0)
                     answer = ans;
@@ -2897,7 +2897,7 @@ gui_if_show_spots(void)
 */
 
 void
-gui_set_choosed(Character * choosed)
+gui_set_choosed(Character *choosed)
 {
     choosed_character = choosed;
     main_menu_show();
@@ -2922,7 +2922,7 @@ gui_get_font(void)
 */
 
 void
-gui_player_dead(Character * who, int show_message)
+gui_player_dead(Character *who, int show_message)
 {
 
     char message[1024];
@@ -2992,8 +2992,8 @@ gui_draw_text(char *text, int x, int y)
 {
     int i;
     for (i = 0; text[i]; ++i)
-        if (gui_font[(Uint8) text[i]])
-            pixmap_draw(gui_font[(Uint8) text[i]],
+        if (gui_font[(Uint8)text[i]])
+            pixmap_draw(gui_font[(Uint8)text[i]],
                         x + SCROLL_ELEMENT_SIZE * i, y);
 }
 
@@ -3018,7 +3018,7 @@ gui_ttt_start_dialog(void)
     SetBackground("ongame");
 
     /* set alpha for font */
-    c = gui_font[(Uint8) ' ']->data[0];
+    c = gui_font[(Uint8)' ']->data[0];
     for (i = 0; i < 0x100; ++i)
         if (gui_font[i])
             pixmap_setalpha(gui_font[i], c);

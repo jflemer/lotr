@@ -231,7 +231,7 @@ dir_to_cddir(int dir)
 */
 
 inline int
-readint(Uint8 * data)
+readint(Uint8 *data)
 {
     return data[0] + 0x100 * data[1];
 }
@@ -254,7 +254,7 @@ spot_question_letter(Uint8 c)
 
 
 void
-spot_init_commands(CommandSpot * spot)
+spot_init_commands(CommandSpot *spot)
 {
     int i = 0, j, n = 0;
     int unknown = 0;
@@ -609,7 +609,7 @@ spot_init_commands(CommandSpot * spot)
 */
 
 void
-spot_parse(Uint8 * data, int size, CommandSpot * spots[], int *spots_num)
+spot_parse(Uint8 *data, int size, CommandSpot *spots[], int *spots_num)
 {
     int s;
     int n;
@@ -686,7 +686,7 @@ spot_parse(Uint8 * data, int size, CommandSpot * spots[], int *spots_num)
 */
 
 void
-spot_free(CommandSpot * spot)
+spot_free(CommandSpot *spot)
 {
     free(spot->data);
     free(spot);
@@ -792,7 +792,7 @@ spot_character_get(int id)
 */
 
 void
-spot_print(CommandSpot * spot)
+spot_print(CommandSpot *spot)
 {
 
     int i, j, jj, k, endcom;
@@ -879,7 +879,7 @@ spot_print(CommandSpot * spot)
                     ++jj;
                 }
 
-                strncpy(question_key, (char *) spot->data + j - jj, jj);
+                strncpy(question_key, (char *)spot->data + j - jj, jj);
                 question_key[jj] = 0;
 
                 if (spot->data[j] == 0)
@@ -1242,7 +1242,7 @@ spot_print(CommandSpot * spot)
 */
 
 int
-spot_start(CommandSpot * spot)
+spot_start(CommandSpot *spot)
 {
     spot->pos = 0;
     spot_objects = NULL;
@@ -1260,7 +1260,7 @@ spot_start(CommandSpot * spot)
  */
 
 void
-spot_next_on_level(CommandSpot * spot)
+spot_next_on_level(CommandSpot *spot)
 {
     int level = spot->command_level[spot->pos];
     spot->pos++;
@@ -1282,7 +1282,7 @@ spot_next_on_level(CommandSpot * spot)
  */
 
 void
-spot_goto(CommandSpot * spot, int address)
+spot_goto(CommandSpot *spot, int address)
 {
     int i;
 
@@ -1305,7 +1305,7 @@ spot_goto(CommandSpot * spot, int address)
 */
 
 void
-spot_change_stat(Character * character, int stat, int sign, int value)
+spot_change_stat(Character *character, int stat, int sign, int value)
 {
     if (sign == 0xff)
         value = -value;
@@ -1355,7 +1355,7 @@ spot_change_stat(Character * character, int stat, int sign, int value)
 */
 
 int
-spot_if_party(Character * character, int a, int b, int c)
+spot_if_party(Character *character, int a, int b, int c)
 {
 
     int i;
@@ -1409,7 +1409,7 @@ spot_if_party(Character * character, int a, int b, int c)
  */
 
 void
-spot_if_result(CommandSpot * spot, int result)
+spot_if_result(CommandSpot *spot, int result)
 {
 #ifdef EXTENDED
     if (spot->pythonspot)
@@ -1424,7 +1424,7 @@ spot_if_result(CommandSpot * spot, int result)
 */
 
 int
-spot_continue(CommandSpot * spot)
+spot_continue(CommandSpot *spot)
 {
     int i, j, jj, n;
     int x, y;
@@ -1511,7 +1511,7 @@ spot_continue(CommandSpot * spot)
             character = spot_character_get(spot->data[i + 1]);
             if (character == NULL)
                 break;
-            strncpy(character->name, (char *) spot->data + i + 2, 19);
+            strncpy(character->name, (char *)spot->data + i + 2, 19);
             character->name[20] = 0;
             break;
 
@@ -2058,7 +2058,7 @@ spot_continue(CommandSpot * spot)
 */
 
 int
-spot_action(CommandSpot * spot, int type, int what, int on_who)
+spot_action(CommandSpot *spot, int type, int what, int on_who)
 {
     int i;
     int index;
@@ -2121,7 +2121,7 @@ spot_action(CommandSpot * spot, int type, int what, int on_who)
 */
 
 int
-spot_has_action(CommandSpot * spot, int type, int what, int on_who)
+spot_has_action(CommandSpot *spot, int type, int what, int on_who)
 {
     int i;
     int index;
@@ -2168,7 +2168,7 @@ spot_has_action(CommandSpot * spot, int type, int what, int on_who)
 */
 
 Uint8 *
-spot_get_objects(CommandSpot * spot, int *to_buy)
+spot_get_objects(CommandSpot *spot, int *to_buy)
 {
     if (!spot_objects || *spot_objects == 0xff) {
         if (!buy_objects || *buy_objects == 0xff)

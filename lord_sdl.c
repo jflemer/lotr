@@ -77,7 +77,8 @@ void
 hook_channel_finished(int channel)
 {
     if (channel < 0 || channel > MIX_CHANNELS || !sound_samples[channel]) {
-        fprintf(stderr, "Non-existend or non-playing sound channel finished?\n");
+        fprintf(stderr,
+                "Non-existend or non-playing sound channel finished?\n");
         return;
     }
 
@@ -145,7 +146,8 @@ lord_system_init(void)
     int i;
 
     if (Mix_OpenAudio(desired.freq, desired.format, 1, desired.samples) < 0) {
-        fprintf(stderr, "lord: could not initialize mixer: %s\n", SDL_GetError());
+        fprintf(stderr, "lord: could not initialize mixer: %s\n",
+                SDL_GetError());
         fprintf(stderr, "lord: sfx and music disabled\n");
         midi_disabled = 1;
     }
@@ -184,7 +186,7 @@ lord_system_close(void)
   play sound sample
 */
 void
-play_sample(Uint8 * data, int size)
+play_sample(Uint8 *data, int size)
 {
 #ifdef HAVE_SDL_MIXER
     Mix_Chunk *sample;
@@ -194,7 +196,7 @@ play_sample(Uint8 * data, int size)
     if (data == NULL || size <= 0)
         return;
 
-    if ((sample = Mix_QuickLoad_RAW(data, (Uint32)size)) == NULL) {
+    if ((sample = Mix_QuickLoad_RAW(data, (Uint32) size)) == NULL) {
         fprintf(stderr, "Can not load sound sample: %s\n", Mix_GetError());
         return;
     }
@@ -219,7 +221,7 @@ play_sample(Uint8 * data, int size)
    stop sound sample
  */
 void
-stop_sample(Uint8 * data)
+stop_sample(Uint8 *data)
 {
 #ifdef HAVE_SDL_MIXER
     int i;
@@ -428,7 +430,7 @@ lord_input_enable(void)
   shows a new screen
 */
 void
-lord_show_screen(Uint8 * newscreen)
+lord_show_screen(Uint8 *newscreen)
 {
     int i, j;
     Uint8 tmpscreen[SCREEN_WIDTH * SCREEN_HEIGHT * SCREEN_FACT];
@@ -510,7 +512,7 @@ lord_key_ctrl()
   sets palette
 */
 void
-lord_system_set_palette(Uint8 * palette, int firstcolor, int ncolors)
+lord_system_set_palette(Uint8 *palette, int firstcolor, int ncolors)
 {
     int i;
     SDL_Color colors[256];

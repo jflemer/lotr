@@ -77,9 +77,7 @@ sound_init(void)
             && sound_data[i][1] == 'T'
             && sound_data[i][2] == 'h'
             && sound_data[i][3] == 'd'
-            && sound_data[i][12] == 0x00
-            && sound_data[i][13] == 0x60)
-        {
+            && sound_data[i][12] == 0x00 && sound_data[i][13] == 0x60) {
             int tempo = 240;
             sound_data[i][12] = tempo / 0x100;
             sound_data[i][13] = tempo & 0xff;

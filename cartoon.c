@@ -57,10 +57,10 @@ int showcredit = 0;
 
 
 /* cartoon decription create */
-CartoonDesc *cartoondesc_create(Uint8 * data, int size);
+CartoonDesc *cartoondesc_create(Uint8 *data, int size);
 
 /* cartoon decription next command */
-CartoonCommand *cartoondesc_next(CartoonDesc * cartoondesc);
+CartoonCommand *cartoondesc_next(CartoonDesc *cartoondesc);
 
 
 
@@ -229,7 +229,8 @@ playcartoon(char *name)
 
         ResetTimer();
 
-        while ((command = cartoondesc_next(cartoondesc)) != NULL && !lord_key_esc()) {
+        while ((command = cartoondesc_next(cartoondesc)) != NULL
+               && !lord_key_esc()) {
 
             lord_poll_events();
 
@@ -645,7 +646,7 @@ playcartoon(char *name)
                     exit(1);
                 }
 
-                SetPalette((Palette *) data, 0, 0x100);
+                SetPalette((Palette *)data, 0, 0x100);
                 free(data);
 
                 break;
@@ -1094,7 +1095,7 @@ playcartoon(char *name)
 */
 
 CartoonDesc *
-cartoondesc_create(Uint8 * data, int size)
+cartoondesc_create(Uint8 *data, int size)
 {
     CartoonDesc *result;
     int i, commandnum;
@@ -1157,7 +1158,7 @@ cartoondesc_create(Uint8 * data, int size)
 */
 
 void
-cartoondesc_free(CartoonDesc * cartoondesc)
+cartoondesc_free(CartoonDesc *cartoondesc)
 {
     int i;
     for (i = 0; i < cartoondesc->size; ++i)
@@ -1173,7 +1174,7 @@ cartoondesc_free(CartoonDesc * cartoondesc)
 */
 
 void
-cartoondesc_goto(CartoonDesc * cartoondesc, int pos)
+cartoondesc_goto(CartoonDesc *cartoondesc, int pos)
 {
     if (pos < 0)
         return;
@@ -1188,7 +1189,7 @@ cartoondesc_goto(CartoonDesc * cartoondesc, int pos)
 */
 
 CartoonCommand *
-cartoondesc_next(CartoonDesc * cartoondesc)
+cartoondesc_next(CartoonDesc *cartoondesc)
 {
     if (cartoondesc->pos >= MAXCOMMANDS)
         return NULL;
@@ -1201,7 +1202,7 @@ cartoondesc_next(CartoonDesc * cartoondesc)
 */
 
 void
-cartoondesc_finish(CartoonDesc * cartoondesc)
+cartoondesc_finish(CartoonDesc *cartoondesc)
 {
     cartoondesc->pos = cartoondesc->size;
 }

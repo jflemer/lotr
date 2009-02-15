@@ -79,36 +79,35 @@ typedef struct
 
 
 /* parse command spots */
-extern void spot_parse(Uint8 * data, int size,
-                       CommandSpot * spots[], int *spots_num);
+extern void spot_parse(Uint8 *data, int size,
+                       CommandSpot *spots[], int *spots_num);
 
 
 /* free command spot */
-extern void spot_free(CommandSpot * spot);
+extern void spot_free(CommandSpot *spot);
 
 
 /* print command spot */
-extern void spot_print(CommandSpot * spot);
+extern void spot_print(CommandSpot *spot);
 
 /* start running command spot */
-extern int spot_start(CommandSpot * spot);
+extern int spot_start(CommandSpot *spot);
 
 /* continue running command spot */
-extern int spot_continue(CommandSpot * spot);
+extern int spot_continue(CommandSpot *spot);
 
 /* spot action */
-extern int spot_action(CommandSpot * spot, int type, int what, int on_who);
+extern int spot_action(CommandSpot *spot, int type, int what, int on_who);
 
 /* can do an action on this spot */
-extern int spot_has_action(CommandSpot * spot, int type, int what,
-                           int on_who);
+extern int spot_has_action(CommandSpot *spot, int type, int what, int on_who);
 
 /* return objects on spot */
-extern Uint8 *spot_get_objects(CommandSpot * spot, int *to_buy);
+extern Uint8 *spot_get_objects(CommandSpot *spot, int *to_buy);
 
 
 /* set if result */
-extern void spot_if_result(CommandSpot * spot, int result);
+extern void spot_if_result(CommandSpot *spot, int result);
 
 /* valid letter in a question */
 extern int spot_question_letter(Uint8 c);

@@ -224,9 +224,9 @@ characters_init()
 
 
 
-        strncpy(lord_characters[i]->name, (char *) chardata->name, 16);
+        strncpy(lord_characters[i]->name, (char *)chardata->name, 16);
         lord_characters[i]->name[16] = 0;
-        strncpy(lord_characters[i]->original_name, (char *) chardata->name,
+        strncpy(lord_characters[i]->original_name, (char *)chardata->name,
                 16);
         lord_characters[i]->original_name[16] = 0;
 
@@ -306,12 +306,12 @@ characters_save(xmlNodePtr node)
 
     for (i = 0; i < CHARACTERS_NUM; ++i)
         if (lord_characters[i]) {
-            cur = xmlNewNode(NULL, (const xmlChar *) "character");
+            cur = xmlNewNode(NULL, (const xmlChar *)"character");
 
             lord_save_prop_int(cur, "id", i);
 
-            xmlNewTextChild(cur, NULL, (const xmlChar *) "name",
-                            (const xmlChar *) lord_characters[i]->name);
+            xmlNewTextChild(cur, NULL, (const xmlChar *)"name",
+                            (const xmlChar *)lord_characters[i]->name);
 
             lord_save_prop_int(cur, "x", lord_characters[i]->x);
             lord_save_prop_int(cur, "y", lord_characters[i]->y);
@@ -343,7 +343,7 @@ characters_save(xmlNodePtr node)
                                lord_characters[i]->ring_mode);
 
             lord_save_prop_field(cur, "texts",
-                                 (Uint8 *) lord_characters[i]->texts,
+                                 (Uint8 *)lord_characters[i]->texts,
                                  CHARACTER_TALK_LEN);
 
             for (k = 0; k < 10; ++k)
@@ -392,10 +392,9 @@ characters_load(xmlNodePtr node)
         i = lord_load_prop_int(cur, "id");
         if (i >= 0 && i < CHARACTERS_NUM && lord_characters[i]) {
 
-            name =
-                (char *)
+            name = (char *)
                 xmlNodeGetContent(lord_get_subnode
-                                  (cur, (const xmlChar *) "name", 1));
+                                  (cur, (const xmlChar *)"name", 1));
             if (strncmp(name, "Aragorn", 19) && strncmp(name, "Radagast", 19)
                 && strncmp(name, "Werewolf", 19))
                 strncpy(lord_characters[i]->name,
@@ -450,7 +449,7 @@ characters_load(xmlNodePtr node)
                 lord_load_prop_int(cur, "ring_mode");
 
             lord_load_prop_field(cur, "texts",
-                                 (Uint8 *) lord_characters[i]->texts,
+                                 (Uint8 *)lord_characters[i]->texts,
                                  CHARACTER_TALK_LEN);
 
 
@@ -771,7 +770,7 @@ character_draw(int id, int x, int y, int dir)
 */
 
 inline void
-character_attack(Character * character, int direction)
+character_attack(Character *character, int direction)
 {
     int i, weapon;
     if (character->action == CHARACTER_STAY) {
@@ -798,7 +797,7 @@ character_attack(Character * character, int direction)
 */
 
 void
-character_move(Character * character, int direction)
+character_move(Character *character, int direction)
 {
     if (character->action == CHARACTER_STAY) {
         character->x /= 4;
@@ -814,25 +813,25 @@ character_move(Character * character, int direction)
 
 
 void
-character_move_left(Character * character)
+character_move_left(Character *character)
 {
     character_move(character, CHARACTER_LEFT);
 }
 
 void
-character_move_right(Character * character)
+character_move_right(Character *character)
 {
     character_move(character, CHARACTER_RIGHT);
 }
 
 void
-character_move_up(Character * character)
+character_move_up(Character *character)
 {
     character_move(character, CHARACTER_UP);
 }
 
 void
-character_move_down(Character * character)
+character_move_down(Character *character)
 {
     character_move(character, CHARACTER_DOWN);
 }
@@ -844,7 +843,7 @@ character_move_down(Character * character)
 */
 
 void
-character_frame(Character * character)
+character_frame(Character *character)
 {
 
     switch (character->action) {
@@ -922,7 +921,7 @@ character_frame(Character * character)
 */
 
 void
-character_discard_item(Character * character, int index)
+character_discard_item(Character *character, int index)
 {
     if (index >= 0 && index <= character->items_num) {
         for (; index + 1 < character->items_num; ++index) {
@@ -938,7 +937,7 @@ character_discard_item(Character * character, int index)
 */
 
 int
-character_add_item(Character * character, int item)
+character_add_item(Character *character, int item)
 {
 
     if (!object_is_item(item))
@@ -963,7 +962,7 @@ character_add_item(Character * character, int item)
 */
 
 int
-character_add_spell(Character * character, int spell)
+character_add_spell(Character *character, int spell)
 {
 
     int i;
@@ -993,7 +992,7 @@ character_add_spell(Character * character, int spell)
 */
 
 int
-character_add_skill(Character * character, int skill)
+character_add_skill(Character *character, int skill)
 {
 
     int i;
@@ -1023,7 +1022,7 @@ character_add_skill(Character * character, int skill)
 */
 
 void
-character_command_npc_init(Character * character, int type, int value)
+character_command_npc_init(Character *character, int type, int value)
 {
 
     /* we set characters parameter at position <type> in original lord
@@ -1080,7 +1079,7 @@ character_command_npc_init(Character * character, int type, int value)
 */
 
 int
-character_unuse(Character * character, int index)
+character_unuse(Character *character, int index)
 {
     int item, i;
 
@@ -1122,7 +1121,7 @@ character_unuse(Character * character, int index)
 */
 
 void
-character_use(Character * character, int index)
+character_use(Character *character, int index)
 {
 
     int item, i;

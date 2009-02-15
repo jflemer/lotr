@@ -53,7 +53,7 @@ extern char *lord_homedir_filename(const char *name);
 extern char *addsuffix(const char *name, const char *suffix);
 
 /* returns file length, -1 if file==NULL */
-extern long filelen(FILE * file);
+extern long filelen(FILE *file);
 
 /* random number */
 extern int lord_rnd(int n);
@@ -62,7 +62,7 @@ extern int lord_rnd(int n);
 extern void lord_save_prop_int(xmlNodePtr node, char *name, int value);
 
 /* add field property node to a given xml node */
-extern void lord_save_prop_field(xmlNodePtr node, char *name, Uint8 * value,
+extern void lord_save_prop_field(xmlNodePtr node, char *name, Uint8 *value,
                                  int len);
 
 /* read integer property from node */
@@ -73,12 +73,12 @@ extern int lord_load_prop_int_default(xmlNodePtr node, char *name,
                                       int default_value);
 
 /* read field property node from a given xml node */
-extern int lord_load_prop_field(xmlNodePtr node, char *name, Uint8 * value,
+extern int lord_load_prop_field(xmlNodePtr node, char *name, Uint8 *value,
                                 int maxlen);
 
 
 /* gets node with a given name */
-extern xmlNodePtr lord_get_subnode(xmlNodePtr node, const xmlChar * name,
+extern xmlNodePtr lord_get_subnode(xmlNodePtr node, const xmlChar *name,
                                    int force);
 
 /* return data directory */
