@@ -36,6 +36,8 @@
 #define KEY_ENTER       SDLK_RETURN
 #define KEY_BACKSPACE   SDLK_BACKSPACE
 
+#define KEY_LEFT        SDLK_LEFT
+#define KEY_RIGHT       SDLK_RIGHT
 #define KEY_UP          SDLK_UP
 #define KEY_DOWN        SDLK_DOWN
 #define KEY_PAGEUP      SDLK_PAGEUP
