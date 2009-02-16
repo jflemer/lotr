@@ -81,6 +81,12 @@
 #define COMMAND_SKILLS_HERE     0x37
 
 #define COMMAND_IF_PARTY        0x05
+#define IF_PARTY_CONDITION_HAS_SKILL   0x01
+#define IF_PARTY_CONDITION_HAS_ITEM    0x02
+#define IF_PARTY_CONDITION_IN_PARTY    0x0a
+#define IF_PARTY_CONDITION_SIZE        0x0b
+#define IF_PARTY_CONDITION_HAVE_SILVER 0x0d
+
 #define COMMAND_IF_DIRECTION    0x09
 
 #define COMMAND_IF_GAME_REG     0x33
@@ -869,6 +875,21 @@ spot_direction_to_string(int dir)
     }
 }
 
+/*
+  convert direction to a readable string
+*/
+static const char*
+spot_if_party_condition_to_string(int id)
+{
+    switch (id) {
+        case IF_PARTY_CONDITION_HAS_SKILL: return "has_skill";
+        case IF_PARTY_CONDITION_HAS_ITEM: return "has_item";
+        case IF_PARTY_CONDITION_IN_PARTY: return "in_party";
+        case IF_PARTY_CONDITION_SIZE: return "party_size";
+        case IF_PARTY_CONDITION_HAVE_SILVER: return "have_silver";
+        default: return "unknown";
+    }
+}
 
 /*
   print command spot to a buffer
@@ -908,7 +929,7 @@ spot_get_string(CommandSpot *spot)
 
         spot_string_print("%04x: ", i + spot->label_start);
         for (j = 0; j < spot->command_level[k] * 2; ++j)
-            putchar(' ');
+            spot_string_print(" ");
 
         switch (command) {
 
@@ -960,7 +981,7 @@ spot_get_string(CommandSpot *spot)
 
             j = i + 2;
             while (spot->data[j] != 0xff) {
-                spot_string_print("\n         -- ");
+                spot_string_print("\n         ");
                 jj = 0;
                 while (spot_question_letter(spot->data[j]) && jj < 20) {
                     ++j;
@@ -1124,10 +1145,12 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_IF_PARTY:
-            spot_string_print("IF_PARTY: %s(%02x), %02x, %02x, %02x",
+            spot_string_print("IF_PARTY: %s(%02x), %s(%02x), %s(%02x), %02x",
                               spot_character_name(spot->data[i + 1]),
                               spot->data[i + 1],
-                              spot->data[i + 2], spot->data[i + 3],
+                              spot_if_party_condition_to_string(spot->data[i + 2]),
+                              spot->data[i + 2],
+                              object_name(spot->data[i + 3]), spot->data[i + 3],
                               spot->data[i + 4]);
             break;
 
@@ -1511,19 +1534,19 @@ spot_if_party(Character *character, int a, int b, int c)
 
     switch (a) {
 
-    case 1:                    /* if has skill */
+    case IF_PARTY_CONDITION_HAS_SKILL:    /* if has skill */
         for (i = 0; i < character->skills_num; ++i)
             if (character->skills[i] == b)
                 return 1;
         return 0;
 
-    case 2:                    /* if has item */
+    case IF_PARTY_CONDITION_HAS_ITEM:     /* if has item */
         for (i = 0; i < character->items_num; ++i)
             if (character->items[i] == b)
                 return 1;
         return 0;
 
-    case 0xa:                  /* if is in party */
+    case IF_PARTY_CONDITION_IN_PARTY:     /* if is in party */
         if (b == 0x08)
             return character == game_get_leader();
 
@@ -1535,8 +1558,11 @@ spot_if_party(Character *character, int a, int b, int c)
         return 0;
 
 
-    case 0xb:
+    case IF_PARTY_CONDITION_SIZE:         /* the party size equals */
         return game_get_party(codes) == b;
+
+    case IF_PARTY_CONDITION_HAVE_SILVER:  /* the party has some silver */
+        return game_get_silver() > 0;
 
     default:
         fprintf(stderr, "lord: WARNING unknown IF_PARTY type=%02x\n", a);
