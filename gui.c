@@ -838,6 +838,8 @@ dialog_paragraph_key(int key)
 static char *spot_formatted_text[MAX_SPOTLINES];
 static int spot_formatted_text_lines = -1;
 static int spot_formatted_text_pos = -1;
+static int spot_print_xoff = -1;
+static int spot_scroll_width = 256;
 
 /*
   show the active spot
@@ -848,12 +850,12 @@ dialog_print_active_spot()
     Character *leader;
     CommandSpot *spot;
     char *spot_string;
-    int width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE;
-    int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE;
+    int screen_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE;
     int lines;
 
     if (dialog_mode != DIALOG_SPOT_PRINT || spot_formatted_text_lines < 0) {
         char *buf;
+        int i;
 
         if ((leader = game_get_leader()) == NULL)
             return;
@@ -868,6 +870,7 @@ dialog_print_active_spot()
         /* Format the code */
         spot_formatted_text_pos = 0;
         spot_formatted_text_lines = 0;
+        spot_print_xoff = 0;
         buf = spot_string;
 
         while (spot_formatted_text_lines < MAX_SPOTLINES && *buf) {
@@ -881,11 +884,15 @@ dialog_print_active_spot()
                 buf++;
             }
         }
+
+        spot_scroll_width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE;
+        for (i = 0; i < spot_formatted_text_lines; ++i)
+            spot_scroll_width = max(spot_scroll_width, strlen(spot_formatted_text[i]));
     }
 
     lines =
-        min(max_height, spot_formatted_text_lines - spot_formatted_text_pos);
-    draw_scroll(-SCROLL_ELEMENT_SIZE, -SCROLL_ELEMENT_SIZE, width, lines,
+        min(screen_height, spot_formatted_text_lines - spot_formatted_text_pos);
+    draw_scroll(-SCROLL_ELEMENT_SIZE * (spot_print_xoff + 1), -SCROLL_ELEMENT_SIZE, 256, lines,
                 spot_formatted_text + spot_formatted_text_pos);
 }
 
@@ -897,9 +904,11 @@ dialog_print_active_spot()
 void
 dialog_print_active_spot_key(int key)
 {
-    int max_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE;
-    int pg_size = max(max_height - 2, 1);
+    int screen_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE;
+    int screen_width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE;
+    int pg_size = max(screen_height - 2, 1);
     int last_pos = spot_formatted_text_pos;
+    int last_xoff = spot_print_xoff;
 
     if (key == KEY_ENTER || key == 'x' || key == 'q') {
         spot_formatted_text_lines = -1;
@@ -918,17 +927,31 @@ dialog_print_active_spot_key(int key)
     else if (key == KEY_PAGEDOWN) {
         spot_formatted_text_pos += pg_size;
     }
-
-    if (spot_formatted_text_pos + max_height > spot_formatted_text_lines) {
-        spot_formatted_text_pos = spot_formatted_text_lines - max_height;
+    else if (key == KEY_LEFT) {
+        spot_print_xoff--;
     }
+    else if (key == KEY_RIGHT) {
+        spot_print_xoff++;
+    }
+
+    if (spot_formatted_text_pos + screen_height > spot_formatted_text_lines)
+        spot_formatted_text_pos = spot_formatted_text_lines - screen_height;
 
     if (spot_formatted_text_pos < 0)
         spot_formatted_text_pos = 0;
 
+    if (spot_print_xoff + screen_width > spot_scroll_width)
+        spot_print_xoff = spot_scroll_width - screen_width;
+
+    if (spot_print_xoff < 0)
+        spot_print_xoff = 0;
+
     /* Redraw the scroll */
-    if (last_pos != spot_formatted_text_pos)
+    if (last_pos != spot_formatted_text_pos
+        || last_xoff != spot_print_xoff)
+    {
         dialog_print_active_spot();
+    }
 }
 
 
@@ -1026,10 +1049,17 @@ dialog_save_show(void)
         "Save Game",
         "1. Game One",
         "2. Game Two",
+#if PIXEL_PRECISE
         "X. Exit",
         "",
         "",
         ""
+#else
+        "3. Game Three",
+        "4. Game Four",
+        "5. Game Five",
+        "X. Exit"
+#endif
     };
 
     dialog_mode = DIALOG_SAVE;
@@ -1054,10 +1084,17 @@ dialog_load_show(void)
         "Load Game",
         "1. Game One",
         "2. Game Two",
+#if PIXEL_PRECISE
         "X. Exit",
         "",
         "",
         ""
+#else
+        "3. Game Three",
+        "4. Game Four",
+        "5. Game Five",
+        "X. Exit"
+#endif
     };
 
     dialog_mode = DIALOG_LOAD;
@@ -1163,8 +1200,13 @@ dialog_saveload_key(int key)
     if (key == 'x')
         quit_menu();
 
-    if (key == '1' || key == '2') {
+    if (key >= '1' && key <= '5') {
         n = key - '0';
+
+#if PIXEL_PRECISE
+        if (n > 2)
+            return;
+#endif
         if (dialog_mode == DIALOG_SAVE) {
             if (game_save(n))
                 dialog_options_message_show(saved_text);
