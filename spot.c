@@ -901,14 +901,16 @@ spot_get_string(CommandSpot *spot)
     spot_string_print("\n");
 
     for (k = 0; k < spot->commands_num; ++k) {
+        int command;
 
         i = spot->command_start[k];
+        command = spot->data[i];
 
         spot_string_print("%04x: ", i + spot->label_start);
-        for (j = 0; j < spot->command_level[k] * 4; ++j)
+        for (j = 0; j < spot->command_level[k] * 2; ++j)
             putchar(' ');
 
-        switch (spot->data[i]) {
+        switch (command) {
 
         case COMMAND_UNKNOWN1:
         case COMMAND_UNKNOWN6:
@@ -940,9 +942,9 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_NPC_INIT:
-            spot_string_print("NPC_INIT: %02x (%s), %02x, %02x ",
-                              spot->data[i + 1],
+            spot_string_print("NPC_INIT: %s(%02x), %02x, %02x ",
                               spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1],
                               spot->data[i + 2], spot->data[i + 3]);
             if (spot->data[i + 2] == 0x57)
                 spot_string_print("\"%s\"", game_get_text(spot->data[i + 3]));
@@ -952,8 +954,9 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_NPC_QUESTIONS:
-            spot_string_print("NPC_QUESTIONS: %02x (%s)", spot->data[i + 1],
-                              spot_character_name(spot->data[i + 1]));
+            spot_string_print("NPC_QUESTIONS: %s(%02x)",
+                              spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1]);
 
             j = i + 2;
             while (spot->data[j] != 0xff) {
@@ -979,35 +982,38 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_NPC_SET_NAME:
-            spot_string_print("NPC_SET_NAME: %02x (%s), %s",
-                              spot->data[i + 1],
+            spot_string_print("NPC_SET_NAME: %s(%02x), %s",
                               spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1],
                               spot->data + i + 2);
             break;
 
         case COMMAND_NPC_TURN_TO_ME:
-            spot_string_print("NPC_TURN_TO_ME: %02x (%s)", spot->data[i + 1],
-                              spot_character_name(spot->data[i + 1]));
+            spot_string_print("NPC_TURN_TO_ME: %s(%02x)",
+                              spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1]);
             break;
 
         case COMMAND_NPC_RECRUIT:
-            spot_string_print("NPC_RECRUIT: %02x (%s)", spot->data[i + 1],
-                              spot_character_name(spot->data[i + 1]));
+            spot_string_print("NPC_RECRUIT: %s(%02x)",
+                              spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1]);
 #ifdef TTT
             spot_string_print(", %02x", spot->data[i + 2]);
 #endif
             break;
 
         case COMMAND_NPC_DISMISS:
-            spot_string_print("NPC_DISMISS: %02x (%s), %02x",
-                              spot->data[i + 1],
+            spot_string_print("NPC_DISMISS: %s(%02x), %02x",
                               spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1],
                               spot->data[i + 2]);
             break;
 
         case COMMAND_SET_TMP_LEADER:
-            spot_string_print("SET_TMP_LEADER: %02x (%s)", spot->data[i + 1],
-                              spot_character_name(spot->data[i + 1]));
+            spot_string_print("SET_TMP_LEADER: %s(%02x)",
+                              spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1]);
             break;
 
         case COMMAND_DISMISS_TMP_LEADER:
@@ -1015,17 +1021,17 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_NPC_MOVE:
-            spot_string_print("NPC_MOVE: %02x (%s), %02x, %04x, %04x",
-                              spot->data[i + 1],
+            spot_string_print("NPC_MOVE: %s(%02x), %02x, %04x, %04x",
                               spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1],
                               spot->data[i + 2], readint(spot->data + i + 3),
                               readint(spot->data + i + 5));
             break;
 
         case COMMAND_NPC_ENEMY:
             spot_string_print
-                ("NPC_ENEMY: %02x (%s), relative=%02x, direction=%02x, unknown=%d%%, n=%d",
-                 spot->data[i + 5], spot_character_name(spot->data[i + 5]),
+                ("NPC_ENEMY: %s(%02x), relative=%02x, direction=%02x, unknown=%d%%, n=%d",
+                 spot_character_name(spot->data[i + 5]), spot->data[i + 5],
                  spot->data[i + 1], spot->data[i + 2], spot->data[i + 3],
                  spot->data[i + 4]);
 
@@ -1044,8 +1050,9 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_NPC_DELETE:
-            spot_string_print("NPC_DELETE: %02x (%s)", spot->data[i + 1],
-                              spot_character_name(spot->data[i + 1]));
+            spot_string_print("NPC_DELETE: %s(%02x)",
+                              spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1]);
             break;
 
         case COMMAND_MAP_FOG:
@@ -1097,40 +1104,47 @@ spot_get_string(CommandSpot *spot)
         case COMMAND_ACTION:
             spot_string_print("ACTION: %02x", spot->data[i + 1]);
             for (j = 0; j < spot->data[i + 1]; ++j) {
-                const char *param1 = object_name(spot->data[i + 3 + j * 5]);
-                const char *param2 = spot_character_name(spot->data[i + 4 + j * 5]);
+                int action = spot->data[i + 2 + j * 5];
+                int param1 = spot->data[i + 3 + j * 5];
+                int param2 = spot->data[i + 4 + j * 5];
+                const char *param1_str = object_name(param1);
+                const char *param2_str = spot_character_name(param2);
+
+                if (action == SPOT_ACTION_MOVE)
+                    param1_str = spot_direction_to_string(param1);
+                if (param2 == 0xff)
+                    param2_str = "";
+
                 spot_string_print
                     ("\n           %s(%02x) %s(%02x), %s(%02x): goto %04x",
-                     spot_action_to_string(spot->data[i + 2 + j * 5]),
-                     spot->data[i + 2 + j * 5],
-                     param1, spot->data[i + 3 + j * 5],
-                     param2, spot->data[i + 4 + j * 5],
+                     spot_action_to_string(action), action,
+                     param1_str, param1, param2_str, param2,
                      readint(spot->data + i + 5 + j * 5));
             }
             break;
 
         case COMMAND_IF_PARTY:
-            spot_string_print("IF_PARTY: %02x (%s), %02x, %02x, %02x",
-                              spot->data[i + 1],
+            spot_string_print("IF_PARTY: %s(%02x), %02x, %02x, %02x",
                               spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1],
                               spot->data[i + 2], spot->data[i + 3],
                               spot->data[i + 4]);
             break;
 
         case COMMAND_02:
-            spot_string_print("COMMAND_02: %02x (%s), %02x, %02x, %02x",
-                              spot->data[i + 1],
+            spot_string_print("COMMAND_02: %s(%02x), %02x, %02x, %02x",
                               spot_character_name(spot->data[i + 1]),
+                              spot->data[i + 1],
                               spot->data[i + 2], spot->data[i + 3],
                               spot->data[i + 4]);
             break;
 
         case COMMAND_04:
-            spot_string_print("COMMAND_04: %02x (%s), %02x (%s), %02x",
-                              spot->data[i + 1],
+            spot_string_print("COMMAND_04: %s(%02x), %s(%02x), %02x",
                               spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 2],
+                              spot->data[i + 1],
                               spot_character_name(spot->data[i + 2]),
+                              spot->data[i + 2],
                               spot->data[i + 3]);
             break;
 
@@ -1152,7 +1166,7 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_IF_DIRECTION:
-            spot_string_print("IF_DIRECTION: %s (%02x)",
+            spot_string_print("IF_DIRECTION: %s(%02x)",
                               spot_direction_to_string(spot->data[i + 1]),
                               spot->data[i + 1]);
             break;
@@ -1193,19 +1207,19 @@ spot_get_string(CommandSpot *spot)
             break;
 
         case COMMAND_TRUE_THEN:
-            spot_string_print("  TRUE_THEN");
+            spot_string_print(" TRUE_THEN");
             break;
 
         case COMMAND_FALSE_THEN:
-            spot_string_print("  FALSE_THEN");
+            spot_string_print(" FALSE_THEN");
             break;
 
         case COMMAND_ELSE:
-            spot_string_print("  ELSE");
+            spot_string_print(" ELSE");
             break;
 
         case COMMAND_ENDIF:
-            spot_string_print("  ENDIF");
+            spot_string_print(" ENDIF");
             break;
 
         case COMMAND_TELEPORT:
