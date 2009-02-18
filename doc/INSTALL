@@ -28,8 +28,8 @@ or $HOME/.lord/
 4) run by typing
 lord
 
-5) Optionally, if you have paragraph texts from the cd version, 
-copy them to /usr/local/share/games/lord/
+5) Optionally, if you have paragraph texts from the cd version
+(file para.dat), copy them to /usr/local/share/games/lord/
 this will show the full text of paragraphs during the game	
 
 6) enjoy
