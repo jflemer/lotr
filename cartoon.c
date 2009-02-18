@@ -203,8 +203,6 @@ cartoon_play(char *name)
     graphics_update_screen();
 
     while (archivepos < archive->size && !lord_key_esc()) {
-        int xoff, yoff;
-
         data = decompress_idxarchive(archive, archivepos, &size);
         /* data are freed by cartoondesc_free */
 
@@ -217,13 +215,10 @@ cartoon_play(char *name)
 
         repeats = 0;
 
-        /* cartoons are 320x200 center them on the screen */
-        xoff = (SCREEN_WIDTH - 320) / 2;
-        yoff = (SCREEN_HEIGHT - 200) / 2;
+        /* TODO cartoons are 320x200 center them on the screen */
 
         /* reset screen */
-//        graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
-        graphics_set_window(xoff, yoff, xoff + 319, yoff + 199);
+        graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
         bzero(bufscreen->data, SCREEN_WIDTH * SCREEN_HEIGHT);
         graphics_clear_screen();
         graphics_update_screen();
