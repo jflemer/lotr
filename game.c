@@ -652,7 +652,7 @@ game_leader_movement(void)
     if (0)
 #endif
     {
-        if (lord_key_shift()) {
+        if (lord_key_ctrl()) {
             if (lord_key_left() && leader->x >= 4)
                 leader->x -= 4;
             if (lord_key_right() && leader->x < MAP_WIDTH * 16 * 4 - 20)

@@ -82,10 +82,19 @@ main(int argc, char *argv[])
 
     lord_reset_timer();
     while (!lord_key_esc()) {
+        int frame_time = FRAME_TIME;
         lord_poll_events();
         game_next_frame();
 
-        lord_timer(FRAME_TIME);
+#ifndef ENABLE CHEATS
+        /* Shift key is used for fast movement while cheating */
+#if !PIXEL_PRECISE
+        if (lord_key_shift())
+            frame_time /= 4;
+#endif
+#endif
+
+        lord_timer(frame_time);
     }
 
 
