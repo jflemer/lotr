@@ -763,11 +763,11 @@ void
 gui_paragraph_scroll(void)
 {
     const char *formatted_text[MAX_MESSAGELINES];
-    int lines, width, y;
+    int lines, width, x, y;
 
     gui_clear();
     game_draw_map();
-    width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE - 10;
+    width = 32;
 
     if (paragraphs[gui_paragraph_pos] == 0x5)
         ++gui_paragraph_pos;
@@ -787,13 +787,10 @@ gui_paragraph_scroll(void)
         lines++;
     }
 
-    y = SCREEN_HEIGHT - (lines + 2) * SCROLL_ELEMENT_SIZE;
-    if (y > 128)
-        y = 128;
-    if (y < 0)
-        y = 0;
+    x = (SCREEN_WIDTH - (width + 2) * SCROLL_ELEMENT_SIZE) / 2;
+    y = (SCREEN_HEIGHT - (lines + 2) * SCROLL_ELEMENT_SIZE) / 2;
 
-    draw_scroll(SCROLL_ELEMENT_SIZE * 4, y, width, lines, formatted_text);
+    draw_scroll(x, y, width, lines, formatted_text);
 }
 
 
