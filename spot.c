@@ -255,29 +255,57 @@ spot_question_letter(Uint8 c)
 
 
 /*
+  Check that goto addr points to a valid command in spot
+  return  0 -- address in spot
+          1 -- address outside of spot
+         -1 -- address is spot range but not parsed as command start
+ */
+static int
+spot_check_addr_in_spot(CommandSpot *spot, int addr)
+{
+    int i;
+
+    /* taking into account only addresses in this spot */
+    if (addr >= spot->label_start
+        && addr < spot->label_start + spot->data_size)
+    {
+        for (i = 0; i < spot->commands_num; ++i)
+            if (spot->command_start[i] + spot->label_start == addr)
+                return 0;
+
+        return -1;
+    }
+
+    return 1;
+}
+
+/*
   init spot commands
 */
-
-
 void
 spot_init_commands(CommandSpot *spot)
 {
-    int i = 0, j, n = 0;
+    int i = 0, j, k, n = 0;
     int unknown = 0;
     int level = 0;
     int next_level = 0;
 #ifdef TTT
     int negative_level = 0;
 #endif
+    int last_commands_num;
 
     i = spot->headersize;
+    spot->not_parsed = 0;
+    spot->commands_num = 0;
 
     /* we have not decoded DEMO spots */
     if (DEMO) {
-        spot->commands_num = 0;
         return;
     }
 
+new_parsing:
+    last_commands_num = spot->commands_num;
+    unknown = 0;
     while (i < spot->data_size && n < SPOT_MAX_COMMANDS) {
         spot->command_start[n] = i;
         switch (spot->data[i]) {
@@ -550,9 +578,34 @@ spot_init_commands(CommandSpot *spot)
             break;
     }
 
-
     spot->commands_num = n;
-    spot->not_parsed = unknown;
+    spot->not_parsed = spot->not_parsed || unknown;
+
+    /* Check that all gotos point at valid command */
+    for (j = 0; j < n; ++j) {
+        k = spot->command_start[j];
+
+        if (spot->data[k] == COMMAND_GOTO) {
+            int addr = readint(spot->data + k + 1);
+
+            if (spot_check_addr_in_spot(spot, addr) == -1) {
+                i = addr - spot->label_start;
+                if (spot->commands_num > last_commands_num)
+                    goto new_parsing;
+            }
+        } else if (spot->data[k] == COMMAND_ACTION) {
+            int num_actions = spot->data[k + 1];
+            int l;
+            for (l = 0; l < num_actions; ++l) {
+                int addr = readint(spot->data + k + 1 + l * 5 + 4);
+                if (spot_check_addr_in_spot(spot, addr) == -1) {
+                    i = addr - spot->label_start;
+                    if (spot->commands_num > last_commands_num)
+                        goto new_parsing;
+                }
+            }
+        }
+    }
 
 #ifdef TTT
     if (negative_level) {
@@ -786,8 +839,6 @@ spot_character_get(int id)
     }
 
     return NULL;
-
-
 }
 
 
