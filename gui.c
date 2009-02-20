@@ -2038,7 +2038,11 @@ dialog_talk_show(int character_id, int text_id)
 
         character = character_get(character_id);
 
-        if (character->texts[0] == 0 && character->texts[1] == 0) {
+#if DEMO
+        /* there are not texts in the Demo */
+        text = "Hullo Mr. Frodo. This demo is no fun. Please buy a full game and kick some Nazgul ass.";
+#else
+        if (character->texts[0] == 0 && character->texts[1] <= 0) {
             /* character has nothing to say */
             dialog_talk_who_show();
             return;
@@ -2057,6 +2061,7 @@ dialog_talk_show(int character_id, int text_id)
 #endif
                 text = game_get_text(text_id);
         }
+#endif
     }                           /* character_id != -1 */
     else {
 #ifdef WIZARD_MODE
@@ -2111,7 +2116,6 @@ dialog_talk_show(int character_id, int text_id)
     free(tmptext);
 
 }
-
 
 
 /*
@@ -2384,8 +2388,6 @@ dialog_question_key(int key)
 /*
   parse talk keyboard input
 */
-
-
 void
 dialog_talk_key(int key)
 {
@@ -2409,7 +2411,6 @@ dialog_talk_key(int key)
     if (key == 'q')
         dialog_question_show();
 }
-
 
 
 
