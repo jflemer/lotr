@@ -1867,7 +1867,6 @@ dialog_trade_confirm_key(int key)
   show talk dialog
  */
 
-
 void
 dialog_talk_main_show(void)
 {
@@ -2029,7 +2028,7 @@ dialog_talk_show(int character_id, int text_id)
     int lines;
     int i;
 
-    /* character_id==-1 for wizard mode */
+    /* character_id == -1 for wizard mode */
 
     dialog_talk_character_text = text_id;
     dialog_talk_character_id = character_id;
@@ -2058,7 +2057,7 @@ dialog_talk_show(int character_id, int text_id)
 #endif
                 text = game_get_text(text_id);
         }
-    }                           /* character_id!=-1 */
+    }                           /* character_id != -1 */
     else {
 #ifdef WIZARD_MODE
         character = character_get(0xa5);        /* Gandalf */
