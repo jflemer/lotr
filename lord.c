@@ -86,7 +86,7 @@ main(int argc, char *argv[])
         lord_poll_events();
         game_next_frame();
 
-#ifndef ENABLE CHEATS
+#ifndef ENABLE_CHEATS
         /* Shift key is used for fast movement while cheating */
 #if !PIXEL_PRECISE
         if (lord_key_shift())
