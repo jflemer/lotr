@@ -1,4 +1,4 @@
-/****************************************************************************
+const /****************************************************************************
 
     gui.c
     graphics user interface
@@ -337,7 +337,7 @@ gui_clear(void)
 */
 
 void
-draw_scroll(int x, int y, int width, int height, char *text[])
+draw_scroll(int x, int y, int width, int height, const char *text[])
 {
     /* size of one scroll element */
     int size = SCROLL_ELEMENT_SIZE;
@@ -548,7 +548,7 @@ quit_menu()
  */
 
 char *
-format_text(char *_text, int *lines, int width, char *formatted_text[])
+format_text(char *_text, int *lines, int width, const char *formatted_text[])
 {
     int n;
     char *text, *t;
@@ -596,11 +596,10 @@ format_text(char *_text, int *lines, int width, char *formatted_text[])
   shows a message
  */
 
-
 void
 gui_message(char *text, int small_window)
 {
-    char *formatted_text[MAX_MESSAGELINES];
+    const char *formatted_text[MAX_MESSAGELINES];
     int width;
     int y;
     char *tmptext;
@@ -706,6 +705,55 @@ dialog_message_yn_key(int key)
 
 
 
+/*
+  shows a help message
+ */
+
+void
+gui_help_show()
+{
+    const char *help_text[] = {
+        "",
+        " Arrows - move character",
+        " Space  - game menu",
+        " Escape - exit/options menu",
+#ifndef DEBUG
+        " Shift  - 4x time compression",
+#endif
+        "",
+        " A  Attack        O  Options",
+        " C  Choose char.  Q  Quit game",
+        " G  Get/Buy       T  Talk",
+        " H  Help          S  Skill",
+        " L  Set leader    U  Use",
+        " M  Magic         V  View char. ",
+#ifdef DEBUG
+        "",
+        " Cheating:",
+        " W  Wizard mode",
+        " Ctrl+Arrows  Noclip mode",
+        " Shift+Arrows Fast noclip",
+#endif
+        ""
+    };
+    int lines = sizeof(help_text) / sizeof(const char *);
+    int width = 0;
+    int xoff, yoff;
+    int i;
+
+    for (i = 0; i < lines; ++i) {
+        int len = strlen(help_text[i]);
+        width = max(len, width);
+    }
+
+    xoff = (SCREEN_WIDTH - (width + 2) * SCROLL_ELEMENT_SIZE) / 2;
+    yoff = (SCREEN_HEIGHT - (lines + 2) * SCROLL_ELEMENT_SIZE) / 2;
+
+    dialog_mode = DIALOG_MESSAGE;
+
+    draw_scroll(xoff, yoff, width, lines, help_text);
+}
+
 
 /*
   draws gui paragraph scroll
@@ -714,7 +762,7 @@ dialog_message_yn_key(int key)
 void
 gui_paragraph_scroll(void)
 {
-    char *formatted_text[MAX_MESSAGELINES];
+    const char *formatted_text[MAX_MESSAGELINES];
     int lines, width, y;
 
     gui_clear();
@@ -835,7 +883,7 @@ dialog_paragraph_key(int key)
 }
 
 #define MAX_SPOTLINES 4096
-static char *spot_formatted_text[MAX_SPOTLINES];
+static const char *spot_formatted_text[MAX_SPOTLINES];
 static int spot_formatted_text_lines = -1;
 static int spot_formatted_text_pos = -1;
 static int spot_print_xoff = -1;
@@ -988,9 +1036,9 @@ gui_book(char *text)
 void
 gui_confirm_scroll(char *text)
 {
-    char *scroll_text[7];
+    const char *scroll_text[7];
     char *tmptext;
-    char *formatted_text[MAX_MESSAGELINES];
+    const char *formatted_text[MAX_MESSAGELINES];
     int lines, i;
 
     tmptext = format_text(text, &lines, DEFAULT_SCROLL_WIDTH, formatted_text);
@@ -1017,7 +1065,7 @@ void
 dialog_options_show(void)
 {
 
-    char *text[7] = {
+    const char *text[7] = {
         "OPTIONS",
         "L. Load Game",
         "S. Save Game",
@@ -1045,7 +1093,7 @@ void
 dialog_save_show(void)
 {
 
-    char *text[7] = {
+    const char *text[7] = {
         "Save Game",
         "1. Game One",
         "2. Game Two",
@@ -1080,7 +1128,7 @@ void
 dialog_load_show(void)
 {
 
-    char *text[7] = {
+    const char *text[7] = {
         "Load Game",
         "1. Game One",
         "2. Game Two",
@@ -1113,7 +1161,7 @@ dialog_load_show(void)
 
 
 void
-dialog_options_message_show(char *text[7])
+dialog_options_message_show(const char *text[7])
 {
     dialog_mode = DIALOG_MESSAGE;
     draw_scroll(0, 0, -DEFAULT_SCROLL_WIDTH, 7, text);
@@ -1134,7 +1182,7 @@ void
 dialog_options_key(int key)
 {
 
-    char *paused_text[7] = { "Paused...", "", "", "", "", "", "" };
+    const char *paused_text[7] = { "Paused...", "", "", "", "", "", "" };
 
 
     if (dialog_confirm) {
@@ -1192,9 +1240,9 @@ dialog_saveload_key(int key)
 {
     int n;
 
-    char *saved_text[7] =
+    const char *saved_text[7] =
         { "Save current game,", "done.", "", "", "", "", "" };
-    char *loaded_text[7] =
+    const char *loaded_text[7] =
         { "Load previous game,", "done.", "", "", "", "", "" };
 
     if (key == 'x')
@@ -1233,7 +1281,7 @@ dialog_saveload_key(int key)
 void
 dialog_view_show(void)
 {
-    char *text[7];
+    const char *text[7];
     char lines[7][25];
 
     int i;
@@ -1295,7 +1343,7 @@ int dialog_list_can_scroll;
 void
 dialog_list_draw(void)
 {
-    char *text[12];
+    const char *text[12];
     char lines[12][25];
 
     int i;
@@ -1975,8 +2023,8 @@ dialog_talk_show(int character_id, int text_id)
     Character *character;
     Character *tmpcharacter;
     char *tmptext;
-    char *formatted_text[MAX_MESSAGELINES];
-    char *scroll_text[7];
+    const char *formatted_text[MAX_MESSAGELINES];
+    const char *scroll_text[7];
     char *text;
     int lines;
     int i;
@@ -2073,7 +2121,7 @@ dialog_talk_show(int character_id, int text_id)
 
 char dialog_question_text[DEFAULT_SCROLL_WIDTH + 1];
 int dialog_question_len;
-char *dialog_question_scroll_text[7];
+const char *dialog_question_scroll_text[7];
 int dialog_cursor;
 
 void
@@ -2759,6 +2807,13 @@ main_menu_key(int key)
         dialog_magic_show();
         break;
 
+#if !PIXEL_PRECISE
+    case 'h':
+        quit_menu();
+        gui_help_show();
+        break;
+#endif
+
     case 'q':
         gui_confirm_scroll("Quit Game");
         dialog_mode = DIALOG_OPTIONS;
@@ -2868,6 +2923,12 @@ gui_frame(void)
         case 'm':
             dialog_magic_show();
             break;
+
+#if !PIXEL_PRECISE
+        case 'h':
+            gui_help_show();
+            break;
+#endif
 
         case 'o':
 #if !DEMO
