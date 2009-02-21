@@ -3139,6 +3139,8 @@ gui_frame(void)
     } else {
 
         if (lotr_key_esc()) {
+            if (dialog_mode == DIALOG_DIED)
+                exit(0);
 #ifdef DEMO
             exit(0);
 #endif

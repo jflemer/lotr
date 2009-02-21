@@ -172,7 +172,7 @@ sound_play(int index)
 void
 play_music(void)
 {
-    play_midi(music_data, music_size, 1);
+    play_midi(music_data, music_size, TRUE);
 }
 
 
