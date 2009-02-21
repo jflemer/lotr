@@ -1,0 +1,768 @@
+# You will not be allowed to enter the town of Bree at night.
+00=You will not be allowed to enter the town of Bree at night.
+
+# In Bree, everything is locked at night.
+01=In Bree, everything is locked at night.
+
+# What are you doing in my hole! If you want adventure try the Curio Shoppe in Staddle! Now get out!
+02=What are you doing in my hole! If you want adventure try the Curio Shoppe in Staddle! Now get out!
+
+# I told you to get out! What are you, deaf or something?"
+03=I told you to get out! What are you, deaf or something?"
+
+# No adventures for me thank-you. Now if you gentlefolk would be leaving I'm sure everything will be pleasant.
+04=No adventures for me thank-you. Now if you gentlefolk would be leaving I'm sure everything will be pleasant.
+
+# I don't know what possessed strangers to come in my hole, but Bree hobbits are sensitive about such things. Please go."
+05=I don't know what possessed strangers to come in my hole, but Bree hobbits are sensitive about such things. Please go."
+
+# The man yawns, "I'm tired. Come back in the morning."
+06=The man yawns, "I'm tired. Come back in the morning."
+
+# I have some items for sale, worthy adventurers.
+07=I have some items for sale, worthy adventurers.
+
+# Not a man to trust.
+08=Not a man to trust.
+
+# Look for the one you seek in Archet.
+09=Look for the one you seek in Archet.
+
+# See Paragraph #49
+0a=See Paragraph #49
+
+# I have a magic shield for a Baggins, if you want it.
+0b=I have a magic shield for a Baggins, if you want it.
+
+# A voice cries: "No more strangers will sneak into Bree at night! Get 'em!"
+0c=A voice cries: "No more strangers will sneak into Bree at night! Get 'em!"
+
+# Look for the one you seek in Combe. The word is BREEHILL.
+0d=Look for the one you seek in Combe. The word is BREEHILL.
+
+# This accursed place is empty.
+0e=This accursed place is empty.
+
+# He has an outpost southwest of Bree.
+0f=He has an outpost southwest of Bree.
+
+# She begins to cackle, and then says: "I have many rings. Perhaps you have One to give me!"
+10=She begins to cackle, and then says: "I have many rings. Perhaps you have One to give me!"
+
+# Athelwyn smiles cruelly. "I think the time has come to unmask." she says. "The Ring shall go to one who is willing to be Its Lord." 
+11=Athelwyn smiles cruelly. "I think the time has come to unmask." she says. "The Ring shall go to one who is willing to be Its Lord." 
+
+# He can be found in Combe, though I would stay away from him. Evil hounds his very shadow.
+12=He can be found in Combe, though I would stay away from him. Evil hounds his very shadow.
+
+# You have spotted a secret door!
+13=You have spotted a secret door!
+
+# Let any sick and wounded stand forth, for they shall be healed." 
+14=Let any sick and wounded stand forth, for they shall be healed." 
+
+# "Alas," the healer says, "I need athelas. Bring me some, and I will heal you."
+15="Alas," the healer says, "I need athelas. Bring me some, and I will heal you."
+
+# The door is locked.
+16=The door is locked.
+
+# Ned Bushdock sighs. "So Adventure seeks me out again! I'll give you what help I can."
+17=Ned Bushdock sighs. "So Adventure seeks me out again! I'll give you what help I can."
+
+# There has obviously been a fight here. There is a lot of blood, but no trail. Searching carefully, you notice pipeweed has been spilled on the floor.
+18=There has obviously been a fight here. There is a lot of blood, but no trail. Searching carefully, you notice pipeweed has been spilled on the floor.
+
+# Welcome Learned Travellers! The Great Library welcomes those who would expand their wisdom.
+19=Welcome Learned Travellers! The Great Library welcomes those who would expand their wisdom.
+
+# I.... I don't think I can help you. Good day.
+1a=I.... I don't think I can help you. Good day.
+
+# You spot parchment in a secret opening!
+1b=You spot parchment in a secret opening!
+
+# Sallow-faced men give you an evil look.
+1c=Sallow-faced men give you an evil look.
+
+# Bill Ferny greets you with a sneer on his face; you get the impression that he was born sneering. "What do you want?" he snaps. "I'll sell you this nag, if you can afford the price."
+1d=Bill Ferny greets you with a sneer on his face; you get the impression that he was born sneering. "What do you want?" he snaps. "I'll sell you this nag, if you can afford the price."
+
+# My uncle Tim's a Healer up Archet way. He truly loves Mushrooms."
+1e=My uncle Tim's a Healer up Archet way. He truly loves Mushrooms."
+
+# I went there once. I followed a stream and climbed down into these huge caves! It was scary.
+1f=I went there once. I followed a stream and climbed down into these huge caves! It was scary.
+
+# Nick Underhill is shocked to see strangers enter his home. "I don't know what things are like where you come from, but Bree hobbits don't break into other people's holes!" 
+20=Nick Underhill is shocked to see strangers enter his home. "I don't know what things are like where you come from, but Bree hobbits don't break into other people's holes!" 
+
+# Rogues are holding the healer of Archet! If you be men of the sword, please rescue him.
+21=Rogues are holding the healer of Archet! If you be men of the sword, please rescue him.
+
+# For adventure try the Curio Shoppe in Staddle.
+22=For adventure try the Curio Shoppe in Staddle.
+
+# Nob Appledore smiles to be back in his home. "Thank-you for all you've done." he says. "But no more adventure for me! I do have a gift  for you, if you'll take it." 
+23=Nob Appledore smiles to be back in his home. "Thank-you for all you've done." he says. "But no more adventure for me! I do have a gift  for you, if you'll take it." 
+
+# "We do no business with Rangers." an angry voice says. The door remains closed.
+24="We do no business with Rangers." an angry voice says. The door remains closed.
+
+# This door is locked. A man's face appears in the door. "I trust you have a word for me?" he says.
+25=This door is locked. A man's face appears in the door. "I trust you have a word for me?" he says.
+
+# The Rayf Brogan that you meet now is a different man than he was a few months ago. "Bree has changed. These Sharkey folks..." Then his gaze narrows. "I want to hurt them, worse than they hurt Bree. If that means joining with Rangers, so be it.
+26=The Rayf Brogan that you meet now is a different man than he was a few months ago. "Bree has changed. These Sharkey folks..." Then his gaze narrows. "I want to hurt them, worse than they hurt Bree. If that means joining with Rangers, so be it.
+
+# Bring me the Torc of Maladan, and then we will do business.
+27=Bring me the Torc of Maladan, and then we will do business.
+
+# Some say it is hidden in a deep passage beneath the walls of Bree.
+28=Some say it is hidden in a deep passage beneath the walls of Bree.
+
+# They take the pony away from you and place it in the stables.
+29=They take the pony away from you and place it in the stables.
+
+# Athelwyn excuses herself and vanishes into the shadows.
+2a=Athelwyn excuses herself and vanishes into the shadows.
+
+# Nob, with a look of pure joy on his face, runs back into the tavern and leaves the Fellowship.
+2b=Nob, with a look of pure joy on his face, runs back into the tavern and leaves the Fellowship.
+
+# The fat innkeeper turns and looks at you. "Barliman Butterbur at your service. Hobbits from the Shire! Oh, never mind. May I have your name?" He looks directly at Frodo.
+2c=The fat innkeeper turns and looks at you. "Barliman Butterbur at your service. Hobbits from the Shire! Oh, never mind. May I have your name?" He looks directly at Frodo.
+
+# Barliman's face lights up at the sight of the old wizard. "Mr. Gandalf! I hope those poor little hobbits made their way alright." You assure him that they are safe, not knowing how long they will remain that way.
+2d=Barliman's face lights up at the sight of the old wizard. "Mr. Gandalf! I hope those poor little hobbits made their way alright." You assure him that they are safe, not knowing how long they will remain that way.
+
+# Barliman's face narrows at the sight of Strider. "Those little hobbits better be safe, or you'll answer to Gandalf, yes you will." You supress a smile and make your sleeping arrangements.
+2e=Barliman's face narrows at the sight of Strider. "Those little hobbits better be safe, or you'll answer to Gandalf, yes you will." You supress a smile and make your sleeping arrangements.
+
+# "Welcome to the Prancing Pony." the innkeeper says. "Enjoy your... Nob!" At the sound of broken plates he turns his back on you and starts shouting at a servant."
+2f="Welcome to the Prancing Pony." the innkeeper says. "Enjoy your... Nob!" At the sound of broken plates he turns his back on you and starts shouting at a servant."
+
+# I hope you have a pleasant stay at the Prancing Pony. If you'd like to sing, step into the center of the common room.
+30=I hope you have a pleasant stay at the Prancing Pony. If you'd like to sing, step into the center of the common room.
+
+# If I were you, I wouldn't trust a Ranger.
+31=If I were you, I wouldn't trust a Ranger.
+
+# Gandalf! That reminds me... can't remember it right now. Last I saw him he was talking to the blacksmith.
+32=Gandalf! That reminds me... can't remember it right now. Last I saw him he was talking to the blacksmith.
+
+# Butterbur pulls out a sheet of paper written in a strong and graceful script. "I beg your pardon. I'm a mortal afraid of what Gandalf would say, if harm comes of it. Gandalf asked me to send this to the Shire, but I got busy, and forgot!"
+33=Butterbur pulls out a sheet of paper written in a strong and graceful script. "I beg your pardon. I'm a mortal afraid of what Gandalf would say, if harm comes of it. Gandalf asked me to send this to the Shire, but I got busy, and forgot!"
+
+# Ruffians they are, telling strange stories and causing trouble. Don't go near them.
+34=Ruffians they are, telling strange stories and causing trouble. Don't go near them.
+
+# A young hobbit rushes by, in a hysterical state. "Ned Bushdock's gone. His hole is all tore up. Won't someone find what's happened to poor old Ned."
+35=A young hobbit rushes by, in a hysterical state. "Ned Bushdock's gone. His hole is all tore up. Won't someone find what's happened to poor old Ned."
+
+# With a wave of his hand and a nod, a strange weather-beaten man invites Frodo over to the corner. "I am called Strider." he says in a low voice. "I am pleased to meet you."
+36=With a wave of his hand and a nod, a strange weather-beaten man invites Frodo over to the corner. "I am called Strider." he says in a low voice. "I am pleased to meet you."
+
+# If I were you, I would watch what you say here. Talk can be dangerous, and this isn't the Shire. Be careful!
+37=If I were you, I would watch what you say here. Talk can be dangerous, and this isn't the Shire. Be careful!
+
+# It is not safe to talk here. Come to the Parlor later -- but be cautious! The Enemy is closer than you think.
+38=It is not safe to talk here. Come to the Parlor later -- but be cautious! The Enemy is closer than you think.
+
+# See me later if you need a pony. Now get lost.
+39=See me later if you need a pony. Now get lost.
+
+# Go to the Curio Shoppe, Mr Baggins. Ask of magic.
+3a=Go to the Curio Shoppe, Mr Baggins. Ask of magic.
+
+# Sing us a song of far away!
+3b=Sing us a song of far away!
+
+# Once in the story circle, Pippin begins to tell many tales. At last he begins to talk about Bilbo's disappearance. You fear he will mention the Ring! Strider hisses "Do something quick!" Will Frodo start a song as a distraction (Y/N)?
+3c=Once in the story circle, Pippin begins to tell many tales. At last he begins to talk about Bilbo's disappearance. You fear he will mention the Ring! Strider hisses "Do something quick!" Will Frodo start a song as a distraction (Y/N)?
+
+# While Barliman disapproves of your acrobatics, you receive a loud round of applause. It isn't until later that you notice that you almost put on the Ring!
+3d=While Barliman disapproves of your acrobatics, you receive a loud round of applause. It isn't until later that you notice that you almost put on the Ring!
+
+# As you sing, you begin to show off. Then -- trouble. You stick your hand in your pocket, and accidently put on the Ring! There is much amazement, and many people leave. Some are whispering sinisterly to each other.
+3e=As you sing, you begin to show off. Then -- trouble. You stick your hand in your pocket, and accidently put on the Ring! There is much amazement, and many people leave. Some are whispering sinisterly to each other.
+
+# Pippin wins a great round of applause, but his story sparks suspicions. Several people leave the inn, giving you sinister glances as they go.
+3f=Pippin wins a great round of applause, but his story sparks suspicions. Several people leave the inn, giving you sinister glances as they go.
+
+# There is something here that you might use.
+40=There is something here that you might use.
+
+# You have been much too careless so far. I will help you, but I have my price.
+41=You have been much too careless so far. I will help you, but I have my price.
+
+# No more than you can afford. You must take me along with you, until I wish to leave you.
+42=No more than you can afford. You must take me along with you, until I wish to leave you.
+
+# Black Horsemen have passed through Bree. Two have been seen, from the North and the South.
+43=Black Horsemen have passed through Bree. Two have been seen, from the North and the South.
+
+# He has an evil name in Bree-land, and sinister folk call at his house. He would sell anything to anybody.
+44=He has an evil name in Bree-land, and sinister folk call at his house. He would sell anything to anybody.
+
+# He is my friend. I last saw him in the spring. He said that he would be at your side, so I allowed myself to leave him.
+45=He is my friend. I last saw him in the spring. He said that he would be at your side, so I allowed myself to leave him.
+
+# See Paragraph #189
+46=See Paragraph #189
+
+# Butterbur enters, muttering many excuses. "Gandalf asked me to send this, but I got distracted. I don't know where the second page is; I think someone took it."
+47=Butterbur enters, muttering many excuses. "Gandalf asked me to send this, but I got distracted. I don't know where the second page is; I think someone took it."
+
+# The stables of the Prancing Pony are a shambles. Someone has stolen all of the ponies!
+48=The stables of the Prancing Pony are a shambles. Someone has stolen all of the ponies!
+
+# A flash of light reflects off the surface of something that is mostly buried in a hole.
+49=A flash of light reflects off the surface of something that is mostly buried in a hole.
+
+# You spot a form lying face down on the ground. Turning it over, you discover the dead body of Ned Bushdock! He appears to have been very frightened when he died. "But Ned was the sturdiest hobbit in Bree!" a man declares.
+4a=You spot a form lying face down on the ground. Turning it over, you discover the dead body of Ned Bushdock! He appears to have been very frightened when he died. "But Ned was the sturdiest hobbit in Bree!" a man declares.
+
+# He lives west, beyond the wood.
+4b=He lives west, beyond the wood.
+
+# Bandits have taken him hostage! Please save him!
+4c=Bandits have taken him hostage! Please save him!
+
+# Search south of Weathertop.
+4d=Search south of Weathertop.
+
+# Welcome to the Chetwood Inn, the finest inn in Archet! Our ale is the best, but don't drink too much!
+4e=Welcome to the Chetwood Inn, the finest inn in Archet! Our ale is the best, but don't drink too much!
+
+# Welcome to the Forsaken Inn. I am Orin son of Fundin; I have little to offer, except for a place to rest.
+4f=Welcome to the Forsaken Inn. I am Orin son of Fundin; I have little to offer, except for a place to rest.
+
+# He sealed the mines long ago.
+50=He sealed the mines long ago.
+
+# Three skulls seek a fourth.
+51=Three skulls seek a fourth.
+
+# Fundin left a secret in my cellar.
+52=Fundin left a secret in my cellar.
+
+# A dwarf should lead.
+53=A dwarf should lead.
+
+# Oh him. I wouldn't listen to him too much. He claims there are caverns under Rivendell. Ha!
+54=Oh him. I wouldn't listen to him too much. He claims there are caverns under Rivendell. Ha!
+
+# Good 'ol Borri. We fought side by side while exploring secret caves in the trollshaws. Trolls, bah!
+55=Good 'ol Borri. We fought side by side while exploring secret caves in the trollshaws. Trolls, bah!
+
+# His brother Hain has disappeared in Mirkwood!
+56=His brother Hain has disappeared in Mirkwood!
+
+# Outside, horses ride up. It sounds like the Black Riders are coming! Orin immediately recognizes your peril. "There's a secret passage under the bed in the southeast room. Find it, and wait for an hour until they go away. Hurry!"
+57=Outside, horses ride up. It sounds like the Black Riders are coming! Orin immediately recognizes your peril. "There's a secret passage under the bed in the southeast room. Find it, and wait for an hour until they go away. Hurry!"
+
+# On a large stone table rests three green skulls. There is a single empty space on the table. A single silent spirit watches you.
+58=On a large stone table rests three green skulls. There is a single empty space on the table. A single silent spirit watches you.
+
+# In dwarven runes, a bleak grey stone proclaims: "Here lie Buri, Nain, and Glain. Many were the orcs who fell before their axes at Azanulbizar."
+59=In dwarven runes, a bleak grey stone proclaims: "Here lie Buri, Nain, and Glain. Many were the orcs who fell before their axes at Azanulbizar."
+
+# On the sides of these sarcophogi, the dwarven runes say: "They fought at the Battle of Five Armies, now side by side they lie; Dain's surest soldiers, Baldor, Orin, and Bolthor"."
+5a=On the sides of these sarcophogi, the dwarven runes say: "They fought at the Battle of Five Armies, now side by side they lie; Dain's surest soldiers, Baldor, Orin, and Bolthor"."
+
+# So. What's your business?
+5b=So. What's your business?
+
+# You wonder what these marshflies eat when they can't get hobbits or people!
+5c=You wonder what these marshflies eat when they can't get hobbits or people!
+
+# A small brown bird with a broken wing is thrashing on the ground.
+5d=A small brown bird with a broken wing is thrashing on the ground.
+
+# With a cry of "Gandalf! Gandalf!" the bird soars towards Weathertop as if its wing had never been broken.
+5e=With a cry of "Gandalf! Gandalf!" the bird soars towards Weathertop as if its wing had never been broken.
+
+# Aragorn begins to recite the Lay of Luthien, a tale of the Elder Days, when suddenly he notices something in the rising moonlight. "Get back!"he snaps. The Black Riders are coming.
+5f=Aragorn begins to recite the Lay of Luthien, a tale of the Elder Days, when suddenly he notices something in the rising moonlight. "Get back!"he snaps. The Black Riders are coming.
+
+# Rangers! Bree would have to be in bad trouble for me to have anything to do with them!
+60=Rangers! Bree would have to be in bad trouble for me to have anything to do with them!
+
+# How awful. We must rid Bree of such vermin.
+61=How awful. We must rid Bree of such vermin.
+
+# Don't waste my time with small talk.
+62=Don't waste my time with small talk.
+
+# There are many small openings within these ruins, leading down into absolute blackness.
+63=There are many small openings within these ruins, leading down into absolute blackness.
+
+# The stream surges upward, as if rising from some depth.
+64=The stream surges upward, as if rising from some depth.
+
+# "At last!" says the ghost, with a hint of sadness. "Yes, you are free to go. I thank-you. You have done more for me than you will ever know."
+65="At last!" says the ghost, with a hint of sadness. "Yes, you are free to go. I thank-you. You have done more for me than you will ever know."
+
+# The water enters a deep tunnel here.
+66=The water enters a deep tunnel here.
+
+# There is a shaft leading upwards here.
+67=There is a shaft leading upwards here.
+
+# Oh yes, of course. Now where did I put that healing leaf ah -- here it is.
+68=Oh yes, of course. Now where did I put that healing leaf ah -- here it is.
+
+# The Goblins of the Misty Mountains have moved West! Several orcs are asleep on the ground before you.
+69=The Goblins of the Misty Mountains have moved West! Several orcs are asleep on the ground before you.
+
+# Try as you might, you cannot get through this thick wall of spider webs!
+6a=Try as you might, you cannot get through this thick wall of spider webs!
+
+# The spider blade glows and shrieks, and the webs melt before it, cutting a path through the crypt toward a mysterious object on an altar.
+6b=The spider blade glows and shrieks, and the webs melt before it, cutting a path through the crypt toward a mysterious object on an altar.
+
+# The slope of this ledge seems very treacherous indeed. The slightest misstep could lead to a very big fall.
+6c=The slope of this ledge seems very treacherous indeed. The slightest misstep could lead to a very big fall.
+
+# You misstep, tumbling down the slope! 
+6d=You misstep, tumbling down the slope! 
+
+# Upon a bronze dias is a box with the symbol of seven stars, seven stones, and one white tree.
+6e=Upon a bronze dias is a box with the symbol of seven stars, seven stones, and one white tree.
+
+# The box glows with a strange blue light, then slowly opens, revealling the Torc of Maladan!
+6f=The box glows with a strange blue light, then slowly opens, revealling the Torc of Maladan!
+
+# For reasons the Ringbearer cannot understand, the Ring gets heavier. Slowly the box begins to open, revealling the torc of Maladan.
+70=For reasons the Ringbearer cannot understand, the Ring gets heavier. Slowly the box begins to open, revealling the torc of Maladan.
+
+# Athelwyn smiles and says: "At last! After centuries of waiting -- the torc of Maladan is mine! Not to mention a considerable bonus!"
+71=Athelwyn smiles and says: "At last! After centuries of waiting -- the torc of Maladan is mine! Not to mention a considerable bonus!"
+
+# Out of the shadows, a woman in a black cloak appears. It is Athelwyn, the witch of Cardolan!
+72=Out of the shadows, a woman in a black cloak appears. It is Athelwyn, the witch of Cardolan!
+
+# I heard about some men on big horses near Ned Bushdock's place. Ned always got in real deep in trouble.
+73=I heard about some men on big horses near Ned Bushdock's place. Ned always got in real deep in trouble.
+
+# Always exploring places. Snuck into some place called Gorthad, near the Downs. Made them Sharkey folks mad.
+74=Always exploring places. Snuck into some place called Gorthad, near the Downs. Made them Sharkey folks mad.
+
+# I didn't say anything! You have understand, it doesn't pay to have certain folk mad at you!
+75=I didn't say anything! You have understand, it doesn't pay to have certain folk mad at you!
+
+# When you pass close to this section of the town wall, you spot a secret tunnel, which slopes sharply downward into the darkness.
+76=When you pass close to this section of the town wall, you spot a secret tunnel, which slopes sharply downward into the darkness.
+
+# It is an easier climb than it first appeared. You descend into the darkness.
+77=It is an easier climb than it first appeared. You descend into the darkness.
+
+# Nob Appledore is not here. His home is empty.
+78=Nob Appledore is not here. His home is empty.
+
+# You can find him in Staddle, when he isn't wandering about the wilds.
+79=You can find him in Staddle, when he isn't wandering about the wilds.
+
+# He will come, but cannot help you. If you survive, seek him in Rivendell.
+7a=He will come, but cannot help you. If you survive, seek him in Rivendell.
+
+# Memories of Luthien can be found in a cave beneath Weathertop, but the way is perilous!
+7b=Memories of Luthien can be found in a cave beneath Weathertop, but the way is perilous!
+
+# The healer takes a sack of long leaves, places the contents in a pot, and lets it boil. The invigorating scent heals your wounds and eases your pains. "My athelas is old." he says. "I shall have to find new leaves."
+7c=The healer takes a sack of long leaves, places the contents in a pot, and lets it boil. The invigorating scent heals your wounds and eases your pains. "My athelas is old." he says. "I shall have to find new leaves."
+
+# Greetings, dear hearts. I am glad to see that you have survived your perils. I will help you.
+7d=Greetings, dear hearts. I am glad to see that you have survived your perils. I will help you.
+
+# My family has the gift of far-sight. I knew you would come. Only with the blessing of Luthien will you triumph.
+7e=My family has the gift of far-sight. I knew you would come. Only with the blessing of Luthien will you triumph.
+
+# Packs of wolves now wander about the wilderness. Huge wolves which the Rangers call wargs.
+7f=Packs of wolves now wander about the wilderness. Huge wolves which the Rangers call wargs.
+
+# Three armed men with clubs confront you! "Get them, men!" their leader snarls. "No one travels between the mountains and Bree without the consent of Sharku, and he ain't giving no consent to no one!"
+80=Three armed men with clubs confront you! "Get them, men!" their leader snarls. "No one travels between the mountains and Bree without the consent of Sharku, and he ain't giving no consent to no one!"
+
+# He sells food in Bree, or would sell food, if those Sharkey folks weren't buying everything.
+81=He sells food in Bree, or would sell food, if those Sharkey folks weren't buying everything.
+
+# In this spot, melting snow and rainwater collects to form the stream. You notice a small hole next to the source, that leads down into the earth.
+82=In this spot, melting snow and rainwater collects to form the stream. You notice a small hole next to the source, that leads down into the earth.
+
+# There is an ancient doorway here, cunningly concealed. Examining it closely, you find it is blocked  by layers of rubble.
+83=There is an ancient doorway here, cunningly concealed. Examining it closely, you find it is blocked  by layers of rubble.
+
+# The sword from Withywindle's cave begins to hum wildly.
+84=The sword from Withywindle's cave begins to hum wildly.
+
+# There is a locked chest here.
+85=There is a locked chest here.
+
+# Within this chest is a piece of a sword that was broken long ago.
+86=Within this chest is a piece of a sword that was broken long ago.
+
+# You step on thin air. The first step across the Pit is also your last.
+87=You step on thin air. The first step across the Pit is also your last.
+
+# There is something magical about this section of the north wall. You get a very strange feeling from it.
+88=There is something magical about this section of the north wall. You get a very strange feeling from it.
+
+# There is something unusual about the west wall of this crypt.
+89=There is something unusual about the west wall of this crypt.
+
+# The spell causes the box to glow with a faint grey light. The lock rattles and shatters, and the box opens, revealing the Golden Torc of Maladan!
+8a=The spell causes the box to glow with a faint grey light. The lock rattles and shatters, and the box opens, revealing the Golden Torc of Maladan!
+
+# The thickness of the webbing makes it impossible to move any further. Even hacking at it with a sword or dagger would be futile.
+8b=The thickness of the webbing makes it impossible to move any further. Even hacking at it with a sword or dagger would be futile.
+
+# See Paragraph #35
+8c=See Paragraph #35
+
+# See Paragraph #14
+8d=See Paragraph #14
+
+# I kept both pages together; someone must have stolen it! I know people were interested in Gandalf's visit.
+8e=I kept both pages together; someone must have stolen it! I know people were interested in Gandalf's visit.
+
+# Gandalf is pretty close with the blacksmith, and Willa Bloom and Rayf Brogan were asking lots of questions.
+8f=Gandalf is pretty close with the blacksmith, and Willa Bloom and Rayf Brogan were asking lots of questions.
+
+# If you cannot show me this, then do not try to gain entry past me!
+90=If you cannot show me this, then do not try to gain entry past me!
+
+# Strider says "No! The Black Riders will expect us to go these beds. Nor should we walk the streets of Bree after sunset -- it is perilous to face them in the dead of night."
+91=Strider says "No! The Black Riders will expect us to go these beds. Nor should we walk the streets of Bree after sunset -- it is perilous to face them in the dead of night."
+
+# A scoundrel. Chief of the highwaymen, a brigand! Lives in a hobbit hole in Combe, though he's no hobbit.
+92=A scoundrel. Chief of the highwaymen, a brigand! Lives in a hobbit hole in Combe, though he's no hobbit.
+
+# She runs the Charme Shoppe. I don't like to speak ill of Breefolk, but I never liked the looks of her.
+93=She runs the Charme Shoppe. I don't like to speak ill of Breefolk, but I never liked the looks of her.
+
+# Oh dear! I've drawn a blank on that one. Perhaps you can find someone else to help you there.
+94=Oh dear! I've drawn a blank on that one. Perhaps you can find someone else to help you there.
+
+# We haven't seen them in months, and if they never come back, it's all to the good, if you know what I mean.
+95=We haven't seen them in months, and if they never come back, it's all to the good, if you know what I mean.
+
+# I don't know his business, but anything involving him means no good, and that's the truth!
+96=I don't know his business, but anything involving him means no good, and that's the truth!
+
+# I last saw him talking with that no-good Bill Ferny, and then I never saw him again. I'm real worried!
+97=I last saw him talking with that no-good Bill Ferny, and then I never saw him again. I'm real worried!
+
+# Times have gotten hard. There are wolves and robbers and things that would chill your blood.
+98=Times have gotten hard. There are wolves and robbers and things that would chill your blood.
+
+# Bill Ferny has been stealing horses and selling them to squinty-faced folk from the South.
+99=Bill Ferny has been stealing horses and selling them to squinty-faced folk from the South.
+
+# Strange folk from the South have come to Bree. I think some of them want to cause trouble.
+9a=Strange folk from the South have come to Bree. I think some of them want to cause trouble.
+
+# Men in black clothes riding big black horses have been seen in Bree.
+9b=Men in black clothes riding big black horses have been seen in Bree.
+
+# Someone said there is a secret tunnel in the Forsaken Inn.
+9c=Someone said there is a secret tunnel in the Forsaken Inn.
+
+# Someone brought a green skull to the Staddle Curio Shoppe. Who would want to buy a thing like that?
+9d=Someone brought a green skull to the Staddle Curio Shoppe. Who would want to buy a thing like that?
+
+# Shire folk have gone mad, and are running into the sea and diving in by the hundreds!
+9e=Shire folk have gone mad, and are running into the sea and diving in by the hundreds!
+
+# Rayf Brogan stole a letter from Barliman Butterbur, a letter from that wizard, Gandalf!
+9f=Rayf Brogan stole a letter from Barliman Butterbur, a letter from that wizard, Gandalf!
+
+# Little Bob Thistlewood snuck up to Weathertop and went exploring. That's no place for a lad to go.
+a0=Little Bob Thistlewood snuck up to Weathertop and went exploring. That's no place for a lad to go.
+
+# Dwarves say that a statue of that wizard, Gandalf, can be found under the Last Bridge.
+a1=Dwarves say that a statue of that wizard, Gandalf, can be found under the Last Bridge.
+
+# Old Ted Bloom's ghost haunts Bree at night. It's said he practised black magic.
+a2=Old Ted Bloom's ghost haunts Bree at night. It's said he practised black magic.
+
+# The blacksmith went near the Barrow Downs and found a magic sword.
+a3=The blacksmith went near the Barrow Downs and found a magic sword.
+
+# Ned Bushdock has been seen digging near the southwest corner of Bree. I hear he knows about buried treasure.
+a4=Ned Bushdock has been seen digging near the southwest corner of Bree. I hear he knows about buried treasure.
+
+# Some men from a place called Gorthad have been buying up all the goods they can get their hands on.
+a5=Some men from a place called Gorthad have been buying up all the goods they can get their hands on.
+
+# The Rangers and the men on black horses have had several battles, not that either of 'em are any good.
+a6=The Rangers and the men on black horses have had several battles, not that either of 'em are any good.
+
+# Strange lights have been seen lately at Weathertop.
+a7=Strange lights have been seen lately at Weathertop.
+
+# Wolves have been prowling the Great Road, attacking hobbits and Big Folk alike!
+a8=Wolves have been prowling the Great Road, attacking hobbits and Big Folk alike!
+
+# Bob Thistlewood has been exploring huge caverns made in the old days by dwarves under Weathertop.
+a9=Bob Thistlewood has been exploring huge caverns made in the old days by dwarves under Weathertop.
+
+# The insects in the Midgemarch are biting mighty fierce these days.
+aa=The insects in the Midgemarch are biting mighty fierce these days.
+
+# Rayf Brogan had poor Ned Bushdock murdered!
+ab=Rayf Brogan had poor Ned Bushdock murdered!
+
+# Harry Goatleaf is very close with these folk from Sharkey's Shipping.
+ac=Harry Goatleaf is very close with these folk from Sharkey's Shipping.
+
+# Someone has been stealing horses, especially from travellers.
+ad=Someone has been stealing horses, especially from travellers.
+
+# Strange fog on the Barrow Downs of late. Folk who go into it are never seen again.
+ae=Strange fog on the Barrow Downs of late. Folk who go into it are never seen again.
+
+# Nob Appledore hides a magic axe which he got from the dwarves.
+af=Nob Appledore hides a magic axe which he got from the dwarves.
+
+# Someone has been stealing books from the Great Library of Bree.
+b0=Someone has been stealing books from the Great Library of Bree.
+
+# Huge wolf-riding goblins have been seen near Weathertop!
+b1=Huge wolf-riding goblins have been seen near Weathertop!
+
+# There was a battle between the Rangers and Rayf Brogan's bandits. No one was killed, but Brogan is furious!
+b2=There was a battle between the Rangers and Rayf Brogan's bandits. No one was killed, but Brogan is furious!
+
+# More Rangers have been seen around Bree. They're spying on us, and then tell the elves everything!
+b3=More Rangers have been seen around Bree. They're spying on us, and then tell the elves everything!
+
+# Nick Underhill has been in a really bad mood lately!
+b4=Nick Underhill has been in a really bad mood lately!
+
+# That wizard, Gandalf, has been visiting Bree a lot in the last few years.
+b5=That wizard, Gandalf, has been visiting Bree a lot in the last few years.
+
+# What's it to you? My news is my own business, so run along and bother someone else.
+b6=What's it to you? My news is my own business, so run along and bother someone else.
+
+# There was a dwarf with a really good singing voice, if you believe that, at the Prancing Pony.
+b7=There was a dwarf with a really good singing voice, if you believe that, at the Prancing Pony.
+
+# The Chetwood Inn has a really good crop of mushrooms. Came all the way from the Shire!
+b8=The Chetwood Inn has a really good crop of mushrooms. Came all the way from the Shire!
+
+# Rough looking Men are searching for a travelling Shire hobbit named Baggins.
+b9=Rough looking Men are searching for a travelling Shire hobbit named Baggins.
+
+# That Ranger, Strider, has been lurking around Bree a lot lately.
+ba=That Ranger, Strider, has been lurking around Bree a lot lately.
+
+# Dwarves are talking about big troubles in the East and in the South. They even talk about -- Mordor!
+bb=Dwarves are talking about big troubles in the East and in the South. They even talk about -- Mordor!
+
+# It's not safe to walk the streets of Bree at night anymore.
+bc=It's not safe to walk the streets of Bree at night anymore.
+
+# Hullo. You look like someone who isn't a ruffian. A pleasure to meet a pleasant stranger for a change.
+bd=Hullo. You look like someone who isn't a ruffian. A pleasure to meet a pleasant stranger for a change.
+
+# I thought I was the only one foolish enough to go for a walk at night.
+be=I thought I was the only one foolish enough to go for a walk at night.
+
+# It's cold this evening, isn't it?
+bf=It's cold this evening, isn't it?
+
+# Folk are rather peculiar there, being so close to the sea.
+c0=Folk are rather peculiar there, being so close to the sea.
+
+# It's located on the main road, just east of Bree. Orin the dwarf is the current owner.
+c1=It's located on the main road, just east of Bree. Orin the dwarf is the current owner.
+
+# There are said to be tunnels in the ruins on Weathertop that lead to caverns full of lost treasures.
+c2=There are said to be tunnels in the ruins on Weathertop that lead to caverns full of lost treasures.
+
+# Go away and bother someone else!
+c3=Go away and bother someone else!
+
+# Why someone would build a statue of a wizard and place it in troll country is beyond me.
+c4=Why someone would build a statue of a wizard and place it in troll country is beyond me.
+
+# The Last Bridge is beyond Midgemarch, on the road south and east of Weathertop. That's where trolls live.
+c5=The Last Bridge is beyond Midgemarch, on the road south and east of Weathertop. That's where trolls live.
+
+# Everyone knows it. And his widow, Willa Bloom, she's no better. She's been meeting with them Sharkey folks.
+c6=Everyone knows it. And his widow, Willa Bloom, she's no better. She's been meeting with them Sharkey folks.
+
+# It's just something I heard. Thought it might interest you. Maybe it doesn't.
+c7=It's just something I heard. Thought it might interest you. Maybe it doesn't.
+
+# Mind you, I don't know him personally so I can't say for certain.
+c8=Mind you, I don't know him personally so I can't say for certain.
+
+# I am not sure where it is. Some folks say that it's near the Barrow Downs.
+c9=I am not sure where it is. Some folks say that it's near the Barrow Downs.
+
+# It's terrible! Someone ought to do something about it!
+ca=It's terrible! Someone ought to do something about it!
+
+# I don't even want to think about that place.
+cb=I don't even want to think about that place.
+
+# Dwarves are strange folk, but I've never known them to lie.
+cc=Dwarves are strange folk, but I've never known them to lie.
+
+# It appears that the ruffians are going after Shire hobbits as well as the little folk of Bree.
+cd=It appears that the ruffians are going after Shire hobbits as well as the little folk of Bree.
+
+# A dragon was seen flying over the countryside between the Misty Mountains and the Last Bridge.
+ce=A dragon was seen flying over the countryside between the Misty Mountains and the Last Bridge.
+
+# Who needs gossip when there are so many good books to read.
+cf=Who needs gossip when there are so many good books to read.
+
+# Using the shovel, you manage to force a hole in the wall that you can squeeze through. The passage seems to twist and descend.
+d0=Using the shovel, you manage to force a hole in the wall that you can squeeze through. The passage seems to twist and descend.
+
+# This web is thick and tough enough that you cannot burn through it! This is strange indeed!
+d1=This web is thick and tough enough that you cannot burn through it! This is strange indeed!
+
+# There is a rope to the surface here. Do you wish to climb it? (Y/N)
+d2=There is a rope to the surface here. Do you wish to climb it? (Y/N)
+
+# You have come to the edge of a pit. It appears to be bottomless.
+d3=You have come to the edge of a pit. It appears to be bottomless.
+
+# With a great leap, you fly over the pit and land safely on the far side. That was close!
+d4=With a great leap, you fly over the pit and land safely on the far side. That was close!
+
+# I hope you aren't here to waste my time. I don't like it when people do that.
+d5=I hope you aren't here to waste my time. I don't like it when people do that.
+
+# A nice place to live if you do what you're told.
+d6=A nice place to live if you do what you're told.
+
+# The hobbits among you smell the pipeweed. "This is Longbottom Leaf!" they declare. "As fine a pipeweed as I ever laid eyes on."
+d7=The hobbits among you smell the pipeweed. "This is Longbottom Leaf!" they declare. "As fine a pipeweed as I ever laid eyes on."
+
+# Uh... why would you ask me about that? Oh I think it's time to leave.
+d8=Uh... why would you ask me about that? Oh I think it's time to leave.
+
+# Nobody reads books anymore! Feel free browse through the library.
+d9=Nobody reads books anymore! Feel free browse through the library.
+
+# See Paragraph #245
+da=See Paragraph #245
+
+# A wonderful place. And today is a very special day -- we got in a new book on the cuisine of Bree!
+db=A wonderful place. And today is a very special day -- we got in a new book on the cuisine of Bree!
+
+# The ghost adds: "I know the Enemy is following you. You have no hope of escape, without the knowledge and blessing of Elbereth or Luthien. Seek to know them better, for their names have the power to save thee."
+dc=The ghost adds: "I know the Enemy is following you. You have no hope of escape, without the knowledge and blessing of Elbereth or Luthien. Seek to know them better, for their names have the power to save thee."
+
+# A booming voice proclaims: "None may disturb the rest of the Lords of Cardolan!"
+dd=A booming voice proclaims: "None may disturb the rest of the Lords of Cardolan!"
+
+# Suddenly, amidst great howling, a pack of vicious wargs descends upon you!
+de=Suddenly, amidst great howling, a pack of vicious wargs descends upon you!
+
+# More wargs are coming!
+df=More wargs are coming!
+
+# Dismayed by the ferocity of the defense, the remaining wargs retreat. You have won -- for now.
+e0=Dismayed by the ferocity of the defense, the remaining wargs retreat. You have won -- for now.
+
+# There are fresh wolf tracks in this area -- many wolves, and big ones too!
+e1=There are fresh wolf tracks in this area -- many wolves, and big ones too!
+
+# Everyone likes it here.
+e2=Everyone likes it here.
+
+# Can't say as I know much about that.
+e3=Can't say as I know much about that.
+
+# He is Aragorn, son of Arathorn, and the rightful king of the Dunedain. Trust him with your life.
+e4=He is Aragorn, son of Arathorn, and the rightful king of the Dunedain. Trust him with your life.
+
+# They are the sons of the ancient kings and princes of the North, and protect Bree from harm.
+e5=They are the sons of the ancient kings and princes of the North, and protect Bree from harm.
+
+# The Dark Riders of Mordor! Avoid them! If they hunt you, you are in deadly peril!
+e6=The Dark Riders of Mordor! Avoid them! If they hunt you, you are in deadly peril!
+
+# It is a place of mystery. It is said a lone stone hides a secret entrance that only a magic word may open.
+e7=It is a place of mystery. It is said a lone stone hides a secret entrance that only a magic word may open.
+
+# It is not as safe as it once was. I would not tarry here if I were you.
+e8=It is not as safe as it once was. I would not tarry here if I were you.
+
+# I'm certain we must have something on that subject in our library... I think...
+e9=I'm certain we must have something on that subject in our library... I think...
+
+# It was totally dark and I heard the sound of something big coming at me, so I climbed up again.
+ea=It was totally dark and I heard the sound of something big coming at me, so I climbed up again.
+
+# I didn't find any treasure, but there might be. The caves are full of monsters!
+eb=I didn't find any treasure, but there might be. The caves are full of monsters!
+
+# I like Rangers. They tell great stories of ancient battles and mighty heroes and the Old Kings.
+ec=I like Rangers. They tell great stories of ancient battles and mighty heroes and the Old Kings.
+
+# I sell them if I have one available. I should have some new stock very soon.
+ed=I sell them if I have one available. I should have some new stock very soon.
+
+# You ask too many questions. It's not healthy.
+ee=You ask too many questions. It's not healthy.
+
+# You seem to be friends of the dwarves. For more on Moria, ask at the Forsaken Inn.
+ef=You seem to be friends of the dwarves. For more on Moria, ask at the Forsaken Inn.
+
+# Seek Orin. He knows much of Moria, though I do not know why you are interested in our ancient halls.
+f0=Seek Orin. He knows much of Moria, though I do not know why you are interested in our ancient halls.
+
+# He is a friend of ours.
+f1=He is a friend of ours.
+
+# A traveller saw a tunnel in the side of the bridge. A dwarf entered, and did not return.
+f2=A traveller saw a tunnel in the side of the bridge. A dwarf entered, and did not return.
+
+# The enemy knows you are here. Bree is no longer a safe hiding place.
+f3=The enemy knows you are here. Bree is no longer a safe hiding place.
+
+# Your arrival and the coming of the Black Riders is news enough.
+f4=Your arrival and the coming of the Black Riders is news enough.
+
+# If Gandalf is alive he would ride to Weathertop, and hope to meet us. But the Enemy will do the same!
+f5=If Gandalf is alive he would ride to Weathertop, and hope to meet us. But the Enemy will do the same!
+
+# Mushrooms? Did you say mushrooms? You are going to share them, aren't you? Not that I'm begging, mind you.
+f6=Mushrooms? Did you say mushrooms? You are going to share them, aren't you? Not that I'm begging, mind you.
+
+# My nephew mentioned monsters in the caves under that place. I fear a family of trolls is living there.
+f7=My nephew mentioned monsters in the caves under that place. I fear a family of trolls is living there.
+
+# A dwarf said they come from Mordor and serve the Lord of Darkness hisself!
+f8=A dwarf said they come from Mordor and serve the Lord of Darkness hisself!
+
+# I've never seen times as bad as these. Who knows what new horrors await us tommorrow?
+f9=I've never seen times as bad as these. Who knows what new horrors await us tommorrow?
+
+# Take the east gate out of Bree, turn south at the crossroads, then follow the road.
+fa=Take the east gate out of Bree, turn south at the crossroads, then follow the road.
+
+# I heard Old Pete Foxhole, the librarian, was seen running away from Ned's place.
+fb=I heard Old Pete Foxhole, the librarian, was seen running away from Ned's place.
+
+# I don't see him much. He and Bob Wheathead are friends, though I don't know why.
+fc=I don't see him much. He and Bob Wheathead are friends, though I don't know why.
+
+# I don't know who they are, but they don't mean anyone any good, that's for sure!
+fd=I don't know who they are, but they don't mean anyone any good, that's for sure!
+
+# I have a distant cousin in the Shire, a kind old woman named Lobelia.
+fe=I have a distant cousin in the Shire, a kind old woman named Lobelia.
+
+# There is something buried here.
+ff=There is something buried here.
+

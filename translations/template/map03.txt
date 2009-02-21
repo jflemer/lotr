@@ -1,0 +1,642 @@
+# empty text
+00=empty text
+
+# Upon the center of the bridge is a beryl, an elven stone. Aragorn says: "I will take it as a sign that we may pass the bridge, but beyond that I dare not keep to the road, without some clearer token."
+01=Upon the center of the bridge is a beryl, an elven stone. Aragorn says: "I will take it as a sign that we may pass the bridge, but beyond that I dare not keep to the road, without some clearer token."
+
+# Underneath the bridge is a statue of Gandalf! The statue seems to be pointing towards a hole.
+02=Underneath the bridge is a statue of Gandalf! The statue seems to be pointing towards a hole.
+
+# These water holes are far deeper than they look! You sink to the bottom and drown.
+03=These water holes are far deeper than they look! You sink to the bottom and drown.
+
+# You notice that this huge rock has been moved before.
+04=You notice that this huge rock has been moved before.
+
+# "Look!" one of your party notices. "There's a way up from here!"
+05="Look!" one of your party notices. "There's a way up from here!"
+
+# Your efforts to force your way through only brings a shower of rocks upon you.
+06=Your efforts to force your way through only brings a shower of rocks upon you.
+
+# Out of nowhere, the rain begins. There is no thunder, no lightning, just a constant, depressing, grey drizzle.
+07=Out of nowhere, the rain begins. There is no thunder, no lightning, just a constant, depressing, grey drizzle.
+
+# You are beginning to wonder if this downpour is ever going to end. You are thoroughly drenched.
+08=You are beginning to wonder if this downpour is ever going to end. You are thoroughly drenched.
+
+# A stone from out of nowhere comes flying at the party. You are being ambushed by trolls!
+09=A stone from out of nowhere comes flying at the party. You are being ambushed by trolls!
+
+# The opening on the face of the south cliff is very narrow and covered by debris; you will need to pry it wider if you wish to enter the cave.
+0a=The opening on the face of the south cliff is very narrow and covered by debris; you will need to pry it wider if you wish to enter the cave.
+
+# You hear the sound of horse's hooves approaching. Yet it doesn't sound like a Black Rider's horse; you can hear the sound of bells.
+0b=You hear the sound of horse's hooves approaching. Yet it doesn't sound like a Black Rider's horse; you can hear the sound of bells.
+
+# Whoever it was, the rider passes you by, and is gone.
+0c=Whoever it was, the rider passes you by, and is gone.
+
+# The figure is riding a white horse; he is no Black Rider, but an elf of great nobility. "I am Glorfindel." he says. "Elrond sent me to help you get to his house."
+0d=The figure is riding a white horse; he is no Black Rider, but an elf of great nobility. "I am Glorfindel." he says. "Elrond sent me to help you get to his house."
+
+# Glorfindel explains that elves from the Shire warned all elf-friends of your peril, and Elrond sent many elf-lords to rescue you.
+0e=Glorfindel explains that elves from the Shire warned all elf-friends of your peril, and Elrond sent many elf-lords to rescue you.
+
+# The situation is not good. There are at least five Black Riders behind you, and four Black Riders whose whereabouts is unknown. They are the Ringwraiths, turned into terrifying spirits by the power of Sauron.
+0f=The situation is not good. There are at least five Black Riders behind you, and four Black Riders whose whereabouts is unknown. They are the Ringwraiths, turned into terrifying spirits by the power of Sauron.
+
+# You will undoubtedly find the Ford held against you. You ask about Gandalf. He had not arrived in Rivendell by time Glorfindel had departed, but that was eight days ago.
+10=You will undoubtedly find the Ford held against you. You ask about Gandalf. He had not arrived in Rivendell by time Glorfindel had departed, but that was eight days ago.
+
+# If you should be attacked at the Ford, may Luthien protect you.
+11=If you should be attacked at the Ford, may Luthien protect you.
+
+# He had not reached Rivendell when I left, but that was nine days ago. Gildor sent word he was not with you.
+12=He had not reached Rivendell when I left, but that was nine days ago. Gildor sent word he was not with you.
+
+# "Ringbearer." Glorfindel says. "I think it best that you be mounted. Will you ride my horse?"
+13="Ringbearer." Glorfindel says. "I think it best that you be mounted. Will you ride my horse?"
+
+# There was still an echo as of following feet in the cutting behind you; a rushing noise as if the wind were rising and pouring through the branches of the pines.  Glorfindel turns and cries: "Fly! The enemy is upon us! Fly!"
+14=There was still an echo as of following feet in the cutting behind you; a rushing noise as if the wind were rising and pouring through the branches of the pines.  Glorfindel turns and cries: "Fly! The enemy is upon us! Fly!"
+
+# "May the Blessings of Elbereth and Luthien the Fair follow thee." Glorfindel says.
+15="May the Blessings of Elbereth and Luthien the Fair follow thee." Glorfindel says.
+
+# The Ringbearer climbs onto the great white horse. The elven steed bears him away at the speed of the wind, -- with the Black Riders at his heels.
+16=The Ringbearer climbs onto the great white horse. The elven steed bears him away at the speed of the wind, -- with the Black Riders at his heels.
+
+# The Ringbearer cries: "Go back! Go back to the Land of Mordor and trouble me no more!" The Black Riders laugh: "Come back! Come back! To Mordor we shall take you!" Their dark power sends the Ringbearer toppling from the steed.
+17=The Ringbearer cries: "Go back! Go back to the Land of Mordor and trouble me no more!" The Black Riders laugh: "Come back! Come back! To Mordor we shall take you!" Their dark power sends the Ringbearer toppling from the steed.
+
+# The Ringbearer cannot move.  The Riders, advance, their triumph all but assured. If you are going to do anything, now is the time.
+18=The Ringbearer cannot move.  The Riders, advance, their triumph all but assured. If you are going to do anything, now is the time.
+
+# The moment of salvation passes. The Black Riders surround you, and you realize that it is....
+19=The moment of salvation passes. The Black Riders surround you, and you realize that it is....
+
+# You have found a huge sword of what must be immense magic power. Runes on the blade say: "Dolcarak,  Ologumarth -- Hill of Teeth, Troll's doom."
+1a=You have found a huge sword of what must be immense magic power. Runes on the blade say: "Dolcarak,  Ologumarth -- Hill of Teeth, Troll's doom."
+
+# The waterfall is a very high one. You fall to your deaths.
+1b=The waterfall is a very high one. You fall to your deaths.
+
+# You have come to the Last Homely Home, Elrond's House, at Rivendell. Here you will rest and be healed from your injuries before the quest resumes. You are welcome to wander freely in this house, for there is much wisdom you might learn.
+1c=You have come to the Last Homely Home, Elrond's House, at Rivendell. Here you will rest and be healed from your injuries before the quest resumes. You are welcome to wander freely in this house, for there is much wisdom you might learn.
+
+# Elrond smiles: "The cloaks have been found. The Fellowship is ready to depart. Take from Rivendell whomever you believe will assist you most."
+1d=Elrond smiles: "The cloaks have been found. The Fellowship is ready to depart. Take from Rivendell whomever you believe will assist you most."
+
+# Upon the side of the river bank are three black cloaks, all that the Black Riders left behind as they returned in spirit form to Mordor.
+1e=Upon the side of the river bank are three black cloaks, all that the Black Riders left behind as they returned in spirit form to Mordor.
+
+# A lone elf sits near the waterfall and listens to the sound of the cascade.
+1f=A lone elf sits near the waterfall and listens to the sound of the cascade.
+
+# I am ready to join your quest.
+20=I am ready to join your quest.
+
+# Welcome to the smithy of Lindir, apprentice to Celebrimdor.
+21=Welcome to the smithy of Lindir, apprentice to Celebrimdor.
+
+# I cannot reforge the blade without more of the shards.
+22=I cannot reforge the blade without more of the shards.
+
+# This is my master work. I give you the blade of Elendil, reforged!
+23=This is my master work. I give you the blade of Elendil, reforged!
+
+# Lindir says: "I notice you have a broken ring. If you give it to me, I will fix it for you.
+24=Lindir says: "I notice you have a broken ring. If you give it to me, I will fix it for you.
+
+# Working mightily, Lindir reforges the ring, which glows faintly with magical power. When it has finished cooling, Lindir offers it back to you.
+25=Working mightily, Lindir reforges the ring, which glows faintly with magical power. When it has finished cooling, Lindir offers it back to you.
+
+# There is much to think upon. When all the black cloaks of the Black Riders are found, the Council of Elrond begins.
+26=There is much to think upon. When all the black cloaks of the Black Riders are found, the Council of Elrond begins.
+
+# On the river bank, you find a black cloak.
+27=On the river bank, you find a black cloak.
+
+# Before the quest can resume the shards of the Sword that was broken must be found: gem, blade, and broken wing.
+28=Before the quest can resume the shards of the Sword that was broken must be found: gem, blade, and broken wing.
+
+# See Paragraph #137 in the Text Messages
+29=See Paragraph #137 in the Text Messages
+
+# The council cannot begin without the Ringbearer.
+2a=The council cannot begin without the Ringbearer.
+
+# Long years Sauron lived in that terrible citadel across Anduin, corrupting the Greenwood forest.
+2b=Long years Sauron lived in that terrible citadel across Anduin, corrupting the Greenwood forest.
+
+# Elrond convenes a great council, and Elves, Men, and Dwarves have their say. See Paragraphs #9, #149, #27, #42, and #3.
+2c=Elrond convenes a great council, and Elves, Men, and Dwarves have their say. See Paragraphs #9, #149, #27, #42, and #3.
+
+# Elrond convenes a great council, and Elves, Men, and Dwarves have their say. See Paragraphs #9, #149, #236, #42, and #3.
+2d=Elrond convenes a great council, and Elves, Men, and Dwarves have their say. See Paragraphs #9, #149, #236, #42, and #3.
+
+# See Paragraph #27 in the Text Messages
+2e=See Paragraph #27 in the Text Messages
+
+# See Paragraph #42 in the Text Messages
+2f=See Paragraph #42 in the Text Messages
+
+# Alas! I have bad news! Smeagol, the creature named Gollum, has escaped from us! We fear he is at Dol Guldur!
+30=Alas! I have bad news! Smeagol, the creature named Gollum, has escaped from us! We fear he is at Dol Guldur!
+
+# Bilbo seems rather irritated. "Elves love long talks, and dwarves endure great weariness, but I am a hobbit and I miss my meal. It seems to me all we have to decide is who will take the ring to be destroyed." Do you accept this quest? (Y/N)
+31=Bilbo seems rather irritated. "Elves love long talks, and dwarves endure great weariness, but I am a hobbit and I miss my meal. It seems to me all we have to decide is who will take the ring to be destroyed." Do you accept this quest? (Y/N)
+
+# For months the elves argue over who should destroy the Ring. Finally, Sauron decides it for them -- he conquers Gondor, Rivendell (and the Shire) and takes the Ring for himself.
+32=For months the elves argue over who should destroy the Ring. Finally, Sauron decides it for them -- he conquers Gondor, Rivendell (and the Shire) and takes the Ring for himself.
+
+# A beautiful human woman rises to her feet and embraces Pellisar. Hawkeye returns the gesture, introduces his true love, Elladrien, and announces that he is leaving the Fellowship.
+33=A beautiful human woman rises to her feet and embraces Pellisar. Hawkeye returns the gesture, introduces his true love, Elladrien, and announces that he is leaving the Fellowship.
+
+# Dead? Pellisar. Die he die a ranger's death? Has his ring been returned to the crypt of his fathers?
+34=Dead? Pellisar. Die he die a ranger's death? Has his ring been returned to the crypt of his fathers?
+
+# Elladrien collapses into sobs. The only things she says that is comprehensible is that his ring must be placed in the hall of his fathers.
+35=Elladrien collapses into sobs. The only things she says that is comprehensible is that his ring must be placed in the hall of his fathers.
+
+# My brother Nob is missing and no one wants to help, and I think an evil wizard did it. I came here to ask for help.
+36=My brother Nob is missing and no one wants to help, and I think an evil wizard did it. I came here to ask for help.
+
+# He's from Bree. He said he was taking stuff to a new town called Gorthad, somewhere southwest of Bree.
+37=He's from Bree. He said he was taking stuff to a new town called Gorthad, somewhere southwest of Bree.
+
+# I guess it must be just north of the barrow downs. Bree folk are brave, but we don't want to go near that place.
+38=I guess it must be just north of the barrow downs. Bree folk are brave, but we don't want to go near that place.
+
+# There is a wine bottle sticking out of the north wall. It's a bottle of Old Winyards from the Shire!
+39=There is a wine bottle sticking out of the north wall. It's a bottle of Old Winyards from the Shire!
+
+# Upon taking the bottle, you hear the wall groan. You think there is a secret passage on the north wall!
+3a=Upon taking the bottle, you hear the wall groan. You think there is a secret passage on the north wall!
+
+# The elves think highly of these caverns but I do not. I am certain we shall see better in our travels.
+3b=The elves think highly of these caverns but I do not. I am certain we shall see better in our travels.
+
+# There is something of value here!
+3c=There is something of value here!
+
+# On a rock in the center of the river is a black cloak.
+3d=On a rock in the center of the river is a black cloak.
+
+# Welcome to the library of Rivendell. Books, scrolls, and tomes tower around you. Without help, you despair of finding anything worthwhile in this great Library.
+3e=Welcome to the library of Rivendell. Books, scrolls, and tomes tower around you. Without help, you despair of finding anything worthwhile in this great Library.
+
+# Bilbo helps you find a number of useful scrolls, whose text is reproduced in the Paragraph Book. See Paragraphs #8, #29, #48, #77, #81, #127, #130, #159, #164, and #259 for the appropriate lore.
+3f=Bilbo helps you find a number of useful scrolls, whose text is reproduced in the Paragraph Book. See Paragraphs #8, #29, #48, #77, #81, #127, #130, #159, #164, and #259 for the appropriate lore.
+
+# Gandalf mutters words from under his breath and passes his hands over  the surface. An arch comes into view, decorated with symbols of the elves of Eregion and the dwarves of Moria. An elvish inscription says: "speak, friend, and enter."
+40=Gandalf mutters words from under his breath and passes his hands over  the surface. An arch comes into view, decorated with symbols of the elves of Eregion and the dwarves of Moria. An elvish inscription says: "speak, friend, and enter."
+
+# To the north, the gateway to Moria is now open, but... the waters of the lake begin to seethe, as if a host of snakes are swimming in it, and long sinuous tentacles reach out and attack the Fellowship!
+41=To the north, the gateway to Moria is now open, but... the waters of the lake begin to seethe, as if a host of snakes are swimming in it, and long sinuous tentacles reach out and attack the Fellowship!
+
+# Boromir cries out "Gondor!" and engages the creature, while the rest of the party stabs at the tentacle. The Ringbearer is saved.
+42=Boromir cries out "Gondor!" and engages the creature, while the rest of the party stabs at the tentacle. The Ringbearer is saved.
+
+# The creature pulls the Ringbearer into the vastness of the deep. The Ring and its Bearer are gone.
+43=The creature pulls the Ringbearer into the vastness of the deep. The Ring and its Bearer are gone.
+
+# On a ledge above you, you notice a cave entrance.
+44=On a ledge above you, you notice a cave entrance.
+
+# Crows fly above you, out of arrow range. They seem to be spying on you.
+45=Crows fly above you, out of arrow range. They seem to be spying on you.
+
+# All that you have find in this cave is a single, useless, broken blade.
+46=All that you have find in this cave is a single, useless, broken blade.
+
+# Falling off a two thousand foot cliff was not a very smart idea. You die at the bottom. Sauron rules Middle Earth.
+47=Falling off a two thousand foot cliff was not a very smart idea. You die at the bottom. Sauron rules Middle Earth.
+
+# It is getting bitterly cold. The snow drifts are getting high and movement is rather difficult.
+48=It is getting bitterly cold. The snow drifts are getting high and movement is rather difficult.
+
+# The cold begins to freeze your blood. You wonder if you will ever feel the warmth of a roaring fire again.
+49=The cold begins to freeze your blood. You wonder if you will ever feel the warmth of a roaring fire again.
+
+# You realize that if you stay in this cold too much longer, you will freeze to death.
+4a=You realize that if you stay in this cold too much longer, you will freeze to death.
+
+# The path is blocked by an inpenetrable snow drift. Travel beyond this point is impossible. A cold wind blows as you turn your backs on the Redhorn Gate. Caradhas has beaten you.
+4b=The path is blocked by an inpenetrable snow drift. Travel beyond this point is impossible. A cold wind blows as you turn your backs on the Redhorn Gate. Caradhas has beaten you.
+
+# You have entered a small orc fortress. Its commander, a fat uruk who sent all of his troops to die in battle against you, is shocked to see that you survived. He howls with rage, shouts an orcish curse, and attacks.
+4c=You have entered a small orc fortress. Its commander, a fat uruk who sent all of his troops to die in battle against you, is shocked to see that you survived. He howls with rage, shouts an orcish curse, and attacks.
+
+# There is something buried in the center of this barrow.
+4d=There is something buried in the center of this barrow.
+
+# You dislodge the prize. This ring is adorned with many vile runes and a pearl carved to resemble a skull. Its power mesmerizes you -- almost. Sensing that you intend to destroy it, it transforms itself into an evil spirit and attacks!
+4e=You dislodge the prize. This ring is adorned with many vile runes and a pearl carved to resemble a skull. Its power mesmerizes you -- almost. Sensing that you intend to destroy it, it transforms itself into an evil spirit and attacks!
+
+# The ring spirit is destroyed. It retreats to its ring, but the ring itself has been splintered, and a west wind blows the spirit away. For a brief instant you are surrounded by smiling faces, but they too fade, content at last.
+4f=The ring spirit is destroyed. It retreats to its ring, but the ring itself has been splintered, and a west wind blows the spirit away. For a brief instant you are surrounded by smiling faces, but they too fade, content at last.
+
+# The barrow wights rise from their cold stone beds, an inhuman look on their dead faces. Their movements are slow, their chants ritualistic, like the rites of their ancestors,  the Black Numenoreans, who made sacrifices to the Dark Lord.
+50=The barrow wights rise from their cold stone beds, an inhuman look on their dead faces. Their movements are slow, their chants ritualistic, like the rites of their ancestors,  the Black Numenoreans, who made sacrifices to the Dark Lord.
+
+# Much to your surprise, there do not seem to be any spirits within this barrow.
+51=Much to your surprise, there do not seem to be any spirits within this barrow.
+
+# You have found a bag of ancient gold coins. They appear to be of human origin, possibly from Gondor or even Numenor.
+52=You have found a bag of ancient gold coins. They appear to be of human origin, possibly from Gondor or even Numenor.
+
+# The spirits of this barrow rise and bow to Aragorn. "Your majesty." one says. "Long ago, the people of Numenor came to this place, to make a home in Middle Earth. Then Sauron came, and corrupted many. We spirits of the Faithful request a boon."
+53=The spirits of this barrow rise and bow to Aragorn. "Your majesty." one says. "Long ago, the people of Numenor came to this place, to make a home in Middle Earth. Then Sauron came, and corrupted many. We spirits of the Faithful request a boon."
+
+# The spirits rise and greet you. "This is not a place for living man. But we will tell you this, in the hope that the living can do what the dead cannot. We are the servants of the Faithful. We request a boon."
+54=The spirits rise and greet you. "This is not a place for living man. But we will tell you this, in the hope that the living can do what the dead cannot. We are the servants of the Faithful. We request a boon."
+
+# To our shame, we cannot help thee, and need request a boon of thee, to free us from the curse of Sauron.
+55=To our shame, we cannot help thee, and need request a boon of thee, to free us from the curse of Sauron.
+
+# In the central barrow, the wights of Sauron have hidden a magic ring. To free us, destroy that ring!
+56=In the central barrow, the wights of Sauron have hidden a magic ring. To free us, destroy that ring!
+
+# In Numenor, pride of our greatness and jealousy of those who were greater led to our downfall. Yet not all became evil.
+57=In Numenor, pride of our greatness and jealousy of those who were greater led to our downfall. Yet not all became evil.
+
+# Numenor! Gift of the Valar to those Men who fought against the Great Enemy. Yet faithless in the end were we! Alas!
+58=Numenor! Gift of the Valar to those Men who fought against the Great Enemy. Yet faithless in the end were we! Alas!
+
+# In a corner of this barrow, athelas is growing.
+59=In a corner of this barrow, athelas is growing.
+
+# In the tongue of the Numenorean, you see runes that say: "Melkor rules Aman."
+5a=In the tongue of the Numenorean, you see runes that say: "Melkor rules Aman."
+
+# You notice a slab with runes on it, which read "Amann'ar Melkor."
+5b=You notice a slab with runes on it, which read "Amann'ar Melkor."
+
+# Legolas says that long ago elves dwelt here. Only the stones lament them: "Deep they delved us, fair they wrought us, high they builded us; but they are gone. They sought the Havens long ago."
+5c=Legolas says that long ago elves dwelt here. Only the stones lament them: "Deep they delved us, fair they wrought us, high they builded us; but they are gone. They sought the Havens long ago."
+
+# The sound of wargs howling fills you with fear. You remember an old proverb: "Where the warg howls, there also the orc prowls." It is obvious that the wolves of Sauron are about to attack.
+5d=The sound of wargs howling fills you with fear. You remember an old proverb: "Where the warg howls, there also the orc prowls." It is obvious that the wolves of Sauron are about to attack.
+
+# On the floor of this ruin are two shields of dwarven manufacture.
+5e=On the floor of this ruin are two shields of dwarven manufacture.
+
+# There are tracks on the floor of this cave, slightly larger than hobbit-sized, made by flapping feet. In the corner of the cave are the gnawed bones of a small orc, as well as an odd-shaped key made from a strange black metal.
+5f=There are tracks on the floor of this cave, slightly larger than hobbit-sized, made by flapping feet. In the corner of the cave are the gnawed bones of a small orc, as well as an odd-shaped key made from a strange black metal.
+
+# Along the eastern wall, you think there might be an entrance into a secret passage.
+60=Along the eastern wall, you think there might be an entrance into a secret passage.
+
+# You believe that the light blue areas may be places where the ice is thin and you might fall through.
+61=You believe that the light blue areas may be places where the ice is thin and you might fall through.
+
+# Crunch! There is a great cracking sound, and you find yourself falling through the ice and into a pool of freezing cold water.
+62=Crunch! There is a great cracking sound, and you find yourself falling through the ice and into a pool of freezing cold water.
+
+# Ths spirit is broken. It rises up like a blizzard, then melts into a pool of black water. A west wind rises, and blows its fragments into nothingness.
+63=Ths spirit is broken. It rises up like a blizzard, then melts into a pool of black water. A west wind rises, and blows its fragments into nothingness.
+
+# The warmth melts the ice which imprisoned the bird of spring. "Flee." the bird tells you. "For the gluttony of winter upon the Redhorn is now at an end, but a far more important task lies ahead."
+64=The warmth melts the ice which imprisoned the bird of spring. "Flee." the bird tells you. "For the gluttony of winter upon the Redhorn is now at an end, but a far more important task lies ahead."
+
+# Welcome to Rivendell, strangers. I hope our home brings you peace and merriment.
+65=Welcome to Rivendell, strangers. I hope our home brings you peace and merriment.
+
+# Have you seen our library? Bilbo loves it.
+66=Have you seen our library? Bilbo loves it.
+
+# Ai na vedui, mellon! Oh you don't speak elvish; ai na vedui means "welcome" and mellon means "friend".
+67=Ai na vedui, mellon! Oh you don't speak elvish; ai na vedui means "welcome" and mellon means "friend".
+
+# You behold one in whom it is said that the beauty of Luthien has come to earth again, Arwen Evenstar, Elrond's daughter. What gift could be worthy of one of such beauty?
+68=You behold one in whom it is said that the beauty of Luthien has come to earth again, Arwen Evenstar, Elrond's daughter. What gift could be worthy of one of such beauty?
+
+# Arwen is surprised, but delighted by your gift. "I have a token of my own." she says. "Perhaps your Quest may take you to Lothlorien. If it does, and you have problems gaining entry in seeing Galadriel, show this to the guard at her gate."
+69=Arwen is surprised, but delighted by your gift. "I have a token of my own." she says. "Perhaps your Quest may take you to Lothlorien. If it does, and you have problems gaining entry in seeing Galadriel, show this to the guard at her gate."
+
+# I hope you find that Rivendell is a welcome rest on your Quest.
+6a=I hope you find that Rivendell is a welcome rest on your Quest.
+
+# Feel free to wander our corridors. There is much lore and wisdom to be gained here. Seek all you can find.
+6b=Feel free to wander our corridors. There is much lore and wisdom to be gained here. Seek all you can find.
+
+# A grey-haired elf turns towards you. "I am Erestor." he says. "I know of lost Magic and teach of lore skills. Are you interested in learning? (Y/N)"
+6c=A grey-haired elf turns towards you. "I am Erestor." he says. "I know of lost Magic and teach of lore skills. Are you interested in learning? (Y/N)"
+
+# "Alas." your instructor says. "I have nothing left to teach you."
+6d="Alas." your instructor says. "I have nothing left to teach you."
+
+# Erestor tells many tales, which get mingled in the telling. See Paragraphs #6, #58, #92, and #234.
+6e=Erestor tells many tales, which get mingled in the telling. See Paragraphs #6, #58, #92, and #234.
+
+# Welcome to the outfitters! I think you'll find a wide selection to fit your needs. Take what you want.
+6f=Welcome to the outfitters! I think you'll find a wide selection to fit your needs. Take what you want.
+
+# A tall dark elf man faces you. "Welcome." he says. "I am Elladan, Elrond's son. I have been asked to share my skills with those who will continue the quest. Are you interested?" (Y/N)
+70=A tall dark elf man faces you. "Welcome." he says. "I am Elladan, Elrond's son. I have been asked to share my skills with those who will continue the quest. Are you interested?" (Y/N)
+
+# Bilbo is glad to see you, but you notice that he is very tired these days. He usually tells a few stories and then falls asleep.
+71=Bilbo is glad to see you, but you notice that he is very tired these days. He usually tells a few stories and then falls asleep.
+
+# Bilbo is glad to see you. "Have you got it here?" he says, referring to the Ring. "After all I've heard I should very much like just to peep at it again, if only for a moment." Do you allow Bilbo a look at the Ring? (Y/N)
+72=Bilbo is glad to see you. "Have you got it here?" he says, referring to the Ring. "After all I've heard I should very much like just to peep at it again, if only for a moment." Do you allow Bilbo a look at the Ring? (Y/N)
+
+# To your dismay, you find yourself no longer looking at Bilbo, but at a hungry, grasping creature. "Put it away!" Bilbo says. "I am sorry, sorry that you have come into this burden. I do have something better to give you, my dagger and armor." 
+73=To your dismay, you find yourself no longer looking at Bilbo, but at a hungry, grasping creature. "Put it away!" Bilbo says. "I am sorry, sorry that you have come into this burden. I do have something better to give you, my dagger and armor." 
+
+# "Very well." Bilbo cannot hide his keen disappointment from you.
+74="Very well." Bilbo cannot hide his keen disappointment from you.
+
+# A tall dark elven man faces you. "Welcome." he says. "I am Elrohir, Elrond's son. I have been asked to share my skills with those who will continue the quest. Are you interested?" (Y/N)
+75=A tall dark elven man faces you. "Welcome." he says. "I am Elrohir, Elrond's son. I have been asked to share my skills with those who will continue the quest. Are you interested?" (Y/N)
+
+# Near the river bank is a black cloak. Unfortunately there are barrow wights wandering around!
+76=Near the river bank is a black cloak. Unfortunately there are barrow wights wandering around!
+
+# Near the river bank is a black cloak. Unfortunately, a band of wargs stands between you and it.
+77=Near the river bank is a black cloak. Unfortunately, a band of wargs stands between you and it.
+
+# Rivendell is a place where the lore of the past is preserved. 
+78=Rivendell is a place where the lore of the past is preserved. 
+
+# There are things in Middle Earth that must never be forgotten.
+79=There are things in Middle Earth that must never be forgotten.
+
+# There is no final victory against evil. When evil is defeated, the Shadow always takes a new shape.
+7a=There is no final victory against evil. When evil is defeated, the Shadow always takes a new shape.
+
+# Welcome, members of the Quest, to Rivendell. May peace and joy be with you here.
+7b=Welcome, members of the Quest, to Rivendell. May peace and joy be with you here.
+
+# I honor your struggle. If my father wills it, I will join you.
+7c=I honor your struggle. If my father wills it, I will join you.
+
+# This cave is deserted. An icy wind passes through the entrance; this place is no shelter.
+7d=This cave is deserted. An icy wind passes through the entrance; this place is no shelter.
+
+# In Rivendell, we seek joy and peace even as the outer world falls under the Shadow.
+7e=In Rivendell, we seek joy and peace even as the outer world falls under the Shadow.
+
+# I do not wish to speak of such a thing.
+7f=I do not wish to speak of such a thing.
+
+# You would do well to seek his wisdom.
+80=You would do well to seek his wisdom.
+
+# Gandalf says: "We should hurry to the council chamber. The Council of Elrond is about to begin."
+81=Gandalf says: "We should hurry to the council chamber. The Council of Elrond is about to begin."
+
+# "I offer you miruvor, an elixir, to resist the chill of the mountain passes. The crossing of Redhorn Pass will be difficult. It may be impossible. If so, the Mines of Moria are your only alternative.
+82="I offer you miruvor, an elixir, to resist the chill of the mountain passes. The crossing of Redhorn Pass will be difficult. It may be impossible. If so, the Mines of Moria are your only alternative.
+
+# "If you continue into the forest of Lothlorien, the guards will ask you about a question. My name is that question."
+83="If you continue into the forest of Lothlorien, the guards will ask you about a question. My name is that question."
+
+# "May the blessings of Elves and Men and all the Free Folk go with you. May the stars shine upon your faces." With that, Elrond leaves you to depart on the next phase of the Quest of the Ring.
+84="May the blessings of Elves and Men and all the Free Folk go with you. May the stars shine upon your faces." With that, Elrond leaves you to depart on the next phase of the Quest of the Ring.
+
+# Seek Gandalf, for when he has come the Council of Elrond shall begin.
+85=Seek Gandalf, for when he has come the Council of Elrond shall begin.
+
+# I hesitate to advise save in dire need. Seek Erestor, for he has much lore to aid thee.
+86=I hesitate to advise save in dire need. Seek Erestor, for he has much lore to aid thee.
+
+# Seek proof that the Black Riders are nearby, and return. When you are ready, I shall aid you.
+87=Seek proof that the Black Riders are nearby, and return. When you are ready, I shall aid you.
+
+# There is a strange green gemstone in the middle of the bridge.
+88=There is a strange green gemstone in the middle of the bridge.
+
+# The bell in the tower of Rivendell is ringing. The council of Elrond has begun.
+89=The bell in the tower of Rivendell is ringing. The council of Elrond has begun.
+
+# The smith of Rivendell, Lindir, speaks to you: "You have enough of the pieces of Elendil's sword that it may be reforged. I have waited all my long years for such a task. Give me the shards. I will not fail you."
+8a=The smith of Rivendell, Lindir, speaks to you: "You have enough of the pieces of Elendil's sword that it may be reforged. I have waited all my long years for such a task. Give me the shards. I will not fail you."
+
+# For many hours Lindir labours over the forge, assisted by the finest elven craftsmen in Middle Earth. On its blade was traced the device of seven stars between the crescent moon and the rayed sun, and about them were written many runes.
+8b=For many hours Lindir labours over the forge, assisted by the finest elven craftsmen in Middle Earth. On its blade was traced the device of seven stars between the crescent moon and the rayed sun, and about them were written many runes.
+
+# Very bright was that sword when it was made whole again; the light of the sun shone redly in it, and the light of the moon shone cold, and its edge was hard and keen.
+8c=Very bright was that sword when it was made whole again; the light of the sun shone redly in it, and the light of the moon shone cold, and its edge was hard and keen.
+
+# Aragorn says: "I shall give you a new name. For Aragorn, son of Arathorn, goes to war upon the marches of Mordor. You shall be called Anduril, "The Flame of the West"."
+8d=Aragorn says: "I shall give you a new name. For Aragorn, son of Arathorn, goes to war upon the marches of Mordor. You shall be called Anduril, "The Flame of the West"."
+
+# The fate of Middle Earth and all creatures who dwell here is at stake.
+8e=The fate of Middle Earth and all creatures who dwell here is at stake.
+
+# Beyond the East Gate of Moria is the land of my mother's people. It is ruled by the Lady Galadriel.
+8f=Beyond the East Gate of Moria is the land of my mother's people. It is ruled by the Lady Galadriel.
+
+# Seek her wisdom at the Mirror. It is a basin located at the bottom of a deep cleft.
+90=Seek her wisdom at the Mirror. It is a basin located at the bottom of a deep cleft.
+
+# Frodo, my boy! So nice of you to come for a visit.
+91=Frodo, my boy! So nice of you to come for a visit.
+
+# It isn't often that this old hobbit has visitors. Do sit down.
+92=It isn't often that this old hobbit has visitors. Do sit down.
+
+# Bilbo digresses into a poem that has little to do with the question, then dozes briefly.
+93=Bilbo digresses into a poem that has little to do with the question, then dozes briefly.
+
+# A frowning dwarf is closely examining the stones that make up the cavern walls.
+94=A frowning dwarf is closely examining the stones that make up the cavern walls.
+
+# There is something inspiring about the sight of stone under the earth. But this is not as fair as Khazad-dum.
+95=There is something inspiring about the sight of stone under the earth. But this is not as fair as Khazad-dum.
+
+# The conversation turns to dwarven memories of Khazad-dum, the mines of Moria. Gloin explains: "There are seven levels going up and seven deeps going down. The first level and the first deep are the same."
+96=The conversation turns to dwarven memories of Khazad-dum, the mines of Moria. Gloin explains: "There are seven levels going up and seven deeps going down. The first level and the first deep are the same."
+
+# "A magic word opens the west gate. You would find yourself on the first deep, with many tricky passages leading upwards and down. The seventh level, the highest, is the Chamber of Mazurbal, where dwarves made their records..."
+97="A magic word opens the west gate. You would find yourself on the first deep, with many tricky passages leading upwards and down. The seventh level, the highest, is the Chamber of Mazurbal, where dwarves made their records..."
+
+# "The lowest deep is the mithril mines where..." and his voice is tinged with fear. "Durin's Bane was unleashed."
+98="The lowest deep is the mithril mines where..." and his voice is tinged with fear. "Durin's Bane was unleashed."
+
+# "We remember the tall tower on Durin's Lake on the 4th Deep, the great tombs on the 6th Level, the Hall of the First Father on the 5th Level, the Pools of Healing on the 6th Level... it was a wondrous place."
+99="We remember the tall tower on Durin's Lake on the 4th Deep, the great tombs on the 6th Level, the Hall of the First Father on the 5th Level, the Pools of Healing on the 6th Level... it was a wondrous place."
+
+# "It is to be hoped that not all of our treasures were despoiled by the orcs. When the wizard Saruman had but recently come to Middle Earth, he met with Durin, Lord of Moria and devised cunning traps to protect our works, should Khazad-dum fall.
+9a="It is to be hoped that not all of our treasures were despoiled by the orcs. When the wizard Saruman had but recently come to Middle Earth, he met with Durin, Lord of Moria and devised cunning traps to protect our works, should Khazad-dum fall.
+
+# Balin son of Fundin travelled with several hundred dwarves to Khazad-dum. For awhile messengers came to us and said that the great work of restoring the halls of Durin was proceeding -- lately we have heard nothing.
+9b=Balin son of Fundin travelled with several hundred dwarves to Khazad-dum. For awhile messengers came to us and said that the great work of restoring the halls of Durin was proceeding -- lately we have heard nothing.
+
+# Gandalf stands at the gate and frowns. He tries many passwords -- "Edro!" the elvish word for "open". Nothing works. "The password must be elvish, those characters are elvish letters." Gandalf says.
+9c=Gandalf stands at the gate and frowns. He tries many passwords -- "Edro!" the elvish word for "open". Nothing works. "The password must be elvish, those characters are elvish letters." Gandalf says.
+
+# You would think the words on the door would be less cryptic than "Speak, friend, and enter."
+9d=You would think the words on the door would be less cryptic than "Speak, friend, and enter."
+
+# The Eastern road leads into Redhorn Pass. The Southern road leads to Moria.
+9e=The Eastern road leads into Redhorn Pass. The Southern road leads to Moria.
+
+# The trolls shun this cave. When all is quiet, you can discern the voice of an elven singer of long ago, singing a song of Luthien Tinuviel, who helped Beren cut the Silmaril from the Iron Crown of Morgoth. Her name has power over the waters...
+9f=The trolls shun this cave. When all is quiet, you can discern the voice of an elven singer of long ago, singing a song of Luthien Tinuviel, who helped Beren cut the Silmaril from the Iron Crown of Morgoth. Her name has power over the waters...
+
+# The trolls shun this cave. When all is quiet, you can discern the voice of an elven singer of long ago, singing a song of Beren One-Hand, who cut the Silmaril from the Iron Crown of Morgoth. Speak his name in the tomb of his descendents.
+a0=The trolls shun this cave. When all is quiet, you can discern the voice of an elven singer of long ago, singing a song of Beren One-Hand, who cut the Silmaril from the Iron Crown of Morgoth. Speak his name in the tomb of his descendents.
+
+# This door is much larger than man- sized and stuck very tight. Not even a strong human can open this from strength alone.
+a1=This door is much larger than man- sized and stuck very tight. Not even a strong human can open this from strength alone.
+
+# You had thought that this cave would shelter you from the cold, but it does not! The howling wind hurts even through warm clothing. Perhaps this chilling wind is not a natural event.
+a2=You had thought that this cave would shelter you from the cold, but it does not! The howling wind hurts even through warm clothing. Perhaps this chilling wind is not a natural event.
+
+# The orcs in this cave appear to be very cold and hungry.
+a3=The orcs in this cave appear to be very cold and hungry.
+
+# It is a common elven greeting. It has been used for many centuries.
+a4=It is a common elven greeting. It has been used for many centuries.
+
+# It is a beautiful view of Rivendell from here. Though we are too far from the coast to see the sea.
+a5=It is a beautiful view of Rivendell from here. Though we are too far from the coast to see the sea.
+
+# I come from the Grey Havens which lies at the edge of the sea.
+a6=I come from the Grey Havens which lies at the edge of the sea.
+
+# Eventually all elves will go to the sea, and sail to shores where Man cannot go, lest the Shadow slays us.
+a7=Eventually all elves will go to the sea, and sail to shores where Man cannot go, lest the Shadow slays us.
+
+# Look eastward! It is there, waiting for us! The forest of Mirkwood grows dark. Soon no place shall be safe.
+a8=Look eastward! It is there, waiting for us! The forest of Mirkwood grows dark. Soon no place shall be safe.
+
+# On that matter, seek the counsel of Erestor. If any in this house can help you, it is he.
+a9=On that matter, seek the counsel of Erestor. If any in this house can help you, it is he.
+
+# 
+aa=
+
+# He has gone to think by himself, at the foot of the mountains east of Rivendell.
+ab=He has gone to think by himself, at the foot of the mountains east of Rivendell.
+
+# Before the Quest leaves Rivendell, we must be certain that the Black Riders are dispersed.
+ac=Before the Quest leaves Rivendell, we must be certain that the Black Riders are dispersed.
+
+# The cloaks are the remnants of the Black Riders. You must find at least eight cloaks.
+ad=The cloaks are the remnants of the Black Riders. You must find at least eight cloaks.
+
+# The curse of Sauron that has robbed of us of the gift of Death, and made us subject to unending weariness.
+ae=The curse of Sauron that has robbed of us of the gift of Death, and made us subject to unending weariness.
+
+# That we listened to him! The Lord of Gifts, he called himself, but he took both life and death from us.
+af=That we listened to him! The Lord of Gifts, he called himself, but he took both life and death from us.
+
+# The power of unending weariness is bound into a ring that is buried in the central barrow.
+b0=The power of unending weariness is bound into a ring that is buried in the central barrow.
+
+# A brutal and treacherous pass. Do not attempt it unless you are prepared against the cold.
+b1=A brutal and treacherous pass. Do not attempt it unless you are prepared against the cold.
+
+# A dark road indeed. Find Gloin, he can tell you many things about it.
+b2=A dark road indeed. Find Gloin, he can tell you many things about it.
+
+# She is my daughter.
+b3=She is my daughter.
+
+# He is my son. He has skills to teach you.
+b4=He is my son. He has skills to teach you.
+
+# He is my chief counsellor. Ask him for advice, for he is a master of lore.
+b5=He is my chief counsellor. Ask him for advice, for he is a master of lore.
+
+# You will find comfort and wisdom beneath its branches. Tell the elves my name when they question you.
+b6=You will find comfort and wisdom beneath its branches. Tell the elves my name when they question you.
+
+# She is the wisest and fairest of the Eldar. Her aid is invaluable.
+b7=She is the wisest and fairest of the Eldar. Her aid is invaluable.
+
+# I shall not speak of Evil things.
+b8=I shall not speak of Evil things.
+
+# It must be destroyed in the furnaces in which it was made.
+b9=It must be destroyed in the furnaces in which it was made.
+
+# Caradhas is now defeated, but his works are not at an end. A brown bird remains imprisoned in a sheathe of ice.
+ba=Caradhas is now defeated, but his works are not at an end. A brown bird remains imprisoned in a sheathe of ice.
+
+# You discover that Elladrien was the beloved of Pellisar, the Ranger known as Hawkeye. She does not know that she is dead. Do you decide to tell her what happened to him? (Y/N)
+bb=You discover that Elladrien was the beloved of Pellisar, the Ranger known as Hawkeye. She does not know that she is dead. Do you decide to tell her what happened to him? (Y/N)
+
+# In spite of your attempts to cheer Elladrien, she will not speak. Instead, she stares into the fire, and listens to elven tales in silence.
+bc=In spite of your attempts to cheer Elladrien, she will not speak. Instead, she stares into the fire, and listens to elven tales in silence.
+
+# This is Ben Appledore, Nob's brother, from Bree. "I came here hoping to get help in getting Nob out of that awful Gorthad place, and I hears you already did it. You have my thanks."
+bd=This is Ben Appledore, Nob's brother, from Bree. "I came here hoping to get help in getting Nob out of that awful Gorthad place, and I hears you already did it. You have my thanks."
+
+# From what these elves and Rangers tell me, we're in for hard times.
+be=From what these elves and Rangers tell me, we're in for hard times.
+
+# Ruffians and wizards are all the same to me, I say, though this lot knows more about them, I reckon.
+bf=Ruffians and wizards are all the same to me, I say, though this lot knows more about them, I reckon.
+
+# A Black Rider has beaten you across across the Ford. He laughs and attacks you.
+c0=A Black Rider has beaten you across across the Ford. He laughs and attacks you.
+
+# More Black Riders are coming, led by their Black Captain, the Witch-King. The Black Breath freezes you in place as they approach the water. If you are going to do anything, now is the time.
+c1=More Black Riders are coming, led by their Black Captain, the Witch-King. The Black Breath freezes you in place as they approach the water. If you are going to do anything, now is the time.
+
+# There are several dead orc bodies in this cave. Examining them, you discover that they froze to death. Given the preternatural cold of this cave, it is not a surprise.
+c2=There are several dead orc bodies in this cave. Examining them, you discover that they froze to death. Given the preternatural cold of this cave, it is not a surprise.
+
+# He told me that he had found something odd in our wine cellar. Seek him and his son Gimli there.
+c3=He told me that he had found something odd in our wine cellar. Seek him and his son Gimli there.
+
+# Welcome to the library of Rivendell. Within these halls is much lore. Look wisely.
+c4=Welcome to the library of Rivendell. Within these halls is much lore. Look wisely.
+
+# There are many books. I wouldn't know where to start myself.
+c5=There are many books. I wouldn't know where to start myself.
+
+# A very studious hobbit, a most gentle little scholar.
+c6=A very studious hobbit, a most gentle little scholar.
+
+# Old Mr. Bilbo knows our library as well as anyone. Seek his help.
+c7=Old Mr. Bilbo knows our library as well as anyone. Seek his help.
+
+# Big, isn't it?
+c8=Big, isn't it?
+
+# I would seek the assistance of Erestor or Elrond on that, if I were you.
+c9=I would seek the assistance of Erestor or Elrond on that, if I were you.
+
+# So you have come from great peril. I would travel with you, if you'd let me.
+ca=So you have come from great peril. I would travel with you, if you'd let me.
+
+# I think I will come with you, if only to keep you out of mischief.
+cb=I think I will come with you, if only to keep you out of mischief.
+
+# The door appears but remains shut. You cannot open it.
+cc=The door appears but remains shut. You cannot open it.
+
+# In response to the holy name, the the river rises against the Riders as they cross the Ford, and...
+cd=In response to the holy name, the the river rises against the Riders as they cross the Ford, and...
+
+# Far to the west, an elven voice is singing.
+ce=Far to the west, an elven voice is singing.
+
+# Search the river bank for the cloaks from the fallen Black Riders. When you have found eight, you shall be ready.
+cf=Search the river bank for the cloaks from the fallen Black Riders. When you have found eight, you shall be ready.
+
+# Hail and well met! I shall be glad to join thee.
+d0=Hail and well met! I shall be glad to join thee.
+
+# Aragorn speaks: "The Sword that is broken is the Sword of Elendil, which was broken into pieces long ago. I am Aragorn, chief of the Rangers of the North, and descended by many fathers from Elendil himself.
+d1=Aragorn speaks: "The Sword that is broken is the Sword of Elendil, which was broken into pieces long ago. I am Aragorn, chief of the Rangers of the North, and descended by many fathers from Elendil himself.
+
+# The One Ring, which has been carried here from the Shire, is Isildur's Bane. Now that the Ring has come to the Wise once again, it is time for the heir of Elendil to make war upon Mordor and end the tyranny of Sauron.
+d2=The One Ring, which has been carried here from the Shire, is Isildur's Bane. Now that the Ring has come to the Wise once again, it is time for the heir of Elendil to make war upon Mordor and end the tyranny of Sauron.
+
+# You notice that the cloaks of the riders are washed downstream. Some of them are caught on the river banks.
+d3=You notice that the cloaks of the riders are washed downstream. Some of them are caught on the river banks.
+
+# Even with the miruvor, the cold is incredibly bitter.
+d4=Even with the miruvor, the cold is incredibly bitter.
+
+# Athelwn decides that she will not go any further and skulks away to the south.
+d5=Athelwn decides that she will not go any further and skulks away to the south.
+

@@ -50,6 +50,8 @@
 #define CD_WEST    8
 #endif
 
+#define CHARACTERS_NUM     240
+
 #define CHARACTER_TALK_LEN 169
 
 typedef struct

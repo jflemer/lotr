@@ -1,0 +1,510 @@
+# silver pennies
+00=
+
+# Illuminate
+01=
+
+# Unlock
+02=
+
+# Firefinger
+03=
+
+# Firestorm
+04=
+
+# Knowledge
+05=
+
+# Animalspeak
+06=
+
+# Vinecrush
+07=
+
+# Persuasion
+08=
+
+# Black Breath
+09=
+
+# Healing Hand
+0a=
+
+# Winterchill
+0b=
+
+# Sleeper
+0c=
+
+# Countermagic
+0d=
+
+# !Help Help
+10=
+
+# !Elbereth
+11=
+
+# !Bombadil
+12=
+
+# !Angmar
+13=
+
+# !Luthien
+14=
+
+# !Beren
+15=
+
+# !Yavanna
+16=
+
+# !Mellon
+17=
+
+# !Thorondor
+18=
+
+# !Durin
+19=
+
+# !Orome
+1a=
+
+# !Melian
+1b=
+
+# !Khazad
+1c=
+
+# !Sign of seven
+1d=
+
+# brawl
+40=
+
+# swords
+41=
+
+# axes
+42=
+
+# maces
+43=
+
+# flails
+44=
+
+# bows
+45=
+
+# dodge
+46=
+
+# hide
+47=
+
+# climb
+48=
+
+# swim
+49=
+
+# jump
+4a=
+
+# perception
+4b=
+
+# ride
+4c=
+
+# picklock
+4d=
+
+# sneak
+4e=
+
+# read
+4f=
+
+# charisma
+50=
+
+# detect traps
+51=
+
+# devices
+52=
+
+# bravado
+53=
+
+# ironmind
+54=
+
+# boat
+55=
+
+# Numenorean lore
+56=
+
+# Dwarf lore
+57=
+
+# Orc lore
+58=
+
+# Hobbit lore
+59=
+
+# Elven lore
+5a=
+
+# herb lore
+5b=
+
+# Ranger lore
+5c=
+
+# Wizard lore
+5d=
+
+# Dark lore
+5e=
+
+# Sting
+60=
+
+# Barrow Dagger
+61=
+
+# Anduril
+62=
+
+# Glamdring
+63=
+
+# Spider Sword
+64=
+
+# Magic Bow
+65=
+
+# Troll slayer
+66=
+
+# Durin's axe
+67=
+
+# dagger
+70=
+
+# sword
+71=
+
+# staff
+72=
+
+# axe
+73=
+
+# mace
+74=
+
+# club
+75=
+
+# flail
+76=
+
+# bow
+77=
+
+# torch
+78=
+
+# cloth armor
+80=
+
+# leather armor
+81=
+
+# chain mail
+82=
+
+# magic mail
+83=
+
+# mithril mail
+84=
+
+# skin
+85=
+
+# hide
+86=
+
+# scales
+87=
+
+# shield
+88=
+
+# magic shield
+89=
+
+# The Ring
+94=
+
+# rations
+a4=
+
+# herb
+a5=
+
+# prybar
+a6=
+
+# Bag End Key
+a7=
+
+# star key
+a8=
+
+# ghost ruby
+a9=
+
+# athelas
+aa=
+
+# bladepart
+ab=
+
+# ale
+ac=
+
+# gate key
+ad=
+
+# signet ring
+ae=
+
+# pipe
+af=
+
+# pipeweed
+b0=
+
+# shovel
+b1=
+
+# rope
+b2=
+
+# White Hand
+b3=
+
+# pick
+b4=
+
+# hot food
+b5=
+
+# Gold token
+b6=
+
+# dwarfwort
+b7=
+
+# red beans
+b8=
+
+# bottle
+b9=
+
+# light gem
+ba=
+
+# springstone
+bb=
+
+# red acorn
+bc=
+
+# lillies
+bd=
+
+# elfdraught
+be=
+
+# leaf belt
+bf=
+
+# black key
+c0=
+
+# rusty key
+c1=
+
+# Black Book
+c2=
+
+# Golden Wheel
+c3=
+
+# green skull
+c4=
+
+# Balin map
+c5=
+
+# Fundin map
+c6=
+
+# letter
+c7=
+
+# golden torc
+c8=
+
+# Arwen token
+c9=
+
+# black cloak
+ca=
+
+# miruvor
+cb=
+
+# reforge-ring
+cc=
+
+# wine bottle
+cd=
+
+# bronze key
+ce=
+
+# wight key
+cf=
+
+# silver horn
+d0=
+
+# elfstone
+d1=
+
+# starlight
+d2=
+
+# scabbard
+d3=
+
+# elven cape
+d4=
+
+# red key
+d5=
+
+# magic glass
+d6=
+
+# malach-key
+d7=
+
+# runerock
+d8=
+
+# elanor crown
+d9=
+
+# warm clothes
+da=
+
+# spiritcharm
+db=
+
+# gold ring
+dc=
+
+# Galadr-key
+dd=
+
+# beryl
+de=
+
+# Smith's ring
+df=
+
+# pony
+e0=
+
+# mushrooms
+e1=
+
+# Rose's token
+e2=
+
+# Broken wing
+e3=
+
+# Tinalin's cape
+e4=
+
+# White Wings
+e5=
+
+# Amulet
+e6=
+
+# Ice staff
+e7=
+
+# Gold Anvil
+e8=
+
+# Gold Chisel
+e9=
+
+# Gold Hammer
+ea=
+
+# Lady Token
+eb=
+
+# red fungus
+ec=
+
+# Durin's pick
+ed=
+
+# jewelry
+ee=
+
+# stone block
+ef=
+
+# mithril
+f0=
+
+# gem
+f1=
+
+# bag of gold
+f2=
+
+# wizard staff
+f3=
+
+# Eagle Gem
+f4=
+
+# lembas
+f5=
+
+# Horn of Gondor
+f6=
+

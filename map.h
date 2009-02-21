@@ -174,6 +174,9 @@ extern int terrain_free(int x, int y);
 extern int map_can_move_to(Character *character, int x, int y);
 
 
+/* get number of command spots for a map */
+extern int map_get_num_spots();
+
 /* returns a spot based on address it contains */
 extern CommandSpot *map_get_spot_by_addr(int address);
 

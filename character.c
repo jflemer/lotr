@@ -47,7 +47,6 @@
 #include "characters_pos_ttt.h"
 #endif
 
-#define CHARACTERS_NUM 240
 Character *lotr_characters[CHARACTERS_NUM];
 
 

@@ -1,0 +1,567 @@
+# You carefully surround the sleeping snaga. Even if he should wake, he would be at your mercy. Do you wish to wake him? (Y/N)
+00=You carefully surround the sleeping snaga. Even if he should wake, he would be at your mercy. Do you wish to wake him? (Y/N)
+
+# As you try to use the stairway, an unseen force pushes you back. There is a star-shaped keyhole at your side.
+01=As you try to use the stairway, an unseen force pushes you back. There is a star-shaped keyhole at your side.
+
+# You spot a star-shaped hole in the wall.
+02=You spot a star-shaped hole in the wall.
+
+# "Fools!" the uruk cries. "You are worthless to us now!" Laughing horribly, it dodges through a side door.
+03="Fools!" the uruk cries. "You are worthless to us now!" Laughing horribly, it dodges through a side door.
+
+# "Give it me now, or you will die like False King Balin!"
+04="Give it me now, or you will die like False King Balin!"
+
+# You spot a strange star-shaped hole in the wall.
+05=You spot a strange star-shaped hole in the wall.
+
+# "Balin's book tells of Durin's secrets." the ghost whispers.
+06="Balin's book tells of Durin's secrets." the ghost whispers.
+
+# Durin's axe is cunningly hidden and protected by many traps. It is a most dangerous quest.
+07=Durin's axe is cunningly hidden and protected by many traps. It is a most dangerous quest.
+
+# As you walk down the corridor, an unseen force pushes you back.
+08=As you walk down the corridor, an unseen force pushes you back.
+
+# It sounds like something beneath this stone is crying: "Gandalf! Gandalf!"
+09=It sounds like something beneath this stone is crying: "Gandalf! Gandalf!"
+
+# The Ice Staff from Withywindle's cave begins to issue forth steam. Though touching boiling lava should be the death of you, the Ice Staff seems to allow you to pass through it without being harmed.
+0a=The Ice Staff from Withywindle's cave begins to issue forth steam. Though touching boiling lava should be the death of you, the Ice Staff seems to allow you to pass through it without being harmed.
+
+# Gimli frowns. "We seem to be descending deeper."
+0b=Gimli frowns. "We seem to be descending deeper."
+
+# Gimli winces. "We seem to have been ascending higher."
+0c=Gimli winces. "We seem to have been ascending higher."
+
+# Gimli coughs and states the obvious. The air is foul, foul indeed. It stinks of orcs and their kind. We must be very careful in these depths.
+0d=Gimli coughs and states the obvious. The air is foul, foul indeed. It stinks of orcs and their kind. We must be very careful in these depths.
+
+# Nearby, you spot a small orc on guard. He is patrolling the area diligently, but hasn't spotted you yet.
+0e=Nearby, you spot a small orc on guard. He is patrolling the area diligently, but hasn't spotted you yet.
+
+# It opens!
+0f=It opens!
+
+# You successfully sneak past the guard, who is not quite as alert as he should be.
+10=You successfully sneak past the guard, who is not quite as alert as he should be.
+
+# The snaga cries for help. Immediately five huge uruk-hai, shouldering huge two-handed blades, charge into battle against you.
+11=The snaga cries for help. Immediately five huge uruk-hai, shouldering huge two-handed blades, charge into battle against you.
+
+# You have come to the Western Entrance of Moria.
+12=You have come to the Western Entrance of Moria.
+
+# A chilling scream reverberates from the columns and walls. A flickering spirit appears. "I was once Hawkeye of the Dunedain." it moans. "You could have saved me. Instead, you have doomed me!
+13=A chilling scream reverberates from the columns and walls. A flickering spirit appears. "I was once Hawkeye of the Dunedain." it moans. "You could have saved me. Instead, you have doomed me!
+
+# No, Hawkeye's spirit is not destroyed. As the spirit fades, it wails again: I shall seek now for a new Ring. When we meet again, the Shadow shall triumph!
+14=No, Hawkeye's spirit is not destroyed. As the spirit fades, it wails again: I shall seek now for a new Ring. When we meet again, the Shadow shall triumph!
+
+# Though it is hard to determine what, or where, or why, you have a chilling feeling that a presence is nearby.
+15=Though it is hard to determine what, or where, or why, you have a chilling feeling that a presence is nearby.
+
+# You wait too long! The snaga spots you and gives a cry for help. Five huge uruk-hai charge into battle against you.
+16=You wait too long! The snaga spots you and gives a cry for help. Five huge uruk-hai charge into battle against you.
+
+# The snaga cries for help. Immediately, five huge uruk-hai, shouldering huge two-handed swords, come forward and attack.
+17=The snaga cries for help. Immediately, five huge uruk-hai, shouldering huge two-handed swords, come forward and attack.
+
+# Within this maze of columns you spot a sleeping snaga. He turns over and stretches, but doesn't seem to have noticed you.
+18=Within this maze of columns you spot a sleeping snaga. He turns over and stretches, but doesn't seem to have noticed you.
+
+# The snaga awakes with a start. You are careful, and do not allow him to scream. Eventually he realizes that continued struggling will result in his death, so he decides to be more cooperative.
+19=The snaga awakes with a start. You are careful, and do not allow him to scream. Eventually he realizes that continued struggling will result in his death, so he decides to be more cooperative.
+
+# The snaga awakens as you approach him. Sensing your intent, he screams for help, but nobody comes.
+1a=The snaga awakens as you approach him. Sensing your intent, he screams for help, but nobody comes.
+
+# The snaga wakes up and screams. No one seems to answer him.
+1b=The snaga wakes up and screams. No one seems to answer him.
+
+# Suddenly huge spiders spring down from cracks in the ceiling and attack.
+1c=Suddenly huge spiders spring down from cracks in the ceiling and attack.
+
+# More spiders spring down upon you!
+1d=More spiders spring down upon you!
+
+# All is quiet. The floor is covered in the bloated corpses of dead spiders.
+1e=All is quiet. The floor is covered in the bloated corpses of dead spiders.
+
+# Gandalf examines these statues. "These statues are magical." Gandalf says. "Saruman's magic, I think, he spent many hours in the halls of Khazad-dum before the coming of Durin's Bane.
+1f=Gandalf examines these statues. "These statues are magical." Gandalf says. "Saruman's magic, I think, he spent many hours in the halls of Khazad-dum before the coming of Durin's Bane.
+
+# Gandalf seems puzzled. "I have no memory of this place at all! We must choose our path from here carefully."
+20=Gandalf seems puzzled. "I have no memory of this place at all! We must choose our path from here carefully."
+
+# Gandalf growls out: "Fool of a Took! This is serious, not some hobbit walking party! Throw YOURSELF in next time."
+21=Gandalf growls out: "Fool of a Took! This is serious, not some hobbit walking party! Throw YOURSELF in next time."
+
+# These statues are obviously magical.
+22=These statues are obviously magical.
+
+# The statues come alive. Three voices declare as one: "Balin asked us to answer one question. Ask the question, and you shall be answered.
+23=The statues come alive. Three voices declare as one: "Balin asked us to answer one question. Ask the question, and you shall be answered.
+
+# Did you think Durin was an elf? Moria is an elvish name! Leave us now!
+24=Did you think Durin was an elf? Moria is an elvish name! Leave us now!
+
+# Try as you might, an ordinary shovel cannot dig through this rubble.
+25=Try as you might, an ordinary shovel cannot dig through this rubble.
+
+# In one stroke, the pick removes the the obstacle. With the dirt and the rubble removed, deep runes can be read in the rock floor. They state: With the Sign of Seven, Durin's Axe can be regained.
+26=In one stroke, the pick removes the the obstacle. With the dirt and the rubble removed, deep runes can be read in the rock floor. They state: With the Sign of Seven, Durin's Axe can be regained.
+
+# The runes say that Dwili, and Buri are entombed here.
+27=The runes say that Dwili, and Buri are entombed here.
+
+# The runes say that Throri and Blain are entombed here.
+28=The runes say that Throri and Blain are entombed here.
+
+# The passage to the side of the bridge is protected by a stone troll.
+29=The passage to the side of the bridge is protected by a stone troll.
+
+# An evilly chuckling wind chills body and spirit and douses your light!
+2a=An evilly chuckling wind chills body and spirit and douses your light!
+
+# You try to climb down this long shaft. Half way down you slip and fall, and hurt yourself on the landing.
+2b=You try to climb down this long shaft. Half way down you slip and fall, and hurt yourself on the landing.
+
+# Obviously this is a magical barrier, for which one must have the proper item. This is not dwarven in origin; an elvish charm, perhaps, would break this barrier?
+2c=Obviously this is a magical barrier, for which one must have the proper item. This is not dwarven in origin; an elvish charm, perhaps, would break this barrier?
+
+# Um... password is um.... bloody.... um.... axe. Yes, that's it, "bloody axe"! What? You not believe Gharsh?
+2d=Um... password is um.... bloody.... um.... axe. Yes, that's it, "bloody axe"! What? You not believe Gharsh?
+
+# The little orc snarls, "Our master will not let you pass!"
+2e=The little orc snarls, "Our master will not let you pass!"
+
+# It rises from the greatest deeps to destroy intruders, like Balin's dwarves.
+2f=It rises from the greatest deeps to destroy intruders, like Balin's dwarves.
+
+# Stone dwarves guard Balin's secrets. Will you let me go if I tell you Balin's password?
+30=Stone dwarves guard Balin's secrets. Will you let me go if I tell you Balin's password?
+
+# It is a difficult and tiring climb, but eventually you return to the surface.
+31=It is a difficult and tiring climb, but eventually you return to the surface.
+
+# A mass of spider webbing has fallen from the ceiling and is smothering you. You can barely stay on your feet.
+32=A mass of spider webbing has fallen from the ceiling and is smothering you. You can barely stay on your feet.
+
+# You burn your way through the webbing that envelopes you. Unfortunately, it also burns you!
+33=You burn your way through the webbing that envelopes you. Unfortunately, it also burns you!
+
+# Your leader notices that the support beam above your head is buckling! You quickly pass through the area as a shower of rocks cascades on you. Fortunately, you are spared the worst of the damage.
+34=Your leader notices that the support beam above your head is buckling! You quickly pass through the area as a shower of rocks cascades on you. Fortunately, you are spared the worst of the damage.
+
+# A pit trap! Fortunately, your leader knows how to recognize these areas, and safely guides you around it.
+35=A pit trap! Fortunately, your leader knows how to recognize these areas, and safely guides you around it.
+
+# A granite statue of a solemn dwarf appears before you. It declares in a thundering voice: There are two matters of which I am permitted to discuss. The first is the number of dwarven Fathers. The second is the Maker of the Dwarves.
+36=A granite statue of a solemn dwarf appears before you. It declares in a thundering voice: There are two matters of which I am permitted to discuss. The first is the number of dwarven Fathers. The second is the Maker of the Dwarves.
+
+# You can hear a muffled sound beneath the slab.
+37=You can hear a muffled sound beneath the slab.
+
+# The statue's eyes glow red briefly, then fade.
+38=The statue's eyes glow red briefly, then fade.
+
+# Mahal knows that Balin's question concerns the greatest mansion	of the Naugrim.
+39=Mahal knows that Balin's question concerns the greatest mansion	of the Naugrim.
+
+# The slab moves aside.
+3a=The slab moves aside.
+
+# There is an opening in the floor here.
+3b=There is an opening in the floor here.
+
+# The slab moves back into place.
+3c=The slab moves back into place.
+
+# The axe of the eldest of the Seven may be obtained when hammer, anvil, and chisel are put in place.
+3d=The axe of the eldest of the Seven may be obtained when hammer, anvil, and chisel are put in place.
+
+# You hear or maybe feel a following footstep that is not an echo.
+3e=You hear or maybe feel a following footstep that is not an echo.
+
+# The figure on top of the platform is a dwarven spirit. "Welcome..." it begins, and then bristles under a presence of evil. Something unseen is in the shadows, twisting its nature to reflect the power of the Shadow.
+3f=The figure on top of the platform is a dwarven spirit. "Welcome..." it begins, and then bristles under a presence of evil. Something unseen is in the shadows, twisting its nature to reflect the power of the Shadow.
+
+# There is a ghost on top of the platform! "I was Loni. Now I am the guardian of Durin's Axe." it says only those with the proper sign will be permitted to obtain the axe.
+40=There is a ghost on top of the platform! "I was Loni. Now I am the guardian of Durin's Axe." it says only those with the proper sign will be permitted to obtain the axe.
+
+# The evil spirit flees, but is not destroyed.
+41=The evil spirit flees, but is not destroyed.
+
+# The ghost is thankful. "I am Loni, Guardian of the Axe. There is a spirit of malice present in Moria, a being that twists the souls of the dead. You must destroy it! If you have the proper sign, Durin's Axe will aid you in that quest.
+42=The ghost is thankful. "I am Loni, Guardian of the Axe. There is a spirit of malice present in Moria, a being that twists the souls of the dead. You must destroy it! If you have the proper sign, Durin's Axe will aid you in that quest.
+
+# "The Spirit of Moria Doom can be found on the Sixth Level of Moria. His chamber can be accessed only through the Endless Maze of the third level, which only the Golden Wheel can end. Fight well!"
+43="The Spirit of Moria Doom can be found on the Sixth Level of Moria. His chamber can be accessed only through the Endless Maze of the third level, which only the Golden Wheel can end. Fight well!"
+
+# There is an opening in the ceiling.
+44=There is an opening in the ceiling.
+
+# The ground drops away beneath your feet and you fall into darkness.
+45=The ground drops away beneath your feet and you fall into darkness.
+
+# A voice out of everywhere speaks: "Only the Naugrim and old friends may pass within sight of Durin's Axe, until golden hammer, anvil, and chisel are returned to the Naugrim's stone hands."
+46=A voice out of everywhere speaks: "Only the Naugrim and old friends may pass within sight of Durin's Axe, until golden hammer, anvil, and chisel are returned to the Naugrim's stone hands."
+
+# You open the chest. Inside are several golden tools, and an elven brooch.
+47=You open the chest. Inside are several golden tools, and an elven brooch.
+
+# There's a trap here!
+48=There's a trap here!
+
+# The hall is filled with mist -- it is impossible to see anything but the person in front of you.
+49=The hall is filled with mist -- it is impossible to see anything but the person in front of you.
+
+# This is the brooch of Galadriel, Queen of Lothlorien, wisest and most powerful of the elves of Middle Earth. But how did this get here?
+4a=This is the brooch of Galadriel, Queen of Lothlorien, wisest and most powerful of the elves of Middle Earth. But how did this get here?
+
+# Ouch! A poison needle pricks your finger!
+4b=Ouch! A poison needle pricks your finger!
+
+# A cloud of noxious vapors settles over you and your companions.
+4c=A cloud of noxious vapors settles over you and your companions.
+
+# You inspect the chest carefully -- it's trapped! No, that might just be the shadow of the lock, or maybe a poisoned needle. Oh dear. Maybe if you compared it to the typical traps that are placed on chests...
+4d=You inspect the chest carefully -- it's trapped! No, that might just be the shadow of the lock, or maybe a poisoned needle. Oh dear. Maybe if you compared it to the typical traps that are placed on chests...
+
+# You have found mithril ore!
+4e=You have found mithril ore!
+
+# "Free at last!" both spirits cry as as they begin to fade. "Two things you must know. Only Durin's Pick can breach the seal in the Hall of the First Father. And Durin's Bane cannot stand the sight of the Golden Wheel.
+4f="Free at last!" both spirits cry as as they begin to fade. "Two things you must know. Only Durin's Pick can breach the seal in the Hall of the First Father. And Durin's Bane cannot stand the sight of the Golden Wheel.
+
+# Alas, you were too greedy, and have been caught in mithril fever. You forget about the Quest, having become obsessed with finding mithril. Eventually, orcs find you and slay you.
+50=Alas, you were too greedy, and have been caught in mithril fever. You forget about the Quest, having become obsessed with finding mithril. Eventually, orcs find you and slay you.
+
+# Without warning, a small brown bird darts out of the hole and flies out of the room!
+51=Without warning, a small brown bird darts out of the hole and flies out of the room!
+
+# "Staff of Anor!", a voice cries. "Burn the Bridge! Burn the Bridge! Wizard's Staff! Burn the Bridge!
+52="Staff of Anor!", a voice cries. "Burn the Bridge! Burn the Bridge! Wizard's Staff! Burn the Bridge!
+
+# A large force of orc soldiers is coming to the West Door, advancing quickly!
+53=A large force of orc soldiers is coming to the West Door, advancing quickly!
+
+# A crawlspace has been cleared away near the top of the rubble pile.
+54=A crawlspace has been cleared away near the top of the rubble pile.
+
+# Now! Through the East Door! It's our only chance!
+55=Now! Through the East Door! It's our only chance!
+
+# It was a valiant struggle, but one which ends in failure at the Chamber of Mazurbal. There ends the Quest of the Ring.
+56=It was a valiant struggle, but one which ends in failure at the Chamber of Mazurbal. There ends the Quest of the Ring.
+
+# Cursed be any enemy of the dwarves who step near the pools of Durin.
+57=Cursed be any enemy of the dwarves who step near the pools of Durin.
+
+# The water is restful, relaxing. All of you feel greatly improved.
+58=The water is restful, relaxing. All of you feel greatly improved.
+
+# Though badly discolored by the corrosion of things around it, you find a suit of Mithril Mail!
+59=Though badly discolored by the corrosion of things around it, you find a suit of Mithril Mail!
+
+# It's Hawkeye's ghost! It rematerializes, saying: "Now the hour of your destruction is come...
+5a=It's Hawkeye's ghost! It rematerializes, saying: "Now the hour of your destruction is come...
+
+# Abruptly a spasm appears on the ghost's face. Hawkeye twists and struggles as if wrestling with an unseen foe. Suddenly, it breaks free of the invisible grasp, and his face is once again that of the Ranger who sacrificed himself...
+5b=Abruptly a spasm appears on the ghost's face. Hawkeye twists and struggles as if wrestling with an unseen foe. Suddenly, it breaks free of the invisible grasp, and his face is once again that of the Ranger who sacrificed himself...
+
+# "Thing of Angmar! Moria Doom! There is a spirit who hates the Dunedain and the Naugrim. Beware my friends!
+5c="Thing of Angmar! Moria Doom! There is a spirit who hates the Dunedain and the Naugrim. Beware my friends!
+
+# "You have said enough!" a far more malevolent spirit shouts. You suddenly realize that this is the the creature that you freed in Gorthad. "My benefactors! It was uncomfortable being trapped in the ground. Behold my gratitude..."
+5d="You have said enough!" a far more malevolent spirit shouts. You suddenly realize that this is the the creature that you freed in Gorthad. "My benefactors! It was uncomfortable being trapped in the ground. Behold my gratitude..."
+
+# "Hawkeye's spirit reappears. "I thank you for releasing me. If you seek Durin's Axe, go to the deepest layer of Moria, through fire, to the dark throne of Durin's Bane."
+5e="Hawkeye's spirit reappears. "I thank you for releasing me. If you seek Durin's Axe, go to the deepest layer of Moria, through fire, to the dark throne of Durin's Bane."
+
+# "There you will find items that must be traded to dwarven spirits. Do not let greed be your master, or you shall surely fail."
+5f="There you will find items that must be traded to dwarven spirits. Do not let greed be your master, or you shall surely fail."
+
+# "And my friends, I have one final request. If fate should return you to Rivendell, tell Elladrien that I will always love her. Farewell, my friends. And then Pellisar of the Dunedain, the Hawkeye, is gone forever."
+60="And my friends, I have one final request. If fate should return you to Rivendell, tell Elladrien that I will always love her. Farewell, my friends. And then Pellisar of the Dunedain, the Hawkeye, is gone forever."
+
+# A voice that comes from everywhere is laughing. You recognize it --  it's the creature that you released in Gorthad! "Welcome to Moria, my friends!" it mocks. "Welcome to thy doom!
+61=A voice that comes from everywhere is laughing. You recognize it --  it's the creature that you released in Gorthad! "Welcome to Moria, my friends!" it mocks. "Welcome to thy doom!
+
+# This stony dwarf seems to be missing his hammer!
+62=This stony dwarf seems to be missing his hammer!
+
+# This dwarf seems to lack a chisel.
+63=This dwarf seems to lack a chisel.
+
+# This dwarf has no anvil.
+64=This dwarf has no anvil.
+
+# This hole seems to be the source of the feeling of dread that otherwise fills this awe-inspiring chamber.
+65=This hole seems to be the source of the feeling of dread that otherwise fills this awe-inspiring chamber.
+
+# The bird hovers near you. "Oin and Ori's ghosts are on the fifth level of Moria, West of the Great Hall. Speak with them. I shall give you the power to free them.
+66=The bird hovers near you. "Oin and Ori's ghosts are on the fifth level of Moria, West of the Great Hall. Speak with them. I shall give you the power to free them.
+
+# "Beware Moria Doom, a spirit of malice with the power to enslave the dead. Only the Golden Wheel can take you to his stronghold beyond the Endless Maze.
+67="Beware Moria Doom, a spirit of malice with the power to enslave the dead. Only the Golden Wheel can take you to his stronghold beyond the Endless Maze.
+
+# "Now farewell!" The bird flies away. It isn't until later that you realize that it forgot to tell you it's name.
+68="Now farewell!" The bird flies away. It isn't until later that you realize that it forgot to tell you it's name.
+
+# There's a second trap behind the first trap!
+69=There's a second trap behind the first trap!
+
+# Durin's Axe falls to the floor, where the blade becomes lodged, waiting for someone to pick it up.
+6a=Durin's Axe falls to the floor, where the blade becomes lodged, waiting for someone to pick it up.
+
+# There's a third trap behind the second trap!
+6b=There's a third trap behind the second trap!
+
+# This fireplace is definitely trapped and may conceal more than one trap. This should be examined very carefully and handled with extreme caution.
+6c=This fireplace is definitely trapped and may conceal more than one trap. This should be examined very carefully and handled with extreme caution.
+
+# The water around the bridge begins to surge and boil.
+6d=The water around the bridge begins to surge and boil.
+
+# The first trap is disarmed!
+6e=The first trap is disarmed!
+
+# From somewhere above, you hear a shrill voice cry: "Gandalf! Gandalf!"
+6f=From somewhere above, you hear a shrill voice cry: "Gandalf! Gandalf!"
+
+# You have disarmed a second trap!
+70=You have disarmed a second trap!
+
+# You have disarmed a thrid trap!
+71=You have disarmed a thrid trap!
+
+# There are orcs on guard here!
+72=There are orcs on guard here!
+
+# The orcs are not very vigilant. You manage to get by them.
+73=The orcs are not very vigilant. You manage to get by them.
+
+# You can recover the Ring that Drishnak took from you.
+74=You can recover the Ring that Drishnak took from you.
+
+# Null
+75=Null
+
+# There is something here that you might use.
+76=There is something here that you might use.
+
+# The big orc sneers, "If you seek the Trinket you gave Drisnak, then despair, for I possess it now, and I am no weakling snaga. See Drishnak lies dead!
+77=The big orc sneers, "If you seek the Trinket you gave Drisnak, then despair, for I possess it now, and I am no weakling snaga. See Drishnak lies dead!
+
+# With an ugly grin, the orc snarls, I sense my masters at Dol Guldur will know what to do with your friend who brought the Ring!
+78=With an ugly grin, the orc snarls, I sense my masters at Dol Guldur will know what to do with your friend who brought the Ring!
+
+# A dwarf stands here, glaring menacingly at you as he hears you approach. Abruptly, he realizes that you are not orcs and introduces himself.
+79=A dwarf stands here, glaring menacingly at you as he hears you approach. Abruptly, he realizes that you are not orcs and introduces himself.
+
+# I am Kiri of the House of Durin. If you have come to take me from this place, you have my gratitude.
+7a=I am Kiri of the House of Durin. If you have come to take me from this place, you have my gratitude.
+
+# "I am Kiri," he states, "an Emissary from the Lonely Mountain to  Rivendell. I and my friend Hain were taken captive and brought to Dol Guldur. I was brought to this place as part of my torment."
+7b="I am Kiri," he states, "an Emissary from the Lonely Mountain to  Rivendell. I and my friend Hain were taken captive and brought to Dol Guldur. I was brought to this place as part of my torment."
+
+# Dol Guldur is currently occupied by at least two Nazgul, and one of them may be the Witch-King himself!
+7c=Dol Guldur is currently occupied by at least two Nazgul, and one of them may be the Witch-King himself!
+
+# There is a heavy stone slab covering a hole. You cannot move it with your hands.
+7d=There is a heavy stone slab covering a hole. You cannot move it with your hands.
+
+# You come to a place where you left a rope. Do you wish to climb back up? (Y/N)
+7e=You come to a place where you left a rope. Do you wish to climb back up? (Y/N)
+
+# You have come to a locked door.
+7f=You have come to a locked door.
+
+# Your footsteps sound hollow here. The wall is emblazoned with the symbol of the hammer of Durin.
+80=Your footsteps sound hollow here. The wall is emblazoned with the symbol of the hammer of Durin.
+
+# Your fate may depend on your questions. Choose your words well.
+81=Your fate may depend on your questions. Choose your words well.
+
+# Mahal is indeed the father of the dwarves. Excellent. Beyond is Durin's Axe.
+82=Mahal is indeed the father of the dwarves. Excellent. Beyond is Durin's Axe.
+
+# There were seven fathers, and the Sign of Seven will gain you Durin's Axe.
+83=There were seven fathers, and the Sign of Seven will gain you Durin's Axe.
+
+# The spirit on the dias speaks to you. "There is a spirit of evil in Moria, a creature that corrupts the dead, a spirit released by members of your quest! Before Durin's Axe can be yours, the Moria Doom must be destroyed!"
+84=The spirit on the dias speaks to you. "There is a spirit of evil in Moria, a creature that corrupts the dead, a spirit released by members of your quest! Before Durin's Axe can be yours, the Moria Doom must be destroyed!"
+
+# The funguses that grow on the wall are a deep red color.
+85=The funguses that grow on the wall are a deep red color.
+
+# You cannot breach this magical barrier in this manner.
+86=You cannot breach this magical barrier in this manner.
+
+# Who? Me? Never!
+87=Who? Me? Never!
+
+# This place belong to orcs now. No longer belong to stunted bearded ugly ones.
+88=This place belong to orcs now. No longer belong to stunted bearded ugly ones.
+
+# What did you say? Gharsh knows nothing of that. Honest!
+89=What did you say? Gharsh knows nothing of that. Honest!
+
+# Before you may pass you must tell us the subject of Balin's question.
+8a=Before you may pass you must tell us the subject of Balin's question.
+
+# That is correct. If you seek Durin's Axe...
+8b=That is correct. If you seek Durin's Axe...
+
+# You know nothing of Balin's Question! Tresspasser! You shall never touch the treasure of the First Father!
+8c=You know nothing of Balin's Question! Tresspasser! You shall never touch the treasure of the First Father!
+
+# ....you must find a Lady's token, a Golden Wheel, Chisel, Anvil, and Hammer. Seek all but the Wheel in lowest depths of Khazad-dum. You must also show a sign of the dwarven fathers. It lies hidden within these mines.
+8d=....you must find a Lady's token, a Golden Wheel, Chisel, Anvil, and Hammer. Seek all but the Wheel in lowest depths of Khazad-dum. You must also show a sign of the dwarven fathers. It lies hidden within these mines.
+
+# A wave of fire engulfs the Fellowship as the Balrog rushes to the attack!
+8e=A wave of fire engulfs the Fellowship as the Balrog rushes to the attack!
+
+# The orcs are dismayed by the fall of the Balrog. However, this only seems to enrage the three huge cave trolls who serve as the Balrog's bodyguard!
+8f=The orcs are dismayed by the fall of the Balrog. However, this only seems to enrage the three huge cave trolls who serve as the Balrog's bodyguard!
+
+# The Balrog senses a deadly enemy. Though he fears the Golden Wheel, he will not flee...
+90=The Balrog senses a deadly enemy. Though he fears the Golden Wheel, he will not flee...
+
+# Alas, only a wizard can wield the staff.
+91=Alas, only a wizard can wield the staff.
+
+# Gandalf is forced to take desperate action...
+92=Gandalf is forced to take desperate action...
+
+# The Balrog cannot stand the sight of the holy object. It shines brightly for a brief instant, recalling a light from a time before the elves awoke. The Balrog flees, and the light fades. However, you are not alone...
+93=The Balrog cannot stand the sight of the holy object. It shines brightly for a brief instant, recalling a light from a time before the elves awoke. The Balrog flees, and the light fades. However, you are not alone...
+
+# The Balrog cannot stand the sight of the holy object. It shines brightly for a brief instant, recalling a light from a time before the elves awoke. The Balrog flees, however it is not destroyed.
+94=The Balrog cannot stand the sight of the holy object. It shines brightly for a brief instant, recalling a light from a time before the elves awoke. The Balrog flees, however it is not destroyed.
+
+# This is the chamber of Gabilgathol on the fourth level of Moria. It was a memorial to the dwarves of Belegost who died in battle long ago on lands now beneath the waves. The orcs have ransacked this place.
+95=This is the chamber of Gabilgathol on the fourth level of Moria. It was a memorial to the dwarves of Belegost who died in battle long ago on lands now beneath the waves. The orcs have ransacked this place.
+
+# Gharsh is now prepared to cooperate with you.
+96=Gharsh is now prepared to cooperate with you.
+
+# Many orcs in Moria. Intruders have no chance here. Orcs kill anyone who intrudes in orc mines!
+97=Many orcs in Moria. Intruders have no chance here. Orcs kill anyone who intrudes in orc mines!
+
+# A flaming shadow rises from the throne. It is about to attack you!
+98=A flaming shadow rises from the throne. It is about to attack you!
+
+# You pry the lid open.
+99=You pry the lid open.
+
+# You shut the lid tight.
+9a=You shut the lid tight.
+
+# There is a stone lid blocking your movement. It must be removed.
+9b=There is a stone lid blocking your movement. It must be removed.
+
+# I hope you have come to free us. You do want to do that, I hope.
+9c=I hope you have come to free us. You do want to do that, I hope.
+
+# As the spirits of Ori and Oin fade, a new spectre appears. "You did not think you had seen the last of me!" the ghost of Hawkeye laughs.
+9d=As the spirits of Ori and Oin fade, a new spectre appears. "You did not think you had seen the last of me!" the ghost of Hawkeye laughs.
+
+# No. The spirit of Hawkeye is not destroyed. "Come to the cavern of Anor on the sixth level." it laughs. "Step over the Abyss if you dare..." Then Hawkeye's spirit departs.
+9e=No. The spirit of Hawkeye is not destroyed. "Come to the cavern of Anor on the sixth level." it laughs. "Step over the Abyss if you dare..." Then Hawkeye's spirit departs.
+
+# You sense an evil presence. Someone did not approve of your last action!
+9f=You sense an evil presence. Someone did not approve of your last action!
+
+# The spirit of Moria Doom is broken at last. You feel as though you have performed an act of great goodness.
+a0=The spirit of Moria Doom is broken at last. You feel as though you have performed an act of great goodness.
+
+# "This is the Bridge of Long Darkness in the Third Deep of Moria." one of the Fellowship says. "None have ever charted the depths of this abyss. Don't look down!
+a1="This is the Bridge of Long Darkness in the Third Deep of Moria." one of the Fellowship says. "None have ever charted the depths of this abyss. Don't look down!
+
+# This is Durin's Throne, in the Sixth Deep of Moria. However, it is not unguarded.
+a2=This is Durin's Throne, in the Sixth Deep of Moria. However, it is not unguarded.
+
+# One of the Fellowship recognizes the chamber. "This was the Miner's Hall on the Second Level. Here, the miners would gather and offer praise to Mahal before entering Durin's Chimney. The first level is south and west of here.
+a3=One of the Fellowship recognizes the chamber. "This was the Miner's Hall on the Second Level. Here, the miners would gather and offer praise to Mahal before entering Durin's Chimney. The first level is south and west of here.
+
+# From the size of this place, this must be the Meeting Hall of the Dwarven Houses on the Fifth Level. Here hundreds of dwarves would meet to discuss the affairs of the dwarves...
+a4=From the size of this place, this must be the Meeting Hall of the Dwarven Houses on the Fifth Level. Here hundreds of dwarves would meet to discuss the affairs of the dwarves...
+
+# ...and, in this chamber, Durin was slain.
+a5=...and, in this chamber, Durin was slain.
+
+# This chamber is recognized through ancient legends. "The hall of the First Fathers! Then we must be on the Sixth Level of Moria. West and south of us lies the corridor that leads to the Chamber of Mazurbal.
+a6=This chamber is recognized through ancient legends. "The hall of the First Fathers! Then we must be on the Sixth Level of Moria. West and south of us lies the corridor that leads to the Chamber of Mazurbal.
+
+# This is no crypt, but a great stone seal. It is marked by the hammer and the anvil, the signet of Durin.
+a7=This is no crypt, but a great stone seal. It is marked by the hammer and the anvil, the signet of Durin.
+
+# There is an opening in the ceiling above you.
+a8=There is an opening in the ceiling above you.
+
+# You are teetering on the edge of certain death!
+a9=You are teetering on the edge of certain death!
+
+# There is something hidden within the fireplace.
+aa=There is something hidden within the fireplace.
+
+# Gimli recognizes this place. Ah, this is the old hall of worship on the Second Deep.
+ab=Gimli recognizes this place. Ah, this is the old hall of worship on the Second Deep.
+
+# This dwarven altar has been depoiled and desecrated by the orcs. Do you want to try to cleanse it (Y/N)?
+ac=This dwarven altar has been depoiled and desecrated by the orcs. Do you want to try to cleanse it (Y/N)?
+
+# As you purge the altar of orcish influences, you feel a force grasp you. There are other influences that must be purged...
+ad=As you purge the altar of orcish influences, you feel a force grasp you. There are other influences that must be purged...
+
+# You smash the orcish trinkets on the floor.
+ae=You smash the orcish trinkets on the floor.
+
+# In the distance, from a direction you cannot determine, you hear the sounds of drums. Orc drums.
+af=In the distance, from a direction you cannot determine, you hear the sounds of drums. Orc drums.
+
+# Beneath the stone lid is the passage to the second level.
+b0=Beneath the stone lid is the passage to the second level.
+
+# Gandalf pauses briefly. "I have held them back briefly. There is a power behind us that I have never felt... it nearly broke me. I cast a spell, and it shattered it easily. I spoke a word of Command..."
+b1=Gandalf pauses briefly. "I have held them back briefly. There is a power behind us that I have never felt... it nearly broke me. I cast a spell, and it shattered it easily. I spoke a word of Command..."
+
+# "But enough of that. The stairway ahead leads down to the third level. If we avoid the maze, we will return to the main level. Then we must find the gates... we must go east and down from here."
+b2="But enough of that. The stairway ahead leads down to the third level. If we avoid the maze, we will return to the main level. Then we must find the gates... we must go east and down from here."
+
+# Finally Gandalf comes to a decision about the road ahead. "I do not like the feel of the middle way; and I do not like the smell of the left hand way: there is foul air down there, or I am no guide. We should take the right-hand passage."
+b3=Finally Gandalf comes to a decision about the road ahead. "I do not like the feel of the middle way; and I do not like the smell of the left hand way: there is foul air down there, or I am no guide. We should take the right-hand passage."
+
+# The Balrog aims his lash at Gandalf!
+b4=The Balrog aims his lash at Gandalf!
+
+# There is a large book on a stone block before you.
+b5=There is a large book on a stone block before you.
+
+# Very little of its ancient beauty remains. We should not have tried to return here, not yet.
+b6=Very little of its ancient beauty remains. We should not have tried to return here, not yet.
+
+# He is the foulest servant of the Dark Lord. You must know this, surely!
+b7=He is the foulest servant of the Dark Lord. You must know this, surely!
+
+# A rather fiesty dwarf; They may slay him, but they will never break his will.
+b8=A rather fiesty dwarf; They may slay him, but they will never break his will.
+
+# Mithril! As you gaze upon it, you suddenly realize why the dwarves coveted it; is there anything more lovely within the earth? You hold a king's riches in your hand, but you must have more! More!
+b9=Mithril! As you gaze upon it, you suddenly realize why the dwarves coveted it; is there anything more lovely within the earth? You hold a king's riches in your hand, but you must have more! More!
+
+# Surely that creature must be Durin's Bane, the monster that drove the dwarves from Moria. As it approaches, however, you recognize it as a Balrog!
+ba=Surely that creature must be Durin's Bane, the monster that drove the dwarves from Moria. As it approaches, however, you recognize it as a Balrog!
+
+# The tunnels continue for many miles, winding their way through the earth until you are no longer certain that you are in Moria.
+bb=The tunnels continue for many miles, winding their way through the earth until you are no longer certain that you are in Moria.
+
+# The Balrog senses the presense of a power greater than it expected. It decides to depart -- for now.
+bc=The Balrog senses the presense of a power greater than it expected. It decides to depart -- for now.
+

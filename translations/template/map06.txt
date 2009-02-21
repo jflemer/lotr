@@ -1,0 +1,468 @@
+# His steed has moved into position. He is about to leave. If you are to stop him, it must be done now.
+00=His steed has moved into position. He is about to leave. If you are to stop him, it must be done now.
+
+# Upon the peak of Dol Guldur, the Witch-King holds a writhing sack. A hideous skinless creature, with large leathery wings, circles the tower. He looks at you and laughs. He is preparing to mount his stead and fly away to Mordor.
+01=Upon the peak of Dol Guldur, the Witch-King holds a writhing sack. A hideous skinless creature, with large leathery wings, circles the tower. He looks at you and laughs. He is preparing to mount his stead and fly away to Mordor.
+
+# Enough prattle! Prepare to die!
+02=Enough prattle! Prepare to die!
+
+# The Witch-King responds with deep and disturbing laughter.
+03=The Witch-King responds with deep and disturbing laughter.
+
+# The Witch-King withers. He abandonshis form and flies away, a black wind borne upon a terrible torment.
+04=The Witch-King withers. He abandonshis form and flies away, a black wind borne upon a terrible torment.
+
+# The Witch-King mounts his steed. "I shall not waste my time killing you now. You shall live to see the armies of Mordor triumphant before the gates of Minas Tirith. In the end, all things shall belong to Sauron!" He prepares to depart.
+05=The Witch-King mounts his steed. "I shall not waste my time killing you now. You shall live to see the armies of Mordor triumphant before the gates of Minas Tirith. In the end, all things shall belong to Sauron!" He prepares to depart.
+
+# The Witch-King is furious, but knows that to remain means his death. "Sauron shall regain what is His in the end. The powers of men or elves are no match for his. Surrender to Mordor, or face His vengeance!" Then he flies into the south.
+06=The Witch-King is furious, but knows that to remain means his death. "Sauron shall regain what is His in the end. The powers of men or elves are no match for his. Surrender to Mordor, or face His vengeance!" Then he flies into the south.
+
+# Gargoyles watch as the lords of evil prepare for battle. With a fell voice the Nazgul screams something incomprehensible, then his malice is turned toward you. Human sorcerors prepare to cast spells.
+07=Gargoyles watch as the lords of evil prepare for battle. With a fell voice the Nazgul screams something incomprehensible, then his malice is turned toward you. Human sorcerors prepare to cast spells.
+
+# An unseen force is pushing you back, keeping you away from the stairway.
+08=An unseen force is pushing you back, keeping you away from the stairway.
+
+# Neither spell nor skill with locks will open this enchanted door. Only a special key will unlock it.
+09=Neither spell nor skill with locks will open this enchanted door. Only a special key will unlock it.
+
+# You notice a warrior, dressed in the armor of the lords of Rhun, the eastern kings who are ancient enemies of Gondor. He immediately recognizes you as foes. "Intruders! I demand single combat against your leader!" Will you oblige? (Y/N)
+0a=You notice a warrior, dressed in the armor of the lords of Rhun, the eastern kings who are ancient enemies of Gondor. He immediately recognizes you as foes. "Intruders! I demand single combat against your leader!" Will you oblige? (Y/N)
+
+# "You have bested me fairly." he proclaims. "In death, I give you a gift." He speak a word in his strange native tongue. His last words are: "May you fail, but die an honorable death."
+0b="You have bested me fairly." he proclaims. "In death, I give you a gift." He speak a word in his strange native tongue. His last words are: "May you fail, but die an honorable death."
+
+# He curses you with his final breath.
+0c=He curses you with his final breath.
+
+# This apartment has but a single occupant -- a swarthy dark-haired man, whom you recognize as a native of Dunland, the ancient enemies of Rohan. He picks up his sword and gives a loud battlecry.
+0d=This apartment has but a single occupant -- a swarthy dark-haired man, whom you recognize as a native of Dunland, the ancient enemies of Rohan. He picks up his sword and gives a loud battlecry.
+
+# Armored orcs march across the battlements of the tower of Dol Guldur, searching for intruders.
+0e=Armored orcs march across the battlements of the tower of Dol Guldur, searching for intruders.
+
+# Upon this floor, the curse of the Black Breath is active!
+0f=Upon this floor, the curse of the Black Breath is active!
+
+# Within this kitchen, a small slave orc cowers under a table. "Hurt no Juithrech!" he cries. "Everyone hurt little Juithretch. I do tell you anything you need know, yes, I do!"
+10=Within this kitchen, a small slave orc cowers under a table. "Hurt no Juithrech!" he cries. "Everyone hurt little Juithretch. I do tell you anything you need know, yes, I do!"
+
+# Please do not hurt little snaga. I be no hurt you. I tell you all things.
+11=Please do not hurt little snaga. I be no hurt you. I tell you all things.
+
+# Prisoners kept down stairs. Big ones kept in bad pits, down in deepest dark! You no want to be there!
+12=Prisoners kept down stairs. Big ones kept in bad pits, down in deepest dark! You no want to be there!
+
+# I never hear of such thing. You trying to tease poor little snaga? I tell uruks on you!
+13=I never hear of such thing. You trying to tease poor little snaga? I tell uruks on you!
+
+# Someone is firing arrows through arrow slits in the side walls at you!
+14=Someone is firing arrows through arrow slits in the side walls at you!
+
+# The great drawbridge of Dol Guldur buckles, then descends to the ground with a slam amid the sound of struggling chains.
+15=The great drawbridge of Dol Guldur buckles, then descends to the ground with a slam amid the sound of struggling chains.
+
+# This is a place where orcs make their barracks. At the end of each bed are locked chests.
+16=This is a place where orcs make their barracks. At the end of each bed are locked chests.
+
+# "Orc Laundry -- Eiuuuu!"
+17="Orc Laundry -- Eiuuuu!"
+
+# You have entered Dol Guldur... Hey, where's Gollum?
+18=You have entered Dol Guldur... Hey, where's Gollum?
+
+# In this room, an orc is humming off-key as he shuffles through records in a very cluttered office. Domesticated giant spiders are eating fresh meat from a metal pot.
+19=In this room, an orc is humming off-key as he shuffles through records in a very cluttered office. Domesticated giant spiders are eating fresh meat from a metal pot.
+
+# The key that you have found has a very unusual shape, and seems to have been crafted from a strange red metal that not even a dwarf can recognize.
+1a=The key that you have found has a very unusual shape, and seems to have been crafted from a strange red metal that not even a dwarf can recognize.
+
+# This crate is from the Shire, and is marked Lotho Sackville-Baggins Inc!"
+1b=This crate is from the Shire, and is marked Lotho Sackville-Baggins Inc!"
+
+# This crate is full of weird machine parts, steel wheels with jagged edges, and long pipes. It reminds you of the Mill at Hobbiton.
+1c=This crate is full of weird machine parts, steel wheels with jagged edges, and long pipes. It reminds you of the Mill at Hobbiton.
+
+# A human's voice weakly croaks: "Go away! Find someone else to torment!"
+1d=A human's voice weakly croaks: "Go away! Find someone else to torment!"
+
+# The lock clicks, and the cell door swings open.
+1e=The lock clicks, and the cell door swings open.
+
+# You aren't here to feed us to spiders! Please don't let this be a dream!
+1f=You aren't here to feed us to spiders! Please don't let this be a dream!
+
+# There should be three others, if they haven't been fed to the spiders.
+20=There should be three others, if they haven't been fed to the spiders.
+
+# The Quartermaster's pets have acquired a taste for human meat! Prisoners do not last long in Dol Guldur.
+21=The Quartermaster's pets have acquired a taste for human meat! Prisoners do not last long in Dol Guldur.
+
+# I was taken along with two men and a dwarf. I know of no other prisoners.
+22=I was taken along with two men and a dwarf. I know of no other prisoners.
+
+# A dwarven voice cries out in rage: "A curse on you! Dwarves consider it an honor to be tortured in the dungeons of Dol Guldur! You will never bend me to the will of your Dark Lord!"
+23=A dwarven voice cries out in rage: "A curse on you! Dwarves consider it an honor to be tortured in the dungeons of Dol Guldur! You will never bend me to the will of your Dark Lord!"
+
+# Gimli, son of Gloin! Never did I expect to find you in the dungeons of Dol Guldur! You are a welcome sight!
+24=Gimli, son of Gloin! Never did I expect to find you in the dungeons of Dol Guldur! You are a welcome sight!
+
+# This must be the strangest sight seen within these walls in many a year! This is a welcome rescue.
+25=This must be the strangest sight seen within these walls in many a year! This is a welcome rescue.
+
+# This old dwarf thought we were doomed! We were seized months ago near Dale; the Dark Lord is angry at us.
+26=This old dwarf thought we were doomed! We were seized months ago near Dale; the Dark Lord is angry at us.
+
+# Fed to spiders -- or worse, I fear. I know nothing of the fate of the other prisoners of Dol Guldur.
+27=Fed to spiders -- or worse, I fear. I know nothing of the fate of the other prisoners of Dol Guldur.
+
+# This is not a matter that I wish to discuss at this time. Let me join your band and take my revenge!
+28=This is not a matter that I wish to discuss at this time. Let me join your band and take my revenge!
+
+# You think that you can see a secret door along a nearby wall!
+29=You think that you can see a secret door along a nearby wall!
+
+# You have been blinded!
+2a=You have been blinded!
+
+# Step not on the Evil Eye!
+2b=Step not on the Evil Eye!
+
+# Beware the Maze of Madness, and the Honesty of Sauron.
+2c=Beware the Maze of Madness, and the Honesty of Sauron.
+
+# Invisible creatures are attacking you!
+2d=Invisible creatures are attacking you!
+
+# A chill goes up your spine as you read: "You are in Warlock's Hold."
+2e=A chill goes up your spine as you read: "You are in Warlock's Hold."
+
+# An unseen force has teleported you!
+2f=An unseen force has teleported you!
+
+# When your leader steps into the water, a strange and terrifying event occurs. His limbs stiffen and his features turn pale, there is a sound like ripping leather and when you next look upon him, he has become a stone statue!
+30=When your leader steps into the water, a strange and terrifying event occurs. His limbs stiffen and his features turn pale, there is a sound like ripping leather and when you next look upon him, he has become a stone statue!
+
+# What happens is too quick and terrible to be described. You feel water beneath your feet, everything gets stiff, and then blackness. Your final thought is that it isn't a good idea to venture through Sauron's dungeons in the dark.
+31=What happens is too quick and terrible to be described. You feel water beneath your feet, everything gets stiff, and then blackness. Your final thought is that it isn't a good idea to venture through Sauron's dungeons in the dark.
+
+# Once there were three mages, who bartered with Sauron for the secret of preserving their youth. Sauron honored his bargain; by turning them into statues to guard this section of Dol Guldur!
+32=Once there were three mages, who bartered with Sauron for the secret of preserving their youth. Sauron honored his bargain; by turning them into statues to guard this section of Dol Guldur!
+
+# A sign says: "Sauron's Harrow -- Abandow Hope All Ye Who Enter Here."
+33=A sign says: "Sauron's Harrow -- Abandow Hope All Ye Who Enter Here."
+
+# Tormented voices of the dead shriek and lament, elf, dwarf, man, and orc alike: "Cursed be the days we were cast in the dark of Dol Guldur! Never to rest while Sauron sits on his throne in Barad-dur!"
+34=Tormented voices of the dead shriek and lament, elf, dwarf, man, and orc alike: "Cursed be the days we were cast in the dark of Dol Guldur! Never to rest while Sauron sits on his throne in Barad-dur!"
+
+# One of your comrade's faces becomes a mask of rage. "Traitors! You're trying to sell me to Sauron! I'll kill you all before I let you!"Your comrade is ready to attack you.
+35=One of your comrade's faces becomes a mask of rage. "Traitors! You're trying to sell me to Sauron! I'll kill you all before I let you!"Your comrade is ready to attack you.
+
+# You have come to the gaol of Sauron; of all his prisons this one is the most terrible, save for the Dark Tower. A Nazgul laughs: "Fools! Thou dost walk in Sauron's footsteps! Here his power brooks no rivals! Thou shalt be destroyed!"
+36=You have come to the gaol of Sauron; of all his prisons this one is the most terrible, save for the Dark Tower. A Nazgul laughs: "Fools! Thou dost walk in Sauron's footsteps! Here his power brooks no rivals! Thou shalt be destroyed!"
+
+# The smouldering robes of the fallen Nazgul sting to the touch, but within the folds of his cape is a key made from a strange black metal. It falls to the floor with a clink.
+37=The smouldering robes of the fallen Nazgul sting to the touch, but within the folds of his cape is a key made from a strange black metal. It falls to the floor with a clink.
+
+# Gollum says: "We must be sneaky, yessss, Preciouss, or nassty wraith takesss off with Pre... Poor Bagginsss, stuck in wraith-hole, poor little hobbitsess. Must be sneaky, yes, we musssst."
+38=Gollum says: "We must be sneaky, yessss, Preciouss, or nassty wraith takesss off with Pre... Poor Bagginsss, stuck in wraith-hole, poor little hobbitsess. Must be sneaky, yes, we musssst."
+
+# You come within sight of the ugly black tower of Dol Guldur, a small keep at its base, a high tower rising over two hundred feet above the dark forest. Here, the forest has been cleared, allowing the watchful orcs to view the area.
+39=You come within sight of the ugly black tower of Dol Guldur, a small keep at its base, a high tower rising over two hundred feet above the dark forest. Here, the forest has been cleared, allowing the watchful orcs to view the area.
+
+# Radagast smiles. "Such an unusual place, Dol Guldur. I feel like it's time for a change!" Suddenly his features writhe, revealing that he's really a werewolf! "Your quest is over." he laughs. "At least I get a good dinner out of it!"
+3a=Radagast smiles. "Such an unusual place, Dol Guldur. I feel like it's time for a change!" Suddenly his features writhe, revealing that he's really a werewolf! "Your quest is over." he laughs. "At least I get a good dinner out of it!"
+
+# Behind a group of huge trolls a Nazgul steps forward: "Is this all that the elves of Lorien can muster to attack the might of Dol Guldur?" he mocks. "Indeed elves are in their dotage, as are all that would follow them! Bow before Sauron, and die!"
+3b=Behind a group of huge trolls a Nazgul steps forward: "Is this all that the elves of Lorien can muster to attack the might of Dol Guldur?" he mocks. "Indeed elves are in their dotage, as are all that would follow them! Bow before Sauron, and die!"
+
+# Gollum hisses! "No. That is not way to secret entrance! Go east, and find the big stone! Yes, my preciouss, goess east. If you go to front door, the wraiths will catch us, and hurt us, and we won't find the Preciouss!"
+3c=Gollum hisses! "No. That is not way to secret entrance! Go east, and find the big stone! Yes, my preciouss, goess east. If you go to front door, the wraiths will catch us, and hurt us, and we won't find the Preciouss!"
+
+# On the right hand side of the stone is a concealed entrance. A hobbit- sized creature can slip through; it takes a great exertion of strength to allow someone as big as a human to enter.
+3d=On the right hand side of the stone is a concealed entrance. A hobbit- sized creature can slip through; it takes a great exertion of strength to allow someone as big as a human to enter.
+
+# On one side of the great tower of Dol Guldur is a small keep. You have no idea what of might be here.
+3e=On one side of the great tower of Dol Guldur is a small keep. You have no idea what of might be here.
+
+# You quickly discover what is in the Tower of Dark Sorcery -- orcs!
+3f=You quickly discover what is in the Tower of Dark Sorcery -- orcs!
+
+# Sauron's fiendish experiment has transformed trees into orcs! These tormented creatures are rooted to the ground and cannot move. They plead: "Kill us, please!" in a pathetic tone.
+40=Sauron's fiendish experiment has transformed trees into orcs! These tormented creatures are rooted to the ground and cannot move. They plead: "Kill us, please!" in a pathetic tone.
+
+# Two trolls have been warped into solid stone. Their weight makes them unable to move, and indeed they seem extremely confused. One of them mumbles continuously: "Promised power, cannot move. Promised power, cannot move."
+41=Two trolls have been warped into solid stone. Their weight makes them unable to move, and indeed they seem extremely confused. One of them mumbles continuously: "Promised power, cannot move. Promised power, cannot move."
+
+# As you pass by the huge brazier, it rumbles and flames leap out and attack you!
+42=As you pass by the huge brazier, it rumbles and flames leap out and attack you!
+
+# This section of Mirkwood is a lot more lively than the sections near Dol Guldur. In the trees, squirrels frolic, rabbits run merrily across the paths, and birds sing beautiful songs. This is an unexpectedly pleasant place.
+43=This section of Mirkwood is a lot more lively than the sections near Dol Guldur. In the trees, squirrels frolic, rabbits run merrily across the paths, and birds sing beautiful songs. This is an unexpectedly pleasant place.
+
+# The creatures that frolic here suddenly run away. Radagast laments: "First the Enemy bent my crows to his service; now he places his curse on my other forest friends! The Enemy must be destroyed!"
+44=The creatures that frolic here suddenly run away. Radagast laments: "First the Enemy bent my crows to his service; now he places his curse on my other forest friends! The Enemy must be destroyed!"
+
+# This room is really a small garden. Roses, green ferns, and plants of many varieties you have never seen line the wall and are scattered in pots strewn across the floor. They are in great disarray, as if they had not been cared for recently.
+45=This room is really a small garden. Roses, green ferns, and plants of many varieties you have never seen line the wall and are scattered in pots strewn across the floor. They are in great disarray, as if they had not been cared for recently.
+
+# Within this room are many moaning animals and whimpering animals locked in cages. They look very sad and hungry. A pair of emaciated wolves are chained to the far wall; they look like they have been starving for weeks.
+46=Within this room are many moaning animals and whimpering animals locked in cages. They look very sad and hungry. A pair of emaciated wolves are chained to the far wall; they look like they have been starving for weeks.
+
+# You begin to unlock the cages. The animals rush out of the doors immediately, and begin fleeing Radagast's towers. The wolves growl as you get near them.
+47=You begin to unlock the cages. The animals rush out of the doors immediately, and begin fleeing Radagast's towers. The wolves growl as you get near them.
+
+# In this chamber, a wizard dressed in brown sits back on a chair eying a caged brown bird. He hears your approach and turns, saying: "So the Quest has come to me at last. Alas, Radagast, and his home, has seen seen better days."
+48=In this chamber, a wizard dressed in brown sits back on a chair eying a caged brown bird. He hears your approach and turns, saying: "So the Quest has come to me at last. Alas, Radagast, and his home, has seen seen better days."
+
+# Welcome, brave ones from Radagast the Brown! A humble wizard, like poor Gandalf.
+49=Welcome, brave ones from Radagast the Brown! A humble wizard, like poor Gandalf.
+
+# Curse the cruel mines of Moria that took him from us!
+4a=Curse the cruel mines of Moria that took him from us!
+
+# I cage these poor creatures to protect them. The Dark Lord enslaves animals too!
+4b=I cage these poor creatures to protect them. The Dark Lord enslaves animals too!
+
+# He has many servants, both willing and unwilling. Beware them all!
+4c=He has many servants, both willing and unwilling. Beware them all!
+
+# This brown bird is, a spy of the traitor Saruman. I keep it secure so he cannot spy on me.
+4d=This brown bird is, a spy of the traitor Saruman. I keep it secure so he cannot spy on me.
+
+# You have seen through the disguise! The monster shifts shape, becoming a huge wolf, and attacks!
+4e=You have seen through the disguise! The monster shifts shape, becoming a huge wolf, and attacks!
+
+# The bird flies from the cage and is surrounded in an earthy brown light; when next you see him he is a tall wizard, younger than Gandalf, dressed in brown. "A pleasant form, but it is rather confining. I am Radagast."
+4f=The bird flies from the cage and is surrounded in an earthy brown light; when next you see him he is a tall wizard, younger than Gandalf, dressed in brown. "A pleasant form, but it is rather confining. I am Radagast."
+
+# I cannot join you. My birds... no your quest is more important. Ask and I shall join you.
+50=I cannot join you. My birds... no your quest is more important. Ask and I shall join you.
+
+# It has been a blight on my woods for too long. Evil has always gathered there; the evil is getting stronger.
+51=It has been a blight on my woods for too long. Evil has always gathered there; the evil is getting stronger.
+
+# No beast could be so cruel. It is a werewolf of Sauron; the most merciless of creatures, and my greatest enemy.
+52=No beast could be so cruel. It is a werewolf of Sauron; the most merciless of creatures, and my greatest enemy.
+
+# Do not mourn the one who fell in Moria. Wizards are not like other beings; mourn those who are corrupted.
+53=Do not mourn the one who fell in Moria. Wizards are not like other beings; mourn those who are corrupted.
+
+# Lurking nearby is Gollum! He notices you and starts to run away.
+54=Lurking nearby is Gollum! He notices you and starts to run away.
+
+# "Elvesss!" Gollum cries and covers his ears. "They use cursesss on us, don't they my Preciouss! And poor little Smeagol alone to be killed while He gets the Preciousss! But if they trust Smeagol, I will help them yesss! I show them secret way!"
+55="Elvesss!" Gollum cries and covers his ears. "They use cursesss on us, don't they my Preciouss! And poor little Smeagol alone to be killed while He gets the Preciousss! But if they trust Smeagol, I will help them yesss! I show them secret way!"
+
+# Don't hurt us! Cruel men with sharp steel always hurt poor little Smeagol, who never hurt anyone!
+56=Don't hurt us! Cruel men with sharp steel always hurt poor little Smeagol, who never hurt anyone!
+
+# "No!!!" Gollum shrieks. "Not thisss way! Nazgul! They see us! They find us! They hurt us! We never get Preciousss! Go into forest maze -- very dangerous, but they will not see us! We can get Preciousss!"
+57="No!!!" Gollum shrieks. "Not thisss way! Nazgul! They see us! They find us! They hurt us! We never get Preciousss! Go into forest maze -- very dangerous, but they will not see us! We can get Preciousss!"
+
+# Your heart stops. They've seen you. A huge winged beast flies from the tower of Dol Guldur, bearing the Ring and its Bearer to Mordor. You have lost.
+58=Your heart stops. They've seen you. A huge winged beast flies from the tower of Dol Guldur, bearing the Ring and its Bearer to Mordor. You have lost.
+
+# Gollum suddenly becomes animated and excited. "Secret Entrance!" he hisses. "Wraithss not see us, no my Precious near, and when we findsss it..." Then he stops short. "Shares it we will. Come, take secret way!" He is pointing toward the north.
+59=Gollum suddenly becomes animated and excited. "Secret Entrance!" he hisses. "Wraithss not see us, no my Precious near, and when we findsss it..." Then he stops short. "Shares it we will. Come, take secret way!" He is pointing toward the north.
+
+# After carefully examining the north wall of the hedge you think that there might be a secret opening.
+5a=After carefully examining the north wall of the hedge you think that there might be a secret opening.
+
+# After carefully examining the east wall of the hedge, you think that there might be a secret opening.
+5b=After carefully examining the east wall of the hedge, you think that there might be a secret opening.
+
+# You have come to a small pool of white hot flame.
+5c=You have come to a small pool of white hot flame.
+
+# You leap over the flames and cross safely to the other side.
+5d=You leap over the flames and cross safely to the other side.
+
+# You should have jumped. This little fire is hotter than it looks. You are badly burned.
+5e=You should have jumped. This little fire is hotter than it looks. You are badly burned.
+
+# You have entered a statuary. Five statues are present, all of them warriors holding powerful weapons. When the light falls on them, you notice that they are wearing the faces of some of the Fellowship! They smile wickedly, and attack.
+5f=You have entered a statuary. Five statues are present, all of them warriors holding powerful weapons. When the light falls on them, you notice that they are wearing the faces of some of the Fellowship! They smile wickedly, and attack.
+
+# In front of the gate of Sauron's graveyard a spectre rises. He lifts his hand to stay your attack: "I was Amonar, Prince of Arnor! I was slain by the lord who now sits in Dol Guldur. I have followed you to help you. I desire revenge!"
+60=In front of the gate of Sauron's graveyard a spectre rises. He lifts his hand to stay your attack: "I was Amonar, Prince of Arnor! I was slain by the lord who now sits in Dol Guldur. I have followed you to help you. I desire revenge!"
+
+# I have followed you from my tomb in the Shire to aid you. Please allow me to join your Fellowship. 
+61=I have followed you from my tomb in the Shire to aid you. Please allow me to join your Fellowship. 
+
+# Within this barrow is the traitor of Rhudaur, Captain of the Dark Lord's wights. Let me aid in his downfall!
+62=Within this barrow is the traitor of Rhudaur, Captain of the Dark Lord's wights. Let me aid in his downfall!
+
+# Rhudaur was a kingdom of the ancient Dunedain. It became evil, and warred against the kings of the north.
+63=Rhudaur was a kingdom of the ancient Dunedain. It became evil, and warred against the kings of the north.
+
+# The traitor swore to support my father, then killed him on Amon Sul. I swore an oath to avenge him!
+64=The traitor swore to support my father, then killed him on Amon Sul. I swore an oath to avenge him!
+
+# The hill called Weathertop. My tomb is in what is now called the Shire, in a cave commonly home to spiders.
+65=The hill called Weathertop. My tomb is in what is now called the Shire, in a cave commonly home to spiders.
+
+# The wights advance toward you, but the Ghost King howls in rage. This terrible noise freezes your blood, but the wights' response is even more drastic -- they move away from you, and vanish!
+66=The wights advance toward you, but the Ghost King howls in rage. This terrible noise freezes your blood, but the wights' response is even more drastic -- they move away from you, and vanish!
+
+# From the ground, a huge wight rises, wearing crowns and other finery of kings. His two lieutenants draw weapons. "Thief!" cries the spirit of Amonar. "Murderer! Traitor!" Their weapons clash. The finale to an ancient battle begins.
+67=From the ground, a huge wight rises, wearing crowns and other finery of kings. His two lieutenants draw weapons. "Thief!" cries the spirit of Amonar. "Murderer! Traitor!" Their weapons clash. The finale to an ancient battle begins.
+
+# The Ghost-King, severely hurt in the battle, rises to his feet. "It is over. But for the Dunedain it will not end until the thrones of Gondor and Arnor are one. Search well this barrow!" Then he fades, smiling.
+68=The Ghost-King, severely hurt in the battle, rises to his feet. "It is over. But for the Dunedain it will not end until the thrones of Gondor and Arnor are one. Search well this barrow!" Then he fades, smiling.
+
+# You have found a shining cube of crystal, a magic glass.
+69=You have found a shining cube of crystal, a magic glass.
+
+# Suddenly, eagles soar around the top of Dol Guldur. They fly directly at the steed of the Witch King and drive the creature away -- to his horror, the Nazgul cannot escape. He snarls viciously, draws his black blade, and attacks!
+6a=Suddenly, eagles soar around the top of Dol Guldur. They fly directly at the steed of the Witch King and drive the creature away -- to his horror, the Nazgul cannot escape. He snarls viciously, draws his black blade, and attacks!
+
+# The Witch-King shrugs off the effect of the spell, but realizes that he cannot escape. He draws his sword and attacks.
+6b=The Witch-King shrugs off the effect of the spell, but realizes that he cannot escape. He draws his sword and attacks.
+
+# The Witch-King decides not to engage you in battle. Instead, he moves to the edge of the tower, and prepares to jump on the back of his steed as it circles into position. If you allow this, then surely Sauron will triumph!
+6c=The Witch-King decides not to engage you in battle. Instead, he moves to the edge of the tower, and prepares to jump on the back of his steed as it circles into position. If you allow this, then surely Sauron will triumph!
+
+# The Witch-King laughs at your efforts. Clenching the the bag that contains the Ringbearer in his fist, he soars into the sky and flies away, quickly dropping out of your line of sight. Sauron has won.
+6d=The Witch-King laughs at your efforts. Clenching the the bag that contains the Ringbearer in his fist, he soars into the sky and flies away, quickly dropping out of your line of sight. Sauron has won.
+
+# Bridofin is glad to be out of Dol Guldur. "I think I'll try to escape on my own." he says. You wish him luck, and regret that he did not ask to join the Fellowship.
+6e=Bridofin is glad to be out of Dol Guldur. "I think I'll try to escape on my own." he says. You wish him luck, and regret that he did not ask to join the Fellowship.
+
+# Hain does not join the Fellowship. "I was content to die in Dol Guldur before, now I shall have a purpose. If I can find a way to keep the creatures of this place away from you, I shall consider it a good death."
+6f=Hain does not join the Fellowship. "I was content to die in Dol Guldur before, now I shall have a purpose. If I can find a way to keep the creatures of this place away from you, I shall consider it a good death."
+
+# Stumbling out of the cell is a much thinner version of Sam Gamgee. Frodo is not here, though there are signs that two people shared this cell.
+70=Stumbling out of the cell is a much thinner version of Sam Gamgee. Frodo is not here, though there are signs that two people shared this cell.
+
+# Sam is not very coherent, but you manage to determine that the Witch-King has taken Frodo and the Ring to the highest tower of Dol Guldur and is about to depart for Mordor. There is little time to lose!
+71=Sam is not very coherent, but you manage to determine that the Witch-King has taken Frodo and the Ring to the highest tower of Dol Guldur and is about to depart for Mordor. There is little time to lose!
+
+# To the North is the long and winding road to Rhosgobel, the home of Radagast the Brown. To the south is the road to Dol Guldur.
+72=To the North is the long and winding road to Rhosgobel, the home of Radagast the Brown. To the south is the road to Dol Guldur.
+
+# "Alas." the Ghost-King wails. "I cannot go with thee in that direction. My mission, and my revenge, lies eastward, and only there will my footsteps go, in search of final rest."
+73="Alas." the Ghost-King wails. "I cannot go with thee in that direction. My mission, and my revenge, lies eastward, and only there will my footsteps go, in search of final rest."
+
+# A branch crashes down from the trees and hits the leader!
+74=A branch crashes down from the trees and hits the leader!
+
+# You notice orc sentry posts in the distant trees. They are certain to spot you on the open road!
+75=You notice orc sentry posts in the distant trees. They are certain to spot you on the open road!
+
+# Gollum begins to hiss: "Maze is long and hot and filled with nasssty spiders that bind poor Smeagol in cruel, sticky webs. But we will come, my precious, yesss, we comess."
+76=Gollum begins to hiss: "Maze is long and hot and filled with nasssty spiders that bind poor Smeagol in cruel, sticky webs. But we will come, my precious, yesss, we comess."
+
+# The gloom of this dark forest is very intense here. Are those eyes watching you in the shadows?
+77=The gloom of this dark forest is very intense here. Are those eyes watching you in the shadows?
+
+# A black squirrel leaps amongst the branches and hisses at you.
+78=A black squirrel leaps amongst the branches and hisses at you.
+
+# The wind rustles the trees, and pieces of old spider webs fall to the ground.
+79=The wind rustles the trees, and pieces of old spider webs fall to the ground.
+
+# The werewolf lies dead upon the ground. The bird in the cage is chattering wildly: "Free me! Free me!
+7a=The werewolf lies dead upon the ground. The bird in the cage is chattering wildly: "Free me! Free me!
+
+# "You knew!" The false wizard burns with rage as his form changes. It's a werewolf! With a bestial snarl, it attacks you.
+7b="You knew!" The false wizard burns with rage as his form changes. It's a werewolf! With a bestial snarl, it attacks you.
+
+# "Saruman tricked me, and when I learned of his deceit, he cast a mighty enchantment upon me. He placed my essence in the form of a hundred brown birds, and scattered them across Middle-earth.
+7c="Saruman tricked me, and when I learned of his deceit, he cast a mighty enchantment upon me. He placed my essence in the form of a hundred brown birds, and scattered them across Middle-earth.
+
+# He would not have been able to do so, except that my love for Middle- earth made part of me welcome that spell. I doubt I shall ever return to the land where wizards came from. But I can still help you on your quest.
+7d=He would not have been able to do so, except that my love for Middle- earth made part of me welcome that spell. I doubt I shall ever return to the land where wizards came from. But I can still help you on your quest.
+
+# The wooden orcs seem quite happy to be dead.
+7e=The wooden orcs seem quite happy to be dead.
+
+# The cell is empty. The Ringbearer must be elsewhere in Dol Guldur -- you hope.
+7f=The cell is empty. The Ringbearer must be elsewhere in Dol Guldur -- you hope.
+
+# The Shadow around the Witch-King strengthens, and you reel from the effect of the Black Breath!
+80=The Shadow around the Witch-King strengthens, and you reel from the effect of the Black Breath!
+
+# The eagles are silent. They will only answer for hobbits.
+81=The eagles are silent. They will only answer for hobbits.
+
+# The gate of Dol Guldur is closed. The drawbridge must be lowered before you can proceed.
+82=The gate of Dol Guldur is closed. The drawbridge must be lowered before you can proceed.
+
+# There is nothing on the pinnacle of Dol Guldur except silence. The Witch-King must have seen you coming as you approached, and flew away to Mordor with the Ringbearer. You have lost.
+83=There is nothing on the pinnacle of Dol Guldur except silence. The Witch-King must have seen you coming as you approached, and flew away to Mordor with the Ringbearer. You have lost.
+
+# The animals have not been well cared for. They cry out piteously to you.
+84=The animals have not been well cared for. They cry out piteously to you.
+
+# The animals beg you to free them. They tell you that evil has come to this place.
+85=The animals beg you to free them. They tell you that evil has come to this place.
+
+# Celeborn says: "The time has come for me to leave. Elves from Lorien are crossing the river in secret to cover your escape. I shall join them. One last word of advice: from now on, do not trust the road. The eyes of Dol Guldur are sharp.
+86=Celeborn says: "The time has come for me to leave. Elves from Lorien are crossing the river in secret to cover your escape. I shall join them. One last word of advice: from now on, do not trust the road. The eyes of Dol Guldur are sharp.
+
+# Those of you who have knowledge of wizardry recognize this as a trap of illusions. "Nothing here is what it appears to be! Perhaps there is a way to avoid this..."
+87=Those of you who have knowledge of wizardry recognize this as a trap of illusions. "Nothing here is what it appears to be! Perhaps there is a way to avoid this..."
+
+# This is the drawbridge control of Dol Guldur. A complex machine lifts and lowers the gates.
+88=This is the drawbridge control of Dol Guldur. A complex machine lifts and lowers the gates.
+
+# You use your rope to bind the creature before he can escape. "Ropesss!" Gollum squeals in agony. "It binds us! It burns us! Takess it off!. We be good. We promises..."
+89=You use your rope to bind the creature before he can escape. "Ropesss!" Gollum squeals in agony. "It binds us! It burns us! Takess it off!. We be good. We promises..."
+
+# There is something magical about the hedge directly to the east of you.
+8a=There is something magical about the hedge directly to the east of you.
+
+# Gollum stopped to rest here, but spots you and tries to escape again.
+8b=Gollum stopped to rest here, but spots you and tries to escape again.
+
+# Celeborn says: "I doubt I shall go much further with you. I believe I still have some lembas; you had best take it now.
+8c=Celeborn says: "I doubt I shall go much further with you. I believe I still have some lembas; you had best take it now.
+
+# The hedge to the east seems to be a lot thinner than the other hedges in this maze.
+8d=The hedge to the east seems to be a lot thinner than the other hedges in this maze.
+
+# You sense powerful magic coming directly from the east.
+8e=You sense powerful magic coming directly from the east.
+
+# You feel a breeze of foul air blow in your face. It is coming from the east.
+8f=You feel a breeze of foul air blow in your face. It is coming from the east.
+
+# Captain! He is strong! Only the Master is stronger. He sits on throne in top of tower.
+90=Captain! He is strong! Only the Master is stronger. He sits on throne in top of tower.
+
+# They hurt poor Juithretch, poor little snaga.
+91=They hurt poor Juithretch, poor little snaga.
+
+# Elf name for Nazburz! Soon all elf names be forgotten!
+92=Elf name for Nazburz! Soon all elf names be forgotten!
+
+# Prisoners! You get captured, thrown in Pit.
+93=Prisoners! You get captured, thrown in Pit.
+
+# No one stop us! We will destroy elf cowards, stunted dwarves, and weak men!
+94=No one stop us! We will destroy elf cowards, stunted dwarves, and weak men!
+
+# Why you ask about Nazburz? You look for others?
+95=Why you ask about Nazburz? You look for others?
+
+# They we will destroy!
+96=They we will destroy!
+
+# Little sneak! We see him. We will find him and kill him!
+97=Little sneak! We see him. We will find him and kill him!
+
+# Poor snaga! We must serve big uruks, or die!
+98=Poor snaga! We must serve big uruks, or die!
+
+# Do not speak that name. His power is everywhere here -- in tallest tower, in deepest darkest deep!
+99=Do not speak that name. His power is everywhere here -- in tallest tower, in deepest darkest deep!
+
+# Special prisoners there. Deepest deep of Nazburz.
+9a=Special prisoners there. Deepest deep of Nazburz.
+
+# You have found a useful item.
+9b=You have found a useful item.
+

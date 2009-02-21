@@ -1262,6 +1262,14 @@ map_can_move_to(Character *character, int x, int y)
 }
 
 
+/*
+  get number of command spots for a map
+*/
+int
+map_get_num_spots()
+{
+    return map_num_spots;
+}
 
 /*
   returns a spot on address it contains
