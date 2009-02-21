@@ -72,7 +72,6 @@ extern char *
 lord_homedir_filename(const char *name)
 {
 
-    char cwd[1024];
     char *home = getenv("HOME");
 
     if (home == NULL) {
@@ -81,20 +80,15 @@ lord_homedir_filename(const char *name)
         exit(1);
     }
 
-
-    getcwd(cwd, 1024);
-    sprintf(lord_filename, "%s/.lord/", home);
+    sprintf(lord_filename, "%s/.lotr/", home);
     if (chdir(lord_filename)) {
-        mkdir(lord_filename, S_IRWXU);
-        if (chdir(lord_filename)) {
-            perror("can not create directory $HOME/.lord/");
+        if (mkdir(lord_filename, S_IRWXU)) {
+            perror("can not create directory $HOME/.lotr/");
             exit(1);
         }
     }
 
-    chdir(cwd);
-
-    sprintf(lord_filename, "%s/.lord/%s", home, name);
+    sprintf(lord_filename, "%s/.lotr/%s", home, name);
 
     return lord_filename;
 

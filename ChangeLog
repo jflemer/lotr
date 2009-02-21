@@ -8,6 +8,7 @@
 	in game help
 	quest failed dialog implemented
 	other minor GUI improvements
+	data paths renamed to lotr
 
 0.6.3
 	coding style fixes
