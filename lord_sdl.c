@@ -124,7 +124,7 @@ lord_system_init(void)
         exit(1);
     }
 
-    SDL_WM_SetCaption("Lord of the Rings", "LoTR");
+    SDL_WM_SetCaption("Lord of the Rings", "LotR");
     /* SDL_WM_SetIcon(SDL_LoadBMP("ring.bmp"), NULL); */
 
 
