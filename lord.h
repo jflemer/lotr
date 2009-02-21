@@ -29,6 +29,9 @@
 #ifndef _LORD_H
 #define _LORD_H
 
+#ifdef __amigaos4__
+#  define AMIGA_OS4
+#endif
 
 /* define this to compile The Two Towers - not working */
 // #define TTT
@@ -37,6 +40,10 @@
 /* define this to compile the CD version */
 /* works only with Fellowship of the Ring */
 // #define CD_VERSION
+
+/* define this if you want to compile a demo binary */
+/* works only with Fellowship of the Ring */
+// #define DEMO 1
 #endif
 
 
@@ -44,7 +51,7 @@
 // #define FULLSCREEN
 
 /* not much tested with other dimensions */
-/* larger screen is considered cheating */
+/* larger resolution is considered cheating */
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 200
 
@@ -54,18 +61,27 @@
 /* frame time in milliseconds */
 #define FRAME_TIME 50
 
-#if DEMO
-#define DATA_DIRECTORY "./"
+#ifdef DEMO
+#  ifndef AMIGA_OS4
+#    define DATA_DIRECTORY "./"
+#  else
+#    define DATA_DIRECTORY PREFIX "/"
+#  endif
 #else
-#ifndef TTT
-#ifndef CD_VERSION
-#define DATA_DIRECTORY PREFIX "/share/games/lord"
-#else
-#define DATA_DIRECTORY PREFIX "/share/games/lord/cd"
-#endif
-#else
-#define DATA_DIRECTORY PREFIX "/share/games/lord/towers"
-#endif
+#  ifndef AMIGA_OS4
+#    define GAME_DIRECTORY PREFIX "/share/games/lotr"
+#  else
+#    define GAME_DIRECTORY PREFIX "/lord"
+#  endif
+#  ifndef TTT
+#    ifndef CD_VERSION
+#      define DATA_DIRECTORY GAME_DIRECTORY
+#    else
+#      define DATA_DIRECTORY GAME_DIRECTORY "/cd"
+#    endif
+#  else
+#    define DATA_DIRECTORY GAME_DIRECTORY "/towers"
+#  endif
 #endif
 
 /* should we produce pixel-precise interface ass original
@@ -92,12 +108,11 @@
 
 
 
-
 #ifdef EXTENDED
 #include "Python.h"
 #include "pythonspot.h"
 #endif
-#include <SDL_types.h>
 
+#include <SDL_types.h>
 
 #endif /* _LORD_H */

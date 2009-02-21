@@ -144,7 +144,7 @@ char game_par_text[256];
 /* actual spot */
 CommandSpot *game_actual_spot;
 
-#if DEMO
+#ifdef DEMO
 int demo_state = 0;
 #endif
 
@@ -201,11 +201,16 @@ game_load_map(int map)
 {
     Archive *archive;
     int i;
+#ifdef DEMO
+    int only_one_map = 1;
+#else
+    int only_one_map = 0;
+#endif
 
 #ifndef TTT
-    if (map < 0 || map > 13 || !game_maps[map][0] || (DEMO && map > 0))
+    if (map < 0 || map > 13 || !game_maps[map][0] || (only_one_map && map > 0))
 #else
-    if (map < 0 || map > 15 || !game_maps[map][0] || (DEMO && map > 0))
+    if (map < 0 || map > 15 || !game_maps[map][0] || (only_one_map && map > 0))
 #endif
     {
         fprintf(stderr, "lord: not existing map index=%d\n", map);
@@ -222,7 +227,7 @@ game_load_map(int map)
     lord_reset_keyboard();
 
     if (game_maps[map][0] != loaded_map_desc) {
-#if !DEMO
+#ifndef DEMO
         if (game_maps[map][0] > 0xff)
             archive = archive_ndx_open("map1");
         else
@@ -237,7 +242,7 @@ game_load_map(int map)
 
 
     if (game_maps[map][1] != loaded_map_spots) {
-#if !DEMO
+#ifndef DEMO
         if (game_maps[map][1] > 0xff)
             archive = archive_ndx_open("map1");
         else
@@ -266,7 +271,7 @@ game_load_map(int map)
     game_map_id = map;
 
     if (game_maps[map][2] != loaded_map_graphics) {
-#if !DEMO
+#ifndef DEMO
         if (game_maps[map][2] > 0xff)
             archive = archive_ndx_open("map1");
         else
@@ -322,7 +327,7 @@ game_new(void)
     game_load_map(6);
 #endif
 
-#if DEMO
+#ifdef DEMO
     map_set_frame(0x400);
 #else
     map_set_frame(0x200);
@@ -641,7 +646,7 @@ game_leader_movement(void)
     if (leader->action != CHARACTER_STAY)
         return;
 
-#if DEMO
+#ifdef DEMO
     if (demo_state < 0x100)
         return;
 #endif
@@ -682,7 +687,7 @@ game_leader_movement(void)
         if (!map_is_in_spot(leader, game_actual_spot, &w, &h))
             game_actual_spot = NULL;
 
-#if !DEMO
+#ifndef DEMO
         spot = map_get_spot(leader);
 #else
         spot = NULL;
@@ -847,7 +852,7 @@ game_follow_leader(void)
 
 
 
-#if DEMO
+#ifdef DEMO
 void demo_frame(void);
 #endif
 
@@ -869,7 +874,7 @@ game_next_frame(void)
     if (game_actual_spot == NULL)
         game_spot_running = 0;
 
-#if DEMO
+#ifdef DEMO
     if (demo_state < 0x100) {
         //      character_frame( leader );
         demo_frame();
@@ -1595,7 +1600,7 @@ game_set_follow(int follow)
 
 
 
-#if DEMO
+#ifdef DEMO
 void
 demo_frame(void)
 {

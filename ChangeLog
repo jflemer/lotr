@@ -1,7 +1,7 @@
 0.6.4 (not yet released, not finished features marked by ?)
 	up to five savegames
 	fixes in game script interpreter
-	? Amiga OS4 port
+	Amiga OS4 port
 	? change character in get/use
 	do not talk to characters that have nothing to tell
 	time compression
@@ -9,6 +9,7 @@
 	quest failed dialog implemented
 	other minor GUI improvements
 	data paths renamed to lotr
+	build system clean up
 
 0.6.3
 	coding style fixes

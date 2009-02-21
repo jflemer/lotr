@@ -299,9 +299,10 @@ spot_init_commands(CommandSpot *spot)
     spot->commands_num = 0;
 
     /* we have not decoded DEMO spots */
-    if (DEMO) {
+#ifdef DEMO
+    if (1)
         return;
-    }
+#endif
 
 new_parsing:
     last_commands_num = spot->commands_num;
@@ -2085,7 +2086,7 @@ spot_continue(CommandSpot *spot)
             return 1;
 
         case COMMAND_CARTOON:
-#if !DEMO
+#ifndef DEMO
             sprintf(name, "cart%d", spot->data[i + 1] + 1);
             play_music();
 #else

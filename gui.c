@@ -2050,7 +2050,7 @@ dialog_talk_show(int character_id, int text_id)
 
         character = character_get(character_id);
 
-#if DEMO
+#ifdef DEMO
         /* there are not texts in the Demo */
         text = "Hullo Mr. Frodo. This demo is no fun. Please buy a full game and kick some Nazgul ass.";
 #else
@@ -2908,7 +2908,7 @@ gui_frame(void)
     if (dialog_mode == DIALOG_NONE) {
 
         if (lord_key_esc()) {
-#if DEMO
+#ifdef DEMO
             exit(0);
 #endif
             lord_reset_keyboard();
@@ -2943,7 +2943,7 @@ gui_frame(void)
 #endif
 
         case 'o':
-#if !DEMO
+#ifndef DEMO
             dialog_options_show();
 #endif
             break;
@@ -2990,7 +2990,7 @@ gui_frame(void)
     else {
 
         if (lord_key_esc()) {
-#if DEMO
+#ifdef DEMO
             exit(0);
 #endif
             lord_reset_keyboard();

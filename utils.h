@@ -85,5 +85,8 @@ extern xmlNodePtr lord_get_subnode(xmlNodePtr node, const xmlChar *name,
 extern char *lord_data_directory(void);
 
 
+#ifdef AMIGA_OS4
+#  define random() rand()
+#endif
 
 #endif /* _UTILS_H */

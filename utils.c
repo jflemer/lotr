@@ -72,6 +72,7 @@ extern char *
 lord_homedir_filename(const char *name)
 {
     char cwd[1024];
+#ifndef AMINGA_OS4
     char *home = getenv("HOME");
 
     if (home == NULL) {
@@ -80,8 +81,11 @@ lord_homedir_filename(const char *name)
         exit(1);
     }
 
-    getcwd(cwd, 1024);
     snprintf(lord_filename, sizeof(lord_filename), "%s/.lotr/", home);
+#else
+    snprintf(lord_filename, sizeof(lord_filename), "lord/");
+#endif
+    getcwd(cwd, 1024);
     if (chdir(lord_filename)) { /* Somewhat stupid test for dir existence */
         if (mkdir(lord_filename, S_IRWXU)) {
             perror("can not create directory " HOME_DIR_STR);
@@ -90,7 +94,11 @@ lord_homedir_filename(const char *name)
     }
     chdir(cwd);
 
+#ifndef AMINGA_OS4
     snprintf(lord_filename, sizeof(lord_filename), "%s/.lotr/%s", home, name);
+#else
+    snprintf(lord_filename, sizeof(lord_filename), "lord/%s", name);
+#endif
 
     return lord_filename;
 

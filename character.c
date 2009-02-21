@@ -138,7 +138,7 @@ characters_init()
 
     Archive *archive;
 
-#if !DEMO
+#ifndef DEMO
     archive = archive_ndx_open("nnpcs");
 #else
     archive = archive_ndx_open("npcs");
