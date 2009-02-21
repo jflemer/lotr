@@ -2243,8 +2243,8 @@ spot_continue(CommandSpot *spot)
 
 
         case COMMAND_DIE:
-            //FIXME write: You have failed, Sauron...
-            exit(0);
+            gui_died_show(NULL);
+            return 0;
 
         case COMMAND_END:
             return 0;

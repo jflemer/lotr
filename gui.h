@@ -42,6 +42,7 @@
 #define DIALOG_BOOK          6
 #define DIALOG_PARAGRAPH     7
 #define DIALOG_SPOT_PRINT    8
+#define DIALOG_DIED          9
 
 
 #define MAIN_MENU              100
@@ -111,7 +112,7 @@ extern void quit_menu();
 extern void main_menu_draw();
 
 /* shows a message */
-extern void gui_message(char *text, int small_window);
+extern void gui_message(const char *text, int small_window);
 
 /* shows a question */
 extern void gui_question(char *text);
@@ -122,7 +123,8 @@ extern void gui_paragraph(int num);
 /* shows a question paragraph */
 extern void gui_paragraph_question(int num);
 
-
+/* shows dialog saying that the player is dead */
+extern void gui_died_show(const char *text);
 
 #ifdef TTT
 /* shows a book with the next chapter in TTT */

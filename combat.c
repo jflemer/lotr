@@ -96,8 +96,7 @@ void
 combat_loosed(void)
 {
     combat_mode = 0;
-    cartoon_play("cart10");
-    exit(0);
+    gui_died_show("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.");
 }
 
 

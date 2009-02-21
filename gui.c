@@ -548,7 +548,7 @@ quit_menu()
  */
 
 char *
-format_text(char *_text, int *lines, int width, const char *formatted_text[])
+format_text(const char *_text, int *lines, int width, const char *formatted_text[])
 {
     int n;
     char *text, *t;
@@ -595,9 +595,8 @@ format_text(char *_text, int *lines, int width, const char *formatted_text[])
 /*
   shows a message
  */
-
 void
-gui_message(char *text, int small_window)
+gui_message(const char *text, int small_window)
 {
     const char *formatted_text[MAX_MESSAGELINES];
     int width;
@@ -649,12 +648,14 @@ gui_message(char *text, int small_window)
 /*
   parse message keyboard input
 */
-
-
 void
 dialog_message_key(int key)
 {
     if (key == KEY_ENTER || key == ' ' || key == 'x') {
+        if (dialog_mode == DIALOG_DIED) {
+            cartoon_play("cart10");
+            exit(0);
+        }
 #ifdef TTT
         if (dialog_mode == DIALOG_BOOK) {
             gui_set_palette();
@@ -704,6 +705,18 @@ dialog_message_yn_key(int key)
 }
 
 
+/*
+  shows dialog saying that the player is dead
+  if no text is given a default is used
+ */
+void
+gui_died_show(const char *text)
+{
+    if (text == NULL)
+        text = "You have failed. Sauron has finally recovered the Ring. Your quest is Over.";
+    gui_message(text, 1);
+    dialog_mode = DIALOG_DIED;
+}
 
 /*
   shows a help message
@@ -1732,8 +1745,8 @@ dialog_trade_to_show(void)
         dialog_list_num = game_get_party(dialog_list_codes);
 
         if (dialog_list_num <= 1) {
-            cartoon_play("cart10");
-            exit(0);
+            gui_died_show("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.");
+            return;
         }
 
         /* do not show dead characters */
@@ -2998,6 +3011,7 @@ gui_frame(void)
 
         case DIALOG_MESSAGE:
         case DIALOG_BOOK:
+        case DIALOG_DIED:
             dialog_message_key(key);
             break;
 
@@ -3166,8 +3180,9 @@ gui_player_dead(Character *who, int show_message)
     }
 
     if (who->ring_mode) {
-        cartoon_play("cart10");
-        exit(0);
+        /* Ringbearer is dead but nobody carries the ring further */
+        gui_died_show("The ringbearer is dead and nobody is willing to take the Burden.");
+        return;
     }
 
     choosed_character = tmpchar;
