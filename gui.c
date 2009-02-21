@@ -1707,6 +1707,10 @@ dialog_discard_confirm_key(int key)
         if (what == OBJECT_TORCH)
             game_check_light();
 
+        if (spot_action(game_get_actual_spot(), SPOT_ACTION_DISCARD,
+                        dialog_what_discard, 0xff))
+            return;
+
         dialog_discard_show();
     }
     if (key == 'x' || key == 'n')

@@ -72,6 +72,7 @@ typedef struct
 #define SPOT_ACTION_TRADE  7
 #define SPOT_ACTION_ATTACK 8
 #define SPOT_ACTION_GET    9
+#define SPOT_ACTION_DISCARD  0xa
 #define SPOT_ACTION_QUESTION 0xb
 #define SPOT_ACTION_BUY    0xc
 #define SPOT_ACTION_TALK   0xd

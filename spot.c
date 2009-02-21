@@ -909,6 +909,8 @@ spot_action_to_string(int id)
             return "ATTACK";
         case SPOT_ACTION_GET:
             return "GET";
+        case SPOT_ACTION_DISCARD:
+            return "DISCARD";
         case SPOT_ACTION_QUESTION:
             return "QUESTION";
         case SPOT_ACTION_BUY:
