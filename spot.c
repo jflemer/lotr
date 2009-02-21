@@ -2091,6 +2091,10 @@ spot_continue(CommandSpot *spot)
                                game_get_leader()->direction ==
                                cddir_to_dir(spot->data[i + 1]));
 #endif
+                /* HACK for a crypt under lonely stone in Breeland */
+                if (spot->data[i + 1] == 0x14)
+                    spot_if_result(spot, game_get_leader()->direction == CHARACTER_DOWN);
+
                 break;
 
             case COMMAND_FALSE_THEN:
