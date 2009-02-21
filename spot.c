@@ -639,7 +639,7 @@ new_parsing:
     if (!unknown && level != 0) {
         spot->not_parsed = 1;
         spot_print(spot);
-        fprintf(stderr, "lord: spot command do not end at level 0\n");
+        fprintf(stderr, "lord: spot command does not end at level 0\n");
         // exit(1);
     }
 
