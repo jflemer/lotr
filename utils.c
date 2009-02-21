@@ -35,7 +35,7 @@
 #include <sys/types.h>
 #include <math.h>
 
-
+#define HOME_DIR_STR "$HOME/.lotr/"
 
 char lord_filename[1024];
 
@@ -71,7 +71,7 @@ lord_malloc(int size)
 extern char *
 lord_homedir_filename(const char *name)
 {
-
+    char cwd[1024];
     char *home = getenv("HOME");
 
     if (home == NULL) {
@@ -80,15 +80,17 @@ lord_homedir_filename(const char *name)
         exit(1);
     }
 
-    sprintf(lord_filename, "%s/.lotr/", home);
-    if (chdir(lord_filename)) {
+    getcwd(cwd, 1024);
+    snprintf(lord_filename, sizeof(lord_filename), "%s/.lotr/", home);
+    if (chdir(lord_filename)) { /* Somewhat stupid test for dir existence */
         if (mkdir(lord_filename, S_IRWXU)) {
-            perror("can not create directory $HOME/.lotr/");
+            perror("can not create directory " HOME_DIR_STR);
             exit(1);
         }
     }
+    chdir(cwd);
 
-    sprintf(lord_filename, "%s/.lotr/%s", home, name);
+    snprintf(lord_filename, sizeof(lord_filename), "%s/.lotr/%s", home, name);
 
     return lord_filename;
 
@@ -113,13 +115,11 @@ lord_fopen(const char *path, const char *mode)
         return result;
 
     if (mode[0] == 'w') {
-        perror("can not write to directory $HOME/.lord/");
+        perror("can not write to directory " HOME_DIR_STR);
         exit(1);
     }
 
-
-
-    sprintf(lord_filename, "%s/%s", DATA_DIRECTORY, path);
+    snprintf(lord_filename, sizeof(lord_filename), "%s/%s", DATA_DIRECTORY, path);
 
     result = fopen(lord_filename, mode);
 
@@ -153,15 +153,13 @@ lord_file_exists(const char *path)
         return 1;
     }
 
-    sprintf(lord_filename, "%s/%s", DATA_DIRECTORY, path);
+    snprintf(lord_filename, sizeof(lord_filename), "%s/%s", DATA_DIRECTORY, path);
 
     testfile = fopen(lord_filename, "rb");
     if (testfile != NULL) {
         fclose(testfile);
         return 1;
     }
-
-
 
     return 0;
 }
@@ -187,8 +185,6 @@ lord_add_suffix(const char *name, const char *suffix)
     return result;
 
 }
-
-
 
 
 
@@ -246,7 +242,7 @@ lord_save_prop_int(xmlNodePtr node, char *name, int value)
 {
     char buf[16];
 
-    sprintf(buf, "%d", value);
+    snprintf(buf, sizeof(buf), "%d", value);
 
     xmlNewTextChild(node, NULL, (const xmlChar *)name, (const xmlChar *)buf);
 }
