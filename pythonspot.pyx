@@ -50,7 +50,7 @@ cdef extern from "string.h":
 
 # lotr includes
 cdef extern from "cartoon.h":
-    void playcartoon(char*)
+    void cartoon_play(char*)
 
 cdef extern from "character.h":
     ctypedef struct Character:
@@ -215,7 +215,7 @@ cdef public void pythonspot_init_map (int id):
 # no return
 #
 def loose():
-    playcartoon("cart10")
+    cartoon_play("cart10")
     exit(0)
 
 #
@@ -339,7 +339,7 @@ def combat():
 # no return value
 #
 def cartoon(name):
-    playcartoon(name)
+    cartoon_play(name)
 
 
 
