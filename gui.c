@@ -1342,15 +1342,21 @@ dialog_view_show(void)
 {
     const char *text[7];
     char lines[7][25];
+    int name_len;
 
     int i;
 
     main_menu_show();
     dialog_mode = DIALOG_VIEW;
 
+#if PIXEL_PRECISE
     sprintf(lines[0], "                    ");
-    strncpy(lines[0] + (20 - strlen(choosed_character->name)) / 2,
-            choosed_character->name, 20);
+#else
+    sprintf(lines[0], "<                  >");
+#endif
+    name_len = strlen(choosed_character->name);
+    strncpy(lines[0] + (20 - name_len) / 2,
+            choosed_character->name, name_len);
 
 
     sprintf(lines[1], " Silver:%d", game_get_silver());
@@ -1381,6 +1387,19 @@ dialog_view_show(void)
 void
 dialog_view_key(int key)
 {
+
+#if !PIXEL_PRECISE
+    if (key == KEY_LEFT || key == KEY_RIGHT) {
+        if (key == KEY_LEFT)
+            choose_prev_character();
+        if (key == KEY_RIGHT)
+            choose_next_character();
+
+        dialog_view_show();
+        return;
+    }
+#endif
+
     if (key == KEY_ENTER || key == ' ' || key == 'x')
         main_menu_show();
 }
@@ -1421,8 +1440,10 @@ dialog_list_draw(int can_change_character)
 
 #if !PIXEL_PRECISE
     if (dialog_list_can_change_character && choosed_character) {
-        snprintf(lines[text_lines++], 21, "< %-16s >",
-                 choosed_character->name);
+        int name_len = strlen(choosed_character->name);
+        sprintf(lines[text_lines], "<                  >");
+        strncpy(lines[text_lines++] + (20 - name_len) / 2,
+                choosed_character->name, name_len);
         strncpy(lines[text_lines++], "", 20);
     }
 
