@@ -1727,9 +1727,8 @@ spot_continue(CommandSpot *spot)
                         if (spot->data[i + 2] == 0xa)   /* direction */
                             character_command_npc_init(party[j],
                                                        spot->data[i + 2],
-                                                       cddir_to_dir(spot->
-                                                                    data[i +
-                                                                         3]));
+                                                       cddir_to_dir(spot->data
+                                                                    [i + 3]));
                         else
 #endif
                             character_command_npc_init(party[j],
@@ -1746,8 +1745,8 @@ spot_continue(CommandSpot *spot)
                     if (spot->data[i + 2] == 0xa)       /* direction */
                         character_command_npc_init(character,
                                                    spot->data[i + 2],
-                                                   cddir_to_dir(spot->
-                                                                data[i + 3]));
+                                                   cddir_to_dir(spot->data
+                                                                [i + 3]));
                     else
 #endif
                         character_command_npc_init(character,
@@ -1967,6 +1966,21 @@ spot_continue(CommandSpot *spot)
                     spot_if_result(spot, j < party_size);
                     break;
                 }
+                /* Hack for one probably broken spot in barrow hills */
+                if (spot->data[i + 1] == 0x5c
+                    && spot->data[i + 2] == 0x0a
+                    && spot->data[i + 3] == 0x20
+                    && spot->data[i + 4] == 0xff) {
+                    for (j = 0; j < party_size; ++j)
+                        if (spot_if_party
+                            (party[j], IF_PARTY_CONDITION_HAS_SKILL, 0x5c,
+                             0x00))
+                            break;
+
+                    spot_if_result(spot, j < party_size);
+                    break;
+                }
+
 
                 character = spot_character_get(spot->data[i + 1]);
                 spot_if_result(spot,
