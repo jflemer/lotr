@@ -780,6 +780,9 @@ spot_character_name(int id)
     if (id == 0xfa || id == 0xfb)
         return "anybody except leader";
 
+    if (id == 0xfe)
+        return "choosed";
+
     if (id == 0xff)
         return "anybody";
 
