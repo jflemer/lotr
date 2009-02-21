@@ -52,15 +52,16 @@
 #define IGNORE_UNKNOWN 0
 
 #define COMMAND_NPC_RECRUIT     0x00
-#define COMMAND_NPC_DISMISS     0x1d
 #define COMMAND_NPC_INIT        0x01
+#define COMMAND_NPC_SET_FLAGS   0x04
+#define COMMAND_NPC_CREATE      0x11
+#define COMMAND_NPC_CHANGE_STAT 0x17
 #define COMMAND_NPC_QUESTIONS   0x1c
-#define COMMAND_NPC_SET_NAME    0x36
+#define COMMAND_NPC_DISMISS     0x1d
 #define COMMAND_NPC_MOVE        0x2a
 #define COMMAND_NPC_DELETE      0x2c
-#define COMMAND_NPC_ENEMY       0x11
 #define COMMAND_NPC_TURN_TO_ME  0x2d
-#define COMMAND_NPC_CHANGE_STAT 0x17
+#define COMMAND_NPC_SET_NAME    0x36
 
 #define COMMAND_IF_RANDOM       0x25
 
@@ -139,7 +140,6 @@
 #endif
 
 #define COMMAND_02              0x02
-#define COMMAND_04              0x04
 #ifdef TTT
 #define COMMAND_43              0x43
 #else
@@ -352,7 +352,7 @@ new_parsing:
                 i += 1;
                 break;
 
-            case COMMAND_NPC_ENEMY:
+            case COMMAND_NPC_CREATE:
                 if (spot->data[i + 5])
                     i += 6 + spot->data[i + 4] * 4;
                 else {
@@ -392,7 +392,7 @@ new_parsing:
 
             case COMMAND_IF_OBJECTS_HERE:
             case COMMAND_IF_OBJECTS_AT_LEAST:
-            case COMMAND_04:
+            case COMMAND_NPC_SET_FLAGS:
                 i += 4;
                 break;
 
@@ -1121,9 +1121,9 @@ spot_get_string(CommandSpot *spot)
                                   readint(spot->data + i + 5));
                 break;
 
-            case COMMAND_NPC_ENEMY:
+            case COMMAND_NPC_CREATE:
                 spot_string_print
-                    ("NPC_ENEMY: %s(%02x), relative=%02x, direction=%02x, unknown=%d%%, n=%d",
+                    ("NPC_CREATE: %s(%02x), relative=%02x, direction=%02x, unknown=%d%%, n=%d",
                      spot_character_name(spot->data[i + 5]),
                      spot->data[i + 5], spot->data[i + 1], spot->data[i + 2],
                      spot->data[i + 3], spot->data[i + 4]);
@@ -1234,8 +1234,8 @@ spot_get_string(CommandSpot *spot)
                                   spot->data[i + 4]);
                 break;
 
-            case COMMAND_04:
-                spot_string_print("COMMAND_04: %s(%02x), %s(%02x), %02x",
+            case COMMAND_NPC_SET_FLAGS:
+                spot_string_print("NPC_SET_FLAGS: %s(%02x), %s(%02x), %02x",
                                   spot_character_name(spot->data[i + 1]),
                                   spot->data[i + 1],
                                   spot_character_name(spot->data[i + 2]),
@@ -2197,7 +2197,7 @@ spot_continue(CommandSpot *spot)
                 spot_if_result(spot, map_is_dark());
                 break;
 
-            case COMMAND_NPC_ENEMY:
+            case COMMAND_NPC_CREATE:
                 spot->pos++;
 
                 character = character_get(spot->data[i + 5]);
@@ -2248,7 +2248,7 @@ spot_continue(CommandSpot *spot)
                 spot->pos++;
                 break;
 
-            case COMMAND_04:
+            case COMMAND_NPC_SET_FLAGS:
                 // FIXME
                 if (spot->data[i + 2] == 0xff && spot->data[i + 3] == 0x4) {
                     /* attack me */
