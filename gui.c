@@ -743,9 +743,11 @@ gui_help_show()
 #ifdef DEBUG
         "",
         " Cheating:",
-        " W  Wizard mode",
-        " Ctrl+Arrows  Noclip mode",
-        " Shift+Arrows Fast noclip",
+        "            W  Wizard mode",
+        "       Ctrl+W  Print script",
+        "  Ctrl+Arrows  Noclip mode",
+        " Shift+Arrows  Fast noclip",
+        " Shift+Arrows  Fast noclip",
 #endif
         ""
     };
@@ -2854,7 +2856,7 @@ main_menu_key(int key)
 
 #ifdef WIZARD_MODE
     case 'w':
-        if (lord_key_shift())
+        if (lord_key_ctrl())
             dialog_print_active_spot();
         else
             dialog_talk_show(-1, -1);
@@ -2974,7 +2976,7 @@ gui_frame(void)
 
 #ifdef WIZARD_MODE
         case 'w':
-            if (lord_key_shift())
+            if (lord_key_ctrl())
                 dialog_print_active_spot();
             else
                 dialog_talk_show(-1, -1);

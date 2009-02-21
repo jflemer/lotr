@@ -49,6 +49,7 @@ W:      wizard menu
         wizard menu can cause segfaults if used improperly
 	spell H gives some help
 Shift or Ctrl + Arrows: fast movement.
+Ctrl + W: show active game script
 
 
 
