@@ -109,8 +109,8 @@
 
 
 #ifdef EXTENDED
-#include "Python.h"
-#include "pythonspot.h"
+#  include "Python.h"
+#  include "pythonspot.h"
 #endif
 
 #include <SDL_types.h>

@@ -663,12 +663,10 @@ character_draw(int id, int x, int y, int dir)
         if (character->action == CHARACTER_STAY) {
             horse = horse + CHARACTER_STAY;
             frame = dir;
-        }
-        else if (character->action == CHARACTER_ATTACK) {
+        } else if (character->action == CHARACTER_ATTACK) {
             horse = horse + dir;
             frame = dir;
-        }
-        else {
+        } else {
             horse = horse + dir;
             frame = character->state;
         }
@@ -679,17 +677,17 @@ character_draw(int id, int x, int y, int dir)
         xoffset = yoffset = 0;
 
         switch (dir) {
-        case CHARACTER_UP:
-        case CHARACTER_DOWN:
-            xoffset = 2;
-            yoffset = -4;
-            break;
+            case CHARACTER_UP:
+            case CHARACTER_DOWN:
+                xoffset = 2;
+                yoffset = -4;
+                break;
 
-        case CHARACTER_RIGHT:
-        case CHARACTER_LEFT:
-            xoffset = -10;
-            yoffset = 4;
-            break;
+            case CHARACTER_RIGHT:
+            case CHARACTER_LEFT:
+                xoffset = -10;
+                yoffset = 4;
+                break;
         }
 
         shape_draw(horse1, frame, x + xoffset, y + yoffset);
@@ -718,8 +716,7 @@ character_draw(int id, int x, int y, int dir)
     if (character->action == CHARACTER_ATTACK) {
         if (character->weapon_shape_id < 0) {
             shape_draw(character->shapes[dir], 2, x, y);
-        }
-        else {
+        } else {
             if (dir == CHARACTER_DOWN || dir == CHARACTER_RIGHT)
                 shape_draw(character->shapes[CHARACTER_ATTACK], dir, x, y);
 
@@ -848,63 +845,63 @@ character_frame(Character *character)
 
     switch (character->action) {
 
-    case CHARACTER_STAY:
-        return;
+        case CHARACTER_STAY:
+            return;
 
-    case CHARACTER_ATTACK:
-        character->state++;
-        if (character->weapon_shape_id < 0) {
-            if (character->state >= 2) {
+        case CHARACTER_ATTACK:
+            character->state++;
+            if (character->weapon_shape_id < 0) {
+                if (character->state >= 2) {
+                    character->state = 0;
+                    character->action = CHARACTER_STAY;
+                }
+                return;
+            }
+
+
+            if (character->state / 2 >=
+                shape_get(character->weapon_shape_id +
+                          character->direction)->pixmaps_num) {
                 character->state = 0;
                 character->action = CHARACTER_STAY;
             }
             return;
-        }
 
+        case CHARACTER_LEFT:
+            character->x -= 2;
+            map_character_update(character);
+            if (character->x % 4 == 0) {
+                character->state++;
+                character->action = CHARACTER_STAY;
+            }
+            break;
 
-        if (character->state / 2 >=
-            shape_get(character->weapon_shape_id +
-                      character->direction)->pixmaps_num) {
-            character->state = 0;
-            character->action = CHARACTER_STAY;
-        }
-        return;
+        case CHARACTER_RIGHT:
+            character->x += 2;
+            map_character_update(character);
+            if (character->x % 4 == 0) {
+                character->state++;
+                character->action = CHARACTER_STAY;
+            }
+            break;
 
-    case CHARACTER_LEFT:
-        character->x -= 2;
-        map_character_update(character);
-        if (character->x % 4 == 0) {
-            character->state++;
-            character->action = CHARACTER_STAY;
-        }
-        break;
+        case CHARACTER_UP:
+            character->y -= 2;
+            map_character_update(character);
+            if (character->y % 4 == 0) {
+                character->state++;
+                character->action = CHARACTER_STAY;
+            }
+            break;
 
-    case CHARACTER_RIGHT:
-        character->x += 2;
-        map_character_update(character);
-        if (character->x % 4 == 0) {
-            character->state++;
-            character->action = CHARACTER_STAY;
-        }
-        break;
-
-    case CHARACTER_UP:
-        character->y -= 2;
-        map_character_update(character);
-        if (character->y % 4 == 0) {
-            character->state++;
-            character->action = CHARACTER_STAY;
-        }
-        break;
-
-    case CHARACTER_DOWN:
-        character->y += 2;
-        map_character_update(character);
-        if (character->y % 4 == 0) {
-            character->state++;
-            character->action = CHARACTER_STAY;
-        }
-        break;
+        case CHARACTER_DOWN:
+            character->y += 2;
+            map_character_update(character);
+            if (character->y % 4 == 0) {
+                character->state++;
+                character->action = CHARACTER_STAY;
+            }
+            break;
 
     }
 
@@ -1029,45 +1026,45 @@ character_command_npc_init(Character *character, int type, int value)
        npc structure */
 
     switch (type) {
-    case 0x57:                 /* text */
-        character->texts[0] = value;
-        character->pythontexts = 0;
-        break;
+        case 0x57:             /* text */
+            character->texts[0] = value;
+            character->pythontexts = 0;
+            break;
 
-    case 0x2c:                 /* spell */
-        if (character->spells_num < 10)
-            character->spells[character->spells_num++] = value;
-        break;
+        case 0x2c:             /* spell */
+            if (character->spells_num < 10)
+                character->spells[character->spells_num++] = value;
+            break;
 
-    case 0x0a:                 /* direction */
-        character->direction = value;
-        map_character_update(character);
-        break;
+        case 0x0a:             /* direction */
+            character->direction = value;
+            map_character_update(character);
+            break;
 
-    case 0x06:                 /* shape */
-        character->shape_id = value;
-        if (value != 0xff) {
-            character->shapes[0] = shape_get(6 * character->shape_id + 0);
-            character->shapes[1] = shape_get(6 * character->shape_id + 1);
-            character->shapes[2] = shape_get(6 * character->shape_id + 2);
-            character->shapes[3] = shape_get(6 * character->shape_id + 3);
-            character->shapes[4] = shape_get(6 * character->shape_id + 4);
-            character->shapes[5] = shape_get(6 * character->shape_id + 5);
-        }
-        game_draw_map();
-        break;
+        case 0x06:             /* shape */
+            character->shape_id = value;
+            if (value != 0xff) {
+                character->shapes[0] = shape_get(6 * character->shape_id + 0);
+                character->shapes[1] = shape_get(6 * character->shape_id + 1);
+                character->shapes[2] = shape_get(6 * character->shape_id + 2);
+                character->shapes[3] = shape_get(6 * character->shape_id + 3);
+                character->shapes[4] = shape_get(6 * character->shape_id + 4);
+                character->shapes[5] = shape_get(6 * character->shape_id + 5);
+            }
+            game_draw_map();
+            break;
 
-    case 0x0e:                 /* horse shape */
-        character->horse_shape_id = value;
-        game_draw_map();
-        break;
+        case 0x0e:             /* horse shape */
+            character->horse_shape_id = value;
+            game_draw_map();
+            break;
 
-    case 0x50:                 /* portrait */
-        character->portrait = value;
-        break;
+        case 0x50:             /* portrait */
+            character->portrait = value;
+            break;
 
-    default:
-        fprintf(stderr, "lord: unknown NPC_INIT type %02x\n", type);
+        default:
+            fprintf(stderr, "lord: unknown NPC_INIT type %02x\n", type);
     }
 }
 
@@ -1141,8 +1138,7 @@ character_use(Character *character, int index)
         character_unuse(character, index);
         if (item == OBJECT_TORCH)       /* torch */
             game_check_light();
-    }
-    else {
+    } else {
         if (object_is_ring(item)) {
             for (i = 0; i < character->items_num; ++i)
                 if (object_is_ring(character->items[i]))

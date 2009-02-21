@@ -241,8 +241,7 @@ pixmap_draw_to_buffer(Uint8 *buffer, Pixmap *pixmap, int x, int y)
             s += SCREEN_WIDTH;
             data += pixmap->width;
         }
-    }
-    else {
+    } else {
         for (i = 0; i < h; ++i) {
             memcpy(s, data, w);
             s += SCREEN_WIDTH;

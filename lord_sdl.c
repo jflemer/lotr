@@ -264,85 +264,86 @@ lord_poll_events(void)
 
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
-        case SDL_KEYDOWN:
+            case SDL_KEYDOWN:
 
-            if (lord_input_disabled)
+                if (lord_input_disabled)
+                    break;
+
+                if (lord_keybufferpos < KEYBOARDBUFFERESIZE) {
+                    lord_keybuffer[lord_keybufferpos++] =
+                        event.key.keysym.sym;
+                }
+
+                switch (event.key.keysym.sym) {
+                    case SDLK_ESCAPE:
+                        lord_key_esc_pressed = 1;
+                        break;
+                    case SDLK_LEFT:
+                        lord_key_left_pressed = 1;
+                        break;
+                    case SDLK_RIGHT:
+                        lord_key_right_pressed = 1;
+                        break;
+                    case SDLK_UP:
+                        lord_key_up_pressed = 1;
+                        break;
+                    case SDLK_DOWN:
+                        lord_key_down_pressed = 1;
+                        break;
+                    case SDLK_LSHIFT:
+                    case SDLK_RSHIFT:
+                        lord_key_shift_pressed = 1;
+                        break;
+                    case SDLK_LCTRL:
+                    case SDLK_RCTRL:
+                        lord_key_ctrl_pressed = 1;
+                        break;
+
+                    default:
+                        break;
+                }
+
                 break;
 
-            if (lord_keybufferpos < KEYBOARDBUFFERESIZE) {
-                lord_keybuffer[lord_keybufferpos++] = event.key.keysym.sym;
-            }
 
-            switch (event.key.keysym.sym) {
-            case SDLK_ESCAPE:
-                lord_key_esc_pressed = 1;
+            case SDL_KEYUP:
+                switch (event.key.keysym.sym) {
+                    case SDLK_LEFT:
+                        lord_key_left_pressed = 0;
+                        break;
+                    case SDLK_RIGHT:
+                        lord_key_right_pressed = 0;
+                        break;
+                    case SDLK_UP:
+                        lord_key_up_pressed = 0;
+                        break;
+                    case SDLK_DOWN:
+                        lord_key_down_pressed = 0;
+                        break;
+                    case SDLK_LSHIFT:
+                    case SDLK_RSHIFT:
+                        lord_key_shift_pressed = 0;
+                        break;
+                    case SDLK_LCTRL:
+                    case SDLK_RCTRL:
+                        lord_key_ctrl_pressed = 0;
+                        break;
+                    case SDLK_ESCAPE:
+                        /* esc can be only reseted */
+                        break;
+                    default:
+                        break;
+                }
+
                 break;
-            case SDLK_LEFT:
-                lord_key_left_pressed = 1;
-                break;
-            case SDLK_RIGHT:
-                lord_key_right_pressed = 1;
-                break;
-            case SDLK_UP:
-                lord_key_up_pressed = 1;
-                break;
-            case SDLK_DOWN:
-                lord_key_down_pressed = 1;
-                break;
-            case SDLK_LSHIFT:
-            case SDLK_RSHIFT:
-                lord_key_shift_pressed = 1;
-                break;
-            case SDLK_LCTRL:
-            case SDLK_RCTRL:
-                lord_key_ctrl_pressed = 1;
+
+                /* SDL_QUIT event (window close) */
+            case SDL_QUIT:
+                exit(0);
                 break;
 
             default:
                 break;
-            }
-
-            break;
-
-
-        case SDL_KEYUP:
-            switch (event.key.keysym.sym) {
-            case SDLK_LEFT:
-                lord_key_left_pressed = 0;
-                break;
-            case SDLK_RIGHT:
-                lord_key_right_pressed = 0;
-                break;
-            case SDLK_UP:
-                lord_key_up_pressed = 0;
-                break;
-            case SDLK_DOWN:
-                lord_key_down_pressed = 0;
-                break;
-            case SDLK_LSHIFT:
-            case SDLK_RSHIFT:
-                lord_key_shift_pressed = 0;
-                break;
-            case SDLK_LCTRL:
-            case SDLK_RCTRL:
-                lord_key_ctrl_pressed = 0;
-                break;
-            case SDLK_ESCAPE:
-                /* esc can be only reseted */
-                break;
-            default:
-                break;
-            }
-
-            break;
-
-            /* SDL_QUIT event (window close) */
-        case SDL_QUIT:
-            exit(0);
-            break;
-
-        default:
-            break;
         }
 
     }

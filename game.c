@@ -174,7 +174,6 @@ game_parse_texts(Archive *archive, int index)
             fprintf(stderr, "lord: too many game texts\n");
             exit(1);
         }
-
 #ifdef DEBUG
         printf("%02x %s\n", game_text_num, game_text_data + i);
 #endif
@@ -208,15 +207,16 @@ game_load_map(int map)
 #endif
 
 #ifndef TTT
-    if (map < 0 || map > 13 || !game_maps[map][0] || (only_one_map && map > 0))
+    if (map < 0 || map > 13 || !game_maps[map][0]
+        || (only_one_map && map > 0))
 #else
-    if (map < 0 || map > 15 || !game_maps[map][0] || (only_one_map && map > 0))
+    if (map < 0 || map > 15 || !game_maps[map][0]
+        || (only_one_map && map > 0))
 #endif
     {
         fprintf(stderr, "lord: not existing map index=%d\n", map);
         exit(1);
     }
-
 #ifdef TTT
     map_exit_building();
 #endif
@@ -667,8 +667,7 @@ game_leader_movement(void)
             if (lord_key_down() && leader->y < MAP_HEIGHT * 16 * 4 - 20)
                 leader->y += 4;
             map_character_update(leader);
-        }
-        else {
+        } else {
             if (lord_key_left() && leader->x >= 0x20)
                 leader->x -= 0x20;
             if (lord_key_right()
@@ -681,8 +680,7 @@ game_leader_movement(void)
                 leader->y += 0x20;
             map_character_update(leader);
         }
-    }
-    else {
+    } else {
 
         if (!map_is_in_spot(leader, game_actual_spot, &w, &h))
             game_actual_spot = NULL;
@@ -784,22 +782,19 @@ game_follow_leader(void)
                             (game_party[i], game_party[i]->x / 4 + 1,
                              game_party[i]->y / 4))
                             character_move_right(game_party[i]);
-                    }
-                    else {
+                    } else {
                         if (map_can_move_to
                             (game_party[i], game_party[i]->x / 4 - 1,
                              game_party[i]->y / 4))
                             character_move_left(game_party[i]);
                     }
-                }
-                else {
+                } else {
                     if (game_party[i]->y > leader->y) {
                         if (map_can_move_to
                             (game_party[i], game_party[i]->x / 4,
                              game_party[i]->y / 4 - 1))
                             character_move_up(game_party[i]);
-                    }
-                    else {
+                    } else {
                         if (map_can_move_to
                             (game_party[i], game_party[i]->x / 4,
                              game_party[i]->y / 4 + 1))
@@ -813,18 +808,18 @@ game_follow_leader(void)
         next_y = game_party[i]->y;
 
         switch (game_party[i]->action) {
-        case CHARACTER_LEFT:
-            next_x -= 4;
-            break;
-        case CHARACTER_RIGHT:
-            next_x += 4;
-            break;
-        case CHARACTER_UP:
-            next_y -= 4;
-            break;
-        case CHARACTER_DOWN:
-            next_y += 4;
-            break;
+            case CHARACTER_LEFT:
+                next_x -= 4;
+                break;
+            case CHARACTER_RIGHT:
+                next_x += 4;
+                break;
+            case CHARACTER_UP:
+                next_y -= 4;
+                break;
+            case CHARACTER_DOWN:
+                next_y += 4;
+                break;
         }
 
 
@@ -837,8 +832,7 @@ game_follow_leader(void)
             if (j == i) {
                 game_party[i]->next_x = next_x;
                 game_party[i]->next_y = next_y;
-            }
-            else {
+            } else {
                 game_party[i]->next_x = game_party[i]->x;
                 game_party[i]->next_y = game_party[i]->y;
                 game_party[i]->action = CHARACTER_STAY;
@@ -926,7 +920,7 @@ game_next_frame(void)
                                 for (x = 0; x < BUILDING_WIDTH * 4; ++x)
                                     if (terrain_get(x, y) == TERRAIN_UP)
                                         goto exit_found;
-                          exit_found:
+exit_found:
                             if (terrain_free(x - 1, y) &&
                                 terrain_free(x - 1, y + 1) &&
                                 terrain_get(x, y + 1) == TERRAIN_UP)
@@ -937,8 +931,7 @@ game_next_frame(void)
                                                      y * 4 - 8, 0xff, 0xff);
                         }
                     }
-                }
-                else {
+                } else {
                     if (terrain == TERRAIN_DOWN)
                         game_leader_teleport(1, 0, 32 * 4 * 4, 0xff, 0xff);
 
@@ -960,8 +953,7 @@ game_next_frame(void)
             game_follow_leader();
         }
 
-    }
-    else {                      /* if( !game_spot_running  ) */
+    } else {                    /* if( !game_spot_running  ) */
 
         game_spot_running = spot_continue(game_actual_spot);
     }
@@ -969,7 +961,7 @@ game_next_frame(void)
     if (!gui_mode())
         game_draw_map();
 
-  end_next_frame:
+end_next_frame:
 
     map_animate_frame();
     graphics_update_screen();
@@ -1608,201 +1600,202 @@ demo_frame(void)
     Character *character;
 
     switch (demo_state) {
-    case 0:
-        gui_message(game_texts[0], 0);
-        ++demo_state;
-        break;
-
-    case 1:
-        if (!map_character_move(leader->id, 0x21c, 0xc8, 0xff))
+        case 0:
+            gui_message(game_texts[0], 0);
             ++demo_state;
-        break;
+            break;
 
-    case 2:
-        gui_message
-            ("You remember what Gandalf said: \"But I do not think you need go alone. Not if you know of anyone you can trust.\"",
-             0);
-        ++demo_state;
-        break;
+        case 1:
+            if (!map_character_move(leader->id, 0x21c, 0xc8, 0xff))
+                ++demo_state;
+            break;
 
-    case 3:
-        game_recruit(character_get(0xa1), 1);
-        game_recruit(character_get(0xa2), 1);
-        ++demo_state;
-        break;
-
-    case 4:
-        game_follow_leader();
-        if (character_get(0xa2)->action == CHARACTER_STAY)
+        case 2:
+            gui_message
+                ("You remember what Gandalf said: \"But I do not think you need go alone. Not if you know of anyone you can trust.\"",
+                 0);
             ++demo_state;
-        break;
+            break;
 
-    case 5:
-        if (!map_character_move(leader->id, 0x1a0, 0xd8, 0xff))
+        case 3:
+            game_recruit(character_get(0xa1), 1);
+            game_recruit(character_get(0xa2), 1);
             ++demo_state;
-        break;
+            break;
 
-    case 6:
-        ++demo_state;
-        cartoon_play("democrt1");
-        graphics_clear_screen();
-        gui_set_palette();
-        gui_clear();
-        map_set_palette();
-        shapes_set_palette();
-        lord_reset_keyboard();
-        break;
+        case 4:
+            game_follow_leader();
+            if (character_get(0xa2)->action == CHARACTER_STAY)
+                ++demo_state;
+            break;
 
-    case 7:
-        if (!map_character_move(leader->id, 0xdc, 0xd8, 0xff))
+        case 5:
+            if (!map_character_move(leader->id, 0x1a0, 0xd8, 0xff))
+                ++demo_state;
+            break;
+
+        case 6:
             ++demo_state;
-        break;
+            cartoon_play("democrt1");
+            graphics_clear_screen();
+            gui_set_palette();
+            gui_clear();
+            map_set_palette();
+            shapes_set_palette();
+            lord_reset_keyboard();
+            break;
 
-    case 8:
-        gui_message
-            ("You said you are leaving to Buckland. But the truth is you are leaving Shire.",
-             0);
-        ++demo_state;
-        break;
+        case 7:
+            if (!map_character_move(leader->id, 0xdc, 0xd8, 0xff))
+                ++demo_state;
+            break;
 
-    case 9:
-        if (!map_character_move(leader->id, 0xdc, 0x170, 0xff))
+        case 8:
+            gui_message
+                ("You said you are leaving to Buckland. But the truth is you are leaving Shire.",
+                 0);
             ++demo_state;
-        break;
+            break;
 
-    case 10:
-        gui_message
-            ("Bag End, widely renowned as the most comfortable Hole in Hobbiton, was until today home of the Baggins Family. Now you have sold it to your relatives - Sackville-Baggins.",
-             0);
-        ++demo_state;
-        break;
+        case 9:
+            if (!map_character_move(leader->id, 0xdc, 0x170, 0xff))
+                ++demo_state;
+            break;
 
-    case 11:
-        gui_message(game_texts[1], 0);
-        ++demo_state;
-        break;
-
-    case 12:
-        gui_message("You do it only reluctantly.", 0);
-        ++demo_state;
-        break;
-
-    case 13:
-        gui_message(game_texts[2], 0);
-        ++demo_state;
-        break;
-
-    case 14:
-        if (!map_character_move(0xb0, 0xffff, 0x120, 0xff))
-            demo_state = 32;
-        break;
-
-    case 32:
-        game_leader_teleport(0, 0x494, 0x914, 1, 0xff);
-        ++demo_state;
-        break;
-
-    case 33:
-        if (!map_character_move(leader->id, 0x4b8, 0xffff, 0xff))
+        case 10:
+            gui_message
+                ("Bag End, widely renowned as the most comfortable Hole in Hobbiton, was until today home of the Baggins Family. Now you have sold it to your relatives - Sackville-Baggins.",
+                 0);
             ++demo_state;
-        break;
+            break;
 
-    case 34:
-        character = character_get(0x95);
-        character->x = leader->x + 4 * 4;
-        character->y = leader->y - 2 * 4;
-        character->map = 0;
-        character->direction = 3;
-
-        map_unique_add_character(character);
-
-        gui_message("Black riders will chase you.", 0);
-        ++demo_state;
-        break;
-
-    case 35:
-        character = character_get(0xa4);
-        character->x = leader->x - 2 * 4;
-        character->y = leader->y - 2 * 4;
-        character->map = 0;
-        character->direction = 2;
-
-        map_add_character(character);
-
-        gui_message("But you will meet unexpected friends.", 0);
-        ++demo_state;
-        break;
-
-    case 36:
-        if (!map_character_move(0x95, 0x510, 0xffff, 0xff))
-            demo_state = 64;
-        break;
-
-
-    case 64:
-        game_leader_teleport(0, 0x95c, 0xb58, 1, 0xff);
-        ++demo_state;
-        break;
-
-    case 65:
-        if (!map_character_move(leader->id, 0x97c, 0xffff, 0xff))
+        case 11:
+            gui_message(game_texts[1], 0);
             ++demo_state;
-        break;
+            break;
 
-    case 66:
-        gui_message
-            ("At the Buckland Ferry you meet Merry. He joins your Quest.", 0);
-        ++demo_state;
-        break;
-
-    case 67:
-        game_recruit(character_get(0xa3), 1);
-        demo_state = 96;
-        break;
-
-
-    case 96:
-        game_leader_teleport(0, 0xc34, 0xaa4, 1, 0xff);
-        ++demo_state;
-        break;
-
-    case 97:
-        if (!map_character_move(leader->id, 0xc88, 0xffff, 0xff))
+        case 12:
+            gui_message("You do it only reluctantly.", 0);
             ++demo_state;
-        break;
+            break;
 
-    case 98:
-        gui_message("After many perils...", 0);
-        ++demo_state;
-        break;
+        case 13:
+            gui_message(game_texts[2], 0);
+            ++demo_state;
+            break;
 
-    case 99:
-        cartoon_play("democrt2");
-        graphics_clear_screen();
-        gui_set_palette();
-        gui_clear();
-        map_set_palette();
-        shapes_set_palette();
-        demo_state = 128;
-        lord_reset_keyboard();
-        break;
+        case 14:
+            if (!map_character_move(0xb0, 0xffff, 0x120, 0xff))
+                demo_state = 32;
+            break;
 
-    case 128:
-        game_leader_teleport(0, 0x21c, 0xb0, 2, 0xff);
-        ++demo_state;
-        break;
+        case 32:
+            game_leader_teleport(0, 0x494, 0x914, 1, 0xff);
+            ++demo_state;
+            break;
 
-    case 129:
-        gui_message
-            ("Here the official demo ends. You can explore Shire on your own. Many things are not working - this was originally non-playable demo.",
-             0);
-        ++demo_state;
-        break;
+        case 33:
+            if (!map_character_move(leader->id, 0x4b8, 0xffff, 0xff))
+                ++demo_state;
+            break;
+
+        case 34:
+            character = character_get(0x95);
+            character->x = leader->x + 4 * 4;
+            character->y = leader->y - 2 * 4;
+            character->map = 0;
+            character->direction = 3;
+
+            map_unique_add_character(character);
+
+            gui_message("Black riders will chase you.", 0);
+            ++demo_state;
+            break;
+
+        case 35:
+            character = character_get(0xa4);
+            character->x = leader->x - 2 * 4;
+            character->y = leader->y - 2 * 4;
+            character->map = 0;
+            character->direction = 2;
+
+            map_add_character(character);
+
+            gui_message("But you will meet unexpected friends.", 0);
+            ++demo_state;
+            break;
+
+        case 36:
+            if (!map_character_move(0x95, 0x510, 0xffff, 0xff))
+                demo_state = 64;
+            break;
 
 
-    default:
-        demo_state = 0x100;
-        break;
+        case 64:
+            game_leader_teleport(0, 0x95c, 0xb58, 1, 0xff);
+            ++demo_state;
+            break;
+
+        case 65:
+            if (!map_character_move(leader->id, 0x97c, 0xffff, 0xff))
+                ++demo_state;
+            break;
+
+        case 66:
+            gui_message
+                ("At the Buckland Ferry you meet Merry. He joins your Quest.",
+                 0);
+            ++demo_state;
+            break;
+
+        case 67:
+            game_recruit(character_get(0xa3), 1);
+            demo_state = 96;
+            break;
+
+
+        case 96:
+            game_leader_teleport(0, 0xc34, 0xaa4, 1, 0xff);
+            ++demo_state;
+            break;
+
+        case 97:
+            if (!map_character_move(leader->id, 0xc88, 0xffff, 0xff))
+                ++demo_state;
+            break;
+
+        case 98:
+            gui_message("After many perils...", 0);
+            ++demo_state;
+            break;
+
+        case 99:
+            cartoon_play("democrt2");
+            graphics_clear_screen();
+            gui_set_palette();
+            gui_clear();
+            map_set_palette();
+            shapes_set_palette();
+            demo_state = 128;
+            lord_reset_keyboard();
+            break;
+
+        case 128:
+            game_leader_teleport(0, 0x21c, 0xb0, 2, 0xff);
+            ++demo_state;
+            break;
+
+        case 129:
+            gui_message
+                ("Here the official demo ends. You can explore Shire on your own. Many things are not working - this was originally non-playable demo.",
+                 0);
+            ++demo_state;
+            break;
+
+
+        default:
+            demo_state = 0x100;
+            break;
     }
 
 }

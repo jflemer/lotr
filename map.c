@@ -172,8 +172,7 @@ map_init(void)
             buildings[i][2] = building_enters[j][1];
             buildings[i][3] = building_enters[j][2];
             ++j;
-        }
-        else {
+        } else {
             buildings[i][0] = -1;
         }
 
@@ -779,8 +778,7 @@ map_display(int x, int y)
     if (combat_get_mode()) {
         x = map_last_x;
         y = map_last_y;
-    }
-    else {
+    } else {
         if (x < (map_width + 1) / 2)
             x = (map_width + 1) / 2;
         if (y < (map_height + 1) / 2)
@@ -1037,8 +1035,7 @@ map_animate_frame(void)
 
         /* fire animation */
         graphics_rotate_palette_left(0x3c, 0x3f);
-    }
-    else {
+    } else {
         /* underground water */
         graphics_rotate_palette_left(0x31, 0x35);
 
@@ -1173,8 +1170,7 @@ terrain_get(int x, int y)
             return 0;
         largetile = map_desc[x / 16][y / 16];
         tile = largetiles[largetile][(x % 16) / 4][(y % 16) / 4];
-    }
-    else {
+    } else {
         if (x >= BUILDING_WIDTH * 4 || y >= BUILDING_HEIGHT * 4)
             return 0;
         tile = building_desc[x / 4][y / 4];
@@ -1200,36 +1196,36 @@ terrain_free(int x, int y)
 {
 
     switch (terrain_get(x, y)) {
-    case TERRAIN_PATH:
-        return 1;
-    case TERRAIN_INPASSABLE:
-        return 0;
-    case TERRAIN_SWAMP:
-        return 1;
-    case TERRAIN_ROCK:
-        return map_climb_mode;
-    case TERRAIN_DOWN:
-        return 1;
-    case TERRAIN_UP:
-        return 1;
-    case TERRAIN_PIT:
-        return 0;
-    case TERRAIN_STAIRS_DOWN:
-        return 1;
-    case TERRAIN_EASY:
-        return 1;
-    case TERRAIN_HARD:
-        return 1;
-    case TERRAIN_HARDER:
-        return 1;
-    case TERRAIN_ICE:
-        return 0;
-    case TERRAIN_ICEPATH:
-        return 1;
-    case TERRAIN_WATER:
-        return 0;
-    case TERRAIN_WATER2:
-        return 0;
+        case TERRAIN_PATH:
+            return 1;
+        case TERRAIN_INPASSABLE:
+            return 0;
+        case TERRAIN_SWAMP:
+            return 1;
+        case TERRAIN_ROCK:
+            return map_climb_mode;
+        case TERRAIN_DOWN:
+            return 1;
+        case TERRAIN_UP:
+            return 1;
+        case TERRAIN_PIT:
+            return 0;
+        case TERRAIN_STAIRS_DOWN:
+            return 1;
+        case TERRAIN_EASY:
+            return 1;
+        case TERRAIN_HARD:
+            return 1;
+        case TERRAIN_HARDER:
+            return 1;
+        case TERRAIN_ICE:
+            return 0;
+        case TERRAIN_ICEPATH:
+            return 1;
+        case TERRAIN_WATER:
+            return 0;
+        case TERRAIN_WATER2:
+            return 0;
     }
 
     return 0;
@@ -1278,8 +1274,7 @@ map_get_spot_by_addr(int address)
     for (i = 0; i < map_num_spots; ++i) {
         CommandSpot *spot = map_spots[i];
         if (spot->label_start <= address
-            && address <= spot->label_start + spot->data_size)
-        {
+            && address <= spot->label_start + spot->data_size) {
             return spot;
         }
     }
@@ -1517,8 +1512,7 @@ map_character_teleport(Character *character, int rel, int x, int y, int dir,
         else
             character->y = leader->y + y;
 
-    }
-    else {
+    } else {
         if (x != 0xffff)
             character->x = x;
         else
@@ -1537,8 +1531,7 @@ map_character_teleport(Character *character, int rel, int x, int y, int dir,
         (map == 0xff && character->map != map_id)) {
         character->map = map;
         map_remove_character(character->id);
-    }
-    else {
+    } else {
         character->map = map_id;
         map_unique_add_character(character);
     }
@@ -1581,8 +1574,7 @@ map_character_turn_to(int character_id, int x, int y)
             dir = CHARACTER_LEFT;
         else
             dir = CHARACTER_RIGHT;
-    }
-    else {
+    } else {
         if (y < yy)
             dir = CHARACTER_UP;
         else
@@ -1640,8 +1632,7 @@ map_character_move(int character_id, int x, int y, int dir)
                 character_move_up(character);
             else
                 character_move_down(character);
-        }
-        else {
+        } else {
             if (x < character->x)
                 character_move_left(character);
             else

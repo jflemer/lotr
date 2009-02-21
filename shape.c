@@ -110,8 +110,7 @@ shapes_init(void)
     for (i = 0; i < archive->size; ++i)
         if (archive_data_size(archive, i) == 0 || shapes_param[i][0] == 0) {
             shapes_cache[i] = NULL;
-        }
-        else {
+        } else {
             data = decompress_ndxarchive(archive, i, &size);
             shapes_cache[i] = lord_malloc(sizeof(Shape));
 
@@ -179,8 +178,7 @@ shapes_init(void)
                 palette_copy_colors(portraits_cache[i]->palette, 0, 0x20,
                                     0x60);
 
-            }
-            else {
+            } else {
                 portraits_cache[i]->freepalette = 0;
                 portraits_cache[i]->palette = lord_malloc(sizeof(Palette));
 

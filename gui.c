@@ -224,8 +224,7 @@ gui_init(void)
         }
 
         fclose(parfile);
-    }
-    else {
+    } else {
         paragraphs = NULL;
     }
 
@@ -417,8 +416,7 @@ gui_set_map_area(int *width, int *height)
         graphics_set_window(8, 9, 8 + *width - 1, 9 + *height - 1);
 
 #endif
-    }
-    else {
+    } else {
 #if PIXEL_PRECISE
 
         *width = SCREEN_WIDTH - 16;
@@ -530,8 +528,7 @@ quit_menu()
 
     if (combat_get_mode()) {
         main_menu_show();
-    }
-    else {
+    } else {
         gui_clear();
         game_draw_map();
         lord_reset_keyboard();
@@ -548,7 +545,8 @@ quit_menu()
  */
 
 char *
-format_text(const char *_text, int *lines, int width, const char *formatted_text[])
+format_text(const char *_text, int *lines, int width,
+            const char *formatted_text[])
 {
     int n;
     char *text, *t;
@@ -611,8 +609,7 @@ gui_message(const char *text, int small_window)
     if (small_window) {
         main_menu_show();
         width = DEFAULT_SCROLL_WIDTH;
-    }
-    else {
+    } else {
         if (dialog_mode != DIALOG_BOOK) {
             gui_clear();
             game_draw_map();
@@ -635,8 +632,7 @@ gui_message(const char *text, int small_window)
         while (lines < 7)
             formatted_text[lines++] = "";
         draw_scroll(0, 0, -DEFAULT_SCROLL_WIDTH, 7, formatted_text);
-    }
-    else {
+    } else {
         draw_scroll(SCROLL_ELEMENT_SIZE, 128, width, lines, formatted_text);
     }
 
@@ -713,7 +709,8 @@ void
 gui_died_show(const char *text)
 {
     if (text == NULL)
-        text = "You have failed. Sauron has finally recovered the Ring. Your quest is Over.";
+        text =
+            "You have failed. Sauron has finally recovered the Ring. Your quest is Over.";
     gui_message(text, 1);
     dialog_mode = DIALOG_DIED;
 }
@@ -835,8 +832,7 @@ gui_paragraph(int num)
     if (paragraphs[gui_paragraph_pos] == 0x10) {
         /* paragraph does not continue */
         dialog_mode = DIALOG_MESSAGE;
-    }
-    else {
+    } else {
         /* paragraph continues */
         dialog_mode = DIALOG_PARAGRAPH;
     }
@@ -882,11 +878,9 @@ dialog_paragraph_key(int key)
             if (gui_paragraph_isquestion) {
                 lord_reset_keyboard();
                 dialog_mode = DIALOG_MESSAGE_YN;
-            }
-            else
+            } else
                 dialog_mode = DIALOG_MESSAGE;
-        }
-        else {
+        } else {
             /* paragraph continues */
             dialog_mode = DIALOG_PARAGRAPH;
         }
@@ -947,12 +941,15 @@ dialog_print_active_spot()
 
         spot_scroll_width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE;
         for (i = 0; i < spot_formatted_text_lines; ++i)
-            spot_scroll_width = max(spot_scroll_width, strlen(spot_formatted_text[i]));
+            spot_scroll_width =
+                max(spot_scroll_width, strlen(spot_formatted_text[i]));
     }
 
     lines =
-        min(screen_height, spot_formatted_text_lines - spot_formatted_text_pos);
-    draw_scroll(-SCROLL_ELEMENT_SIZE * (spot_print_xoff + 1), -SCROLL_ELEMENT_SIZE, 256, lines,
+        min(screen_height,
+            spot_formatted_text_lines - spot_formatted_text_pos);
+    draw_scroll(-SCROLL_ELEMENT_SIZE * (spot_print_xoff + 1),
+                -SCROLL_ELEMENT_SIZE, 256, lines,
                 spot_formatted_text + spot_formatted_text_pos);
 }
 
@@ -977,20 +974,15 @@ dialog_print_active_spot_key(int key)
 
     if (key == KEY_UP) {
         spot_formatted_text_pos--;
-    }
-    else if (key == KEY_DOWN) {
+    } else if (key == KEY_DOWN) {
         spot_formatted_text_pos++;
-    }
-    else if (key == KEY_PAGEUP) {
+    } else if (key == KEY_PAGEUP) {
         spot_formatted_text_pos -= pg_size;
-    }
-    else if (key == KEY_PAGEDOWN) {
+    } else if (key == KEY_PAGEDOWN) {
         spot_formatted_text_pos += pg_size;
-    }
-    else if (key == KEY_LEFT) {
+    } else if (key == KEY_LEFT) {
         spot_print_xoff--;
-    }
-    else if (key == KEY_RIGHT) {
+    } else if (key == KEY_RIGHT) {
         spot_print_xoff++;
     }
 
@@ -1007,9 +999,7 @@ dialog_print_active_spot_key(int key)
         spot_print_xoff = 0;
 
     /* Redraw the scroll */
-    if (last_pos != spot_formatted_text_pos
-        || last_xoff != spot_print_xoff)
-    {
+    if (last_pos != spot_formatted_text_pos || last_xoff != spot_print_xoff) {
         dialog_print_active_spot();
     }
 }
@@ -1205,35 +1195,35 @@ dialog_options_key(int key)
     }
 
     switch (key) {
-    case 'x':
-        quit_menu();
-        break;
+        case 'x':
+            quit_menu();
+            break;
 
-    case 'p':
-        dialog_options_message_show(paused_text);
-        break;
+        case 'p':
+            dialog_options_message_show(paused_text);
+            break;
 
-    case 's':
-        dialog_save_show();
-        break;
+        case 's':
+            dialog_save_show();
+            break;
 
-    case 'l':
-        dialog_load_show();
-        break;
+        case 'l':
+            dialog_load_show();
+            break;
 
-    case 'm':
-        toggle_music();
-        quit_menu();
-        break;
+        case 'm':
+            toggle_music();
+            quit_menu();
+            break;
 
-    case 'q':
-        gui_confirm_scroll("Quit Game");
-        dialog_confirm = 1;
+        case 'q':
+            gui_confirm_scroll("Quit Game");
+            dialog_confirm = 1;
 
-        break;
+            break;
 
-    default:
-        break;
+        default:
+            break;
 
     }
 
@@ -1395,8 +1385,7 @@ dialog_list_draw(void)
             }
             sprintf(lines[i + 1], "%d.%c%s", (i == 9) ? 0 : i + 1,
                     status_char, dialog_list_names[index]);
-        }
-        else
+        } else
             strncpy(lines[i + 1], "", 20);
 
     dialog_list_can_scroll = dialog_list_num > num_lines;
@@ -1700,8 +1689,7 @@ dialog_get_show(void)
                     "%-14s%d", object_name(dialog_get_objects[i]),
                     object_price(dialog_get_objects[i]));
             dialog_list_names[i] = dialog_buy_texts[i];
-        }
-        else
+        } else
             dialog_list_names[i] = object_name(dialog_get_objects[i]);
     }
 
@@ -1710,8 +1698,7 @@ dialog_get_show(void)
     if (dialog_get_to_buy) {
         sprintf(dialog_buy_texts[10], "Silver Pennies:%d", game_get_silver());
         dialog_list_name = dialog_buy_texts[10];
-    }
-    else
+    } else
         dialog_list_name = "TAKE ITEM(S)";
     dialog_list_offset = 0;
 
@@ -1741,13 +1728,13 @@ dialog_trade_to_show(void)
     if (choosed_character->life > 0) {
         dialog_list_num =
             map_npc_stay_near(choosed_character, dialog_list_codes, 1);
-    }
-    else {
+    } else {
         /* trading from dead character */
         dialog_list_num = game_get_party(dialog_list_codes);
 
         if (dialog_list_num <= 1) {
-            gui_died_show("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.");
+            gui_died_show
+                ("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.");
             return;
         }
 
@@ -2052,7 +2039,8 @@ dialog_talk_show(int character_id, int text_id)
 
 #ifdef DEMO
         /* there are not texts in the Demo */
-        text = "Hullo Mr. Frodo. This demo is no fun. Please buy a full game and kick some Nazgul ass.";
+        text =
+            "Hullo Mr. Frodo. This demo is no fun. Please buy a full game and kick some Nazgul ass.";
 #else
         if (character->texts[0] == 0 && character->texts[1] <= 0) {
             /* character has nothing to say */
@@ -2062,8 +2050,7 @@ dialog_talk_show(int character_id, int text_id)
 
         if (text_id >= 0x100) {
             text = "I don't know any more than you do about that.";
-        }
-        else {
+        } else {
             if (text_id < 0)
                 text_id = (Uint8)character->texts[0];
 #ifdef EXTENDED
@@ -2074,7 +2061,7 @@ dialog_talk_show(int character_id, int text_id)
                 text = game_get_text(text_id);
         }
 #endif
-    }                           /* character_id != -1 */
+    } /* character_id != -1 */
     else {
 #ifdef WIZARD_MODE
         character = character_get(0xa5);        /* Gandalf */
@@ -2117,8 +2104,7 @@ dialog_talk_show(int character_id, int text_id)
         )) {
         scroll_text[6] = "       eXit";
         dialog_questioned_character = NULL;
-    }
-    else {
+    } else {
         dialog_questioned_character = character;
         scroll_text[6] = "   Question eXit";
     }
@@ -2210,8 +2196,7 @@ dialog_question_key(int key)
                 if (len == 20) {
                     j = i + len;
                     --len;
-                }
-                else {
+                } else {
                     if (texts[i + len] == 0)
                         j = i + len + 2;
                     else
@@ -2232,8 +2217,7 @@ dialog_question_key(int key)
             }
             dialog_talk_show(dialog_questioned_character->id, answer);
 #ifdef WIZARD_MODE
-        }
-        else {
+        } else {
             int spell[10];
             char spell_type = 0;
             int spell_size;
@@ -2280,95 +2264,96 @@ dialog_question_key(int key)
             switch (spell_type) {
 
 #ifdef TTT
-            case 'B':
-                map_enter_building(spell[0]);
-                game_leader_teleport(0, 16 * 4 * 4, 16 * 4 * 4, 0xff, 0xff);
-                break;
+                case 'B':
+                    map_enter_building(spell[0]);
+                    game_leader_teleport(0, 16 * 4 * 4, 16 * 4 * 4, 0xff,
+                                         0xff);
+                    break;
 #endif
 
-            case 'E':
-                reg = !game_get_register(spell[0]);
-                sprintf(wizard_text, "reg: %d", reg);
-                game_set_register(spell[0], reg);
-                break;
+                case 'E':
+                    reg = !game_get_register(spell[0]);
+                    sprintf(wizard_text, "reg: %d", reg);
+                    game_set_register(spell[0], reg);
+                    break;
 
-            case 'H':
-                sprintf(wizard_text,
-                        "Building, Help, Location, Teleport, Map, Day, Night, Spots, Get, Recruit, Kill, rEg, Paragraph");
-                break;
+                case 'H':
+                    sprintf(wizard_text,
+                            "Building, Help, Location, Teleport, Map, Day, Night, Spots, Get, Recruit, Kill, rEg, Paragraph");
+                    break;
 
-            case 'L':
-                sprintf(wizard_text, "loc: %x %x",
-                        game_get_leader()->x, game_get_leader()->y);
-                break;
+                case 'L':
+                    sprintf(wizard_text, "loc: %x %x",
+                            game_get_leader()->x, game_get_leader()->y);
+                    break;
 
-            case 'M':
-                quit_menu();
-                game_leader_teleport(0, 0xffff, 0xffff, 0xff, spell[0]);
-                return;
+                case 'M':
+                    quit_menu();
+                    game_leader_teleport(0, 0xffff, 0xffff, 0xff, spell[0]);
+                    return;
 
-            case 'T':
-                game_leader_teleport(0, spell[0], spell[1], 0xff, 0xff);
-                break;
+                case 'T':
+                    game_leader_teleport(0, spell[0], spell[1], 0xff, 0xff);
+                    break;
 
-            case 'D':
-                map_set_frame(0x400);
-                break;
+                case 'D':
+                    map_set_frame(0x400);
+                    break;
 
-            case 'N':
-                map_set_frame(0x0);
-                break;
+                case 'N':
+                    map_set_frame(0x0);
+                    break;
 
-            case 'S':
-                gui_show_spots = !gui_show_spots;
-                break;
-
-
-            case 'P':
-                /* read hex number as dec */
-                j = spell[0] % 16;
-                spell[0] /= 16;
-                j += (spell[0] % 16) * 10;
-                spell[0] /= 16;
-                j += (spell[0] % 16) * 100;
-                quit_menu();
-                gui_paragraph(j);
-                return;
-
-            case 'R':
-                map_character_teleport(character_get(spell[0]), 0,
-                                       game_get_leader()->x,
-                                       game_get_leader()->y, 0xff,
-                                       game_get_leader()->map);
-                game_recruit(character_get(spell[0]), 1);
-                break;
-
-            case 'G':
-                if (spell[0] == OBJECT_SILVER)
-                    game_add_silver(1000);
-                if (object_is_item(spell[0]))
-                    character_add_item(game_get_leader(), spell[0]);
-                if (object_is_spell(spell[0]))
-                    character_add_spell(game_get_leader(), spell[0]);
-                if (object_is_skill(spell[0]))
-                    character_add_skill(game_get_leader(), spell[0]);
-                break;
+                case 'S':
+                    gui_show_spots = !gui_show_spots;
+                    break;
 
 
-            case 'K':
-                if (combat_get_mode())
-                    combat_genocide();
-                else
+                case 'P':
+                    /* read hex number as dec */
+                    j = spell[0] % 16;
+                    spell[0] /= 16;
+                    j += (spell[0] % 16) * 10;
+                    spell[0] /= 16;
+                    j += (spell[0] % 16) * 100;
+                    quit_menu();
+                    gui_paragraph(j);
+                    return;
+
+                case 'R':
+                    map_character_teleport(character_get(spell[0]), 0,
+                                           game_get_leader()->x,
+                                           game_get_leader()->y, 0xff,
+                                           game_get_leader()->map);
+                    game_recruit(character_get(spell[0]), 1);
+                    break;
+
+                case 'G':
+                    if (spell[0] == OBJECT_SILVER)
+                        game_add_silver(1000);
+                    if (object_is_item(spell[0]))
+                        character_add_item(game_get_leader(), spell[0]);
+                    if (object_is_spell(spell[0]))
+                        character_add_spell(game_get_leader(), spell[0]);
+                    if (object_is_skill(spell[0]))
+                        character_add_skill(game_get_leader(), spell[0]);
+                    break;
+
+
+                case 'K':
+                    if (combat_get_mode())
+                        combat_genocide();
+                    else
+                        spell_type = 0;
+                    break;
+
+                default:
                     spell_type = 0;
-                break;
-
-            default:
-                spell_type = 0;
             }
 
 
             if (!spell_type) {
-              spell_foul:
+spell_foul:
                 sprintf(wizard_text,
                         "Thou art not a true wizard. Thy foul spell failed\n");
             }
@@ -2523,24 +2508,24 @@ dialog_list_key(int key)
 
     if (key == 'x') {
         switch (dialog_mode) {
-        case DIALOG_DISCARD:
-        case DIALOG_USE:
-        case DIALOG_TRADE_TO:
-            dialog_use_main_show();
-            break;
+            case DIALOG_DISCARD:
+            case DIALOG_USE:
+            case DIALOG_TRADE_TO:
+                dialog_use_main_show();
+                break;
 
-        case DIALOG_TRADE:
-            dialog_trade_to_show();
-            break;
+            case DIALOG_TRADE:
+                dialog_trade_to_show();
+                break;
 
-        case DIALOG_TALK_WHO:
-        case DIALOG_RECRUIT:
-        case DIALOG_DISMISS:
-            dialog_talk_main_show();
-            break;
+            case DIALOG_TALK_WHO:
+            case DIALOG_RECRUIT:
+            case DIALOG_DISMISS:
+                dialog_talk_main_show();
+                break;
 
-        default:
-            main_menu_show();
+            default:
+                main_menu_show();
         }
     }
 
@@ -2564,218 +2549,219 @@ dialog_list_key(int key)
 
     switch (dialog_mode) {
 
-    case DIALOG_ATTACK:
-        if (combat_get_mode()) {
-            main_menu_show();
-            combat_attack(choosed_character, combat_get_enemy(code));
-        }
-        else {
-            if (spot_action
-                (game_get_actual_spot(), SPOT_ACTION_ATTACK, 0xff, code))
-                return;
-        }
-        break;
-
-    case DIALOG_SKILL:
-        if (code == 0x48)       /*climb */
-            map_set_climb_mode(1);
-        else
-            map_set_climb_mode(0);
-        if (spot_action
-            (game_get_actual_spot(), SPOT_ACTION_SKILL, code, 0xff))
-            quit_menu();
-        else
-            dialog_skill_show();
-        return;
-
-    case DIALOG_MAGIC:
-        if (choosed_character->life <= 5)
-            break;
-        if (dialog_list_names[code][0] != '!')
-            choosed_character->life -= lord_rnd(4);
-
-        spell_code = choosed_character->spells[code];
-        if (!combat_get_mode()) {
-            if (spot_has_action(game_get_actual_spot(), SPOT_ACTION_MAGIC,
-                                spell_code, 0xff)) {
-                if (dialog_list_names[code][0] == '!') {
-                    for (i = code; i + 1 < choosed_character->spells_num; ++i)
-                        choosed_character->spells[i] =
-                            choosed_character->spells[i + 1];
-                    choosed_character->spells_num--;
-                }
-                music_spell_performed();
-                spot_action(game_get_actual_spot(), SPOT_ACTION_MAGIC,
-                            spell_code, 0xff);
+        case DIALOG_ATTACK:
+            if (combat_get_mode()) {
+                main_menu_show();
+                combat_attack(choosed_character, combat_get_enemy(code));
+            } else {
+                if (spot_action
+                    (game_get_actual_spot(), SPOT_ACTION_ATTACK, 0xff, code))
+                    return;
             }
-            else {
+            break;
+
+        case DIALOG_SKILL:
+            if (code == 0x48)   /*climb */
+                map_set_climb_mode(1);
+            else
+                map_set_climb_mode(0);
+            if (spot_action
+                (game_get_actual_spot(), SPOT_ACTION_SKILL, code, 0xff))
                 quit_menu();
+            else
+                dialog_skill_show();
+            return;
+
+        case DIALOG_MAGIC:
+            if (choosed_character->life <= 5)
+                break;
+            if (dialog_list_names[code][0] != '!')
+                choosed_character->life -= lord_rnd(4);
+
+            spell_code = choosed_character->spells[code];
+            if (!combat_get_mode()) {
+                if (spot_has_action(game_get_actual_spot(), SPOT_ACTION_MAGIC,
+                                    spell_code, 0xff)) {
+                    if (dialog_list_names[code][0] == '!') {
+                        for (i = code; i + 1 < choosed_character->spells_num;
+                             ++i)
+                            choosed_character->spells[i] =
+                                choosed_character->spells[i + 1];
+                        choosed_character->spells_num--;
+                    }
+                    music_spell_performed();
+                    spot_action(game_get_actual_spot(), SPOT_ACTION_MAGIC,
+                                spell_code, 0xff);
+                } else {
+                    quit_menu();
+                    if (spell_code == SPELL_ILLUMINATE) {
+                        music_spell_performed();
+                        map_set_light(2);
+                        return;
+                    }
+                    music_spell_failed();
+                }
+                return;
+            } /* combat_get_mode */
+            else {
                 if (spell_code == SPELL_ILLUMINATE) {
                     music_spell_performed();
                     map_set_light(2);
                     return;
                 }
-                music_spell_failed();
             }
-            return;
-        }                       /* combat_get_mode */
-        else {
-            if (spell_code == SPELL_ILLUMINATE) {
-                music_spell_performed();
-                map_set_light(2);
-                return;
-            }
-        }
-        main_menu_show();
-        break;
-
-    case DIALOG_USE_MAIN:
-        if (code == 1)
-            dialog_discard_show();
-        if (code == 2)
-            dialog_use_show();
-        if (code == 3)
-            dialog_trade_to_show();
-        break;
-
-    case DIALOG_DISCARD:
-        dialog_discard_confirm_show(code);
-        break;
-
-    case DIALOG_USE:
-        if (!spot_action
-            (game_get_actual_spot(), SPOT_ACTION_OBJECT,
-             choosed_character->items[code], 0xff)) {
-            character_use(choosed_character, code);
-            dialog_use_show();
-        }
-        break;
-
-    case DIALOG_GET:
-        item = dialog_get_objects[code];
-
-        if (dialog_get_to_buy
-            && spot_has_action(game_get_actual_spot(), SPOT_ACTION_BUY,
-                               item, 0xff)) {
-            if (game_pay_silver(object_price(item))
-                && spot_action(game_get_actual_spot(), SPOT_ACTION_BUY,
-                               item, 0xff))
-                return;
-        }
-
-        if (dialog_get_to_buy &&
-            (choosed_character->items_num == 10
-             || !game_pay_silver(object_price(item))))
+            main_menu_show();
             break;
 
-        if (!dialog_get_objects[code] == 0 &&
-            !character_add_item(choosed_character, item) &&
-            !character_add_skill(choosed_character, item))
+        case DIALOG_USE_MAIN:
+            if (code == 1)
+                dialog_discard_show();
+            if (code == 2)
+                dialog_use_show();
+            if (code == 3)
+                dialog_trade_to_show();
             break;
 
-        if (!dialog_get_to_buy) {
-            for (; dialog_get_objects[code] != 0xff && code + 1 < 10; ++code)
-                dialog_get_objects[code] = dialog_get_objects[code + 1];
-            dialog_get_objects[code] = 0xff;
+        case DIALOG_DISCARD:
+            dialog_discard_confirm_show(code);
+            break;
 
-            if (item == 0) {    /* silver pennies */
-                for (; dialog_get_objects[code] == 0xff && code < 12; ++code);
-                if (dialog_get_objects[code] != 0xff)
-                    game_add_silver(dialog_get_objects[code]);
+        case DIALOG_USE:
+            if (!spot_action
+                (game_get_actual_spot(), SPOT_ACTION_OBJECT,
+                 choosed_character->items[code], 0xff)) {
+                character_use(choosed_character, code);
+                dialog_use_show();
+            }
+            break;
 
+        case DIALOG_GET:
+            item = dialog_get_objects[code];
+
+            if (dialog_get_to_buy
+                && spot_has_action(game_get_actual_spot(), SPOT_ACTION_BUY,
+                                   item, 0xff)) {
+                if (game_pay_silver(object_price(item))
+                    && spot_action(game_get_actual_spot(), SPOT_ACTION_BUY,
+                                   item, 0xff))
+                    return;
             }
 
-            if (spot_action
-                (game_get_actual_spot(), SPOT_ACTION_GET, item, 0xff))
-                return;
-            else
-                dialog_get_show();
-        }                       /* if( !dialog_get_to_buy ) */
-        else {
-            dialog_get_show();
-        }
-
-        break;
-
-    case DIALOG_TRADE_TO:
-        dialog_trade_show(code);
-        break;
-
-    case DIALOG_TRADE:
-        character = character_get(dialog_trade_to_who);
-        if (game_in_party(character)) {
-
-            item = choosed_character->items[code];
-
-            if (object_is_ring(item) && choosed_character->life > 0)
+            if (dialog_get_to_buy &&
+                (choosed_character->items_num == 10
+                 || !game_pay_silver(object_price(item))))
                 break;
 
-            if (character_add_item(character, item)) {
-                character_discard_item(choosed_character, code);
+            if (!dialog_get_objects[code] == 0 &&
+                !character_add_item(choosed_character, item) &&
+                !character_add_skill(choosed_character, item))
+                break;
 
-                if (item == OBJECT_TORCH)
-                    game_check_light();
+            if (!dialog_get_to_buy) {
+                for (; dialog_get_objects[code] != 0xff && code + 1 < 10;
+                     ++code)
+                    dialog_get_objects[code] = dialog_get_objects[code + 1];
+                dialog_get_objects[code] = 0xff;
+
+                if (item == 0) {        /* silver pennies */
+                    for (; dialog_get_objects[code] == 0xff && code < 12;
+                         ++code);
+                    if (dialog_get_objects[code] != 0xff)
+                        game_add_silver(dialog_get_objects[code]);
+
+                }
+
+                if (spot_action
+                    (game_get_actual_spot(), SPOT_ACTION_GET, item, 0xff))
+                    return;
+                else
+                    dialog_get_show();
+            } /* if( !dialog_get_to_buy ) */
+            else {
+                dialog_get_show();
             }
 
-            if (object_is_ring(item)) {
-                character->ring_mode = 1;
-                choosed_character->ring_mode = 0;
-            }
-
-            dialog_trade_show(dialog_trade_to_who);
-        }
-        else {
-            if (spot_has_action(game_get_actual_spot(), SPOT_ACTION_TRADE,
-                                choosed_character->items[code],
-                                dialog_trade_to_who))
-                dialog_trade_confirm_show(code);
-            else
-                dialog_trade_show(dialog_trade_to_who);
-        }
-        break;
-
-    case DIALOG_TALK_MAIN:
-        if (code == 1)
-            dialog_recruit_show();
-        if (code == 2)
-            dialog_dismiss_show();
-        if (code == 3)
-            dialog_talk_who_show();
-        break;
-
-    case DIALOG_RECRUIT:
-        character = character_get(code);
-        game_recruit(character, 0);
-        dialog_recruit_show();
-        break;
-
-    case DIALOG_DISMISS:
-        character = character_get(code);
-        if (!character->ring_mode)
-            game_dismiss(character);
-        dialog_dismiss_show();
-        break;
-
-    case DIALOG_TALK_WHO:
-        if (spot_action(game_get_actual_spot(), SPOT_ACTION_TALK, 0xff, code))
             break;
-        dialog_talk_show(code, -1);
-        break;
 
-    case DIALOG_CHOOSE:
-        choosed_character = character_get(code);
-        main_menu_show();
-        break;
+        case DIALOG_TRADE_TO:
+            dialog_trade_show(code);
+            break;
 
-    case DIALOG_LEADER:
-        character = character_get(code);
-        if (game_set_leader(character))
-            choosed_character = character;
-        main_menu_show();
-        break;
+        case DIALOG_TRADE:
+            character = character_get(dialog_trade_to_who);
+            if (game_in_party(character)) {
 
-    default:
-        break;
+                item = choosed_character->items[code];
+
+                if (object_is_ring(item) && choosed_character->life > 0)
+                    break;
+
+                if (character_add_item(character, item)) {
+                    character_discard_item(choosed_character, code);
+
+                    if (item == OBJECT_TORCH)
+                        game_check_light();
+                }
+
+                if (object_is_ring(item)) {
+                    character->ring_mode = 1;
+                    choosed_character->ring_mode = 0;
+                }
+
+                dialog_trade_show(dialog_trade_to_who);
+            } else {
+                if (spot_has_action(game_get_actual_spot(), SPOT_ACTION_TRADE,
+                                    choosed_character->items[code],
+                                    dialog_trade_to_who))
+                    dialog_trade_confirm_show(code);
+                else
+                    dialog_trade_show(dialog_trade_to_who);
+            }
+            break;
+
+        case DIALOG_TALK_MAIN:
+            if (code == 1)
+                dialog_recruit_show();
+            if (code == 2)
+                dialog_dismiss_show();
+            if (code == 3)
+                dialog_talk_who_show();
+            break;
+
+        case DIALOG_RECRUIT:
+            character = character_get(code);
+            game_recruit(character, 0);
+            dialog_recruit_show();
+            break;
+
+        case DIALOG_DISMISS:
+            character = character_get(code);
+            if (!character->ring_mode)
+                game_dismiss(character);
+            dialog_dismiss_show();
+            break;
+
+        case DIALOG_TALK_WHO:
+            if (spot_action
+                (game_get_actual_spot(), SPOT_ACTION_TALK, 0xff, code))
+                break;
+            dialog_talk_show(code, -1);
+            break;
+
+        case DIALOG_CHOOSE:
+            choosed_character = character_get(code);
+            main_menu_show();
+            break;
+
+        case DIALOG_LEADER:
+            character = character_get(code);
+            if (game_set_leader(character))
+                choosed_character = character;
+            main_menu_show();
+            break;
+
+        default:
+            break;
     }
 
 }
@@ -2791,80 +2777,79 @@ main_menu_key(int key)
 
 
     switch (key) {
-    case 'x':
-    case ' ':
-        if (combat_get_mode()) {
-            choosed_character->ap = 0;
-            combat_character_finished();
-        }
-        else
-            quit_menu();
-        break;
+        case 'x':
+        case ' ':
+            if (combat_get_mode()) {
+                choosed_character->ap = 0;
+                combat_character_finished();
+            } else
+                quit_menu();
+            break;
 
-    case 'a':
-        dialog_attack_show();
-        break;
+        case 'a':
+            dialog_attack_show();
+            break;
 
-    case 'c':
-        if (!combat_get_mode())
-            dialog_choose_show();
-        break;
+        case 'c':
+            if (!combat_get_mode())
+                dialog_choose_show();
+            break;
 
-    case 'l':
-        if (!combat_get_mode())
-            dialog_leader_show();
-        break;
+        case 'l':
+            if (!combat_get_mode())
+                dialog_leader_show();
+            break;
 
-    case 'm':
-        dialog_magic_show();
-        break;
+        case 'm':
+            dialog_magic_show();
+            break;
 
 #if !PIXEL_PRECISE
-    case 'h':
-        quit_menu();
-        gui_help_show();
-        break;
+        case 'h':
+            quit_menu();
+            gui_help_show();
+            break;
 #endif
 
-    case 'q':
-        gui_confirm_scroll("Quit Game");
-        dialog_mode = DIALOG_OPTIONS;
-        dialog_confirm = 1;
-        break;
+        case 'q':
+            gui_confirm_scroll("Quit Game");
+            dialog_mode = DIALOG_OPTIONS;
+            dialog_confirm = 1;
+            break;
 
-    case 's':
-        dialog_skill_show();
-        break;
+        case 's':
+            dialog_skill_show();
+            break;
 
-    case 't':
-        if (!combat_get_mode())
-            dialog_talk_main_show();
-        break;
+        case 't':
+            if (!combat_get_mode())
+                dialog_talk_main_show();
+            break;
 
-    case 'u':
-        dialog_use_main_show();
-        break;
+        case 'u':
+            dialog_use_main_show();
+            break;
 
-    case 'g':
-        if (!combat_get_mode())
-            dialog_get_show();
-        break;
+        case 'g':
+            if (!combat_get_mode())
+                dialog_get_show();
+            break;
 
-    case 'v':
-        dialog_view_show();
-        break;
+        case 'v':
+            dialog_view_show();
+            break;
 
 #ifdef WIZARD_MODE
-    case 'w':
-        if (lord_key_ctrl())
-            dialog_print_active_spot();
-        else
-            dialog_talk_show(-1, -1);
-        break;
+        case 'w':
+            if (lord_key_ctrl())
+                dialog_print_active_spot();
+            else
+                dialog_talk_show(-1, -1);
+            break;
 #endif
 
-    default:
-        break;
+        default:
+            break;
 
     }
 
@@ -2916,78 +2901,77 @@ gui_frame(void)
         }
 
         switch (key) {
-        case ' ':
-            main_menu_show();
-            break;
+            case ' ':
+                main_menu_show();
+                break;
 
-        case 'a':
-            dialog_attack_show();
-            break;
+            case 'a':
+                dialog_attack_show();
+                break;
 
-        case 'c':
-            dialog_choose_show();
-            break;
+            case 'c':
+                dialog_choose_show();
+                break;
 
-        case 'l':
-            dialog_leader_show();
-            break;
+            case 'l':
+                dialog_leader_show();
+                break;
 
-        case 'm':
-            dialog_magic_show();
-            break;
+            case 'm':
+                dialog_magic_show();
+                break;
 
 #if !PIXEL_PRECISE
-        case 'h':
-            gui_help_show();
-            break;
+            case 'h':
+                gui_help_show();
+                break;
 #endif
 
-        case 'o':
+            case 'o':
 #ifndef DEMO
-            dialog_options_show();
+                dialog_options_show();
 #endif
-            break;
+                break;
 
-        case 'q':
-            gui_confirm_scroll("Quit Game");
-            dialog_mode = DIALOG_OPTIONS;
-            dialog_confirm = 1;
-            break;
+            case 'q':
+                gui_confirm_scroll("Quit Game");
+                dialog_mode = DIALOG_OPTIONS;
+                dialog_confirm = 1;
+                break;
 
-        case 's':
-            dialog_skill_show();
-            break;
+            case 's':
+                dialog_skill_show();
+                break;
 
-        case 't':
-            dialog_talk_main_show();
-            break;
+            case 't':
+                dialog_talk_main_show();
+                break;
 
-        case 'u':
-            dialog_use_main_show();
-            break;
+            case 'u':
+                dialog_use_main_show();
+                break;
 
-        case 'g':
-            dialog_get_show();
-            break;
+            case 'g':
+                dialog_get_show();
+                break;
 
-        case 'v':
-            dialog_view_show();
-            break;
+            case 'v':
+                dialog_view_show();
+                break;
 
 #ifdef WIZARD_MODE
-        case 'w':
-            if (lord_key_ctrl())
-                dialog_print_active_spot();
-            else
-                dialog_talk_show(-1, -1);
-            break;
+            case 'w':
+                if (lord_key_ctrl())
+                    dialog_print_active_spot();
+                else
+                    dialog_talk_show(-1, -1);
+                break;
 #endif
 
-        default:
-            break;
+            default:
+                break;
         }
-    }
-    else {
+    } else {
 
         if (lord_key_esc()) {
 #ifdef DEMO
@@ -2998,77 +2982,77 @@ gui_frame(void)
         }
 
         switch (dialog_mode) {
-        case MAIN_MENU:
-            main_menu_key(key);
-            break;
+            case MAIN_MENU:
+                main_menu_key(key);
+                break;
 
-        case DIALOG_OPTIONS:
-            dialog_options_key(key);
-            break;
+            case DIALOG_OPTIONS:
+                dialog_options_key(key);
+                break;
 
-        case DIALOG_SAVE:
-        case DIALOG_LOAD:
-            dialog_saveload_key(key);
-            break;
+            case DIALOG_SAVE:
+            case DIALOG_LOAD:
+                dialog_saveload_key(key);
+                break;
 
-        case DIALOG_MESSAGE:
-        case DIALOG_BOOK:
-        case DIALOG_DIED:
-            dialog_message_key(key);
-            break;
+            case DIALOG_MESSAGE:
+            case DIALOG_BOOK:
+            case DIALOG_DIED:
+                dialog_message_key(key);
+                break;
 
-        case DIALOG_PARAGRAPH:
-            dialog_paragraph_key(key);
-            break;
+            case DIALOG_PARAGRAPH:
+                dialog_paragraph_key(key);
+                break;
 
-        case DIALOG_SPOT_PRINT:
-            dialog_print_active_spot_key(key);
-            break;
+            case DIALOG_SPOT_PRINT:
+                dialog_print_active_spot_key(key);
+                break;
 
-        case DIALOG_MESSAGE_YN:
-            dialog_message_yn_key(key);
-            break;
+            case DIALOG_MESSAGE_YN:
+                dialog_message_yn_key(key);
+                break;
 
-        case DIALOG_VIEW:
-            dialog_view_key(key);
-            break;
+            case DIALOG_VIEW:
+                dialog_view_key(key);
+                break;
 
-        case DIALOG_SKILL:
-        case DIALOG_MAGIC:
-        case DIALOG_USE_MAIN:
-        case DIALOG_DISCARD:
-        case DIALOG_USE:
-        case DIALOG_GET:
-        case DIALOG_TRADE_TO:
-        case DIALOG_TRADE:
-        case DIALOG_TALK_MAIN:
-        case DIALOG_TALK_WHO:
-        case DIALOG_RECRUIT:
-        case DIALOG_DISMISS:
-        case DIALOG_LEADER:
-        case DIALOG_CHOOSE:
-        case DIALOG_ATTACK:
-            dialog_list_key(key);
-            break;
+            case DIALOG_SKILL:
+            case DIALOG_MAGIC:
+            case DIALOG_USE_MAIN:
+            case DIALOG_DISCARD:
+            case DIALOG_USE:
+            case DIALOG_GET:
+            case DIALOG_TRADE_TO:
+            case DIALOG_TRADE:
+            case DIALOG_TALK_MAIN:
+            case DIALOG_TALK_WHO:
+            case DIALOG_RECRUIT:
+            case DIALOG_DISMISS:
+            case DIALOG_LEADER:
+            case DIALOG_CHOOSE:
+            case DIALOG_ATTACK:
+                dialog_list_key(key);
+                break;
 
-        case DIALOG_DISCARD_CONFIRM:
-            dialog_discard_confirm_key(key);
-            break;
+            case DIALOG_DISCARD_CONFIRM:
+                dialog_discard_confirm_key(key);
+                break;
 
-        case DIALOG_TRADE_CONFIRM:
-            dialog_trade_confirm_key(key);
-            break;
+            case DIALOG_TRADE_CONFIRM:
+                dialog_trade_confirm_key(key);
+                break;
 
-        case DIALOG_TALK:
-            dialog_talk_key(key);
-            break;
+            case DIALOG_TALK:
+                dialog_talk_key(key);
+                break;
 
-        case DIALOG_QUESTION:
-            dialog_question_key(key);
-            break;
+            case DIALOG_QUESTION:
+                dialog_question_key(key);
+                break;
 
-        default:
-            break;
+            default:
+                break;
         }
 
     }
@@ -3183,7 +3167,8 @@ gui_player_dead(Character *who, int show_message)
 
     if (who->ring_mode) {
         /* Ringbearer is dead but nobody carries the ring further */
-        gui_died_show("The ringbearer is dead and nobody is willing to take the Burden.");
+        gui_died_show
+            ("The ringbearer is dead and nobody is willing to take the Burden.");
         return;
     }
 
@@ -3274,8 +3259,7 @@ gui_ttt_start_dialog(void)
 
                 if (numsaves == 0) {
                     return 0;
-                }
-                else {
+                } else {
                     mode = 1;
                     y = 68;
                     gui_draw_text("Convert from", 40, y);

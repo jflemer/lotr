@@ -228,8 +228,7 @@ av_play(char *name)
                             dst += AV_WIDTH * 8;
                             src += AV_WIDTH * 8;
                         }
-                    }
-                    else {
+                    } else {
                         fprintf(stderr,
                                 "lord: corrupted av file (x=%d, y=%d)\n", x,
                                 y);

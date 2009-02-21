@@ -96,7 +96,8 @@ void
 combat_loosed(void)
 {
     combat_mode = 0;
-    gui_died_show("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.");
+    gui_died_show
+        ("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.");
 }
 
 
@@ -224,8 +225,7 @@ combat_next_turn(void)
                 combat_character_remove(combat_party[i]);
                 gui_player_dead(combat_party[i], 1);
             }
-        }
-        else {
+        } else {
             active_chars++;
             combat_party[i]->ap = combat_party[i]->dex;
             if (combat_party[i]->ap > max_action) {
@@ -359,8 +359,7 @@ combat_move_to_area(Character *character)
             x = COMBAT_WIDTH - 1;
         if (y >= COMBAT_HEIGHT)
             x = COMBAT_HEIGHT - 1;
-    }
-    else {
+    } else {
         if (combat_area[x][y] != 0 && combat_area[x][y] < 1000)
             return;
     }
@@ -378,8 +377,7 @@ combat_move_to_area(Character *character)
     if (xx < 0) {
         character->x = game_get_leader()->x;
         character->y = game_get_leader()->y;
-    }
-    else {
+    } else {
         character->x = (combat_x + xx) * 4;
         character->y = (combat_y + yy) * 4;
     }
@@ -813,8 +811,7 @@ combat_frame()
 
         if (game_get_moving())
             combat_player_move();
-    }
-    else {
+    } else {
         combat_enemy_move();
         if (active_character->x < 0)
             goto end_combat_frame;
@@ -826,7 +823,7 @@ combat_frame()
 
     map_display(0, 0);
 
-  end_combat_frame:
+end_combat_frame:
 
     map_animate_frame();
 
@@ -857,8 +854,7 @@ combat_character_finished()
         combat_enemy_remove(active_character);
         if (combat_enemies <= 0)
             return;
-    }
-    else {
+    } else {
         while (active_character->action != CHARACTER_STAY)
             character_frame(active_character);
     }
@@ -971,8 +967,7 @@ combat_attack(Character *who, Character *whom)
             dir = CHARACTER_LEFT;
         else
             dir = CHARACTER_RIGHT;
-    }
-    else {
+    } else {
         if (who->y > whom->y)
             dir = CHARACTER_UP;
         else
@@ -1118,26 +1113,22 @@ combat_attack(Character *who, Character *whom)
                         whom->name);
                 combat_character_remove(whom);
 
-            }
-            else {
+            } else {
                 if (whom->life >= 6 || !game_in_party(whom)) {
                     sprintf(combat_result_text,
                             "%s hits %s for %d points of damage.", who->name,
                             whom->name, damage);
-                }
-                else {
+                } else {
                     sprintf(combat_result_text,
                             "%s hits %s for %d points of damage, knocking %s out of cold.",
                             who->name, whom->name, damage, whom->name);
                 }
             }
-        }
-        else {
+        } else {
             sprintf(combat_result_text, "%s hits %s but does no damage.",
                     who->name, whom->name);
         }
-    }
-    else {
+    } else {
         sprintf(combat_result_text, "%s %s at and misses %s.", who->name,
                 attack_type, whom->name);
     }

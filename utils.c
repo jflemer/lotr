@@ -127,7 +127,8 @@ lord_fopen(const char *path, const char *mode)
         exit(1);
     }
 
-    snprintf(lord_filename, sizeof(lord_filename), "%s/%s", DATA_DIRECTORY, path);
+    snprintf(lord_filename, sizeof(lord_filename), "%s/%s", DATA_DIRECTORY,
+             path);
 
     result = fopen(lord_filename, mode);
 
@@ -161,7 +162,8 @@ lord_file_exists(const char *path)
         return 1;
     }
 
-    snprintf(lord_filename, sizeof(lord_filename), "%s/%s", DATA_DIRECTORY, path);
+    snprintf(lord_filename, sizeof(lord_filename), "%s/%s", DATA_DIRECTORY,
+             path);
 
     testfile = fopen(lord_filename, "rb");
     if (testfile != NULL) {

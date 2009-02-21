@@ -78,8 +78,7 @@ lord_timer(int delay)
         /* we wait some time */
         SDL_Delay(lord_ticks + delay - timer);
         lord_ticks = lord_ticks + delay;
-    }
-    else {
+    } else {
         lord_ticks = timer;
     }
 

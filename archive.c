@@ -255,22 +255,22 @@ readbit(Uint8 *data, int pos)
     Uint8 c = data[pos / 8];
 
     switch (pos % 8) {
-    case 0:
-        return (c >> 7) & 1;
-    case 1:
-        return (c >> 6) & 1;
-    case 2:
-        return (c >> 5) & 1;
-    case 3:
-        return (c >> 4) & 1;
-    case 4:
-        return (c >> 3) & 1;
-    case 5:
-        return (c >> 2) & 1;
-    case 6:
-        return (c >> 1) & 1;
-    case 7:
-        return (c >> 0) & 1;
+        case 0:
+            return (c >> 7) & 1;
+        case 1:
+            return (c >> 6) & 1;
+        case 2:
+            return (c >> 5) & 1;
+        case 3:
+            return (c >> 4) & 1;
+        case 4:
+            return (c >> 3) & 1;
+        case 5:
+            return (c >> 2) & 1;
+        case 6:
+            return (c >> 1) & 1;
+        case 7:
+            return (c >> 0) & 1;
     }
 
     return 0;                   /* should not happen onlyto avoid warnings */
@@ -361,8 +361,7 @@ decompress_idx(Uint8 *data, int size, int *resultsize)
             for (i = 0; i < runlen; ++i)
                 buffer[bufpos++] = index[code];
 
-        }
-        else {                  /* if( runlen&0x80 ) */
+        } else {                /* if( runlen&0x80 ) */
 
             /* copy runlen codes */
             for (i = 0; i < runlen; ++i) {
@@ -438,13 +437,11 @@ decompress_ndx(Uint8 *data, int size, int *resultsize)
         if (n % 9 == 0) {
             /* every 9-th byte is a pattern for next 8 values */
             pattern = data[datapos++];
-        }
-        else {
+        } else {
             if (pattern & 1) {
                 /* if the pattern bit == 1 just copy the next byte */
                 buffer[bufpos++] = data[datapos++];
-            }
-            else {
+            } else {
                 /* if the pattern bit == 0 we copy some substring of decoded data */
 
                 i = (Uint8)(data[datapos++]);

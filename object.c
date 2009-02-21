@@ -163,30 +163,30 @@ object_weapon_skill(int index)
 
     switch (class) {
 
-    case 2:                    /* sword */
-        return 0x41;
+        case 2:                /* sword */
+            return 0x41;
 
 #ifdef TTT
-    case 3:                    /* staff */
-        return 0x44;
+        case 3:                /* staff */
+            return 0x44;
 #endif
 
-    case 4:                    /* axe */
-        return 0x42;
+        case 4:                /* axe */
+            return 0x42;
 
-    case 5:                    /* mace */
-        return 0x43;
+        case 5:                /* mace */
+            return 0x43;
 
 #ifndef TTT
-    case 7:                    /* flail */
-        return 0x44;
+        case 7:                /* flail */
+            return 0x44;
 #endif
 
-    case 8:                    /* bow */
-        return 0x45;
+        case 8:                /* bow */
+            return 0x45;
 
-    default:
-        return 0;
+        default:
+            return 0;
 
     }
 
@@ -267,45 +267,45 @@ object_weapon_weight(int index)
         return 0;
 
     switch (class) {
-    case 1:                    /* dagger */
-        w = 0;
-        break;
+        case 1:                /* dagger */
+            w = 0;
+            break;
 
-    case 2:                    /* sword */
-        w = 16;
-        break;
+        case 2:                /* sword */
+            w = 16;
+            break;
 
-    case 3:                    /* staff */
-        w = 7;
-        break;
+        case 3:                /* staff */
+            w = 7;
+            break;
 
-    case 4:                    /* axe */
-        w = 20;
-        break;
+        case 4:                /* axe */
+            w = 20;
+            break;
 
-    case 5:                    /* mace */
-        w = 13;
-        break;
+        case 5:                /* mace */
+            w = 13;
+            break;
 
-    case 6:                    /* club */
-        w = 8;
-        break;
+        case 6:                /* club */
+            w = 8;
+            break;
 
-    case 7:                    /* flail */
-        w = 16;
-        break;
+        case 7:                /* flail */
+            w = 16;
+            break;
 
-    case 8:                    /* bow */
-        w = 7;
-        break;
+        case 8:                /* bow */
+            w = 7;
+            break;
 
-    case 9:                    /* torch */
-        w = 0;
-        break;
+        case 9:                /* torch */
+            w = 0;
+            break;
 
-    default:
-        w = 0;
-        break;
+        default:
+            w = 0;
+            break;
 
     }
 
@@ -336,45 +336,45 @@ object_weapon_damage(int index)
         return 0;
 
     switch (class) {
-    case 1:                    /* dagger */
-        result = 6;
-        break;
+        case 1:                /* dagger */
+            result = 6;
+            break;
 
-    case 2:                    /* sword */
-        result = 8;
-        break;
+        case 2:                /* sword */
+            result = 8;
+            break;
 
-    case 3:                    /* staff */
-        result = 6;
-        break;
+        case 3:                /* staff */
+            result = 6;
+            break;
 
-    case 4:                    /* axe */
-        result = 10;
-        break;
+        case 4:                /* axe */
+            result = 10;
+            break;
 
-    case 5:                    /* mace */
-        result = 8;
-        break;
+        case 5:                /* mace */
+            result = 8;
+            break;
 
-    case 6:                    /* club */
-        result = 6;
-        break;
+        case 6:                /* club */
+            result = 6;
+            break;
 
-    case 7:                    /* flail */
-        result = 10;
-        break;
+        case 7:                /* flail */
+            result = 10;
+            break;
 
-    case 8:                    /* bow */
-        result = 8;
-        break;
+        case 8:                /* bow */
+            result = 8;
+            break;
 
-    case 9:                    /* torch */
-        result = 6;
-        break;
+        case 9:                /* torch */
+            result = 6;
+            break;
 
-    default:
-        result = 5;
-        break;
+        default:
+            result = 5;
+            break;
 
     }
 

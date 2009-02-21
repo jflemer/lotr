@@ -194,16 +194,16 @@ int
 cddir_to_dir(int dir)
 {
     switch (dir) {
-    case CD_NORTH:
-        return CHARACTER_UP;
-    case CD_EAST:
-        return CHARACTER_RIGHT;
-    case CD_SOUTH:
-        return CHARACTER_DOWN;
-    case CD_WEST:
-        return CHARACTER_LEFT;
-    case 0xff:
-        return 0xff;
+        case CD_NORTH:
+            return CHARACTER_UP;
+        case CD_EAST:
+            return CHARACTER_RIGHT;
+        case CD_SOUTH:
+            return CHARACTER_DOWN;
+        case CD_WEST:
+            return CHARACTER_LEFT;
+        case 0xff:
+            return 0xff;
     }
     /* error return something sensible */
     return CHARACTER_UP;
@@ -213,16 +213,16 @@ int
 dir_to_cddir(int dir)
 {
     switch (dir) {
-    case CHARACTER_UP:
-        return CD_NORTH;
-    case CHARACTER_RIGHT:
-        return CD_EAST;
-    case CHARACTER_DOWN:
-        return CD_SOUTH;
-    case CHARACTER_LEFT:
-        return CD_WEST;
-    case 0xff:
-        return 0xff;
+        case CHARACTER_UP:
+            return CD_NORTH;
+        case CHARACTER_RIGHT:
+            return CD_EAST;
+        case CHARACTER_DOWN:
+            return CD_SOUTH;
+        case CHARACTER_LEFT:
+            return CD_WEST;
+        case 0xff:
+            return 0xff;
     }
     /* error return something sensible */
     return CD_NORTH;
@@ -267,8 +267,7 @@ spot_check_addr_in_spot(CommandSpot *spot, int addr)
 
     /* taking into account only addresses in this spot */
     if (addr >= spot->label_start
-        && addr < spot->label_start + spot->data_size)
-    {
+        && addr < spot->label_start + spot->data_size) {
         for (i = 0; i < spot->commands_num; ++i)
             if (spot->command_start[i] + spot->label_start == addr)
                 return 0;
@@ -311,251 +310,251 @@ new_parsing:
         spot->command_start[n] = i;
         switch (spot->data[i]) {
 
-        case COMMAND_UNKNOWNl:
-            i = spot->data_size;
-            break;
+            case COMMAND_UNKNOWNl:
+                i = spot->data_size;
+                break;
 
 #ifdef TTT
-        case COMMAND_43:
-            spot->building =
-                map_get_building(spot->map, readint(spot->data + i + 1),
-                                 readint(spot->data + i + 3));
-            spot->floor = spot->data[i + 7];
-            i += 8;
-            break;
+            case COMMAND_43:
+                spot->building =
+                    map_get_building(spot->map, readint(spot->data + i + 1),
+                                     readint(spot->data + i + 3));
+                spot->floor = spot->data[i + 7];
+                i += 8;
+                break;
 #endif
 
-        case COMMAND_UNKNOWN9:
-            i += 6;
-            break;
+            case COMMAND_UNKNOWN9:
+                i += 6;
+                break;
 
-        case COMMAND_UNKNOWNm:
-            i += 5;
-            break;
-
-        case COMMAND_UNKNOWN6:
-            i += 3;
-            break;
-
-        case COMMAND_UNKNOWNd:
-        case COMMAND_UNKNOWNb:
-        case COMMAND_UNKNOWNc:
-        case COMMAND_UNKNOWNg:
-            i += 2;
-            break;
-
-        case COMMAND_UNKNOWN1:
-        case COMMAND_UNKNOWN7:
-        case COMMAND_UNKNOWNa:
-        case COMMAND_UNKNOWNe:
-        case COMMAND_UNKNOWNf:
-        case COMMAND_UNKNOWNi:
-            i += 1;
-            break;
-
-        case COMMAND_NPC_ENEMY:
-            if (spot->data[i + 5])
-                i += 6 + spot->data[i + 4] * 4;
-            else {
-                spot->data[i] = -1;
-                goto unknown_command;
-            }
-            break;
-
-        case COMMAND_TELEPORT:
-            i += 9;
-            break;
-
-        case COMMAND_NPC_MOVE:
-            i += 7;
-            break;
-
-        case COMMAND_NPC_CHANGE_STAT:
-            i += 6;
-            break;
-
-        case COMMAND_IF_PARTY:
-        case COMMAND_02:
-            i += 5;
-            break;
-
-        case COMMAND_NPC_INIT:
-#ifndef TTT
-            i += 4;
-#else
-            if (spot->data[i + 2] == 0)
+            case COMMAND_UNKNOWNm:
                 i += 5;
-            else
+                break;
+
+            case COMMAND_UNKNOWN6:
+                i += 3;
+                break;
+
+            case COMMAND_UNKNOWNd:
+            case COMMAND_UNKNOWNb:
+            case COMMAND_UNKNOWNc:
+            case COMMAND_UNKNOWNg:
+                i += 2;
+                break;
+
+            case COMMAND_UNKNOWN1:
+            case COMMAND_UNKNOWN7:
+            case COMMAND_UNKNOWNa:
+            case COMMAND_UNKNOWNe:
+            case COMMAND_UNKNOWNf:
+            case COMMAND_UNKNOWNi:
+                i += 1;
+                break;
+
+            case COMMAND_NPC_ENEMY:
+                if (spot->data[i + 5])
+                    i += 6 + spot->data[i + 4] * 4;
+                else {
+                    spot->data[i] = -1;
+                    goto unknown_command;
+                }
+                break;
+
+            case COMMAND_TELEPORT:
+                i += 9;
+                break;
+
+            case COMMAND_NPC_MOVE:
+                i += 7;
+                break;
+
+            case COMMAND_NPC_CHANGE_STAT:
+                i += 6;
+                break;
+
+            case COMMAND_IF_PARTY:
+            case COMMAND_02:
+                i += 5;
+                break;
+
+            case COMMAND_NPC_INIT:
+#ifndef TTT
                 i += 4;
+#else
+                if (spot->data[i + 2] == 0)
+                    i += 5;
+                else
+                    i += 4;
 #endif
-            break;
+                break;
 
 
-        case COMMAND_IF_OBJECTS_HERE:
-        case COMMAND_IF_OBJECTS_AT_LEAST:
-        case COMMAND_04:
-            i += 4;
-            break;
+            case COMMAND_IF_OBJECTS_HERE:
+            case COMMAND_IF_OBJECTS_AT_LEAST:
+            case COMMAND_04:
+                i += 4;
+                break;
 
-        case COMMAND_OBJECTS_HERE:
-        case COMMAND_SET_OBJECT:
-        case COMMAND_SKILLS_HERE:
-        case COMMAND_GOTO:
-        case COMMAND_SET_TIMER:
-        case COMMAND_NPC_DISMISS:
-            i += 3;
-            break;
+            case COMMAND_OBJECTS_HERE:
+            case COMMAND_SET_OBJECT:
+            case COMMAND_SKILLS_HERE:
+            case COMMAND_GOTO:
+            case COMMAND_SET_TIMER:
+            case COMMAND_NPC_DISMISS:
+                i += 3;
+                break;
 
 #ifdef TTT
-        case COMMAND_ACTIVATE_PARTY:
-            i += 3;
-            break;
+            case COMMAND_ACTIVATE_PARTY:
+                i += 3;
+                break;
 #else
-        case COMMAND_UNKNOWN42:
-            i += 1;
-            break;
+            case COMMAND_UNKNOWN42:
+                i += 1;
+                break;
 #endif
 
-        case COMMAND_SET_SILVER:
+            case COMMAND_SET_SILVER:
 #ifndef TTT
-            i += 3;
+                i += 3;
 #else
-            i += 2;
+                i += 2;
 #endif
-            break;
+                break;
 
-        case COMMAND_NPC_RECRUIT:
+            case COMMAND_NPC_RECRUIT:
 #ifndef TTT
-            i += 2;
+                i += 2;
 #else
-            i += 3;
+                i += 3;
 #endif
-            break;
+                break;
 
-        case COMMAND_DISABLE_SPOT:
-        case COMMAND_TEXT:
-        case COMMAND_TEXT_PAR:
-        case COMMAND_QUESTION:
-        case COMMAND_QUESTION_PAR:
-        case COMMAND_IF_RANDOM:
-        case COMMAND_IF_REGISTER:
-        case COMMAND_REGISTER_OFF:
-        case COMMAND_REGISTER_ON:
-        case COMMAND_IF_GAME_REG:
-        case COMMAND_GAME_REG_ON:
-        case COMMAND_NPC_TURN_TO_ME:
-        case COMMAND_NPC_DELETE:
-        case COMMAND_SOUND:
-        case COMMAND_CARTOON:
-        case COMMAND_PLAY_AV:
-        case COMMAND_OBJECT_INC:
-        case COMMAND_OBJECT_DEC:
-        case COMMAND_SET_TMP_LEADER:
-        case COMMAND_MAP_FOG:
-            i += 2;
-            break;
+            case COMMAND_DISABLE_SPOT:
+            case COMMAND_TEXT:
+            case COMMAND_TEXT_PAR:
+            case COMMAND_QUESTION:
+            case COMMAND_QUESTION_PAR:
+            case COMMAND_IF_RANDOM:
+            case COMMAND_IF_REGISTER:
+            case COMMAND_REGISTER_OFF:
+            case COMMAND_REGISTER_ON:
+            case COMMAND_IF_GAME_REG:
+            case COMMAND_GAME_REG_ON:
+            case COMMAND_NPC_TURN_TO_ME:
+            case COMMAND_NPC_DELETE:
+            case COMMAND_SOUND:
+            case COMMAND_CARTOON:
+            case COMMAND_PLAY_AV:
+            case COMMAND_OBJECT_INC:
+            case COMMAND_OBJECT_DEC:
+            case COMMAND_SET_TMP_LEADER:
+            case COMMAND_MAP_FOG:
+                i += 2;
+                break;
 
-        case COMMAND_IF_DIRECTION:
-            ++i;
-            //FIXME strange hack
-            if (i < spot->data_size && spot->data[i] != 0x13
-                && spot->data[i] != 0x14)
+            case COMMAND_IF_DIRECTION:
                 ++i;
-            break;
-
-        case COMMAND_DIE:
-        case COMMAND_END:
-        case COMMAND_IF_DAY:
-        case COMMAND_DISMISS_TMP_LEADER:
-        case COMMAND_MAP_NORMAL:
-        case COMMAND_MAP_DARK:
-        case COMMAND_MAP_LIGHT:
-        case COMMAND_IF_MAP_DARK:
-        case COMMAND_COMBAT:
-        case COMMAND_CAN_NOT_MOVE:
-        case COMMAND_CAN_MOVE:
-        case COMMAND_EXIT_BUILDING:
-        case COMMAND_47:
-#ifndef TTT
-        case COMMAND_END_OF_GAME:
-#endif
-            i += 1;
-            break;
-
-
-        case COMMAND_TRUE_THEN:
-        case COMMAND_FALSE_THEN:
-            next_level = level + 1;
-            i += 1;
-            break;
-
-        case COMMAND_ELSE:
-            next_level = level;
-            level--;
-            i += 1;
-            break;
-
-        case COMMAND_ENDIF:
-            level--;
-            next_level = level;
-            i += 1;
-            break;
-
-        case COMMAND_NPC_QUESTIONS:
-            i += 2;
-            while (spot->data[i] != 0xff) {
-                j = 0;
-                while (spot_question_letter(spot->data[i]) && j < 20) {
+                //FIXME strange hack
+                if (i < spot->data_size && spot->data[i] != 0x13
+                    && spot->data[i] != 0x14)
                     ++i;
-                    ++j;
+                break;
+
+            case COMMAND_DIE:
+            case COMMAND_END:
+            case COMMAND_IF_DAY:
+            case COMMAND_DISMISS_TMP_LEADER:
+            case COMMAND_MAP_NORMAL:
+            case COMMAND_MAP_DARK:
+            case COMMAND_MAP_LIGHT:
+            case COMMAND_IF_MAP_DARK:
+            case COMMAND_COMBAT:
+            case COMMAND_CAN_NOT_MOVE:
+            case COMMAND_CAN_MOVE:
+            case COMMAND_EXIT_BUILDING:
+            case COMMAND_47:
+#ifndef TTT
+            case COMMAND_END_OF_GAME:
+#endif
+                i += 1;
+                break;
+
+
+            case COMMAND_TRUE_THEN:
+            case COMMAND_FALSE_THEN:
+                next_level = level + 1;
+                i += 1;
+                break;
+
+            case COMMAND_ELSE:
+                next_level = level;
+                level--;
+                i += 1;
+                break;
+
+            case COMMAND_ENDIF:
+                level--;
+                next_level = level;
+                i += 1;
+                break;
+
+            case COMMAND_NPC_QUESTIONS:
+                i += 2;
+                while (spot->data[i] != 0xff) {
+                    j = 0;
+                    while (spot_question_letter(spot->data[i]) && j < 20) {
+                        ++i;
+                        ++j;
+                    }
+                    if (spot->data[i] == 0)
+                        ++i;
+                    else if (spot->data[i] == 0xff)
+                        --i;
+                    ++i;
                 }
-                if (spot->data[i] == 0)
+                ++i;
+                break;
+
+            case COMMAND_NPC_SET_NAME:
+                i += 2;
+                while (spot->data[i])
                     ++i;
-                else if (spot->data[i] == 0xff)
-                    --i;
                 ++i;
-            }
-            ++i;
-            break;
+                break;
 
-        case COMMAND_NPC_SET_NAME:
-            i += 2;
-            while (spot->data[i])
+            case COMMAND_OBJECTS_TO_BUY:
+                i += 1;
+                while (spot->data[i] != 0xff && i < spot->data_size - 1)
+                    ++i;
                 ++i;
-            ++i;
-            break;
+                break;
 
-        case COMMAND_OBJECTS_TO_BUY:
-            i += 1;
-            while (spot->data[i] != 0xff && i < spot->data_size - 1)
-                ++i;
-            ++i;
-            break;
+            case COMMAND_ACTION:
+                j = i;
+                i += 2 + 5 * spot->data[i + 1];
 
-        case COMMAND_ACTION:
-            j = i;
-            i += 2 + 5 * spot->data[i + 1];
+                while (j + 5 < i &&
+                       (i > spot->data_size ||
+                        readint(spot->data + i - 2) < spot->label_start ||
+                        readint(spot->data + i - 2) >=
+                        spot->label_start + spot->data_size)) {
+                    i -= 5;
+                }
 
-            while (j + 5 < i &&
-                   (i > spot->data_size ||
-                    readint(spot->data + i - 2) < spot->label_start ||
-                    readint(spot->data + i - 2) >=
-                    spot->label_start + spot->data_size)) {
-                i -= 5;
-            }
+                if (i != j + 2 + 5 * spot->data[j + 1]) {
+                    fprintf(stderr,
+                            "lord: WARNING: action command size changed from %d to %d\n",
+                            spot->data[j + 1], (i - j - 2) / 5);
+                    spot->data[j + 1] = (i - j - 2) / 5;
+                }
+                break;
 
-            if (i != j + 2 + 5 * spot->data[j + 1]) {
-                fprintf(stderr,
-                        "lord: WARNING: action command size changed from %d to %d\n",
-                        spot->data[j + 1], (i - j - 2) / 5);
-                spot->data[j + 1] = (i - j - 2) / 5;
-            }
-            break;
-
-        default:
-          unknown_command:
-            unknown = 1;
-            i = spot->data_size;
+            default:
+unknown_command:
+                unknown = 1;
+                i = spot->data_size;
         }
 
         if (level < 0) {
@@ -653,8 +652,6 @@ new_parsing:
         exit(1);
 #endif
     }
-
-
 #ifdef DEBUG
     spot_print(spot);
 #endif
@@ -731,7 +728,7 @@ spot_parse(Uint8 *data, int size, CommandSpot *spots[], int *spots_num)
 
     return;
 
-  corrupted:
+corrupted:
     fprintf(stderr, "lord: corrupted game description data\n");
     exit(1);
 
@@ -889,22 +886,34 @@ spot_string_print(const char *format, ...)
 /*
   convert spot action to a readable string
 */
-static const char*
+static const char *
 spot_action_to_string(int id)
 {
     switch (id) {
-        case SPOT_ACTION_OBJECT: return "USE";
-        case SPOT_ACTION_SKILL: return "SKILL";
-        case SPOT_ACTION_MAGIC: return "MAGIC";
-        case SPOT_ACTION_MOVE: return "MOVE";
-        case SPOT_ACTION_TIMER: return "TIMER";
-        case SPOT_ACTION_TRADE: return "TRADE";
-        case SPOT_ACTION_ATTACK: return "ATTACK";
-        case SPOT_ACTION_GET: return "GET";
-        case SPOT_ACTION_QUESTION: return "QUESTION";
-        case SPOT_ACTION_BUY: return "BUY";
-        case SPOT_ACTION_TALK: return "TALK";
-        default: return "UNKNOWN";
+        case SPOT_ACTION_OBJECT:
+            return "USE";
+        case SPOT_ACTION_SKILL:
+            return "SKILL";
+        case SPOT_ACTION_MAGIC:
+            return "MAGIC";
+        case SPOT_ACTION_MOVE:
+            return "MOVE";
+        case SPOT_ACTION_TIMER:
+            return "TIMER";
+        case SPOT_ACTION_TRADE:
+            return "TRADE";
+        case SPOT_ACTION_ATTACK:
+            return "ATTACK";
+        case SPOT_ACTION_GET:
+            return "GET";
+        case SPOT_ACTION_QUESTION:
+            return "QUESTION";
+        case SPOT_ACTION_BUY:
+            return "BUY";
+        case SPOT_ACTION_TALK:
+            return "TALK";
+        default:
+            return "UNKNOWN";
     }
 }
 
@@ -912,34 +921,45 @@ spot_action_to_string(int id)
 /*
   convert direction to a readable string
 */
-static const char*
+static const char *
 spot_direction_to_string(int dir)
 {
 #ifdef CD_VERSION
     dir = cddir_to_dir(dir);
 #endif
     switch (dir) {
-        case CHARACTER_UP: return "NORTH";
-        case CHARACTER_LEFT: return "WEST";
-        case CHARACTER_DOWN: return "SOUTH";
-        case CHARACTER_RIGHT: return "EAST";
-        default: return "UNKNOWN";
+        case CHARACTER_UP:
+            return "NORTH";
+        case CHARACTER_LEFT:
+            return "WEST";
+        case CHARACTER_DOWN:
+            return "SOUTH";
+        case CHARACTER_RIGHT:
+            return "EAST";
+        default:
+            return "UNKNOWN";
     }
 }
 
 /*
   convert direction to a readable string
 */
-static const char*
+static const char *
 spot_if_party_condition_to_string(int id)
 {
     switch (id) {
-        case IF_PARTY_CONDITION_HAS_SKILL: return "has_skill";
-        case IF_PARTY_CONDITION_HAS_ITEM: return "has_item";
-        case IF_PARTY_CONDITION_IN_PARTY: return "in_party";
-        case IF_PARTY_CONDITION_SIZE: return "party_size";
-        case IF_PARTY_CONDITION_HAVE_SILVER: return "have_silver";
-        default: return "unknown";
+        case IF_PARTY_CONDITION_HAS_SKILL:
+            return "has_skill";
+        case IF_PARTY_CONDITION_HAS_ITEM:
+            return "has_item";
+        case IF_PARTY_CONDITION_IN_PARTY:
+            return "in_party";
+        case IF_PARTY_CONDITION_SIZE:
+            return "party_size";
+        case IF_PARTY_CONDITION_HAVE_SILVER:
+            return "have_silver";
+        default:
+            return "unknown";
     }
 }
 
@@ -985,428 +1005,434 @@ spot_get_string(CommandSpot *spot)
 
         switch (command) {
 
-        case COMMAND_UNKNOWN1:
-        case COMMAND_UNKNOWN6:
-        case COMMAND_UNKNOWN7:
-        case COMMAND_UNKNOWN9:
-        case COMMAND_UNKNOWNa:
-        case COMMAND_UNKNOWNb:
-        case COMMAND_UNKNOWNc:
-        case COMMAND_UNKNOWNd:
-        case COMMAND_UNKNOWNe:
-        case COMMAND_UNKNOWNf:
-        case COMMAND_UNKNOWNg:
-        case COMMAND_UNKNOWNi:
-        case COMMAND_UNKNOWNm:
+            case COMMAND_UNKNOWN1:
+            case COMMAND_UNKNOWN6:
+            case COMMAND_UNKNOWN7:
+            case COMMAND_UNKNOWN9:
+            case COMMAND_UNKNOWNa:
+            case COMMAND_UNKNOWNb:
+            case COMMAND_UNKNOWNc:
+            case COMMAND_UNKNOWNd:
+            case COMMAND_UNKNOWNe:
+            case COMMAND_UNKNOWNf:
+            case COMMAND_UNKNOWNg:
+            case COMMAND_UNKNOWNi:
+            case COMMAND_UNKNOWNm:
 #ifndef TTT
-        case COMMAND_UNKNOWN42:
+            case COMMAND_UNKNOWN42:
 #endif
 
-            if (k + 1 < spot->commands_num)
-                endcom = spot->command_start[k + 1];
-            else
-                endcom = spot->data_size;
+                if (k + 1 < spot->commands_num)
+                    endcom = spot->command_start[k + 1];
+                else
+                    endcom = spot->data_size;
 
-            spot_string_print("UNKNOWN: ");
-            for (j = i; j < endcom; ++j)
-                spot_string_print("%02x ", spot->data[j]);
+                spot_string_print("UNKNOWN: ");
+                for (j = i; j < endcom; ++j)
+                    spot_string_print("%02x ", spot->data[j]);
 
 
-            break;
+                break;
 
-        case COMMAND_NPC_INIT:
-            spot_string_print("NPC_INIT: %s(%02x), %02x, %02x ",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1],
-                              spot->data[i + 2], spot->data[i + 3]);
-            if (spot->data[i + 2] == 0x57)
-                spot_string_print("\"%s\"", game_get_text(spot->data[i + 3]));
-            else
-                spot_string_print("(%s)", object_name(spot->data[i + 3]));
+            case COMMAND_NPC_INIT:
+                spot_string_print("NPC_INIT: %s(%02x), %02x, %02x ",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1],
+                                  spot->data[i + 2], spot->data[i + 3]);
+                if (spot->data[i + 2] == 0x57)
+                    spot_string_print("\"%s\"",
+                                      game_get_text(spot->data[i + 3]));
+                else
+                    spot_string_print("(%s)", object_name(spot->data[i + 3]));
 
-            break;
+                break;
 
-        case COMMAND_NPC_QUESTIONS:
-            spot_string_print("NPC_QUESTIONS: %s(%02x)",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1]);
+            case COMMAND_NPC_QUESTIONS:
+                spot_string_print("NPC_QUESTIONS: %s(%02x)",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1]);
 
-            j = i + 2;
-            while (spot->data[j] != 0xff) {
-                spot_string_print("\n         ");
-                jj = 0;
-                while (spot_question_letter(spot->data[j]) && jj < 20) {
+                j = i + 2;
+                while (spot->data[j] != 0xff) {
+                    spot_string_print("\n         ");
+                    jj = 0;
+                    while (spot_question_letter(spot->data[j]) && jj < 20) {
+                        ++j;
+                        ++jj;
+                    }
+
+                    strncpy(question_key, (char *)spot->data + j - jj, jj);
+                    question_key[jj] = 0;
+
+                    if (spot->data[j] == 0)
+                        ++j;
+                    else if (spot->data[j] == 0xff)
+                        --j;
+                    spot_string_print("%s \"%s\"", question_key,
+                                      game_get_text(spot->data[j]));
                     ++j;
-                    ++jj;
                 }
 
-                strncpy(question_key, (char *)spot->data + j - jj, jj);
-                question_key[jj] = 0;
+                break;
 
-                if (spot->data[j] == 0)
-                    ++j;
-                else if (spot->data[j] == 0xff)
-                    --j;
-                spot_string_print("%s \"%s\"", question_key,
-                                  game_get_text(spot->data[j]));
-                ++j;
-            }
+            case COMMAND_NPC_SET_NAME:
+                spot_string_print("NPC_SET_NAME: %s(%02x), %s",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1], spot->data + i + 2);
+                break;
 
-            break;
+            case COMMAND_NPC_TURN_TO_ME:
+                spot_string_print("NPC_TURN_TO_ME: %s(%02x)",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1]);
+                break;
 
-        case COMMAND_NPC_SET_NAME:
-            spot_string_print("NPC_SET_NAME: %s(%02x), %s",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1],
-                              spot->data + i + 2);
-            break;
-
-        case COMMAND_NPC_TURN_TO_ME:
-            spot_string_print("NPC_TURN_TO_ME: %s(%02x)",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1]);
-            break;
-
-        case COMMAND_NPC_RECRUIT:
-            spot_string_print("NPC_RECRUIT: %s(%02x)",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1]);
+            case COMMAND_NPC_RECRUIT:
+                spot_string_print("NPC_RECRUIT: %s(%02x)",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1]);
 #ifdef TTT
-            spot_string_print(", %02x", spot->data[i + 2]);
+                spot_string_print(", %02x", spot->data[i + 2]);
 #endif
-            break;
+                break;
 
-        case COMMAND_NPC_DISMISS:
-            spot_string_print("NPC_DISMISS: %s(%02x), %02x",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1],
-                              spot->data[i + 2]);
-            break;
+            case COMMAND_NPC_DISMISS:
+                spot_string_print("NPC_DISMISS: %s(%02x), %02x",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1], spot->data[i + 2]);
+                break;
 
-        case COMMAND_SET_TMP_LEADER:
-            spot_string_print("SET_TMP_LEADER: %s(%02x)",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1]);
-            break;
+            case COMMAND_SET_TMP_LEADER:
+                spot_string_print("SET_TMP_LEADER: %s(%02x)",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1]);
+                break;
 
-        case COMMAND_DISMISS_TMP_LEADER:
-            spot_string_print("DISMISS_TMP_LEADER");
-            break;
+            case COMMAND_DISMISS_TMP_LEADER:
+                spot_string_print("DISMISS_TMP_LEADER");
+                break;
 
-        case COMMAND_NPC_MOVE:
-            spot_string_print("NPC_MOVE: %s(%02x), %02x, %04x, %04x",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1],
-                              spot->data[i + 2], readint(spot->data + i + 3),
-                              readint(spot->data + i + 5));
-            break;
+            case COMMAND_NPC_MOVE:
+                spot_string_print("NPC_MOVE: %s(%02x), %02x, %04x, %04x",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1],
+                                  spot->data[i + 2],
+                                  readint(spot->data + i + 3),
+                                  readint(spot->data + i + 5));
+                break;
 
-        case COMMAND_NPC_ENEMY:
-            spot_string_print
-                ("NPC_ENEMY: %s(%02x), relative=%02x, direction=%02x, unknown=%d%%, n=%d",
-                 spot_character_name(spot->data[i + 5]), spot->data[i + 5],
-                 spot->data[i + 1], spot->data[i + 2], spot->data[i + 3],
-                 spot->data[i + 4]);
-
-            for (j = 0; j < spot->data[i + 4]; ++j)
-                spot_string_print("\n                   x=%04x, y=%04x",
-                                  readint(spot->data + i + 4 * j + 6),
-                                  readint(spot->data + i + 4 * j + 8));
-
-            break;
-
-        case COMMAND_NPC_CHANGE_STAT:
-            spot_string_print
-                ("NPC_CHANGE_STAT: npc=%02x, stat=%02x, +-=%02x, value=%02x, %02x",
-                 spot->data[i + 1], spot->data[i + 2], spot->data[i + 3],
-                 spot->data[i + 4], spot->data[i + 5]);
-            break;
-
-        case COMMAND_NPC_DELETE:
-            spot_string_print("NPC_DELETE: %s(%02x)",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1]);
-            break;
-
-        case COMMAND_MAP_FOG:
-            spot_string_print("MAP_FOG: %02x", spot->data[i + 1]);
-            break;
-
-        case COMMAND_MAP_NORMAL:
-            spot_string_print("MAP_NORMAL");
-            break;
-
-        case COMMAND_MAP_DARK:
-            spot_string_print("MAP_DARK");
-            break;
-
-        case COMMAND_MAP_LIGHT:
-            spot_string_print("MAP_LIGHT");
-            break;
-
-        case COMMAND_IF_MAP_DARK:
-            spot_string_print("IF_MAP_DARK");
-            break;
-
-        case COMMAND_GOTO:
-            spot_string_print("GOTO: %04x", readint(spot->data + i + 1));
-            break;
-
-        case COMMAND_DISABLE_SPOT:
-            spot_string_print("DISABLE_SPOT: %02x", spot->data[i + 1]);
-            break;
-
-        case COMMAND_TEXT:
-            spot_string_print("TEXT: \"%s\"",
-                              game_get_text(spot->data[i + 1]));
-            break;
-
-        case COMMAND_QUESTION:
-            spot_string_print("QUESTION: \"%s\"",
-                              game_get_text(spot->data[i + 1]));
-            break;
-
-        case COMMAND_TEXT_PAR:
-            spot_string_print("TEXT_PAR: %d", spot->data[i + 1]);
-            break;
-
-        case COMMAND_QUESTION_PAR:
-            spot_string_print("QUESTION_PAR: %d", spot->data[i + 1]);
-            break;
-
-        case COMMAND_ACTION:
-            spot_string_print("ACTION: %02x", spot->data[i + 1]);
-            for (j = 0; j < spot->data[i + 1]; ++j) {
-                int action = spot->data[i + 2 + j * 5];
-                int param1 = spot->data[i + 3 + j * 5];
-                int param2 = spot->data[i + 4 + j * 5];
-                const char *param1_str = object_name(param1);
-                const char *param2_str = spot_character_name(param2);
-
-                if (action == SPOT_ACTION_MOVE)
-                    param1_str = spot_direction_to_string(param1);
-                if (param2 == 0xff)
-                    param2_str = "";
-
+            case COMMAND_NPC_ENEMY:
                 spot_string_print
-                    ("\n           %s(%02x) %s(%02x), %s(%02x): goto %04x",
-                     spot_action_to_string(action), action,
-                     param1_str, param1, param2_str, param2,
-                     readint(spot->data + i + 5 + j * 5));
-            }
-            break;
+                    ("NPC_ENEMY: %s(%02x), relative=%02x, direction=%02x, unknown=%d%%, n=%d",
+                     spot_character_name(spot->data[i + 5]),
+                     spot->data[i + 5], spot->data[i + 1], spot->data[i + 2],
+                     spot->data[i + 3], spot->data[i + 4]);
 
-        case COMMAND_IF_PARTY:
-            spot_string_print("IF_PARTY: %s(%02x), %s(%02x), %s(%02x), %02x",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1],
-                              spot_if_party_condition_to_string(spot->data[i + 2]),
-                              spot->data[i + 2],
-                              object_name(spot->data[i + 3]), spot->data[i + 3],
-                              spot->data[i + 4]);
-            break;
+                for (j = 0; j < spot->data[i + 4]; ++j)
+                    spot_string_print("\n                   x=%04x, y=%04x",
+                                      readint(spot->data + i + 4 * j + 6),
+                                      readint(spot->data + i + 4 * j + 8));
 
-        case COMMAND_02:
-            spot_string_print("COMMAND_02: %s(%02x), %02x, %02x, %02x",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1],
-                              spot->data[i + 2], spot->data[i + 3],
-                              spot->data[i + 4]);
-            break;
+                break;
 
-        case COMMAND_04:
-            spot_string_print("COMMAND_04: %s(%02x), %s(%02x), %02x",
-                              spot_character_name(spot->data[i + 1]),
-                              spot->data[i + 1],
-                              spot_character_name(spot->data[i + 2]),
-                              spot->data[i + 2],
-                              spot->data[i + 3]);
-            break;
+            case COMMAND_NPC_CHANGE_STAT:
+                spot_string_print
+                    ("NPC_CHANGE_STAT: npc=%02x, stat=%02x, +-=%02x, value=%02x, %02x",
+                     spot->data[i + 1], spot->data[i + 2], spot->data[i + 3],
+                     spot->data[i + 4], spot->data[i + 5]);
+                break;
+
+            case COMMAND_NPC_DELETE:
+                spot_string_print("NPC_DELETE: %s(%02x)",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1]);
+                break;
+
+            case COMMAND_MAP_FOG:
+                spot_string_print("MAP_FOG: %02x", spot->data[i + 1]);
+                break;
+
+            case COMMAND_MAP_NORMAL:
+                spot_string_print("MAP_NORMAL");
+                break;
+
+            case COMMAND_MAP_DARK:
+                spot_string_print("MAP_DARK");
+                break;
+
+            case COMMAND_MAP_LIGHT:
+                spot_string_print("MAP_LIGHT");
+                break;
+
+            case COMMAND_IF_MAP_DARK:
+                spot_string_print("IF_MAP_DARK");
+                break;
+
+            case COMMAND_GOTO:
+                spot_string_print("GOTO: %04x", readint(spot->data + i + 1));
+                break;
+
+            case COMMAND_DISABLE_SPOT:
+                spot_string_print("DISABLE_SPOT: %02x", spot->data[i + 1]);
+                break;
+
+            case COMMAND_TEXT:
+                spot_string_print("TEXT: \"%s\"",
+                                  game_get_text(spot->data[i + 1]));
+                break;
+
+            case COMMAND_QUESTION:
+                spot_string_print("QUESTION: \"%s\"",
+                                  game_get_text(spot->data[i + 1]));
+                break;
+
+            case COMMAND_TEXT_PAR:
+                spot_string_print("TEXT_PAR: %d", spot->data[i + 1]);
+                break;
+
+            case COMMAND_QUESTION_PAR:
+                spot_string_print("QUESTION_PAR: %d", spot->data[i + 1]);
+                break;
+
+            case COMMAND_ACTION:
+                spot_string_print("ACTION: %02x", spot->data[i + 1]);
+                for (j = 0; j < spot->data[i + 1]; ++j) {
+                    int action = spot->data[i + 2 + j * 5];
+                    int param1 = spot->data[i + 3 + j * 5];
+                    int param2 = spot->data[i + 4 + j * 5];
+                    const char *param1_str = object_name(param1);
+                    const char *param2_str = spot_character_name(param2);
+
+                    if (action == SPOT_ACTION_MOVE)
+                        param1_str = spot_direction_to_string(param1);
+                    if (param2 == 0xff)
+                        param2_str = "";
+
+                    spot_string_print
+                        ("\n           %s(%02x) %s(%02x), %s(%02x): goto %04x",
+                         spot_action_to_string(action), action,
+                         param1_str, param1, param2_str, param2,
+                         readint(spot->data + i + 5 + j * 5));
+                }
+                break;
+
+            case COMMAND_IF_PARTY:
+                spot_string_print
+                    ("IF_PARTY: %s(%02x), %s(%02x), %s(%02x), %02x",
+                     spot_character_name(spot->data[i + 1]),
+                     spot->data[i + 1],
+                     spot_if_party_condition_to_string(spot->data[i + 2]),
+                     spot->data[i + 2], object_name(spot->data[i + 3]),
+                     spot->data[i + 3], spot->data[i + 4]);
+                break;
+
+            case COMMAND_02:
+                spot_string_print("COMMAND_02: %s(%02x), %02x, %02x, %02x",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1],
+                                  spot->data[i + 2], spot->data[i + 3],
+                                  spot->data[i + 4]);
+                break;
+
+            case COMMAND_04:
+                spot_string_print("COMMAND_04: %s(%02x), %s(%02x), %02x",
+                                  spot_character_name(spot->data[i + 1]),
+                                  spot->data[i + 1],
+                                  spot_character_name(spot->data[i + 2]),
+                                  spot->data[i + 2], spot->data[i + 3]);
+                break;
 
 #ifdef TTT
-        case COMMAND_43:
-            spot_string_print
-                ("COMMAND_43: building=%02x, %02x, %02x, floor=%d\n",
-                 spot->building, spot->data[i + 5], spot->data[i + 6],
-                 spot->data[i + 7]);
-            break;
+            case COMMAND_43:
+                spot_string_print
+                    ("COMMAND_43: building=%02x, %02x, %02x, floor=%d\n",
+                     spot->building, spot->data[i + 5], spot->data[i + 6],
+                     spot->data[i + 7]);
+                break;
 #endif
 
-        case COMMAND_47:
-            spot_string_print("COMMAND_47\n");
-            break;
+            case COMMAND_47:
+                spot_string_print("COMMAND_47\n");
+                break;
 
-        case COMMAND_IF_RANDOM:
-            spot_string_print("IF_RANDOM: %02x", spot->data[i + 1]);
-            break;
+            case COMMAND_IF_RANDOM:
+                spot_string_print("IF_RANDOM: %02x", spot->data[i + 1]);
+                break;
 
-        case COMMAND_IF_DIRECTION:
-            spot_string_print("IF_DIRECTION: %s(%02x)",
-                              spot_direction_to_string(spot->data[i + 1]),
-                              spot->data[i + 1]);
-            break;
+            case COMMAND_IF_DIRECTION:
+                spot_string_print("IF_DIRECTION: %s(%02x)",
+                                  spot_direction_to_string(spot->data[i + 1]),
+                                  spot->data[i + 1]);
+                break;
 
-        case COMMAND_IF_DAY:
-            spot_string_print("IF_DAY");
-            break;
+            case COMMAND_IF_DAY:
+                spot_string_print("IF_DAY");
+                break;
 
 #ifndef TTT
-        case COMMAND_END_OF_GAME:
-            spot_string_print("END_OF_GAME");
-            break;
+            case COMMAND_END_OF_GAME:
+                spot_string_print("END_OF_GAME");
+                break;
 #endif
 
-        case COMMAND_IF_REGISTER:
-            spot_string_print("IF_REGISTER: %02x", spot->data[i + 1]);
-            if (map_get_register(spot->data[i + 1]))
-                spot_string_print(" (true)");
-            else
-                spot_string_print(" (false)");
-            break;
+            case COMMAND_IF_REGISTER:
+                spot_string_print("IF_REGISTER: %02x", spot->data[i + 1]);
+                if (map_get_register(spot->data[i + 1]))
+                    spot_string_print(" (true)");
+                else
+                    spot_string_print(" (false)");
+                break;
 
-        case COMMAND_REGISTER_OFF:
-            spot_string_print("REGISTER_OFF: %02x", spot->data[i + 1]);
-            break;
+            case COMMAND_REGISTER_OFF:
+                spot_string_print("REGISTER_OFF: %02x", spot->data[i + 1]);
+                break;
 
-        case COMMAND_REGISTER_ON:
-            spot_string_print("REGISTER_ON: %02x", spot->data[i + 1]);
-            break;
+            case COMMAND_REGISTER_ON:
+                spot_string_print("REGISTER_ON: %02x", spot->data[i + 1]);
+                break;
 
 
-        case COMMAND_IF_GAME_REG:
-            spot_string_print("IF_GAME_REG: %02x", spot->data[i + 1]);
-            break;
+            case COMMAND_IF_GAME_REG:
+                spot_string_print("IF_GAME_REG: %02x", spot->data[i + 1]);
+                break;
 
-        case COMMAND_GAME_REG_ON:
-            spot_string_print("GAME_REG_ON: %02x", spot->data[i + 1]);
-            break;
+            case COMMAND_GAME_REG_ON:
+                spot_string_print("GAME_REG_ON: %02x", spot->data[i + 1]);
+                break;
 
-        case COMMAND_TRUE_THEN:
-            spot_string_print(" TRUE_THEN");
-            break;
+            case COMMAND_TRUE_THEN:
+                spot_string_print(" TRUE_THEN");
+                break;
 
-        case COMMAND_FALSE_THEN:
-            spot_string_print(" FALSE_THEN");
-            break;
+            case COMMAND_FALSE_THEN:
+                spot_string_print(" FALSE_THEN");
+                break;
 
-        case COMMAND_ELSE:
-            spot_string_print(" ELSE");
-            break;
+            case COMMAND_ELSE:
+                spot_string_print(" ELSE");
+                break;
 
-        case COMMAND_ENDIF:
-            spot_string_print(" ENDIF");
-            break;
+            case COMMAND_ENDIF:
+                spot_string_print(" ENDIF");
+                break;
 
-        case COMMAND_TELEPORT:
-            spot_string_print
-                ("TELEPORT: %02x, dir=%02x, x=%04x, y=%04x, map=%d, %02x",
-                 spot->data[i + 1], spot->data[i + 2],
-                 readint(spot->data + i + 3), readint(spot->data + i + 5),
-                 spot->data[i + 7], spot->data[i + 8]);
-            break;
+            case COMMAND_TELEPORT:
+                spot_string_print
+                    ("TELEPORT: %02x, dir=%02x, x=%04x, y=%04x, map=%d, %02x",
+                     spot->data[i + 1], spot->data[i + 2],
+                     readint(spot->data + i + 3), readint(spot->data + i + 5),
+                     spot->data[i + 7], spot->data[i + 8]);
+                break;
 
-        case COMMAND_SOUND:
-            spot_string_print("SOUND: index=%04x", spot->data[i + 1]);
-            break;
+            case COMMAND_SOUND:
+                spot_string_print("SOUND: index=%04x", spot->data[i + 1]);
+                break;
 
-        case COMMAND_CARTOON:
-            spot_string_print("CARTOON: cartoon=%d", spot->data[i + 1] + 1);
-            break;
+            case COMMAND_CARTOON:
+                spot_string_print("CARTOON: cartoon=%d",
+                                  spot->data[i + 1] + 1);
+                break;
 
-        case COMMAND_PLAY_AV:
-            spot_string_print("PLAY_AV: av=%d", spot->data[i + 1] + 1);
-            break;
+            case COMMAND_PLAY_AV:
+                spot_string_print("PLAY_AV: av=%d", spot->data[i + 1] + 1);
+                break;
 
-        case COMMAND_COMBAT:
-            spot_string_print("COMBAT");
-            break;
+            case COMMAND_COMBAT:
+                spot_string_print("COMBAT");
+                break;
 
-        case COMMAND_SET_SILVER:
+            case COMMAND_SET_SILVER:
 #ifndef TTT
-            spot_string_print("SET_SILVER: amount=%04x",
-                              readint(spot->data + i + 1));
+                spot_string_print("SET_SILVER: amount=%04x",
+                                  readint(spot->data + i + 1));
 #else
-            spot_string_print("ADD_SILVER: amount=%02x", spot->data[i + 1]);
+                spot_string_print("ADD_SILVER: amount=%02x",
+                                  spot->data[i + 1]);
 #endif
-            break;
+                break;
 
-        case COMMAND_OBJECTS_HERE:
-            spot_string_print("OBJECTS_HERE: index=%04x",
-                              readint(spot->data + i + 1));
-            break;
+            case COMMAND_OBJECTS_HERE:
+                spot_string_print("OBJECTS_HERE: index=%04x",
+                                  readint(spot->data + i + 1));
+                break;
 
-        case COMMAND_OBJECT_INC:
-            spot_string_print("OBJECT_INC: index=%02x", spot->data[i + 1]);
-            break;
+            case COMMAND_OBJECT_INC:
+                spot_string_print("OBJECT_INC: index=%02x",
+                                  spot->data[i + 1]);
+                break;
 
-        case COMMAND_OBJECT_DEC:
-            spot_string_print("OBJECT_DEC: index=%02x", spot->data[i + 1]);
-            break;
+            case COMMAND_OBJECT_DEC:
+                spot_string_print("OBJECT_DEC: index=%02x",
+                                  spot->data[i + 1]);
+                break;
 
-        case COMMAND_SET_OBJECT:
-            spot_string_print("SET_OBJECT: index=%02x, value=%02x",
-                              spot->data[i + 1], spot->data[i + 2]);
-            break;
+            case COMMAND_SET_OBJECT:
+                spot_string_print("SET_OBJECT: index=%02x, value=%02x",
+                                  spot->data[i + 1], spot->data[i + 2]);
+                break;
 
-        case COMMAND_IF_OBJECTS_HERE:
-            spot_string_print("IF_OBJECTS_HERE: index=%04x, %02x",
-                              readint(spot->data + i + 1), spot->data[i + 3]);
-            break;
+            case COMMAND_IF_OBJECTS_HERE:
+                spot_string_print("IF_OBJECTS_HERE: index=%04x, %02x",
+                                  readint(spot->data + i + 1),
+                                  spot->data[i + 3]);
+                break;
 
-        case COMMAND_IF_OBJECTS_AT_LEAST:
-            spot_string_print("IF_OBJECTS_AT_LEAST: index=%04x, %02x",
-                              readint(spot->data + i + 1), spot->data[i + 3]);
-            break;
+            case COMMAND_IF_OBJECTS_AT_LEAST:
+                spot_string_print("IF_OBJECTS_AT_LEAST: index=%04x, %02x",
+                                  readint(spot->data + i + 1),
+                                  spot->data[i + 3]);
+                break;
 
-        case COMMAND_OBJECTS_TO_BUY:
-            spot_string_print("OBJECTS_TO_BUY: ");
-            for (j = i + 1; spot->data[j] != 0xff; ++j)
-                spot_string_print("(%s), ", object_name(spot->data[j]));
-            break;
+            case COMMAND_OBJECTS_TO_BUY:
+                spot_string_print("OBJECTS_TO_BUY: ");
+                for (j = i + 1; spot->data[j] != 0xff; ++j)
+                    spot_string_print("(%s), ", object_name(spot->data[j]));
+                break;
 
-        case COMMAND_SKILLS_HERE:
-            spot_string_print("SKILLS_HERE: index=%04x",
-                              readint(spot->data + i + 1));
-            break;
+            case COMMAND_SKILLS_HERE:
+                spot_string_print("SKILLS_HERE: index=%04x",
+                                  readint(spot->data + i + 1));
+                break;
 
-        case COMMAND_END:
-            spot_string_print("END");
-            break;
+            case COMMAND_END:
+                spot_string_print("END");
+                break;
 
-        case COMMAND_DIE:
-            spot_string_print("DIE");
-            break;
+            case COMMAND_DIE:
+                spot_string_print("DIE");
+                break;
 
 #ifdef TTT
-        case COMMAND_ACTIVATE_PARTY:
-            spot_string_print("ACTIVATE_PARTY %d, text=\"%s\"",
-                              spot->data[i + 1],
-                              spot_chapter_texts[spot->data[i + 2]]);
-            break;
+            case COMMAND_ACTIVATE_PARTY:
+                spot_string_print("ACTIVATE_PARTY %d, text=\"%s\"",
+                                  spot->data[i + 1],
+                                  spot_chapter_texts[spot->data[i + 2]]);
+                break;
 #endif
 
-        case COMMAND_CAN_NOT_MOVE:
-            spot_string_print("CAN_NOT_MOVE");
-            break;
+            case COMMAND_CAN_NOT_MOVE:
+                spot_string_print("CAN_NOT_MOVE");
+                break;
 
-        case COMMAND_CAN_MOVE:
-            spot_string_print("CAN_MOVE");
-            break;
+            case COMMAND_CAN_MOVE:
+                spot_string_print("CAN_MOVE");
+                break;
 
-        case COMMAND_EXIT_BUILDING:
-            spot_string_print("EXIT_BUILDING");
-            break;
+            case COMMAND_EXIT_BUILDING:
+                spot_string_print("EXIT_BUILDING");
+                break;
 
-        case COMMAND_SET_TIMER:
-            spot_string_print("SET_TIMER: %04x", readint(spot->data + i + 1));
-            break;
+            case COMMAND_SET_TIMER:
+                spot_string_print("SET_TIMER: %04x",
+                                  readint(spot->data + i + 1));
+                break;
 
-        default:
-            spot_string_print("UNKNOWN: ");
-            for (; i < spot->data_size; ++i)
-                spot_string_print("%02x ", spot->data[i]);
+            default:
+                spot_string_print("UNKNOWN: ");
+                for (; i < spot->data_size; ++i)
+                    spot_string_print("%02x ", spot->data[i]);
 
-            spot->not_parsed = 1;
+                spot->not_parsed = 1;
         }
 
         spot_string_print("\n");
@@ -1489,8 +1515,7 @@ spot_goto(CommandSpot *spot, int address)
     int i;
 
     if (address < spot->label_start
-        || address >= spot->label_start + spot->data_size)
-    {
+        || address >= spot->label_start + spot->data_size) {
         CommandSpot *spot = map_get_spot_by_addr(address);
         int r;
 
@@ -1532,29 +1557,29 @@ spot_change_stat(Character *character, int stat, int sign, int value)
                 sign);
 
     switch (stat) {
-    case 0x10:
-        character->dex += value;
-        break;
-    case 0x11:
-        character->life += value;
-        break;
-    case 0x12:
-        character->str += value;
-        break;
-    case 0x13:
-        character->will += value;
-        break;
-    case 0x15:
-        character->luck += value;
-        break;
-    case 0x16:
-        character->end += value;
-        if (value > 0)
+        case 0x10:
+            character->dex += value;
+            break;
+        case 0x11:
             character->life += value;
-        break;
-    default:
-        fprintf(stderr, "lord: WARNING unknown stat number=%02x\n", stat);
-        break;
+            break;
+        case 0x12:
+            character->str += value;
+            break;
+        case 0x13:
+            character->will += value;
+            break;
+        case 0x15:
+            character->luck += value;
+            break;
+        case 0x16:
+            character->end += value;
+            if (value > 0)
+                character->life += value;
+            break;
+        default:
+            fprintf(stderr, "lord: WARNING unknown stat number=%02x\n", stat);
+            break;
     }
 
     if (character->life > character->end)
@@ -1586,39 +1611,39 @@ spot_if_party(Character *character, int a, int b, int c)
 
     switch (a) {
 
-    case IF_PARTY_CONDITION_HAS_SKILL:    /* if has skill */
-        for (i = 0; i < character->skills_num; ++i)
-            if (character->skills[i] == b)
-                return 1;
-        return 0;
+        case IF_PARTY_CONDITION_HAS_SKILL:     /* if has skill */
+            for (i = 0; i < character->skills_num; ++i)
+                if (character->skills[i] == b)
+                    return 1;
+            return 0;
 
-    case IF_PARTY_CONDITION_HAS_ITEM:     /* if has item */
-        for (i = 0; i < character->items_num; ++i)
-            if (character->items[i] == b)
-                return 1;
-        return 0;
+        case IF_PARTY_CONDITION_HAS_ITEM:      /* if has item */
+            for (i = 0; i < character->items_num; ++i)
+                if (character->items[i] == b)
+                    return 1;
+            return 0;
 
-    case IF_PARTY_CONDITION_IN_PARTY:     /* if is in party */
-        if (b == 0x08)
-            return character == game_get_leader();
+        case IF_PARTY_CONDITION_IN_PARTY:      /* if is in party */
+            if (b == 0x08)
+                return character == game_get_leader();
 
-        if (b == 0x20)
-            return game_in_party(character);
+            if (b == 0x20)
+                return game_in_party(character);
 
-        fprintf(stderr, "lord: WARNING unknown IF_PARTY type=%02x %02x\n", a,
-                b);
-        return 0;
+            fprintf(stderr, "lord: WARNING unknown IF_PARTY type=%02x %02x\n",
+                    a, b);
+            return 0;
 
 
-    case IF_PARTY_CONDITION_SIZE:         /* the party size equals */
-        return game_get_party(codes) == b;
+        case IF_PARTY_CONDITION_SIZE:  /* the party size equals */
+            return game_get_party(codes) == b;
 
-    case IF_PARTY_CONDITION_HAVE_SILVER:  /* the party has some silver */
-        return game_get_silver() > 0;
+        case IF_PARTY_CONDITION_HAVE_SILVER:   /* the party has some silver */
+            return game_get_silver() > 0;
 
-    default:
-        fprintf(stderr, "lord: WARNING unknown IF_PARTY type=%02x\n", a);
-        return 0;
+        default:
+            fprintf(stderr, "lord: WARNING unknown IF_PARTY type=%02x\n", a);
+            return 0;
     }
 
     return 1;
@@ -1673,602 +1698,610 @@ spot_continue(CommandSpot *spot)
 
         switch (spot->data[i]) {
 
-        case COMMAND_02:
-        case COMMAND_47:
-            // FIXME
-            spot->pos++;
-            break;
+            case COMMAND_02:
+            case COMMAND_47:
+                // FIXME
+                spot->pos++;
+                break;
 
 #ifdef TTT
-        case COMMAND_43:
-            spot->pos++;
-            spot_if_result(spot, 1);
-            break;
+            case COMMAND_43:
+                spot->pos++;
+                spot_if_result(spot, 1);
+                break;
 #endif
 
-        case COMMAND_UNKNOWN1:
-        case COMMAND_UNKNOWN6:
-            // FIXME
-            spot->pos++;
-            break;
+            case COMMAND_UNKNOWN1:
+            case COMMAND_UNKNOWN6:
+                // FIXME
+                spot->pos++;
+                break;
 
 
-        case COMMAND_NPC_INIT:
-            spot->pos++;
-            if (spot->data[i + 1] == 0xf0) {
-                for (j = 0; j < party_size; ++j)
+            case COMMAND_NPC_INIT:
+                spot->pos++;
+                if (spot->data[i + 1] == 0xf0) {
+                    for (j = 0; j < party_size; ++j)
+#ifdef CD_VERSION
+                        /* cd version uses different direction codes */
+                        if (spot->data[i + 2] == 0xa)   /* direction */
+                            character_command_npc_init(party[j],
+                                                       spot->data[i + 2],
+                                                       cddir_to_dir(spot->
+                                                                    data[i +
+                                                                         3]));
+                        else
+#endif
+                            character_command_npc_init(party[j],
+                                                       spot->data[i + 2],
+                                                       spot->data[i + 3]);
+                    break;
+                }
+
+                character = spot_character_get(spot->data[i + 1]);
+
+                if (character) {
 #ifdef CD_VERSION
                     /* cd version uses different direction codes */
                     if (spot->data[i + 2] == 0xa)       /* direction */
-                        character_command_npc_init(party[j],
+                        character_command_npc_init(character,
                                                    spot->data[i + 2],
-                                                   cddir_to_dir(spot->data[i +
-                                                                           3]));
+                                                   cddir_to_dir(spot->
+                                                                data[i + 3]));
                     else
 #endif
-                        character_command_npc_init(party[j],
+                        character_command_npc_init(character,
                                                    spot->data[i + 2],
                                                    spot->data[i + 3]);
-                break;
-            }
-
-            character = spot_character_get(spot->data[i + 1]);
-
-            if (character) {
-#ifdef CD_VERSION
-                /* cd version uses different direction codes */
-                if (spot->data[i + 2] == 0xa)   /* direction */
-                    character_command_npc_init(character, spot->data[i + 2],
-                                               cddir_to_dir(spot->data
-                                                            [i + 3]));
-                else
-#endif
-                    character_command_npc_init(character, spot->data[i + 2],
-                                               spot->data[i + 3]);
-            }
-            break;
-
-        case COMMAND_NPC_SET_NAME:
-            spot->pos++;
-            character = spot_character_get(spot->data[i + 1]);
-            if (character == NULL)
-                break;
-            strncpy(character->name, (char *)spot->data + i + 2, 19);
-            character->name[20] = 0;
-            break;
-
-        case COMMAND_NPC_QUESTIONS:
-            spot->pos++;
-            character = spot_character_get(spot->data[i + 1]);
-            character->pythontexts = 0;
-            if (character == NULL)
-                break;
-            j = 1;
-            i += 2;
-            while (spot->data[i] != 0xff) {
-                jj = 0;
-                while (spot->data[i] && jj < 10) {
-                    character->texts[j++] = spot->data[i++];
-                    ++jj;
                 }
-                if (!spot->data[i])
+                break;
+
+            case COMMAND_NPC_SET_NAME:
+                spot->pos++;
+                character = spot_character_get(spot->data[i + 1]);
+                if (character == NULL)
+                    break;
+                strncpy(character->name, (char *)spot->data + i + 2, 19);
+                character->name[20] = 0;
+                break;
+
+            case COMMAND_NPC_QUESTIONS:
+                spot->pos++;
+                character = spot_character_get(spot->data[i + 1]);
+                character->pythontexts = 0;
+                if (character == NULL)
+                    break;
+                j = 1;
+                i += 2;
+                while (spot->data[i] != 0xff) {
+                    jj = 0;
+                    while (spot->data[i] && jj < 10) {
+                        character->texts[j++] = spot->data[i++];
+                        ++jj;
+                    }
+                    if (!spot->data[i])
+                        character->texts[j++] = spot->data[i++];
                     character->texts[j++] = spot->data[i++];
+                }
                 character->texts[j++] = spot->data[i++];
-            }
-            character->texts[j++] = spot->data[i++];
-            break;
+                break;
 
-        case COMMAND_NPC_TURN_TO_ME:
-            spot->pos++;
-            character = game_get_leader();
-            map_character_turn_to(spot->data[i + 1], character->x,
-                                  character->y);
-            break;
+            case COMMAND_NPC_TURN_TO_ME:
+                spot->pos++;
+                character = game_get_leader();
+                map_character_turn_to(spot->data[i + 1], character->x,
+                                      character->y);
+                break;
 
-        case COMMAND_NPC_CHANGE_STAT:
-            spot->pos++;
-            if (spot->data[i + 1] == 0xf0) {
-                for (j = 0; j < party_size; ++j)
-                    spot_change_stat(party[j], spot->data[i + 2],
+            case COMMAND_NPC_CHANGE_STAT:
+                spot->pos++;
+                if (spot->data[i + 1] == 0xf0) {
+                    for (j = 0; j < party_size; ++j)
+                        spot_change_stat(party[j], spot->data[i + 2],
+                                         spot->data[i + 3],
+                                         spot->data[i + 4]);
+                    break;
+
+                }
+                character = spot_character_get(spot->data[i + 1]);
+
+                if (character != NULL)
+                    spot_change_stat(character, spot->data[i + 2],
                                      spot->data[i + 3], spot->data[i + 4]);
                 break;
 
-            }
-            character = spot_character_get(spot->data[i + 1]);
-
-            if (character != NULL)
-                spot_change_stat(character, spot->data[i + 2],
-                                 spot->data[i + 3], spot->data[i + 4]);
-            break;
-
-        case COMMAND_NPC_MOVE:
-            lord_input_disable();
-            lord_reset_keyboard();
+            case COMMAND_NPC_MOVE:
+                lord_input_disable();
+                lord_reset_keyboard();
 #ifndef CD_VERSION
-            if (map_character_move
-                (spot->data[i + 1], readint(spot->data + i + 3),
-                 readint(spot->data + i + 5), spot->data[i + 2]))
+                if (map_character_move
+                    (spot->data[i + 1], readint(spot->data + i + 3),
+                     readint(spot->data + i + 5), spot->data[i + 2]))
 #else
-            if (map_character_move
-                (spot->data[i + 1], readint(spot->data + i + 3),
-                 readint(spot->data + i + 5),
-                 cddir_to_dir(spot->data[i + 2])))
+                if (map_character_move
+                    (spot->data[i + 1], readint(spot->data + i + 3),
+                     readint(spot->data + i + 5),
+                     cddir_to_dir(spot->data[i + 2])))
 #endif
-                return 1;
-            else
-                spot->pos++;
-            lord_input_enable();
-            break;
-
-        case COMMAND_NPC_DELETE:
-            spot->pos++;
-            map_remove_character(spot->data[i + 1]);
-            character = character_get(spot->data[i + 1]);
-            character->map = -1;
-            // FIXME
-            // character->actived=1;
-            break;
-
-        case COMMAND_NPC_RECRUIT:
-            spot->pos++;
-            if (spot->data[i + 1] == 0xfa) {
-                game_set_follow(1);
+                    return 1;
+                else
+                    spot->pos++;
+                lord_input_enable();
                 break;
-            }
-            if (spot->data[i + 1] < 0xf0) {
+
+            case COMMAND_NPC_DELETE:
+                spot->pos++;
+                map_remove_character(spot->data[i + 1]);
                 character = character_get(spot->data[i + 1]);
-                character->party_id = spot->data[i + 2];
-                game_recruit(character_get(spot->data[i + 1]), 1);
-            }
-            break;
-
-        case COMMAND_NPC_DISMISS:
-            spot->pos++;
-            if (spot->data[i + 1] == 0xfa) {
-                game_set_follow(0);
+                character->map = -1;
+                // FIXME
+                // character->actived=1;
                 break;
-            }
-            character = spot_character_get(spot->data[i + 1]);
-            if (spot->data[i + 1] == 0xfb)
-                character = NULL;
-            if (character != NULL) {
-                // FIXME trade items if spot->data[i+2]
-                game_dismiss(character);
-                character->willing_join = 0;
-            }
-            break;
 
-        case COMMAND_SET_TMP_LEADER:
-            spot->pos++;
-            character = spot_character_get(spot->data[i + 1]);
-            if (character != NULL)
-                game_set_tmp_leader(character);
-            break;
-
-        case COMMAND_DISMISS_TMP_LEADER:
-            spot->pos++;
-            game_dismiss_tmp_leader();
-            break;
-
-        case COMMAND_DISABLE_SPOT:
-            spot->pos++;
-            map_get_spot_number(spot->data[i + 1])->flag = 0;
-            break;
-
-        case COMMAND_ACTION:
-            return 0;
-
-        case COMMAND_TELEPORT:
-            spot->pos++;
-            if (spot->data[i + 8] != 0xf0)
-                character = spot_character_get(spot->data[i + 8]);
-            if (spot->data[i + 8] == 0xf0 || character == game_get_leader()) {
-#ifndef CD_VERSION
-                game_leader_teleport(spot->data[i + 1],
-                                     readint(spot->data + i + 3),
-                                     readint(spot->data + i + 5),
-                                     spot->data[i + 2], spot->data[i + 7]);
-#else
-                game_leader_teleport(spot->data[i + 1],
-                                     readint(spot->data + i + 3),
-                                     readint(spot->data + i + 5),
-                                     cddir_to_dir(spot->data[i + 2]),
-                                     spot->data[i + 7]);
-#endif
-                spot_if_result(spot, 1);
-                return 1;
-            }
-            if (character != NULL) {
-#ifndef CD_VERSION
-                map_character_teleport(character, spot->data[i + 1],
-                                       readint(spot->data + i + 3),
-                                       readint(spot->data + i + 5),
-                                       spot->data[i + 2], spot->data[i + 7]);
-#else
-                map_character_teleport(character, spot->data[i + 1],
-                                       readint(spot->data + i + 3),
-                                       readint(spot->data + i + 5),
-                                       cddir_to_dir(spot->data[i + 2]),
-                                       spot->data[i + 7]);
-#endif
-                spot_if_result(spot, 1);
-                return 1;
-            }
-
-            spot_if_result(spot, 0);
-            break;
-
-        case COMMAND_REGISTER_ON:
-            spot->pos++;
-            map_set_register(spot->data[i + 1], 1);
-            break;
-
-        case COMMAND_REGISTER_OFF:
-            spot->pos++;
-            map_set_register(spot->data[i + 1], 0);
-            break;
-
-        case COMMAND_IF_REGISTER:
-            spot->pos++;
-            spot_if_result(spot, map_get_register(spot->data[i + 1]));
-            break;
-
-        case COMMAND_IF_GAME_REG:
-            spot->pos++;
-            spot_if_result(spot, game_get_register(spot->data[i + 1]));
-            break;
-
-        case COMMAND_GAME_REG_ON:
-            spot->pos++;
-            game_set_register(spot->data[i + 1], 1);
-            break;
-
-        case COMMAND_IF_PARTY:
-            spot->pos++;
-            if (spot->data[i + 1] == 0xf0) {
-                for (j = 0; j < party_size; ++j)
-                    if (spot_if_party
-                        (party[j], spot->data[i + 2], spot->data[i + 3],
-                         spot->data[i + 4]))
-                        break;
-
-                spot_if_result(spot, j < party_size);
+            case COMMAND_NPC_RECRUIT:
+                spot->pos++;
+                if (spot->data[i + 1] == 0xfa) {
+                    game_set_follow(1);
+                    break;
+                }
+                if (spot->data[i + 1] < 0xf0) {
+                    character = character_get(spot->data[i + 1]);
+                    character->party_id = spot->data[i + 2];
+                    game_recruit(character_get(spot->data[i + 1]), 1);
+                }
                 break;
-            }
 
-            character = spot_character_get(spot->data[i + 1]);
-            spot_if_result(spot,
-                           spot_if_party(character, spot->data[i + 2],
-                                         spot->data[i + 3],
-                                         spot->data[i + 4]));
+            case COMMAND_NPC_DISMISS:
+                spot->pos++;
+                if (spot->data[i + 1] == 0xfa) {
+                    game_set_follow(0);
+                    break;
+                }
+                character = spot_character_get(spot->data[i + 1]);
+                if (spot->data[i + 1] == 0xfb)
+                    character = NULL;
+                if (character != NULL) {
+                    // FIXME trade items if spot->data[i+2]
+                    game_dismiss(character);
+                    character->willing_join = 0;
+                }
+                break;
 
-            break;
+            case COMMAND_SET_TMP_LEADER:
+                spot->pos++;
+                character = spot_character_get(spot->data[i + 1]);
+                if (character != NULL)
+                    game_set_tmp_leader(character);
+                break;
 
-        case COMMAND_IF_OBJECTS_HERE:
-            spot->pos++;
-            j = readint(spot->data + i + 1);
-            spot_if_result(spot, map_get_objects()[j] == spot->data[i + 3]);
-            break;
+            case COMMAND_DISMISS_TMP_LEADER:
+                spot->pos++;
+                game_dismiss_tmp_leader();
+                break;
 
-        case COMMAND_IF_OBJECTS_AT_LEAST:
-            spot->pos++;
-            j = readint(spot->data + i + 1);
-            spot_if_result(spot, map_get_objects()[j] >= spot->data[i + 3]);
-            break;
+            case COMMAND_DISABLE_SPOT:
+                spot->pos++;
+                map_get_spot_number(spot->data[i + 1])->flag = 0;
+                break;
 
-        case COMMAND_OBJECT_INC:
-            spot->pos++;
-            j = spot->data[i + 1];
-            map_get_objects()[j]++;
-            break;
+            case COMMAND_ACTION:
+                return 0;
 
-        case COMMAND_OBJECT_DEC:
-            spot->pos++;
-            j = spot->data[i + 1];
-            map_get_objects()[j]--;
-            break;
+            case COMMAND_TELEPORT:
+                spot->pos++;
+                if (spot->data[i + 8] != 0xf0)
+                    character = spot_character_get(spot->data[i + 8]);
+                if (spot->data[i + 8] == 0xf0
+                    || character == game_get_leader()) {
+#ifndef CD_VERSION
+                    game_leader_teleport(spot->data[i + 1],
+                                         readint(spot->data + i + 3),
+                                         readint(spot->data + i + 5),
+                                         spot->data[i + 2],
+                                         spot->data[i + 7]);
+#else
+                    game_leader_teleport(spot->data[i + 1],
+                                         readint(spot->data + i + 3),
+                                         readint(spot->data + i + 5),
+                                         cddir_to_dir(spot->data[i + 2]),
+                                         spot->data[i + 7]);
+#endif
+                    spot_if_result(spot, 1);
+                    return 1;
+                }
+                if (character != NULL) {
+#ifndef CD_VERSION
+                    map_character_teleport(character, spot->data[i + 1],
+                                           readint(spot->data + i + 3),
+                                           readint(spot->data + i + 5),
+                                           spot->data[i + 2],
+                                           spot->data[i + 7]);
+#else
+                    map_character_teleport(character, spot->data[i + 1],
+                                           readint(spot->data + i + 3),
+                                           readint(spot->data + i + 5),
+                                           cddir_to_dir(spot->data[i + 2]),
+                                           spot->data[i + 7]);
+#endif
+                    spot_if_result(spot, 1);
+                    return 1;
+                }
 
-        case COMMAND_SET_OBJECT:
-            spot->pos++;
-            j = spot->data[i + 1];
-            map_get_objects()[j] = spot->data[i + 2];
-            break;
+                spot_if_result(spot, 0);
+                break;
 
-        case COMMAND_SKILLS_HERE:
-        case COMMAND_OBJECTS_HERE:
-            spot->pos++;
-            j = readint(spot->data + i + 1);
-            spot_objects = map_get_objects() + j;
+            case COMMAND_REGISTER_ON:
+                spot->pos++;
+                map_set_register(spot->data[i + 1], 1);
+                break;
+
+            case COMMAND_REGISTER_OFF:
+                spot->pos++;
+                map_set_register(spot->data[i + 1], 0);
+                break;
+
+            case COMMAND_IF_REGISTER:
+                spot->pos++;
+                spot_if_result(spot, map_get_register(spot->data[i + 1]));
+                break;
+
+            case COMMAND_IF_GAME_REG:
+                spot->pos++;
+                spot_if_result(spot, game_get_register(spot->data[i + 1]));
+                break;
+
+            case COMMAND_GAME_REG_ON:
+                spot->pos++;
+                game_set_register(spot->data[i + 1], 1);
+                break;
+
+            case COMMAND_IF_PARTY:
+                spot->pos++;
+                if (spot->data[i + 1] == 0xf0) {
+                    for (j = 0; j < party_size; ++j)
+                        if (spot_if_party
+                            (party[j], spot->data[i + 2], spot->data[i + 3],
+                             spot->data[i + 4]))
+                            break;
+
+                    spot_if_result(spot, j < party_size);
+                    break;
+                }
+
+                character = spot_character_get(spot->data[i + 1]);
+                spot_if_result(spot,
+                               spot_if_party(character, spot->data[i + 2],
+                                             spot->data[i + 3],
+                                             spot->data[i + 4]));
+
+                break;
+
+            case COMMAND_IF_OBJECTS_HERE:
+                spot->pos++;
+                j = readint(spot->data + i + 1);
+                spot_if_result(spot,
+                               map_get_objects()[j] == spot->data[i + 3]);
+                break;
+
+            case COMMAND_IF_OBJECTS_AT_LEAST:
+                spot->pos++;
+                j = readint(spot->data + i + 1);
+                spot_if_result(spot,
+                               map_get_objects()[j] >= spot->data[i + 3]);
+                break;
+
+            case COMMAND_OBJECT_INC:
+                spot->pos++;
+                j = spot->data[i + 1];
+                map_get_objects()[j]++;
+                break;
+
+            case COMMAND_OBJECT_DEC:
+                spot->pos++;
+                j = spot->data[i + 1];
+                map_get_objects()[j]--;
+                break;
+
+            case COMMAND_SET_OBJECT:
+                spot->pos++;
+                j = spot->data[i + 1];
+                map_get_objects()[j] = spot->data[i + 2];
+                break;
+
+            case COMMAND_SKILLS_HERE:
+            case COMMAND_OBJECTS_HERE:
+                spot->pos++;
+                j = readint(spot->data + i + 1);
+                spot_objects = map_get_objects() + j;
 #ifdef TTT
-            if (spot->data[i] == COMMAND_OBJECTS_HERE) {
-                gui_message("You see items here you might use.", 0);
-                return 1;
-            }
+                if (spot->data[i] == COMMAND_OBJECTS_HERE) {
+                    gui_message("You see items here you might use.", 0);
+                    return 1;
+                }
 #endif
-            break;
+                break;
 
-        case COMMAND_OBJECTS_TO_BUY:
-            spot->pos++;
-            buy_objects = spot->data + i + 1;
-            break;
+            case COMMAND_OBJECTS_TO_BUY:
+                spot->pos++;
+                buy_objects = spot->data + i + 1;
+                break;
 
-        case COMMAND_SET_SILVER:
-            spot->pos++;
+            case COMMAND_SET_SILVER:
+                spot->pos++;
 #ifndef TTT
-            game_set_silver(readint(spot->data + i + 1));
+                game_set_silver(readint(spot->data + i + 1));
 #else
-            game_add_silver(spot->data[i + 1]);
+                game_add_silver(spot->data[i + 1]);
 #endif
-            break;
+                break;
 
-        case COMMAND_TRUE_THEN:
-            if (!spot->if_result) {
-                spot_next_on_level(spot);
+            case COMMAND_TRUE_THEN:
+                if (!spot->if_result) {
+                    spot_next_on_level(spot);
+                    spot->pos++;
+                } else
+                    spot->pos++;
+                break;
+
+            case COMMAND_IF_DAY:
                 spot->pos++;
-            }
-            else
+                spot_if_result(spot, !map_is_night());
+                break;
+
+            case COMMAND_IF_RANDOM:
                 spot->pos++;
-            break;
+                spot_if_result(spot, lord_rnd(99) < spot->data[i + 1]);
+                break;
 
-        case COMMAND_IF_DAY:
-            spot->pos++;
-            spot_if_result(spot, !map_is_night());
-            break;
-
-        case COMMAND_IF_RANDOM:
-            spot->pos++;
-            spot_if_result(spot, lord_rnd(99) < spot->data[i + 1]);
-            break;
-
-        case COMMAND_IF_DIRECTION:
-            spot->pos++;
+            case COMMAND_IF_DIRECTION:
+                spot->pos++;
 #ifndef CD_VERSION
-            spot_if_result(spot,
-                           game_get_leader()->direction == spot->data[i + 1]);
+                spot_if_result(spot,
+                               game_get_leader()->direction ==
+                               spot->data[i + 1]);
 #else
-            spot_if_result(spot,
-                           game_get_leader()->direction ==
-                           cddir_to_dir(spot->data[i + 1]));
+                spot_if_result(spot,
+                               game_get_leader()->direction ==
+                               cddir_to_dir(spot->data[i + 1]));
 #endif
-            break;
+                break;
 
-        case COMMAND_FALSE_THEN:
-            if (spot->if_result) {
+            case COMMAND_FALSE_THEN:
+                if (spot->if_result) {
+                    spot_next_on_level(spot);
+                    spot->pos++;
+                } else
+                    spot->pos++;
+                break;
+
+            case COMMAND_ENDIF:
+                spot->pos++;
+                break;
+
+            case COMMAND_ELSE:
                 spot_next_on_level(spot);
+                break;
+
+            case COMMAND_GOTO:
+                r = spot_goto(spot, readint(spot->data + i + 1));
+                if (r >= 0)
+                    return r;
+                break;
+
+            case COMMAND_TEXT:
+                gui_message(game_get_text(spot->data[i + 1]), 0);
                 spot->pos++;
-            }
-            else
+                return 1;
+
+            case COMMAND_QUESTION:
+                gui_question(game_get_text(spot->data[i + 1]));
                 spot->pos++;
-            break;
+                return 1;
 
-        case COMMAND_ENDIF:
-            spot->pos++;
-            break;
+            case COMMAND_TEXT_PAR:
+                gui_paragraph(spot->data[i + 1]);
+                spot->pos++;
+                return 1;
 
-        case COMMAND_ELSE:
-            spot_next_on_level(spot);
-            break;
+            case COMMAND_QUESTION_PAR:
+                gui_paragraph_question(spot->data[i + 1]);
+                spot->pos++;
+                return 1;
 
-        case COMMAND_GOTO:
-            r = spot_goto(spot, readint(spot->data + i + 1));
-            if (r >= 0)
-                return r;
-            break;
+            case COMMAND_SOUND:
+                sound_play(spot->data[i + 1]);
+                spot->pos++;
+                return 1;
 
-        case COMMAND_TEXT:
-            gui_message(game_get_text(spot->data[i + 1]), 0);
-            spot->pos++;
-            return 1;
+            case COMMAND_SET_TIMER:
+                game_set_timer(readint(spot->data + i + 1) + 1);
+                spot->pos++;
+                return 1;
 
-        case COMMAND_QUESTION:
-            gui_question(game_get_text(spot->data[i + 1]));
-            spot->pos++;
-            return 1;
-
-        case COMMAND_TEXT_PAR:
-            gui_paragraph(spot->data[i + 1]);
-            spot->pos++;
-            return 1;
-
-        case COMMAND_QUESTION_PAR:
-            gui_paragraph_question(spot->data[i + 1]);
-            spot->pos++;
-            return 1;
-
-        case COMMAND_SOUND:
-            sound_play(spot->data[i + 1]);
-            spot->pos++;
-            return 1;
-
-        case COMMAND_SET_TIMER:
-            game_set_timer(readint(spot->data + i + 1) + 1);
-            spot->pos++;
-            return 1;
-
-        case COMMAND_CARTOON:
+            case COMMAND_CARTOON:
 #ifndef DEMO
-            sprintf(name, "cart%d", spot->data[i + 1] + 1);
-            play_music();
+                sprintf(name, "cart%d", spot->data[i + 1] + 1);
+                play_music();
 #else
-            sprintf(name, "democrt%d", spot->data[i + 1] + 1);
+                sprintf(name, "democrt%d", spot->data[i + 1] + 1);
 #endif
-            cartoon_play(name);
+                cartoon_play(name);
 
-            if (spot->data[i + 1] + 1 == 11)
-                exit(0);        /* You have won */
+                if (spot->data[i + 1] + 1 == 11)
+                    exit(0);    /* You have won */
 
-            graphics_clear_screen();
-            gui_set_palette();
-            gui_clear();
-            map_set_palette();
-            shapes_set_palette();
+                graphics_clear_screen();
+                gui_set_palette();
+                gui_clear();
+                map_set_palette();
+                shapes_set_palette();
 
-            spot->pos++;
-            return 1;
+                spot->pos++;
+                return 1;
 
-        case COMMAND_PLAY_AV:
+            case COMMAND_PLAY_AV:
 
 #ifdef CD_VERSION
 
-            av_playnum(spot->data[i + 1]);
+                av_playnum(spot->data[i + 1]);
 
-            graphics_clear_screen();
-            gui_set_palette();
-            gui_clear();
-            map_set_palette();
-            shapes_set_palette();
+                graphics_clear_screen();
+                gui_set_palette();
+                gui_clear();
+                map_set_palette();
+                shapes_set_palette();
 
-            spot->pos++;
-            return 1;
+                spot->pos++;
+                return 1;
 #else
-            fprintf(stderr, "lord: PLAY_AV command not implemented\n");
-            fprintf(stderr, "(recompile with CD_VERSION support)\n");
-            spot->pos++;
-            break;
+                fprintf(stderr, "lord: PLAY_AV command not implemented\n");
+                fprintf(stderr, "(recompile with CD_VERSION support)\n");
+                spot->pos++;
+                break;
 #endif
 
 
-        case COMMAND_MAP_FOG:
-            map_set_mode(MAP_FOG, spot->data[i + 1]);
-            spot->pos++;
-            break;
+            case COMMAND_MAP_FOG:
+                map_set_mode(MAP_FOG, spot->data[i + 1]);
+                spot->pos++;
+                break;
 
-        case COMMAND_MAP_LIGHT:
-        case COMMAND_MAP_NORMAL:
-            map_set_mode(MAP_NORMAL, 0);
-            spot->pos++;
-            break;
+            case COMMAND_MAP_LIGHT:
+            case COMMAND_MAP_NORMAL:
+                map_set_mode(MAP_NORMAL, 0);
+                spot->pos++;
+                break;
 
-        case COMMAND_MAP_DARK:
-            map_set_dark();
-            game_check_light();
-            spot->pos++;
-            break;
+            case COMMAND_MAP_DARK:
+                map_set_dark();
+                game_check_light();
+                spot->pos++;
+                break;
 
-        case COMMAND_IF_MAP_DARK:
-            spot->pos++;
-            spot_if_result(spot, map_is_dark());
-            break;
+            case COMMAND_IF_MAP_DARK:
+                spot->pos++;
+                spot_if_result(spot, map_is_dark());
+                break;
 
-        case COMMAND_NPC_ENEMY:
-            spot->pos++;
+            case COMMAND_NPC_ENEMY:
+                spot->pos++;
 
-            character = character_get(spot->data[i + 5]);
-            relative = spot->data[i + 1];
+                character = character_get(spot->data[i + 5]);
+                relative = spot->data[i + 1];
 
 #ifndef CD_VERSION
-            if (spot->data[i + 2] < 5)
-                character->direction = spot->data[i + 2];
+                if (spot->data[i + 2] < 5)
+                    character->direction = spot->data[i + 2];
 #else
-            if (spot->data[i + 2] < 9)
-                character->direction = cddir_to_dir(spot->data[i + 2]);
+                if (spot->data[i + 2] < 9)
+                    character->direction = cddir_to_dir(spot->data[i + 2]);
 #endif
-            /* this is probably not right
-               character->life=character->end*spot->data[i+3]/100;
-             */
-            character->life = character->end;
+                /* this is probably not right
+                   character->life=character->end*spot->data[i+3]/100;
+                 */
+                character->life = character->end;
 
-            leader = game_get_leader();
+                leader = game_get_leader();
 
-            n = spot->data[i + 4];
-            for (j = 0; j < n; ++j) {
-                x = readint(spot->data + i + 4 * j + 6);
-                y = readint(spot->data + i + 4 * j + 8);
-                if (relative) {
-                    if (x > 0x8000)
-                        x = x - 0xffff;
-                    if (y > 0x8000)
-                        y = y - 0xffff;
-                    x += leader->x;
-                    y += leader->y;
-                    // FIXME do not set enemies to the wall
+                n = spot->data[i + 4];
+                for (j = 0; j < n; ++j) {
+                    x = readint(spot->data + i + 4 * j + 6);
+                    y = readint(spot->data + i + 4 * j + 8);
+                    if (relative) {
+                        if (x > 0x8000)
+                            x = x - 0xffff;
+                        if (y > 0x8000)
+                            y = y - 0xffff;
+                        x += leader->x;
+                        y += leader->y;
+                        // FIXME do not set enemies to the wall
+                    }
+                    character->x = x;
+                    character->y = y;
+
+                    character->map = map_get_id();
+                    map_add_character(character);
                 }
-                character->x = x;
-                character->y = y;
+                break;
 
-                character->map = map_get_id();
-                map_add_character(character);
-            }
-            break;
+            case COMMAND_CAN_NOT_MOVE:
+                game_set_moving(0);
+                spot->pos++;
+                break;
 
-        case COMMAND_CAN_NOT_MOVE:
-            game_set_moving(0);
-            spot->pos++;
-            break;
+            case COMMAND_CAN_MOVE:
+                game_set_moving(1);
+                spot->pos++;
+                break;
 
-        case COMMAND_CAN_MOVE:
-            game_set_moving(1);
-            spot->pos++;
-            break;
-
-        case COMMAND_04:
-            // FIXME
-            if (spot->data[i + 2] == 0xff && spot->data[i + 3] == 0x4) {
-                /* attack me */
-                if (spot->data[i + 1])
-                    map_attacking_character(spot->data[i + 1]);
-            }
-            if (spot->data[i + 2] == 0xff && spot->data[i + 3] == 0x10) {
-                /* willing to join */
-                if (character_exists(spot->data[i + 1]))
-                    character_get(spot->data[i + 1])->willing_join = 1;
-            }
-            if (spot->data[i + 1] == 0xf4 && spot->data[i + 3] == 0x00) {
-                /* set leader */
-                character = spot_character_get(spot->data[i + 2]);
-                if (character != NULL)
-                    game_set_leader(character);
-            }
-            if (spot->data[i + 2] == 0xff && spot->data[i + 3] == 0x20) {
-                /* join */
-                character = spot_character_get(spot->data[i + 1]);
-                if (character != NULL)
-                    game_recruit(character, 1);
-            }
-            spot->pos++;
-            break;
+            case COMMAND_04:
+                // FIXME
+                if (spot->data[i + 2] == 0xff && spot->data[i + 3] == 0x4) {
+                    /* attack me */
+                    if (spot->data[i + 1])
+                        map_attacking_character(spot->data[i + 1]);
+                }
+                if (spot->data[i + 2] == 0xff && spot->data[i + 3] == 0x10) {
+                    /* willing to join */
+                    if (character_exists(spot->data[i + 1]))
+                        character_get(spot->data[i + 1])->willing_join = 1;
+                }
+                if (spot->data[i + 1] == 0xf4 && spot->data[i + 3] == 0x00) {
+                    /* set leader */
+                    character = spot_character_get(spot->data[i + 2]);
+                    if (character != NULL)
+                        game_set_leader(character);
+                }
+                if (spot->data[i + 2] == 0xff && spot->data[i + 3] == 0x20) {
+                    /* join */
+                    character = spot_character_get(spot->data[i + 1]);
+                    if (character != NULL)
+                        game_recruit(character, 1);
+                }
+                spot->pos++;
+                break;
 
 
-        case COMMAND_COMBAT:
-            spot->pos++;
-            combat_start();
-            return 1;
+            case COMMAND_COMBAT:
+                spot->pos++;
+                combat_start();
+                return 1;
 
 
 #ifdef TTT
-        case COMMAND_EXIT_BUILDING:
-            spot->pos++;
-            map_exit_building();
-            break;
+            case COMMAND_EXIT_BUILDING:
+                spot->pos++;
+                map_exit_building();
+                break;
 #endif
 
 
-        case COMMAND_DIE:
-            gui_died_show(NULL);
-            return 0;
+            case COMMAND_DIE:
+                gui_died_show(NULL);
+                return 0;
 
-        case COMMAND_END:
-            return 0;
+            case COMMAND_END:
+                return 0;
 
 #ifndef TTT
-        case COMMAND_END_OF_GAME:
-            exit(0);
+            case COMMAND_END_OF_GAME:
+                exit(0);
 #endif
 
 #ifdef TTT
-        case COMMAND_ACTIVATE_PARTY:
-            j = spot->data[i + 2];
-            game_party_activate(spot->data[i + 1]);
-            gui_book(spot_chapter_texts[j]);
-            return 0;
+            case COMMAND_ACTIVATE_PARTY:
+                j = spot->data[i + 2];
+                game_party_activate(spot->data[i + 1]);
+                gui_book(spot_chapter_texts[j]);
+                return 0;
 #endif
 
-        default:
-            spot_print(spot);
-            fprintf(stderr, "lord: unknown spot command %02x\n",
-                    spot->data[i]);
-            // exit(1);
-            spot->pos++;
+            default:
+                spot_print(spot);
+                fprintf(stderr, "lord: unknown spot command %02x\n",
+                        spot->data[i]);
+                // exit(1);
+                spot->pos++;
         }
     }
 
@@ -2300,8 +2333,7 @@ spot_action(CommandSpot *spot, int type, int what, int on_who)
             game_continue_spot();
             pythonspot_action(spot->id, type, what, on_who);
             return 1;
-        }
-        else {
+        } else {
             return 0;
         }
     }
