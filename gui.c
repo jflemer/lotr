@@ -460,7 +460,6 @@ gui_set_full_window(void)
   draws main menu
  */
 
-
 #define MAX_LIFE_BAR 55
 
 void
@@ -535,6 +534,64 @@ quit_menu()
     }
 }
 
+
+
+/*
+  Change selected character in party
+ */
+static void
+rotate_choosed_character(int delta)
+{
+    Character *party[11];
+    int num_characters;
+    int choosed_index;
+
+    if (combat_get_mode()) {
+        fprintf(stderr, "lord: Trying to change character during combat\n");
+        return;
+    }
+
+    num_characters = game_get_party_characters(party);
+    for (choosed_index = 0; choosed_index < num_characters; ++choosed_index)
+        if (choosed_character == party[choosed_index])
+            break;
+
+    if (choosed_index >= num_characters) {
+        fprintf(stderr, "lord: Choosed character is not in the party\n");
+        return;
+    }
+
+    choosed_index += delta;
+    choosed_index = choosed_index % num_characters;
+    choosed_index += num_characters;
+    choosed_index = choosed_index % num_characters;
+
+    choosed_character = party[choosed_index];
+
+    main_menu_show();
+}
+
+
+
+/*
+  Choose the next character
+ */
+static void
+choose_next_character(void)
+{
+    rotate_choosed_character(1);
+}
+
+
+
+/*
+  Choose the previous character
+ */
+static void
+choose_prev_character(void)
+{
+    rotate_choosed_character(-1);
+}
 
 
 #define MAX_MESSAGELINES 256
@@ -1335,33 +1392,45 @@ dialog_view_key(int key)
   draw list dialog
  */
 
-int dialog_list_offset;
-int dialog_list_num;
-int dialog_list_codes[10];
-char *dialog_list_name;
-char *dialog_list_names[10];
-int dialog_list_can_scroll;
+static int dialog_list_offset;
+static int dialog_list_can_change_character;
+static int dialog_list_num;
+static int dialog_list_codes[10];
+static char *dialog_list_name;
+static char *dialog_list_names[10];
+static int dialog_list_can_scroll;
 
 void
-dialog_list_draw(void)
+dialog_list_draw(int can_change_character)
 {
-    const char *text[12];
-    char lines[12][25];
+    const char *text[20];
+    char lines[20][25];
 
     int i;
     int num_lines;
+    int text_lines = 0;
 
     int index;
     int object;
 
     char status_char;
 
+    dialog_list_can_change_character = can_change_character && !combat_get_mode();
     num_lines = 5;
 
-    if (!PIXEL_PRECISE && dialog_list_num > 5)
-        num_lines = dialog_list_num;
+#if !PIXEL_PRECISE
+    if (dialog_list_can_change_character && choosed_character) {
+        snprintf(lines[text_lines++], 21, "< %-16s >", choosed_character->name);
+        strncpy(lines[text_lines++], "", 20);
+    }
 
-    strncpy(lines[0], dialog_list_name, 20);
+    if (dialog_list_num > 5)
+        num_lines = dialog_list_num;
+#endif
+
+    /* Do not write dialog title if first line is used for something else */
+    if (text_lines == 0)
+        strncpy(lines[text_lines++], dialog_list_name, 20);
 
     for (i = 0; i < num_lines; ++i)
         if (dialog_list_offset + i < dialog_list_num) {
@@ -1383,22 +1452,23 @@ dialog_list_draw(void)
                         status_char = '*';
                 }
             }
-            sprintf(lines[i + 1], "%d.%c%s", (i == 9) ? 0 : i + 1,
+            sprintf(lines[text_lines++], "%d.%c%s", (i == 9) ? 0 : i + 1,
                     status_char, dialog_list_names[index]);
-        } else
-            strncpy(lines[i + 1], "", 20);
+        } else {
+            strncpy(lines[text_lines++], "", 20);
+        }
 
     dialog_list_can_scroll = dialog_list_num > num_lines;
 
     if (dialog_list_can_scroll)
-        strncpy(lines[num_lines + 1], "   UP DOWN eXit", 20);
+        strncpy(lines[text_lines++], "   UP DOWN eXit", 20);
     else
-        strncpy(lines[num_lines + 1], "       eXit", 20);
+        strncpy(lines[text_lines++], "       eXit", 20);
 
-    for (i = 0; i < num_lines + 2; ++i)
+    for (i = 0; i < text_lines; ++i)
         text[i] = lines[i];
 
-    draw_scroll(0, 0, -DEFAULT_SCROLL_WIDTH, num_lines + 2, text);
+    draw_scroll(0, 0, -DEFAULT_SCROLL_WIDTH, text_lines, text);
 
 }
 
@@ -1409,9 +1479,6 @@ dialog_list_draw(void)
 /*
   show attack dialog
  */
-
-
-
 void
 dialog_attack_show(void)
 {
@@ -1442,10 +1509,8 @@ dialog_attack_show(void)
     dialog_list_name = "ATTACK";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
-
+    dialog_list_draw(TRUE);
 }
-
 
 
 
@@ -1454,8 +1519,6 @@ dialog_attack_show(void)
 /*
   show skills dialog
  */
-
-
 void
 dialog_skill_show(void)
 {
@@ -1474,7 +1537,7 @@ dialog_skill_show(void)
     dialog_list_name = "SKILL";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(TRUE);
 
 }
 
@@ -1505,7 +1568,7 @@ dialog_magic_show(void)
     dialog_list_name = "MAGIC";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(TRUE);
 
 }
 
@@ -1535,7 +1598,7 @@ dialog_use_main_show(void)
     dialog_list_name = "USE";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(TRUE);
 
 }
 
@@ -1564,7 +1627,7 @@ dialog_discard_show(void)
     dialog_list_name = "DISCARD";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(TRUE);
 
 }
 
@@ -1650,7 +1713,7 @@ dialog_use_show(void)
     dialog_list_name = "EQUIP/USE";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(TRUE);
 
 }
 
@@ -1702,7 +1765,7 @@ dialog_get_show(void)
         dialog_list_name = "TAKE ITEM(S)";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(TRUE);
 
 }
 
@@ -1762,7 +1825,7 @@ dialog_trade_to_show(void)
     dialog_list_name = "TRADE TO?";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(FALSE);
 
 }
 
@@ -1793,7 +1856,7 @@ dialog_trade_show(int to_who)
     dialog_list_name = "TRADE";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(TRUE);
 
 }
 
@@ -1885,7 +1948,7 @@ dialog_talk_main_show(void)
     dialog_list_name = "TALK";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(FALSE);
 
 }
 
@@ -1919,7 +1982,7 @@ dialog_recruit_show(void)
     dialog_list_name = "RECRUIT WHO?";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(FALSE);
 
 }
 
@@ -1965,7 +2028,7 @@ dialog_dismiss_show(void)
     dialog_list_name = "DISMISS WHO?";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(FALSE);
 
 }
 
@@ -1999,7 +2062,7 @@ dialog_talk_who_show(void)
     dialog_list_name = "TALK TO WHO?";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(FALSE);
 
 }
 
@@ -2438,7 +2501,7 @@ dialog_choose_show(void)
     dialog_list_name = "CHOOSE WHO";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(FALSE);
 
 }
 
@@ -2472,7 +2535,7 @@ dialog_leader_show(void)
     dialog_list_name = "SELECT_LEADER";
     dialog_list_offset = 0;
 
-    dialog_list_draw();
+    dialog_list_draw(FALSE);
 
 }
 
@@ -2492,16 +2555,71 @@ dialog_list_key(int key)
     int spell_code;
     Character *character;
 
+#if !PIXEL_PRECISE
+    if (dialog_list_can_change_character && (key == KEY_LEFT || key == KEY_RIGHT)) {
+        int old_dialog_mode = dialog_mode;
+
+        if (key == KEY_LEFT)
+            choose_prev_character();
+        if (key == KEY_RIGHT)
+            choose_next_character();
+
+        switch (old_dialog_mode) {
+            case DIALOG_SKILL:
+                dialog_skill_show();
+                return;
+
+            case DIALOG_MAGIC:
+                dialog_magic_show();
+                return;
+
+            case DIALOG_USE_MAIN:
+                dialog_use_main_show();
+                return;
+
+            case DIALOG_DISCARD:
+                dialog_discard_show();
+                return;
+
+            case DIALOG_USE:
+                dialog_use_show();
+                return;
+
+            case DIALOG_GET:
+                dialog_get_show();
+                return;
+
+            case DIALOG_TRADE:
+                dialog_trade_show(dialog_trade_to_who);
+                return;
+
+            case DIALOG_ATTACK:
+                dialog_attack_show();
+                return;
+
+            case DIALOG_TRADE_TO:
+            case DIALOG_TALK_MAIN:
+            case DIALOG_TALK_WHO:
+            case DIALOG_RECRUIT:
+            case DIALOG_DISMISS:
+            case DIALOG_LEADER:
+            case DIALOG_CHOOSE:
+            default:
+                fprintf(stderr, "lotr: Unexpected dialog mode %d while choosing character.\n", old_dialog_mode);
+        }
+        return;
+    }
+#endif
 
     if (dialog_list_can_scroll && (key == 'd' || key == 'u')) {
         if (key == 'd' && dialog_list_offset + 5 < dialog_list_num) {
             dialog_list_offset++;
-            dialog_list_draw();
+            dialog_list_draw(dialog_list_can_change_character);
         }
 
         if (key == 'u' && dialog_list_offset > 0) {
             dialog_list_offset--;
-            dialog_list_draw();
+            dialog_list_draw(dialog_list_can_change_character);
         }
 
     }
@@ -2845,6 +2963,18 @@ main_menu_key(int key)
                 dialog_print_active_spot();
             else
                 dialog_talk_show(-1, -1);
+            break;
+#endif
+
+#if !PIXEL_PRECISE
+        case KEY_LEFT:
+            if (!combat_get_mode())
+                choose_prev_character();
+            break;
+
+        case KEY_RIGHT:
+            if (!combat_get_mode())
+                choose_next_character();
             break;
 #endif
 

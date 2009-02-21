@@ -7,6 +7,7 @@ Fix the Caradhas cave (it is not possible to leave, after defeating Caradhas)
 Fix pits in Bree (wrongly parsed scripts)
 Revert to original name when leaving spot
 Frodo appears on the last level of Dol Guldur after first loadgame (not subsequent loads)
+Dismiss all party membes except ringbearer at the ford
 
 TTT:
 Implement music
@@ -14,5 +15,5 @@ Outro
 Implement missing spot commands
 Implement faces in Dead Marches in the night
 
-CDVERSION:
+CD VERSION:
 music
