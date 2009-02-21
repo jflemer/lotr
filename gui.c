@@ -1415,12 +1415,14 @@ dialog_list_draw(int can_change_character)
 
     char status_char;
 
-    dialog_list_can_change_character = can_change_character && !combat_get_mode();
+    dialog_list_can_change_character = can_change_character
+        && !combat_get_mode();
     num_lines = 5;
 
 #if !PIXEL_PRECISE
     if (dialog_list_can_change_character && choosed_character) {
-        snprintf(lines[text_lines++], 21, "< %-16s >", choosed_character->name);
+        snprintf(lines[text_lines++], 21, "< %-16s >",
+                 choosed_character->name);
         strncpy(lines[text_lines++], "", 20);
     }
 
@@ -2556,7 +2558,8 @@ dialog_list_key(int key)
     Character *character;
 
 #if !PIXEL_PRECISE
-    if (dialog_list_can_change_character && (key == KEY_LEFT || key == KEY_RIGHT)) {
+    if (dialog_list_can_change_character
+        && (key == KEY_LEFT || key == KEY_RIGHT)) {
         int old_dialog_mode = dialog_mode;
 
         if (key == KEY_LEFT)
@@ -2605,7 +2608,9 @@ dialog_list_key(int key)
             case DIALOG_LEADER:
             case DIALOG_CHOOSE:
             default:
-                fprintf(stderr, "lotr: Unexpected dialog mode %d while choosing character.\n", old_dialog_mode);
+                fprintf(stderr,
+                        "lotr: Unexpected dialog mode %d while choosing character.\n",
+                        old_dialog_mode);
         }
         return;
     }
