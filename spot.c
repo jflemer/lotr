@@ -2309,7 +2309,7 @@ spot_continue(CommandSpot *spot)
 
 
             case COMMAND_DIE:
-                gui_died_show(NULL);
+                gui_died_show(NULL, FALSE);
                 return 0;
 
             case COMMAND_END:

@@ -80,6 +80,8 @@ int gui_show_spots = 0;
 
 Palette *gui_palette;
 
+/* Show cart10 after DIALOG_DIED */
+static int dialog_died_show_cartoon = FALSE;
 
 /* various GUI components */
 #define TEST 15
@@ -706,7 +708,8 @@ dialog_message_key(int key)
 {
     if (key == KEY_ENTER || key == ' ' || key == 'x') {
         if (dialog_mode == DIALOG_DIED) {
-            cartoon_play("cart10");
+            if (dialog_died_show_cartoon)
+                cartoon_play("cart10");
             exit(0);
         }
 #ifdef TTT
@@ -763,13 +766,14 @@ dialog_message_yn_key(int key)
   if no text is given a default is used
  */
 void
-gui_died_show(const char *text)
+gui_died_show(const char *text, int show_cartoon)
 {
     if (text == NULL)
         text =
             "You have failed. Sauron has finally recovered the Ring. Your quest is Over.";
     gui_message(text, 1);
     dialog_mode = DIALOG_DIED;
+    dialog_died_show_cartoon = show_cartoon;
 }
 
 /*
@@ -1820,7 +1824,8 @@ dialog_trade_to_show(void)
 
         if (dialog_list_num <= 1) {
             gui_died_show
-                ("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.");
+                ("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.",
+                 TRUE);
             return;
         }
 
@@ -3324,7 +3329,8 @@ gui_player_dead(Character *who, int show_message)
     if (who->ring_mode) {
         /* Ringbearer is dead but nobody carries the ring further */
         gui_died_show
-            ("The ringbearer is dead and nobody is willing to take the Burden.");
+            ("The ringbearer is dead and nobody is willing to take the Burden.",
+             TRUE);
         return;
     }
 

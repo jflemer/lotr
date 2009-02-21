@@ -97,7 +97,8 @@ combat_loosed(void)
 {
     combat_mode = 0;
     gui_died_show
-        ("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.");
+        ("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.",
+         TRUE);
 }
 
 

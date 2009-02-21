@@ -124,7 +124,7 @@ extern void gui_paragraph(int num);
 extern void gui_paragraph_question(int num);
 
 /* shows dialog saying that the player is dead */
-extern void gui_died_show(const char *text);
+extern void gui_died_show(const char *text, int show_cartoon);
 
 #ifdef TTT
 /* shows a book with the next chapter in TTT */
