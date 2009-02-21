@@ -110,6 +110,12 @@ extern int game_dismiss(Character *character);
 /* teleport leader return 1 if the map was changed */
 extern int game_leader_teleport(int rel, int x, int y, int dir, int map);
 
+/* save current position for further reference */
+extern void game_save_position();
+
+/* teleport to the saved position */
+extern int game_load_position();
+
 /* gets actual game spot */
 extern CommandSpot *game_get_actual_spot(void);
 

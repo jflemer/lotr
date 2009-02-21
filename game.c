@@ -52,6 +52,11 @@ Character *game_original_leader;
 Character *game_tmp_leader;
 int game_must_dismiss_tmp_leader;
 
+int saved_position_x = -1;
+int saved_position_y = -1;
+int saved_position_dir = -1;
+int saved_position_map = -1;
+
 Character *game_party[11];
 int game_party_size;
 
@@ -339,6 +344,11 @@ game_new(void)
     game_moving = 1;
     game_follow = 1;
 
+    saved_position_x = -1;
+    saved_position_y = -1;
+    saved_position_dir = -1;
+    saved_position_map = -1;
+
     for (i = 0; i < 256; ++i)
         game_registers[i] = 0;
 
@@ -402,8 +412,6 @@ game_save(int n)
     characters_save(node);
 
 
-
-
     node = xmlNewNode(NULL, (const xmlChar *)"map_saves");
     xmlAddChild(root, node);
 
@@ -443,12 +451,22 @@ game_save(int n)
     lotr_save_prop_int(node, "moving", game_moving);
     lotr_save_prop_int(node, "follow", game_follow);
 
+    lotr_save_prop_int(node, "follow", game_follow);
+
     for (i = 0; i < game_party_size; ++i)
         buf[i] = game_party[i]->id;
 
     lotr_save_prop_field(node, "party", buf, game_party_size);
 
     lotr_save_prop_int(node, "leader", leader->id);
+
+    node = xmlNewNode(NULL, (const xmlChar *)"saved_position");
+    xmlAddChild(root, node);
+
+    lotr_save_prop_int(node, "x", saved_position_x);
+    lotr_save_prop_int(node, "y", saved_position_y);
+    lotr_save_prop_int(node, "dir", saved_position_dir);
+    lotr_save_prop_int(node, "map", saved_position_map);
 
 
 #ifndef TTT
@@ -562,6 +580,20 @@ game_load(int n)
 
 
     leader = character_get(lotr_load_prop_int(node, "leader"));
+
+    node = lotr_get_subnode(root, (const xmlChar *)"saved_position", FALSE);
+
+    if (node) {
+        saved_position_x = lotr_load_prop_int(node, "x");
+        saved_position_y = lotr_load_prop_int(node, "y");
+        saved_position_dir = lotr_load_prop_int(node, "dir");
+        saved_position_map = lotr_load_prop_int(node, "map");
+    } else {
+        saved_position_x = -1;
+        saved_position_y = -1;
+        saved_position_dir = -1;
+        saved_position_map = -1;
+    }
 
 
     xmlFreeDoc(doc);
@@ -1353,9 +1385,6 @@ game_dismiss(Character *character)
 
 
 
-
-
-
 /*
   teleport leader
 */
@@ -1395,6 +1424,34 @@ game_leader_teleport(int rel, int x, int y, int dir, int map)
 
 
 
+/*
+  save current position for further reference
+ */
+void
+game_save_position()
+{
+    saved_position_x = leader->x;
+    saved_position_y = leader->y;
+    saved_position_dir = leader->direction;
+    saved_position_map = game_map_id;
+}
+
+
+
+/*
+  teleport to the saved position
+  return true if map was changed
+ */
+int
+game_load_position()
+{
+    if (saved_position_x < 0) {
+        fprintf(stderr, "lotr: Trying to load a saved position whiile none was saved\n");
+        return FALSE;
+    }
+
+    return game_leader_teleport(FALSE, saved_position_x, saved_position_y, saved_position_dir, saved_position_map);
+}
 
 
 
@@ -1407,11 +1464,6 @@ game_get_actual_spot(void)
 {
     return game_actual_spot;
 }
-
-
-
-
-
 
 
 

@@ -108,13 +108,15 @@
 #define COMMAND_QUESTION        0x1b
 #define COMMAND_QUESTION_PAR    0x29
 #define COMMAND_CARTOON         0x03
-#define COMMAND_PLAY_AV         0x41
 #define COMMAND_SOUND           0x23
 #define COMMAND_END             0x24
 #define COMMAND_TELEPORT        0x26
 #define COMMAND_ACTION          0x27
 #define COMMAND_DIE             0x28
+#define COMMAND_SAVE_POSITION   0x2e
+#define COMMAND_LOAD_POSITION   0x2f
 #define COMMAND_SET_SILVER      0x3e
+#define COMMAND_PLAY_AV         0x41
 #define COMMAND_EXIT_BUILDING   0x46
 
 #define COMMAND_SET_TIMER       0x22
@@ -151,8 +153,6 @@
 #define COMMAND_UNKNOWN6        0x19    /* proceed frames */
 #define COMMAND_UNKNOWN7        0x4e
 #define COMMAND_UNKNOWN9        0x44
-#define COMMAND_UNKNOWNa        0x2e
-#define COMMAND_UNKNOWNb        0x2f
 #define COMMAND_UNKNOWNc        0x49
 #define COMMAND_UNKNOWNd        0x34
 #define COMMAND_UNKNOWNe        0x4b
@@ -337,7 +337,6 @@ new_parsing:
                 break;
 
             case COMMAND_UNKNOWNd:
-            case COMMAND_UNKNOWNb:
             case COMMAND_UNKNOWNc:
             case COMMAND_UNKNOWNg:
                 i += 2;
@@ -345,7 +344,6 @@ new_parsing:
 
             case COMMAND_UNKNOWN1:
             case COMMAND_UNKNOWN7:
-            case COMMAND_UNKNOWNa:
             case COMMAND_UNKNOWNe:
             case COMMAND_UNKNOWNf:
             case COMMAND_UNKNOWNi:
@@ -473,6 +471,8 @@ new_parsing:
             case COMMAND_COMBAT:
             case COMMAND_CAN_NOT_MOVE:
             case COMMAND_CAN_MOVE:
+            case COMMAND_SAVE_POSITION:
+            case COMMAND_LOAD_POSITION:
             case COMMAND_EXIT_BUILDING:
             case COMMAND_47:
 #ifndef TTT
@@ -1009,8 +1009,6 @@ spot_get_string(CommandSpot *spot)
             case COMMAND_UNKNOWN6:
             case COMMAND_UNKNOWN7:
             case COMMAND_UNKNOWN9:
-            case COMMAND_UNKNOWNa:
-            case COMMAND_UNKNOWNb:
             case COMMAND_UNKNOWNc:
             case COMMAND_UNKNOWNd:
             case COMMAND_UNKNOWNe:
@@ -1416,6 +1414,14 @@ spot_get_string(CommandSpot *spot)
 
             case COMMAND_CAN_MOVE:
                 spot_string_print("CAN_MOVE");
+                break;
+
+            case COMMAND_SAVE_POSITION:
+                spot_string_print("SAVE_POSITION");
+                break;
+
+            case COMMAND_LOAD_POSITION:
+                spot_string_print("LOAD_POSITION");
                 break;
 
             case COMMAND_EXIT_BUILDING:
@@ -2238,6 +2244,16 @@ spot_continue(CommandSpot *spot)
                 }
                 break;
 
+            case COMMAND_SAVE_POSITION:
+                spot->pos++;
+                game_save_position();
+                break;
+
+            case COMMAND_LOAD_POSITION:
+                spot->pos++;
+                game_load_position();
+                break;
+
             case COMMAND_CAN_NOT_MOVE:
                 game_set_moving(0);
                 spot->pos++;
@@ -2280,7 +2296,6 @@ spot_continue(CommandSpot *spot)
                 spot->pos++;
                 combat_start();
                 return 1;
-
 
 #ifdef TTT
             case COMMAND_EXIT_BUILDING:
