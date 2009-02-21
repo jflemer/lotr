@@ -3,6 +3,7 @@
 # Use only ASCII characters
 # All lowercase will be automatically converted to uppercase
 # Multiple variants can be separated by ,
+# Only first 20 characters matters
 #
 # Example:
 # TOM=Tom Bombadil,Tom,Bombadil

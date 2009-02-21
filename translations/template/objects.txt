@@ -1,3 +1,5 @@
+# Object names should not be longer than 15 characters
+
 # silver pennies
 00=
 
