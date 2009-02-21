@@ -941,6 +941,8 @@ spot_direction_to_string(int dir)
             return "SOUTH";
         case CHARACTER_RIGHT:
             return "EAST";
+        case 0xff:
+            return "ANY";
         default:
             return "UNKNOWN";
     }
