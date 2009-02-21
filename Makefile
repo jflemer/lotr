@@ -62,8 +62,8 @@ clean:
 lord: $(OBJFILES) lord.o
 	$(CC) -Wall $(LIBRARIES) $(OBJFILES) lord.o -o lord
 
-lorddemo: $(OBJFILES) lord.o
-	$(CC) -Wall --static `sdl-config --static-libs` $(OBJFILES) lord.o -o lorddemo
+lord.static: $(OBJFILES) lord.o
+	$(CC) -Wall --static $(OBJFILES) `sdl-config --static-libs` -lSDL_mixer `xml2-config --libs --static` lord.o -o lord.static
 
 
 playcartoon: $(PLAYCARTOONOBJ) playcartoon.o
