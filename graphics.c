@@ -25,8 +25,8 @@
 
 *****************************************************************************/
 
-#include "lord.h"
-#include "lord_sdl.h"
+#include "lotr.h"
+#include "lotr_sdl.h"
 #include "utils.h"
 #include "archive.h"
 #include "graphics.h"
@@ -70,7 +70,7 @@ pixmap_read_from_idx_archive(Archive *archive, int index)
     compressed = archive_read(archive, index);
     if (compressed == NULL) {
         fprintf(stderr,
-                "lord: could not find pixmap at index %d in the archive\n",
+                "lotr: could not find pixmap at index %d in the archive\n",
                 index);
         exit(1);
     }
@@ -85,11 +85,11 @@ pixmap_read_from_idx_archive(Archive *archive, int index)
 
     if (size != w * h) {
         fprintf(stderr,
-                "lord: corrupted pixmap at index %d in the archive\n", index);
+                "lotr: corrupted pixmap at index %d in the archive\n", index);
         exit(1);
     }
 
-    result = lord_malloc(sizeof(Pixmap));
+    result = lotr_malloc(sizeof(Pixmap));
 
     result->width = w;
     result->height = h;
@@ -120,7 +120,7 @@ pixmap_read_from_ndx_archive(Archive *archive, int index)
     compressed = archive_read(archive, index);
     if (compressed == NULL) {
         fprintf(stderr,
-                "lord: could not find pixmap at index %d in the archive\n",
+                "lotr: could not find pixmap at index %d in the archive\n",
                 index);
         exit(1);
     }
@@ -129,7 +129,7 @@ pixmap_read_from_ndx_archive(Archive *archive, int index)
         decompress_ndx(compressed, archive_data_size(archive, index), &size);
     free(compressed);
 
-    result = lord_malloc(sizeof(Pixmap));
+    result = lotr_malloc(sizeof(Pixmap));
 
     result->width = 1;
     result->height = size;
@@ -153,13 +153,13 @@ pixmap_new(int width, int height)
 {
     Pixmap *result;
 
-    result = lord_malloc(sizeof(Pixmap));
+    result = lotr_malloc(sizeof(Pixmap));
 
     result->width = width;
     result->height = height;
     result->datasize = width * height;
     result->hasalpha = 0;
-    result->data = lord_malloc(width * height);
+    result->data = lotr_malloc(width * height);
     bzero(result->data, width * height);
 
     return result;
@@ -276,7 +276,7 @@ pixmap_set_width(Pixmap *pixmap, int width)
 
     if ((pixmap->datasize % width) != 0) {
         fprintf(stderr,
-                "lord: can not set width %d to pixmap with datasize=%d\n",
+                "lotr: can not set width %d to pixmap with datasize=%d\n",
                 width, pixmap->datasize);
 #ifndef CD_VERSION
         //TODO remove CDHACK
@@ -347,7 +347,7 @@ pixmap_subscreen(int startx, int starty, int endx, int endy)
     Pixmap *screen;
     Pixmap *result;
 
-    screen = lord_malloc(sizeof(Pixmap));
+    screen = lotr_malloc(sizeof(Pixmap));
 
     screen->width = SCREEN_WIDTH;
     screen->height = SCREEN_HEIGHT;
@@ -469,7 +469,7 @@ cartoon_font_read(Archive *archive, int index)
     compressed = archive_read(archive, index);
     if (compressed == NULL) {
         fprintf(stderr,
-                "lord: could not find font at index %d in the archive\n",
+                "lotr: could not find font at index %d in the archive\n",
                 index);
         exit(1);
     }
@@ -479,7 +479,7 @@ cartoon_font_read(Archive *archive, int index)
     free(compressed);
 
 
-    result = lord_malloc(sizeof(CartoonFont));
+    result = lotr_malloc(sizeof(CartoonFont));
 
     foreground = 1;
     background = 0;
@@ -493,12 +493,12 @@ cartoon_font_read(Archive *archive, int index)
     /* I do not know what is stored in the last 144 bytes */
     if (size != 6 + result->charnum + height * linesize + 144) {
 
-        fprintf(stderr, "lord: corrupted font at index %d in the archive\n",
+        fprintf(stderr, "lotr: corrupted font at index %d in the archive\n",
                 index);
         exit(1);
     }
 
-    characters = lord_malloc(result->charnum * sizeof(Pixmap *));
+    characters = lotr_malloc(result->charnum * sizeof(Pixmap *));
     result->characters = characters;
 
     if (result->charnum == 0) {
@@ -597,7 +597,7 @@ cartoon_font_write_text(CartoonFont *font, int x, int y, char *text)
 void
 graphics_update_screen(void)
 {
-    lord_show_screen(main_screen);
+    lotr_show_screen(main_screen);
 }
 
 
@@ -648,21 +648,21 @@ graphics_set_background(char *name)
     Pixmap *background;
 
     sprintf(palname, "%s.pal", name);
-    pal = lord_fopen(palname, "rb");
+    pal = lotr_fopen(palname, "rb");
     sprintf(datname, "%s.dat", name);
-    dat = lord_fopen(datname, "rb");
+    dat = lotr_fopen(datname, "rb");
 
     fread(&palette, sizeof(Palette), 1, pal);
 
-    data_size = lord_filelen(dat);
-    data = lord_malloc(data_size);
+    data_size = lotr_filelen(dat);
+    data = lotr_malloc(data_size);
 
     fread(data, 1, data_size, dat);
 
     picture_data = decompress_ndx(data, data_size, &picture_size);
 
     if (picture_size != 64000) {
-        fprintf(stderr, "lord: wrong background picture\n");
+        fprintf(stderr, "lotr: wrong background picture\n");
         exit(1);
     }
 
@@ -807,7 +807,7 @@ graphics_rotate_palette_right(int start, int end)
     main_palette[start * 3 + 1] = g;
     main_palette[start * 3 + 2] = b;
 
-    lord_system_set_palette(main_palette, start, num);
+    lotr_system_set_palette(main_palette, start, num);
 
 }
 
@@ -861,7 +861,7 @@ graphics_rotate_palette_left(int start, int end)
         return;
 
     graphics_rotate_palette_leftHidden(start, end);
-    lord_system_set_palette(main_palette, start, num);
+    lotr_system_set_palette(main_palette, start, num);
 }
 
 
@@ -877,7 +877,7 @@ graphics_set_palette(Palette *palette, int firstcolor, int ncolors)
     int i, c;
 
     if (firstcolor < 0 || firstcolor + ncolors > 256) {
-        fprintf(stderr, "lord: wrong graphics_set_palette parameters\n");
+        fprintf(stderr, "lotr: wrong graphics_set_palette parameters\n");
         exit(1);
     }
 
@@ -899,7 +899,7 @@ graphics_set_palette(Palette *palette, int firstcolor, int ncolors)
         }
     }
 
-    lord_system_set_palette(main_palette, firstcolor, ncolors);
+    lotr_system_set_palette(main_palette, firstcolor, ncolors);
 
 }
 
@@ -927,7 +927,7 @@ graphics_fade_palette(int coef, int firstcolor, int ncolors)
 
 
 
-    lord_system_set_palette(faded, firstcolor, ncolors);
+    lotr_system_set_palette(faded, firstcolor, ncolors);
 
 }
 
@@ -943,7 +943,7 @@ palette_copy_colors(Palette *palette, int start, int num, int newstart)
 {
     if (start < 0 || num < 0 || start + num > 0xff || newstart < 0
         || newstart + num > 0xff) {
-        fprintf(stderr, "lord: wrong palette_reindex parameters\n");
+        fprintf(stderr, "lotr: wrong palette_reindex parameters\n");
         exit(1);
     }
 

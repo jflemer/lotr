@@ -26,7 +26,7 @@
 *****************************************************************************/
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "archive.h"
 #include "character.h"
 #include "combat.h"
@@ -160,7 +160,7 @@ map_init(void)
     archive = archive_ndx_open("building");
 
     if (archive->size != BUILDINGS_NUM) {
-        fprintf(stderr, "lord: expecting %d buildings (%d found)\n",
+        fprintf(stderr, "lotr: expecting %d buildings (%d found)\n",
                 BUILDINGS_NUM, archive->size);
         exit(1);
     }
@@ -275,12 +275,12 @@ void
 map_save_mode(xmlNodePtr node)
 {
 #ifdef TTT
-    lord_save_prop_int(node, "building", building_id);
+    lotr_save_prop_int(node, "building", building_id);
 #endif
-    lord_save_prop_int(node, "frame", map_frame);
-    lord_save_prop_int(node, "mode", map_mode);
-    lord_save_prop_int(node, "mode_param", map_mode_param);
-    lord_save_prop_int(node, "light_mode", map_light_mode);
+    lotr_save_prop_int(node, "frame", map_frame);
+    lotr_save_prop_int(node, "mode", map_mode);
+    lotr_save_prop_int(node, "mode_param", map_mode_param);
+    lotr_save_prop_int(node, "light_mode", map_light_mode);
 }
 
 
@@ -293,16 +293,16 @@ map_load_mode(xmlNodePtr node)
 {
 #ifdef TTT
     int building;
-    building = lord_load_prop_int_default(node, "building", -1);
+    building = lotr_load_prop_int_default(node, "building", -1);
     if (building == -1)
         map_exit_building();
     else
         map_enter_building(building);
 #endif
-    map_set_frame(lord_load_prop_int(node, "frame"));
-    map_mode = lord_load_prop_int(node, "mode");
-    map_mode_param = lord_load_prop_int(node, "mode_param");
-    map_light_mode = lord_load_prop_int(node, "light_mode");
+    map_set_frame(lotr_load_prop_int(node, "frame"));
+    map_mode = lotr_load_prop_int(node, "mode");
+    map_mode_param = lotr_load_prop_int(node, "mode_param");
+    map_light_mode = lotr_load_prop_int(node, "light_mode");
 }
 
 
@@ -342,7 +342,7 @@ map_set_tiles(Archive *archive, int basictileindex,
 
     data = decompress_ndxarchive(archive, basictileindex, &size);
     if (size != BASICTILENUM * TILESIZE * TILESIZE) {
-        fprintf(stderr, "lord: basic tiles data corrupted\n");
+        fprintf(stderr, "lotr: basic tiles data corrupted\n");
         exit(1);
     }
 
@@ -359,7 +359,7 @@ map_set_tiles(Archive *archive, int basictileindex,
 
     data = decompress_ndxarchive(archive, tileindex, &size);
     if (size != TILENUM * 2 * 16) {
-        fprintf(stderr, "lord: tiles data corrupted\n");
+        fprintf(stderr, "lotr: tiles data corrupted\n");
         exit(1);
     }
 
@@ -375,7 +375,7 @@ map_set_tiles(Archive *archive, int basictileindex,
 
     data = decompress_ndxarchive(archive, largetileindex, &size);
     if (size != LARGETILENUM * 2 * 16) {
-        fprintf(stderr, "lord: large tiles data corrupted\n");
+        fprintf(stderr, "lotr: large tiles data corrupted\n");
         exit(1);
     }
 
@@ -390,7 +390,7 @@ map_set_tiles(Archive *archive, int basictileindex,
 
     data = decompress_ndxarchive(archive, tiletypeindex, &size);
     if (size != BASICTILENUM) {
-        fprintf(stderr, "lord: tile terrain data corrupted\n");
+        fprintf(stderr, "lotr: tile terrain data corrupted\n");
         exit(1);
     }
 
@@ -398,7 +398,7 @@ map_set_tiles(Archive *archive, int basictileindex,
         tileterrain[i] = data[i];
         if (tileterrain[i] < 0 || tileterrain[i] > 15 ||
             (tileterrain[i] > 8 && tileterrain[i] < 10)) {
-            fprintf(stderr, "lord: terrain type %d unknown\n",
+            fprintf(stderr, "lotr: terrain type %d unknown\n",
                     tileterrain[i]);
 #ifndef TTT
             exit(1);
@@ -429,7 +429,7 @@ map_set_palette_resource(Archive *archive, int paletteindex)
         (Palette *)decompress_ndxarchive(archive, paletteindex, &size);
 
     if (size != sizeof(Palette)) {
-        fprintf(stderr, "lord: map palette data corrupted\n");
+        fprintf(stderr, "lotr: map palette data corrupted\n");
         exit(1);
     }
 
@@ -477,7 +477,7 @@ map_set_map(Archive *archive, int id, int mapindex)
 
     data = decompress_ndxarchive(archive, mapindex, &size);
     if (size != MAP_WIDTH * MAP_HEIGHT * 2) {
-        fprintf(stderr, "lord: map data corrupted size=%d\n", size);
+        fprintf(stderr, "lotr: map data corrupted size=%d\n", size);
         exit(1);
     }
 
@@ -540,7 +540,7 @@ map_enter_building(int id)
 
     data = decompress_ndxarchive(building_archive, id, &size);
     if (size != BUILDING_WIDTH * BUILDING_HEIGHT * 2) {
-        fprintf(stderr, "lord: building data corrupted size=%d\n", size);
+        fprintf(stderr, "lotr: building data corrupted size=%d\n", size);
         exit(1);
     }
 
@@ -642,7 +642,7 @@ map_set_spots(Archive *archive, int index)
     data = decompress_ndxarchive(archive, index, &size);
 
     if (size < 0x100) {
-        fprintf(stderr, "lord: corrupted game description data\n");
+        fprintf(stderr, "lotr: corrupted game description data\n");
         exit(1);
     }
 
@@ -1063,7 +1063,7 @@ void
 map_add_character(Character *character)
 {
     if (map_characters_num + 1 > MAX_CHARACTERS) {
-        fprintf(stderr, "lord: too many characters\n");
+        fprintf(stderr, "lotr: too many characters\n");
         exit(1);
     }
 
@@ -1327,7 +1327,7 @@ CommandSpot *
 map_get_spot_number(int index)
 {
     if (index < 0 || index >= map_num_spots) {
-        fprintf(stderr, "lord: no such spot (index=%d)\n", index);
+        fprintf(stderr, "lotr: no such spot (index=%d)\n", index);
         exit(1);
     }
 
@@ -1440,7 +1440,7 @@ map_get_register(int index)
 {
     int r;
     if (index < 0 || index > 0x79) {
-        fprintf(stderr, "lord: wrong register index %02x\n", index);
+        fprintf(stderr, "lotr: wrong register index %02x\n", index);
         exit(1);
     }
 
@@ -1797,11 +1797,11 @@ map_add_pythonspot(int map, int x, int y, int w, int h)
     CommandSpot *spot;
 
     if (map_num_pythonspots == MAX_PYTHON_SPOTS) {
-        fprintf(stderr, "lord: too many puthon spots.");
+        fprintf(stderr, "lotr: too many puthon spots.");
         exit(1);
     }
 
-    spot = lord_malloc(sizeof(CommandSpot));
+    spot = lotr_malloc(sizeof(CommandSpot));
 
     spot->id = map_num_pythonspots;
     spot->pythonspot = 1;
@@ -1815,7 +1815,7 @@ map_add_pythonspot(int map, int x, int y, int w, int h)
 
     spot->data_size = 12;
     spot->headersize = 12;
-    spot->data = lord_malloc(12);
+    spot->data = lotr_malloc(12);
     spot->data[0] = 0xc;
     spot->data[1] = 0;
     spot->data[2] = 0xc;

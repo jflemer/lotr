@@ -38,51 +38,51 @@
 
 
 /* allocates memory, exits on error */
-extern void *lord_malloc(int size);
+extern void *lotr_malloc(int size);
 
 /* opens a file, exits on error */
-extern FILE *lord_fopen(const char *path, const char *mode);
+extern FILE *lotr_fopen(const char *path, const char *mode);
 
 /* check if file exists */
-extern int lord_file_exists(const char *path);
+extern int lotr_file_exists(const char *path);
 
-/* return full path to $HOME/.lord/<name> */
-extern char *lord_homedir_filename(const char *name);
+/* return full path to $HOME/.lotr/<name> */
+extern char *lotr_homedir_filename(const char *name);
 
 /* adds suffix to a filename */
-extern char *lord_add_suffix(const char *name, const char *suffix);
+extern char *lotr_add_suffix(const char *name, const char *suffix);
 
 /* returns file length, -1 if file==NULL */
-extern long lord_filelen(FILE *file);
+extern long lotr_filelen(FILE *file);
 
 /* random number */
-extern int lord_rnd(int n);
+extern int lotr_rnd(int n);
 
 /* add integer property node to a given xml node */
-extern void lord_save_prop_int(xmlNodePtr node, char *name, int value);
+extern void lotr_save_prop_int(xmlNodePtr node, char *name, int value);
 
 /* add field property node to a given xml node */
-extern void lord_save_prop_field(xmlNodePtr node, char *name, Uint8 *value,
+extern void lotr_save_prop_field(xmlNodePtr node, char *name, Uint8 *value,
                                  int len);
 
 /* read integer property from node */
-extern int lord_load_prop_int(xmlNodePtr node, char *name);
+extern int lotr_load_prop_int(xmlNodePtr node, char *name);
 
 /* read integer property from node, return default if no such node */
-extern int lord_load_prop_int_default(xmlNodePtr node, char *name,
+extern int lotr_load_prop_int_default(xmlNodePtr node, char *name,
                                       int default_value);
 
 /* read field property node from a given xml node */
-extern int lord_load_prop_field(xmlNodePtr node, char *name, Uint8 *value,
+extern int lotr_load_prop_field(xmlNodePtr node, char *name, Uint8 *value,
                                 int maxlen);
 
 
 /* gets node with a given name */
-extern xmlNodePtr lord_get_subnode(xmlNodePtr node, const xmlChar *name,
+extern xmlNodePtr lotr_get_subnode(xmlNodePtr node, const xmlChar *name,
                                    int force);
 
 /* return data directory */
-extern char *lord_data_directory(void);
+extern char *lotr_data_directory(void);
 
 
 #ifdef AMIGA_OS4

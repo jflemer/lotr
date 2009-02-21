@@ -29,7 +29,7 @@
 #ifndef _ARCHIVE_H
 #define _ARCHIVE_H
 
-#include "lord.h"
+#include "lotr.h"
 #include <stdio.h>
 
 

@@ -1,7 +1,7 @@
 /****************************************************************************
 
     pythonhelper.c
-    passes some definitions from lord.h to python
+    passes some definitions from lotr.h to python
 
 
     Lord of the Rings game engine
@@ -25,7 +25,7 @@
 
 *****************************************************************************/
 
-#include "lord.h"
+#include "lotr.h"
 #include "pythonhelper.h"
 #include "spot.h"
 #include <stdio.h>

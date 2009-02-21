@@ -25,9 +25,9 @@
 
 *****************************************************************************/
 
-#include "lord.h"
+#include "lotr.h"
 #include "archive.h"
-#include "lord_sdl.h"
+#include "lotr_sdl.h"
 #include "midi.h"
 #include "sound.h"
 #include "utils.h"
@@ -94,13 +94,13 @@ sound_init(void)
     FILE *adlfile;
 
     for (i = 0; i < SOUNDS_NUM; ++i) {
-        adlfile = lord_fopen(sound_names[i], "r");
-        sound_sizes[i] = lord_filelen(adlfile);
-        sound_data[i] = lord_malloc(sound_sizes[i]);
+        adlfile = lotr_fopen(sound_names[i], "r");
+        sound_sizes[i] = lotr_filelen(adlfile);
+        sound_data[i] = lotr_malloc(sound_sizes[i]);
         if (fread(sound_data[i], 1, sound_sizes[i], adlfile) !=
             sound_sizes[i]) {
-            fprintf(stderr, "lord: can not read file %s\n", sound_names[i]);
-            perror("lord");
+            fprintf(stderr, "lotr: can not read file %s\n", sound_names[i]);
+            perror("lotr");
             exit(1);
         }
         fclose(adlfile);

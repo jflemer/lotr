@@ -25,9 +25,9 @@
 
 *****************************************************************************/
 
-#include "lord.h"
+#include "lotr.h"
 #include "character.h"
-#include "lord_sdl.h"
+#include "lotr_sdl.h"
 #include "shape.h"
 #include "sound.h"
 #include "init.h"
@@ -45,7 +45,7 @@ int initlevel = 0;
 */
 
 void
-lord_init(void)
+lotr_init(void)
 {
 #ifdef EXTENDED
     FILE *test;
@@ -53,9 +53,9 @@ lord_init(void)
     initlevel = 0;
 
     /* Clean up on exit */
-    atexit(lord_close);
+    atexit(lotr_close);
 
-    lord_system_init();
+    lotr_system_init();
     initlevel++;
 
     sound_init();
@@ -75,9 +75,9 @@ lord_init(void)
 
 #ifdef EXTENDED
     /* test if spots.py and spot_definitons.py is present */
-    test = lord_fopen("spots.py", "r");
+    test = lotr_fopen("spots.py", "r");
     fclose(test);
-    test = lord_fopen("spot_definitons.py", "r");
+    test = lotr_fopen("spot_definitons.py", "r");
     fclose(test);
     Py_Initialize();
     initpythonspot();           /* pyrex module initialization */
@@ -99,7 +99,7 @@ lord_init(void)
 */
 
 void
-lord_close(void)
+lotr_close(void)
 {
 
 #ifdef EXTENDED
@@ -125,6 +125,6 @@ lord_close(void)
         sound_close();
 
     if (initlevel-- >= 1)
-        lord_system_close();
+        lotr_system_close();
 
 }

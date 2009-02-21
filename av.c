@@ -27,10 +27,10 @@
 
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "av.h"
 #include "graphics.h"
-#include "lord_sdl.h"
+#include "lotr_sdl.h"
 #include "timing.h"
 #include "utils.h"
 #include <stdio.h>
@@ -78,7 +78,7 @@ read_av_audio_sample(Uint8 *audiobuf, int *audiobufpos, FILE *avfile)
         return 0;
 
     if (*audiobufpos + 2 * AV_SAMPLE_LEN > MAX_SAMPLE_GROWTH) {
-        fprintf(stderr, "lord: Too long AV video\n");
+        fprintf(stderr, "lotr: Too long AV video\n");
         exit(1);
     }
 
@@ -122,15 +122,15 @@ av_play(char *name)
     int k;
     int pos;
 
-    fullname = lord_add_suffix(name, "av");
-    avfile = lord_fopen(fullname, "rb");
+    fullname = lotr_add_suffix(name, "av");
+    avfile = lotr_fopen(fullname, "rb");
     free(fullname);
 
 
-    avlen = lord_filelen(avfile);
+    avlen = lotr_filelen(avfile);
 
     if (avlen < 0x300 + 2 * AV_WIDTH * AV_HEIGHT + AV_SAMPLE_LEN * 14) {
-        fprintf(stderr, "lord: corrupted av file %s.av len=%ld\n", name,
+        fprintf(stderr, "lotr: corrupted av file %s.av len=%ld\n", name,
                 avlen);
         exit(1);
     }
@@ -138,7 +138,7 @@ av_play(char *name)
     graphics_set_background("vid");
 
     if (fread(&palette, 0x300, 1, avfile) != 1) {
-        fprintf(stderr, "lord: corrupted av file %s.av: can't read palette\n",
+        fprintf(stderr, "lotr: corrupted av file %s.av: can't read palette\n",
                 name);
         exit(1);
     }
@@ -149,13 +149,13 @@ av_play(char *name)
     av_frame = pixmap_new(8 * AV_WIDTH, 8 * AV_HEIGHT);
     av_frame_old = pixmap_new(8 * AV_WIDTH, 8 * AV_HEIGHT);
 
-    audiobuf = lord_malloc(MAX_SAMPLE_GROWTH);
+    audiobuf = lotr_malloc(MAX_SAMPLE_GROWTH);
     bzero(audiobuf, MAX_SAMPLE_GROWTH);
 
     for (i = 0; i < 14; ++i) {
         if (!read_av_audio_sample(audiobuf, &audiobufpos, avfile)) {
             fprintf(stderr,
-                    "lord: corrupted av file %s.av: can't read audio data\n",
+                    "lotr: corrupted av file %s.av: can't read audio data\n",
                     name);
             exit(1);
         }
@@ -165,16 +165,16 @@ av_play(char *name)
 
     if (fread(index, 2 * AV_WIDTH * AV_HEIGHT, 1, avfile) != 1) {
         fprintf(stderr,
-                "lord: corrupted av file %s.av: can't read first frame\n",
+                "lotr: corrupted av file %s.av: can't read first frame\n",
                 name);
         exit(1);
     }
 
-    lord_reset_keyboard();
-    lord_reset_timer();
+    lotr_reset_keyboard();
+    lotr_reset_timer();
 
     av_frame_num = 0;
-    while (!lord_key_esc()) {
+    while (!lotr_key_esc()) {
 
         /* draw new 8x8 squares */
         for (j = 0; j < AV_HEIGHT; ++j)
@@ -185,7 +185,7 @@ av_play(char *name)
                 if (x == 0xff && y == 0xff) {
                     if (fread(pixmap->data, 8 * 8, 1, avfile) != 1) {
                         fprintf(stderr,
-                                "lord: corrupted av file %s.av: can't read block data\n",
+                                "lotr: corrupted av file %s.av: can't read block data\n",
                                 name);
                         exit(1);
                     }
@@ -230,7 +230,7 @@ av_play(char *name)
                         }
                     } else {
                         fprintf(stderr,
-                                "lord: corrupted av file (x=%d, y=%d)\n", x,
+                                "lotr: corrupted av file (x=%d, y=%d)\n", x,
                                 y);
                         exit(1);
                     }
@@ -240,10 +240,10 @@ av_play(char *name)
 
         pixmap_draw(av_frame, 53, 24);
         graphics_update_screen();
-        lord_timer(66);
-        lord_poll_events();
+        lotr_timer(66);
+        lotr_poll_events();
 
-        //      while( !lord_kb_hit() ) lord_poll_events(); lord_get_key();
+        //      while( !lotr_kb_hit() ) lotr_poll_events(); lotr_get_key();
 
         if (!read_av_audio_sample(audiobuf, &audiobufpos, avfile))
             break;
@@ -259,9 +259,9 @@ av_play(char *name)
 
     }
 
-    while (playing_sample() && !lord_key_esc()) {
-        lord_timer(10);
-        lord_poll_events();
+    while (playing_sample() && !lotr_key_esc()) {
+        lotr_timer(10);
+        lotr_poll_events();
     }
 
     stop_sample(audiobuf);
@@ -272,7 +272,7 @@ av_play(char *name)
     pixmap_free(av_frame);
     pixmap_free(av_frame_old);
 
-    lord_reset_keyboard();
+    lotr_reset_keyboard();
 
 }
 
@@ -287,7 +287,7 @@ void
 av_playnum(int num)
 {
     if (num < 0 || num >= 17) {
-        fprintf(stderr, "lord: non-existent av file number=%d\n", num);
+        fprintf(stderr, "lotr: non-existent av file number=%d\n", num);
         exit(1);
     }
 

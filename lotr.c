@@ -1,7 +1,7 @@
 
 /****************************************************************************
 
-    lord.c
+    lotr.c
     the main module
 
 
@@ -28,14 +28,14 @@
 
 
 
-/* lord.h must be included first */
-#include "lord.h"
+/* lotr.h must be included first */
+#include "lotr.h"
 #include <SDL.h>
 #include "cartoon.h"
 #include "init.h"
 #include "game.h"
 #include "gui.h"
-#include "lord_sdl.h"
+#include "lotr_sdl.h"
 #include "timing.h"
 
 #ifdef CD_VERSION
@@ -51,7 +51,7 @@ main(int argc, char *argv[])
 {
     int game_num = 0;
 
-    lord_init();
+    lotr_init();
 
 #ifdef TTT
     game_num = gui_ttt_start_dialog();
@@ -80,25 +80,25 @@ main(int argc, char *argv[])
 
     game_init_graphics();
 
-    lord_reset_timer();
-    while (!lord_key_esc()) {
+    lotr_reset_timer();
+    while (!lotr_key_esc()) {
         int frame_time = FRAME_TIME;
-        lord_poll_events();
+        lotr_poll_events();
         game_next_frame();
 
 #ifndef ENABLE_CHEATS
         /* Shift key is used for fast movement while cheating */
 #if !PIXEL_PRECISE
-        if (lord_key_shift())
+        if (lotr_key_shift())
             frame_time /= 4;
 #endif
 #endif
 
-        lord_timer(frame_time);
+        lotr_timer(frame_time);
     }
 
 
-    lord_close();
+    lotr_close();
 
     return 0;
 }

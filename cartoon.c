@@ -26,8 +26,8 @@
 *****************************************************************************/
 
 
-#include "lord.h"
-#include "lord_sdl.h"
+#include "lotr.h"
+#include "lotr_sdl.h"
 #include "timing.h"
 #include "graphics.h"
 #include "cartoon.h"
@@ -72,7 +72,7 @@ void
 checkregister(int i)
 {
     if (i < 0 || i > MAXRESOURCES) {
-        fprintf(stderr, "lord: register is in invalid ranga\n");
+        fprintf(stderr, "lotr: register is in invalid ranga\n");
         exit(1);
     }
 }
@@ -87,7 +87,7 @@ checkcommandsize(CartoonCommand * command, int size)
 {
     if (command->size != size) {
         fprintf(stderr,
-                "lord: command %02x length should be %d (%d found)\n",
+                "lotr: command %02x length should be %d (%d found)\n",
                 command->type, size, command->size);
         exit(1);
     }
@@ -104,7 +104,7 @@ checkcommandsizeatleast(CartoonCommand * command, int size)
 {
     if (command->size < size) {
         fprintf(stderr,
-                "lord: command %02x length should be at least %d (%d found)\n",
+                "lotr: command %02x length should be at least %d (%d found)\n",
                 command->type, size, command->size);
         exit(1);
     }
@@ -202,7 +202,7 @@ cartoon_play(char *name)
     graphics_clear_screen();
     graphics_update_screen();
 
-    while (archivepos < archive->size && !lord_key_esc()) {
+    while (archivepos < archive->size && !lotr_key_esc()) {
         data = decompress_idxarchive(archive, archivepos, &size);
         /* data are freed by cartoondesc_free */
 
@@ -228,12 +228,12 @@ cartoon_play(char *name)
         free(data);
 
 
-        lord_reset_timer();
+        lotr_reset_timer();
 
         while ((command = cartoondesc_next(cartoondesc)) != NULL
-               && !lord_key_esc()) {
+               && !lotr_key_esc()) {
 
-            lord_poll_events();
+            lotr_poll_events();
 
             if (DEBUGCARTOONCOMMANDS) {
                 printf("\n>>> %x (gosub level=%d) ", cartoondesc->pos - 1,
@@ -267,7 +267,7 @@ cartoon_play(char *name)
 
                     checkcommandsize(command, 0);
 
-                    while (!lord_kb_hit());
+                    while (!lotr_kb_hit());
 
                     break;
 
@@ -299,7 +299,7 @@ cartoon_play(char *name)
 
               /****************************************************/
                 case 0x2c:
-                    lord_timer(10);
+                    lotr_timer(10);
                     break;
 
 
@@ -320,10 +320,10 @@ cartoon_play(char *name)
                     //              printf( "type=%02x par=%d\n", command->type, i );
 
                     if (i > 0 && command->type == 0x04)
-                        lord_sleep(i * 5);
+                        lotr_sleep(i * 5);
 
                     if (i < 0 && command->type == 0x27)
-                        lord_sleep(-i * 5);
+                        lotr_sleep(-i * 5);
 
 
 
@@ -373,7 +373,7 @@ cartoon_play(char *name)
                     checkregister(i);
                     if (fonts[i] != NULL) {
                         fprintf(stderr,
-                                "lord: can not store font resource %d\n", i);
+                                "lotr: can not store font resource %d\n", i);
                         exit(1);
                     }
                     fonts[i] = cartoon_font_read(archive, command->data[0]);
@@ -526,7 +526,7 @@ cartoon_play(char *name)
 
                     checkregister(i);
 
-                    registers[i] = lord_get_key();
+                    registers[i] = lotr_get_key();
 
 
                     break;
@@ -546,7 +546,7 @@ cartoon_play(char *name)
                     checkregister(i);
                     if (pixmaps[i] != NULL) {
                         fprintf(stderr,
-                                "lord: can not store pixmap resource %d\n",
+                                "lotr: can not store pixmap resource %d\n",
                                 i);
                         exit(1);
                     }
@@ -611,7 +611,7 @@ cartoon_play(char *name)
 
                     if (pixmaps[i] != NULL) {
                         fprintf(stderr,
-                                "lord: can not store pixmap resource %d\n",
+                                "lotr: can not store pixmap resource %d\n",
                                 i);
                         exit(1);
                     }
@@ -631,9 +631,9 @@ cartoon_play(char *name)
                        printf( "%d\n", i );
                        pixmap_draw( pixmaps[i], 0, 0 );
                        graphics_update_screen();
-                       lord_reset_keyboard();
-                       while( !lord_kb_hit() );
-                       lord_reset_keyboard();
+                       lotr_reset_keyboard();
+                       while( !lotr_kb_hit() );
+                       lotr_reset_keyboard();
                      */
 
 
@@ -657,7 +657,7 @@ cartoon_play(char *name)
 
                     if (size != sizeof(Palette)) {
                         fprintf(stderr,
-                                "lord: trying to load an invalid palette\n");
+                                "lotr: trying to load an invalid palette\n");
                         exit(1);
                     }
 
@@ -681,7 +681,7 @@ cartoon_play(char *name)
                     checkcommandsize(command, 6);
 
                     /* wait if we are drawing large pixmaps */
-                    lord_timer(0);
+                    lotr_timer(0);
 
                     /* cache index */
                     i = get_command_par(command, registers, 0);
@@ -689,7 +689,7 @@ cartoon_play(char *name)
 
                     if (pixmaps[i] == NULL) {
                         fprintf(stderr,
-                                "lord: cartoon attemps to draw an empty pixmap\n");
+                                "lotr: cartoon attemps to draw an empty pixmap\n");
                         break;
                         /* exit(1); */
                     }
@@ -717,7 +717,7 @@ cartoon_play(char *name)
 
 
                     /* wait if we are drawing large pixmaps */
-                    lord_timer(pixmaps[i]->datasize / 300);
+                    lotr_timer(pixmaps[i]->datasize / 300);
 
 
                     break;
@@ -738,7 +738,7 @@ cartoon_play(char *name)
 
                     if (pixmaps[i] == NULL) {
                         fprintf(stderr,
-                                "lord: can not free NULL pixmap resource %d\n",
+                                "lotr: can not free NULL pixmap resource %d\n",
                                 i);
                         exit(1);
                     }
@@ -762,7 +762,7 @@ cartoon_play(char *name)
                     checkregister(i);
                     if (pixmaps[i] != NULL) {
                         fprintf(stderr,
-                                "lord: can not store pixmap resource %d\n",
+                                "lotr: can not store pixmap resource %d\n",
                                 i);
                         exit(1);
                     }
@@ -805,7 +805,7 @@ cartoon_play(char *name)
 
                     if (pixmaps[i] != NULL) {
                         fprintf(stderr,
-                                "lord: can not store pixmap resource %d\n",
+                                "lotr: can not store pixmap resource %d\n",
                                 i);
                         exit(1);
                     }
@@ -815,7 +815,7 @@ cartoon_play(char *name)
 
                     if (pixmaps[j] == NULL) {
                         fprintf(stderr,
-                                "lord: can not subpixmap NULL pixmap resource %d\n",
+                                "lotr: can not subpixmap NULL pixmap resource %d\n",
                                 j);
                         exit(1);
                     }
@@ -852,7 +852,7 @@ cartoon_play(char *name)
 
                     if (return_pos == MAXRESOURCES) {
                         fprintf(stderr,
-                                "lord: too much nested cartoon gosubs\n");
+                                "lotr: too much nested cartoon gosubs\n");
                         exit(1);
                     }
 
@@ -876,7 +876,7 @@ cartoon_play(char *name)
 
                     if (return_pos == 0) {
                         fprintf(stderr,
-                                "lord: cartoon return without gosub\n");
+                                "lotr: cartoon return without gosub\n");
                         exit(1);
                     }
 
@@ -1074,17 +1074,17 @@ cartoon_play(char *name)
 
 
                 default:
-                    fprintf(stderr, "lord: unknown cartoon command %04x\n",
+                    fprintf(stderr, "lotr: unknown cartoon command %04x\n",
                             command->type);
                     /* exit(1); */
             }
 
-            lord_timer(0);
+            lotr_timer(0);
 
             if (0 && return_pos == 0) {
-                lord_reset_keyboard();
-                while (!lord_kb_hit());
-                lord_reset_keyboard();
+                lotr_reset_keyboard();
+                while (!lotr_kb_hit());
+                lotr_reset_keyboard();
             }
 
 
@@ -1111,7 +1111,7 @@ cartoon_play(char *name)
     pixmap_free(bufscreen);
     archive_close(archive);
 
-    lord_reset_keyboard();
+    lotr_reset_keyboard();
 
 }
 
@@ -1131,7 +1131,7 @@ cartoondesc_create(Uint8 *data, int size)
     CartoonCommand *command;
 
 
-    result = lord_malloc(sizeof(CartoonDesc));
+    result = lotr_malloc(sizeof(CartoonDesc));
 
 
     for (i = 0; i < MAXCOMMANDS; ++i)
@@ -1139,7 +1139,7 @@ cartoondesc_create(Uint8 *data, int size)
 
     commandnum = 0;
     for (i = 0; i < size - 2 && commandnum < MAXCOMMANDS;) {
-        command = lord_malloc(sizeof(CartoonCommand));
+        command = lotr_malloc(sizeof(CartoonCommand));
 
         command->type = data[i] + data[i + 1] * 0x100;
         i += 2;
@@ -1152,7 +1152,7 @@ cartoondesc_create(Uint8 *data, int size)
         }
 
         if (command->size == MAXCOMMANDSIZE) {
-            fprintf(stderr, "lord: too long comands in the cartoon file\n");
+            fprintf(stderr, "lotr: too long comands in the cartoon file\n");
             exit(1);
         }
 
@@ -1167,7 +1167,7 @@ cartoondesc_create(Uint8 *data, int size)
     }
 
     if (commandnum == MAXCOMMANDS) {
-        fprintf(stderr, "lord: too much comands in the cartoon file\n");
+        fprintf(stderr, "lotr: too much comands in the cartoon file\n");
         exit(1);
     }
 

@@ -26,13 +26,13 @@
 *****************************************************************************/
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "timing.h"
 #include <SDL.h>
 
 
 
-static int lord_ticks;
+static int lotr_ticks;
 
 /*
   returns number of second since time 0
@@ -46,7 +46,7 @@ static int lord_ticks;
 */
 
 void
-lord_sleep(int delay)
+lotr_sleep(int delay)
 {
     SDL_Delay(delay);
 }
@@ -57,29 +57,29 @@ lord_sleep(int delay)
 */
 
 void
-lord_reset_timer(void)
+lotr_reset_timer(void)
 {
-    lord_ticks = SDL_GetTicks();
+    lotr_ticks = SDL_GetTicks();
 }
 
 
 /*
-  wait delay milliseconds from the last lord_timer call
+  wait delay milliseconds from the last lotr_timer call
 */
 
 void
-lord_timer(int delay)
+lotr_timer(int delay)
 {
     int timer;
 
     timer = SDL_GetTicks();
 
-    if (lord_ticks + delay > timer) {
+    if (lotr_ticks + delay > timer) {
         /* we wait some time */
-        SDL_Delay(lord_ticks + delay - timer);
-        lord_ticks = lord_ticks + delay;
+        SDL_Delay(lotr_ticks + delay - timer);
+        lotr_ticks = lotr_ticks + delay;
     } else {
-        lord_ticks = timer;
+        lotr_ticks = timer;
     }
 
 }

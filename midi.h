@@ -30,7 +30,7 @@
 #ifndef _MIDI_H
 #define _MIDI_H
 
-#include "lord.h"
+#include "lotr.h"
 
 /* controls if midi is disabled */
 extern int midi_disabled;

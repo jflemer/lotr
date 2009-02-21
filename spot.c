@@ -26,14 +26,14 @@
 *****************************************************************************/
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "archive.h"
 #include "cartoon.h"
 #include "combat.h"
 #include "character.h"
 #include "game.h"
 #include "gui.h"
-#include "lord_sdl.h"
+#include "lotr_sdl.h"
 #include "map.h"
 #include "object.h"
 #include "spot.h"
@@ -545,7 +545,7 @@ new_parsing:
 
                 if (i != j + 2 + 5 * spot->data[j + 1]) {
                     fprintf(stderr,
-                            "lord: WARNING: action command size changed from %d to %d\n",
+                            "lotr: WARNING: action command size changed from %d to %d\n",
                             spot->data[j + 1], (i - j - 2) / 5);
                     spot->data[j + 1] = (i - j - 2) / 5;
                 }
@@ -563,7 +563,7 @@ unknown_command:
             level = 0;
 #ifndef TTT
             spot_print(spot);
-            fprintf(stderr, "lord: error: negative level\n");
+            fprintf(stderr, "lotr: error: negative level\n");
             exit(1);
 #else
             negative_level = 1;
@@ -610,13 +610,13 @@ unknown_command:
 #ifdef TTT
     if (negative_level) {
         spot_print(spot);
-        fprintf(stderr, "lord: error: negative level\n");
+        fprintf(stderr, "lotr: error: negative level\n");
         return;
     }
 #endif
 
     if (i < spot->data_size) {
-        fprintf(stderr, "lord: too many commands in the spot\n");
+        fprintf(stderr, "lotr: too many commands in the spot\n");
         spot->not_parsed = 1;
         spot_print(spot);
 #ifndef TTT
@@ -631,7 +631,7 @@ unknown_command:
             spot->commands_num--;
         spot->not_parsed = 1;
         spot_print(spot);
-        fprintf(stderr, "lord: wrongly parsed spot i=%04x, size=%04x\n", i,
+        fprintf(stderr, "lotr: wrongly parsed spot i=%04x, size=%04x\n", i,
                 spot->data_size);
         exit(1);
     }
@@ -639,14 +639,14 @@ unknown_command:
     if (!unknown && level != 0) {
         spot->not_parsed = 1;
         spot_print(spot);
-        fprintf(stderr, "lord: spot command does not end at level 0\n");
+        fprintf(stderr, "lotr: spot command does not end at level 0\n");
         // exit(1);
     }
 
     if (unknown) {
         spot->not_parsed = 1;
         spot_print(spot);
-        fprintf(stderr, "lord: spot was not parsed completely\n");
+        fprintf(stderr, "lotr: spot was not parsed completely\n");
 #ifndef CD_VERSION
         //TODO remove CDHACK
         exit(1);
@@ -698,7 +698,7 @@ spot_parse(Uint8 *data, int size, CommandSpot *spots[], int *spots_num)
         if (i + s > size)
             goto corrupted;
 
-        spot = lord_malloc(sizeof(CommandSpot));
+        spot = lotr_malloc(sizeof(CommandSpot));
 
         spot->headersize = readint(data + i + 2);
         if (spot->headersize > s)
@@ -712,7 +712,7 @@ spot_parse(Uint8 *data, int size, CommandSpot *spots[], int *spots_num)
         spot->id = n;
         spot->flag = data[n];
 
-        spot->data = lord_malloc(s);
+        spot->data = lotr_malloc(s);
         memcpy(spot->data, data + i, s);
         spot->data_size = s;
 
@@ -729,7 +729,7 @@ spot_parse(Uint8 *data, int size, CommandSpot *spots[], int *spots_num)
     return;
 
 corrupted:
-    fprintf(stderr, "lord: corrupted game description data\n");
+    fprintf(stderr, "lotr: corrupted game description data\n");
     exit(1);
 
 }
@@ -812,7 +812,7 @@ spot_character_get(int id)
 
     if (id == 0xf0) {
         fprintf(stderr,
-                "lord: WARNING - spot_character_get got parameter 0xf0 (whole party) this should not happen!");
+                "lotr: WARNING - spot_character_get got parameter 0xf0 (whole party) this should not happen!");
         return NULL;
     }
 
@@ -859,14 +859,14 @@ spot_string_print(const char *format, ...)
 
     if (!spot_string) {
         spot_string_size = 16 * SPOT_LINE_SIZE;
-        spot_string = lord_malloc(spot_string_size);
+        spot_string = lotr_malloc(spot_string_size);
     }
 
     if (spot_string_size - spot_string_pos <= SPOT_LINE_SIZE) {
         spot_string_size += 16 * SPOT_LINE_SIZE;
         spot_string = realloc(spot_string, spot_string_size);
         if (!spot_string) {
-            fprintf(stderr, "lord: can't rallocate memory\n");
+            fprintf(stderr, "lotr: can't rallocate memory\n");
             exit(1);
         }
     }
@@ -876,7 +876,7 @@ spot_string_print(const char *format, ...)
     va_end(va);
     if (r >= SPOT_LINE_SIZE) {
         fprintf(stderr,
-                "lord: trying to print too much at once during spot printing\n");
+                "lotr: trying to print too much at once during spot printing\n");
         exit(1);
     }
     spot_string_pos += r;
@@ -1495,7 +1495,7 @@ spot_next_on_level(CommandSpot *spot)
         spot->pos++;
 
     if (!spot->not_parsed && spot->pos >= spot->commands_num) {
-        fprintf(stderr, "lord: wrong spot command IF/ELSE/ENDIF nesting\n");
+        fprintf(stderr, "lotr: wrong spot command IF/ELSE/ENDIF nesting\n");
         exit(1);
     }
 
@@ -1537,7 +1537,7 @@ spot_goto(CommandSpot *spot, int address)
 
 invalid_address:
     spot_print(spot);
-    fprintf(stderr, "lord: could not find address %04x\n", address);
+    fprintf(stderr, "lotr: could not find address %04x\n", address);
     return 0;
 }
 
@@ -1553,7 +1553,7 @@ spot_change_stat(Character *character, int stat, int sign, int value)
     if (sign == 0xff)
         value = -value;
     if (sign != 0xff && sign != 1)
-        fprintf(stderr, "lord: WARNING unknown change stat sign=%02x\n",
+        fprintf(stderr, "lotr: WARNING unknown change stat sign=%02x\n",
                 sign);
 
     switch (stat) {
@@ -1578,7 +1578,7 @@ spot_change_stat(Character *character, int stat, int sign, int value)
                 character->life += value;
             break;
         default:
-            fprintf(stderr, "lord: WARNING unknown stat number=%02x\n", stat);
+            fprintf(stderr, "lotr: WARNING unknown stat number=%02x\n", stat);
             break;
     }
 
@@ -1605,7 +1605,7 @@ spot_if_party(Character *character, int a, int b, int c)
     int codes[10];
 
     if (character == NULL) {
-        fprintf(stderr, "lord: spot_if_party got NULL character\n");
+        fprintf(stderr, "lotr: spot_if_party got NULL character\n");
         return 0;
     }
 
@@ -1630,7 +1630,7 @@ spot_if_party(Character *character, int a, int b, int c)
             if (b == 0x20)
                 return game_in_party(character);
 
-            fprintf(stderr, "lord: WARNING unknown IF_PARTY type=%02x %02x\n",
+            fprintf(stderr, "lotr: WARNING unknown IF_PARTY type=%02x %02x\n",
                     a, b);
             return 0;
 
@@ -1642,7 +1642,7 @@ spot_if_party(Character *character, int a, int b, int c)
             return game_get_silver() > 0;
 
         default:
-            fprintf(stderr, "lord: WARNING unknown IF_PARTY type=%02x\n", a);
+            fprintf(stderr, "lotr: WARNING unknown IF_PARTY type=%02x\n", a);
             return 0;
     }
 
@@ -1811,8 +1811,8 @@ spot_continue(CommandSpot *spot)
                 break;
 
             case COMMAND_NPC_MOVE:
-                lord_input_disable();
-                lord_reset_keyboard();
+                lotr_input_disable();
+                lotr_reset_keyboard();
 #ifndef CD_VERSION
                 if (map_character_move
                     (spot->data[i + 1], readint(spot->data + i + 3),
@@ -1826,7 +1826,7 @@ spot_continue(CommandSpot *spot)
                     return 1;
                 else
                     spot->pos++;
-                lord_input_enable();
+                lotr_input_enable();
                 break;
 
             case COMMAND_NPC_DELETE:
@@ -2050,7 +2050,7 @@ spot_continue(CommandSpot *spot)
 
             case COMMAND_IF_RANDOM:
                 spot->pos++;
-                spot_if_result(spot, lord_rnd(99) < spot->data[i + 1]);
+                spot_if_result(spot, lotr_rnd(99) < spot->data[i + 1]);
                 break;
 
             case COMMAND_IF_DIRECTION:
@@ -2154,7 +2154,7 @@ spot_continue(CommandSpot *spot)
                 spot->pos++;
                 return 1;
 #else
-                fprintf(stderr, "lord: PLAY_AV command not implemented\n");
+                fprintf(stderr, "lotr: PLAY_AV command not implemented\n");
                 fprintf(stderr, "(recompile with CD_VERSION support)\n");
                 spot->pos++;
                 break;
@@ -2298,7 +2298,7 @@ spot_continue(CommandSpot *spot)
 
             default:
                 spot_print(spot);
-                fprintf(stderr, "lord: unknown spot command %02x\n",
+                fprintf(stderr, "lotr: unknown spot command %02x\n",
                         spot->data[i]);
                 // exit(1);
                 spot->pos++;

@@ -29,7 +29,7 @@
 #ifndef _GRAPHICS_H
 #define _GRAPHICS_H
 
-#include "lord.h"
+#include "lotr.h"
 #include "archive.h"
 
 

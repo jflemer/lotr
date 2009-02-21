@@ -1,6 +1,6 @@
 /****************************************************************************
 
-    lord_sdl.c
+    lotr_sdl.c
     system dependent part via SDL
 
 
@@ -26,8 +26,8 @@
 *****************************************************************************/
 
 
-#include "lord.h"
-#include "lord_sdl.h"
+#include "lotr.h"
+#include "lotr_sdl.h"
 #include "midi.h"
 #include <SDL.h>
 #ifdef HAVE_SDL_MIXER
@@ -45,8 +45,8 @@ static SDL_Surface *main_display;
 
 /* keyboard buffer */
 #define KEYBOARDBUFFERESIZE 16
-static int lord_keybufferpos = 0;
-static int lord_keybuffer[KEYBOARDBUFFERESIZE];
+static int lotr_keybufferpos = 0;
+static int lotr_keybuffer[KEYBOARDBUFFERESIZE];
 
 
 #ifdef HAVE_SDL_MIXER
@@ -56,16 +56,16 @@ Mix_Chunk *sound_samples[MIX_CHANNELS];
 
 /* indicates which keys were pressed */
 
-static int lord_input_disabled = 0;
+static int lotr_input_disabled = 0;
 
-static int lord_key_left_pressed;
-static int lord_key_right_pressed;
-static int lord_key_up_pressed;
-static int lord_key_down_pressed;
+static int lotr_key_left_pressed;
+static int lotr_key_right_pressed;
+static int lotr_key_up_pressed;
+static int lotr_key_down_pressed;
 
-static int lord_key_esc_pressed;
-static int lord_key_shift_pressed;
-static int lord_key_ctrl_pressed;
+static int lotr_key_esc_pressed;
+static int lotr_key_shift_pressed;
+static int lotr_key_ctrl_pressed;
 
 
 /*
@@ -91,7 +91,7 @@ hook_channel_finished(int channel)
   initialize SDL
 */
 void
-lord_system_init(void)
+lotr_system_init(void)
 {
     SDL_AudioSpec desired;
 
@@ -130,7 +130,7 @@ lord_system_init(void)
 
     SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,
                         SDL_DEFAULT_REPEAT_INTERVAL);
-    lord_reset_keyboard();
+    lotr_reset_keyboard();
 
     desired.freq = 22050;
 #ifdef CD_VERSION
@@ -146,9 +146,9 @@ lord_system_init(void)
     int i;
 
     if (Mix_OpenAudio(desired.freq, desired.format, 1, desired.samples) < 0) {
-        fprintf(stderr, "lord: could not initialize mixer: %s\n",
+        fprintf(stderr, "lotr: could not initialize mixer: %s\n",
                 SDL_GetError());
-        fprintf(stderr, "lord: sfx and music disabled\n");
+        fprintf(stderr, "lotr: sfx and music disabled\n");
         midi_disabled = 1;
     }
 
@@ -158,7 +158,7 @@ lord_system_init(void)
     Mix_ChannelFinished(hook_channel_finished);
 #endif
 
-    lord_input_disabled = 0;
+    lotr_input_disabled = 0;
 
     srand(time(NULL));
 }
@@ -169,7 +169,7 @@ lord_system_init(void)
   quit SDL
 */
 void
-lord_system_close(void)
+lotr_system_close(void)
 {
 #ifdef HAVE_SDL_MIXER
     if (!midi_disabled)
@@ -258,7 +258,7 @@ playing_sample(void)
   polls all pending events
 */
 void
-lord_poll_events(void)
+lotr_poll_events(void)
 {
     SDL_Event event;
 
@@ -266,37 +266,37 @@ lord_poll_events(void)
         switch (event.type) {
             case SDL_KEYDOWN:
 
-                if (lord_input_disabled)
+                if (lotr_input_disabled)
                     break;
 
-                if (lord_keybufferpos < KEYBOARDBUFFERESIZE) {
-                    lord_keybuffer[lord_keybufferpos++] =
+                if (lotr_keybufferpos < KEYBOARDBUFFERESIZE) {
+                    lotr_keybuffer[lotr_keybufferpos++] =
                         event.key.keysym.sym;
                 }
 
                 switch (event.key.keysym.sym) {
                     case SDLK_ESCAPE:
-                        lord_key_esc_pressed = 1;
+                        lotr_key_esc_pressed = 1;
                         break;
                     case SDLK_LEFT:
-                        lord_key_left_pressed = 1;
+                        lotr_key_left_pressed = 1;
                         break;
                     case SDLK_RIGHT:
-                        lord_key_right_pressed = 1;
+                        lotr_key_right_pressed = 1;
                         break;
                     case SDLK_UP:
-                        lord_key_up_pressed = 1;
+                        lotr_key_up_pressed = 1;
                         break;
                     case SDLK_DOWN:
-                        lord_key_down_pressed = 1;
+                        lotr_key_down_pressed = 1;
                         break;
                     case SDLK_LSHIFT:
                     case SDLK_RSHIFT:
-                        lord_key_shift_pressed = 1;
+                        lotr_key_shift_pressed = 1;
                         break;
                     case SDLK_LCTRL:
                     case SDLK_RCTRL:
-                        lord_key_ctrl_pressed = 1;
+                        lotr_key_ctrl_pressed = 1;
                         break;
 
                     default:
@@ -309,24 +309,24 @@ lord_poll_events(void)
             case SDL_KEYUP:
                 switch (event.key.keysym.sym) {
                     case SDLK_LEFT:
-                        lord_key_left_pressed = 0;
+                        lotr_key_left_pressed = 0;
                         break;
                     case SDLK_RIGHT:
-                        lord_key_right_pressed = 0;
+                        lotr_key_right_pressed = 0;
                         break;
                     case SDLK_UP:
-                        lord_key_up_pressed = 0;
+                        lotr_key_up_pressed = 0;
                         break;
                     case SDLK_DOWN:
-                        lord_key_down_pressed = 0;
+                        lotr_key_down_pressed = 0;
                         break;
                     case SDLK_LSHIFT:
                     case SDLK_RSHIFT:
-                        lord_key_shift_pressed = 0;
+                        lotr_key_shift_pressed = 0;
                         break;
                     case SDLK_LCTRL:
                     case SDLK_RCTRL:
-                        lord_key_ctrl_pressed = 0;
+                        lotr_key_ctrl_pressed = 0;
                         break;
                     case SDLK_ESCAPE:
                         /* esc can be only reseted */
@@ -355,18 +355,18 @@ lord_poll_events(void)
   resets keyboard status
 */
 void
-lord_reset_keyboard(void)
+lotr_reset_keyboard(void)
 {
-    lord_poll_events();
+    lotr_poll_events();
 
-    lord_keybufferpos = 0;
+    lotr_keybufferpos = 0;
 
-    lord_key_left_pressed = 0;
-    lord_key_right_pressed = 0;
-    lord_key_up_pressed = 0;
-    lord_key_down_pressed = 0;
+    lotr_key_left_pressed = 0;
+    lotr_key_right_pressed = 0;
+    lotr_key_up_pressed = 0;
+    lotr_key_down_pressed = 0;
 
-    lord_key_esc_pressed = 0;
+    lotr_key_esc_pressed = 0;
 
 }
 
@@ -375,11 +375,11 @@ lord_reset_keyboard(void)
   was a key pressed?
 */
 int
-lord_kb_hit(void)
+lotr_kb_hit(void)
 {
-    lord_poll_events();
+    lotr_poll_events();
 
-    return lord_keybufferpos != 0;
+    return lotr_keybufferpos != 0;
 }
 
 
@@ -387,21 +387,21 @@ lord_kb_hit(void)
   get last pressed key - return 0 if none
 */
 int
-lord_get_key(void)
+lotr_get_key(void)
 {
     int i;
     int key;
 
-    lord_poll_events();
+    lotr_poll_events();
 
-    if (lord_keybufferpos == 0)
+    if (lotr_keybufferpos == 0)
         return 0;
 
-    key = lord_keybuffer[0];
-    lord_keybufferpos--;
+    key = lotr_keybuffer[0];
+    lotr_keybufferpos--;
 
-    for (i = 0; i < lord_keybufferpos; ++i)
-        lord_keybuffer[i] = lord_keybuffer[i + 1];
+    for (i = 0; i < lotr_keybufferpos; ++i)
+        lotr_keybuffer[i] = lotr_keybuffer[i + 1];
 
     return key;
 
@@ -412,18 +412,18 @@ lord_get_key(void)
   disable keyboard input
 */
 void
-lord_input_disable(void)
+lotr_input_disable(void)
 {
-    lord_input_disabled = 1;
+    lotr_input_disabled = 1;
 }
 
 /*
   enable keyboard input
 */
 void
-lord_input_enable(void)
+lotr_input_enable(void)
 {
-    lord_input_disabled = 0;
+    lotr_input_disabled = 0;
 }
 
 
@@ -431,7 +431,7 @@ lord_input_enable(void)
   shows a new screen
 */
 void
-lord_show_screen(Uint8 *newscreen)
+lotr_show_screen(Uint8 *newscreen)
 {
     int i, j;
     Uint8 tmpscreen[SCREEN_WIDTH * SCREEN_HEIGHT * SCREEN_FACT];
@@ -467,45 +467,45 @@ lord_show_screen(Uint8 *newscreen)
 */
 
 int
-lord_key_left()
+lotr_key_left()
 {
-    return lord_key_left_pressed;
+    return lotr_key_left_pressed;
 }
 
 int
-lord_key_right()
+lotr_key_right()
 {
-    return lord_key_right_pressed;
+    return lotr_key_right_pressed;
 }
 
 int
-lord_key_up()
+lotr_key_up()
 {
-    return lord_key_up_pressed;
+    return lotr_key_up_pressed;
 }
 
 int
-lord_key_down()
+lotr_key_down()
 {
-    return lord_key_down_pressed;
+    return lotr_key_down_pressed;
 }
 
 int
-lord_key_esc()
+lotr_key_esc()
 {
-    return lord_key_esc_pressed;
+    return lotr_key_esc_pressed;
 }
 
 int
-lord_key_shift()
+lotr_key_shift()
 {
-    return lord_key_shift_pressed;
+    return lotr_key_shift_pressed;
 }
 
 int
-lord_key_ctrl()
+lotr_key_ctrl()
 {
-    return lord_key_ctrl_pressed;
+    return lotr_key_ctrl_pressed;
 }
 
 
@@ -513,7 +513,7 @@ lord_key_ctrl()
   sets palette
 */
 void
-lord_system_set_palette(Uint8 *palette, int firstcolor, int ncolors)
+lotr_system_set_palette(Uint8 *palette, int firstcolor, int ncolors)
 {
     int i;
     SDL_Color colors[256];

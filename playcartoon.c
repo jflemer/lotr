@@ -28,8 +28,8 @@
 
 #include <SDL.h>
 
-#include "lord.h"
-#include "lord_sdl.h"
+#include "lotr.h"
+#include "lotr_sdl.h"
 #include "cartoon.h"
 #include "sound.h"
 #include <string.h>
@@ -53,7 +53,7 @@ Cartoon_Close(void)
         sound_close();
 
     if (initlevel-- >= 1)
-        lord_system_close();
+        lotr_system_close();
 
 }
 
@@ -67,7 +67,7 @@ Cartoon_Init(void)
     /* Clean up on exit */
     atexit(Cartoon_Close);
 
-    lord_system_init();
+    lotr_system_init();
     initlevel++;
 
     sound_init();

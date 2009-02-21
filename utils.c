@@ -26,7 +26,7 @@
 
 *****************************************************************************/
 
-#include "lord.h"
+#include "lotr.h"
 #include "utils.h"
 #include <string.h>
 #include <stdlib.h>
@@ -37,21 +37,21 @@
 
 #define HOME_DIR_STR "$HOME/.lotr/"
 
-char lord_filename[1024];
+char lotr_filename[1024];
 
 
 /*
   allocates memory, exits on error
 */
 void *
-lord_malloc(int size)
+lotr_malloc(int size)
 {
     void *result;
     result = malloc(size);
 
     if (result == NULL) {
         char message[128];
-        sprintf(message, "lord: can not allocate memory %d bytes of memory",
+        sprintf(message, "lotr: can not allocate memory %d bytes of memory",
                 size);
         perror(message);
         exit(1);
@@ -65,11 +65,11 @@ lord_malloc(int size)
 
 
 /*
-  return full path to $HOME/.lord/<name>
+  return full path to $HOME/.lotr/<name>
 */
 
 extern char *
-lord_homedir_filename(const char *name)
+lotr_homedir_filename(const char *name)
 {
     char cwd[1024];
 #ifndef AMINGA_OS4
@@ -77,17 +77,17 @@ lord_homedir_filename(const char *name)
 
     if (home == NULL) {
         fprintf(stderr,
-                "lord: HOME variable not set (can not find users homedir)\n");
+                "lotr: HOME variable not set (can not find users homedir)\n");
         exit(1);
     }
 
-    snprintf(lord_filename, sizeof(lord_filename), "%s/.lotr/", home);
+    snprintf(lotr_filename, sizeof(lotr_filename), "%s/.lotr/", home);
 #else
-    snprintf(lord_filename, sizeof(lord_filename), "lord/");
+    snprintf(lotr_filename, sizeof(lotr_filename), "lord/");
 #endif
     getcwd(cwd, 1024);
-    if (chdir(lord_filename)) { /* Somewhat stupid test for dir existence */
-        if (mkdir(lord_filename, S_IRWXU)) {
+    if (chdir(lotr_filename)) { /* Somewhat stupid test for dir existence */
+        if (mkdir(lotr_filename, S_IRWXU)) {
             perror("can not create directory " HOME_DIR_STR);
             exit(1);
         }
@@ -95,12 +95,12 @@ lord_homedir_filename(const char *name)
     chdir(cwd);
 
 #ifndef AMINGA_OS4
-    snprintf(lord_filename, sizeof(lord_filename), "%s/.lotr/%s", home, name);
+    snprintf(lotr_filename, sizeof(lotr_filename), "%s/.lotr/%s", home, name);
 #else
-    snprintf(lord_filename, sizeof(lord_filename), "lord/%s", name);
+    snprintf(lotr_filename, sizeof(lotr_filename), "lord/%s", name);
 #endif
 
-    return lord_filename;
+    return lotr_filename;
 
 }
 
@@ -111,13 +111,13 @@ lord_homedir_filename(const char *name)
 */
 
 FILE *
-lord_fopen(const char *path, const char *mode)
+lotr_fopen(const char *path, const char *mode)
 {
     FILE *result;
 
-    lord_homedir_filename(path);
+    lotr_homedir_filename(path);
 
-    result = fopen(lord_filename, mode);
+    result = fopen(lotr_filename, mode);
 
     if (result != NULL)
         return result;
@@ -127,14 +127,14 @@ lord_fopen(const char *path, const char *mode)
         exit(1);
     }
 
-    snprintf(lord_filename, sizeof(lord_filename), "%s/%s", DATA_DIRECTORY,
+    snprintf(lotr_filename, sizeof(lotr_filename), "%s/%s", DATA_DIRECTORY,
              path);
 
-    result = fopen(lord_filename, mode);
+    result = fopen(lotr_filename, mode);
 
     if (result == NULL) {
         char message[128];
-        sprintf(message, "lord: can not open file %s", lord_filename);
+        sprintf(message, "lotr: can not open file %s", lotr_filename);
         perror(message);
         exit(1);
     }
@@ -149,23 +149,23 @@ lord_fopen(const char *path, const char *mode)
 */
 
 int
-lord_file_exists(const char *path)
+lotr_file_exists(const char *path)
 {
     FILE *testfile;
 
-    lord_homedir_filename(path);
+    lotr_homedir_filename(path);
 
-    testfile = fopen(lord_filename, "rb");
+    testfile = fopen(lotr_filename, "rb");
 
     if (testfile != NULL) {
         fclose(testfile);
         return 1;
     }
 
-    snprintf(lord_filename, sizeof(lord_filename), "%s/%s", DATA_DIRECTORY,
+    snprintf(lotr_filename, sizeof(lotr_filename), "%s/%s", DATA_DIRECTORY,
              path);
 
-    testfile = fopen(lord_filename, "rb");
+    testfile = fopen(lotr_filename, "rb");
     if (testfile != NULL) {
         fclose(testfile);
         return 1;
@@ -181,14 +181,14 @@ lord_file_exists(const char *path)
 */
 
 char *
-lord_add_suffix(const char *name, const char *suffix)
+lotr_add_suffix(const char *name, const char *suffix)
 {
     int len;
     char *result;
 
     len = strlen(name) + strlen(suffix) + 2;
 
-    result = lord_malloc(len);
+    result = lotr_malloc(len);
 
     sprintf(result, "%s.%s", name, suffix);
 
@@ -204,7 +204,7 @@ lord_add_suffix(const char *name, const char *suffix)
 */
 
 long
-lord_filelen(FILE *file)
+lotr_filelen(FILE *file)
 {
     long currpos;               /* current position */
     long result;
@@ -229,7 +229,7 @@ lord_filelen(FILE *file)
 */
 
 int
-lord_rnd(int n)
+lotr_rnd(int n)
 {
     int k;
     k = ((double)n) * rand() / (RAND_MAX + 1.0);
@@ -248,7 +248,7 @@ lord_rnd(int n)
 */
 
 void
-lord_save_prop_int(xmlNodePtr node, char *name, int value)
+lotr_save_prop_int(xmlNodePtr node, char *name, int value)
 {
     char buf[16];
 
@@ -263,12 +263,12 @@ lord_save_prop_int(xmlNodePtr node, char *name, int value)
 */
 
 void
-lord_save_prop_field(xmlNodePtr node, char *name, Uint8 *value, int len)
+lotr_save_prop_field(xmlNodePtr node, char *name, Uint8 *value, int len)
 {
     int i, d, e;
     char *buf;
 
-    buf = lord_malloc(2 * len + 1);
+    buf = lotr_malloc(2 * len + 1);
 
     for (i = 0; i < len; ++i) {
         d = value[i];
@@ -300,7 +300,7 @@ lord_save_prop_field(xmlNodePtr node, char *name, Uint8 *value, int len)
  */
 
 xmlNodePtr
-lord_get_subnode(xmlNodePtr node, const xmlChar *name, int force)
+lotr_get_subnode(xmlNodePtr node, const xmlChar *name, int force)
 {
     xmlNodePtr cur = node->xmlChildrenNode;
     while (cur != NULL) {
@@ -310,7 +310,7 @@ lord_get_subnode(xmlNodePtr node, const xmlChar *name, int force)
     }
 
     if (force && cur == NULL) {
-        fprintf(stderr, "lord: can not get node named %s\n", name);
+        fprintf(stderr, "lotr: can not get node named %s\n", name);
         exit(1);
     }
 
@@ -324,10 +324,10 @@ lord_get_subnode(xmlNodePtr node, const xmlChar *name, int force)
 */
 
 int
-lord_load_prop_int(xmlNodePtr node, char *name)
+lotr_load_prop_int(xmlNodePtr node, char *name)
 {
     xmlNodePtr cur;
-    cur = lord_get_subnode(node, (const xmlChar *)name, 1);
+    cur = lotr_get_subnode(node, (const xmlChar *)name, 1);
 
     return atoi((char *)xmlNodeGetContent(cur));
 }
@@ -338,10 +338,10 @@ lord_load_prop_int(xmlNodePtr node, char *name)
 */
 
 int
-lord_load_prop_int_default(xmlNodePtr node, char *name, int default_value)
+lotr_load_prop_int_default(xmlNodePtr node, char *name, int default_value)
 {
     xmlNodePtr cur;
-    cur = lord_get_subnode(node, (const xmlChar *)name, 0);
+    cur = lotr_get_subnode(node, (const xmlChar *)name, 0);
 
     if (cur == NULL)
         return default_value;
@@ -355,7 +355,7 @@ lord_load_prop_int_default(xmlNodePtr node, char *name, int default_value)
 */
 
 int
-lord_load_prop_field(xmlNodePtr node, char *name, Uint8 *value, int maxlen)
+lotr_load_prop_field(xmlNodePtr node, char *name, Uint8 *value, int maxlen)
 {
     xmlChar *buf;
     int len;
@@ -363,7 +363,7 @@ lord_load_prop_field(xmlNodePtr node, char *name, Uint8 *value, int maxlen)
     int d, r;
 
     xmlNodePtr cur;
-    cur = lord_get_subnode(node, (const xmlChar *)name, 1);
+    cur = lotr_get_subnode(node, (const xmlChar *)name, 1);
 
     buf = xmlNodeGetContent(cur);
     len = xmlStrlen(buf) / 2;
@@ -400,7 +400,7 @@ lord_load_prop_field(xmlNodePtr node, char *name, Uint8 *value, int maxlen)
   return data directory
 */
 char *
-lord_data_directory(void)
+lotr_data_directory(void)
 {
     return DATA_DIRECTORY;
 }

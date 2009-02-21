@@ -27,7 +27,7 @@
 *****************************************************************************/
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "midi.h"
 #ifdef HAVE_SDL_MIXER
 #include <SDL_mixer.h>
@@ -44,7 +44,7 @@ static Mix_Music *music = 0;
 #endif
 
 static int music_running = 0;
-static char miditmpname[] = "/tmp/lordXXXXXX";
+static char miditmpname[] = "/tmp/lotrXXXXXX";
 
 
 /*
@@ -100,7 +100,7 @@ play_midi(Uint8 *data, int size, int loop)
 #endif
 
 #ifndef TTT
-        fprintf(stderr, "lord: trying to play an empty midi file\n");
+        fprintf(stderr, "lotr: trying to play an empty midi file\n");
         exit(1);
 #else
         return;
@@ -113,7 +113,7 @@ play_midi(Uint8 *data, int size, int loop)
         miditmpname[13] = miditmpname[14] = 'X';
     if ((midifile = mkstemp(miditmpname)) < 0
         || write(midifile, data, size) != size) {
-        fprintf(stderr, "lord: can not create temporary midifile\n");
+        fprintf(stderr, "lotr: can not create temporary midifile\n");
         exit(1);
     }
 

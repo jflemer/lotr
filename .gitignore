@@ -1,7 +1,7 @@
 *.o
 /pythonspot.h
 /pythonspot.c
-/playcartoon
-/lord
-/lorddemo
+/lotr
+/lotr.static
 /playav
+/playcartoon

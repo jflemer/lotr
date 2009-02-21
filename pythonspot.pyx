@@ -48,7 +48,7 @@ cdef extern from "string.h":
     char *strncpy(char*, char*, int)
 
 
-# lord includes
+# lotr includes
 cdef extern from "cartoon.h":
     void playcartoon(char*)
 
@@ -93,7 +93,7 @@ cdef extern from "map.h":
     CommandSpot* map_get_pythonspot(int)
 
 cdef extern from "utils.h":
-    char *lord_data_directory()
+    char *lotr_data_directory()
 
 
 
@@ -104,7 +104,7 @@ cdef char *pythontexts[256]
 
 
 def print_error(text, ex=None):
-    print "lord: %s" % (text)
+    print "lotr: %s" % (text)
     if ex != None:
         print ex
     exit(1)
@@ -117,7 +117,7 @@ cdef public void pythonspot_init():
 
     global spots, python_spots_num, pythonspots
 
-    sys.path.append(lord_data_directory())
+    sys.path.append(lotr_data_directory())
 
     try:
         spots = PyImport_Import("spots")
@@ -430,13 +430,13 @@ def set_character_texts(who, greeting=None, \
         for i in range(len(questions)):
 
             if pos > textslen - 20:
-                print "lord: too many questions in spot script"
+                print "lotr: too many questions in spot script"
                 break
             (question,text) = questions[i];
 
             for j in range(min(10, len(question))):
                 if not spot_question_letter(ord(question[j])):
-                    print "lord: invalid question character '%s'" % question[j]
+                    print "lotr: invalid question character '%s'" % question[j]
                     break
                 character.texts[pos] = ord(question[j])
                 pos = pos + 1

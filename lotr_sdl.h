@@ -1,6 +1,6 @@
 /****************************************************************************
 
-    lord_sdl.h
+    lotr_sdl.h
     system dependent part via SDL
 
 
@@ -45,10 +45,10 @@
 
 
 /* initialize SDL */
-extern void lord_system_init(void);
+extern void lotr_system_init(void);
 
 /* quit SDL */
-extern void lord_system_close(void);
+extern void lotr_system_close(void);
 
 
 /* play sound sample */
@@ -62,43 +62,43 @@ extern int playing_sample(void);
 
 
 /* polls all pending events */
-extern void lord_poll_events(void);
+extern void lotr_poll_events(void);
 
 /* resets keyboard status */
-extern void lord_reset_keyboard(void);
+extern void lotr_reset_keyboard(void);
 
 /* was a key pressed? */
-extern int lord_kb_hit(void);
+extern int lotr_kb_hit(void);
 
 /* get last pressed key - return 0 if none */
-extern int lord_get_key(void);
+extern int lotr_get_key(void);
 
 /* disable keyboard input */
-extern void lord_input_disable(void);
+extern void lotr_input_disable(void);
 
 /* enable keyboard input */
-extern void lord_input_enable(void);
+extern void lotr_input_enable(void);
 
 
 
 /* return key states */
-extern int lord_key_left();
-extern int lord_key_right();
-extern int lord_key_up();
-extern int lord_key_down();
-extern int lord_key_esc();
-extern int lord_key_shift();
-extern int lord_key_ctrl();
+extern int lotr_key_left();
+extern int lotr_key_right();
+extern int lotr_key_up();
+extern int lotr_key_down();
+extern int lotr_key_esc();
+extern int lotr_key_shift();
+extern int lotr_key_ctrl();
 
 
 
 
 /* shows a new screen */
-extern void lord_show_screen(Uint8 *newscreen);
+extern void lotr_show_screen(Uint8 *newscreen);
 
 
 /* sets palette */
-extern void lord_system_set_palette(Uint8 *palette, int firstcolor,
+extern void lotr_system_set_palette(Uint8 *palette, int firstcolor,
                                     int ncolors);
 
 

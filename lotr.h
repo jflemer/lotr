@@ -1,6 +1,6 @@
 /****************************************************************************
 
-    lord.h
+    lotr.h
     some common definitions
 
 
@@ -71,7 +71,7 @@
 #  ifndef AMIGA_OS4
 #    define GAME_DIRECTORY PREFIX "/share/games/lotr"
 #  else
-#    define GAME_DIRECTORY PREFIX "/lord"
+#    define GAME_DIRECTORY PREFIX "/lotr"
 #  endif
 #  ifndef TTT
 #    ifndef CD_VERSION

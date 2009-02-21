@@ -1,7 +1,7 @@
 /****************************************************************************
 
     pythonhelper.h
-    passes some definitions from lord.h to python
+    passes some definitions from lotr.h to python
 
 
     Lord of the Rings game engine

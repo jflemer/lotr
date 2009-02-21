@@ -41,10 +41,10 @@ endif
 
 DEFINITIONS = -DPREFIX=\"$(PREFIX)\"
 
-HEADERFILES = archive.h av.h cartoon.h character.h combat.h credit.h lord.h lord_sdl.h map.h midi.h game.h graphics.h gui.h init.h object.h shape.h sound.h spot.h timing.h utils.h
-PLAYCARTOONOBJ = archive.o cartoon.o lord_sdl.o midi.o graphics.o sound.o timing.o utils.o
-PLAYAVOBJ = archive.o av.o lord_sdl.o midi.o graphics.o timing.o utils.o
-OBJFILES = archive.o av.o cartoon.o character.o combat.o lord_sdl.o map.o midi.o game.o gui.o graphics.o init.o object.o shape.o sound.o spot.o timing.o utils.o
+HEADERFILES = archive.h av.h cartoon.h character.h combat.h credit.h lotr.h lotr_sdl.h map.h midi.h game.h graphics.h gui.h init.h object.h shape.h sound.h spot.h timing.h utils.h
+PLAYCARTOONOBJ = archive.o cartoon.o lotr_sdl.o midi.o graphics.o sound.o timing.o utils.o
+PLAYAVOBJ = archive.o av.o lotr_sdl.o midi.o graphics.o timing.o utils.o
+OBJFILES = archive.o av.o cartoon.o character.o combat.o lotr_sdl.o map.o midi.o game.o gui.o graphics.o init.o object.o shape.o sound.o spot.o timing.o utils.o
 
 ifeq ($(USE_SDL_MIXER),1)
 LIBRARIES += -lSDL_mixer
@@ -69,18 +69,18 @@ else
 CFLAGS += -g0 -O2 -funroll-loops
 endif
 
-all: lord
+all: lotr
 
 clean:
-	rm -f *.o *~ core.* pythonspot.c playcartoon lord lorddemo \
+	rm -f *.o *~ core.* pythonspot.c playcartoon lotr lotr.static \
 		pythonspot.pxi pythonspot.h playav
 
 
-lord: $(OBJFILES) lord.o
-	$(LD) $(OBJFILES) $(LIBRARIES) lord.o -o lord
+lotr: $(OBJFILES) lotr.o
+	$(LD) $(OBJFILES) $(LIBRARIES) lotr.o -o lotr
 
-lord.static: $(OBJFILES) lord.o
-	$(LD_STATIC) $(OBJFILES) $(STATIC_LIBRARIES) lord.o -o lord.static
+lotr.static: $(OBJFILES) lotr.o
+	$(LD_STATIC) $(OBJFILES) $(STATIC_LIBRARIES) lotr.o -o lotr.static
 
 
 playcartoon: $(PLAYCARTOONOBJ) playcartoon.o

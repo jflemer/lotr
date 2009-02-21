@@ -28,8 +28,8 @@
 
 #include <SDL.h>
 
-#include "lord.h"
-#include "lord_sdl.h"
+#include "lotr.h"
+#include "lotr_sdl.h"
 #include "av.h"
 #include <string.h>
 #include <stdlib.h>
@@ -49,7 +49,7 @@ AV_Close(void)
 {
 
     if (initlevel-- >= 1)
-        lord_system_close();
+        lotr_system_close();
 
 }
 
@@ -63,7 +63,7 @@ AV_Init(void)
     /* Clean up on exit */
     atexit(AV_Close);
 
-    lord_system_init();
+    lotr_system_init();
     initlevel++;
 
 

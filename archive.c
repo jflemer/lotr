@@ -26,7 +26,7 @@
 *****************************************************************************/
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "utils.h"
 #include "archive.h"
 #include <string.h>
@@ -54,24 +54,24 @@ archive_idx_open(const char *name)
     int i, k, n;
     Uint8 tmpbytes[2];
 
-    fullname = lord_add_suffix(name, "dat");
-    datafile = lord_fopen(fullname, "rb");
+    fullname = lotr_add_suffix(name, "dat");
+    datafile = lotr_fopen(fullname, "rb");
     free(fullname);
 
-    fullname = lord_add_suffix(name, "idx");
-    idxfile = lord_fopen(fullname, "rb");
+    fullname = lotr_add_suffix(name, "idx");
+    idxfile = lotr_fopen(fullname, "rb");
     free(fullname);
 
-    result = (Archive *)lord_malloc(sizeof(Archive));
+    result = (Archive *)lotr_malloc(sizeof(Archive));
 
-    n = lord_filelen(idxfile);
+    n = lotr_filelen(idxfile);
 
     result->datafile = datafile;
 
     n = (n + 1) / 2;
     result->size = n;
 
-    result->index = lord_malloc((n + 1) * sizeof(int));
+    result->index = lotr_malloc((n + 1) * sizeof(int));
 
     result->index[0] = 0;
 
@@ -86,9 +86,9 @@ archive_idx_open(const char *name)
 
     fclose(idxfile);
 
-    if (result->index[n] != lord_filelen(datafile)) {
+    if (result->index[n] != lotr_filelen(datafile)) {
         fprintf(stderr,
-                "lord: %s seems not to be a valid idx'ed data file\n", name);
+                "lotr: %s seems not to be a valid idx'ed data file\n", name);
         exit(1);
     }
 
@@ -114,28 +114,28 @@ archive_ndx_open(const char *name)
     int i, k, n;
     Uint8 tmpbytes[4];
 
-    fullname = lord_add_suffix(name, "dat");
-    datafile = lord_fopen(fullname, "rb");
+    fullname = lotr_add_suffix(name, "dat");
+    datafile = lotr_fopen(fullname, "rb");
     free(fullname);
 
     /* ndx file from nnpcs is npcs.ndx */
     if (strcmp(name, "nnpcs") == 0)
         name++;
 
-    fullname = lord_add_suffix(name, "ndx");
-    ndxfile = lord_fopen(fullname, "rb");
+    fullname = lotr_add_suffix(name, "ndx");
+    ndxfile = lotr_fopen(fullname, "rb");
     free(fullname);
 
-    result = (Archive *)lord_malloc(sizeof(Archive));
+    result = (Archive *)lotr_malloc(sizeof(Archive));
 
-    n = lord_filelen(ndxfile);
+    n = lotr_filelen(ndxfile);
 
     result->datafile = datafile;
 
     n = (n + 3) / 4;
     result->size = n;
 
-    result->index = lord_malloc((n + 1) * sizeof(int));
+    result->index = lotr_malloc((n + 1) * sizeof(int));
 
     result->index[0] = 0;
 
@@ -143,7 +143,7 @@ archive_ndx_open(const char *name)
         || fgetc(ndxfile) != 0
         || fgetc(ndxfile) != 0 || fgetc(ndxfile) != 0) {
         fprintf(stderr,
-                "lord: %s: expecting four zeros at the beginning of an ndx file\n",
+                "lotr: %s: expecting four zeros at the beginning of an ndx file\n",
                 name);
         exit(1);
     }
@@ -161,7 +161,7 @@ archive_ndx_open(const char *name)
         result->index[i] = k;
         if (result->index[i - 1] > k) {
             fprintf(stderr,
-                    "lord: %s seems not to be a valid ndx'ed data file\n",
+                    "lotr: %s seems not to be a valid ndx'ed data file\n",
                     name);
             exit(1);
         }
@@ -171,11 +171,11 @@ archive_ndx_open(const char *name)
     fclose(ndxfile);
 
 
-    result->index[n] = lord_filelen(datafile);
+    result->index[n] = lotr_filelen(datafile);
 
     if (result->index[n - 1] > result->index[n]) {
         fprintf(stderr,
-                "lord: %s seems not to be a valid ndx'ed data file\n", name);
+                "lotr: %s seems not to be a valid ndx'ed data file\n", name);
         exit(1);
     }
 
@@ -219,12 +219,12 @@ archive_read(Archive *archive, int index)
     if (size == 0)
         return NULL;
 
-    result = lord_malloc(size);
+    result = lotr_malloc(size);
 
     fseek(archive->datafile, archive->index[index], SEEK_SET);
 
     if (!fread(result, size, 1, archive->datafile)) {
-        fprintf(stderr, "lord: can not read datafile\n");
+        fprintf(stderr, "lotr: can not read datafile\n");
         exit(1);
     }
 
@@ -373,7 +373,7 @@ decompress_idx(Uint8 *data, int size, int *resultsize)
     }                           /* while(datapos+8<=n*8) */
 
     *resultsize = bufpos;
-    result = lord_malloc(*resultsize);
+    result = lotr_malloc(*resultsize);
     memcpy(result, buffer, *resultsize);
 
     return result;
@@ -401,7 +401,7 @@ decompress_idxarchive(Archive *archive, int index, int *size)
     }
 
     if (result == NULL) {
-        fprintf(stderr, "lord: archive decompression failed\n");
+        fprintf(stderr, "lotr: archive decompression failed\n");
         exit(1);
     }
 
@@ -461,7 +461,7 @@ decompress_ndx(Uint8 *data, int size, int *resultsize)
 
                 if (start > bufpos) {
                     /* it is unclear what to do in this case
-                       fprintf( stderr, "lord: wrongly decoded ndx archive %03x, %03x, %x\n", start, bufpos, len ); */
+                       fprintf( stderr, "lotr: wrongly decoded ndx archive %03x, %03x, %x\n", start, bufpos, len ); */
 
                     /* this works */
 
@@ -498,7 +498,7 @@ decompress_ndx(Uint8 *data, int size, int *resultsize)
 
 
     *resultsize = bufpos;
-    result = lord_malloc(*resultsize);
+    result = lotr_malloc(*resultsize);
     memcpy(result, buffer, *resultsize);
 
     return result;
@@ -526,7 +526,7 @@ decompress_ndxarchive(Archive *archive, int index, int *size)
     }
 
     if (result == NULL) {
-        fprintf(stderr, "lord: archive decompression failed index=%d\n",
+        fprintf(stderr, "lotr: archive decompression failed index=%d\n",
                 index);
         exit(1);
     }

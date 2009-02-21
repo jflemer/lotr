@@ -25,7 +25,7 @@
 
 *****************************************************************************/
 
-#include "lord.h"
+#include "lotr.h"
 #include "archive.h"
 #include "game.h"
 #include "cartoon.h"
@@ -33,7 +33,7 @@
 #include "combat.h"
 #include "gui.h"
 #include "graphics.h"
-#include "lord_sdl.h"
+#include "lotr_sdl.h"
 #include "map.h"
 #include "object.h"
 #include "shape.h"
@@ -151,16 +151,16 @@ gui_init(void)
     for (i = 0; i < 0x100; ++i)
         gui_font[i] = NULL;
 
-    pal = lord_fopen("arts.pal", "rb");
-    if (lord_filelen(pal) != sizeof(Palette)) {
-        fprintf(stderr, "lord: arts.pal is not a valid palette file\n");
+    pal = lotr_fopen("arts.pal", "rb");
+    if (lotr_filelen(pal) != sizeof(Palette)) {
+        fprintf(stderr, "lotr: arts.pal is not a valid palette file\n");
         exit(1);
     }
 
-    gui_palette = lord_malloc(sizeof(Palette));
+    gui_palette = lotr_malloc(sizeof(Palette));
 
     if (fread(gui_palette, sizeof(Palette), 1, pal) != 1) {
-        fprintf(stderr, "lord: can not read arts.pal\n");
+        fprintf(stderr, "lotr: can not read arts.pal\n");
         exit(1);
     }
 
@@ -195,24 +195,24 @@ gui_init(void)
 
     /* init paragraphs */
 
-    if (lord_file_exists("para.dat")) {
+    if (lotr_file_exists("para.dat")) {
         FILE *parfile;
-        int parlord_filelen;
+        int parlotr_filelen;
         int pos, n;
-        parfile = lord_fopen("para.dat", "rb");
-        parlord_filelen = lord_filelen(parfile);
-        paragraphs = lord_malloc(parlord_filelen);
-        if (fread(paragraphs, 1, parlord_filelen, parfile) != parlord_filelen) {
-            fprintf(stderr, "lord: can not read file para.dat\n");
-            perror("lord");
+        parfile = lotr_fopen("para.dat", "rb");
+        parlotr_filelen = lotr_filelen(parfile);
+        paragraphs = lotr_malloc(parlotr_filelen);
+        if (fread(paragraphs, 1, parlotr_filelen, parfile) != parlotr_filelen) {
+            fprintf(stderr, "lotr: can not read file para.dat\n");
+            perror("lotr");
             exit(1);
         }
 
         pos = 0;
         n = 0;
-        while (pos < parlord_filelen && n <= PARAGRAPHS_NUM) {
+        while (pos < parlotr_filelen && n <= PARAGRAPHS_NUM) {
             paragraphs_off[n] = pos;
-            while (pos < parlord_filelen && paragraphs[pos] != 0x10)
+            while (pos < parlotr_filelen && paragraphs[pos] != 0x10)
                 ++pos;
             pos += 3;
             ++n;
@@ -531,7 +531,7 @@ quit_menu()
     } else {
         gui_clear();
         game_draw_map();
-        lord_reset_keyboard();
+        lotr_reset_keyboard();
     }
 }
 
@@ -553,7 +553,7 @@ format_text(const char *_text, int *lines, int width,
     int i, j, line;
 
     n = strlen(_text);
-    t = text = lord_malloc(n + 1);
+    t = text = lotr_malloc(n + 1);
     strncpy(text, _text, n);
     text[n] = 0;
 
@@ -676,7 +676,7 @@ void
 gui_question(char *text)
 {
     gui_message(text, 0);
-    lord_reset_keyboard();
+    lotr_reset_keyboard();
     dialog_mode = DIALOG_MESSAGE_YN;
 }
 
@@ -857,7 +857,7 @@ gui_paragraph_question(int num)
     gui_paragraph_isquestion = 1;
 
     if (dialog_mode != DIALOG_PARAGRAPH) {
-        lord_reset_keyboard();
+        lotr_reset_keyboard();
         dialog_mode = DIALOG_MESSAGE_YN;
     }
 }
@@ -876,7 +876,7 @@ dialog_paragraph_key(int key)
         if (paragraphs[gui_paragraph_pos] == 0x10) {
             /* paragraph does not continue */
             if (gui_paragraph_isquestion) {
-                lord_reset_keyboard();
+                lotr_reset_keyboard();
                 dialog_mode = DIALOG_MESSAGE_YN;
             } else
                 dialog_mode = DIALOG_MESSAGE;
@@ -1022,7 +1022,7 @@ gui_book(char *text)
 
     dialog_mode = DIALOG_BOOK;
     gui_message(text, 0);
-    lord_reset_keyboard();
+    lotr_reset_keyboard();
 }
 
 #endif
@@ -2576,7 +2576,7 @@ dialog_list_key(int key)
             if (choosed_character->life <= 5)
                 break;
             if (dialog_list_names[code][0] != '!')
-                choosed_character->life -= lord_rnd(4);
+                choosed_character->life -= lotr_rnd(4);
 
             spell_code = choosed_character->spells[code];
             if (!combat_get_mode()) {
@@ -2841,7 +2841,7 @@ main_menu_key(int key)
 
 #ifdef WIZARD_MODE
         case 'w':
-            if (lord_key_ctrl())
+            if (lotr_key_ctrl())
                 dialog_print_active_spot();
             else
                 dialog_talk_show(-1, -1);
@@ -2885,18 +2885,18 @@ gui_frame(void)
     }
 
 
-    key = lord_get_key();
+    key = lotr_get_key();
 
-    if (key == 0 && !lord_key_esc())
+    if (key == 0 && !lotr_key_esc())
         return dialog_mode;
 
     if (dialog_mode == DIALOG_NONE) {
 
-        if (lord_key_esc()) {
+        if (lotr_key_esc()) {
 #ifdef DEMO
             exit(0);
 #endif
-            lord_reset_keyboard();
+            lotr_reset_keyboard();
             dialog_options_show();
         }
 
@@ -2961,7 +2961,7 @@ gui_frame(void)
 
 #ifdef WIZARD_MODE
             case 'w':
-                if (lord_key_ctrl())
+                if (lotr_key_ctrl())
                     dialog_print_active_spot();
                 else
                     dialog_talk_show(-1, -1);
@@ -2973,11 +2973,11 @@ gui_frame(void)
         }
     } else {
 
-        if (lord_key_esc()) {
+        if (lotr_key_esc()) {
 #ifdef DEMO
             exit(0);
 #endif
-            lord_reset_keyboard();
+            lotr_reset_keyboard();
             quit_menu();
         }
 
@@ -3144,11 +3144,11 @@ gui_player_dead(Character *who, int show_message)
         gui_message(message, 1);
 
         while (dialog_mode == DIALOG_MESSAGE) {
-            lord_poll_events();
+            lotr_poll_events();
             gui_frame();
             map_animate_frame();
             graphics_update_screen();
-            lord_timer(50);
+            lotr_timer(50);
         }
     }
 
@@ -3158,11 +3158,11 @@ gui_player_dead(Character *who, int show_message)
 
     dialog_trade_to_show();
     while (dialog_mode == DIALOG_TRADE_TO || dialog_mode == DIALOG_TRADE) {
-        lord_poll_events();
+        lotr_poll_events();
         gui_frame();
         map_animate_frame();
         graphics_update_screen();
-        lord_timer(50);
+        lotr_timer(50);
     }
 
     if (who->ring_mode) {
@@ -3189,8 +3189,8 @@ gui_proceed_frames(void)
     while (gui_frame()) {
         map_animate_frame();
         graphics_update_screen();
-        lord_timer(FRAME_TIME);
-        lord_poll_events();
+        lotr_timer(FRAME_TIME);
+        lotr_poll_events();
     }
 }
 
@@ -3243,13 +3243,13 @@ gui_ttt_start_dialog(void)
         savegames[i] = 0;
     numsaves = 0;
 
-    while (!lord_key_esc()) {
-        key = lord_get_key();
+    while (!lotr_key_esc()) {
+        key = lotr_get_key();
         if (mode == 0) {
             if (key == 'n') {
                 for (i = 0; i < 10; ++i) {
                     sprintf(buf, "savegame.%d", i);
-                    testfile = fopen(lord_homedir_filename(buf), "rb");
+                    testfile = fopen(lotr_homedir_filename(buf), "rb");
                     if (testfile != NULL) {
                         numsaves++;
                         savegames[i] = 1;
@@ -3280,7 +3280,7 @@ gui_ttt_start_dialog(void)
             if (key == 'o') {
                 for (i = 0; i < 10; ++i) {
                     sprintf(buf, "savegame2.%d", i);
-                    testfile = fopen(lord_homedir_filename(buf), "rb");
+                    testfile = fopen(lotr_homedir_filename(buf), "rb");
                     if (testfile != NULL) {
                         numsaves++;
                         savegames[i] = 1;
@@ -3318,8 +3318,8 @@ gui_ttt_start_dialog(void)
                 if (savegames[key - '0'])
                     return key - '0';
         }
-        lord_poll_events();
-        lord_timer(50);
+        lotr_poll_events();
+        lotr_timer(50);
     }
 
     /* unset font alpha */
@@ -3327,7 +3327,7 @@ gui_ttt_start_dialog(void)
         if (gui_font[i])
             gui_font[i]->hasalpha = 0;
 
-    lord_reset_keyboard();
+    lotr_reset_keyboard();
     return 0;
 
 }

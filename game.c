@@ -26,14 +26,14 @@
 *****************************************************************************/
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "character.h"
 #include "cartoon.h"
 #include "combat.h"
 #include "game.h"
 #include "graphics.h"
 #include "gui.h"
-#include "lord_sdl.h"
+#include "lotr_sdl.h"
 #include "map.h"
 #include "object.h"
 #include "spot.h"
@@ -171,7 +171,7 @@ game_parse_texts(Archive *archive, int index)
         if ((Uint8)game_text_data[i] == 0xff)
             break;
         if (game_text_num == GAME_TEXTS_MAX) {
-            fprintf(stderr, "lord: too many game texts\n");
+            fprintf(stderr, "lotr: too many game texts\n");
             exit(1);
         }
 #ifdef DEBUG
@@ -214,7 +214,7 @@ game_load_map(int map)
         || (only_one_map && map > 0))
 #endif
     {
-        fprintf(stderr, "lord: not existing map index=%d\n", map);
+        fprintf(stderr, "lotr: not existing map index=%d\n", map);
         exit(1);
     }
 #ifdef TTT
@@ -224,7 +224,7 @@ game_load_map(int map)
     graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
     graphics_clear_screen();
     graphics_update_screen();
-    lord_reset_keyboard();
+    lotr_reset_keyboard();
 
     if (game_maps[map][0] != loaded_map_desc) {
 #ifndef DEMO
@@ -386,13 +386,13 @@ game_save(int n)
     xmlSetDocCompressMode(doc, 6);
 
 
-    root = xmlNewNode(NULL, (const xmlChar *)"lord_savegame");
+    root = xmlNewNode(NULL, (const xmlChar *)"lotr_savegame");
     xmlDocSetRootElement(doc, root);
 
 #ifndef TTT
-    lord_save_prop_int(root, "vol", 1);
+    lotr_save_prop_int(root, "vol", 1);
 #else
-    lord_save_prop_int(root, "vol", 2);
+    lotr_save_prop_int(root, "vol", 2);
 #endif
 
 
@@ -413,15 +413,15 @@ game_save(int n)
     for (i = 0; i < 8; ++i)
         if (game_map_saved[i]) {
             subnode = xmlNewNode(NULL, (const xmlChar *)"map");
-            lord_save_prop_int(subnode, "map_num", i);
-            lord_save_prop_field(subnode, "map_data", game_map_saves[i],
+            lotr_save_prop_int(subnode, "map_num", i);
+            lotr_save_prop_field(subnode, "map_data", game_map_saves[i],
                                  0x100);
             xmlAddChild(node, subnode);
         }
 
 
 
-    lord_save_prop_int(root, "game_map_id", game_map_id);
+    lotr_save_prop_int(root, "game_map_id", game_map_id);
 
 
 
@@ -433,22 +433,22 @@ game_save(int n)
 
 
 
-    lord_save_prop_field(root, "game_registers", game_registers, 256);
+    lotr_save_prop_field(root, "game_registers", game_registers, 256);
 
 
     node = xmlNewNode(NULL, (const xmlChar *)"party");
     xmlAddChild(root, node);
 
-    lord_save_prop_int(node, "silver", silver_pennies);
-    lord_save_prop_int(node, "moving", game_moving);
-    lord_save_prop_int(node, "follow", game_follow);
+    lotr_save_prop_int(node, "silver", silver_pennies);
+    lotr_save_prop_int(node, "moving", game_moving);
+    lotr_save_prop_int(node, "follow", game_follow);
 
     for (i = 0; i < game_party_size; ++i)
         buf[i] = game_party[i]->id;
 
-    lord_save_prop_field(node, "party", buf, game_party_size);
+    lotr_save_prop_field(node, "party", buf, game_party_size);
 
-    lord_save_prop_int(node, "leader", leader->id);
+    lotr_save_prop_int(node, "leader", leader->id);
 
 
 #ifndef TTT
@@ -457,7 +457,7 @@ game_save(int n)
     sprintf(name, "savegame2.%d", n);
 #endif
 
-    xmlSaveFormatFileEnc(lord_homedir_filename(name), doc, "ascii", 1);
+    xmlSaveFormatFileEnc(lotr_homedir_filename(name), doc, "ascii", 1);
 
     xmlFreeDoc(doc);
 
@@ -490,7 +490,7 @@ game_load(int n)
     sprintf(name, "savegame2.%d", n);
 #endif
 
-    doc = xmlParseFile(lord_homedir_filename(name));
+    doc = xmlParseFile(lotr_homedir_filename(name));
     if (doc == NULL)
         return 0;
 
@@ -498,7 +498,7 @@ game_load(int n)
     if (root == NULL)
         return 0;
 
-    vol = lord_load_prop_int_default(root, "vol", 1);
+    vol = lotr_load_prop_int_default(root, "vol", 1);
 #ifndef TTT
     if (vol != 1)
         return 0;
@@ -507,11 +507,11 @@ game_load(int n)
         return 0;
 #endif
 
-    node = lord_get_subnode(root, (const xmlChar *)"characters", 1);
+    node = lotr_get_subnode(root, (const xmlChar *)"characters", 1);
     characters_load(node);
 
 
-    node = lord_get_subnode(root, (const xmlChar *)"map_saves", 1);
+    node = lotr_get_subnode(root, (const xmlChar *)"map_saves", 1);
 
     for (i = 0; i < 8; ++i)
         game_map_saved[i] = 0;
@@ -523,9 +523,9 @@ game_load(int n)
             subnode = subnode->next;
             continue;
         }
-        i = lord_load_prop_int(subnode, "map_num");
+        i = lotr_load_prop_int(subnode, "map_num");
         game_map_saved[i] = 1;
-        lord_load_prop_field(subnode, "map_data", game_map_saves[i], 0x100);
+        lotr_load_prop_field(subnode, "map_data", game_map_saves[i], 0x100);
 
         subnode = subnode->next;
     }
@@ -535,33 +535,33 @@ game_load(int n)
     loaded_map_spots = loaded_map_desc = loaded_map_graphics = -1;
     game_map_id = -1;
 
-    game_load_map(lord_load_prop_int(root, "game_map_id"));
+    game_load_map(lotr_load_prop_int(root, "game_map_id"));
 
 
-    node = lord_get_subnode(root, (const xmlChar *)"map", 1);
+    node = lotr_get_subnode(root, (const xmlChar *)"map", 1);
     map_load_mode(node);
 
 
-    if (lord_get_subnode(root, (const xmlChar *)"game_registers", 0))
-        lord_load_prop_field(root, "game_registers", game_registers, 256);
+    if (lotr_get_subnode(root, (const xmlChar *)"game_registers", 0))
+        lotr_load_prop_field(root, "game_registers", game_registers, 256);
     else
         for (i = 0; i < 256; ++i)
             game_registers[i] = 0;
 
 
-    node = lord_get_subnode(root, (const xmlChar *)"party", 1);
+    node = lotr_get_subnode(root, (const xmlChar *)"party", 1);
 
-    silver_pennies = lord_load_prop_int(node, "silver");
-    game_moving = lord_load_prop_int(node, "moving");
-    game_follow = lord_load_prop_int(node, "follow");
+    silver_pennies = lotr_load_prop_int(node, "silver");
+    game_moving = lotr_load_prop_int(node, "moving");
+    game_follow = lotr_load_prop_int(node, "follow");
 
-    game_party_size = lord_load_prop_field(node, "party", buf, 11);
+    game_party_size = lotr_load_prop_field(node, "party", buf, 11);
 
     for (i = 0; i < game_party_size; ++i)
         game_party[i] = character_get(buf[i]);
 
 
-    leader = character_get(lord_load_prop_int(node, "leader"));
+    leader = character_get(lotr_load_prop_int(node, "leader"));
 
 
     xmlFreeDoc(doc);
@@ -594,7 +594,7 @@ game_convert(int game_id)
 
     sprintf(name, "savegame.%d", game_id);
 
-    doc = xmlParseFile(lord_homedir_filename(name));
+    doc = xmlParseFile(lotr_homedir_filename(name));
     if (doc == NULL)
         return;
 
@@ -602,17 +602,17 @@ game_convert(int game_id)
     if (root == NULL)
         return;
 
-    vol = lord_load_prop_int_default(root, "vol", 1);
+    vol = lotr_load_prop_int_default(root, "vol", 1);
     if (vol != 1)
         return;
 
-    node = lord_get_subnode(root, (const xmlChar *)"party", 1);
+    node = lotr_get_subnode(root, (const xmlChar *)"party", 1);
     /* give silver to Aragorn */
-    character_get(0xa4)->silver = lord_load_prop_int(node, "silver");
+    character_get(0xa4)->silver = lotr_load_prop_int(node, "silver");
 
-    party_size = lord_load_prop_field(node, "party", buf, 11);
+    party_size = lotr_load_prop_field(node, "party", buf, 11);
 
-    node = lord_get_subnode(root, (const xmlChar *)"characters", 1);
+    node = lotr_get_subnode(root, (const xmlChar *)"characters", 1);
 
     character_convert(node, 0xa0);
     for (i = 0; i < party_size; ++i)
@@ -652,30 +652,30 @@ game_leader_movement(void)
 #endif
 
 #ifdef ENABLE_CHEATS
-    if (lord_key_shift() || lord_key_ctrl())
+    if (lotr_key_shift() || lotr_key_ctrl())
 #else
     if (0)
 #endif
     {
-        if (lord_key_ctrl()) {
-            if (lord_key_left() && leader->x >= 4)
+        if (lotr_key_ctrl()) {
+            if (lotr_key_left() && leader->x >= 4)
                 leader->x -= 4;
-            if (lord_key_right() && leader->x < MAP_WIDTH * 16 * 4 - 20)
+            if (lotr_key_right() && leader->x < MAP_WIDTH * 16 * 4 - 20)
                 leader->x += 4;
-            if (lord_key_up() && leader->y >= 4)
+            if (lotr_key_up() && leader->y >= 4)
                 leader->y -= 4;
-            if (lord_key_down() && leader->y < MAP_HEIGHT * 16 * 4 - 20)
+            if (lotr_key_down() && leader->y < MAP_HEIGHT * 16 * 4 - 20)
                 leader->y += 4;
             map_character_update(leader);
         } else {
-            if (lord_key_left() && leader->x >= 0x20)
+            if (lotr_key_left() && leader->x >= 0x20)
                 leader->x -= 0x20;
-            if (lord_key_right()
+            if (lotr_key_right()
                 && leader->x < MAP_WIDTH * 16 * 4 - 20 - 0x20)
                 leader->x += 0x20;
-            if (lord_key_up() && leader->y >= 0x20)
+            if (lotr_key_up() && leader->y >= 0x20)
                 leader->y -= 0x20;
-            if (lord_key_down()
+            if (lotr_key_down()
                 && leader->y < MAP_HEIGHT * 16 * 4 - 20 - 0x20)
                 leader->y += 0x20;
             map_character_update(leader);
@@ -703,19 +703,19 @@ game_leader_movement(void)
 
         }
 
-        if (lord_key_left()
+        if (lotr_key_left()
             && map_can_move_to(leader, leader->x / 4 - 1, leader->y / 4))
             character_move_left(leader);
 
-        if (lord_key_right()
+        if (lotr_key_right()
             && map_can_move_to(leader, leader->x / 4 + 1, leader->y / 4))
             character_move_right(leader);
 
-        if (lord_key_up()
+        if (lotr_key_up()
             && map_can_move_to(leader, leader->x / 4, leader->y / 4 - 1))
             character_move_up(leader);
 
-        if (lord_key_down()
+        if (lotr_key_down()
             && map_can_move_to(leader, leader->x / 4, leader->y / 4 + 1))
             character_move_down(leader);
 
@@ -891,7 +891,7 @@ game_next_frame(void)
 #ifdef TTT
         if (leader->action == CHARACTER_STAY)
 #ifdef ENABLE_CHEATS
-            if (!lord_key_shift() && !lord_key_ctrl())
+            if (!lotr_key_shift() && !lotr_key_ctrl())
 #endif
             {
                 int terrain;
@@ -1216,7 +1216,7 @@ game_set_party_characters(Character *party[11], int size)
         leader = party[0];
 
     if (size == 0) {
-        fprintf(stderr, "lord: empty party - no characters to play\n");
+        fprintf(stderr, "lotr: empty party - no characters to play\n");
         exit(1);
     }
 
@@ -1292,7 +1292,7 @@ game_recruit(Character *character, int force)
     character->action = CHARACTER_STAY;
 #ifdef TTT
     if (character->party_id != leader->party_id)
-        fprintf(stderr, "lord: WARNING recruiting to a wrong party?\n");
+        fprintf(stderr, "lotr: WARNING recruiting to a wrong party?\n");
     character->party_id = leader->party_id;
 #endif
 
@@ -1337,7 +1337,7 @@ game_dismiss(Character *character)
     if (character == leader) {
         leader = game_party[0];
         if (game_party_size == 0) {
-            fprintf(stderr, "lord: error: empty party\n");
+            fprintf(stderr, "lotr: error: empty party\n");
             exit(1);
         }
     }
@@ -1445,7 +1445,7 @@ game_get_register(int index)
 {
 
     if (index < 0 || index >= 256) {
-        fprintf(stderr, "lord: wrong game register (index=%x)\n", index);
+        fprintf(stderr, "lotr: wrong game register (index=%x)\n", index);
         exit(1);
     }
 
@@ -1494,7 +1494,7 @@ void
 game_set_tmp_leader(Character *tmp_leader)
 {
     if (game_tmp_leader) {
-        fprintf(stderr, "lord: game tmp leader already active\n");
+        fprintf(stderr, "lotr: game tmp leader already active\n");
         exit(1);
     }
 
@@ -1522,7 +1522,7 @@ void
 game_dismiss_tmp_leader(void)
 {
     if (!game_tmp_leader) {
-        fprintf(stderr, "lord: game tmp leader not active\n");
+        fprintf(stderr, "lotr: game tmp leader not active\n");
         exit(1);
     }
 
@@ -1642,7 +1642,7 @@ demo_frame(void)
             gui_clear();
             map_set_palette();
             shapes_set_palette();
-            lord_reset_keyboard();
+            lotr_reset_keyboard();
             break;
 
         case 7:
@@ -1777,7 +1777,7 @@ demo_frame(void)
             map_set_palette();
             shapes_set_palette();
             demo_state = 128;
-            lord_reset_keyboard();
+            lotr_reset_keyboard();
             break;
 
         case 128:

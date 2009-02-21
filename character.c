@@ -26,7 +26,7 @@
 *****************************************************************************/
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "archive.h"
 #include "character.h"
 #include "combat.h"
@@ -48,7 +48,7 @@
 #endif
 
 #define CHARACTERS_NUM 240
-Character *lord_characters[CHARACTERS_NUM];
+Character *lotr_characters[CHARACTERS_NUM];
 
 
 
@@ -145,69 +145,69 @@ characters_init()
 #endif
 
     if (archive->size != CHARACTERS_NUM) {
-        fprintf(stderr, "lord: expecting %d game characters (%d found)\n",
+        fprintf(stderr, "lotr: expecting %d game characters (%d found)\n",
                 CHARACTERS_NUM, archive->size);
         exit(1);
     }
 
 
     if (sizeof(NpcsDatEntry) != 256) {
-        fprintf(stderr, "lord: internal error\n");
+        fprintf(stderr, "lotr: internal error\n");
         exit(1);
     }
 
     for (i = 0; i < CHARACTERS_NUM; ++i) {
 
         if (archive_data_size(archive, i) != 256) {
-            lord_characters[i] = NULL;
+            lotr_characters[i] = NULL;
             continue;
         }
 
         chardata = (NpcsDatEntry *) archive_read(archive, i);
 
-        lord_characters[i] = lord_malloc(sizeof(Character));
-        lord_characters[i]->x = -1;
-        lord_characters[i]->y = -1;
-        lord_characters[i]->direction = CHARACTER_DOWN;
-        lord_characters[i]->action = CHARACTER_STAY;
-        lord_characters[i]->state = 0;
+        lotr_characters[i] = lotr_malloc(sizeof(Character));
+        lotr_characters[i]->x = -1;
+        lotr_characters[i]->y = -1;
+        lotr_characters[i]->direction = CHARACTER_DOWN;
+        lotr_characters[i]->action = CHARACTER_STAY;
+        lotr_characters[i]->state = 0;
 
-        lord_characters[i]->shape_id = chardata->shape;
-        lord_characters[i]->shapes[0] = shape_get(6 * chardata->shape + 0);
-        lord_characters[i]->shapes[1] = shape_get(6 * chardata->shape + 1);
-        lord_characters[i]->shapes[2] = shape_get(6 * chardata->shape + 2);
-        lord_characters[i]->shapes[3] = shape_get(6 * chardata->shape + 3);
-        lord_characters[i]->shapes[4] = shape_get(6 * chardata->shape + 4);
-        lord_characters[i]->shapes[5] = shape_get(6 * chardata->shape + 5);
+        lotr_characters[i]->shape_id = chardata->shape;
+        lotr_characters[i]->shapes[0] = shape_get(6 * chardata->shape + 0);
+        lotr_characters[i]->shapes[1] = shape_get(6 * chardata->shape + 1);
+        lotr_characters[i]->shapes[2] = shape_get(6 * chardata->shape + 2);
+        lotr_characters[i]->shapes[3] = shape_get(6 * chardata->shape + 3);
+        lotr_characters[i]->shapes[4] = shape_get(6 * chardata->shape + 4);
+        lotr_characters[i]->shapes[5] = shape_get(6 * chardata->shape + 5);
 
-        lord_characters[i]->horse_shape_id = chardata->horse_shape;
+        lotr_characters[i]->horse_shape_id = chardata->horse_shape;
 
-        lord_characters[i]->portrait = chardata->portrait;
-        lord_characters[i]->direction = chardata->direction;
+        lotr_characters[i]->portrait = chardata->portrait;
+        lotr_characters[i]->direction = chardata->direction;
 #ifdef CD_VERSION
         /* directions in npc data seem to be in range 0--4, strange... */
-        if (lord_characters[i]->direction == 4)
-            lord_characters[i]->direction = CHARACTER_DOWN;
+        if (lotr_characters[i]->direction == 4)
+            lotr_characters[i]->direction = CHARACTER_DOWN;
 #endif
 
-        lord_characters[i]->silver = chardata->silver;
-        lord_characters[i]->dex = chardata->dex;
-        lord_characters[i]->end = chardata->end;
-        lord_characters[i]->life = chardata->life;
-        lord_characters[i]->str = chardata->str;
-        lord_characters[i]->luck = chardata->luck;
-        lord_characters[i]->will = chardata->will;
+        lotr_characters[i]->silver = chardata->silver;
+        lotr_characters[i]->dex = chardata->dex;
+        lotr_characters[i]->end = chardata->end;
+        lotr_characters[i]->life = chardata->life;
+        lotr_characters[i]->str = chardata->str;
+        lotr_characters[i]->luck = chardata->luck;
+        lotr_characters[i]->will = chardata->will;
 
-        lord_characters[i]->id = i;     // chardata->id;
-        lord_characters[i]->party_id = 0xff;
-        lord_characters[i]->actived = 0;
-        lord_characters[i]->converted = 0;
-        lord_characters[i]->last_eat = -0x1000;
+        lotr_characters[i]->id = i;     // chardata->id;
+        lotr_characters[i]->party_id = 0xff;
+        lotr_characters[i]->actived = 0;
+        lotr_characters[i]->converted = 0;
+        lotr_characters[i]->last_eat = -0x1000;
 
-        lord_characters[i]->texts[0] = 0x0;
-        lord_characters[i]->texts[1] = 0xff;
+        lotr_characters[i]->texts[0] = 0x0;
+        lotr_characters[i]->texts[1] = 0xff;
 
-        lord_characters[i]->willing_join = (i >= 0xa0 && i <= 0xa3) ||  /* hobbits */
+        lotr_characters[i]->willing_join = (i >= 0xa0 && i <= 0xa3) ||  /* hobbits */
             i == 0xa5 ||        /* Gandalf */
             i == 0xa6 ||        /* Gimli */
             i == 0xa7 ||        /* Legolas */
@@ -224,42 +224,42 @@ characters_init()
 
 
 
-        strncpy(lord_characters[i]->name, (char *)chardata->name, 16);
-        lord_characters[i]->name[16] = 0;
-        strncpy(lord_characters[i]->original_name, (char *)chardata->name,
+        strncpy(lotr_characters[i]->name, (char *)chardata->name, 16);
+        lotr_characters[i]->name[16] = 0;
+        strncpy(lotr_characters[i]->original_name, (char *)chardata->name,
                 16);
-        lord_characters[i]->original_name[16] = 0;
+        lotr_characters[i]->original_name[16] = 0;
 
-        lord_characters[i]->ring_mode = 0;
+        lotr_characters[i]->ring_mode = 0;
 
         for (j = 0; chardata->items[j] != 0xff && j < 10; ++j) {
-            lord_characters[i]->items[j] = chardata->items[j];
-            lord_characters[i]->item_used[j] = 0;
-            if (object_is_ring(lord_characters[i]->items[j]))
-                lord_characters[i]->ring_mode = 1;
+            lotr_characters[i]->items[j] = chardata->items[j];
+            lotr_characters[i]->item_used[j] = 0;
+            if (object_is_ring(lotr_characters[i]->items[j]))
+                lotr_characters[i]->ring_mode = 1;
         }
 
-        lord_characters[i]->items_num = j;
+        lotr_characters[i]->items_num = j;
 
 
         for (j = 0; chardata->spells[j] != 0xff && j < 10; ++j)
-            lord_characters[i]->spells[j] = chardata->spells[j];
+            lotr_characters[i]->spells[j] = chardata->spells[j];
 
-        lord_characters[i]->spells_num = j;
+        lotr_characters[i]->spells_num = j;
 
 
         for (j = 0; chardata->skills[j] != 0xff && j < 10; ++j)
-            lord_characters[i]->skills[j] = chardata->skills[j];
+            lotr_characters[i]->skills[j] = chardata->skills[j];
 
-        lord_characters[i]->skills_num = j;
+        lotr_characters[i]->skills_num = j;
 
 #ifdef DEBUG
-        printf("%02x -- %-20s", i, lord_characters[i]->name);
-        if (lord_characters[i]->items_num) {
+        printf("%02x -- %-20s", i, lotr_characters[i]->name);
+        if (lotr_characters[i]->items_num) {
             printf(" (");
-            for (j = 0; j < lord_characters[i]->items_num; ++j) {
-                printf("%s", object_name(lord_characters[i]->items[j]));
-                if (j + 1 < lord_characters[i]->items_num)
+            for (j = 0; j < lotr_characters[i]->items_num; ++j) {
+                printf("%s", object_name(lotr_characters[i]->items[j]));
+                if (j + 1 < lotr_characters[i]->items_num)
                     printf(", ");
                 else
                     printf(")");
@@ -276,11 +276,11 @@ characters_init()
 
 #ifdef TTT
     for (i = 0; characters_pos[i][0] != 0xffff; ++i) {
-        lord_characters[characters_pos[i][3]]->party_id =
+        lotr_characters[characters_pos[i][3]]->party_id =
             characters_pos[i][8];
-        lord_characters[characters_pos[i][3]]->x = characters_pos[i][0];
-        lord_characters[characters_pos[i][3]]->y = characters_pos[i][1];
-        lord_characters[characters_pos[i][3]]->map = characters_pos[i][2];
+        lotr_characters[characters_pos[i][3]]->x = characters_pos[i][0];
+        lotr_characters[characters_pos[i][3]]->y = characters_pos[i][1];
+        lotr_characters[characters_pos[i][3]]->map = characters_pos[i][2];
     }
 #endif
 
@@ -305,65 +305,65 @@ characters_save(xmlNodePtr node)
     xmlNodePtr cur;
 
     for (i = 0; i < CHARACTERS_NUM; ++i)
-        if (lord_characters[i]) {
+        if (lotr_characters[i]) {
             cur = xmlNewNode(NULL, (const xmlChar *)"character");
 
-            lord_save_prop_int(cur, "id", i);
+            lotr_save_prop_int(cur, "id", i);
 
             xmlNewTextChild(cur, NULL, (const xmlChar *)"name",
-                            (const xmlChar *)lord_characters[i]->name);
+                            (const xmlChar *)lotr_characters[i]->name);
 
-            lord_save_prop_int(cur, "x", lord_characters[i]->x);
-            lord_save_prop_int(cur, "y", lord_characters[i]->y);
-            lord_save_prop_int(cur, "map", lord_characters[i]->map);
-            lord_save_prop_int(cur, "dir", lord_characters[i]->direction);
-            lord_save_prop_int(cur, "action", lord_characters[i]->action);
-            lord_save_prop_int(cur, "state", lord_characters[i]->state);
-            lord_save_prop_int(cur, "shape", lord_characters[i]->shape_id);
-            lord_save_prop_int(cur, "horse_shape",
-                               lord_characters[i]->horse_shape_id);
-            lord_save_prop_int(cur, "portrait", lord_characters[i]->portrait);
+            lotr_save_prop_int(cur, "x", lotr_characters[i]->x);
+            lotr_save_prop_int(cur, "y", lotr_characters[i]->y);
+            lotr_save_prop_int(cur, "map", lotr_characters[i]->map);
+            lotr_save_prop_int(cur, "dir", lotr_characters[i]->direction);
+            lotr_save_prop_int(cur, "action", lotr_characters[i]->action);
+            lotr_save_prop_int(cur, "state", lotr_characters[i]->state);
+            lotr_save_prop_int(cur, "shape", lotr_characters[i]->shape_id);
+            lotr_save_prop_int(cur, "horse_shape",
+                               lotr_characters[i]->horse_shape_id);
+            lotr_save_prop_int(cur, "portrait", lotr_characters[i]->portrait);
 
-            lord_save_prop_int(cur, "silver", lord_characters[i]->silver);
-            lord_save_prop_int(cur, "dex", lord_characters[i]->dex);
-            lord_save_prop_int(cur, "end", lord_characters[i]->end);
-            lord_save_prop_int(cur, "life", lord_characters[i]->life);
-            lord_save_prop_int(cur, "str", lord_characters[i]->str);
-            lord_save_prop_int(cur, "luck", lord_characters[i]->luck);
-            lord_save_prop_int(cur, "will", lord_characters[i]->will);
+            lotr_save_prop_int(cur, "silver", lotr_characters[i]->silver);
+            lotr_save_prop_int(cur, "dex", lotr_characters[i]->dex);
+            lotr_save_prop_int(cur, "end", lotr_characters[i]->end);
+            lotr_save_prop_int(cur, "life", lotr_characters[i]->life);
+            lotr_save_prop_int(cur, "str", lotr_characters[i]->str);
+            lotr_save_prop_int(cur, "luck", lotr_characters[i]->luck);
+            lotr_save_prop_int(cur, "will", lotr_characters[i]->will);
 
 #ifdef TTT
-            lord_save_prop_int(cur, "party", lord_characters[i]->party_id);
+            lotr_save_prop_int(cur, "party", lotr_characters[i]->party_id);
 #endif
-            lord_save_prop_int(cur, "actived", lord_characters[i]->actived);
-            lord_save_prop_int(cur, "last_eat", lord_characters[i]->last_eat);
-            lord_save_prop_int(cur, "willing_join",
-                               lord_characters[i]->willing_join);
-            lord_save_prop_int(cur, "ring_mode",
-                               lord_characters[i]->ring_mode);
+            lotr_save_prop_int(cur, "actived", lotr_characters[i]->actived);
+            lotr_save_prop_int(cur, "last_eat", lotr_characters[i]->last_eat);
+            lotr_save_prop_int(cur, "willing_join",
+                               lotr_characters[i]->willing_join);
+            lotr_save_prop_int(cur, "ring_mode",
+                               lotr_characters[i]->ring_mode);
 
-            lord_save_prop_field(cur, "texts",
-                                 (Uint8 *)lord_characters[i]->texts,
+            lotr_save_prop_field(cur, "texts",
+                                 (Uint8 *)lotr_characters[i]->texts,
                                  CHARACTER_TALK_LEN);
 
             for (k = 0; k < 10; ++k)
-                buf[k] = lord_characters[i]->items[k];
-            lord_save_prop_field(cur, "items", buf,
-                                 lord_characters[i]->items_num);
+                buf[k] = lotr_characters[i]->items[k];
+            lotr_save_prop_field(cur, "items", buf,
+                                 lotr_characters[i]->items_num);
             for (k = 0; k < 10; ++k)
-                buf[k] = lord_characters[i]->item_used[k];
-            lord_save_prop_field(cur, "item_used", buf,
-                                 lord_characters[i]->items_num);
+                buf[k] = lotr_characters[i]->item_used[k];
+            lotr_save_prop_field(cur, "item_used", buf,
+                                 lotr_characters[i]->items_num);
 
             for (k = 0; k < 10; ++k)
-                buf[k] = lord_characters[i]->skills[k];
-            lord_save_prop_field(cur, "skills", buf,
-                                 lord_characters[i]->skills_num);
+                buf[k] = lotr_characters[i]->skills[k];
+            lotr_save_prop_field(cur, "skills", buf,
+                                 lotr_characters[i]->skills_num);
 
             for (k = 0; k < 10; ++k)
-                buf[k] = lord_characters[i]->spells[k];
-            lord_save_prop_field(cur, "spells", buf,
-                                 lord_characters[i]->spells_num);
+                buf[k] = lotr_characters[i]->spells[k];
+            lotr_save_prop_field(cur, "spells", buf,
+                                 lotr_characters[i]->spells_num);
 
             xmlAddChild(node, cur);
         }
@@ -389,88 +389,88 @@ characters_load(xmlNodePtr node)
             cur = cur->next;
             continue;
         }
-        i = lord_load_prop_int(cur, "id");
-        if (i >= 0 && i < CHARACTERS_NUM && lord_characters[i]) {
+        i = lotr_load_prop_int(cur, "id");
+        if (i >= 0 && i < CHARACTERS_NUM && lotr_characters[i]) {
 
             name = (char *)
-                xmlNodeGetContent(lord_get_subnode
+                xmlNodeGetContent(lotr_get_subnode
                                   (cur, (const xmlChar *)"name", 1));
             if (strncmp(name, "Aragorn", 19) && strncmp(name, "Radagast", 19)
                 && strncmp(name, "Werewolf", 19))
-                strncpy(lord_characters[i]->name,
-                        lord_characters[i]->original_name, 19);
+                strncpy(lotr_characters[i]->name,
+                        lotr_characters[i]->original_name, 19);
             else
-                strncpy(lord_characters[i]->name, name, 19);
+                strncpy(lotr_characters[i]->name, name, 19);
 
-            lord_characters[i]->x = lord_load_prop_int(cur, "x");
-            lord_characters[i]->y = lord_load_prop_int(cur, "y");
-            lord_characters[i]->map = lord_load_prop_int(cur, "map");
-            lord_characters[i]->direction = lord_load_prop_int(cur, "dir");
-            lord_characters[i]->action = lord_load_prop_int(cur, "action");
-            lord_characters[i]->state = lord_load_prop_int(cur, "state");
-            lord_characters[i]->shape_id = lord_load_prop_int(cur, "shape");
+            lotr_characters[i]->x = lotr_load_prop_int(cur, "x");
+            lotr_characters[i]->y = lotr_load_prop_int(cur, "y");
+            lotr_characters[i]->map = lotr_load_prop_int(cur, "map");
+            lotr_characters[i]->direction = lotr_load_prop_int(cur, "dir");
+            lotr_characters[i]->action = lotr_load_prop_int(cur, "action");
+            lotr_characters[i]->state = lotr_load_prop_int(cur, "state");
+            lotr_characters[i]->shape_id = lotr_load_prop_int(cur, "shape");
 
-            lord_characters[i]->shapes[0] =
-                shape_get(6 * lord_characters[i]->shape_id + 0);
-            lord_characters[i]->shapes[1] =
-                shape_get(6 * lord_characters[i]->shape_id + 1);
-            lord_characters[i]->shapes[2] =
-                shape_get(6 * lord_characters[i]->shape_id + 2);
-            lord_characters[i]->shapes[3] =
-                shape_get(6 * lord_characters[i]->shape_id + 3);
-            lord_characters[i]->shapes[4] =
-                shape_get(6 * lord_characters[i]->shape_id + 4);
-            lord_characters[i]->shapes[5] =
-                shape_get(6 * lord_characters[i]->shape_id + 5);
+            lotr_characters[i]->shapes[0] =
+                shape_get(6 * lotr_characters[i]->shape_id + 0);
+            lotr_characters[i]->shapes[1] =
+                shape_get(6 * lotr_characters[i]->shape_id + 1);
+            lotr_characters[i]->shapes[2] =
+                shape_get(6 * lotr_characters[i]->shape_id + 2);
+            lotr_characters[i]->shapes[3] =
+                shape_get(6 * lotr_characters[i]->shape_id + 3);
+            lotr_characters[i]->shapes[4] =
+                shape_get(6 * lotr_characters[i]->shape_id + 4);
+            lotr_characters[i]->shapes[5] =
+                shape_get(6 * lotr_characters[i]->shape_id + 5);
 
 
-            lord_characters[i]->horse_shape_id =
-                lord_load_prop_int(cur, "horse_shape");
-            lord_characters[i]->portrait =
-                lord_load_prop_int(cur, "portrait");
+            lotr_characters[i]->horse_shape_id =
+                lotr_load_prop_int(cur, "horse_shape");
+            lotr_characters[i]->portrait =
+                lotr_load_prop_int(cur, "portrait");
 
-            lord_characters[i]->silver = lord_load_prop_int(cur, "silver");
-            lord_characters[i]->dex = lord_load_prop_int(cur, "dex");
-            lord_characters[i]->end = lord_load_prop_int(cur, "end");
-            lord_characters[i]->life = lord_load_prop_int(cur, "life");
-            lord_characters[i]->str = lord_load_prop_int(cur, "str");
-            lord_characters[i]->luck = lord_load_prop_int(cur, "luck");
-            lord_characters[i]->will = lord_load_prop_int(cur, "will");
+            lotr_characters[i]->silver = lotr_load_prop_int(cur, "silver");
+            lotr_characters[i]->dex = lotr_load_prop_int(cur, "dex");
+            lotr_characters[i]->end = lotr_load_prop_int(cur, "end");
+            lotr_characters[i]->life = lotr_load_prop_int(cur, "life");
+            lotr_characters[i]->str = lotr_load_prop_int(cur, "str");
+            lotr_characters[i]->luck = lotr_load_prop_int(cur, "luck");
+            lotr_characters[i]->will = lotr_load_prop_int(cur, "will");
 
 #ifdef TTT
-            lord_characters[i]->party_id = lord_load_prop_int(cur, "party");
+            lotr_characters[i]->party_id = lotr_load_prop_int(cur, "party");
 #endif
-            lord_characters[i]->actived = lord_load_prop_int(cur, "actived");
-            lord_characters[i]->last_eat =
-                lord_load_prop_int(cur, "last_eat");
-            lord_characters[i]->willing_join =
-                lord_load_prop_int(cur, "willing_join");
-            lord_characters[i]->ring_mode =
-                lord_load_prop_int(cur, "ring_mode");
+            lotr_characters[i]->actived = lotr_load_prop_int(cur, "actived");
+            lotr_characters[i]->last_eat =
+                lotr_load_prop_int(cur, "last_eat");
+            lotr_characters[i]->willing_join =
+                lotr_load_prop_int(cur, "willing_join");
+            lotr_characters[i]->ring_mode =
+                lotr_load_prop_int(cur, "ring_mode");
 
-            lord_load_prop_field(cur, "texts",
-                                 (Uint8 *)lord_characters[i]->texts,
+            lotr_load_prop_field(cur, "texts",
+                                 (Uint8 *)lotr_characters[i]->texts,
                                  CHARACTER_TALK_LEN);
 
 
-            lord_characters[i]->items_num =
-                lord_load_prop_field(cur, "items", buf, 10);
-            for (k = 0; k < lord_characters[i]->items_num; ++k)
-                lord_characters[i]->items[k] = buf[k];
-            lord_characters[i]->items_num =
-                lord_load_prop_field(cur, "item_used", buf, 10);
-            for (k = 0; k < lord_characters[i]->items_num; ++k)
-                lord_characters[i]->item_used[k] = buf[k];
+            lotr_characters[i]->items_num =
+                lotr_load_prop_field(cur, "items", buf, 10);
+            for (k = 0; k < lotr_characters[i]->items_num; ++k)
+                lotr_characters[i]->items[k] = buf[k];
+            lotr_characters[i]->items_num =
+                lotr_load_prop_field(cur, "item_used", buf, 10);
+            for (k = 0; k < lotr_characters[i]->items_num; ++k)
+                lotr_characters[i]->item_used[k] = buf[k];
 
-            lord_characters[i]->skills_num =
-                lord_load_prop_field(cur, "skills", buf, 10);
-            for (k = 0; k < lord_characters[i]->skills_num; ++k)
-                lord_characters[i]->skills[k] = buf[k];
+            lotr_characters[i]->skills_num =
+                lotr_load_prop_field(cur, "skills", buf, 10);
+            for (k = 0; k < lotr_characters[i]->skills_num; ++k)
+                lotr_characters[i]->skills[k] = buf[k];
 
-            lord_characters[i]->spells_num =
-                lord_load_prop_field(cur, "spells", buf, 10);
-            for (k = 0; k < lord_characters[i]->spells_num; ++k)
-                lord_characters[i]->spells[k] = buf[k];
+            lotr_characters[i]->spells_num =
+                lotr_load_prop_field(cur, "spells", buf, 10);
+            for (k = 0; k < lotr_characters[i]->spells_num; ++k)
+                lotr_characters[i]->spells[k] = buf[k];
 
         }
 
@@ -501,31 +501,31 @@ character_convert(xmlNodePtr node, int index)
             cur = cur->next;
             continue;
         }
-        i = lord_load_prop_int(cur, "id");
+        i = lotr_load_prop_int(cur, "id");
         if (i == index) {
-            if (i >= 0 && i < CHARACTERS_NUM && lord_characters[i]) {
-                lord_characters[i]->dex = lord_load_prop_int(cur, "dex");
-                lord_characters[i]->end = lord_load_prop_int(cur, "end");
-                lord_characters[i]->life = lord_characters[i]->end;
-                lord_characters[i]->str = lord_load_prop_int(cur, "str");
-                lord_characters[i]->luck = lord_load_prop_int(cur, "luck");
-                lord_characters[i]->will = lord_load_prop_int(cur, "will");
+            if (i >= 0 && i < CHARACTERS_NUM && lotr_characters[i]) {
+                lotr_characters[i]->dex = lotr_load_prop_int(cur, "dex");
+                lotr_characters[i]->end = lotr_load_prop_int(cur, "end");
+                lotr_characters[i]->life = lotr_characters[i]->end;
+                lotr_characters[i]->str = lotr_load_prop_int(cur, "str");
+                lotr_characters[i]->luck = lotr_load_prop_int(cur, "luck");
+                lotr_characters[i]->will = lotr_load_prop_int(cur, "will");
 
-                lord_characters[i]->converted = 1;
+                lotr_characters[i]->converted = 1;
 
-                lord_characters[i]->items_num =
-                    lord_load_prop_field(cur, "items", item_buf, 10);
-                lord_load_prop_field(cur, "item_used", item_used_buf, 10);
+                lotr_characters[i]->items_num =
+                    lotr_load_prop_field(cur, "items", item_buf, 10);
+                lotr_load_prop_field(cur, "item_used", item_used_buf, 10);
 
-                for (k = 0, l = 0; k < lord_characters[i]->items_num; ++k) {
+                for (k = 0, l = 0; k < lotr_characters[i]->items_num; ++k) {
                     if (object_transferable(item_buf[k])) {
-                        lord_characters[i]->items[l] = item_buf[k];
-                        lord_characters[i]->item_used[l] = item_used_buf[k];
+                        lotr_characters[i]->items[l] = item_buf[k];
+                        lotr_characters[i]->item_used[l] = item_used_buf[k];
                         ++l;
                     }
                 }
 
-                lord_characters[i]->items_num = l;
+                lotr_characters[i]->items_num = l;
 
             }
             return;
@@ -551,8 +551,8 @@ characters_close()
     int i;
 
     for (i = 0; i < CHARACTERS_NUM; ++i)
-        if (lord_characters[i])
-            free(lord_characters[i]);
+        if (lotr_characters[i])
+            free(lotr_characters[i]);
 
 }
 
@@ -570,7 +570,7 @@ character_exists(int i)
     if (i >= 0x100)
         return combat_get_enemy(i) != NULL;
 
-    if (i < 0 || i >= CHARACTERS_NUM || lord_characters[i] == NULL)
+    if (i < 0 || i >= CHARACTERS_NUM || lotr_characters[i] == NULL)
         return 0;
     return 1;
 }
@@ -586,14 +586,14 @@ character_get(int i)
 {
 
     if (!character_exists(i)) {
-        fprintf(stderr, "lord: no such character (index=%02x)\n", i);
+        fprintf(stderr, "lotr: no such character (index=%02x)\n", i);
         exit(1);
     }
 
     if (i >= 0x100)
         return combat_get_enemy(i);
 
-    return lord_characters[i];
+    return lotr_characters[i];
 }
 
 
@@ -611,7 +611,7 @@ character_fill_map(int map_num, int building)
     map_remove_all_characters();
 
     for (i = 0; characters_pos[i][0] != 0xffff; ++i) {
-        character = lord_characters[characters_pos[i][3]];
+        character = lotr_characters[characters_pos[i][3]];
         if (!character->actived && characters_pos[i][2] == map_num)
 #ifdef TTT
             if (characters_pos[i][6] == building)
@@ -653,7 +653,7 @@ character_draw(int id, int x, int y, int dir)
     int char_shape;
 
     if (dir < 0 || dir > 3) {
-        fprintf(stderr, "lord: wrong direction in character_draw.\n");
+        fprintf(stderr, "lotr: wrong direction in character_draw.\n");
         exit(1);
     }
 
@@ -1022,7 +1022,7 @@ void
 character_command_npc_init(Character *character, int type, int value)
 {
 
-    /* we set characters parameter at position <type> in original lord
+    /* we set characters parameter at position <type> in original lotr
        npc structure */
 
     switch (type) {
@@ -1064,7 +1064,7 @@ character_command_npc_init(Character *character, int type, int value)
             break;
 
         default:
-            fprintf(stderr, "lord: unknown NPC_INIT type %02x\n", type);
+            fprintf(stderr, "lotr: unknown NPC_INIT type %02x\n", type);
     }
 }
 
@@ -1178,8 +1178,8 @@ character_get_ringbearer()
 {
     int i;
     for (i = 0; i < CHARACTERS_NUM; ++i)
-        if (lord_characters[i] && lord_characters[i]->ring_mode)
-            return lord_characters[i];
+        if (lotr_characters[i] && lotr_characters[i]->ring_mode)
+            return lotr_characters[i];
     return 0;
 }
 
@@ -1195,8 +1195,8 @@ character_set_party(int id)
     Character *party[11];
 
     for (i = 0, size = 0; size < 10 && i < CHARACTERS_NUM; ++i)
-        if (lord_characters[i] != NULL && lord_characters[i]->party_id == id)
-            party[size++] = lord_characters[i];
+        if (lotr_characters[i] != NULL && lotr_characters[i]->party_id == id)
+            party[size++] = lotr_characters[i];
 
     game_set_party_characters(party, size);
 

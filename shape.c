@@ -28,7 +28,7 @@
 
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "graphics.h"
 #include "shape.h"
 #include "utils.h"
@@ -78,16 +78,16 @@ shapes_init(void)
     int w, h;
 
 
-    pal = lord_fopen("shapes.pal", "rb");
-    if (lord_filelen(pal) != sizeof(Palette)) {
-        fprintf(stderr, "lord: arts.pal is not a valid palette file\n");
+    pal = lotr_fopen("shapes.pal", "rb");
+    if (lotr_filelen(pal) != sizeof(Palette)) {
+        fprintf(stderr, "lotr: arts.pal is not a valid palette file\n");
         exit(1);
     }
 
-    shapes_palette = lord_malloc(sizeof(Palette));
+    shapes_palette = lotr_malloc(sizeof(Palette));
 
     if (fread(shapes_palette, sizeof(Palette), 1, pal) != 1) {
-        fprintf(stderr, "lord: can not read arts.pal\n");
+        fprintf(stderr, "lotr: can not read arts.pal\n");
         exit(1);
     }
 
@@ -100,7 +100,7 @@ shapes_init(void)
     archive = archive_ndx_open("shapes");
 
     if (archive->size != SHAPES_NUM) {
-        fprintf(stderr, "lord: expecting %d shapes (%d found)\n", SHAPES_NUM,
+        fprintf(stderr, "lotr: expecting %d shapes (%d found)\n", SHAPES_NUM,
                 archive->size);
         exit(1);
     }
@@ -112,7 +112,7 @@ shapes_init(void)
             shapes_cache[i] = NULL;
         } else {
             data = decompress_ndxarchive(archive, i, &size);
-            shapes_cache[i] = lord_malloc(sizeof(Shape));
+            shapes_cache[i] = lotr_malloc(sizeof(Shape));
 
             w = shapes_param[i][0];
             h = size / shapes_param[i][0] / shapes_param[i][1];
@@ -144,7 +144,7 @@ shapes_init(void)
     archive = archive_ndx_open("portrait");
 
     if (archive->size != PORTRAITS_NUM) {
-        fprintf(stderr, "lord: expecting %d portraits (%d found)\n",
+        fprintf(stderr, "lotr: expecting %d portraits (%d found)\n",
                 PORTRAITS_NUM, archive->size);
         exit(1);
     }
@@ -156,7 +156,7 @@ shapes_init(void)
         data = decompress_ndxarchive(archive, i, &size);
 
         if (size == 4970 || size == 3768) {
-            pixmap = lord_malloc(sizeof(Pixmap));
+            pixmap = lotr_malloc(sizeof(Pixmap));
             pixmap->width = 68;
             pixmap->height = 54;
             pixmap->datasize = pixmap->width * pixmap->height;
@@ -164,7 +164,7 @@ shapes_init(void)
             pixmap->data = data;
 
 
-            portraits_cache[i] = lord_malloc(sizeof(Portrait));
+            portraits_cache[i] = lotr_malloc(sizeof(Portrait));
 
             portraits_cache[i]->pixmap = pixmap;
 
@@ -180,7 +180,7 @@ shapes_init(void)
 
             } else {
                 portraits_cache[i]->freepalette = 0;
-                portraits_cache[i]->palette = lord_malloc(sizeof(Palette));
+                portraits_cache[i]->palette = lotr_malloc(sizeof(Palette));
 
                 /* portraits palette is stored in 0x60--0x80 */
                 memcpy((void *)portraits_cache[i]->palette + 3 * 0x60,
@@ -316,7 +316,7 @@ portrait_draw(int index, int x, int y)
 {
 
     if (index < 0 || index >= PORTRAITS_NUM || portraits_cache[index] == NULL) {
-        fprintf(stderr, "lord: invalid portrait num %d\n", index);
+        fprintf(stderr, "lotr: invalid portrait num %d\n", index);
         // FIXME: exit(1);
         return;
     }

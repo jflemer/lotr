@@ -31,15 +31,15 @@
 
 
 /* sleep specified number of miliseconds */
-extern void lord_sleep(int delay);
+extern void lotr_sleep(int delay);
 
 
 /* resets timer */
-extern void lord_reset_timer(void);
+extern void lotr_reset_timer(void);
 
 
-/* wait delay milliseconds from the last lord_timer call */
-extern void lord_timer(int delay);
+/* wait delay milliseconds from the last lotr_timer call */
+extern void lotr_timer(int delay);
 
 
 

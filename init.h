@@ -31,10 +31,10 @@
 
 
 /* initialize system */
-extern void lord_init(void);
+extern void lotr_init(void);
 
 /* quit system */
-extern void lord_close(void);
+extern void lotr_close(void);
 
 
 

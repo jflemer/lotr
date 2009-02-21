@@ -26,13 +26,13 @@
 *****************************************************************************/
 
 
-#include "lord.h"
+#include "lotr.h"
 #include "character.h"
 #include "cartoon.h"
 #include "combat.h"
 #include "game.h"
 #include "gui.h"
-#include "lord_sdl.h"
+#include "lotr_sdl.h"
 #include "map.h"
 #include "object.h"
 #include "sound.h"
@@ -521,11 +521,11 @@ combat_enemy(Character *character, int x, int y, int dir, int map_id)
     Character *new_character;
 
     if (combat_enemies_num == COMBAT_MAX_ENEMIES) {
-        fprintf(stderr, "lord: Too many enemies!\n");
+        fprintf(stderr, "lotr: Too many enemies!\n");
         exit(1);
     }
 
-    new_character = lord_malloc(sizeof(Character));
+    new_character = lotr_malloc(sizeof(Character));
     memcpy(new_character, character, sizeof(Character));
 
     new_character->id = 0x100 + combat_enemies_num;
@@ -581,7 +581,7 @@ void
 combat_player_move()
 {
 
-    if (lord_key_left() &&
+    if (lotr_key_left() &&
         map_can_move_to(active_character, active_character->x / 4 - 1,
                         active_character->y / 4)) {
         character_move_left(active_character);
@@ -589,7 +589,7 @@ combat_player_move()
         return;
     }
 
-    if (lord_key_right() &&
+    if (lotr_key_right() &&
         map_can_move_to(active_character, active_character->x / 4 + 1,
                         active_character->y / 4)) {
         character_move_right(active_character);
@@ -597,7 +597,7 @@ combat_player_move()
         return;
     }
 
-    if (lord_key_up() &&
+    if (lotr_key_up() &&
         map_can_move_to(active_character, active_character->x / 4,
                         active_character->y / 4 - 1)) {
         character_move_up(active_character);
@@ -605,7 +605,7 @@ combat_player_move()
         return;
     }
 
-    if (lord_key_down() &&
+    if (lotr_key_down() &&
         map_can_move_to(active_character, active_character->x / 4,
                         active_character->y / 4 + 1)) {
         character_move_down(active_character);
@@ -638,7 +638,7 @@ combat_enemy_move()
 
     /* choose whom to attack */
 
-    first_char = lord_rnd(combat_party_size) - 1;
+    first_char = lotr_rnd(combat_party_size) - 1;
 
     i = first_char;
     while (!active_character->has_bow) {
@@ -893,7 +893,7 @@ combat_character_finished()
     }
 
     gui_set_choosed(active_character);
-    lord_reset_keyboard();
+    lotr_reset_keyboard();
 
 }
 
@@ -912,7 +912,7 @@ combat_if_hits(int who_dex, int whom_dex, int tohit)
     else
         whom_dex -= tohit * 10;
 
-    if (lord_rnd(who_dex) > lord_rnd(whom_dex))
+    if (lotr_rnd(who_dex) > lotr_rnd(whom_dex))
         return 1;
 
     return 0;
@@ -1060,8 +1060,8 @@ combat_attack(Character *who, Character *whom)
     hits = combat_if_hits(who->dex, whom->dex, tohit);
     hits2 = combat_if_hits(who->dex, whom->dex, tohit);
 
-    luck1 = lord_rnd(30 + who->luck);
-    luck2 = lord_rnd(30 + who->luck);
+    luck1 = lotr_rnd(30 + who->luck);
+    luck2 = lotr_rnd(30 + who->luck);
 
     if (luck1 > 2 * luck2)
         hits = max(hits, hits2);
@@ -1077,14 +1077,14 @@ combat_attack(Character *who, Character *whom)
     }
 
     if (hits) {
-        damage1 = lord_rnd(who->str) / 10 + lord_rnd(damage)
-            + bonus * lord_rnd(damage) - damage_reduced;
-        damage2 = lord_rnd(who->str) / 10 + lord_rnd(damage)
-            + bonus * lord_rnd(damage) - damage_reduced;
+        damage1 = lotr_rnd(who->str) / 10 + lotr_rnd(damage)
+            + bonus * lotr_rnd(damage) - damage_reduced;
+        damage2 = lotr_rnd(who->str) / 10 + lotr_rnd(damage)
+            + bonus * lotr_rnd(damage) - damage_reduced;
 
 
-        luck1 = lord_rnd(30 + who->luck);
-        luck2 = lord_rnd(30 + who->luck);
+        luck1 = lotr_rnd(30 + who->luck);
+        luck2 = lotr_rnd(30 + who->luck);
 
         damage = damage1;
 
@@ -1153,7 +1153,7 @@ combat_proceed_frames(void)
     while (combat_frame()) {
         map_animate_frame();
         graphics_update_screen();
-        lord_timer(FRAME_TIME);
-        lord_poll_events();
+        lotr_timer(FRAME_TIME);
+        lotr_poll_events();
     }
 }
