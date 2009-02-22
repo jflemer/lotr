@@ -1,765 +1,765 @@
 # I find that it prepares me for the many battles which Lorien must fight, ere this war ends.
-00=I find that it prepares me for the many battles which Lorien must fight, ere this war ends.
+00=
 
 # The mournful ruins stand alone. The dwarves built them long ago, and like most things of dwarven manufacture, endure, even when the dwarves themselves were slaughtered long ago.
-01=The mournful ruins stand alone. The dwarves built them long ago, and like most things of dwarven manufacture, endure, even when the dwarves themselves were slaughtered long ago.
+01=
 
 # This place is not uninhabited.
-02=This place is not uninhabited.
+02=
 
 # Cunningly hidden among the ruins is a horn of purest silver.
-03=Cunningly hidden among the ruins is a horn of purest silver.
+03=
 
 # Unconcerned for the suffering that you endured in Moria, three huge uruk guards raise their swords, eager to complete the destruction of the Fellowship.
-04=Unconcerned for the suffering that you endured in Moria, three huge uruk guards raise their swords, eager to complete the destruction of the Fellowship.
+04=
 
 # Suddenly, you are overwhelmed by a feeling of intense evil. The weaker members are overcome with dizziness and sickness. The Shadow has Fallen.
-05=Suddenly, you are overwhelmed by a feeling of intense evil. The weaker members are overcome with dizziness and sickness. The Shadow has Fallen.
+05=
 
 # You recover from the Black Breath to find -- the Ringbearer is gone!
-06=You recover from the Black Breath to find -- the Ringbearer is gone!
+06=
 
 # You notice Sam Gamgee is now gone!
-07=You notice Sam Gamgee is now gone!
+07=
 
 # In the distance, a huge creature with jet black hide flaps its vast black wings as it flies away. You will never forget the laughter of the Witch King as he takes his prize to Dol Guldur. Wildly, you try to shoot it down -- to no avail.
-08=In the distance, a huge creature with jet black hide flaps its vast black wings as it flies away. You will never forget the laughter of the Witch King as he takes his prize to Dol Guldur. Wildly, you try to shoot it down -- to no avail.
+08=
 
 # The water is alive with the light of Earendil's star.
-09=The water is alive with the light of Earendil's star.
+09=
 
 # Your intuition serves you well. For when you draw the water into the bottle, the bottle becomes alive with the light of Earendil's star, the Silmaril that he brought through great peril to Valinor.
-0a=Your intuition serves you well. For when you draw the water into the bottle, the bottle becomes alive with the light of Earendil's star, the Silmaril that he brought through great peril to Valinor.
+0a=
 
 # Here is the spring from which the Silverlode rises. Do not drink of it! It is icy cold.
-0b=Here is the spring from which the Silverlode rises. Do not drink of it! It is icy cold.
+0b=
 
 # "There lie the woods of Lothlorien!" says Legolas. "The fairest of all the dwellings of my people! Were that it were springtime!"
-0c="There lie the woods of Lothlorien!" says Legolas. "The fairest of all the dwellings of my people! Were that it were springtime!"
+0c=
 
 # Boromir is less than enthused about entering Lorien. "In Gondor they say none enter these woods unscathed."
-0d=Boromir is less than enthused about entering Lorien. "In Gondor they say none enter these woods unscathed."
+0d=
 
 # You cross the stream of Nimrodel; mingled with the sound of its water you can hear the voice of an elven maid, singing sadly.
-0e=You cross the stream of Nimrodel; mingled with the sound of its water you can hear the voice of an elven maid, singing sadly.
+0e=
 
 # Somewhere to the North, you can discern the voice of a hammer striking against an anvil.
-0f=Somewhere to the North, you can discern the voice of a hammer striking against an anvil.
+0f=
 
 # The Lady appears and greets you. "Welcome to the berths of Lorien, on the shores of the great river Anduin. Are you ready to depart, to seek thy comrades in Dol Guldur? You cannot return to Lorien until victory is thine." (Y/N)
-10=The Lady appears and greets you. "Welcome to the berths of Lorien, on the shores of the great river Anduin. Are you ready to depart, to seek thy comrades in Dol Guldur? You cannot return to Lorien until victory is thine." (Y/N)
+10=
 
 # There is a useful item here.
-11=There is a useful item here.
+11=
 
 # Welcome to Lorien, peace be with you. May you be protected from the Shadow.
-12=Welcome to Lorien, peace be with you. May you be protected from the Shadow.
+12=
 
 # Welcome to the Golden Wood. I have no joy to bring thee, but I will aid thee if I can.
-13=Welcome to the Golden Wood. I have no joy to bring thee, but I will aid thee if I can.
+13=
 
 # The labors of Lorien are not easy, and I do not have much time. Still, if you have a question, ask and I shall answer.
-14=The labors of Lorien are not easy, and I do not have much time. Still, if you have a question, ask and I shall answer.
+14=
 
 # On this matter, I have no counsel to offer.
-15=On this matter, I have no counsel to offer.
+15=
 
 # It is not often that elves see strange faces in Caras Galadon! Welcome!
-16=It is not often that elves see strange faces in Caras Galadon! Welcome!
+16=
 
 # You are too busy. I will not bother you again with the offer.
-17=You are too busy. I will not bother you again with the offer.
+17=
 
 # The only crowns in Lorien are crowns of elanor; these are never taken; they may only be given as gifts.
-18=The only crowns in Lorien are crowns of elanor; these are never taken; they may only be given as gifts.
+18=
 
 # I have no thoughts on these great matters; I am a simpler gatherer of food. If hungry, look for lembas.
-19=I have no thoughts on these great matters; I am a simpler gatherer of food. If hungry, look for lembas.
+19=
 
 # You discover an item of extreme value.
-1a=You discover an item of extreme value.
+1a=
 
 # This place has a special place in Aragorn's heart. Here he plighted his troth to the Lady Arwen.
-1b=This place has a special place in Aragorn's heart. Here he plighted his troth to the Lady Arwen.
+1b=
 
 # I am Esgaldil. A poet. Later I shall say the Lay of Leithian.
-1c=I am Esgaldil. A poet. Later I shall say the Lay of Leithian.
+1c=
 
 # I know of the Stone. It can be found at a place which is important to Aragorn. Let your heart lead you.
-1d=I know of the Stone. It can be found at a place which is important to Aragorn. Let your heart lead you.
+1d=
 
 # I am Meleth. Forgive me if I am sad, but the one I love has gone to the Havens. I know of your quest and will help you.
-1e=I am Meleth. Forgive me if I am sad, but the one I love has gone to the Havens. I know of your quest and will help you.
+1e=
 
 # I have heard that a stone of some power is hidden near the mound of mourning. Search there.
-1f=I have heard that a stone of some power is hidden near the mound of mourning. Search there.
+1f=
 
 # When elves tire of Middle Earth, they go to the Havens, and sail across the Bent Seas to the Blessed Realm.
-20=When elves tire of Middle Earth, they go to the Havens, and sail across the Bent Seas to the Blessed Realm.
+20=
 
 # Within this deep green hollow murmurs the silver stream that issues from the fountain on the hill. At the bottom, upon a low pedestal, stood a basin of silver,  wide and shallow, and beside it a silver ewer.
-21=Within this deep green hollow murmurs the silver stream that issues from the fountain on the hill. At the bottom, upon a low pedestal, stood a basin of silver,  wide and shallow, and beside it a silver ewer.
+21=
 
 # The lock on this concealed chamber bears the mark of Galadriel herself. Only her power can open it.
-22=The lock on this concealed chamber bears the mark of Galadriel herself. Only her power can open it.
+22=
 
 # This is the entrance to the flet of Galadriel and Celeborn. Your advance is halted. "The Lady will not see  you until you bring her five items:  a silver horn, a magic scabbard, a crown of elanor, an elfstone, and the light of Earendil's star."
-23=This is the entrance to the flet of Galadriel and Celeborn. Your advance is halted. "The Lady will not see  you until you bring her five items:  a silver horn, a magic scabbard, a crown of elanor, an elfstone, and the light of Earendil's star."
+23=
 
 # The light of the star of Earendil is quite beautiful at this time of evening.
-24=The light of the star of Earendil is quite beautiful at this time of evening.
+24=
 
 # I have heard that on nights like this, the light of the star lingers in any water that reflects it.
-25=I have heard that on nights like this, the light of the star lingers in any water that reflects it.
+25=
 
 # An elf stands by the river, throwing rocks into the brown water and  singing bitter songs of great elven battles that were fought when the world was young.
-26=An elf stands by the river, throwing rocks into the brown water and  singing bitter songs of great elven battles that were fought when the world was young.
+26=
 
 # I fought in battles long ago, ere the proud towers of Gondolin burned, and saw the River Sirion vanish under waves.
-27=I fought in battles long ago, ere the proud towers of Gondolin burned, and saw the River Sirion vanish under waves.
+27=
 
 # Near the docks where the graceful ships of Lorien are usually berthed, is the scabbard of a great sword, lying upon the grass.
-28=Near the docks where the graceful ships of Lorien are usually berthed, is the scabbard of a great sword, lying upon the grass.
+28=
 
 # Boromir examines the scabbard and gasps: "This is the sign of the house of Hurin, stewards of Gondor, my own house! How would such a scabbard come to this place?"
-29=Boromir examines the scabbard and gasps: "This is the sign of the house of Hurin, stewards of Gondor, my own house! How would such a scabbard come to this place?"
+29=
 
 # He is my father. I have built his symbol into the gateway door near my Mirror.
-2a=He is my father. I have built his symbol into the gateway door near my Mirror.
+2a=
 
 # The doorway is sealed. There is a an odd-shaped keyhole.
-2b=The doorway is sealed. There is a an odd-shaped keyhole.
+2b=
 
 # This door is sealed with the symbol of Galadriel, the ruler of the elven forest of Lothlorien. You cannot proceed without the proper key.
-2c=This door is sealed with the symbol of Galadriel, the ruler of the elven forest of Lothlorien. You cannot proceed without the proper key.
+2c=
 
 # The swanships of the elves are said by legends to be the most graceful ships ever built. Upon seeing them, you believe the legend does not do them justice.
-2d=The swanships of the elves are said by legends to be the most graceful ships ever built. Upon seeing them, you believe the legend does not do them justice.
+2d=
 
 # "Greetings visitors. I am Linwen." a beautiful elven voice says in greeting. She turns to you and says: "Soon I will depart, and either flee the Shadow and the Enemy, or die. What matter most troubles thy heart?"
-2e="Greetings visitors. I am Linwen." a beautiful elven voice says in greeting. She turns to you and says: "Soon I will depart, and either flee the Shadow and the Enemy, or die. What matter most troubles thy heart?"
+2e=
 
 # I have heard it said that a human warrior once swam the Anduin and died on the	 Hythe. His scabbard might be there.
-2f=I have heard it said that a human warrior once swam the Anduin and died on the	 Hythe. His scabbard might be there.
+2f=
 
 # Attached to the tree is a rope ladder that leads up to one of the flets where the elves live.
-30=Attached to the tree is a rope ladder that leads up to one of the flets where the elves live.
+30=
 
 # Beyond this gate is the Hythe and the great River Anduin, which flows as far south as the great kingdom of Gondor.
-31=Beyond this gate is the Hythe and the great River Anduin, which flows as far south as the great kingdom of Gondor.
+31=
 
 # "I notice that you have a cracked ring," Curudol says, referring to the Smith's Ring from Old Man Willow. "I can fix it, if you wish."
-32="I notice that you have a cracked ring," Curudol says, referring to the Smith's Ring from Old Man Willow. "I can fix it, if you wish."
+32=
 
 # The craft of Ring making is beyond my talents. I might reforge a lesser Ring, if you gave it to me.
-33=The craft of Ring making is beyond my talents. I might reforge a lesser Ring, if you gave it to me.
+33=
 
 # He helped the Enemy learn the craft of Ring-making, only to be betrayed. This was long ago, of course.
-34=He helped the Enemy learn the craft of Ring-making, only to be betrayed. This was long ago, of course.
+34=
 
 # Curudol labors over the forge for what seems an eternity. Finally, he holds the metal band aloft. "A ring of power in the hand of Curudol! Fortune has at last shone upon me!"
-35=Curudol labors over the forge for what seems an eternity. Finally, he holds the metal band aloft. "A ring of power in the hand of Curudol! Fortune has at last shone upon me!"
+35=
 
 # You have come upon shallow burial mounds.
-36=You have come upon shallow burial mounds.
+36=
 
 # Elves never made horns, but dwarves did. You might find a horn in one of the ruins east of the mountains.
-37=Elves never made horns, but dwarves did. You might find a horn in one of the ruins east of the mountains.
+37=
 
 # This is what hobbits and humans would call a tavern, except that the occupants are somewhat more sedate. The minstrel Rathgil is playing a song of long ago, while the elves sip ale and listen attentively.
-38=This is what hobbits and humans would call a tavern, except that the occupants are somewhat more sedate. The minstrel Rathgil is playing a song of long ago, while the elves sip ale and listen attentively.
+38=
 
 # Greetings strangers. If you request food and drink, ask and you shall receive.
-39=Greetings strangers. If you request food and drink, ask and you shall receive.
+39=
 
 # As you carefully search this place, you notice an object that may be useful to you.
-3a=As you carefully search this place, you notice an object that may be useful to you.
+3a=
 
 # Only at night does the star shine brightly. I'm not sure how anyone could capture it.
-3b=Only at night does the star shine brightly. I'm not sure how anyone could capture it.
+3b=
 
 # This flet contains the library of Lothlorien. On preserved mallorn leaves, delicate handwriting describes the triumphs and tragedies of elves and men during the long history of Middle Earth.
-3c=This flet contains the library of Lothlorien. On preserved mallorn leaves, delicate handwriting describes the triumphs and tragedies of elves and men during the long history of Middle Earth.
+3c=
 
 # When warriors die in Lorien, their weapons are sometimes placed on burial mounds in the Hythe near the river.
-3d=When warriors die in Lorien, their weapons are sometimes placed on burial mounds in the Hythe near the river.
+3d=
 
 # Hmm, there looks like something interesting on this scroll.
-3e=Hmm, there looks like something interesting on this scroll.
+3e=
 
 # The smell of baked goods is almost overwhelming. The elven baker Ciryon is preparing bread made with honey, flour, elanor dew, and ground mallorn seed.
-3f=The smell of baked goods is almost overwhelming. The elven baker Ciryon is preparing bread made with honey, flour, elanor dew, and ground mallorn seed.
+3f=
 
 # We call this lembas, or waybread, for it is an excellent meal to take on travels. Only Galadriel may give this bread.
-40=We call this lembas, or waybread, for it is an excellent meal to take on travels. Only Galadriel may give this bread.
+40=
 
 # It is a custom that elven maids spin together a chain of elanor and weave them into a crown to give as gifts.
-41=It is a custom that elven maids spin together a chain of elanor and weave them into a crown to give as gifts.
+41=
 
 # In this flet, an elven maid with soft black hair hums as she turns thread on a spinning wheel. She notices you and nods. "I am the seamstress Tinalin." she says. "I sit and weave and make new things. This cape, do you like it?"
-42=In this flet, an elven maid with soft black hair hums as she turns thread on a spinning wheel. She notices you and nods. "I am the seamstress Tinalin." she says. "I sit and weave and make new things. This cape, do you like it?"
+42=
 
 # "Then," says Tinalin, "You must have it! I am of a melancholy mood, and if any of my works can help the Great Quest, even in the smallest way, you shall have made my life a better one. Take it!"
-43="Then," says Tinalin, "You must have it! I am of a melancholy mood, and if any of my works can help the Great Quest, even in the smallest way, you shall have made my life a better one. Take it!"
+43=
 
 # She seems downcast by your refusal. "Then I must I must continue my labor. My hardened fingers must struggle harder still. Farewell, Lords of the Quest! Leave Tinalin to her wheel, for it shall not cease until the Shadow comes to Lorien."
-44=She seems downcast by your refusal. "Then I must I must continue my labor. My hardened fingers must struggle harder still. Farewell, Lords of the Quest! Leave Tinalin to her wheel, for it shall not cease until the Shadow comes to Lorien."
+44=
 
 # Tinalin stares at you. "I am not a woman without pride. What I offer once, I do not offer again, even to the Lords of the West. Go to your Quest, and do not torment me again. Leave me!"
-45=Tinalin stares at you. "I am not a woman without pride. What I offer once, I do not offer again, even to the Lords of the West. Go to your Quest, and do not torment me again. Leave me!"
+45=
 
 # On the walls of this place are many beautiful bows, carved with masterful skill by Thontur, the finest elven bowyer in Middle Earth. "My bows are in short supply. But I have one of special quality to give. Will you take it?"
-46=On the walls of this place are many beautiful bows, carved with masterful skill by Thontur, the finest elven bowyer in Middle Earth. "My bows are in short supply. But I have one of special quality to give. Will you take it?"
+46=
 
 # Thontur smiles. "May your aim be true! May you fell many of your enemies, if such be your need! My works have slain many orcs." He hands you a beautiful white bow, made from the bark of a mallorn tree.
-47=Thontur smiles. "May your aim be true! May you fell many of your enemies, if such be your need! My works have slain many orcs." He hands you a beautiful white bow, made from the bark of a mallorn tree.
+47=
 
 # He frowns, looking rather disappointed. Finally he says to you: "The offer still stands. If you come again, I will not refuse you."
-48=He frowns, looking rather disappointed. Finally he says to you: "The offer still stands. If you come again, I will not refuse you."
+48=
 
 # My bows are from mallorn wood, which have an unsurpassed quality even when taken from dead trees.
-49=My bows are from mallorn wood, which have an unsurpassed quality even when taken from dead trees.
+49=
 
 # A wounded elf rests against a desk, gazing out into the forest as if looking for no one else can see.
-4a=A wounded elf rests against a desk, gazing out into the forest as if looking for no one else can see.
+4a=
 
 # I am Elring. I need your help.
-4b=I am Elring. I need your help.
+4b=
 
 # See Paragraph number 191.
-4c=See Paragraph number 191.
+4c=
 
 # An ancient and powerful spirit, the cruel Lord of winter upon the Mountains.
-4d=An ancient and powerful spirit, the cruel Lord of winter upon the Mountains.
+4d=
 
 # On a chair you see a young and very beautiful elf-maid, singing softly and holding a crown of elanor in her hand. She takes a look at Legolas, and says: "At last the one I have waited for has come. Until this moment, I knew not love."
-4e=On a chair you see a young and very beautiful elf-maid, singing softly and holding a crown of elanor in her hand. She takes a look at Legolas, and says: "At last the one I have waited for has come. Until this moment, I knew not love."
+4e=
 
 # On a chair you see a young and very beautiful elf-maid, singing softly and holding a crown of elanor flowers in her hand.
-4f=On a chair you see a young and very beautiful elf-maid, singing softly and holding a crown of elanor flowers in her hand.
+4f=
 
 # I sit in this tree in the heart of the realm of the elves, awaiting love.
-50=I sit in this tree in the heart of the realm of the elves, awaiting love.
+50=
 
 # I made this as a gift for one whom I could love. I want the lord Legolas to have this.
-51=I made this as a gift for one whom I could love. I want the lord Legolas to have this.
+51=
 
 # Alas! If I give this to you, I will be fated never to know love! Would you take it and deny me love forever? (Y/N)
-52=Alas! If I give this to you, I will be fated never to know love! Would you take it and deny me love forever? (Y/N)
+52=
 
 # I understand. Take what you need and leave me in peace.
-53=I understand. Take what you need and leave me in peace.
+53=
 
 # I cannot permit even such a dreadful doom as mine to stand in the way of the Quest. I insist that you take the crown.
-54=I cannot permit even such a dreadful doom as mine to stand in the way of the Quest. I insist that you take the crown.
+54=
 
 # Love is something that really can't be described. We need it, all things need it, perhaps even the Dark Lord.
-55=Love is something that really can't be described. We need it, all things need it, perhaps even the Dark Lord.
+55=
 
 # This flet is one of Lorien's guard posts, cunningly hidden in the tree branches. A tall strong elf, obviously one of the commanders of Lorien, looks at you and introduces himself as Celebrith, son of Dagnos.
-56=This flet is one of Lorien's guard posts, cunningly hidden in the tree branches. A tall strong elf, obviously one of the commanders of Lorien, looks at you and introduces himself as Celebrith, son of Dagnos.
+56=
 
 # Lorien is an island in a sea of Shadow, and the water closes upon us. Either the Quest succeeds, or  Shadow shall rule.
-57=Lorien is an island in a sea of Shadow, and the water closes upon us. Either the Quest succeeds, or  Shadow shall rule.
+57=
 
 # I have lived in this place for endless years and seen many dark times. Never have things seemed this bleak.
-58=I have lived in this place for endless years and seen many dark times. Never have things seemed this bleak.
+58=
 
 # If the Lady be willing, then I shall join your Quest, even unto the death of Celebrith.
-59=If the Lady be willing, then I shall join your Quest, even unto the death of Celebrith.
+59=
 
 # Somewhere to the west, you can discern the voice of an elven maid, singing a song about elanor flowers.
-5a=Somewhere to the west, you can discern the voice of an elven maid, singing a song about elanor flowers.
+5a=
 
 # No orc has ever entered Caras Galadon, and while I live, none shall.
-5b=No orc has ever entered Caras Galadon, and while I live, none shall.
+5b=
 
 # Curse the Shadow! It is a terrible thing, but it also brings out unknown strengths in those that fight it.
-5c=Curse the Shadow! It is a terrible thing, but it also brings out unknown strengths in those that fight it.
+5c=
 
 # Do not despair! There have been darker days than this. If the Lady wills it, I will join you.
-5d=Do not despair! There have been darker days than this. If the Lady wills it, I will join you.
+5d=
 
 # You enter the gate of Caras Galadon, the city of the trees. No folk can you see, but there are many voices about you. In the distance, you hear the sound of singing falling from on high like soft rain upon the leaves.It is a wondrous place.
-5e=You enter the gate of Caras Galadon, the city of the trees. No folk can you see, but there are many voices about you. In the distance, you hear the sound of singing falling from on high like soft rain upon the leaves.It is a wondrous place.
+5e=
 
 # After climbing a great height, you find yourself in a large hall, set amid the branches of the tallest mallorn in Caras Galadon. On two chairs beneath the bole of the tree and canopied by living boughs sit Lord Celeborn and Lady Galadriel.
-5f=After climbing a great height, you find yourself in a large hall, set amid the branches of the tallest mallorn in Caras Galadon. On two chairs beneath the bole of the tree and canopied by living boughs sit Lord Celeborn and Lady Galadriel.
+5f=
 
 # I am Celeborn, kinsman of Thingol. Ask for my help on your quest, and you shall have it.
-60=I am Celeborn, kinsman of Thingol. Ask for my help on your quest, and you shall have it.
+60=
 
 # I am Galadriel. My father was Finarfin. The preservation of Lorien is my task; thus I am Doomed. Still I shall help.
-61=I am Galadriel. My father was Finarfin. The preservation of Lorien is my task; thus I am Doomed. Still I shall help.
+61=
 
 # If the Dark Lord triumphs, then we shall be destroyed. If you triumph, the age of elves shall come to an end.
-62=If the Dark Lord triumphs, then we shall be destroyed. If you triumph, the age of elves shall come to an end.
+62=
 
 # I have not walked in Greenwood for many an age. I know nothing of that foul citadel. Alas, only Gandalf knows.
-63=I have not walked in Greenwood for many an age. I know nothing of that foul citadel. Alas, only Gandalf knows.
+63=
 
 # Meet me at the Mirror. There we shall search for the lost Ringbearer. We must learn more of his predicament.
-64=Meet me at the Mirror. There we shall search for the lost Ringbearer. We must learn more of his predicament.
+64=
 
 # The Mirror is in a cleft. Its stairs are in the south part of Lorien, near the locked gate.
-65=The Mirror is in a cleft. Its stairs are in the south part of Lorien, near the locked gate.
+65=
 
 # I will accompany you at least part of the way to Dol Guldur, if that is your wish.
-66=I will accompany you at least part of the way to Dol Guldur, if that is your wish.
+66=
 
 # The Quest must succeed. Dol Guldur is by all accounts a terrifying place; perhaps Rivendell would help us.
-67=The Quest must succeed. Dol Guldur is by all accounts a terrifying place; perhaps Rivendell would help us.
+67=
 
 # I know little of the place. Have you checked the library of Lorien? It has information on many places.
-68=I know little of the place. Have you checked the library of Lorien? It has information on many places.
+68=
 
 # Thingol was the king of Doriath long ago. But now is not the time to remember the the past. A great peril consumes us.
-69=Thingol was the king of Doriath long ago. But now is not the time to remember the the past. A great peril consumes us.
+69=
 
 # Behind a jutting boulder, you spot an orc waiting in ambush!
-6a=Behind a jutting boulder, you spot an orc waiting in ambush!
+6a=
 
 # Arrows seem to come out of nowhere, striking the party. Howling wildly, a band of four orcs, armed with swords, charge you.
-6b=Arrows seem to come out of nowhere, striking the party. Howling wildly, a band of four orcs, armed with swords, charge you.
+6b=
 
 # This is an old elven keep. However, the workmanship is clearly dwarven; obviously it dates back to the days in Eregion when the elven smiths and the dwarf lords of Moria formed a great (but now long sundered) friendship.
-6c=This is an old elven keep. However, the workmanship is clearly dwarven; obviously it dates back to the days in Eregion when the elven smiths and the dwarf lords of Moria formed a great (but now long sundered) friendship.
+6c=
 
 # The stench of brimstone is quite overpowering.
-6d=The stench of brimstone is quite overpowering.
+6d=
 
 # The bones of these creatures are big enough to be dragons.
-6e=The bones of these creatures are big enough to be dragons.
+6e=
 
 # Long ago, the dwarves of Khazad-dum used this room to make steel. The fires have long since ebbed, leaving a forge as the only reminder of what was once here. You feel that all is not as it should be in this place. Dwarven runes decorate the forge.
-6f=Long ago, the dwarves of Khazad-dum used this room to make steel. The fires have long since ebbed, leaving a forge as the only reminder of what was once here. You feel that all is not as it should be in this place. Dwarven runes decorate the forge.
+6f=
 
 # The apparition of a great dwarf appears, rising in a vision of a smoke from the forge. The dwarves fall to their knees -- surely this must be Durin, father of all dwarves! "Find my axe!" he commands "Use it to destroy the Dark Lord!"
-70=The apparition of a great dwarf appears, rising in a vision of a smoke from the forge. The dwarves fall to their knees -- surely this must be Durin, father of all dwarves! "Find my axe!" he commands "Use it to destroy the Dark Lord!"
+70=
 
 # A sound like chanting begins, in the ancient tongue. "Durin's heart and Durin's hammer and Durin's breath." it begins. "Durin's hand and Durin's soul and Durin's death." Suddenly there is fire everywhere.
-71=A sound like chanting begins, in the ancient tongue. "Durin's heart and Durin's hammer and Durin's breath." it begins. "Durin's hand and Durin's soul and Durin's death." Suddenly there is fire everywhere.
+71=
 
 # Upon the bridge, the chieftain of the Black Riders, the Witch-King of Angmar, the Black Captain, known by a hundred accursed names, laughs at you. "This is Sauron's domain, as all places shall soon be Sauron's domain!" Then the vision fades.
-72=Upon the bridge, the chieftain of the Black Riders, the Witch-King of Angmar, the Black Captain, known by a hundred accursed names, laughs at you. "This is Sauron's domain, as all places shall soon be Sauron's domain!" Then the vision fades.
+72=
 
 # From behind the rubble, a cry of "Gandalf! Gandalf!" can clearly be heard."
-73=From behind the rubble, a cry of "Gandalf! Gandalf!" can clearly be heard."
+73=
 
 # The rubble cannot be moved by a spade or opened with a pick. There is some strange magic at work here.
-74=The rubble cannot be moved by a spade or opened with a pick. There is some strange magic at work here.
+74=
 
 # A brown bird flies out of the cave and into the light, celebrating its freedom. "Beware the wolf in another man's clothes." it says as it flies away.
-75=A brown bird flies out of the cave and into the light, celebrating its freedom. "Beware the wolf in another man's clothes." it says as it flies away.
+75=
 
 # The chasm seems to descend into infinity. It is a very wide and dangerous jump.
-76=The chasm seems to descend into infinity. It is a very wide and dangerous jump.
+76=
 
 # No! Your attempt to cross is a failure, and you die. The Quest is ended beneath the caverns of Lorien.
-77=No! Your attempt to cross is a failure, and you die. The Quest is ended beneath the caverns of Lorien.
+77=
 
 # The tunnels proceed for many miles, until you are quite lost in the darkness.
-78=The tunnels proceed for many miles, until you are quite lost in the darkness.
+78=
 
 # In the center of a swirling pool is a stone figure of a once proud eagle, standing silent on a solitary isle. Its wings have been shorn from its body, and its eyes are covered with mud. The water looks too swift to safely swim.
-79=In the center of a swirling pool is a stone figure of a once proud eagle, standing silent on a solitary isle. Its wings have been shorn from its body, and its eyes are covered with mud. The water looks too swift to safely swim.
+79=
 
 # You look at this stone figure with a great deal of pity. It speaks in a noble but pleading voice: "Wings! I must have wings!" it cries.
-7a=You look at this stone figure with a great deal of pity. It speaks in a noble but pleading voice: "Wings! I must have wings!" it cries.
+7a=
 
 # The mud melts from its eyes, and the great eagle spreads its wings and gives a cry: "To you I give a gift. We eagles are the servants of one who will not abandon Middle Earth. When your need is uttermost, call upon Thorondor for deliverance."
-7b=The mud melts from its eyes, and the great eagle spreads its wings and gives a cry: "To you I give a gift. We eagles are the servants of one who will not abandon Middle Earth. When your need is uttermost, call upon Thorondor for deliverance."
+7b=
 
 # The sides of this rift are scorched as though a great flame had blown upon them. The face is well gnarled with many footholds, but covered in a slippery soot.
-7c=The sides of this rift are scorched as though a great flame had blown upon them. The face is well gnarled with many footholds, but covered in a slippery soot.
+7c=
 
 # A rock shifts and gives way. You fall flat on your back on the lower side of the rift. That hurt!
-7d=A rock shifts and gives way. You fall flat on your back on the lower side of the rift. That hurt!
+7d=
 
 # In this chamber, a young brown-gold dragon is sleeping, surrounded by a substantial hoard. Two stone wings lay next to him.
-7e=In this chamber, a young brown-gold dragon is sleeping, surrounded by a substantial hoard. Two stone wings lay next to him.
+7e=
 
 # As you cross the chamber, your fear causes you to give a faint cry and the dragon wakens! "Thieves!" it shouts. "Thieves and dwarves! Fire upon you all! I'll gnaw your bones to nothingness!"
-7f=As you cross the chamber, your fear causes you to give a faint cry and the dragon wakens! "Thieves!" it shouts. "Thieves and dwarves! Fire upon you all! I'll gnaw your bones to nothingness!"
+7f=
 
 # You behold Mirrormere, Kheled-zaram in the tongue of the dwarves. Its dark waters offer no reflection, but those who stare in its black sheen can often see many strange things.
-80=You behold Mirrormere, Kheled-zaram in the tongue of the dwarves. Its dark waters offer no reflection, but those who stare in its black sheen can often see many strange things.
+80=
 
 # Aragorn replies. "Say not unscathed, but if you say unchanged, then maybe you will speak the truth. But only evil need fear it, or those who bring some evil with them."
-81=Aragorn replies. "Say not unscathed, but if you say unchanged, then maybe you will speak the truth. But only evil need fear it, or those who bring some evil with them."
+81=
 
 # Haldir removes the blindfolds. "You have come to Cerin Amroth, in ancient times the heart of our realm. Here ever blooms the winter flowers in the unfading grass: the yellow elanor, the pale niphredil. Follow the stream to Galadriel."
-82=Haldir removes the blindfolds. "You have come to Cerin Amroth, in ancient times the heart of our realm. Here ever blooms the winter flowers in the unfading grass: the yellow elanor, the pale niphredil. Follow the stream to Galadriel."
+82=
 
 # Looking northwest, you spot the tallest tree -- mallorn or otherwise -- that you have ever seen. Surely that must be the home of Galadriel and Celeborn.
-83=Looking northwest, you spot the tallest tree -- mallorn or otherwise -- that you have ever seen. Surely that must be the home of Galadriel and Celeborn.
+83=
 
 # Lembas is a waybread made for elven travellers. It is a gift only Lady Galadriel may give.
-84=Lembas is a waybread made for elven travellers. It is a gift only Lady Galadriel may give.
+84=
 
 # "No strangers are permitted in the Golden Wood!"
-85="No strangers are permitted in the Golden Wood!"
+85=
 
 # The water from the Mirror swirls and coalesces into strange shapes. Dark forces try to overwhelm the vision, but the power of Galadriel guides it, and against her there are few beings in Middle-earth of greater power. The image forms...
-86=The water from the Mirror swirls and coalesces into strange shapes. Dark forces try to overwhelm the vision, but the power of Galadriel guides it, and against her there are few beings in Middle-earth of greater power. The image forms...
+86=
 
 # ...into the picture of a Dark Tower. Not the one in Mordor, but within a murky forest, teeming with evil. This is the citadel of Dol Guldur. You see bubbling pits, strange mazes, a creature with black skin and huge wings...
-87=...into the picture of a Dark Tower. Not the one in Mordor, but within a murky forest, teeming with evil. This is the citadel of Dol Guldur. You see bubbling pits, strange mazes, a creature with black skin and huge wings...
+87=
 
 # ...and upon a throne, the lieutenant of Sauron, the Black Captain, the Witch-King of Angmar. Above him is the symbol of the Evil Eye. Beneath him, he has prisoners. The friends that were taken from you. The Ringbearer and his treasure...
-88=...and upon a throne, the lieutenant of Sauron, the Black Captain, the Witch-King of Angmar. Above him is the symbol of the Evil Eye. Beneath him, he has prisoners. The friends that were taken from you. The Ringbearer and his treasure...
+88=
 
 # ...your friends are cast into a pit in the deepest bowels of Dol Guldur. The Witch King ignores them, as he has something more important to concern him. For some reason, he is watching the South...
-89=...your friends are cast into a pit in the deepest bowels of Dol Guldur. The Witch King ignores them, as he has something more important to concern him. For some reason, he is watching the South...
+89=
 
 # Galadriel stirs. "The Quest is not over. The Witch-King is being cautious. He fears that he will lose his prize, probably to Saruman. He awaits an army from Mordor, to escort him to the Barad-dur...
-8a=Galadriel stirs. "The Quest is not over. The Witch-King is being cautious. He fears that he will lose his prize, probably to Saruman. He awaits an army from Mordor, to escort him to the Barad-dur...
+8a=
 
 # "We still have time to rescue Frodo. It is many leagues from Mordor to Mirkwood, and even the power of Sauron cannot change that. You must gather a force to overthrow the Witch-King and wrest the Ring from him. I offer you my aid...
-8b="We still have time to rescue Frodo. It is many leagues from Mordor to Mirkwood, and even the power of Sauron cannot change that. You must gather a force to overthrow the Witch-King and wrest the Ring from him. I offer you my aid...
+8b=
 
 # "Take any of my commanders, even the Lord Celeborn. Also, I give you an option of great power and peril...
-8c="Take any of my commanders, even the Lord Celeborn. Also, I give you an option of great power and peril...
+8c=
 
 # "On the west wall of this cleft, you will find an entrance. This leads to an underground area I sealed long ago. It connected to Moria, but when Durin's Bane stirred, other evils also wakened. I was forced to close that ancient entrance...
-8d="On the west wall of this cleft, you will find an entrance. This leads to an underground area I sealed long ago. It connected to Moria, but when Durin's Bane stirred, other evils also wakened. I was forced to close that ancient entrance...
+8d=
 
 # "Within its caverns are great dangers, but also great treasures of wisdom and power. Few would dare it, fewer still have the power to try. Only in such desperate times would I offer the key to anyone. Take it if you wish this peril...
-8e="Within its caverns are great dangers, but also great treasures of wisdom and power. Few would dare it, fewer still have the power to try. Only in such desperate times would I offer the key to anyone. Take it if you wish this peril...
+8e=
 
 # "If you succeed, you may find a way to rescue your friends and save the Quest of the Ring!"
-8f="If you succeed, you may find a way to rescue your friends and save the Quest of the Ring!"
+8f=
 
 # An ancient city, destroyed by treachery. Not all of its peoples died, and we saw the Dark Lord fall.
-90=An ancient city, destroyed by treachery. Not all of its peoples died, and we saw the Dark Lord fall.
+90=
 
 # An ancient river, which now lies beneath the water of the great sea west of the Shire.
-91=An ancient river, which now lies beneath the water of the great sea west of the Shire.
+91=
 
 # Morgoth, master of the Lord who sits in the Dark Tower.  Nothing exists that cannot be defeated. Take courage!
-92=Morgoth, master of the Lord who sits in the Dark Tower.  Nothing exists that cannot be defeated. Take courage!
+92=
 
 # The guard proclaims: "You are now prepared to embark on the final part of your quest. Go to the docks where the swanships are berthed -- the Lady will greet you there."
-93=The guard proclaims: "You are now prepared to embark on the final part of your quest. Go to the docks where the swanships are berthed -- the Lady will greet you there."
+93=
 
 # "This is truly the darkest peril of all." Galadriel says. "Elbereth protect thee! I have lore to assist thee -- remember it well, for Sauron is not the only power in this world, nor is he the greatest."
-94="This is truly the darkest peril of all." Galadriel says. "Elbereth protect thee! I have lore to assist thee -- remember it well, for Sauron is not the only power in this world, nor is he the greatest."
+94=
 
 # "Of all the Valar, the greatest in the art of hunting was Orome, whose horn has long echoed in Middle Earth, and whose hounds were feared by all evil creatures. Call upon him to ensnare one who is not easily caught...."
-95="Of all the Valar, the greatest in the art of hunting was Orome, whose horn has long echoed in Middle Earth, and whose hounds were feared by all evil creatures. Call upon him to ensnare one who is not easily caught...."
+95=
 
 # "Of all of the creatures who walked in Middle Earth, the wisest of all was Melian of Doriath. Call upon her wisdom to counter that which would deceive or bewitch thee, or those enchant thy comrades."
-96="Of all of the creatures who walked in Middle Earth, the wisest of all was Melian of Doriath. Call upon her wisdom to counter that which would deceive or bewitch thee, or those enchant thy comrades."
+96=
 
 # "I will sing no songs of farewell at this hour, for I shall yet again greet you in Caras Galadon, and meet the brave Ringbearer!"
-97="I will sing no songs of farewell at this hour, for I shall yet again greet you in Caras Galadon, and meet the brave Ringbearer!"
+97=
 
 # Curudol laughs. "History has taught the elves that desire for such power forges one's own death. Too much blood has been shed for Rings and Jewels and other trinkets. Take this Ring, in the hopes that the days of Rings shall soon come to an end."
-98=Curudol laughs. "History has taught the elves that desire for such power forges one's own death. Too much blood has been shed for Rings and Jewels and other trinkets. Take this Ring, in the hopes that the days of Rings shall soon come to an end."
+98=
 
 # The Hythe can be reached through the gate in southeast Lorien, the gate that leads to the river.
-99=The Hythe can be reached through the gate in southeast Lorien, the gate that leads to the river.
+99=
 
 # There are no objects of interest here, except for an empty ale bottle.
-9a=There are no objects of interest here, except for an empty ale bottle.
+9a=
 
 # Galadriel greets you. "Welcome to Caras Galadon. I sympathize with your sadness; I saw the Ringbearer taken by the Black Captain at the gates of Moria and taken to Dol Guldur.
-9b=Galadriel greets you. "Welcome to Caras Galadon. I sympathize with your sadness; I saw the Ringbearer taken by the Black Captain at the gates of Moria and taken to Dol Guldur.
+9b=
 
 # Also, I do not see Gandalf in your number, which troubles me greatly, for I much desired to speak with him, but I cannot see him from afar...
-9c=Also, I do not see Gandalf in your number, which troubles me greatly, for I much desired to speak with him, but I cannot see him from afar...
+9c=
 
 # "...and the ways of his feet and his mind are hidden from me."
-9d="...and the ways of his feet and his mind are hidden from me."
+9d=
 
 # "Alas, he fell into Shadow." you report. "He went into Moria, and did not return."
-9e="Alas, he fell into Shadow." you report. "He went into Moria, and did not return."
+9e=
 
 # The elves in the hall gasp. Galadriel bows her head. "This is the saddest tidings to be heard in these halls in many long centuries of sorrow.
-9f=The elves in the hall gasp. Galadriel bows her head. "This is the saddest tidings to be heard in these halls in many long centuries of sorrow.
+9f=
 
 # Still, we must put aside our sorrow, for the Quest's sake. We will discuss this further at the Mirror. After that, when you are ready to depart, go to the Hythe and await the elven ships. Ask my commanders for aid, for they are valiant.
-a0=Still, we must put aside our sorrow, for the Quest's sake. We will discuss this further at the Mirror. After that, when you are ready to depart, go to the Hythe and await the elven ships. Ask my commanders for aid, for they are valiant.
+a0=
 
 # There are five objects of power that you might seek: a crown of elanor, a scabbard, a silver horn, an elfstone and the light of Earendil's star. If you find these, bring them here, though you may depart without them. And I will help you if I can."
-a1=There are five objects of power that you might seek: a crown of elanor, a scabbard, a silver horn, an elfstone and the light of Earendil's star. If you find these, bring them here, though you may depart without them. And I will help you if I can."
+a1=
 
 # You notice that this is the sort of terrain where orcs like to station snipers and ambush travellers.
-a2=You notice that this is the sort of terrain where orcs like to station snipers and ambush travellers.
+a2=
 
 # "Thieves!" a booming voice commands. The chamber seems empty, except for a pair of stone wings; but the voice is that of a dragon. "Touch my hoard and I shall curse thee for eternity! Come closer and I shall make this chamber your funeral pyre!"
-a3="Thieves!" a booming voice commands. The chamber seems empty, except for a pair of stone wings; but the voice is that of a dragon. "Touch my hoard and I shall curse thee for eternity! Come closer and I shall make this chamber your funeral pyre!"
+a3=
 
 # Somehow, you know there is great treasure nearby, treasure that is meant for you, and for you alone. No voice can possibly keep you from it... in fact, no one will keep you from having it. You begin to look around very suspiciously...
-a4=Somehow, you know there is great treasure nearby, treasure that is meant for you, and for you alone. No voice can possibly keep you from it... in fact, no one will keep you from having it. You begin to look around very suspiciously...
+a4=
 
 # "I warned you..." the draconian voice says, and you hear a sound like a great beast inhaling...
-a5="I warned you..." the draconian voice says, and you hear a sound like a great beast inhaling...
+a5=
 
 # ...then there is the sound of fire and burning. But there is no heat, no fire. The dragon died long ago. Its presense has been kept alive throughout eternity through greed...
-a6=...then there is the sound of fire and burning. But there is no heat, no fire. The dragon died long ago. Its presense has been kept alive throughout eternity through greed...
+a6=
 
 # ...but only as an invisible phantom unable to affect the world in any  way. Even its hoard is gone, except for a pair of stone wings.
-a7=...but only as an invisible phantom unable to affect the world in any  way. Even its hoard is gone, except for a pair of stone wings.
+a7=
 
 # For an instant you have a brief vision of dwarves digging, searching  for veins of gold and mithril,  determined as only dwarves can be to find it. You feel as though you are becoming dwarven, sharing their pain and their hunger for gold...
-a8=For an instant you have a brief vision of dwarves digging, searching  for veins of gold and mithril,  determined as only dwarves can be to find it. You feel as though you are becoming dwarven, sharing their pain and their hunger for gold...
+a8=
 
 # ...and suddenly everything snaps back to normal. What is happening to you?
-a9=...and suddenly everything snaps back to normal. What is happening to you?
+a9=
 
 # On this site is an old dwarven forge. The metal seems greatly aged, but the small furnace is still intact.
-aa=On this site is an old dwarven forge. The metal seems greatly aged, but the small furnace is still intact.
+aa=
 
 # On this spot a shallow grave was dug long ago.
-ab=On this spot a shallow grave was dug long ago.
+ab=
 
 # There is much lore here that may prove useful to you. Search carefully and read thoroughly.
-ac=There is much lore here that may prove useful to you. Search carefully and read thoroughly.
+ac=
 
 # "Seek help in Lorien." Elrond tells you. "This is the last chance for Middle Earth. The Lady Galadriel is the wisest of all the Eldar. She will advise you."
-ad="Seek help in Lorien." Elrond tells you. "This is the last chance for Middle Earth. The Lady Galadriel is the wisest of all the Eldar. She will advise you."
+ad=
 
 # None may enter the Golden Wood without the permission of a high elven Lord.
-ae=None may enter the Golden Wood without the permission of a high elven Lord.
+ae=
 
 # The authority of Elrond will allow you to pass.
-af=The authority of Elrond will allow you to pass.
+af=
 
 # Suddenly, you notice that you are surrounded by hundreds of elven archers. "Surrender, and there will be no bloodshed." Haldir says. Do you choose to surrender? (Y/N)
-b0=Suddenly, you notice that you are surrounded by hundreds of elven archers. "Surrender, and there will be no bloodshed." Haldir says. Do you choose to surrender? (Y/N)
+b0=
 
 # The elves do not wait to listen to your explanation. They draw back their bowstrings, and all is darkness....
-b1=The elves do not wait to listen to your explanation. They draw back their bowstrings, and all is darkness....
+b1=
 
 # The elves blindfold you and escort you from Lothlorien, leaving you near a waterfall.
-b2=The elves blindfold you and escort you from Lothlorien, leaving you near a waterfall.
+b2=
 
 # After some argument, the elves blindfold you and escort you into the Golden Wood.
-b3=After some argument, the elves blindfold you and escort you into the Golden Wood.
+b3=
 
 # The Shadow threatens to destroy all things. So has it been since the elves awoke.
-b4=The Shadow threatens to destroy all things. So has it been since the elves awoke.
+b4=
 
 # It is beautiful, is it not? It recalls the beauty of the Blessed Realm, which lies beyond the bent seas.
-b5=It is beautiful, is it not? It recalls the beauty of the Blessed Realm, which lies beyond the bent seas.
+b5=
 
 # Through her power the greatness and beauty of Lorien is preserved.
-b6=Through her power the greatness and beauty of Lorien is preserved.
+b6=
 
 # In Valinor, in the utter West, where Elbereth lives on the Holy Mountain and no impure thing may dwell.
-b7=In Valinor, in the utter West, where Elbereth lives on the Holy Mountain and no impure thing may dwell.
+b7=
 
 # We of Lorien have been betrayed many times in our long history, and so we remain suspicious of others.
-b8=We of Lorien have been betrayed many times in our long history, and so we remain suspicious of others.
+b8=
 
 # The Lady is as beautiful as she is powerful. Listen carefully to her wisdom.
-b9=The Lady is as beautiful as she is powerful. Listen carefully to her wisdom.
+b9=
 
 # Pride, the desire to rule others, from these things we have suffered.
-ba=Pride, the desire to rule others, from these things we have suffered.
+ba=
 
 # I don't know enough on that subject to make a judgement.
-bb=I don't know enough on that subject to make a judgement.
+bb=
 
 # To elves, poetry and music are like food. We must have them to survive.
-bc=To elves, poetry and music are like food. We must have them to survive.
+bc=
 
 # The Lay of Leithian is the tale of Beren and Luthien. How they struggled against a great evil and triumphed.
-bd=The Lay of Leithian is the tale of Beren and Luthien. How they struggled against a great evil and triumphed.
+bd=
 
 # May you triumph over your great evils.
-be=May you triumph over your great evils.
+be=
 
 # Lorien is beset by many enemies. Orcs have attacked us from a secret base. We believe it is in Redhorn Pass.
-bf=Lorien is beset by many enemies. Orcs have attacked us from a secret base. We believe it is in Redhorn Pass.
+bf=
 
 # Somewhere in the Redhorn is the hidden lair of Caradhas, the cruel lord of ice.
-c0=Somewhere in the Redhorn is the hidden lair of Caradhas, the cruel lord of ice.
+c0=
 
 # Be certain to visit her Mirror. If you need guidance, Galadriel can see many things within its waters.
-c1=Be certain to visit her Mirror. If you need guidance, Galadriel can see many things within its waters.
+c1=
 
 # She will meet you there when the time comes, if she has not done so already.
-c2=She will meet you there when the time comes, if she has not done so already.
+c2=
 
 # This lock cannot be picked by craft or spell.
-c3=This lock cannot be picked by craft or spell.
+c3=
 
 # The guard smiles. "The Lady Galadriel will gladly receive you. May you find knowledge and wisdom in her company."
-c4=The guard smiles. "The Lady Galadriel will gladly receive you. May you find knowledge and wisdom in her company."
+c4=
 
 # "The Lady Arwen's token!" the guard exclaims. "We cannot refuse this. You will see the Lady at once."
-c5="The Lady Arwen's token!" the guard exclaims. "We cannot refuse this. You will see the Lady at once."
+c5=
 
 # If you seek her, look for the flet with the white ladder.
-c6=If you seek her, look for the flet with the white ladder.
+c6=
 
 # While the star of Earendil shines, there is always hope. The Shadow is not invincible.
-c7=While the star of Earendil shines, there is always hope. The Shadow is not invincible.
+c7=
 
 # It is a place to rest, to heal, and to find wisdom. Here the beauty of the Elder Days is not forgotten.
-c8=It is a place to rest, to heal, and to find wisdom. Here the beauty of the Elder Days is not forgotten.
+c8=
 
 # Of that place, seek help in the library of Lorien. I will speak no further of it.
-c9=Of that place, seek help in the library of Lorien. I will speak no further of it.
+c9=
 
 # You must ask another of that. I do not think that my knowledge of that subject would be useful to you.
-ca=You must ask another of that. I do not think that my knowledge of that subject would be useful to you.
+ca=
 
 # On this dock, the graceful swanships of Lorien are usually berthed. There are none here now.
-cb=On this dock, the graceful swanships of Lorien are usually berthed. There are none here now.
+cb=
 
 # "Very well." the Lady says. "When you are ready for my aid, I will come.
-cc="Very well." the Lady says. "When you are ready for my aid, I will come.
+cc=
 
 # "If you wish for advice: travel the north road to Rhosgobel and seek the aid of the Wizard Radagast. If he is there, he will aid you. To sustain you on your journey, I offer you lembas, the waybread of the elves.
-cd="If you wish for advice: travel the north road to Rhosgobel and seek the aid of the Wizard Radagast. If he is there, he will aid you. To sustain you on your journey, I offer you lembas, the waybread of the elves.
+cd=
 
 # I will help you, if I can. Ask me what you, and I will try to answer.
-ce=I will help you, if I can. Ask me what you, and I will try to answer.
+ce=
 
 # The elves of Lorien have endured much suffering, but still we will help those in need.
-cf=The elves of Lorien have endured much suffering, but still we will help those in need.
+cf=
 
 # We are proud of this realm, yet are aware that its glory is only temporary.
-d0=We are proud of this realm, yet are aware that its glory is only temporary.
+d0=
 
 # All things are temporary. It is a blessing that humans rarely get to see their works ravaged by time.
-d1=All things are temporary. It is a blessing that humans rarely get to see their works ravaged by time.
+d1=
 
 # I cannot help you with that question. Sorry.
-d2=I cannot help you with that question. Sorry.
+d2=
 
 # The Tower of Fell Sorcery? I have heard the power of Sauron remains in its dungeons, to	torment prisoners.
-d3=The Tower of Fell Sorcery? I have heard the power of Sauron remains in its dungeons, to	torment prisoners.
+d3=
 
 # Take what you need. We are excellent cooks, and our brew is unsurpassed.
-d4=Take what you need. We are excellent cooks, and our brew is unsurpassed.
+d4=
 
 # Elring found a secret passage in the North Wall of Redhorn Pass, near the area where the snow is deepest.
-d5=Elring found a secret passage in the North Wall of Redhorn Pass, near the area where the snow is deepest.
+d5=
 
 # I do not have an interest in news; it is the curse of elves to live in the past. Ask Kelmandol of news.
-d6=I do not have an interest in news; it is the curse of elves to live in the past. Ask Kelmandol of news.
+d6=
 
 # Ah, Lorien! Lorien the Fair! Would that you would endure forever, and mallorn trees bloom eternal. Alas!
-d7=Ah, Lorien! Lorien the Fair! Would that you would endure forever, and mallorn trees bloom eternal. Alas!
+d7=
 
 # The golden trees of the Golden Wood are called Mallorns. They tower above the elanor and the white niphredil.
-d8=The golden trees of the Golden Wood are called Mallorns. They tower above the elanor and the white niphredil.
+d8=
 
 # Surely you have seen the flowers that grow in the grasses of Lorien? White niphredil? Golden elanor?
-d9=Surely you have seen the flowers that grow in the grasses of Lorien? White niphredil? Golden elanor?
+d9=
 
 # His is the flet of hospitality, for he serves food and drink there. It is located north of Galadriel's flet.
-da=His is the flet of hospitality, for he serves food and drink there. It is located north of Galadriel's flet.
+da=
 
 # An evil place. The Enemy will use it as a base to attack us and the elves of Mirkwood.
-db=An evil place. The Enemy will use it as a base to attack us and the elves of Mirkwood.
+db=
 
 # I am Rumil, the librarian of Lorien. How might I help you?
-dc=I am Rumil, the librarian of Lorien. How might I help you?
+dc=
 
 # Read these pages. Their lore is greater than mine. And seek the Lady Galadriel, for she is wise.
-dd=Read these pages. Their lore is greater than mine. And seek the Lady Galadriel, for she is wise.
+dd=
 
 # My labor is to make the bread of Lorien, for even elves cannot live song and poetry alone.
-de=My labor is to make the bread of Lorien, for even elves cannot live song and poetry alone.
+de=
 
 # My friend, Rathgil, is a good singer, but he can be haughty. Look for him at Kelmandol's flet.
-df=My friend, Rathgil, is a good singer, but he can be haughty. Look for him at Kelmandol's flet.
+df=
 
 # He should keep his place more tidy. You can always find at least one empty ale bottle on his table.
-e0=He should keep his place more tidy. You can always find at least one empty ale bottle on his table.
+e0=
 
 # It will bewilder your enemies and make you more difficult to strike in battle.
-e1=It will bewilder your enemies and make you more difficult to strike in battle.
+e1=
 
 # It is my talent, and my task, to sew new garments, and to mend that which is tattered. Such is life.
-e2=It is my talent, and my task, to sew new garments, and to mend that which is tattered. Such is life.
+e2=
 
 # Look for the stair that leads into the cleft into which a waterfall flows. There you will find it.
-e3=Look for the stair that leads into the cleft into which a waterfall flows. There you will find it.
+e3=
 
 # Is it not the fairest land in Middle Earth?
-e4=Is it not the fairest land in Middle Earth?
+e4=
 
 # Anything worth doing demands a hard struggle. The defense of Lorien is as difficult as it is necessary.
-e5=Anything worth doing demands a hard struggle. The defense of Lorien is as difficult as it is necessary.
+e5=
 
 # This mallorn tree is taller than the ones that surround it.
-e6=This mallorn tree is taller than the ones that surround it.
+e6=
 
 # The mallorn tree is surprisingly easy to climb; it boughs are strong and sturdy. No wonder the dwellers of Caras Galadon built their homes in the trees, you think to yourself as you carefully survey the area.
-e7=The mallorn tree is surprisingly easy to climb; it boughs are strong and sturdy. No wonder the dwellers of Caras Galadon built their homes in the trees, you think to yourself as you carefully survey the area.
+e7=
 
 # The wings begin to flap, then stop abruptly. "Only one who leads may wield my power..." a voice says.
-e8=The wings begin to flap, then stop abruptly. "Only one who leads may wield my power..." a voice says.
+e8=
 
 # The fury of the attack seems to have alerted other foes to your presence here.
-e9=The fury of the attack seems to have alerted other foes to your presence here.
+e9=
 
 # So fierce is your ability in battle that the remainder of your foes are dismayed. Several minutes later, they press in for an attack, when the armies of Lorien arrive. The orcs are driven into the river -- none return to Dol Guldur.
-ea=So fierce is your ability in battle that the remainder of your foes are dismayed. Several minutes later, they press in for an attack, when the armies of Lorien arrive. The orcs are driven into the river -- none return to Dol Guldur.
+ea=
 
 # You have won a great victory.
-eb=You have won a great victory.
+eb=
 
 # I hear orcs have set up a base on the northern borders of the forest near the marshes.
-ec=I hear orcs have set up a base on the northern borders of the forest near the marshes.
+ec=
 
 # If we cannot find it and destroy it soon, Lorien will be in great peril!
-ed=If we cannot find it and destroy it soon, Lorien will be in great peril!
+ed=
 
 # The endless days of elves are filled with unending labors.
-ee=The endless days of elves are filled with unending labors.
+ee=
 
 # All joy and peace is precious in these dark times.
-ef=All joy and peace is precious in these dark times.
+ef=
 
 # There are the ruins of dwarven citadels in the mountains north and west of Lorien.
-f0=There are the ruins of dwarven citadels in the mountains north and west of Lorien.
+f0=
 
 # His flet is due east of the Lady's flet and north of the Hythe Gate.
-f1=His flet is due east of the Lady's flet and north of the Hythe Gate.
+f1=
 
 # It is the duty of all things that aspire to virtue that they help instead of destroying.
-f2=It is the duty of all things that aspire to virtue that they help instead of destroying.
+f2=
 
 # I have a riddle, on which you must question me. Who is the greatest enemy of all?
-f3=I have a riddle, on which you must question me. Who is the greatest enemy of all?
+f3=
 
 # That is correct. Never lose hope. When you head into danger, even an enemy might be a reliable guide.
-f4=That is correct. Never lose hope. When you head into danger, even an enemy might be a reliable guide.
+f4=
 
 # That is not the answer to the riddle. Try again.
-f5=That is not the answer to the riddle. Try again.
+f5=
 
 # A strong elf sees you and approaches you. "In Valinor, Tulkas, strongest of the Valar, taught me that wrestling hardens the fighting spirit. Will your leader engage me in a match, that we may both learn from it? (Y/N)
-f6=A strong elf sees you and approaches you. "In Valinor, Tulkas, strongest of the Valar, taught me that wrestling hardens the fighting spirit. Will your leader engage me in a match, that we may both learn from it? (Y/N)
+f6=
 
 # It is a long hard match. Eventually, you force your opponent to the ground, and hold his shoulders there. Belegcam grins: "You are indeed mighty! It has been long since I had such a contest. May your strength endure for all your days.
-f7=It is a long hard match. Eventually, you force your opponent to the ground, and hold his shoulders there. Belegcam grins: "You are indeed mighty! It has been long since I had such a contest. May your strength endure for all your days.
+f7=
 
 # An elf who rests upon the hillside quickly rises to his feet when you approach. "I am called Bragolhir." he says. His gaze fixes on Legolas; the look of a rival. "I hear the elves of Mirkwood are swift. Would you care for a race?" (Y/N)
-f8=An elf who rests upon the hillside quickly rises to his feet when you approach. "I am called Bragolhir." he says. His gaze fixes on Legolas; the look of a rival. "I hear the elves of Mirkwood are swift. Would you care for a race?" (Y/N)
+f8=
 
 # You race around the hill eight times. It is grueling, even to elves as seemingly tireless as Legolas and Bragolhir. Legolas wins -- barely. "Truly Nessa herself could not have given a greater effort." Bragolhir pants. "May the Valar bless thee."
-f9=You race around the hill eight times. It is grueling, even to elves as seemingly tireless as Legolas and Bragolhir. Legolas wins -- barely. "Truly Nessa herself could not have given a greater effort." Bragolhir pants. "May the Valar bless thee."
+f9=
 
 # Cerin Amroth. The hill that is south of the gate of Caras Galadon.
-fa=Cerin Amroth. The hill that is south of the gate of Caras Galadon.
+fa=
 
 # There is a deep sinkhole here; a a brilliant gem shines at its bottom. The sinkhole is extremely narrow; only a hobbit could possibly fit into it, though a skilled climber could guide one down.
-fb=There is a deep sinkhole here; a a brilliant gem shines at its bottom. The sinkhole is extremely narrow; only a hobbit could possibly fit into it, though a skilled climber could guide one down.
+fb=
 
 # The eagle fades from the gem, as if by doing so it allows you to take it.
-fc=The eagle fades from the gem, as if by doing so it allows you to take it.
+fc=
 
 # The library of Lorien is in the southeast part of Caras Galadon, near the Hythe Gate.
-fd=The library of Lorien is in the southeast part of Caras Galadon, near the Hythe Gate.
+fd=
 
 # "In all likelihood, the Ringbearer has been taken to Dol Guldur," one of you remarks, "we may be able to rescue him. The elves of Lorien, which is east of here, may help us.
-fe="In all likelihood, the Ringbearer has been taken to Dol Guldur," one of you remarks, "we may be able to rescue him. The elves of Lorien, which is east of here, may help us.
+fe=
 

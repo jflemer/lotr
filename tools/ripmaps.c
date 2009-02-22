@@ -54,7 +54,7 @@ main(void)
         for (j = 0; j < 0x100; ++j) {
             const char *text = game_get_text(j);
             if (strcmp(text, "<null>")) {
-                fprintf(texts, "# %s\n%02x=%s\n\n", text, j, text);
+                fprintf(texts, "# %s\n%02x=\n\n", text, j);
             }
         }
 

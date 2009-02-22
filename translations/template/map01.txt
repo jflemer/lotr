@@ -1,765 +1,765 @@
 # You hear the voices of your friends from within the tree: "Help! Help! Help!"
-00=You hear the voices of your friends from within the tree: "Help! Help! Help!"
+00=
 
 # Though the ruins are ancient, the door seems in perfect repair. It is obvious to anyone that a lot of people have come and gone here recently, and that they weren't hobbits.
-01=Though the ruins are ancient, the door seems in perfect repair. It is obvious to anyone that a lot of people have come and gone here recently, and that they weren't hobbits.
+01=
 
 # The door is locked.
-02=The door is locked.
+02=
 
 # A feeling of evil comes from within the circle of stones.
-03=A feeling of evil comes from within the circle of stones.
+03=
 
 # An extremely strong feeling of evil comes from within this stone circle. The Ringbearer almost unconsciously slips the Ring onto his finger, then puts It away.
-04=An extremely strong feeling of evil comes from within this stone circle. The Ringbearer almost unconsciously slips the Ring onto his finger, then puts It away.
+04=
 
 # You put on the Ring and escape!
-05=You put on the Ring and escape!
+05=
 
 # The compulsion to put on the Ring is almost unbearable. It is getting incredibly heavy!
-06=The compulsion to put on the Ring is almost unbearable. It is getting incredibly heavy!
+06=
 
 # A weathered signpost creaks in the wind. Fresh paint declares it to be "Sharkey's Shipping."
-07=A weathered signpost creaks in the wind. Fresh paint declares it to be "Sharkey's Shipping."
+07=
 
 # This is Sharkey's shipping. But we didn't expect little folks to find us way out here.
-08=This is Sharkey's shipping. But we didn't expect little folks to find us way out here.
+08=
 
 # Down south there's lots of trouble. Sharkey thinks the North is better, 'cept for those rangers.
-09=Down south there's lots of trouble. Sharkey thinks the North is better, 'cept for those rangers.
+09=
 
 # Those guys think they own the North! They told us to get, but no one tells us what to do, no sir!
-0a=Those guys think they own the North! They told us to get, but no one tells us what to do, no sir!
+0a=
 
 # The wizard Saruman is trying to protect us. The White Hand tells us who we can trust.
-0b=The wizard Saruman is trying to protect us. The White Hand tells us who we can trust.
+0b=
 
 # Oldenad sees you near the cellar door and shouts: "Stay away from there! No one is allowed down there!
-0c=Oldenad sees you near the cellar door and shouts: "Stay away from there! No one is allowed down there!
+0c=
 
 # I told you to stay out of our stores. Get out!
-0d=I told you to stay out of our stores. Get out!
+0d=
 
 # Several big men are asleep here. In a corner there is a pile of papers on a table. 
-0e=Several big men are asleep here. In a corner there is a pile of papers on a table. 
+0e=
 
 # You have found a locked chest.
-0f=You have found a locked chest.
+0f=
 
 # You notice an open ledger. The handwriting is very difficult to read, but it seems to be open to today's date, with a password: "Nan Curunir".
-10=You notice an open ledger. The handwriting is very difficult to read, but it seems to be open to today's date, with a password: "Nan Curunir".
+10=
 
 # "Intruders!" the leader shouts as you try to edge away from them. It is obvious that they were spoiling for a fight. They draw their weapons and advance on you.
-11="Intruders!" the leader shouts as you try to edge away from them. It is obvious that they were spoiling for a fight. They draw their weapons and advance on you.
+11=
 
 # That old creek! I wouldn't bother her except in times of great need.
-12=That old creek! I wouldn't bother her except in times of great need.
+12=
 
 # These sallow-faced men do not look friendly; one of them almost looks like an orc. They sneer at you. "I hope you have the right question for us." the leader says, his voice definitely implying a threat.
-13=These sallow-faced men do not look friendly; one of them almost looks like an orc. They sneer at you. "I hope you have the right question for us." the leader says, his voice definitely implying a threat.
+13=
 
 # You cannot pick this lock.
-14=You cannot pick this lock.
+14=
 
 # If you do not do something now, your friends will surely die!
-15=If you do not do something now, your friends will surely die!
+15=
 
 # You have come upon ancient ruins.
-16=You have come upon ancient ruins.
+16=
 
 # These are ruins of lost Cardolan. It was destroyed by the Enemy long ago.
-17=These are ruins of lost Cardolan. It was destroyed by the Enemy long ago.
+17=
 
 # High above your head, light trickles through a knot hole in Old Man Willow's stump.
-18=High above your head, light trickles through a knot hole in Old Man Willow's stump.
+18=
 
 # The dwarves built a secret door here. It is locked.
-19=The dwarves built a secret door here. It is locked.
+19=
 
 # Three men, who remind you somehow of Bilbo's description of goblins come toward you, weapons drawn. "Show us your pass, or prepare to die!" the  leader shouts."
-1a=Three men, who remind you somehow of Bilbo's description of goblins come toward you, weapons drawn. "Show us your pass, or prepare to die!" the  leader shouts."
+1a=
 
 # "Excellent." the guard says with a wicked smile. "The White Hand serves us all. You may pass."
-1b="Excellent." the guard says with a wicked smile. "The White Hand serves us all. You may pass."
+1b=
 
 # There are bandits on the road to Bree!
-1c=There are bandits on the road to Bree!
+1c=
 
 # A great town if you don't meet any bandits on the way.
-1d=A great town if you don't meet any bandits on the way.
+1d=
 
 # You may go about your business.
-1e=You may go about your business.
+1e=
 
 # You find a number of wooden crates.
-1f=You find a number of wooden crates.
+1f=
 
 # They are labelled: 'Lotho Baggins, Hobbiton, Shire'
-20=They are labelled: 'Lotho Baggins, Hobbiton, Shire'
+20=
 
 # The boxes contain parts for machines. A strange and evil looking machine, by the looks of it.
-21=The boxes contain parts for machines. A strange and evil looking machine, by the looks of it.
+21=
 
 # You have unlocked the door.
-22=You have unlocked the door.
+22=
 
 # Tom recommends that you go there. The Prancing Pony Inn is a worthy establishment.
-23=Tom recommends that you go there. The Prancing Pony Inn is a worthy establishment.
+23=
 
 # There are many trees here. Some are friendly -- others aren't.
-24=There are many trees here. Some are friendly -- others aren't.
+24=
 
 # You should have been more careful. The sound of rattling keys awakens the orc.
-25=You should have been more careful. The sound of rattling keys awakens the orc.
+25=
 
 # Beautiful Goldberry. She is Tom's wife, the River Daughter.
-26=Beautiful Goldberry. She is Tom's wife, the River Daughter.
+26=
 
 # There are many rivers and they sing many songs. Hey dol, merry dol, merry dol dillo...
-27=There are many rivers and they sing many songs. Hey dol, merry dol, merry dol dillo...
+27=
 
 # That blustery old tree! The wind goes through one branch and comes out through the other! Be kind to him.
-28=That blustery old tree! The wind goes through one branch and comes out through the other! Be kind to him.
+28=
 
 # They grow on red oak trees.
-29=They grow on red oak trees.
+29=
 
 # Now what would you do with that lump of rock anyway?
-2a=Now what would you do with that lump of rock anyway?
+2a=
 
 # Lilies can be found in the pools near Tom's house.
-2b=Lilies can be found in the pools near Tom's house.
+2b=
 
 # You have found a secret door!
-2c=You have found a secret door!
+2c=
 
 # They took all of my silver pennies!
-2d=They took all of my silver pennies!
+2d=
 
 # You have found a number of cells.
-2e=You have found a number of cells.
+2e=
 
 # You cannot pick this well made lock.
-2f=You cannot pick this well made lock.
+2f=
 
 # The cell door creaks open.
-30=The cell door creaks open.
+30=
 
 # Take me out of here! Oh, for a comfortable bed in Bree!
-31=Take me out of here! Oh, for a comfortable bed in Bree!
+31=
 
 # Two guards are standing by the doorway. They see you, and one says: "I need to see your pass, strangers."
-32=Two guards are standing by the doorway. They see you, and one says: "I need to see your pass, strangers."
+32=
 
 # There are bandits on the Great Road, working for their bandit chief, Rayf Brogan!
-33=There are bandits on the Great Road, working for their bandit chief, Rayf Brogan!
+33=
 
 # There are guards here. For humans, they look very orc-like. "Show us your pass!" they demand.
-34=There are guards here. For humans, they look very orc-like. "Show us your pass!" they demand.
+34=
 
 # He is the Master. No creature has ever caught old Tom. He has no fear. He is the Master.
-35=He is the Master. No creature has ever caught old Tom. He has no fear. He is the Master.
+35=
 
 # Mean old tree! Stay clear of him. If you go near him, run away quick!
-36=Mean old tree! Stay clear of him. If you go near him, run away quick!
+36=
 
 # Tom begins to sing: "Hey dol merry dol! Merry dol dillo!" He is obviously not interested in the question.
-37=Tom begins to sing: "Hey dol merry dol! Merry dol dillo!" He is obviously not interested in the question.
+37=
 
 # This is a large office. You notice a big orc -- so close to the Shire! -- sitting in a chair. He is asleep.
-38=This is a large office. You notice a big orc -- so close to the Shire! -- sitting in a chair. He is asleep.
+38=
 
 # He awakes with a start! He attacks you!
-39=He awakes with a start! He attacks you!
+39=
 
 # You find something that you can use.
-3a=You find something that you can use.
+3a=
 
 # You see a number of crates on the floor here. Do you wish to open them? (Y/N)
-3b=You see a number of crates on the floor here. Do you wish to open them? (Y/N)
+3b=
 
 # You hear footsteps behind you. You stop prying at the crates.
-3c=You hear footsteps behind you. You stop prying at the crates.
+3c=
 
 # He lives in Bree. He wants to keep everyone away from his town, so he can control it.
-3d=He lives in Bree. He wants to keep everyone away from his town, so he can control it.
+3d=
 
 # Don't play games with me. Tell your Lotho that we don't much like jokes.
-3e=Don't play games with me. Tell your Lotho that we don't much like jokes.
+3e=
 
 # "We'll be expanding there soon. There's a lot to be made there."
-3f="We'll be expanding there soon. There's a lot to be made there."
+3f=
 
 # Follow the Great Road eastward, and turn east at the crossroads.
-40=Follow the Great Road eastward, and turn east at the crossroads.
+40=
 
 # Grimbosh summons many orcs and men. The Ring is taken from you, and eventually finds its way back to the hand of the true Lord of the Rings.
-41=Grimbosh summons many orcs and men. The Ring is taken from you, and eventually finds its way back to the hand of the true Lord of the Rings.
+41=
 
 # We don't like those who enter Gorthad without permission.
-42=We don't like those who enter Gorthad without permission.
+42=
 
 # Very good. You may pass, friend.
-43=Very good. You may pass, friend.
+43=
 
 # There is something here that you can use.
-44=There is something here that you can use.
+44=
 
 # Nothing that comes to mind right now.
-45=Nothing that comes to mind right now.
+45=
 
 # I asked you about the password. You deaf or something?
-46=I asked you about the password. You deaf or something?
+46=
 
 # Carefully examining the skeleton, you discover the tomb robber did not die a natural death. His skull was cracked and his neck was broken.
-47=Carefully examining the skeleton, you discover the tomb robber did not die a natural death. His skull was cracked and his neck was broken.
+47=
 
 # The guards immediately spot you! "There they are with the escaped prisoner! Get them!"
-48=The guards immediately spot you! "There they are with the escaped prisoner! Get them!"
+48=
 
 # The guards immediately spot you! "There's the intruders!" the leader shouts. "Kill them!"
-49=The guards immediately spot you! "There's the intruders!" the leader shouts. "Kill them!"
+49=
 
 # You follow the opening into darkness. The cavern is gloomy and wet -- a nearby underground stream perhaps? A small hole in the ceiling provides poor illumination, but you think you see the glint of something bright in the floor of the cave.
-4a=You follow the opening into darkness. The cavern is gloomy and wet -- a nearby underground stream perhaps? A small hole in the ceiling provides poor illumination, but you think you see the glint of something bright in the floor of the cave.
+4a=
 
 # This door cannot be opened by craft or spell.
-4b=This door cannot be opened by craft or spell.
+4b=
 
 # Yes, I did meet a hobbit who warned me about bandits. But I doubt any of them would dare bother me.
-4c=Yes, I did meet a hobbit who warned me about bandits. But I doubt any of them would dare bother me.
+4c=
 
 # Did *she* tell you to come see me? Hmmmm....
-4d=Did *she* tell you to come see me? Hmmmm....
+4d=
 
 # ...rrrr... He is near, very near. I would turn back to the Master's house if I were you.
-4e=...rrrr... He is near, very near. I would turn back to the Master's house if I were you.
+4e=
 
 # You have come to the Buckland Gate. It is open. You enter the Shire.
-4f=You have come to the Buckland Gate. It is open. You enter the Shire.
+4f=
 
 # You have come to the Buckland Gate. It is locked tight.
-50=You have come to the Buckland Gate. It is locked tight.
+50=
 
 # You misstep and fall to your doom!
-51=You misstep and fall to your doom!
+51=
 
 # Books of magic are perilous. You had best let me handle it.
-52=Books of magic are perilous. You had best let me handle it.
+52=
 
 # Little fools, give me the book!
-53=Little fools, give me the book!
+53=
 
 # The woman Athelwyn's face twists sickeningly. The book is not yours. It is the property of the Lord of Many Colors! If you will not give it  willingly, I shall take it from your corpses!
-54=The woman Athelwyn's face twists sickeningly. The book is not yours. It is the property of the Lord of Many Colors! If you will not give it  willingly, I shall take it from your corpses!
+54=
 
 # Then we shall take it from your corpses.
-55=Then we shall take it from your corpses.
+55=
 
 # Fool! Kill them and give me all they possess.
-56=Fool! Kill them and give me all they possess.
+56=
 
 # Bitter bone-biting chill drains ÿ's energy.
 57=Bitter bone-biting chill drains ÿ's energy.
 
 # Nob says: "a wise man wouldn't be reading that accursed book."
-58=Nob says: "a wise man wouldn't be reading that accursed book."
+58=
 
 # The book seems to feel it! Fire issues forth from its pages, burning you!
-59=The book seems to feel it! Fire issues forth from its pages, burning you!
+59=
 
 # The book explodes in a flurry of fireworks that would startle even Gandalf! Its last moments are a scream of violence that chills your blood.
-5a=The book explodes in a flurry of fireworks that would startle even Gandalf! Its last moments are a scream of violence that chills your blood.
+5a=
 
 # The book's powerful words draw you into its dark mysteries.
-5b=The book's powerful words draw you into its dark mysteries.
+5b=
 
 # You have fallen to your doom.
-5c=You have fallen to your doom.
+5c=
 
 # A strange look appears in Frodo's eyes. "Why destroy It? Madness! The Ring is mine forever!" You are shocked to see him place it on his finger, laugh in an evil, un-hobbitish way, and disappear.
-5d=A strange look appears in Frodo's eyes. "Why destroy It? Madness! The Ring is mine forever!" You are shocked to see him place it on his finger, laugh in an evil, un-hobbitish way, and disappear.
+5d=
 
 # I want the Ring. It could've been mine. It should have been mine! Thief, give it to me now! It is too precious for someone like you to have it. Give it to me now!
-5e=I want the Ring. It could've been mine. It should have been mine! Thief, give it to me now! It is too precious for someone like you to have it. Give it to me now!
+5e=
 
 # The gap in the ice wall seals itself as you pass through it.
-5f=The gap in the ice wall seals itself as you pass through it.
+5f=
 
 # The lights try to affect your mind, and waste their energies in a futile struggle.
-60=The lights try to affect your mind, and waste their energies in a futile struggle.
+60=
 
 # There is a great orc sitting in a chair. He pulls a sword. Grimbosh knows why you are here. Surrender, or Grimbosh kills you! (Y/N)
-61=There is a great orc sitting in a chair. He pulls a sword. Grimbosh knows why you are here. Surrender, or Grimbosh kills you! (Y/N)
+61=
 
 # Athelwyn smiles. She goes to Grimbosh's side. "I would do as Grimbosh says. The Grey Fool, Gandalf, cannot save us, but the Lord of Many Colors can. Surrender the Ring to him."
-62=Athelwyn smiles. She goes to Grimbosh's side. "I would do as Grimbosh says. The Grey Fool, Gandalf, cannot save us, but the Lord of Many Colors can. Surrender the Ring to him."
+62=
 
 # The party never returns from their quest. You must leave without them.
-63=The party never returns from their quest. You must leave without them.
+63=
 
 # You have been struck by a poison needle.
-64=You have been struck by a poison needle.
+64=
 
 # You have found a poison needle.
-65=You have found a poison needle.
+65=
 
 # There is something here you might use.
-66=There is something here you might use.
+66=
 
 # You trigger a device that throws all of you into a Pit!
-67=You trigger a device that throws all of you into a Pit!
+67=
 
 # A long-dead dwarf is half buried in the rubble.
-68=A long-dead dwarf is half buried in the rubble.
+68=
 
 # Tom Bombadil of course. He is the Master.
-69=Tom Bombadil of course. He is the Master.
+69=
 
 # A huge steel crossbow bolt pierces you!
-6a=A huge steel crossbow bolt pierces you!
+6a=
 
 # There is a letter in the bottom of this chest.
-6b=There is a letter in the bottom of this chest.
+6b=
 
 # It wasn't easy, but you disarm the chest.
-6c=It wasn't easy, but you disarm the chest.
+6c=
 
 # A scroll? All this for a lousy scroll.
-6d=A scroll? All this for a lousy scroll.
+6d=
 
 # The scroll says "Lugburz".
-6e=The scroll says "Lugburz".
+6e=
 
 # The lock on the chest is trapped.
-6f=The lock on the chest is trapped.
+6f=
 
 # You have found a scroll.
-70=You have found a scroll.
+70=
 
 # You see a diary. There is but a single entry: "Rumor holds that Baggins is moving to Bucklebury. I will arrange to meet him there."
-71=You see a diary. There is but a single entry: "Rumor holds that Baggins is moving to Bucklebury. I will arrange to meet him there."
+71=
 
 # You see many small exhausted orcs, covered in dirt and grime. They look like they want to attack you, but they are too tired to initiate combat.
-72=You see many small exhausted orcs, covered in dirt and grime. They look like they want to attack you, but they are too tired to initiate combat.
+72=
 
 # The ground beneath your feet feels hollow.
-73=The ground beneath your feet feels hollow.
+73=
 
 # A Maiden's Favor Softens a Hardened Heart.
-74=A Maiden's Favor Softens a Hardened Heart.
+74=
 
 # Two words ye must have to enter Durin's Doom.
-75=Two words ye must have to enter Durin's Doom.
+75=
 
 # Gloom, Tomb, Doom, and a hidden Room.
-76=Gloom, Tomb, Doom, and a hidden Room.
+76=
 
 # When ye climb the windy rock, seek a stone apart.
-77=When ye climb the windy rock, seek a stone apart.
+77=
 
 # You see a large stone pillar covering a hollow.
-78=You see a large stone pillar covering a hollow.
+78=
 
 # You have dug a hole under the menhir. The hollow descends into darkness.
-79=You have dug a hole under the menhir. The hollow descends into darkness.
+79=
 
 # You descend safely.
-7a=You descend safely.
+7a=
 
 # You fall down the open hole. That hurt!
-7b=You fall down the open hole. That hurt!
+7b=
 
 # You cannot budge this door.
-7c=You cannot budge this door.
+7c=
 
 # A chill wind seems to whisper: "Darkness and doom	wait and watch upon the downs. You are alone... alone... alone. Who will save you... you... you."
-7d=A chill wind seems to whisper: "Darkness and doom	wait and watch upon the downs. You are alone... alone... alone. Who will save you... you... you."
+7d=
 
 # Do you want to stack rocks and try to climb out (Y/N)?
-7e=Do you want to stack rocks and try to climb out (Y/N)?
+7e=
 
 # "I am here," says a voice, deep and cold, that seems to come out of the ground. "I am waiting for you."
-7f="I am here," says a voice, deep and cold, that seems to come out of the ground. "I am waiting for you."
+7f=
 
 # A keening howl shatters the tranquility of the countryside. 
-80=A keening howl shatters the tranquility of the countryside. 
+80=
 
 # The roads are getting dangerous! Only experienced travellers should leave their homes.
-81=The roads are getting dangerous! Only experienced travellers should leave their homes.
+81=
 
 # "Like us, you know!"
-82="Like us, you know!"
+82=
 
 # There were these humans in dark cloaks riding black horses. They were scary!
-83=There were these humans in dark cloaks riding black horses. They were scary!
+83=
 
 # I heard something about big magic in a cave north of the Last Bridge, whereever that is!
-84=I heard something about big magic in a cave north of the Last Bridge, whereever that is!
+84=
 
 # Have you seen Orin? He should be at the Forsaken Inn. Tell him that Nuri, Borri, and Falin asked for him.
-85=Have you seen Orin? He should be at the Forsaken Inn. Tell him that Nuri, Borri, and Falin asked for him.
+85=
 
 # He's just an old friend.
-86=He's just an old friend.
+86=
 
 # There are big men blocking your way. One snaps "These fellows don't look as though they've paid their toll. Whyn't we remind them of their duties to those who own this land.
-87=There are big men blocking your way. One snaps "These fellows don't look as though they've paid their toll. Whyn't we remind them of their duties to those who own this land.
+87=
 
 # Arrr. We serve no foreign wizards. At 'em lads. Cleanse our fine Bree-lands of scum like this.
-88=Arrr. We serve no foreign wizards. At 'em lads. Cleanse our fine Bree-lands of scum like this.
+88=
 
 # You may pass in our lands, o' noble travellers. Har. Har.
-89=You may pass in our lands, o' noble travellers. Har. Har.
+89=
 
 # Smart lads. Say, Rayf Brogan is lookin' for some help. Ask for him at Whitehead's shop.
-8a=Smart lads. Say, Rayf Brogan is lookin' for some help. Ask for him at Whitehead's shop.
+8a=
 
 # The Ringbearer slowly awakes...
-8b=The Ringbearer slowly awakes...
+8b=
 
 # The Leader slowly awakes...
-8c=The Leader slowly awakes...
+8c=
 
 # The wight uses the sword. Your companions are dead.
-8d=The wight uses the sword. Your companions are dead.
+8d=
 
 # The wight squeals, draws back from the sword, and snarls.	You have delayed its attack for a few moments.
-8e=The wight squeals, draws back from the sword, and snarls.	You have delayed its attack for a few moments.
+8e=
 
 # Tom summons a pony to join the party.
-8f=Tom summons a pony to join the party.
+8f=
 
 # You have found a secret room!
-90=You have found a secret room!
+90=
 
 # Warm golden sunshine, gentle breezes, and softly rustling willow leaves makes for a... yawn... drowsy day.
-91=Warm golden sunshine, gentle breezes, and softly rustling willow leaves makes for a... yawn... drowsy day.
+91=
 
 # Lifting your heavy eyes, you find that you are under a hoary old willow tree, its enormous branches going up like reaching arms with many fingered hands.
-92=Lifting your heavy eyes, you find that you are under a hoary old willow tree, its enormous branches going up like reaching arms with many fingered hands.
+92=
 
 # The leaves rustle with a sound of faint, far-off laughter. Inside the muffled voices of your friends cry: "Stop it! He's hurting me!"
-93=The leaves rustle with a sound of faint, far-off laughter. Inside the muffled voices of your friends cry: "Stop it! He's hurting me!"
+93=
 
 # With a dancing hop, and a "Hey dol, merry dol!" Tom heads off, shouting, "Come up to the house", over his shoulder.
-94=With a dancing hop, and a "Hey dol, merry dol!" Tom heads off, shouting, "Come up to the house", over his shoulder.
+94=
 
 # You find an opening within the trunk of Old Man Willow, leading into darkness. Do you wish to enter it? (Y/N)
-95=You find an opening within the trunk of Old Man Willow, leading into darkness. Do you wish to enter it? (Y/N)
+95=
 
 # Tom's not one to waste time a'talking. Let me know what's on your mind.
-96=Tom's not one to waste time a'talking. Let me know what's on your mind.
+96=
 
 # The crack in the tree slams shut and suddenly the floor feels a bit more wet than it ought. Water is pouring into Old Man Willow. If you don't act quickly, you'll all drown!
-97=The crack in the tree slams shut and suddenly the floor feels a bit more wet than it ought. Water is pouring into Old Man Willow. If you don't act quickly, you'll all drown!
+97=
 
 # As the water rises, you manage to stay afloat. When you come to the roof, you find a knot hole in Old Man Willow's gnarled trunk. You climb through it and escape!
-98=As the water rises, you manage to stay afloat. When you come to the roof, you find a knot hole in Old Man Willow's gnarled trunk. You climb through it and escape!
+98=
 
 # The water is rising!
-99=The water is rising!
+99=
 
 # You all drown. Old Man Willow has his revenge!
-9a=You all drown. Old Man Willow has his revenge!
+9a=
 
 # Strange furtive noises run among bushes while queer knobbly faces gloom down from above.
-9b=Strange furtive noises run among bushes while queer knobbly faces gloom down from above.
+9b=
 
 # You settle down to converse with Bombadil. Tom explains that he is the Eldest; he existed before the trees, the rain, the elves, and even the Dark Lord. He then asks to handle the Ring. Do you let him? (Y/N)
-9c=You settle down to converse with Bombadil. Tom explains that he is the Eldest; he existed before the trees, the rain, the elves, and even the Dark Lord. He then asks to handle the Ring. Do you let him? (Y/N)
+9c=
 
 # Tom puts it on his finger and smiles. You gasp! He didn't disappear. Tom laughs, spins the Ring in the air, and it vanishes -- then he smiles and hands it back to the Ringbearer.
-9d=Tom puts it on his finger and smiles. You gasp! He didn't disappear. Tom laughs, spins the Ring in the air, and it vanishes -- then he smiles and hands it back to the Ringbearer.
+9d=
 
 # You are quite tired from the day's ordeal. Do you wish to sleep? (Y/N)
-9e=You are quite tired from the day's ordeal. Do you wish to sleep? (Y/N)
+9e=
 
 # I wouldn't worry about old Gandalf. He's very good at escaping tough scrapes.
-9f=I wouldn't worry about old Gandalf. He's very good at escaping tough scrapes.
+9f=
 
 # The Old Forest is tricky for little fellows who don't know its paths. Don't a-wander there!
-a0=The Old Forest is tricky for little fellows who don't know its paths. Don't a-wander there!
+a0=
 
 # Don't go near 'em. Pass tombs to the west. Stay on green grass.
-a1=Don't go near 'em. Pass tombs to the west. Stay on green grass.
+a1=
 
 # He's a cunning singer, and it's hard for little folk to escape his mazes.
-a2=He's a cunning singer, and it's hard for little folk to escape his mazes.
+a2=
 
 # A large branch crashes heavily to the ground, hitting the leader.
-a3=A large branch crashes heavily to the ground, hitting the leader.
+a3=
 
 # Unseen amid the dead decaying leaves, a gnarled root trips the leader, who tumbles to the ground.
-a4=Unseen amid the dead decaying leaves, a gnarled root trips the leader, who tumbles to the ground.
+a4=
 
 # It almost sounds as if the towering trees are whispering dark rumors among themselves.
-a5=It almost sounds as if the towering trees are whispering dark rumors among themselves.
+a5=
 
 # You hear a strange... and yet the only sound is the drip, drip of moisture from the dark trees.
-a6=You hear a strange... and yet the only sound is the drip, drip of moisture from the dark trees.
+a6=
 
 # It feels as though you're being watched -- by someone who dislikes you.
-a7=It feels as though you're being watched -- by someone who dislikes you.
+a7=
 
 # The way here is darker, more menacing -- you make an excuse not to proceed in this direction, but you know it's only fear that's holding you back.
-a8=The way here is darker, more menacing -- you make an excuse not to proceed in this direction, but you know it's only fear that's holding you back.
+a8=
 
 # Bare of trees this hill rises like an island amidst the great, deep green, sea. To the north, west, and south is the Old Forest. To the east is a great winding river.
-a9=Bare of trees this hill rises like an island amidst the great, deep green, sea. To the north, west, and south is the Old Forest. To the east is a great winding river.
+a9=
 
 # Greetings, rootless ones. Unless you be as swift as a stream, this is not a safe place for ones such as you.
-aa=Greetings, rootless ones. Unless you be as swift as a stream, this is not a safe place for ones such as you.
+aa=
 
 # What you seek lies to the south. Search for it on the top of the hill. I will not stop you.
-ab=What you seek lies to the south. Search for it on the top of the hill. I will not stop you.
+ab=
 
 # The sly old creek would not send you unprepared. Give it to me, and you may have the aid of Ruddyoak, if you so wish.
-ac=The sly old creek would not send you unprepared. Give it to me, and you may have the aid of Ruddyoak, if you so wish.
+ac=
 
 # This water is warm. Reminds one of a warm bath!
-ad=This water is warm. Reminds one of a warm bath!
+ad=
 
 # You are too late. An early frost has killed the lilies here.
-ae=You are too late. An early frost has killed the lilies here.
+ae=
 
 # As you watch, a crushed lily blossom floats into the water from a side stream.
-af=As you watch, a crushed lily blossom floats into the water from a side stream.
+af=
 
 # You notice a stone tablet with odd runes.
-b0=You notice a stone tablet with odd runes.
+b0=
 
 # Durond hid his staff "behind water" and "beyond the abyss" against a day when the scion of Morgoth would rise again.
-b1=Durond hid his staff "behind water" and "beyond the abyss" against a day when the scion of Morgoth would rise again.
+b1=
 
 # You think that this is a queer place to find a red oak tree.
-b2=You think that this is a queer place to find a red oak tree.
+b2=
 
 # Far, far below, beautiful lilies gently bob in a shadowed pool.
-b3=Far, far below, beautiful lilies gently bob in a shadowed pool.
+b3=
 
 # The sides of the pit are covered in slick moss. It would be your death to try to climb down.
-b4=The sides of the pit are covered in slick moss. It would be your death to try to climb down.
+b4=
 
 # The moss is indeed very slick. You tumble down the side of the crater, then disappear with a splash...
-b5=The moss is indeed very slick. You tumble down the side of the crater, then disappear with a splash...
+b5=
 
 # I thought I told you sneaks to get lost! Don't bother me again!
-b6=I thought I told you sneaks to get lost! Don't bother me again!
+b6=
 
 # You see several armed humans in here, guarding against intruders.
-b7=You see several armed humans in here, guarding against intruders.
+b7=
 
 # Escaped prisoner! Kill them all!
-b8=Escaped prisoner! Kill them all!
+b8=
 
 # Athelwyn's face twists and she snarls: "The Witch of Cardolan did not survive the centuries by allowing her enemies to learn her secrets. You are all dead!"
-b9=Athelwyn's face twists and she snarls: "The Witch of Cardolan did not survive the centuries by allowing her enemies to learn her secrets. You are all dead!"
+b9=
 
 # Are you going to try to burn the book?
-ba=Are you going to try to burn the book?
+ba=
 
 # Do you wish to attack the tree? (Y/N)
-bb=Do you wish to attack the tree? (Y/N)
+bb=
 
 # The word of Withywindle shall always be honored. Take and give with my blessing.
-bc=The word of Withywindle shall always be honored. Take and give with my blessing.
+bc=
 
 # Fog descends upon the barrow downs like a shroud. A feel of death is everywhere. You are doomed -- and you know it. Doomed.
-bd=Fog descends upon the barrow downs like a shroud. A feel of death is everywhere. You are doomed -- and you know it. Doomed.
+bd=
 
 # The entrance to the barrow is sealed by a huge stone block that is marked with the symbol of a sceptre and a swan-winged crown.
-be=The entrance to the barrow is sealed by a huge stone block that is marked with the symbol of a sceptre and a swan-winged crown.
+be=
 
 # The magic that protects this wall of ice is surprisingly strong! However, you manage to create a small passage in the ice, through which you might barely squeeze through.
-bf=The magic that protects this wall of ice is surprisingly strong! However, you manage to create a small passage in the ice, through which you might barely squeeze through.
+bf=
 
 # Alone, you are no match for the barrow wight. You die within this ancient grave and join the wights for all eternity.
-c0=Alone, you are no match for the barrow wight. You die within this ancient grave and join the wights for all eternity.
+c0=
 
 # You have removed the trap!
-c1=You have removed the trap!
+c1=
 
 # You leap across the chasm!
-c2=You leap across the chasm!
+c2=
 
 # Everyone knows where the Forsaken Inn is! It's just east of Bree!
-c3=Everyone knows where the Forsaken Inn is! It's just east of Bree!
+c3=
 
 # "You have my gratitude." Goldberry says as she presses the flower against her face. "And you will find that this quest has left you better prepared for the great task ahead."
-c4="You have my gratitude." Goldberry says as she presses the flower against her face. "And you will find that this quest has left you better prepared for the great task ahead."
+c4=
 
 # A journal with today's date says:"NAN CURUNIR", and records the sale of pipeweed.
-c5=A journal with today's date says:"NAN CURUNIR", and records the sale of pipeweed.
+c5=
 
 # It feels as though invisible fingers are crawling through your skull. You are briefly overwhelmed by extremely evil thoughts -- thoughts that are not your own! Gazing back at the Black Book, you cannot help but shudder.
-c6=It feels as though invisible fingers are crawling through your skull. You are briefly overwhelmed by extremely evil thoughts -- thoughts that are not your own! Gazing back at the Black Book, you cannot help but shudder.
+c6=
 
 # Do you want to give the brigands your silver? (Y/N)
-c7=Do you want to give the brigands your silver? (Y/N)
+c7=
 
 # The leader of this band smiles as you approach.	"Rich travellers willing to lend honest folk a helping hand." His fellows, obviously brigands, laugh. "Hand us your silver if you don't want trouble."
-c8=The leader of this band smiles as you approach.	"Rich travellers willing to lend honest folk a helping hand." His fellows, obviously brigands, laugh. "Hand us your silver if you don't want trouble."
+c8=
 
 # On a tall tree branch, a brown bird is crying piteously. It seems to have been tied to the branch by some cruel creature and cannot escape.
-c9=On a tall tree branch, a brown bird is crying piteously. It seems to have been tied to the branch by some cruel creature and cannot escape.
+c9=
 
 # This was not an easy climb, but you manage it, nearly plummeting to the ground as you unravel the snare. The bird jubilantly flies into the air, dives through a previously unseen hole in the east hedge wall, then vanishes from sight.
-ca=This was not an easy climb, but you manage it, nearly plummeting to the ground as you unravel the snare. The bird jubilantly flies into the air, dives through a previously unseen hole in the east hedge wall, then vanishes from sight.
+ca=
 
 # After many hours of travel through this miserable forest, your vision becomes a dark green blur. Your footsteps stagger as you lurch between sleep and consciousness. It is as though some other force were controlling your movements.
-cb=After many hours of travel through this miserable forest, your vision becomes a dark green blur. Your footsteps stagger as you lurch between sleep and consciousness. It is as though some other force were controlling your movements.
+cb=
 
 # The trees in this section of the forest seem to be taller than those that surround it.
-cc=The trees in this section of the forest seem to be taller than those that surround it.
+cc=
 
 # The wind is brisk and refreshing from the tree top. Searching eastward, you can see clearly that the pathways lead to dead ends. That is not the way to leave the Old Forest.
-cd=The wind is brisk and refreshing from the tree top. Searching eastward, you can see clearly that the pathways lead to dead ends. That is not the way to leave the Old Forest.
+cd=
 
 # This tree does not like to be climbed, but eventually you manage it. Far to the northwest, you catch a glimpse of ancient ruins.
-ce=This tree does not like to be climbed, but eventually you manage it. Far to the northwest, you catch a glimpse of ancient ruins.
+ce=
 
 # The entrance into this barrow has been sealed with a huge stone slab. None of your best efforts suffice to move it.
-cf=The entrance into this barrow has been sealed with a huge stone slab. None of your best efforts suffice to move it.
+cf=
 
 # Athelwyn greets the orc in the chair. "Greetings, dear Grimbosh." she says with a laugh. "Of course I got the Ring from those foolish hobbits, did you expect anything less of me? Now our master will rule Middle Earth!"
-d0=Athelwyn greets the orc in the chair. "Greetings, dear Grimbosh." she says with a laugh. "Of course I got the Ring from those foolish hobbits, did you expect anything less of me? Now our master will rule Middle Earth!"
+d0=
 
 # Greetings my friends. It is good to see you again.
-d1=Greetings my friends. It is good to see you again.
+d1=
 
 # I appreciate your help. It is a comfort to me in my weakness that I have friends who will aid me.
-d2=I appreciate your help. It is a comfort to me in my weakness that I have friends who will aid me.
+d2=
 
 # Lilies can be found in my favorite pool, just southeast of this house. Search there carefully.
-d3=Lilies can be found in my favorite pool, just southeast of this house. Search there carefully.
+d3=
 
 # The biggest Oak in in the forest is located above the waterfall. It has large red acorns.
-d4=The biggest Oak in in the forest is located above the waterfall. It has large red acorns.
+d4=
 
 # She is my mother, and may be found in a cave behind the waterfall. She will help you, if she can.
-d5=She is my mother, and may be found in a cave behind the waterfall. She will help you, if she can.
+d5=
 
 # Go west until you meet Ruddyoak, and then travel south to the hill. The stone is somewhere in that area.
-d6=Go west until you meet Ruddyoak, and then travel south to the hill. The stone is somewhere in that area.
+d6=
 
 # Tom doesn't know what to do with Rings! He eventually loses It, and It falls into the hands of the Dark Lord, who conquers Middle Earth with It.
-d7=Tom doesn't know what to do with Rings! He eventually loses It, and It falls into the hands of the Dark Lord, who conquers Middle Earth with It.
+d7=
 
 # You must trust your own judgment on that subject.
-d8=You must trust your own judgment on that subject.
+d8=
 
 # Please help me. There might be lilies in the river south of my pool. Search there.
-d9=Please help me. There might be lilies in the river south of my pool. Search there.
+d9=
 
 # Out east my knowledge fails. Tom is no master of Riders from the Black Land far beyond his home.
-da=Out east my knowledge fails. Tom is no master of Riders from the Black Land far beyond his home.
+da=
 
 # Behind this shimmering curtain of falling water, a tunnel leads into darkness.
-db=Behind this shimmering curtain of falling water, a tunnel leads into darkness.
+db=
 
 # Withywindle stirs from her throne. "This place is not for meant for elves, dwarves, men, nor halflings, save in the direst need. Please leave.
-dc=Withywindle stirs from her throne. "This place is not for meant for elves, dwarves, men, nor halflings, save in the direst need. Please leave.
+dc=
 
 # "It is foolish to petition me more than once without good cause," Withywindle declares.
-dd="It is foolish to petition me more than once without good cause," Withywindle declares.
+dd=
 
 # Most precious of flowers, beloved by Goldberry. I keep them to myself.
-de=Most precious of flowers, beloved by Goldberry. I keep them to myself.
+de=
 
 # My own counsel will I keep on this matter. Do not question me further on this!
-df=My own counsel will I keep on this matter. Do not question me further on this!
+df=
 
 # He should keep his place more tidy. You can always find at least one empty ale bottle on his table.
-e0=He should keep his place more tidy. You can always find at least one empty ale bottle on his table.
+e0=
 
 # She is my daughter, born in the current of the stream, foam is her skin and the sun shines in her hair.
-e1=She is my daughter, born in the current of the stream, foam is her skin and the sun shines in her hair.
+e1=
 
 # Imbedded in the wall is a staff of ice, waiting for someone to take it.
-e2=Imbedded in the wall is a staff of ice, waiting for someone to take it.
+e2=
 
 # The grave is silent now. The vengeful spirits of the dead have been quieted.
-e3=The grave is silent now. The vengeful spirits of the dead have been quieted.
+e3=
 
 # It is not wise to disturb the spirit of water, save in uttermost need.
-e4=It is not wise to disturb the spirit of water, save in uttermost need.
+e4=
 
 # ... and surface in a dark underground passageway.
-e5=... and surface in a dark underground passageway.
+e5=
 
 # Ruddyoak does not understand the importance of the Ring, and eventually throws it away. The Quest is over.
-e6=Ruddyoak does not understand the importance of the Ring, and eventually throws it away. The Quest is over.
+e6=
 
 # Ruddyoak will go no further. "I will not leave my forest even in the autumn when the leaves are red." he says, and vanishes as if he were never there.
-e7=Ruddyoak will go no further. "I will not leave my forest even in the autumn when the leaves are red." he says, and vanishes as if he were never there.
+e7=
 
 # Those among you who know of the lore of the Rangers realize that no force can destroy this ancient seal, save perhaps time. It is useless to try to penetrate this barrow.
-e8=Those among you who know of the lore of the Rangers realize that no force can destroy this ancient seal, save perhaps time. It is useless to try to penetrate this barrow.
+e8=
 
 # The wall of ice is not even warm. Nothing has melted. There may be a way to get through this wall, but fire isn't going to do it.
-e9=The wall of ice is not even warm. Nothing has melted. There may be a way to get through this wall, but fire isn't going to do it.
+e9=
 
 # Do not waste my time with unimportant matters. Speak quickly and begone.
-ea=Do not waste my time with unimportant matters. Speak quickly and begone.
+ea=
 
 # Ha! You ask of Tom Bombadil? You think the Master can be caught with words? To know him, you must meet him.
-eb=Ha! You ask of Tom Bombadil? You think the Master can be caught with words? To know him, you must meet him.
+eb=
 
 # Follow the road. Big walled city. You can't miss it.
-ec=Follow the road. Big walled city. You can't miss it.
+ec=
 
 # Of that I will not speak.
-ed=Of that I will not speak.
+ed=
 
 # You manage to catch your rope around some jutting stones, and use it to climb out of the hole.
-ee=You manage to catch your rope around some jutting stones, and use it to climb out of the hole.
+ee=
 
 # The ground gives way and you plummet into the darkness of the barrow.
-ef=The ground gives way and you plummet into the darkness of the barrow.
+ef=
 
 # The slope here is sufficient to allow you to crawl back to the surface.
-f0=The slope here is sufficient to allow you to crawl back to the surface.
+f0=
 
 # There is something buried here.
-f1=There is something buried here.
+f1=
 
 # An ancient corpse has been buried here. An old dagger lies beside him, from which a gem has fallen from the hilt.
-f2=An ancient corpse has been buried here. An old dagger lies beside him, from which a gem has fallen from the hilt.
+f2=
 
 # As you dig through the remains, a huge spider crawls out and attacks!
-f3=As you dig through the remains, a huge spider crawls out and attacks!
+f3=
 
 # A dark shadow lurks in the trees. Ruddyoak declares: "It is good that I am here. The Black Alder would attack you if I were not."
-f4=A dark shadow lurks in the trees. Ruddyoak declares: "It is good that I am here. The Black Alder would attack you if I were not."
+f4=
 
 # Several slave-orcs are resting in the rubble. They look like they want to fight you, but are too tired.
-f5=Several slave-orcs are resting in the rubble. They look like they want to fight you, but are too tired.
+f5=
 
 # From the ground, a huge wight rises, wearing crowns and other finery of kings. His lieutenants draw weapons. "Thief!" cries the spirit of Amonar. "Murderer! Traitor!" Their weapons clash. It is the finale of an ancient battle.
-f6=From the ground, a huge wight rises, wearing crowns and other finery of kings. His lieutenants draw weapons. "Thief!" cries the spirit of Amonar. "Murderer! Traitor!" Their weapons clash. It is the finale of an ancient battle.
+f6=
 
 # The Ghost-King rises to his feet. "It is over. But for the Dunedain it will not end until the thrones of Gondor and Arnor are one. Search well this barrow!" Then he fades, smiling.
-f7=The Ghost-King rises to his feet. "It is over. But for the Dunedain it will not end until the thrones of Gondor and Arnor are one. Search well this barrow!" Then he fades, smiling.
+f7=
 
 # You have found a shining cube of crystal, a magic glass.
-f8=You have found a shining cube of crystal, a magic glass.
+f8=
 
 # You have lost the Ring. You cannot proceed until you have recovered it.
-f9=You have lost the Ring. You cannot proceed until you have recovered it.
+f9=
 
 # There is something half-buried beneath your feet.
-fa=There is something half-buried beneath your feet.
+fa=
 
 # These look just like the ruins in Green Hill Country of the Shire!
-fb=These look just like the ruins in Green Hill Country of the Shire!
+fb=
 
 # How odd. You can't seem to get out in the same way that you came in...
-fc=How odd. You can't seem to get out in the same way that you came in...
+fc=
 
 # These cliffs are too steep and treacherous for even a skilled climber.
-fd=These cliffs are too steep and treacherous for even a skilled climber.
+fd=
 
 # Suddenly someone is missing...
-fe=Suddenly someone is missing...
+fe=
 

@@ -1,768 +1,768 @@
 # A lump forms in your throat as you say good-bye to Bag End. Sam and Pippin are next to you. They want to accompany you to the Buckland Ferry, where your cousin, Merry, is waiting for you.
-00=A lump forms in your throat as you say good-bye to Bag End. Sam and Pippin are next to you. They want to accompany you to the Buckland Ferry, where your cousin, Merry, is waiting for you.
+00=
 
 # You are in front of the door to Bag End.
-01=You are in front of the door to Bag End.
+01=
 
 # The door is locked.
-02=The door is locked.
+02=
 
 # You unlock the door.
-03=You unlock the door.
+03=
 
 # You lock the door.
-04=You lock the door.
+04=
 
 # You have entered Bag End, widely renowned as the most comfortable Hole in Hobbiton, and (until today) home of the Baggins Family.
-05=You have entered Bag End, widely renowned as the most comfortable Hole in Hobbiton, and (until today) home of the Baggins Family.
+05=
 
 # You see items here you might use.
-06=You see items here you might use.
+06=
 
 # There is a locked chest here.
-07=There is a locked chest here.
+07=
 
 # You open the chest. There is something gleaming inside, waiting to be taken.
-08=You open the chest. There is something gleaming inside, waiting to be taken.
+08=
 
 # Lobelia Sackville-Baggins hits Frodo with her umbrella! "Give me the key to Bag End!" she shouts. "It's time that decent folk lived there. Give it to me now!"
-09=Lobelia Sackville-Baggins hits Frodo with her umbrella! "Give me the key to Bag End!" she shouts. "It's time that decent folk lived there. Give it to me now!"
+09=
 
 # "Ours at last!" Lobelia says. "Now off to Buckland with you, and don't bother us again!"
-0a="Ours at last!" Lobelia says. "Now off to Buckland with you, and don't bother us again!"
+0a=
 
 # You see Old Gaffer Gamgee wave at you as you pass by.
-0b=You see Old Gaffer Gamgee wave at you as you pass by.
+0b=
 
 # Have you heard of the lost kids? Can't say as I know much; they know more at the Inn.
-0c=Have you heard of the lost kids? Can't say as I know much; they know more at the Inn.
+0c=
 
 # A big man, all in black, with a hissy voice was asking after young Mr. Baggins.
-0d=A big man, all in black, with a hissy voice was asking after young Mr. Baggins.
+0d=
 
 # You enter Ted Sandyman's house. He and Lotho Pimple are standing next to each other, whispering suspiciously.
-0e=You enter Ted Sandyman's house. He and Lotho Pimple are standing next to each other, whispering suspiciously.
+0e=
 
 # There are going to be big changes in the Shire, and you aren't wanted. Run off to your elves!
-0f=There are going to be big changes in the Shire, and you aren't wanted. Run off to your elves!
+0f=
 
 # As you raise your fists against the two hobbits, two big men appear with clubs. Lotho and Sandyman smile and leave you to be beaten.
-10=As you raise your fists against the two hobbits, two big men appear with clubs. Lotho and Sandyman smile and leave you to be beaten.
+10=
 
 # This is the Mill House. You spot a large number of Big Folk -- humans. They stare at you, and one of them orders you to get lost.
-11=This is the Mill House. You spot a large number of Big Folk -- humans. They stare at you, and one of them orders you to get lost.
+11=
 
 # The mill is guarded by Big Folk with clubs. You realize you must be very quiet, or they might wake up.
-12=The mill is guarded by Big Folk with clubs. You realize you must be very quiet, or they might wake up.
+12=
 
 # You find yourself thrown out of the Mill by Big Folk. Ted Sandyman was laughing as you hit the ground. One of the men shouts: "If we ever catch you sneaking hobbits here again, we'll thrash you!"
-13=You find yourself thrown out of the Mill by Big Folk. Ted Sandyman was laughing as you hit the ground. One of the men shouts: "If we ever catch you sneaking hobbits here again, we'll thrash you!"
+13=
 
 # The guards wake up. You realize that you should have been quieter.
-14=The guards wake up. You realize that you should have been quieter.
+14=
 
 # You have come to a strange metal apparatus, with dials and wheels. It appears to be controlled by pushing buttons and is making evil noises. Do you push buttons? (Y/N)
-15=You have come to a strange metal apparatus, with dials and wheels. It appears to be controlled by pushing buttons and is making evil noises. Do you push buttons? (Y/N)
+15=
 
 # A sign reads: "closed for repairs."
-16=A sign reads: "closed for repairs."
+16=
 
 # A sinister black smoke and foul stench comes from the Mill Yard. Nothing like this has been seen in the Shire before.
-17=A sinister black smoke and foul stench comes from the Mill Yard. Nothing like this has been seen in the Shire before.
+17=
 
 # This tavern is full of the smell of pipesmoke and ale. The bartender smiles as you enter.
-18=This tavern is full of the smell of pipesmoke and ale. The bartender smiles as you enter.
+18=
 
 # You spot a pretty hobbit lass with a tearful face at the bar.
-19=You spot a pretty hobbit lass with a tearful face at the bar.
+19=
 
 # See paragraph number 54.
-1a=See paragraph number 54.
+1a=
 
 # Hullo lads. Care for some ale?
-1b=Hullo lads. Care for some ale?
+1b=
 
 # Can you talk to the long-beard in the corner? Big he is is, tho' he likes ale too much. He wants the Burglar.
-1c=Can you talk to the long-beard in the corner? Big he is is, tho' he likes ale too much. He wants the Burglar.
+1c=
 
 # Has anyone seen that furfooted, thrice-cursed Burglar? Bring me Baggins!
-1d=Has anyone seen that furfooted, thrice-cursed Burglar? Bring me Baggins!
+1d=
 
 # I came seeking my lost uncle. Now weariness makes it difficult to search. Find him and his axe.
-1e=I came seeking my lost uncle. Now weariness makes it difficult to search. Find him and his axe.
+1e=
 
 # "So all that was left was the axe. I feared my uncle had met an evil fate. For ending my quest, I will aid you in yours. I will join your Fellowship."
-1f="So all that was left was the axe. I feared my uncle had met an evil fate. For ending my quest, I will aid you in yours. I will join your Fellowship."
+1f=
 
 # This is the Grange, home of the Grubb family.
-20=This is the Grange, home of the Grubb family.
+20=
 
 # Freddi, head bowed, skulks behind his father. His father scowls, then turns to thank you and gives you a pony.
-21=Freddi, head bowed, skulks behind his father. His father scowls, then turns to thank you and gives you a pony.
+21=
 
 # My Freddi has gone on an adventure, the little scoundrel! If you can find him, I'd be grateful.
-22=My Freddi has gone on an adventure, the little scoundrel! If you can find him, I'd be grateful.
+22=
 
 # This is a small store. Perhaps you will find something you can use, if you have enough silver pennies.
-23=This is a small store. Perhaps you will find something you can use, if you have enough silver pennies.
+23=
 
 # Greetings, worthy hobbits! Let me show you my wares.
-24=Greetings, worthy hobbits! Let me show you my wares.
+24=
 
 # Taffi shouts "Daddy!" and runs into Jolly Proudfoot's arms. Hiding a tear, Jolly hugs his daughter, and offers you provisions for the long trip to Buckland.
-25=Taffi shouts "Daddy!" and runs into Jolly Proudfoot's arms. Hiding a tear, Jolly hugs his daughter, and offers you provisions for the long trip to Buckland.
+25=
 
 # You are at the healer's home. A wizened old hobbit sitting in a chair turns and looks at you.
-26=You are at the healer's home. A wizened old hobbit sitting in a chair turns and looks at you.
+26=
 
 # What can I be doin' for you youngin's?
-27=What can I be doin' for you youngin's?
+27=
 
 # I need the healing herb of the Old Kings, athelas. A plant with long leaves that grows in the East Woods.
-28=I need the healing herb of the Old Kings, athelas. A plant with long leaves that grows in the East Woods.
+28=
 
 # The healer crushes leaves in steaming water and bathes the wounds. There is a sweet fragrance, and the wounds close and heal.
-29=The healer crushes leaves in steaming water and bathes the wounds. There is a sweet fragrance, and the wounds close and heal.
+29=
 
 # You have entered a hobbit's home.
-2a=You have entered a hobbit's home.
+2a=
 
 # A keen howl comes from the shadowed woods
-2b=A keen howl comes from the shadowed woods
+2b=
 
 # Another howl, only closer, louder, and darkly ominous. The wolves sound hungry.
-2c=Another howl, only closer, louder, and darkly ominous. The wolves sound hungry.
+2c=
 
 # Something leaps at you from the shadows!
-2d=Something leaps at you from the shadows!
+2d=
 
 # A child's sobbing echoes through the woods.
-2e=A child's sobbing echoes through the woods.
+2e=
 
 # Taffy smiles and wipes away the tears. "Thank-you for saving Freddi!" she shouts and agrees to follow you home.
-2f=Taffy smiles and wipes away the tears. "Thank-you for saving Freddi!" she shouts and agrees to follow you home.
+2f=
 
 # Please make the bad doggies go away... <sob!>
-30=Please make the bad doggies go away... <sob!>
+30=
 
 # A child's jacket flutters in front of a cave on the cliff face.
-31=A child's jacket flutters in front of a cave on the cliff face.
+31=
 
 # You misstep and tumble down the side of the cliff!
-32=You misstep and tumble down the side of the cliff!
+32=
 
 # This cave is full of webs and stinks of good meat gone bad.
-33=This cave is full of webs and stinks of good meat gone bad.
+33=
 
 # Faint crying tells you that someone is alive in here.
-34=Faint crying tells you that someone is alive in here.
+34=
 
 # You are on one side of a narrow chasm that seems to descend forever.
-35=You are on one side of a narrow chasm that seems to descend forever.
+35=
 
 # You realize too late that you should have jumped across. You fall to your doom.
-36=You realize too late that you should have jumped across. You fall to your doom.
+36=
 
 # With a mighty leap, you jump across the chasm and land safely on the far side.
-37=With a mighty leap, you jump across the chasm and land safely on the far side.
+37=
 
 # A hobbit child is bound in sticky spider webs. A large dark form hovers over him.
-38=A hobbit child is bound in sticky spider webs. A large dark form hovers over him.
+38=
 
 # In dwarven runes the scroll reads, "Dear Bilbo: Come visit us in Khazad-Dum. --Balin."
-39=In dwarven runes the scroll reads, "Dear Bilbo: Come visit us in Khazad-Dum. --Balin."
+39=
 
 # Set into the stone is a slab with a star-shaped hole.
-3a=Set into the stone is a slab with a star-shaped hole.
+3a=
 
 # When you place the Star Key in the hole, there is a grinding noise. You can now pass safely through the portal.
-3b=When you place the Star Key in the hole, there is a grinding noise. You can now pass safely through the portal.
+3b=
 
 # Carved in stone, a mighty robed king supports the roof with one hand and wields a sword with the other. Elven scripts surrounds a star-shaped depression. This standing king wears a brillant ruby on his breast.
-3c=Carved in stone, a mighty robed king supports the roof with one hand and wields a sword with the other. Elven scripts surrounds a star-shaped depression. This standing king wears a brillant ruby on his breast.
+3c=
 
 # The text reads, "Star of the North, light of future glory. When next I see thee I shall know the hour of need has come."
-3d=The text reads, "Star of the North, light of future glory. When next I see thee I shall know the hour of need has come."
+3d=
 
 # The statue stirs to a ghostly form. With echoing whispers, the spectre solemnly intones: "The Shadow draws close and oaths must be unbroken. I go to wait at the appointed place. Will you bear my legacy to the King? (Y/N)
-3e=The statue stirs to a ghostly form. With echoing whispers, the spectre solemnly intones: "The Shadow draws close and oaths must be unbroken. I go to wait at the appointed place. Will you bear my legacy to the King? (Y/N)
+3e=
 
 # The statue steps from the funeral bier in spirit form and draws its sword. "I am charged to bring death to all cowards and defilers!" it shouts. "Thou canst serve two masters!"
-3f=The statue steps from the funeral bier in spirit form and draws its sword. "I am charged to bring death to all cowards and defilers!" it shouts. "Thou canst serve two masters!"
+3f=
 
 # The spirit takes the gem from its chest and offers it to you, then points to unseen treasure at its feet. "Take what you need. We shall meet again, at a time and place unlooked for." Then it becomes stone once again.
-40=The spirit takes the gem from its chest and offers it to you, then points to unseen treasure at its feet. "Take what you need. We shall meet again, at a time and place unlooked for." Then it becomes stone once again.
+40=
 
 # You hear heavy hoofbeats coming from the east.
-41=You hear heavy hoofbeats coming from the east.
+41=
 
 # You see a Black Rider. He sees you. He dismounts from his horse and attacks.
-42=You see a Black Rider. He sees you. He dismounts from his horse and attacks.
+42=
 
 # ...when a sound like mingled song and laughter breaks the aura of evil. The Rider straightens, mounts, and fades into the dark woods. You hear clear elven voices.
-43=...when a sound like mingled song and laughter breaks the aura of evil. The Rider straightens, mounts, and fades into the dark woods. You hear clear elven voices.
+43=
 
 # The elves begin to sing: "Gilthoniel! O Elbereth! Clear are thy eyes and bright thy breath!" The elves continue to sing as you follow them back to their camp in the woods.
-44=The elves begin to sing: "Gilthoniel! O Elbereth! Clear are thy eyes and bright thy breath!" The elves continue to sing as you follow them back to their camp in the woods.
+44=
 
 # We are safe here. Though elves rarely give advice, ask, and I shall try to help you.
-45=We are safe here. Though elves rarely give advice, ask, and I shall try to help you.
+45=
 
 # The elves tell you that they are about to depart.
-46=The elves tell you that they are about to depart.
+46=
 
 # Gildor says: "Farewell elf-friend, Your road is long and the miles will weigh heavy ere the light of the final day." Then the elves depart.
-47=Gildor says: "Farewell elf-friend, Your road is long and the miles will weigh heavy ere the light of the final day." Then the elves depart.
+47=
 
 # Shun them! They are servants of the Enemy. In the end you will know them better than I.
-48=Shun them! They are servants of the Enemy. In the end you will know them better than I.
+48=
 
 # Her name will protect you in times of need. The servants of the Enemy fear her.
-49=Her name will protect you in times of need. The servants of the Enemy fear her.
+49=
 
 # That Gandalf should be late bodes ill. Leave without delay but take friends that you can trust. You will need help.
-4a=That Gandalf should be late bodes ill. Leave without delay but take friends that you can trust. You will need help.
+4a=
 
 # Do not speak of It again until you reach the house of Elrond! Never use It! It serves only the One who made It.
-4b=Do not speak of It again until you reach the house of Elrond! Never use It! It serves only the One who made It.
+4b=
 
 # I can tell you nothing useful of this.
-4c=I can tell you nothing useful of this.
+4c=
 
 # You have a strange feeling that you are being watched.
-4d=You have a strange feeling that you are being watched.
+4d=
 
 # He bows and says: "My friends call me Hawkeye."
-4e=He bows and says: "My friends call me Hawkeye."
+4e=
 
 # "As you wish." the human says. "Be cautious! Not even the trees are to be trusted!" Then he walks into some bushes and is gone.
-4f="As you wish." the human says. "Be cautious! Not even the trees are to be trusted!" Then he walks into some bushes and is gone.
+4f=
 
 # Hawkeye says: "I know a place where we can heal our wounds before the journey continues." He takes you to his cave.
-50=Hawkeye says: "I know a place where we can heal our wounds before the journey continues." He takes you to his cave.
+50=
 
 # As you enter the cave, an alarmed expression comes on Hawkeye's face. Suddenly he shouts. "Run! Now!" He draws his sword. "They're coming! "Take the Northwest Passage and keep going..." His words are cut short as he prepares for battle.
-51=As you enter the cave, an alarmed expression comes on Hawkeye's face. Suddenly he shouts. "Run! Now!" He draws his sword. "They're coming! "Take the Northwest Passage and keep going..." His words are cut short as he prepares for battle.
+51=
 
 # Running, you hear Hawkeye cry to Elbereth. There is a clash of swords and what sounds like a death scream. Then all is still, except for an intense feeling of evil.
-52=Running, you hear Hawkeye cry to Elbereth. There is a clash of swords and what sounds like a death scream. Then all is still, except for an intense feeling of evil.
+52=
 
 # Two Black Riders are here! You should have listened to Hawkeye's warning and gotten away from here.
-53=Two Black Riders are here! You should have listened to Hawkeye's warning and gotten away from here.
+53=
 
 # You have entered Farmer Maggot's farm. It brings back bad memories of being chased by dogs during boyhood mushroom raids.
-54=You have entered Farmer Maggot's farm. It brings back bad memories of being chased by dogs during boyhood mushroom raids.
+54=
 
 # Three huge dogs growl at you as you pass by, warning you to keep away. from the bedroom. Farmer Maggot is sitting in the living room looking worried.
-55=Three huge dogs growl at you as you pass by, warning you to keep away. from the bedroom. Farmer Maggot is sitting in the living room looking worried.
+55=
 
 # See paragraph number 24.
-56=See paragraph number 24.
+56=
 
 # Farmer Maggot calms the dogs so the healer may pass.
-57=Farmer Maggot calms the dogs so the healer may pass.
+57=
 
 # Regaining consciousness long enough to see that his beloved dogs are gone, the little boy gasps and dies.
-58=Regaining consciousness long enough to see that his beloved dogs are gone, the little boy gasps and dies.
+58=
 
 # In gratitude Farmer Maggot offers you some mushrooms.
-59=In gratitude Farmer Maggot offers you some mushrooms.
+59=
 
 # Maggot is mortified. He breaks into sobs and collapses on the floor.
-5a=Maggot is mortified. He breaks into sobs and collapses on the floor.
+5a=
 
 # "I see there is a need for me. I will join you.", says the Healer.
-5b="I see there is a need for me. I will join you.", says the Healer.
+5b=
 
 # You are at the Buckland Ferry. Do you wish to cross here? (Y/N)
-5c=You are at the Buckland Ferry. Do you wish to cross here? (Y/N)
+5c=
 
 # You have crossed the Brandywine. The ferryman returns to the other side. 
-5d=You have crossed the Brandywine. The ferryman returns to the other side. 
+5d=
 
 # Somewhere nearby a frantic bird chirps: "Gandalf! Gandalf!"
-5e=Somewhere nearby a frantic bird chirps: "Gandalf! Gandalf!"
+5e=
 
 # You have fallen into a pit!
-5f=You have fallen into a pit!
+5f=
 
 # The bird cry is louder and more frantic -- "Gandalf!".
-60=The bird cry is louder and more frantic -- "Gandalf!".
+60=
 
 # The bird spreads its wings and for a second it appears human. It is not Gandalf's face but reminds you of him, slightly younger perhaps. Then it flies away.
-61=The bird spreads its wings and for a second it appears human. It is not Gandalf's face but reminds you of him, slightly younger perhaps. Then it flies away.
+61=
 
 # The smell of ale is too much for Druin. He goes to the bar, and will journey no further with you.
-62=The smell of ale is too much for Druin. He goes to the bar, and will journey no further with you.
+62=
 
 # Try as you might, you cannot pick this extremely well-made lock.
-63=Try as you might, you cannot pick this extremely well-made lock.
+63=
 
 # The Old Forest Gate is locked. You recall that Saradoc, the Master of Brandy Hall, always keeps the key with him.
-64=The Old Forest Gate is locked. You recall that Saradoc, the Master of Brandy Hall, always keeps the key with him.
+64=
 
 # There's a ghost in the library, and no one gets in 'til it goes away!
-65=There's a ghost in the library, and no one gets in 'til it goes away!
+65=
 
 # Though Esmerelda Brandybuck is not easily tricked, you manage to distract her long enough to sneak into Brandy Hall.
-66=Though Esmerelda Brandybuck is not easily tricked, you manage to distract her long enough to sneak into Brandy Hall.
+66=
 
 # Shards of broken smoking pipes lie among piles of mishandled library books. A book is open on a table. "Where is my pipe!" a ghost shouts. As you approach the shelves, the ghost pelts you with pipe shards. You cannot touch these books.
-67=Shards of broken smoking pipes lie among piles of mishandled library books. A book is open on a table. "Where is my pipe!" a ghost shouts. As you approach the shelves, the ghost pelts you with pipe shards. You cannot touch these books.
+67=
 
 # The ghost lights the pipeweed, sighs happily and fades from existence.
-68=The ghost lights the pipeweed, sighs happily and fades from existence.
+68=
 
 # You read: "In Amon Sul, now called Weathertop, secret stairs lead to tunnels of danger."
-69=You read: "In Amon Sul, now called Weathertop, secret stairs lead to tunnels of danger."
+69=
 
 # You see something glittering in the bathtub.
-6a=You see something glittering in the bathtub.
+6a=
 
 # You shouldn't be here, there's a ghost in the house.
-6b=You shouldn't be here, there's a ghost in the house.
+6b=
 
 # Where did I leave that miserable key? It's somewhere in Brandy Hall. 
-6c=Where did I leave that miserable key? It's somewhere in Brandy Hall. 
+6c=
 
 # Hi! Have you seen the ghost yet? Wow!
-6d=Hi! Have you seen the ghost yet? Wow!
+6d=
 
 # Have you tried the Master bedroom?
-6e=Have you tried the Master bedroom?
+6e=
 
 # Lobelia is waiting here! "You better give me the key now because the Shirriff is coming, you thief!"
-6f=Lobelia is waiting here! "You better give me the key now because the Shirriff is coming, you thief!"
+6f=
 
 # The Shirriff comes in and arrests Frodo. He is taken to the Lockholes, where the Black Riders get him!
-70=The Shirriff comes in and arrests Frodo. He is taken to the Lockholes, where the Black Riders get him!
+70=
 
 # This used to be the Mathom Store, but is now called Sharkey's Shipping.
-71=This used to be the Mathom Store, but is now called Sharkey's Shipping.
+71=
 
 # There is an opening in the roof of the cave, directly above you.
-72=There is an opening in the roof of the cave, directly above you.
+72=
 
 # Don't try to fool me with your talk, give me that key! Bag End is mine now!
-73=Don't try to fool me with your talk, give me that key! Bag End is mine now!
+73=
 
 # I think that human woman over there is a witch! Avoid her!
-74=I think that human woman over there is a witch! Avoid her!
+74=
 
 # I know thy purpose. I was trained by the White Council and will serve thee.
-75=I know thy purpose. I was trained by the White Council and will serve thee.
+75=
 
 # Those who love this Middle Earth and fight against the Lord of Shadows.
-76=Those who love this Middle Earth and fight against the Lord of Shadows.
+76=
 
 # The greatest wizard of Middle Earth. Know his servants by the White Hand.
-77=The greatest wizard of Middle Earth. Know his servants by the White Hand.
+77=
 
 # A wise and subtle wizard, I expected him to be with you.
-78=A wise and subtle wizard, I expected him to be with you.
+78=
 
 # Rose Cotton seems very glad to see Sam Gamgee. "I've got a present for you, especially since you're going to be spending a lot of time helping Mr. Frodo move into Buckland."
-79=Rose Cotton seems very glad to see Sam Gamgee. "I've got a present for you, especially since you're going to be spending a lot of time helping Mr. Frodo move into Buckland."
+79=
 
 # Take me with you!
-7a=Take me with you!
+7a=
 
 # You need someone you can depend on!
-7b=You need someone you can depend on!
+7b=
 
 # Hullo! Nice weather Isn't it?
-7c=Hullo! Nice weather Isn't it?
+7c=
 
 # What are you doing in my home! Go away before I call the the shirriff!
-7d=What are you doing in my home! Go away before I call the the shirriff!
+7d=
 
 # You aren't running from the nasty Big Folk? I'd avoid them if I was you. riding around on big black horses.
-7e=You aren't running from the nasty Big Folk? I'd avoid them if I was you. riding around on big black horses.
+7e=
 
 # They say Brandy Hall is haunted! By a real ghost! Of course I'm too sensible to believe a story like that.
-7f=They say Brandy Hall is haunted! By a real ghost! Of course I'm too sensible to believe a story like that.
+7f=
 
 # You emerge from the cave after struggling through layers of dirt and rubble. The tiny opening collapses as you emerge, and you find that you cannot return to Hawkeye's cave that way again.
-80=You emerge from the cave after struggling through layers of dirt and rubble. The tiny opening collapses as you emerge, and you find that you cannot return to Hawkeye's cave that way again.
+80=
 
 # After a long talk with Esmerelda, you point out several good reasons why you should be allowed into Brandy Hall, even if there is a ghost. She lets you in.
-81=After a long talk with Esmerelda, you point out several good reasons why you should be allowed into Brandy Hall, even if there is a ghost. She lets you in.
+81=
 
 # You know what these Big Folk are like! Witches and wizards all of them!
-82=You know what these Big Folk are like! Witches and wizards all of them!
+82=
 
 # In the distance toward the east, you can see the bridge that leads to the east woods.
-83=In the distance toward the east, you can see the bridge that leads to the east woods.
+83=
 
 # Your admiring gaze falls upon the chestnut trees of Hill Lane. Birds are singing.
-84=Your admiring gaze falls upon the chestnut trees of Hill Lane. Birds are singing.
+84=
 
 # To the south is Green Hill country, a land of rolling hills and odd ruins (which, sensibly, most hobbits ignore). To the east is the Grange.
-85=To the south is Green Hill country, a land of rolling hills and odd ruins (which, sensibly, most hobbits ignore). To the east is the Grange.
+85=
 
 # In the northeast, you can see the high white walls of Brandy Hall, home of the Brandybucks.
-86=In the northeast, you can see the high white walls of Brandy Hall, home of the Brandybucks.
+86=
 
 # It's nice to be in Buckland, where hobbits aren't as peculiar as those in the Shire (or so the Bucklanders say).
-87=It's nice to be in Buckland, where hobbits aren't as peculiar as those in the Shire (or so the Bucklanders say).
+87=
 
 # As you look toward Buckland Bridge, you notice that an armed man wearing a black cloak is standing there, searching for something -- or someone.
-88=As you look toward Buckland Bridge, you notice that an armed man wearing a black cloak is standing there, searching for something -- or someone.
+88=
 
 # Following this road southward leads to the Buckland Ferry, northward leads to the Great East Road.
-89=Following this road southward leads to the Buckland Ferry, northward leads to the Great East Road.
+89=
 
 # You can often find elves in the southwestern woodlands of the Shire, making the journey to Havens of the Western sea. Perhaps they might help you.
-8a=You can often find elves in the southwestern woodlands of the Shire, making the journey to Havens of the Western sea. Perhaps they might help you.
+8a=
 
 # Mr. Baggins! So pleased to see you in my humble home.
-8b=Mr. Baggins! So pleased to see you in my humble home.
+8b=
 
 # Mr. Baggins! I hear you sold Bag End to that awful Lobelia. What a shame!
-8c=Mr. Baggins! I hear you sold Bag End to that awful Lobelia. What a shame!
+8c=
 
 # Mr. Baggins! I hope you enjoy your new home in Buckland.
-8d=Mr. Baggins! I hope you enjoy your new home in Buckland.
+8d=
 
 # Mr. Baggins! I've just heard the strangest news!
-8e=Mr. Baggins! I've just heard the strangest news!
+8e=
 
 # I wasn't expecting visitors! My home is such a dreadful mess. Please come back some other day.
-8f=I wasn't expecting visitors! My home is such a dreadful mess. Please come back some other day.
+8f=
 
 # My larder is rather bare right now, but I'm certain that I can find enough to fix us a small meal.
-90=My larder is rather bare right now, but I'm certain that I can find enough to fix us a small meal.
+90=
 
 # Vistors! Wonderful! Make yourself at home! I have heard such interesting news.
-91=Vistors! Wonderful! Make yourself at home! I have heard such interesting news.
+91=
 
 # Welcome, friends! It's been much too long since I last saw you.	I take it you know that Frodo sold Bag End.
-92=Welcome, friends! It's been much too long since I last saw you.	I take it you know that Frodo sold Bag End.
+92=
 
 # They say that a drunken dwarf is at the Green Dragon Inn in Bywater, asking for a Burglar.
-93=They say that a drunken dwarf is at the Green Dragon Inn in Bywater, asking for a Burglar.
+93=
 
 # Evil men in black cloaks are riding around on black horses causing trouble! Beware the Black Riders!
-94=Evil men in black cloaks are riding around on black horses causing trouble! Beware the Black Riders!
+94=
 
 # Wolves stalk the old ruins in the East Wood, the ones that were built by the King long ago.
-95=Wolves stalk the old ruins in the East Wood, the ones that were built by the King long ago.
+95=
 
 # In the Green Hills, a bird is singing the name of that wizard, Gandalf!
-96=In the Green Hills, a bird is singing the name of that wizard, Gandalf!
+96=
 
 # I hear people in Buckland are acting under an evil spell, cast by a sorcerer from the Old Forest!
-97=I hear people in Buckland are acting under an evil spell, cast by a sorcerer from the Old Forest!
+97=
 
 # Lotho Pimple has been making some strange friends. Big Folk have put a strange machine in the Mill.
-98=Lotho Pimple has been making some strange friends. Big Folk have put a strange machine in the Mill.
+98=
 
 # Taffy Proudfoot ran out of the Hobbiton Inn in tears. Poor child!
-99=Taffy Proudfoot ran out of the Hobbiton Inn in tears. Poor child!
+99=
 
 # Dwarves say that Gandalf has been turned into a statue! It stands under the Last Bridge. Wizards!
-9a=Dwarves say that Gandalf has been turned into a statue! It stands under the Last Bridge. Wizards!
+9a=
 
 # A woman who claims to be a friend of Gandalf is in Buckland, asking for Mister Baggins.
-9b=A woman who claims to be a friend of Gandalf is in Buckland, asking for Mister Baggins.
+9b=
 
 # The Old Forest is a maze of incredible complexity. Those who wander there never escape alive!
-9c=The Old Forest is a maze of incredible complexity. Those who wander there never escape alive!
+9c=
 
 # There is one who is in the Old Forest that is stronger than the trees. He will help you in times of need.
-9d=There is one who is in the Old Forest that is stronger than the trees. He will help you in times of need.
+9d=
 
 # Men from the south have come to the Shire, setting up a store with the strange name of Sharkey Shipping.
-9e=Men from the south have come to the Shire, setting up a store with the strange name of Sharkey Shipping.
+9e=
 
 # Giant spiders can be found in the caves, attacking hobbits! Something ought to be done about it!
-9f=Giant spiders can be found in the caves, attacking hobbits! Something ought to be done about it!
+9f=
 
 # Elves were seen at night near the Standing Stones in the Green Hills,	singing about an "Elbereth" person.
-a0=Elves were seen at night near the Standing Stones in the Green Hills,	singing about an "Elbereth" person.
+a0=
 
 # My dog has run away and I'm too lame to catch it. Please bring him back.
-a1=My dog has run away and I'm too lame to catch it. Please bring him back.
+a1=
 
 # He was last seen in the western fields. I'd be grateful if you find him.
-a2=He was last seen in the western fields. I'd be grateful if you find him.
+a2=
 
 # Ruff! Ruff! Ruff! Grrrr... Ruff!
-a3=Ruff! Ruff! Ruff! Grrrr... Ruff!
+a3=
 
 # Speaking in a low soft tone, you persuade the dog that you are his friend. He accompanies you.
-a4=Speaking in a low soft tone, you persuade the dog that you are his friend. He accompanies you.
+a4=
 
 # Anson Goodbody is pleased to see his dog again. "I have an old shovel if you'd like it. Also, I heard strange news. There are men on black horses at the Buckland Bridge, and they're asking about Baggins. If I was you, avoid Buckland Bridge!
-a5=Anson Goodbody is pleased to see his dog again. "I have an old shovel if you'd like it. Also, I heard strange news. There are men on black horses at the Buckland Bridge, and they're asking about Baggins. If I was you, avoid Buckland Bridge!
+a5=
 
 # There is a small opening here, that leads into darkness.
-a6=There is a small opening here, that leads into darkness.
+a6=
 
 # There is an opening in the roof of the cave. here. There are several jutting rocks that would be easy to rope. Do you wish to climb out of here? (Y/N)
-a7=There is an opening in the roof of the cave. here. There are several jutting rocks that would be easy to rope. Do you wish to climb out of here? (Y/N)
+a7=
 
 # I'll give you news, you impudent upstart! Give me the key or I'll track you down and take it!
-a8=I'll give you news, you impudent upstart! Give me the key or I'll track you down and take it!
+a8=
 
 # You remember the voice of Gandalf. A few months ago in this very room he said to you: "But I do not think you need go alone. Not if you know of anyone you can trust." This room seems cold and barren now. The time has come to leave the Shire.
-a9=You remember the voice of Gandalf. A few months ago in this very room he said to you: "But I do not think you need go alone. Not if you know of anyone you can trust." This room seems cold and barren now. The time has come to leave the Shire.
+a9=
 
 # Bilbo's chest is in this room. When he left for Rivendell, he forgot to leave the key with Frodo.
-aa=Bilbo's chest is in this room. When he left for Rivendell, he forgot to leave the key with Frodo.
+aa=
 
 # Anson Goodbody's dog has run away again. Poor man, he loves the little beast and is too lame to chase it.
-ab=Anson Goodbody's dog has run away again. Poor man, he loves the little beast and is too lame to chase it.
+ab=
 
 # My uncle was in woods east of Bag End, searching the caves for dwarven treasures stolen from Moria.
-ac=My uncle was in woods east of Bag End, searching the caves for dwarven treasures stolen from Moria.
+ac=
 
 # Moria! Khazad-dum, more beloved than all things, wrought by Durin long ago.We lost it, and can never forget it.
-ad=Moria! Khazad-dum, more beloved than all things, wrought by Durin long ago.We lost it, and can never forget it.
+ad=
 
 # An expedition led by Balin son of Fundin has gone to Moria, to reclaim it for the sons of Durin.
-ae=An expedition led by Balin son of Fundin has gone to Moria, to reclaim it for the sons of Durin.
+ae=
 
 # Evil men have come to Bree, and are said to have a secret base north of the Barrow Downs.
-af=Evil men have come to Bree, and are said to have a secret base north of the Barrow Downs.
+af=
 
 # Brigands of the bandit-chief Rayf Brogan have gotten bold lately. They harass all who walk the East Road.
-b0=Brigands of the bandit-chief Rayf Brogan have gotten bold lately. They harass all who walk the East Road.
+b0=
 
 # Orcs, may they be cursed forever, have been seen near the borders of the Shire! 
-b1=Orcs, may they be cursed forever, have been seen near the borders of the Shire! 
+b1=
 
 # This exit from the cave collapsed some time ago, and is now a heap of dirt and rubble. You cannot leave the cave from this exit again.
-b2=This exit from the cave collapsed some time ago, and is now a heap of dirt and rubble. You cannot leave the cave from this exit again.
+b2=
 
 # The forces of the Dark Lord gather for a final assault on the ancient kingdom of Gondor. It will soon fall.
-b3=The forces of the Dark Lord gather for a final assault on the ancient kingdom of Gondor. It will soon fall.
+b3=
 
 # There is little good news in these dark times. In your darkest hours, may Elbereth protect thee!
-b4=There is little good news in these dark times. In your darkest hours, may Elbereth protect thee!
+b4=
 
 # A Black Rider! He glides out of the forest mounted on a black horse and advances towards you. His red eyes glow balefully as he draws closer...
-b5=A Black Rider! He glides out of the forest mounted on a black horse and advances towards you. His red eyes glow balefully as he draws closer...
+b5=
 
 # Hello Mister Frodo. A pleasure to see you again. I hear you went and moved from Bag End.
-b6=Hello Mister Frodo. A pleasure to see you again. I hear you went and moved from Bag End.
+b6=
 
 # I'ts a good day to meet gentle folk such as yourself. I hope the journey hasn't been too hard.
-b7=I'ts a good day to meet gentle folk such as yourself. I hope the journey hasn't been too hard.
+b7=
 
 # Now you just settle down in Buckland, Mr. Frodo and don't worry about the news. And stay out of the Old Forest.
-b8=Now you just settle down in Buckland, Mr. Frodo and don't worry about the news. And stay out of the Old Forest.
+b8=
 
 # I heard tell that strange things are happening in the Old Forest, and a smart hobbit would keep away from it.
-b9=I heard tell that strange things are happening in the Old Forest, and a smart hobbit would keep away from it.
+b9=
 
 # What do I know of ghosts, except that no one of a right mind should go near one?
-ba=What do I know of ghosts, except that no one of a right mind should go near one?
+ba=
 
 # Aside from that ghost? Nothing of consequence. Now stop that gossiping -- no good can come of it.
-bb=Aside from that ghost? Nothing of consequence. Now stop that gossiping -- no good can come of it.
+bb=
 
 # One of the diaries thrown to the floor by the ghost says: "South and East of the Old Forest is said to be the burial place of the Springstone, an artifact of the Elder Days. It was buried long ago upon a hill.
-bc=One of the diaries thrown to the floor by the ghost says: "South and East of the Old Forest is said to be the burial place of the Springstone, an artifact of the Elder Days. It was buried long ago upon a hill.
+bc=
 
 # Alas, I am very busy now. Please come back when I have some time to spare.
-bd=Alas, I am very busy now. Please come back when I have some time to spare.
+bd=
 
 # Ancient evils are stirring on the Barrow Downs. Stay clear of the fog -- it is thy doom!
-be=Ancient evils are stirring on the Barrow Downs. Stay clear of the fog -- it is thy doom!
+be=
 
 # The maze of the Old Forest is long and perilous. At its end is an evil tree spirit who swallows travellers.
-bf=The maze of the Old Forest is long and perilous. At its end is an evil tree spirit who swallows travellers.
+bf=
 
 # The wizard Radagast has not been seen in months, nor has Gandalf. Saruman has locked himself in his tower.
-c0=The wizard Radagast has not been seen in months, nor has Gandalf. Saruman has locked himself in his tower.
+c0=
 
 # Hail and well met! I am Cirlos who came from the house of Elrond in happier days.
-c1=Hail and well met! I am Cirlos who came from the house of Elrond in happier days.
+c1=
 
 # Elrond is the Lord of Rivendell, whose house lies beyond the Last Bridge and the Ford of Bruinen.
-c2=Elrond is the Lord of Rivendell, whose house lies beyond the Last Bridge and the Ford of Bruinen.
+c2=
 
 # Barrow wights have been seen walking upon the Barrow Downs at night!
-c3=Barrow wights have been seen walking upon the Barrow Downs at night!
+c3=
 
 # A rather strange thing to find in a library, isn't it? This is great! 
-c4=A rather strange thing to find in a library, isn't it? This is great! 
+c4=
 
 # Miserable thing! You can't read with a ghost in the room, and I just found some of your uncle's books.
-c5=Miserable thing! You can't read with a ghost in the room, and I just found some of your uncle's books.
+c5=
 
 # Don't bother me when I'm in the kitchen, and if I catch you taking mushrooms...
-c6=Don't bother me when I'm in the kitchen, and if I catch you taking mushrooms...
+c6=
 
 # It's gone now, so you needn't worry about it. Now don't go looking for adventure!
-c7=It's gone now, so you needn't worry about it. Now don't go looking for adventure!
+c7=
 
 # You find several diaries written by adventurous hobbits who went into the Old Forest, and a journal with the handwriting of Bilbo	Baggins. They look like they would be interesting reading.
-c8=You find several diaries written by adventurous hobbits who went into the Old Forest, and a journal with the handwriting of Bilbo	Baggins. They look like they would be interesting reading.
+c8=
 
 # Near the waterfall is the hidden entrance to the cavern of Withywindle, one of the oldest and slyest spirits in Middle Earth. She will help travellers, but she often has a high price.
-c9=Near the waterfall is the hidden entrance to the cavern of Withywindle, one of the oldest and slyest spirits in Middle Earth. She will help travellers, but she often has a high price.
+c9=
 
 # A story which a hobbit wrote for his children says: "Second only to the Willow Man in malice among the trees of the Old Forest is the Black Alder.He fears nothing but his ancient foe the Ruddyoak, their roots have grappled for centuries.
-ca=A story which a hobbit wrote for his children says: "Second only to the Willow Man in malice among the trees of the Old Forest is the Black Alder.He fears nothing but his ancient foe the Ruddyoak, their roots have grappled for centuries.
+ca=
 
 # A diary fragment says: "One receives strange dreams in the house of..." Alas, this page is torn.
-cb=A diary fragment says: "One receives strange dreams in the house of..." Alas, this page is torn.
+cb=
 
 # To escape the Old Forest maze, find the ruins in the northwest corner, proceed south, then east until you can go no further east, then south, then follow the long winding trail. Do not stray on the eastward paths; the true road is south and winding.
-cc=To escape the Old Forest maze, find the ruins in the northwest corner, proceed south, then east until you can go no further east, then south, then follow the long winding trail. Do not stray on the eastward paths; the true road is south and winding.
+cc=
 
 # Don't you dare speak to me that way, you little upstart! You know what key I'm talking about.
-cd=Don't you dare speak to me that way, you little upstart! You know what key I'm talking about.
+cd=
 
 # The Green Dragon Tavern does not have as many patrons as usual.
-ce=The Green Dragon Tavern does not have as many patrons as usual.
+ce=
 
 # The ale at the Green Dragon isn't as good as it used to be.
-cf=The ale at the Green Dragon isn't as good as it used to be.
+cf=
 
 # Marigold Hornblower and Milo Bolger are going to be married this spring.
-d0=Marigold Hornblower and Milo Bolger are going to be married this spring.
+d0=
 
 # You have reached the Buckland Ferry, where Merry Brandybuck has been waiting for you. "We know you're going to leave the Shire." he says. "And we intend to stay with you, until the bitter end."
-d1=You have reached the Buckland Ferry, where Merry Brandybuck has been waiting for you. "We know you're going to leave the Shire." he says. "And we intend to stay with you, until the bitter end."
+d1=
 
 # He fell down, into a cave, and I can't find him and I'm scared, and then the doggies started howling...
-d2=He fell down, into a cave, and I can't find him and I'm scared, and then the doggies started howling...
+d2=
 
 # I'm not moving 'til they all go away, or until Freddi comes back. You can't make me! <sob!>
-d3=I'm not moving 'til they all go away, or until Freddi comes back. You can't make me! <sob!>
+d3=
 
 # It's not far. It's thataway -- or is it thataway -- or maybe over there. <sob!>
-d4=It's not far. It's thataway -- or is it thataway -- or maybe over there. <sob!>
+d4=
 
 # Master Merry! So nice to see you again!
-d5=Master Merry! So nice to see you again!
+d5=
 
 # I hear that strange folk have been seen near Hobbiton of late, though that's to be expected in those parts.
-d6=I hear that strange folk have been seen near Hobbiton of late, though that's to be expected in those parts.
+d6=
 
 # It isn't everyday that we get a visit from a Brandybuck. Come in!
-d7=It isn't everyday that we get a visit from a Brandybuck. Come in!
+d7=
 
 # I heard that Meliot Burrows drownded in the Brandywine!
-d8=I heard that Meliot Burrows drownded in the Brandywine!
+d8=
 
 # Welcome, friends! The mayor of the Shire is always pleased to greet visitors.
-d9=Welcome, friends! The mayor of the Shire is always pleased to greet visitors.
+d9=
 
 # Lotho Sackville- Baggins has bought Sandyman's Mill!
-da=Lotho Sackville- Baggins has bought Sandyman's Mill!
+da=
 
 # Peregrin Took! How dare you visit your sister without telling me you're coming! But it's good to see you.
-db=Peregrin Took! How dare you visit your sister without telling me you're coming! But it's good to see you.
+db=
 
 # Well, Daisy said, that Milo said, that he heard in a tavern that, mind you, you know how unreliable he is...
-dc=Well, Daisy said, that Milo said, that he heard in a tavern that, mind you, you know how unreliable he is...
+dc=
 
 # Thank-you for rescuing my sister.
-dd=Thank-you for rescuing my sister.
+dd=
 
 # Bingo Chubb had a big argument with Daddy Twofoot and they aren't speaking with each other.
-de=Bingo Chubb had a big argument with Daddy Twofoot and they aren't speaking with each other.
+de=
 
 # Looking toward the road, you see a large, black cloaked figure on horseback.
-df=Looking toward the road, you see a large, black cloaked figure on horseback.
+df=
 
 # Angelica Baggins had an argument with her husband and threw a mirror at him!
-e0=Angelica Baggins had an argument with her husband and threw a mirror at him!
+e0=
 
 # The Hobbiton Inn. A couple of folks was saying that Ol' Farmer Grubb was real upset -- maybe Freddi is missing.
-e1=The Hobbiton Inn. A couple of folks was saying that Ol' Farmer Grubb was real upset -- maybe Freddi is missing.
+e1=
 
 # They were talking about them at the Hobbiton Inn.
-e2=They were talking about them at the Hobbiton Inn.
+e2=
 
 # Even a Brandybuck must know that the sale of a hole also includes the key to the front door! Give me the key!
-e3=Even a Brandybuck must know that the sale of a hole also includes the key to the front door! Give me the key!
+e3=
 
 # You know, Farmer Grubb of the Grange and his boy Freddi. That boy always did go off on his own too much.
-e4=You know, Farmer Grubb of the Grange and his boy Freddi. That boy always did go off on his own too much.
+e4=
 
 # You're a Brandybuck pretending to be a Baggins! Bag End belongs to a real Baggins and you belong in Buckland!
-e5=You're a Brandybuck pretending to be a Baggins! Bag End belongs to a real Baggins and you belong in Buckland!
+e5=
 
 # Elves seldom give unguarded advice, for advice is a dangerous gift, even from the wise to the wise.
-e6=Elves seldom give unguarded advice, for advice is a dangerous gift, even from the wise to the wise.
+e6=
 
 # Don't bother me with your questions you impudent whelp!
-e7=Don't bother me with your questions you impudent whelp!
+e7=
 
 # Well, you know, uh, hmmm, maybe you should repeat the question.
-e8=Well, you know, uh, hmmm, maybe you should repeat the question.
+e8=
 
 # I'm busy. Such tomfool questions! Bothering me when I'm busy, whatever happened to consideration!
-e9=I'm busy. Such tomfool questions! Bothering me when I'm busy, whatever happened to consideration!
+e9=
 
 # Now that's a right strange place, I reckon, by all accounts. People go in there and never come back.
-ea=Now that's a right strange place, I reckon, by all accounts. People go in there and never come back.
+ea=
 
 # And now she's my neighbor, and that awful little pimple faced son of hers, Lotho! I think I'll sell my hole!
-eb=And now she's my neighbor, and that awful little pimple faced son of hers, Lotho! I think I'll sell my hole!
+eb=
 
 # I have a friend in Bree, Ned Bushdock. He visited us this week; call on him if you ever decide to visit Bree.
-ec=I have a friend in Bree, Ned Bushdock. He visited us this week; call on him if you ever decide to visit Bree.
+ec=
 
 # I haven't time for that now. I know I left some more pipeweed lying about. Or did I? Hmmmm...
-ed=I haven't time for that now. I know I left some more pipeweed lying about. Or did I? Hmmmm...
+ed=
 
 # Nice day for a walk isn't it?
-ee=Nice day for a walk isn't it?
+ee=
 
 # I hear eight huge spiders came out of the caves and attacked the old healer who lives near the cliffs.
-ef=I hear eight huge spiders came out of the caves and attacked the old healer who lives near the cliffs.
+ef=
 
 # Hullo! Rather late to be walking, tho' I do it myself.
-f0=Hullo! Rather late to be walking, tho' I do it myself.
+f0=
 
 # Makes an awful noise -- and the smoke! The Shire don't need these contraptions!
-f1=Makes an awful noise -- and the smoke! The Shire don't need these contraptions!
+f1=
 
 # It was a lovely summer this year -- hope we don't get too much rain.
-f2=It was a lovely summer this year -- hope we don't get too much rain.
+f2=
 
 # A wolf was spotted near the Three Farthing Stone, if it wasn't Anson Goodbody's dog run off again.
-f3=A wolf was spotted near the Three Farthing Stone, if it wasn't Anson Goodbody's dog run off again.
+f3=
 
 # Lotho Pimple is buying land all over the Shire and cutting down trees. Someone ought to punch his face!
-f4=Lotho Pimple is buying land all over the Shire and cutting down trees. Someone ought to punch his face!
+f4=
 
 # He's set up shop in Bag End and calling himself the Boss. And these Big Folk with him, they are ruffians!
-f5=He's set up shop in Bag End and calling himself the Boss. And these Big Folk with him, they are ruffians!
+f5=
 
 # You know how odd those folk can be. Certainly not like sturdy Buckland hobbits.
-f6=You know how odd those folk can be. Certainly not like sturdy Buckland hobbits.
+f6=
 
 # You know how odd those folk can be. Certainly not like sturdy Hobbiton hobbits.
-f7=You know how odd those folk can be. Certainly not like sturdy Hobbiton hobbits.
+f7=
 
 # Mind you, I've never been there myself. I don't have time for foolish adventures.
-f8=Mind you, I've never been there myself. I don't have time for foolish adventures.
+f8=
 
 # I never knowed him personally, though old Mister Bilbo liked him, and he was always a good neighbor to me.
-f9=I never knowed him personally, though old Mister Bilbo liked him, and he was always a good neighbor to me.
+f9=
 
 # A fine hole. A shame it has to go to the likes of Lobelia and Lotho Pimple!
-fa=A fine hole. A shame it has to go to the likes of Lobelia and Lotho Pimple!
+fa=
 
 # If I can't say no good about someone, then I'll say nothing at all.
-fb=If I can't say no good about someone, then I'll say nothing at all.
+fb=
 
 # You find a letter from Gandalf! "My dear Frodo: If I do not come by your birthday, leave without me. Use the travelling name "Underhill". Seek help at the Prancing Pony Inn in Bree. I have friends there who will help you.
-fc=You find a letter from Gandalf! "My dear Frodo: If I do not come by your birthday, leave without me. Use the travelling name "Underhill". Seek help at the Prancing Pony Inn in Bree. I have friends there who will help you.
+fc=
 
 # She's waiting at the Bucklebury Tavern, a few miles north of Brandy Hall.
-fd=She's waiting at the Bucklebury Tavern, a few miles north of Brandy Hall.
+fd=
 
 # Those who remain do not understand the importance of the Quest. They abandon the Fellowship.
-fe=Those who remain do not understand the importance of the Quest. They abandon the Fellowship.
+fe=
 
 # There are some members of your Fellowship who will not follow you into Buckland.
-ff=There are some members of your Fellowship who will not follow you into Buckland.
+ff=
 
