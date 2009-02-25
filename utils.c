@@ -30,7 +30,9 @@
 #include "utils.h"
 #include <string.h>
 #include <stdlib.h>
+#ifdef __GNUC__
 #include <unistd.h>
+#endif
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <math.h>
@@ -72,7 +74,7 @@ extern char *
 lotr_homedir_filename(const char *name)
 {
     char cwd[1024];
-#ifndef AMINGA_OS4
+#if !defined(AMIGA_OS4) && !defined(WIN32)
     char *home = getenv("HOME");
 
     if (home == NULL) {
@@ -86,15 +88,17 @@ lotr_homedir_filename(const char *name)
     snprintf(lotr_filename, sizeof(lotr_filename), "lord/");
 #endif
     getcwd(cwd, 1024);
+#ifndef WIN32 // TODO : Do the check
     if (chdir(lotr_filename)) { /* Somewhat stupid test for dir existence */
         if (mkdir(lotr_filename, S_IRWXU)) {
             perror("can not create directory " HOME_DIR_STR);
             exit(1);
         }
     }
+#endif
     chdir(cwd);
 
-#ifndef AMINGA_OS4
+#if !defined(AMIGA_OS4) && !defined(WIN32)
     snprintf(lotr_filename, sizeof(lotr_filename), "%s/.lotr/%s", home, name);
 #else
     snprintf(lotr_filename, sizeof(lotr_filename), "lord/%s", name);

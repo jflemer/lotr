@@ -236,7 +236,7 @@ dir_to_cddir(int dir)
   read int
 */
 
-inline int
+__inline int
 readint(Uint8 *data)
 {
     return data[0] + 0x100 * data[1];
@@ -851,8 +851,11 @@ static int spot_string_size = 0;
 static int spot_string_pos = 0;
 #define SPOT_LINE_SIZE 1024
 
-static void spot_string_print(const char *format, ...)
-    __attribute__ ((__format__(__printf__, 1, 2)));
+#ifdef __GNUC__
+static void spot_string_print(const char *format, ...) __attribute__ ((__format__(__printf__, 1, 2)));
+#else
+static void spot_string_print(const char *format, ...);
+#endif
 
 static void
 spot_string_print(const char *format, ...)

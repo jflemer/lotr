@@ -5,3 +5,7 @@
 /lotr.static
 /playav
 /playcartoon
+*.ncb
+*.user
+MSVC8/Debug
+MSVC8/Release

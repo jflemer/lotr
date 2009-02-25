@@ -35,7 +35,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef __GNUC__
 #include <unistd.h>
+#endif
 
 int midi_disabled = 0;
 
@@ -109,6 +111,9 @@ play_midi(Uint8 *data, int size, int loop)
 
     stop_midi();
 
+#ifdef _MSC_VER
+	return;
+#else
     miditmpname[9] = miditmpname[10] = miditmpname[11] = miditmpname[12] =
         miditmpname[13] = miditmpname[14] = 'X';
     if ((midifile = mkstemp(miditmpname)) < 0
@@ -116,6 +121,7 @@ play_midi(Uint8 *data, int size, int loop)
         fprintf(stderr, "lotr: can not create temporary midifile\n");
         exit(1);
     }
+#endif
 
     close(midifile);
 

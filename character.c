@@ -647,9 +647,9 @@ character_draw(int id, int x, int y, int dir)
     Shape *horse1;
     Shape *horse2;
     int horse, xoffset, yoffset;
-
-    character = character_get(id);
     int char_shape;
+
+	character = character_get(id);
 
     if (dir < 0 || dir > 3) {
         fprintf(stderr, "lotr: wrong direction in character_draw.\n");
@@ -765,7 +765,7 @@ character_draw(int id, int x, int y, int dir)
   set character attack
 */
 
-inline void
+INLINE void
 character_attack(Character *character, int direction)
 {
     int i, weapon;

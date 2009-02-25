@@ -33,9 +33,12 @@
 #include <libxml/parser.h>
 
 
+#ifndef min
 #define min(a,b)  ((a)>(b)?(b):(a))
+#endif
+#ifndef max
 #define max(a,b)  ((a)>(b)?(a):(b))
-
+#endif
 
 /* allocates memory, exits on error */
 extern void *lotr_malloc(int size);
@@ -85,8 +88,16 @@ extern xmlNodePtr lotr_get_subnode(xmlNodePtr node, const xmlChar *name,
 extern char *lotr_data_directory(void);
 
 
-#ifdef AMIGA_OS4
+#if defined(AMIGA_OS4) || defined(_MSC_VER)
 #  define random() rand()
+#endif
+
+#ifdef _MSC_VER
+#include <direct.h>
+
+#  define bzero(p, s) memset(p, 0, s)
+#  define snprintf _snprintf
+#  define getcwd _getcwd
 #endif
 
 #endif /* _UTILS_H */

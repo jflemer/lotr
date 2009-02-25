@@ -61,14 +61,22 @@
 /* frame time in milliseconds */
 #define FRAME_TIME 50
 
+#if !defined(PREFIX)
+#    define PREFIX
+#endif
+
 #ifdef DEMO
-#  ifndef AMIGA_OS4
+#  if defined(WIN32)
+#    define DATA_DIRECTORY "./"
+#  elif !defined(AMIGA_OS4)
 #    define DATA_DIRECTORY "./"
 #  else
 #    define DATA_DIRECTORY PREFIX "/"
 #  endif
 #else
-#  ifndef AMIGA_OS4
+#  if defined(WIN32)
+#    define GAME_DIRECTORY PREFIX "lotr"
+#  elif !defined(AMIGA_OS4)
 #    define GAME_DIRECTORY PREFIX "/share/games/lotr"
 #  else
 #    define GAME_DIRECTORY PREFIX "/lotr"
@@ -91,7 +99,11 @@
 /* uncomment to turn on debugging */
 /* DEBUG disables SDL parachute
       (so that the game creates coredumps on crash) */
-// #define DEBUG
+#ifdef WIN32
+#define DEBUG
+#else
+//#define DEBUG
+#endif
 
 #ifdef DEBUG
 
@@ -116,6 +128,12 @@
 #ifdef EXTENDED
 #  include "Python.h"
 #  include "pythonspot.h"
+#endif
+
+#ifdef _MSC_VER
+#define INLINE
+#else
+#define INLINE inline
 #endif
 
 #include <SDL_types.h>

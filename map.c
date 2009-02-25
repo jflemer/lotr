@@ -662,7 +662,7 @@ map_set_spots(Archive *archive, int index)
   draws tile
  */
 
-inline void
+INLINE void
 map_draw_tile(int tile, int x, int y)
 {
     int i, j;
@@ -679,7 +679,7 @@ map_draw_tile(int tile, int x, int y)
   draws large tile
  */
 
-inline void
+INLINE void
 map_draw_largetile(int tile, int x, int y)
 {
     int i, j;

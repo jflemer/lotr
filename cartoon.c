@@ -134,7 +134,7 @@ printcommand(CartoonCommand * command)
 
 
 
-inline int
+INLINE int
 get_command_par(CartoonCommand * command, int *registers, int index)
 {
     int a, b;

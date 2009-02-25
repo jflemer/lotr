@@ -31,7 +31,7 @@
 
 
 #include <SDL_types.h>
-
+#include "character.h"
 
 #define MAX_COMMAND_SPOTS 256
 #define MAX_PYTHON_SPOTS 1024

@@ -183,7 +183,7 @@ shapes_init(void)
                 portraits_cache[i]->palette = lotr_malloc(sizeof(Palette));
 
                 /* portraits palette is stored in 0x60--0x80 */
-                memcpy((void *)portraits_cache[i]->palette + 3 * 0x60,
+                memcpy((char *)portraits_cache[i]->palette + 3 * 0x60,
                        data + pixmap->datasize, 0x60);
             }
 
