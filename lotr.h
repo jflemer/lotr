@@ -126,10 +126,13 @@
 #  include "pythonspot.h"
 #endif
 
-#ifdef _MSC_VER
-#  define INLINE
-#else
+#ifdef __GNUC__
 #  define INLINE __inline__
+#else
+#  define INLINE
+#endif
+
+#if !defined(_MSC_VER) && !defined(HAVE_UNISTD_H)
 #  define HAVE_UNISTD_H
 #endif
 
