@@ -649,7 +649,7 @@ character_draw(int id, int x, int y, int dir)
     int horse, xoffset, yoffset;
     int char_shape;
 
-	character = character_get(id);
+    character = character_get(id);
 
     if (dir < 0 || dir > 3) {
         fprintf(stderr, "lotr: wrong direction in character_draw.\n");

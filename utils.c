@@ -30,7 +30,7 @@
 #include "utils.h"
 #include <string.h>
 #include <stdlib.h>
-#ifdef __GNUC__
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
 #include <sys/stat.h>

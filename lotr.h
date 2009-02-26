@@ -62,7 +62,7 @@
 #define FRAME_TIME 50
 
 #if !defined(PREFIX)
-#    define PREFIX
+#  define PREFIX
 #endif
 
 #ifdef DEMO
@@ -99,11 +99,7 @@
 /* uncomment to turn on debugging */
 /* DEBUG disables SDL parachute
       (so that the game creates coredumps on crash) */
-#ifdef WIN32
-#define DEBUG
-#else
 //#define DEBUG
-#endif
 
 #ifdef DEBUG
 
@@ -131,10 +127,21 @@
 #endif
 
 #ifdef _MSC_VER
-#define INLINE
+#  define INLINE
 #else
-#define INLINE inline
+#  define INLINE inline
+#  define HAVE_UNISTD_H
 #endif
+
+#ifdef __GNUC__
+#  define ATTRIBUTE_PRINTF(m, n) __attribute__ ((__format__ (__printf__, m, n)))
+#else
+#  define ATTRIBUTE_PRINTF(m, n)
+#endif
+#define ATTRIBUTE_PRINTF_1 ATTRIBUTE_PRINTF(1, 2)
+#define ATTRIBUTE_PRINTF_2 ATTRIBUTE_PRINTF(2, 3)
+#define ATTRIBUTE_PRINTF_3 ATTRIBUTE_PRINTF(3, 4)
+#define ATTRIBUTE_PRINTF_4 ATTRIBUTE_PRINTF(4, 5)
 
 #include <SDL_types.h>
 

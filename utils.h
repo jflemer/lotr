@@ -34,10 +34,10 @@
 
 
 #ifndef min
-#define min(a,b)  ((a)>(b)?(b):(a))
+#  define min(a,b)  ((a) > (b) ? (b) : (a))
 #endif
 #ifndef max
-#define max(a,b)  ((a)>(b)?(a):(b))
+#  define max(a,b)  ((a) > (b) ? (a) : (b))
 #endif
 
 /* allocates memory, exits on error */
