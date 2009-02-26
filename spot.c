@@ -1777,7 +1777,7 @@ spot_continue(CommandSpot *spot)
                 if (character == NULL)
                     break;
                 strncpy(character->name, (char *)spot->data + i + 2, 19);
-                character->name[20] = 0;
+                character->name[19] = 0;
                 break;
 
             case COMMAND_NPC_QUESTIONS:
