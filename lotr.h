@@ -148,4 +148,22 @@
 
 #include <SDL_types.h>
 
+#ifdef WIN32
+#include <windows.h>
+
+#define HAVE_SDL_MIXER
+#endif
+
+#ifdef _MSC_VER
+#include <direct.h>
+
+#  define bzero(p, s) memset(p, 0, s)
+#  define snprintf _snprintf
+#  define getcwd _getcwd
+#  define close _close
+#  define unlink _unlink
+#  define chdir _chdir
+#endif
+
+
 #endif /* _LORD_H */

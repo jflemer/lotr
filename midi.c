@@ -46,8 +46,11 @@ static Mix_Music *music = 0;
 #endif
 
 static int music_running = 0;
+#ifdef WIN32
+static char miditmpname[_MAX_PATH];
+#else
 static char miditmpname[] = "/tmp/lotrXXXXXX";
-
+#endif
 
 /*
   hook for music finished event
@@ -90,8 +93,11 @@ stop_midi(void)
 void
 play_midi(Uint8 *data, int size, int loop)
 {
-
+#ifdef WIN32
+    FILE* midifile = NULL;
+#else
     int midifile = -1;
+#endif
 
     if (midi_disabled)
         return;
@@ -111,8 +117,14 @@ play_midi(Uint8 *data, int size, int loop)
 
     stop_midi();
 
-#ifdef _MSC_VER
-	return;
+#ifdef WIN32
+    GetTempFileName( ".", "LOTRMID", 0, miditmpname); //TODO : Check result and GetTempPath
+    if ((midifile = fopen(miditmpname, "wb")) < 0
+        || fwrite(data, 1, size, midifile) != size) {
+        fprintf(stderr, "lotr: can not create temporary midifile\n");
+        exit(1);
+    }
+    fclose(midifile);
 #else
     miditmpname[9] = miditmpname[10] = miditmpname[11] = miditmpname[12] =
         miditmpname[13] = miditmpname[14] = 'X';
@@ -121,9 +133,9 @@ play_midi(Uint8 *data, int size, int loop)
         fprintf(stderr, "lotr: can not create temporary midifile\n");
         exit(1);
     }
+    close(midifile);
 #endif
 
-    close(midifile);
 
 #ifdef HAVE_SDL_MIXER
     Mix_HookMusicFinished(hook_music_finished);

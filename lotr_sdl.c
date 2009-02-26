@@ -93,6 +93,8 @@ hook_channel_finished(int channel)
 void
 lotr_system_init(void)
 {
+    int i;
+
     SDL_AudioSpec desired;
 
 #ifdef DEBUG
@@ -143,8 +145,6 @@ lotr_system_init(void)
     desired.channels = 1;
 
 #ifdef HAVE_SDL_MIXER
-    int i;
-
     if (Mix_OpenAudio(desired.freq, desired.format, 1, desired.samples) < 0) {
         fprintf(stderr, "lotr: could not initialize mixer: %s\n",
                 SDL_GetError());

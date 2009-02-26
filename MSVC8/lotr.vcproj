@@ -59,7 +59,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDLMain.lib libxml2.lib"
+				AdditionalDependencies="SDL.lib SDLMain.lib libxml2.lib SDL_Mixer.lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				EntryPointSymbol=""
@@ -132,7 +132,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SDL.lib SDLMain.lib libxml2.lib"
+				AdditionalDependencies="SDL.lib SDLMain.lib libxml2.lib SDL_Mixer.lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"

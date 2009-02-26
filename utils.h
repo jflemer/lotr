@@ -92,12 +92,5 @@ extern char *lotr_data_directory(void);
 #  define random() rand()
 #endif
 
-#ifdef _MSC_VER
-#include <direct.h>
-
-#  define bzero(p, s) memset(p, 0, s)
-#  define snprintf _snprintf
-#  define getcwd _getcwd
-#endif
 
 #endif /* _UTILS_H */
