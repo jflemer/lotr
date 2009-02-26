@@ -279,7 +279,7 @@ pixmap_set_width(Pixmap *pixmap, int width)
                 "lotr: can not set width %d to pixmap with datasize=%d\n",
                 width, pixmap->datasize);
 #ifndef CD_VERSION
-        //TODO remove CDHACK
+        /* TODO remove CDHACK */
         exit(1);
 #endif
     }

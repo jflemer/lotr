@@ -197,7 +197,7 @@ characters_init()
         lotr_characters[i]->luck = chardata->luck;
         lotr_characters[i]->will = chardata->will;
 
-        lotr_characters[i]->id = i;     // chardata->id;
+        lotr_characters[i]->id = i;     /* chardata->id; */
         lotr_characters[i]->party_id = 0xff;
         lotr_characters[i]->actived = 0;
         lotr_characters[i]->converted = 0;

@@ -243,8 +243,6 @@ av_play(char *name)
         lotr_timer(66);
         lotr_poll_events();
 
-        //      while( !lotr_kb_hit() ) lotr_poll_events(); lotr_get_key();
-
         if (!read_av_audio_sample(audiobuf, &audiobufpos, avfile))
             break;
 

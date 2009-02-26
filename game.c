@@ -902,7 +902,6 @@ game_next_frame(void)
 
 #ifdef DEMO
     if (demo_state < 0x100) {
-        //      character_frame( leader );
         demo_frame();
         if (!gui_mode())
             game_draw_map();

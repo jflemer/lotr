@@ -454,10 +454,11 @@ new_parsing:
 
             case COMMAND_IF_DIRECTION:
                 ++i;
-                //FIXME strange hack
+                /* HACK direction 0x14 appears in a crypt under lonely stone in Breeland */
                 if (i < spot->data_size && spot->data[i] != 0x13
-                    && spot->data[i] != 0x14)
+                    && spot->data[i] != 0x14) {
                     ++i;
+                }
                 break;
 
             case COMMAND_DIE:
@@ -640,7 +641,6 @@ unknown_command:
         spot->not_parsed = 1;
         spot_print(spot);
         fprintf(stderr, "lotr: spot command does not end at level 0\n");
-        // exit(1);
     }
 
     if (unknown) {
@@ -648,7 +648,7 @@ unknown_command:
         spot_print(spot);
         fprintf(stderr, "lotr: spot was not parsed completely\n");
 #ifndef CD_VERSION
-        //TODO remove CDHACK
+        /* TODO remove CDHACK */
         exit(1);
 #endif
     }
@@ -1712,7 +1712,6 @@ spot_continue(CommandSpot *spot)
 
             case COMMAND_02:
             case COMMAND_47:
-                // FIXME
                 spot->pos++;
                 break;
 
@@ -1725,7 +1724,6 @@ spot_continue(CommandSpot *spot)
 
             case COMMAND_UNKNOWN1:
             case COMMAND_UNKNOWN6:
-                // FIXME
                 spot->pos++;
                 break;
 
@@ -1845,8 +1843,8 @@ spot_continue(CommandSpot *spot)
                 map_remove_character(spot->data[i + 1]);
                 character = character_get(spot->data[i + 1]);
                 character->map = -1;
-                // FIXME
-                // character->actived=1;
+                /* FIXME
+                   character->actived = 1; */
                 break;
 
             case COMMAND_NPC_RECRUIT:
@@ -1872,7 +1870,7 @@ spot_continue(CommandSpot *spot)
                 if (spot->data[i + 1] == 0xfb)
                     character = NULL;
                 if (character != NULL) {
-                    // FIXME trade items if spot->data[i+2]
+                    /* FIXME trade items if spot->data[i+2] */
                     game_dismiss(character);
                     character->willing_join = 0;
                 }
@@ -2244,7 +2242,7 @@ spot_continue(CommandSpot *spot)
                             y = y - 0xffff;
                         x += leader->x;
                         y += leader->y;
-                        // FIXME do not set enemies to the wall
+                        /* FIXME do not set enemies to the wall */
                     }
                     character->x = x;
                     character->y = y;
@@ -2275,7 +2273,7 @@ spot_continue(CommandSpot *spot)
                 break;
 
             case COMMAND_NPC_SET_FLAGS:
-                // FIXME
+                /* FIXME not fully understood */
                 if (spot->data[i + 2] == 0xff && spot->data[i + 3] == 0x4) {
                     /* attack me */
                     if (spot->data[i + 1])
@@ -2339,7 +2337,6 @@ spot_continue(CommandSpot *spot)
                 spot_print(spot);
                 fprintf(stderr, "lotr: unknown spot command %02x\n",
                         spot->data[i]);
-                // exit(1);
                 spot->pos++;
         }
     }

@@ -317,8 +317,6 @@ cartoon_play(char *name)
 
                     i = get_command_par(command, registers, 0);
 
-                    //              printf( "type=%02x par=%d\n", command->type, i );
-
                     if (i > 0 && command->type == 0x04)
                         lotr_sleep(i * 5);
 

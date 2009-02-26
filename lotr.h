@@ -34,21 +34,21 @@
 #endif
 
 /* define this to compile The Two Towers - not working */
-// #define TTT
+/* #define TTT */
 
 #ifndef TTT
 /* define this to compile the CD version */
 /* works only with Fellowship of the Ring */
-// #define CD_VERSION
+/* #define CD_VERSION */
 
 /* define this if you want to compile a demo binary */
 /* works only with Fellowship of the Ring */
-// #define DEMO 1
+/* #define DEMO 1 */
 #endif
 
 
 /* uncomment for fullscreen */
-// #define FULLSCREEN
+/* #define FULLSCREEN */
 
 /* not much tested with other dimensions */
 /* larger resolution is considered cheating */
@@ -99,7 +99,7 @@
 /* uncomment to turn on debugging */
 /* DEBUG disables SDL parachute
       (so that the game creates coredumps on crash) */
-//#define DEBUG
+/* #define DEBUG */
 
 #ifdef DEBUG
 
@@ -129,7 +129,7 @@
 #ifdef _MSC_VER
 #  define INLINE
 #else
-#  define INLINE inline
+#  define INLINE __inline__
 #  define HAVE_UNISTD_H
 #endif
 

@@ -71,7 +71,7 @@ sound_init(void)
         sound_data[i] = archive_read(archive, i);
         sound_sizes[i] = archive_data_size(archive, i);
 
-        // Fix tempo in midi files
+        /* Fix tempo in midi files */
         if (sound_sizes[i] > 13
             && sound_data[i][0] == 'M'
             && sound_data[i][1] == 'T'
