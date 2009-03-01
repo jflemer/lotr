@@ -15,24 +15,32 @@ Install Instructions for "The Lord of the Rings"
 Instaling the full game:
 ------------------------
 
-The simple way:
+The simple way according to seven steps process(TM):
 
-1) compile by typing
+1) make sure you have installed necessary dependencies
+   (Debian/Ubuntu package names in parentheses)
+
+   - GNU toolchain (build-essential)
+   - SDL (libsdl1.2-dev)
+   - SDL_mixer (libsdl-mixer1.2-dev)
+   - freepats (freepats), needed only for SW midi emulation
+
+2) compile by typing
 make
 
-2) copy game data to /usr/local/share/games/lord/
+3) copy game data to /usr/local/share/games/lord/
 or $HOME/.lord/
 
-3) copy the game executable lord to /usr/local/bin/ or whatever
+4) copy the game executable lord to /usr/local/bin/ or whatever
 
-4) run by typing
+5) run by typing
 lord
 
-5) Optionally, if you have paragraph texts from the cd version
+6) Optionally, if you have paragraph texts from the cd version
 (file para.dat), copy them to /usr/local/share/games/lord/
 this will show the full text of paragraphs during the game	
 
-6) enjoy
+7) enjoy
 
 
 It is worth to look into lord.h for some usefull definitions
