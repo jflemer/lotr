@@ -95,6 +95,7 @@ play_midi(Uint8 *data, int size, int loop)
 {
 #ifdef WIN32
     FILE* midifile = NULL;
+	DWORD tempPathLength;
 #else
     int midifile = -1;
 #endif
@@ -118,7 +119,16 @@ play_midi(Uint8 *data, int size, int loop)
     stop_midi();
 
 #ifdef WIN32
-    GetTempFileName( ".", "LOTRMID", 0, miditmpname); /* TODO : Check result and GetTempPath */
+
+	tempPathLength = GetTempPath(MAX_PATH, miditmpname);
+	if (0 == tempPathLength) {
+		fprintf(stderr, "GetTempPath failed\n");
+		exit(1);
+	}
+    if (0 == GetTempFileName(miditmpname, "LOTRMID", 0, miditmpname)) {
+		fprintf(stderr, "GetTempFileName failed\n");
+		exit(1);
+	}
     if ((midifile = fopen(miditmpname, "wb")) < 0
         || fwrite(data, 1, size, midifile) != size) {
         fprintf(stderr, "lotr: can not create temporary midifile\n");
