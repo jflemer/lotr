@@ -1,5 +1,11 @@
 Ranged weapons should have unlimited range
 Show paragraphs that are refered from messages or NPC answers.
+Escape during combat gives the leader an extra turn.
+Crash when a person dies during combat? (need to test combats more)
+More user-friendly wizard mode
+Remember NPC flags (do not restore them after load when killed, ETC)
+Combat magic (this feature was quite useless in the original)
+Editor mode
 
 FOTR:
 Improve follow_leader
