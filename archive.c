@@ -450,12 +450,12 @@ decompress_ndx(Uint8 *data, int size, int *resultsize)
                 j = (Uint8)(data[datapos++]);
 
 
-                /* next 12 bites are starting position */
+                /* next 12 bits are starting position */
                 start = (Uint8)(i) + 16 * (Uint8)(j & 0xf0);
                 /* we add 0x12 (it is part of ndx format) */
                 start = (start + 0x12) & 0xfff;
 
-                /* next 4 bites are length-3 */
+                /* next 4 bits are length-3 */
                 len = (Uint8)(j & 0x0f) + 3;
 
 
@@ -473,7 +473,7 @@ decompress_ndx(Uint8 *data, int size, int *resultsize)
                     }
                 }
 
-                /* 12 bites can not encode too much:
+                /* 12 bits can not encode too much:
                    the real starting position
                    is in the last segment of size 0x1000 */
 
