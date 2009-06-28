@@ -1,3 +1,6 @@
+/*
+   Simple tool for decompressing ndx files
+ */
 
 #include<stdio.h>
 #include<string.h>
