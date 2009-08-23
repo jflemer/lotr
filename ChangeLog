@@ -1,5 +1,6 @@
-0.6.5 (not yet released)
+0.6.5
 	some game script missing features implemented
+	fix crash on Ubuntu when trading Bag End Key to Lobelia
 
 0.6.4
 	up to five savegames
