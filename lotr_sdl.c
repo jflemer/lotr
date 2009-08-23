@@ -270,8 +270,13 @@ lotr_poll_events(void)
                     break;
 
                 if (lotr_keybufferpos < KEYBOARDBUFFERESIZE) {
-                    lotr_keybuffer[lotr_keybufferpos++] =
-                        event.key.keysym.sym;
+                    int keysym = event.key.keysym.sym;
+
+                    /* Map numeric keyboard to normal numbers */
+                    if (keysym >= SDLK_KP0 && keysym <= SDLK_KP9)
+                        keysym = keysym - SDLK_KP0 + '0';
+
+                    lotr_keybuffer[lotr_keybufferpos++] = keysym;
                 }
 
                 switch (event.key.keysym.sym) {
