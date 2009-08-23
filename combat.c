@@ -708,8 +708,8 @@ combat_enemy_move()
 
     if (combat_stack_size == 0) {
         active_character->x = -1;
-        sprintf(combat_result_text, "%s abandons the battle.",
-                active_character->name);
+        snprintf(combat_result_text, sizeof(combat_result_text), "%s abandons the battle.",
+                 active_character->name);
         gui_message(combat_result_text, 1);
         return;
     }
@@ -1110,28 +1110,28 @@ combat_attack(Character *who, Character *whom)
     if (hits) {
         if (damage > 0) {
             if (whom->life == 0) {
-                sprintf(combat_result_text, "%s kills %s.", who->name,
-                        whom->name);
+                snprintf(combat_result_text, sizeof(combat_result_text), "%s kills %s.", who->name,
+                         whom->name);
                 combat_character_remove(whom);
 
             } else {
                 if (whom->life >= 6 || !game_in_party(whom)) {
-                    sprintf(combat_result_text,
-                            "%s hits %s for %d points of damage.", who->name,
-                            whom->name, damage);
+                    snprintf(combat_result_text, sizeof(combat_result_text),
+                             "%s hits %s for %d points of damage.", who->name,
+                             whom->name, damage);
                 } else {
-                    sprintf(combat_result_text,
-                            "%s hits %s for %d points of damage, knocking %s out of cold.",
-                            who->name, whom->name, damage, whom->name);
+                    snprintf(combat_result_text, sizeof(combat_result_text),
+                             "%s hits %s for %d points of damage, knocking %s out of cold.",
+                             who->name, whom->name, damage, whom->name);
                 }
             }
         } else {
-            sprintf(combat_result_text, "%s hits %s but does no damage.",
-                    who->name, whom->name);
+            snprintf(combat_result_text, sizeof(combat_result_text), "%s hits %s but does no damage.",
+                     who->name, whom->name);
         }
     } else {
-        sprintf(combat_result_text, "%s %s at and misses %s.", who->name,
-                attack_type, whom->name);
+        snprintf(combat_result_text, sizeof(combat_result_text), "%s %s at and misses %s.", who->name,
+                 attack_type, whom->name);
     }
 
     if (hits)

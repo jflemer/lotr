@@ -470,9 +470,9 @@ game_save(int n)
 
 
 #ifndef TTT
-    sprintf(name, "savegame.%d", n);
+    snprintf(name, sizeof(name), "savegame.%d", n);
 #else
-    sprintf(name, "savegame2.%d", n);
+    snprintf(name, sizeof(name), "savegame2.%d", n);
 #endif
 
     xmlSaveFormatFileEnc(lotr_homedir_filename(name), doc, "ascii", 1);
@@ -503,9 +503,9 @@ game_load(int n)
     xmlNodePtr subnode;
 
 #ifndef TTT
-    sprintf(name, "savegame.%d", n);
+    snprintf(name, sizeof(name), "savegame.%d", n);
 #else
-    sprintf(name, "savegame2.%d", n);
+    snprintf(name, sizeof(name), "savegame2.%d", n);
 #endif
 
     doc = xmlParseFile(lotr_homedir_filename(name));
@@ -624,7 +624,7 @@ game_convert(int game_id)
 
     int party_size;
 
-    sprintf(name, "savegame.%d", game_id);
+    snprintf(name, sizeof(name), "savegame.%d", game_id);
 
     doc = xmlParseFile(lotr_homedir_filename(name));
     if (doc == NULL)
@@ -1172,9 +1172,9 @@ char *
 game_get_paragraph_text(int index, int question)
 {
     if (!PIXEL_PRECISE && question)
-        sprintf(game_par_text, "See paragraph number %d. (Y/N)", index);
+        snprintf(game_par_text, sizeof(game_par_text), "See paragraph number %d. (Y/N)", index);
     else
-        sprintf(game_par_text, "See paragraph number %d.", index);
+        snprintf(game_par_text, sizeof(game_par_text), "See paragraph number %d.", index);
     return game_par_text;
 }
 

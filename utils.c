@@ -53,8 +53,8 @@ lotr_malloc(int size)
 
     if (result == NULL) {
         char message[128];
-        sprintf(message, "lotr: can not allocate memory %d bytes of memory",
-                size);
+        snprintf(message, sizeof(message),
+                 "lotr: can not allocate %d bytes of memory", size);
         perror(message);
         exit(1);
     }
@@ -138,7 +138,7 @@ lotr_fopen(const char *path, const char *mode)
 
     if (result == NULL) {
         char message[128];
-        sprintf(message, "lotr: can not open file %s", lotr_filename);
+        snprintf(message, sizeof(message), "lotr: can not open file %s", lotr_filename);
         perror(message);
         exit(1);
     }
@@ -194,7 +194,7 @@ lotr_add_suffix(const char *name, const char *suffix)
 
     result = lotr_malloc(len);
 
-    sprintf(result, "%s.%s", name, suffix);
+    snprintf(result, len, "%s.%s", name, suffix);
 
     return result;
 

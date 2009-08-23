@@ -2148,10 +2148,10 @@ spot_continue(CommandSpot *spot)
 
             case COMMAND_CARTOON:
 #ifndef DEMO
-                sprintf(name, "cart%d", spot->data[i + 1] + 1);
+                snprintf(name, sizeof(name), "cart%d", spot->data[i + 1] + 1);
                 play_music();
 #else
-                sprintf(name, "democrt%d", spot->data[i + 1] + 1);
+                snprintf(name, sizeof(name), "democrt%d", spot->data[i + 1] + 1);
 #endif
                 cartoon_play(name);
 

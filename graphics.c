@@ -647,9 +647,9 @@ graphics_set_background(char *name)
     Uint8 *picture_data;
     Pixmap *background;
 
-    sprintf(palname, "%s.pal", name);
+    snprintf(palname, sizeof(palname), "%s.pal", name);
     pal = lotr_fopen(palname, "rb");
-    sprintf(datname, "%s.dat", name);
+    snprintf(datname, sizeof(datname), "%s.dat", name);
     dat = lotr_fopen(datname, "rb");
 
     fread(&palette, sizeof(Palette), 1, pal);

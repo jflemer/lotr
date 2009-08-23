@@ -1354,24 +1354,24 @@ dialog_view_show(void)
     dialog_mode = DIALOG_VIEW;
 
 #if PIXEL_PRECISE
-    sprintf(lines[0], "                    ");
+    snprintf(lines[0], sizeof(lines[0]), "                    ");
 #else
-    sprintf(lines[0], "<                  >");
+    snprintf(lines[0], sizeof(lines[0]), "<                  >");
 #endif
     name_len = strlen(choosed_character->name);
     strncpy(lines[0] + (20 - name_len) / 2,
             choosed_character->name, name_len);
 
 
-    sprintf(lines[1], " Silver:%d", game_get_silver());
+    snprintf(lines[1], sizeof(lines[0]), " Silver:%d", game_get_silver());
     lines[2][0] = 0;
-    sprintf(lines[3], " Dex.:%-4d Str.:%-4d",
-            choosed_character->dex, choosed_character->str);
-    sprintf(lines[4], " End.:%-4d Luck:%-4d",
-            choosed_character->end, choosed_character->luck);
-    sprintf(lines[5], " Life:%-4d Will:%-4d",
-            choosed_character->life, choosed_character->will);
-    sprintf(lines[6], "       eXit");
+    snprintf(lines[3], sizeof(lines[0]), " Dex.:%-4d Str.:%-4d",
+             choosed_character->dex, choosed_character->str);
+    snprintf(lines[4], sizeof(lines[0]), " End.:%-4d Luck:%-4d",
+             choosed_character->end, choosed_character->luck);
+    snprintf(lines[5], sizeof(lines[0]), " Life:%-4d Will:%-4d",
+             choosed_character->life, choosed_character->will);
+    snprintf(lines[6], sizeof(lines[0]), "       eXit");
 
     for (i = 0; i < 7; ++i)
         text[i] = lines[i];
@@ -1445,7 +1445,7 @@ dialog_list_draw(int can_change_character)
 #if !PIXEL_PRECISE
     if (dialog_list_can_change_character && choosed_character) {
         int name_len = strlen(choosed_character->name);
-        sprintf(lines[text_lines], "<                  >");
+        snprintf(lines[text_lines], sizeof(lines[0]), "<                  >");
         strncpy(lines[text_lines++] + (20 - name_len) / 2,
                 choosed_character->name, name_len);
         strncpy(lines[text_lines++], "", 20);
@@ -1479,8 +1479,8 @@ dialog_list_draw(int can_change_character)
                         status_char = '*';
                 }
             }
-            sprintf(lines[text_lines++], "%d.%c%s", (i == 9) ? 0 : i + 1,
-                    status_char, dialog_list_names[index]);
+            snprintf(lines[text_lines++], sizeof(lines[0]), "%d.%c%s", (i == 9) ? 0 : i + 1,
+                     status_char, dialog_list_names[index]);
         } else {
             strncpy(lines[text_lines++], "", 20);
         }
@@ -1683,7 +1683,7 @@ dialog_discard_confirm_show(int what)
 
     dialog_what_discard = what;
 
-    sprintf(text, "Discard %s?", object_name(choosed_character->items[what]));
+    snprintf(text, sizeof(text), "Discard %s?", object_name(choosed_character->items[what]));
     gui_confirm_scroll(text);
 
 }
@@ -1779,9 +1779,9 @@ dialog_get_show(void)
     for (i = 0; dialog_get_objects[i] != 0xff && i < 10; ++i) {
         dialog_list_codes[i] = i;
         if (dialog_get_to_buy) {
-            sprintf(dialog_buy_texts[i],
-                    "%-14s%d", object_name(dialog_get_objects[i]),
-                    object_price(dialog_get_objects[i]));
+            snprintf(dialog_buy_texts[i], sizeof(dialog_buy_texts[0]),
+                     "%-14s%d", object_name(dialog_get_objects[i]),
+                     object_price(dialog_get_objects[i]));
             dialog_list_names[i] = dialog_buy_texts[i];
         } else
             dialog_list_names[i] = object_name(dialog_get_objects[i]);
@@ -1790,7 +1790,7 @@ dialog_get_show(void)
     dialog_list_num = i;
 
     if (dialog_get_to_buy) {
-        sprintf(dialog_buy_texts[10], "Silver Pennies:%d", game_get_silver());
+        snprintf(dialog_buy_texts[10], sizeof(dialog_buy_texts[0]), "Silver Pennies:%d", game_get_silver());
         dialog_list_name = dialog_buy_texts[10];
     } else
         dialog_list_name = "TAKE ITEM(S)";
@@ -1904,16 +1904,16 @@ void
 dialog_trade_confirm_show(int what)
 {
 
-    char text[25];
+    char text[64];
 
     main_menu_show();
     dialog_mode = DIALOG_TRADE_CONFIRM;
 
     dialog_what_trade = what;
 
-    sprintf(text, "Trade %s to %s?",
-            object_name(choosed_character->items[what]),
-            character_get(dialog_trade_to_who)->name);
+    snprintf(text, sizeof(text), "Trade %s to %s?",
+             object_name(choosed_character->items[what]),
+             character_get(dialog_trade_to_who)->name);
 
     gui_confirm_scroll(text);
 
@@ -2353,7 +2353,7 @@ dialog_question_key(int key)
                 }
             }
 
-            sprintf(wizard_text, "Spell casted.");
+            snprintf(wizard_text, sizeof(wizard_text), "Spell casted.");
 
 
             switch (spell_type) {
@@ -2368,18 +2368,18 @@ dialog_question_key(int key)
 
                 case 'E':
                     reg = !game_get_register(spell[0]);
-                    sprintf(wizard_text, "reg: %d", reg);
+                    snprintf(wizard_text, sizeof(wizard_text), "reg: %d", reg);
                     game_set_register(spell[0], reg);
                     break;
 
                 case 'H':
-                    sprintf(wizard_text,
-                            "Building, Help, Location, Teleport, Map, Day, Night, Spots, Get, Recruit, Kill, rEg, Paragraph");
+                    snprintf(wizard_text, sizeof(wizard_text),
+                             "Building, Help, Location, Teleport, Map, Day, Night, Spots, Get, Recruit, Kill, rEg, Paragraph");
                     break;
 
                 case 'L':
-                    sprintf(wizard_text, "loc: %x %x",
-                            game_get_leader()->x, game_get_leader()->y);
+                    snprintf(wizard_text, sizeof(wizard_text), "loc: %x %x",
+                             game_get_leader()->x, game_get_leader()->y);
                     break;
 
                 case 'M':
@@ -2449,8 +2449,8 @@ dialog_question_key(int key)
 
             if (!spell_type) {
 spell_foul:
-                sprintf(wizard_text,
-                        "Thou art not a true wizard. Thy foul spell failed\n");
+                snprintf(wizard_text, sizeof(wizard_text),
+                         "Thou art not a true wizard. Thy foul spell failed\n");
             }
 
             dialog_talk_show(-1, 0);
@@ -3307,7 +3307,7 @@ gui_player_dead(Character *who, int show_message)
 
 
     if (show_message) {
-        sprintf(message, "%s is dead.", who->name);
+        snprintf(message, sizeof(message), "%s is dead.", who->name);
         gui_message(message, 1);
 
         while (dialog_mode == DIALOG_MESSAGE) {
@@ -3416,7 +3416,7 @@ gui_ttt_start_dialog(void)
         if (mode == 0) {
             if (key == 'n') {
                 for (i = 0; i < 10; ++i) {
-                    sprintf(buf, "savegame.%d", i);
+                    snprintf(buf, sizeof(buf), "savegame.%d", i);
                     testfile = fopen(lotr_homedir_filename(buf), "rb");
                     if (testfile != NULL) {
                         numsaves++;
@@ -3436,7 +3436,7 @@ gui_ttt_start_dialog(void)
                     y += 2;
                     for (i = 0; i < 10; ++i)
                         if (savegames[i]) {
-                            sprintf(buf, "%d.Game %d", i, i);
+                            snprintf(buf, sizeof(buf), "%d.Game %d", i, i);
                             y += 8;
                             gui_draw_text(buf, 52, y);
                         }
@@ -3447,7 +3447,7 @@ gui_ttt_start_dialog(void)
             }
             if (key == 'o') {
                 for (i = 0; i < 10; ++i) {
-                    sprintf(buf, "savegame2.%d", i);
+                    snprintf(buf, sizeof(buf), "savegame2.%d", i);
                     testfile = fopen(lotr_homedir_filename(buf), "rb");
                     if (testfile != NULL) {
                         numsaves++;
@@ -3462,7 +3462,7 @@ gui_ttt_start_dialog(void)
                     gui_draw_text("Which Game?", 44, y);
                     for (i = 0; i < 10; ++i)
                         if (savegames[i]) {
-                            sprintf(buf, "%d.Game %d", i, i);
+                            snprintf(buf, sizeof(buf), "%d.Game %d", i, i);
                             y += 8;
                             gui_draw_text(buf, 52, y);
                         }
