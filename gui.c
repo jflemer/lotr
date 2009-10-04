@@ -801,10 +801,9 @@ gui_help_show()
 #ifdef DEBUG
         "",
         " Cheating:",
-        "            W  Wizard mode",
+        "            W  Wizard console",
         "       Ctrl+W  Print script",
         "  Ctrl+Arrows  Noclip mode",
-        " Shift+Arrows  Fast noclip",
         " Shift+Arrows  Fast noclip",
 #endif
         ""
