@@ -1,0 +1,90 @@
+
+# Lord of the Ring game engine Makefile
+
+ifeq ($(PREFIX),)
+PREFIX=/usr/local
+endif
+
+include Makefile.config
+
+DEFINITIONS = -DPREFIX=\"$(PREFIX)\"
+
+HEADERFILES = archive.h av.h cartoon.h character.h combat.h credit.h lotr.h lotr_sdl.h map.h midi.h game.h graphics.h gui.h init.h object.h shape.h sound.h spot.h timing.h utils.h
+PLAYCARTOONOBJ = archive.o cartoon.o lotr_sdl.o midi.o graphics.o sound.o timing.o utils.o
+PLAYAVOBJ = archive.o av.o lotr_sdl.o midi.o graphics.o timing.o utils.o
+OBJFILES = archive.o av.o cartoon.o character.o combat.o lotr_sdl.o map.o midi.o game.o gui.o graphics.o init.o object.o shape.o sound.o spot.o timing.o utils.o
+
+ifeq ($(USE_SDL_MIXER),1)
+LIBRARIES += -lSDL_mixer
+STATIC_LIBRARIES += -lSDL_mixer
+DEFINITIONS += -DHAVE_SDL_MIXER
+endif
+
+ifeq ($(EXTENDED),1)
+OBJFILES += $(OBJFILES_C) pythonspot.o
+DEFINITIONS += -DEXTENDED=1
+PYVERSION := $(shell python setup.py version)
+PYPREFIX := $(shell python setup.py prefix)
+LIBRARIES += -lpython$(PYVERSION)
+INCLUDES += -I$(shell python setup.py include)
+HEADERFILES += pythonspot.h
+endif
+
+ifeq ($(DEBUG),1)
+DEFINITIONS += -DDEBUG
+CFLAGS += -ggdb -O0
+else
+CFLAGS += -g0 -O2 -funroll-loops
+endif
+
+ifeq ($(DEMO),1)
+DEFINITIONS += -DDEMO
+endif
+
+all: lotr
+
+clean:
+	rm -f *.o *~ core.* pythonspot.c playcartoon lotr lotr.static \
+		pythonspot.pxi pythonspot.h playav
+
+
+lotr: $(OBJFILES) lotr.o
+	$(LD) $(OBJFILES) $(LIBRARIES) lotr.o -o lotr
+
+lotr.static: $(OBJFILES) lotr.o
+	$(LD_STATIC) $(OBJFILES) $(STATIC_LIBRARIES) lotr.o -o lotr.static
+
+
+playcartoon: $(PLAYCARTOONOBJ) playcartoon.o
+	$(LD) $(PLAYCARTOONOBJ) $(LIBRARIES) playcartoon.o -o playcartoon
+
+
+playav: $(PLAYAVOBJ) playav.o
+	$(LD) $(PLAYAVOBJ) $(LIBRARIES) playav.o -o playav
+
+tools/ripmaps: $(OBJFILES) tools/ripmaps.o
+	$(LD) $(OBJFILES) $(LIBRARIES) tools/ripmaps.o -o tools/ripmaps
+
+
+object.o: object.c $(HEADERFILES) object_names.h object_names_ttt.h object_prices.h
+	$(CC) $(CCPARAMS) -c object.c
+
+shape.o: shape.c shapes_param.h shapes_param_ttt.h $(HEADERFILES)
+	$(CC) $(CCPARAMS) -c shape.c
+
+sound.o: sound.c sounds_cd.h $(HEADERFILES)
+	$(CC) $(CCPARAMS) -c sound.c
+
+
+%.o: %.c $(HEADERFILES) Makefile
+	$(CC) $(CCPARAMS) -c $< -o $@
+
+pythonspot.c: pythonspot.pyx
+	pyrexc $<
+
+pythonspot.h: pythonspot.pyx
+	pyrexc $<
+
+
+testmap: testmap.c
+	$(CC) $(CCPARAMS) $(LIBRARIES) testmap.c -o testmap

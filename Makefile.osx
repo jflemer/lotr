@@ -1,0 +1,23 @@
+# Lord of the Ring game engine Makefile for OS X
+
+CC = gcc
+LD = gcc
+LD_STATIC = gcc --static
+
+# game data path prefix
+PREFIX=/usr/local
+
+# use SDL mixer?
+USE_SDL_MIXER=0
+
+INCLUDES = -I/Library/Frameworks/SDL.framework/Headers -I/Library/Frameworks/SDL.framework/Headers/ `xml2-config --cflags`
+LIBRARIES = `xml2-config --libs` 
+STATIC_LIBRARIES = `xml2-config #--libs --static` 
+CFLAGS = -c -Wall #-O3 -fexceptions
+CCPARAMS = $(CFLAGS) $(INCLUDES) $(DEFINITIONS)
+MACFRAMEWORKS = -I/Library/Frameworks/SDL.framework/Headers -I/Library/Frameworks/SDL.framework/Headers/ -framework Cocoa -framework SDL -framework SDL_mixer SDLmain.m 
+
+LIBRARIES += $(MACFRAMEWORKS)
+STATIC_LIBRARIES += $(MACFRAMEWORKS)
+
+include Makefile.common

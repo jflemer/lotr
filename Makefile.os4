@@ -21,8 +21,4 @@ ifeq ($(USE_SDL_MIXER),1)
 LIBRARIES += -lSDL_mixer -lvorbisfile -lvorbis -logg
 endif
 
-LOTR_MAKE_CONFIGURED = yes
-
-ifeq ($(LOTR_MAKE_PROCESSED),)
-include Makefile
-endif
+include Makefile.common

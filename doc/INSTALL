@@ -54,7 +54,7 @@ Installing the demo:
 --------------------
 
 
-1) You must define DEMO=1 in Makefile.
+1) You must define DEMO=1 in Makefile.config
 
 2) compile by
 make clean; make
