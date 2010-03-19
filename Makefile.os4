@@ -19,6 +19,7 @@ CCPARAMS = $(CFLAGS) $(INCLUDES) $(DEFINITIONS)
 
 ifeq ($(USE_SDL_MIXER),1)
 LIBRARIES += -lSDL_mixer -lvorbisfile -lvorbis -logg
+STATIC_LIBRARIES += -lSDL_mixer -lvorbisfile -lvorbis -logg
 endif
 
 include Makefile.common

@@ -18,4 +18,9 @@ STATIC_LIBRARIES = `sdl-config --static-libs` `xml2-config --libs --static`
 CFLAGS = -Wall
 CCPARAMS = $(CFLAGS) $(INCLUDES) $(DEFINITIONS)
 
+ifeq ($(USE_SDL_MIXER),1)
+LIBRARIES += -lSDL_mixer
+STATIC_LIBRARIES += -lSDL_mixer
+endif
+
 include Makefile.common
