@@ -10,3 +10,6 @@
 MSVC8/Debug
 MSVC8/Release
 MSVC8/lotr.suo
+tools/dendx
+tools/ndxdec
+tools/ndxenc
