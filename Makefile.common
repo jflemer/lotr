@@ -15,8 +15,6 @@ PLAYAVOBJ = archive.o av.o lotr_sdl.o midi.o graphics.o timing.o utils.o
 OBJFILES = archive.o av.o cartoon.o character.o combat.o lotr_sdl.o map.o midi.o game.o gui.o graphics.o init.o object.o shape.o sound.o spot.o timing.o utils.o
 
 ifeq ($(USE_SDL_MIXER),1)
-LIBRARIES += -lSDL_mixer
-STATIC_LIBRARIES += -lSDL_mixer
 DEFINITIONS += -DHAVE_SDL_MIXER
 endif
 
