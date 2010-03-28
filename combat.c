@@ -463,23 +463,23 @@ combat_start(void)
             combat_move_to_area(combat_enemies[i]);
 
         for (j = 0; j < combat_enemies[i]->items_num; ++j)
-            combat_enemies[i]->item_used[i] = 0;
+            combat_enemies[i]->item_used[j] = 0;
 
         for (j = 0; j < combat_enemies[i]->items_num; ++j)
             if (object_is_weapon(combat_enemies[i]->items[j])) {
-                combat_enemies[i]->item_used[i] = 1;
+                combat_enemies[i]->item_used[j] = 1;
                 break;
             }
 
         for (j = 0; j < combat_enemies[i]->items_num; ++j)
             if (object_is_armour(combat_enemies[i]->items[j])) {
-                combat_enemies[i]->item_used[i] = 1;
+                combat_enemies[i]->item_used[j] = 1;
                 break;
             }
 
         for (j = 0; j < combat_enemies[i]->items_num; ++j)
             if (object_is_shield(combat_enemies[i]->items[j])) {
-                combat_enemies[i]->item_used[i] = 1;
+                combat_enemies[i]->item_used[j] = 1;
                 break;
             }
 
