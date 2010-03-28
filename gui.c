@@ -1513,11 +1513,8 @@ dialog_attack_show(void)
     main_menu_show();
     dialog_mode = DIALOG_ATTACK;
 
-    dialog_list_num = 0;
-
-    if (combat_get_mode())
-        dialog_list_num =
-            combat_in_bow_range(choosed_character, dialog_list_codes);
+    dialog_list_num =
+        combat_in_bow_range(choosed_character, dialog_list_codes);
 
     if (dialog_list_num == 0)
         dialog_list_num =
