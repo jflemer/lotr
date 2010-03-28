@@ -71,7 +71,6 @@ typedef struct
     int dex, end, life, str, luck, will, ap;
     int silver;
     int last_eat;
-    int has_bow;
     int items[10];
     int item_used[10];
     int items_num;
@@ -168,5 +167,7 @@ extern void character_set_party(int id);
 /* get CHARACTER_TALK_LEN */
 extern int character_get_talk_len(void);
 
+/* check whether a character is using bow */
+extern int character_using_bow(Character *character);
 
 #endif /* _CHARACTER_H */

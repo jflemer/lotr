@@ -253,18 +253,6 @@ combat_next_turn(void)
 
     if (combat_enemies_num == 0)
         combat_won();
-
-    active_character->has_bow = 0;
-
-    for (i = 0; i < active_character->items_num; ++i)
-        if (active_character->item_used[i] &&
-            object_weapon_class(active_character->items[i]) == 8) {
-            active_character->has_bow = 1;
-            break;
-        }
-
-
-
 }
 
 /*
@@ -633,6 +621,7 @@ combat_enemy_move()
     int i, v, x, y;
     int k, l;
     int active_chars;
+    int is_using_bow = character_using_bow(active_character);
 
     if (combat_party_size <= 0)
         combat_loosed();
@@ -641,14 +630,16 @@ combat_enemy_move()
 
     first_char = lotr_rnd(combat_party_size) - 1;
 
-    i = first_char;
-    while (!active_character->has_bow) {
+    for (i = first_char ;;) {
+        int is_near = abs(active_character->x - combat_party[i]->x) < MAP_NEAR_DISTANCE;
+        is_near = is_near && abs(active_character->y - combat_party[i]->y) < MAP_NEAR_DISTANCE;
 
-        if (abs(active_character->x - combat_party[i]->x) < MAP_NEAR_DISTANCE
-            && abs(active_character->y - combat_party[i]->y) <
-            MAP_NEAR_DISTANCE && combat_party[i]->life >= 6
+        if ((is_near || is_using_bow)
+            && combat_party[i]->life >= 6
             && (combat_party[i]->ring_mode != 2 || ring_not_working))
+        {
             break;
+        }
 
         i = (i + 1) % combat_party_size;
 
@@ -931,7 +922,7 @@ combat_in_bow_range(Character *character, int codes[10])
 {
     int i;
 
-    if (!character->has_bow)
+    if (!character_using_bow(character))
         return 0;
 
     for (i = 0; i < combat_enemies_num; ++i)

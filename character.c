@@ -1210,3 +1210,23 @@ character_get_talk_len(void)
 {
     return CHARACTER_TALK_LEN;
 }
+
+/*
+  check whether a character is using bow
+ */
+int
+character_using_bow(Character *character)
+{
+    int i;
+
+    for (i = 0; i < character->items_num; ++i) {
+        if (character->item_used[i] &&
+            object_weapon_class(character->items[i]) == 8)
+        {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
