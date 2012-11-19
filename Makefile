@@ -8,12 +8,22 @@ endif
 # use SDL mixer?
 USE_SDL_MIXER=1
 
+# use HQX scaler
+USE_HQX=1
+
 CC = gcc
 LD = gcc
 LD_STATIC = gcc --static
 
-INCLUDES = `sdl-config --cflags` `xml2-config --cflags`
-LIBRARIES = `sdl-config --libs` `xml2-config --libs`
+HQX_CFLAGS = -I/usr/include/hqx
+HQX_LDFLAGS = -lhqx
+SDL_CFLAGS := $(shell pkg-config sdl --cflags)
+SDL_LDFLAGS := $(shell pkg-config sdl --libs)
+XML_CFLAGS := $(shell xml2-config --cflags)
+XML_LDFLAGS := $(shell xml2-config --libs)
+
+INCLUDES = $(SDL_CFLAGS) $(XML_CFLAGS)
+LIBRARIES = $(SDL_LDFLAGS) $(XML_LDFLAGS)
 STATIC_LIBRARIES = `sdl-config --static-libs` `xml2-config --libs --static`
 CFLAGS = -Wall
 CCPARAMS = $(CFLAGS) $(INCLUDES) $(DEFINITIONS)
@@ -21,6 +31,11 @@ CCPARAMS = $(CFLAGS) $(INCLUDES) $(DEFINITIONS)
 ifeq ($(USE_SDL_MIXER),1)
 LIBRARIES += -lSDL_mixer
 STATIC_LIBRARIES += -lSDL_mixer
+endif
+
+ifeq ($(USE_HQX),1)
+INCLUDES += -DUSE_HQX $(HQX_CFLAGS)
+LIBRARIES += $(HQX_LDFLAGS)
 endif
 
 include Makefile.common
