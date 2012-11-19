@@ -450,7 +450,6 @@ lotr_input_enable(void)
 void
 lotr_show_screen(Uint8 *newscreen)
 {
-    int i;
 #if SCREEN_FACT == 1
     // convert pixels to 8-bit SDL surface
     SDL_Surface *src = SDL_CreateRGBSurfaceFrom(
@@ -482,7 +481,7 @@ lotr_show_screen(Uint8 *newscreen)
     SDL_FreeSurface(src8);
     SDL_FreeSurface(src32);
 #else
-    int j;
+    int i, j;
     Uint8 tmpscreen[SCREEN_WIDTH * SCREEN_HEIGHT * SCREEN_FACT];
     Uint8 *ts;
     Uint8 *pixels;
