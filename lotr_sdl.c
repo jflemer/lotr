@@ -490,14 +490,14 @@ lotr_show_screen(Uint8 *newscreen)
     pixels = main_display->pixels;
 
 
-    // mulitply width
+    // multiply width
     ts = tmpscreen;
     for (i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; ++i)
         for (j = 0; j < SCREEN_FACT; ++j, ++ts)
             *ts = newscreen[i];
 
 
-    // multiple height
+    // multiply height
     ts = tmpscreen;
     for (i = 0; i < SCREEN_HEIGHT; ++i) {
         for (j = 0; j < SCREEN_FACT; ++j) {
