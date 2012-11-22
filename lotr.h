@@ -56,7 +56,7 @@
 #define SCREEN_HEIGHT 200
 
 /* Scaling factor for the screen */
-#define SCREEN_FACT 2
+#define SCREEN_FACT 4
 
 /* frame time in milliseconds */
 #define FRAME_TIME 50
