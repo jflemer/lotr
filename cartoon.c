@@ -662,6 +662,8 @@ cartoon_play(char *name)
                     graphics_set_palette((Palette *)data, 0, 0x100);
                     free(data);
 
+                    graphics_update_screen();
+
                     break;
 
 
@@ -942,6 +944,7 @@ cartoon_play(char *name)
                     else
                         graphics_rotate_palette_right(i, j);
 
+                    graphics_update_screen();
 
                     break;
 
@@ -998,6 +1001,7 @@ cartoon_play(char *name)
 
                     i = get_command_par(command, registers, 0);
                     graphics_fade_palette(i, 0, 0x100);
+                    graphics_update_screen();
 
                     break;
 
