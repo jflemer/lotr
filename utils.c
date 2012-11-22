@@ -87,16 +87,22 @@ lotr_homedir_filename(const char *name)
 #else
     snprintf(lotr_filename, sizeof(lotr_filename), "lord/");
 #endif
-    getcwd(cwd, 1024);
+    if (getcwd(cwd, 1024) == NULL) {
+        perror("cannot get current directory");
+        exit(1);
+    }
 #ifndef WIN32 /* TODO : Do the check */
     if (chdir(lotr_filename)) { /* Somewhat stupid test for dir existence */
         if (mkdir(lotr_filename, S_IRWXU)) {
-            perror("can not create directory " HOME_DIR_STR);
+            perror("cannot create directory " HOME_DIR_STR);
             exit(1);
         }
     }
 #endif
-    chdir(cwd);
+    if (chdir(cwd) < 0) {
+        perror("cannot change directory");
+        exit(1);
+    }
 
 #if !defined(AMIGA_OS4) && !defined(WIN32)
     snprintf(lotr_filename, sizeof(lotr_filename), "%s/.lotr/%s", home, name);

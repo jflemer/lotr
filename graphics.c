@@ -652,12 +652,18 @@ graphics_set_background(char *name)
     snprintf(datname, sizeof(datname), "%s.dat", name);
     dat = lotr_fopen(datname, "rb");
 
-    fread(&palette, sizeof(Palette), 1, pal);
+    if (fread(&palette, sizeof(Palette), 1, pal) != 1) {
+        fprintf(stderr, "lotr: cannot read %s\n", palname);
+        exit(1);
+    }
 
     data_size = lotr_filelen(dat);
     data = lotr_malloc(data_size);
 
-    fread(data, 1, data_size, dat);
+    if (fread(data, data_size, 1, dat) != 1) {
+        fprintf(stderr, "lotr: cannot read %s\n", datname);
+        exit(1);
+    }
 
     picture_data = decompress_ndx(data, data_size, &picture_size);
 
