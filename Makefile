@@ -8,14 +8,19 @@ endif
 # use SDL mixer?
 USE_SDL_MIXER=1
 
-# use HQX scaler
-USE_HQX=1
+# test for HQX scaler
+HQX_INCLUDE=/usr/include/hqx
+ifeq ($(wildcard $(HQX_INCLUDE)),) 
+    USE_HQX=0
+else
+    USE_HQX=1
+endif
 
 CC = gcc
 LD = gcc
 LD_STATIC = gcc --static
 
-HQX_CFLAGS = -I/usr/include/hqx
+HQX_CFLAGS = -I$(HQX_INCLUDE)
 HQX_LDFLAGS = -lhqx
 SDL_CFLAGS := $(shell pkg-config sdl --cflags)
 SDL_LDFLAGS := $(shell pkg-config sdl --libs)
