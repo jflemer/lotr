@@ -397,7 +397,7 @@ characters_load(xmlNodePtr node)
             if (strncmp(name, "Aragorn", 19) && strncmp(name, "Radagast", 19)
                 && strncmp(name, "Werewolf", 19))
                 strncpy(lotr_characters[i]->name,
-                        lotr_characters[i]->original_name, 19);
+                        lotr_characters[i]->original_name, 20);
             else
                 strncpy(lotr_characters[i]->name, name, 19);
 

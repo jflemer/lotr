@@ -613,7 +613,7 @@ format_text(const char *_text, int *lines, int width,
 
     n = strlen(_text);
     t = text = lotr_malloc(n + 1);
-    strncpy(text, _text, n);
+    memcpy(text, _text, n);
     text[n] = 0;
 
     /* format text */
@@ -1358,8 +1358,8 @@ dialog_view_show(void)
     snprintf(lines[0], sizeof(lines[0]), "<                  >");
 #endif
     name_len = strlen(choosed_character->name);
-    strncpy(lines[0] + (20 - name_len) / 2,
-            choosed_character->name, name_len);
+    memcpy(lines[0] + (20 - name_len) / 2,
+           choosed_character->name, name_len);
 
 
     snprintf(lines[1], sizeof(lines[0]), " Silver:%d", game_get_silver());
@@ -1445,7 +1445,7 @@ dialog_list_draw(int can_change_character)
     if (dialog_list_can_change_character && choosed_character) {
         int name_len = strlen(choosed_character->name);
         snprintf(lines[text_lines], sizeof(lines[0]), "<                  >");
-        strncpy(lines[text_lines++] + (20 - name_len) / 2,
+        memcpy(lines[text_lines++] + (20 - name_len) / 2,
                 choosed_character->name, name_len);
         strncpy(lines[text_lines++], "", 20);
     }

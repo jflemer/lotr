@@ -143,7 +143,7 @@ lotr_fopen(const char *path, const char *mode)
     result = fopen(lotr_filename, mode);
 
     if (result == NULL) {
-        char message[128];
+        char message[2048];
         snprintf(message, sizeof(message), "lotr: can not open file %s", lotr_filename);
         perror(message);
         exit(1);
