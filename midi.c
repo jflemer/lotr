@@ -2,7 +2,6 @@
 
     midi.h
     midi music support
-    inspiration taken from exult
 
 
     Lord of the Rings game engine
@@ -46,11 +45,6 @@ static Mix_Music *music = 0;
 #endif
 
 static int music_running = 0;
-#ifdef WIN32
-static char miditmpname[_MAX_PATH];
-#else
-static char miditmpname[] = "/tmp/lotrXXXXXX";
-#endif
 
 /*
   hook for music finished event
@@ -58,7 +52,6 @@ static char miditmpname[] = "/tmp/lotrXXXXXX";
 void
 hook_music_finished()
 {
-    unlink(miditmpname);
     music_running = 0;
 }
 
@@ -93,13 +86,6 @@ stop_midi(void)
 void
 play_midi(Uint8 *data, int size, int loop)
 {
-#ifdef WIN32
-    FILE *midifile = NULL;
-    DWORD tempPathLength;
-#else
-    int midifile = -1;
-#endif
-
     if (midi_disabled)
         return;
 
@@ -118,42 +104,12 @@ play_midi(Uint8 *data, int size, int loop)
 
     stop_midi();
 
-#ifdef WIN32
-
-    tempPathLength = GetTempPath(MAX_PATH, miditmpname);
-    if (0 == tempPathLength) {
-        fprintf(stderr, "GetTempPath failed\n");
-        exit(1);
-    }
-    if (0 == GetTempFileName(miditmpname, "LOTRMID", 0, miditmpname)) {
-        fprintf(stderr, "GetTempFileName failed\n");
-        exit(1);
-    }
-    if ((midifile = fopen(miditmpname, "wb")) < 0
-        || fwrite(data, 1, size, midifile) != size) {
-        fprintf(stderr, "lotr: can not create temporary midifile\n");
-        exit(1);
-    }
-    fclose(midifile);
-#else
-    miditmpname[9] = miditmpname[10] = miditmpname[11] = miditmpname[12] =
-        miditmpname[13] = miditmpname[14] = 'X';
-    if ((midifile = mkstemp(miditmpname)) < 0
-        || write(midifile, data, size) != size) {
-        fprintf(stderr, "lotr: can not create temporary midifile\n");
-        exit(1);
-    }
-    close(midifile);
-#endif
-
-
 #ifdef HAVE_SDL_MIXER
     Mix_HookMusicFinished(hook_music_finished);
 
-    music = Mix_LoadMUS(miditmpname);
+    music = Mix_LoadMUS_RW(SDL_RWFromConstMem(data, size));
     if (!music) {
-        fprintf(stderr, "Can't start midi file %s: %s\n", miditmpname,
-                Mix_GetError());
+        fprintf(stderr, "Can't load midi file: %s\n", Mix_GetError());
         return;
     }
 
