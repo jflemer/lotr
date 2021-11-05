@@ -29,8 +29,13 @@
 #ifndef _LORD_SDL_H
 #define _LORD_SDL_H
 
+#include <SDL.h>
 
-#include <SDL_keysym.h>
+#if SDL_MAJOR_VERSION == 2
+#  include <SDL_keyboard.h>
+#else
+#  include <SDL_keysym.h>
+#endif
 
 
 #define KEY_ENTER       SDLK_RETURN

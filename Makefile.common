@@ -9,10 +9,16 @@ include Makefile.config
 
 DEFINITIONS = -DPREFIX=\"$(PREFIX)\"
 
+ifeq ($(SDL_VERSION),2)
+  LOTR_SDL_OBJ = lotr_sdl2.o
+else
+  LOTR_SDL_OBJ = lotr_sdl.o
+endif
+
 HEADERFILES = archive.h av.h cartoon.h character.h combat.h credit.h lotr.h lotr_sdl.h map.h midi.h game.h graphics.h gui.h init.h object.h shape.h sound.h spot.h timing.h utils.h
-PLAYCARTOONOBJ = archive.o cartoon.o lotr_sdl.o midi.o graphics.o sound.o timing.o utils.o
-PLAYAVOBJ = archive.o av.o lotr_sdl.o midi.o graphics.o timing.o utils.o
-OBJFILES = archive.o av.o cartoon.o character.o combat.o lotr_sdl.o map.o midi.o game.o gui.o graphics.o init.o object.o shape.o sound.o spot.o timing.o utils.o
+PLAYCARTOONOBJ = archive.o cartoon.o $(LOTR_SDL_OBJ) midi.o graphics.o sound.o timing.o utils.o
+PLAYAVOBJ = archive.o av.o $(LOTR_SDL_OBJ) midi.o graphics.o timing.o utils.o
+OBJFILES = archive.o av.o cartoon.o character.o combat.o $(LOTR_SDL_OBJ) map.o midi.o game.o gui.o graphics.o init.o object.o shape.o sound.o spot.o timing.o utils.o
 
 ifeq ($(USE_SDL_MIXER),1)
 DEFINITIONS += -DHAVE_SDL_MIXER

@@ -107,7 +107,12 @@ play_midi(Uint8 *data, int size, int loop)
 #ifdef HAVE_SDL_MIXER
     Mix_HookMusicFinished(hook_music_finished);
 
+#if SDL_MAJOR_VERSION == 2
+    music = Mix_LoadMUS_RW(SDL_RWFromConstMem(data, size), 0);
+#else
     music = Mix_LoadMUS_RW(SDL_RWFromConstMem(data, size));
+#endif
+
     if (!music) {
         fprintf(stderr, "Can't load midi file: %s\n", Mix_GetError());
         return;

@@ -5,8 +5,11 @@ ifeq ($(PREFIX),)
 PREFIX=/usr/local
 endif
 
+# Version of SDL to use
+SDL_VERSION = 2
+
 # use SDL mixer?
-USE_SDL_MIXER=1
+USE_SDL_MIXER = 1
 
 # test for HQX scaler
 HQX_INCLUDE = .
@@ -25,8 +28,13 @@ LD = gcc $(STATIC)
 
 HQX_CFLAGS = -I$(HQX_INCLUDE)
 HQX_LDFLAGS = -lhqx
-SDL_CFLAGS := $(shell pkg-config sdl --cflags)
-SDL_LDFLAGS := $(shell pkg-config sdl --libs $(STATIC) )
+ifeq ($(SDL_VERSION),2)
+  SDL_CFLAGS := $(shell pkg-config sdl2 --cflags)
+  SDL_LDFLAGS := $(shell pkg-config sdl2 --libs $(STATIC) )
+else
+  SDL_CFLAGS := $(shell pkg-config sdl --cflags)
+  SDL_LDFLAGS := $(shell pkg-config sdl --libs $(STATIC) )
+endif
 XML_CFLAGS := $(shell xml2-config --cflags)
 XML_LDFLAGS := $(shell xml2-config --libs $(STATIC) )
 
@@ -36,7 +44,11 @@ CFLAGS = -Wall
 CCPARAMS = $(CFLAGS) $(INCLUDES) $(DEFINITIONS)
 
 ifeq ($(USE_SDL_MIXER),1)
-LIBRARIES += $(shell pkg-config SDL_mixer --libs $(STATIC))
+  ifeq ($(SDL_VERSION),2)
+    LIBRARIES += $(shell pkg-config SDL2_mixer --libs $(STATIC))
+  else
+    LIBRARIES += $(shell pkg-config SDL_mixer --libs $(STATIC))
+  endif
 endif
 
 ifeq ($(USE_HQX),1)
