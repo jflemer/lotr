@@ -273,7 +273,7 @@ readbit(Uint8 *data, int pos)
             return (c >> 0) & 1;
     }
 
-    return 0;                   /* should not happen onlyto avoid warnings */
+    return 0;                   /* should not happen, only to avoid warnings */
 }
 
 
