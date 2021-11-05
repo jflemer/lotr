@@ -68,18 +68,18 @@
 #ifdef DEMO
 #  if defined(WIN32)
 #    define DATA_DIRECTORY "./"
-#  elif !defined(AMIGA_OS4)
-#    define DATA_DIRECTORY "./"
-#  else
+#  elif defined(AMIGA_OS4)
 #    define DATA_DIRECTORY PREFIX "/"
+#  else
+#    define DATA_DIRECTORY "./"
 #  endif
 #else
 #  if defined(WIN32)
 #    define GAME_DIRECTORY PREFIX "lotr"
-#  elif !defined(AMIGA_OS4)
-#    define GAME_DIRECTORY PREFIX "/share/games/lotr"
-#  else
+#  elif defined(AMIGA_OS4)
 #    define GAME_DIRECTORY PREFIX "/lotr"
+#  else
+#    define GAME_DIRECTORY PREFIX "/share/games/lotr"
 #  endif
 #  ifndef TTT
 #    ifndef CD_VERSION
@@ -126,7 +126,7 @@
 #  include "pythonspot.h"
 #endif
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !DEBUG
 #  define INLINE __inline__
 #else
 #  define INLINE

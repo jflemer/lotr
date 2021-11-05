@@ -74,7 +74,7 @@ sound.o: sound.c sounds_cd.h $(HEADERFILES)
 	$(CC) $(CCPARAMS) -c sound.c
 
 
-%.o: %.c $(HEADERFILES) Makefile
+%.o: %.c $(HEADERFILES) Makefile Makefile.config
 	$(CC) $(CCPARAMS) -c $< -o $@
 
 pythonspot.c: pythonspot.pyx
