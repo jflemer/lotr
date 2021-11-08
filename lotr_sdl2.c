@@ -44,7 +44,7 @@
 
 /* main window */
 static SDL_Window *main_window = NULL;
-static SDL_Surface *main_display;
+static SDL_Renderer *main_window_renderer = NULL;
 
 /* palette */
 static SDL_Color active_palette[256];
@@ -114,7 +114,6 @@ lotr_system_init(void)
         exit(-1);
     }
 
-    /* Initialize the display in a 8-bit palettized mode */
     unsigned win_flags = 0;
     int win_fact = SCREEN_FACT;
 
@@ -123,31 +122,30 @@ lotr_system_init(void)
 #endif
 #ifdef FULLSCREEN
     win_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
-    win_fact = 0;
 #endif
+    win_flags |= SDL_WINDOW_RESIZABLE;
 
     main_window =
         SDL_CreateWindow("Lord of the Rings",
-        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        SCREEN_WIDTH * win_fact, SCREEN_HEIGHT * win_fact,
-        win_flags);
+                SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                SCREEN_WIDTH * win_fact, SCREEN_HEIGHT * win_fact,
+                win_flags);
 
     if (main_window == NULL) {
         fprintf(stderr, "Couldn't create window: %s\n", SDL_GetError());
         exit(1);
     }
 
-    main_display = SDL_GetWindowSurface(main_window);
-
-    if (main_display == NULL) {
-        fprintf(stderr, "Couldn't get window surface: %s\n", SDL_GetError());
+    main_window_renderer = SDL_CreateRenderer(main_window, -1, SDL_RENDERER_ACCELERATED);
+    if (main_window_renderer == NULL) {
+        fprintf(stderr, "Couldn't get window renderer: %s\n", SDL_GetError());
         exit(1);
     }
+    SDL_RenderSetLogicalSize(main_window_renderer,
+            SCREEN_WIDTH * win_fact, SCREEN_HEIGHT * win_fact);
 
     memset(active_palette, '\0', sizeof(active_palette));
 
-//    SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,
-//                        SDL_DEFAULT_REPEAT_INTERVAL);
     lotr_reset_keyboard();
 
     desired.freq = 22050;
@@ -455,27 +453,23 @@ lotr_input_enable(void)
 void
 lotr_show_screen(Uint8 *newscreen)
 {
+    SDL_Surface *src;
 #if SCREEN_FACT == 1
-    // convert pixels to 8-bit SDL surface
-    SDL_Surface *src = SDL_CreateRGBSurfaceFrom(
+    /* convert pixels to 8-bit SDL surface */
+    src = SDL_CreateRGBSurfaceFrom(
         newscreen, SCREEN_WIDTH, SCREEN_HEIGHT, 8, SCREEN_WIDTH, 0, 0, 0, 0);
     SDL_SetPaletteColors(src->format->palette, active_palette, 0, 256);
-    // copy to screen
-    SDL_BlitSurface(src, NULL, main_display, NULL);
-    // cleanup
-    SDL_FreeSurface(src);
 #elif defined(USE_HQX)
-    // convert pixels to 8-bit SDL surface
+    /* convert pixels to 8-bit SDL surface */
     SDL_Surface *src8 = SDL_CreateRGBSurfaceFrom(
         newscreen, SCREEN_WIDTH, SCREEN_HEIGHT, 8, SCREEN_WIDTH, 0, 0, 0, 0);
     SDL_SetPaletteColors(src8->format->palette, active_palette, 0, 256);
-    // convert 8-bit SDL surface to 32-bit SDL
-    SDL_Surface *src32 = SDL_ConvertSurface(src8, main_display->format,
-        SDL_SWSURFACE);
-    // output surface
-    SDL_Surface *src = SDL_CreateRGBSurface(
+    /* output surface */
+    src = SDL_CreateRGBSurface(
         0, SCREEN_WIDTH * SCREEN_FACT, SCREEN_HEIGHT * SCREEN_FACT, 32, 0, 0, 0, 0);
-    // apply HQX scalling from 32-bit source to screen
+    /* convert 8-bit SDL surface to 32-bit SDL */
+    SDL_Surface *src32 = SDL_ConvertSurface(src8, src->format, SDL_SWSURFACE);
+    /* apply HQX scalling from 32-bit source to screen */
 # if SCREEN_FACT == 2
     hq2x_32(src32->pixels, src->pixels, SCREEN_WIDTH, SCREEN_HEIGHT); 
 # elif SCREEN_FACT == 3
@@ -485,15 +479,11 @@ lotr_show_screen(Uint8 *newscreen)
 # else
 #  error SCREEN_FACT must be 2, 3 or 4 for USE_HQX
 # endif
-    // copy to screen
-    SDL_BlitSurface(src, NULL, main_display, NULL);
-    // cleanup
-    SDL_FreeSurface(src);
     SDL_FreeSurface(src8);
     SDL_FreeSurface(src32);
 #else
-    // convert pixels to 8-bit SDL surface
-    SDL_Surface *src = SDL_CreateRGBSurface(
+    /* convert pixels to 8-bit SDL surface */
+    src = SDL_CreateRGBSurface(
         0, SCREEN_WIDTH * SCREEN_FACT, SCREEN_HEIGHT * SCREEN_FACT, 8, 0, 0, 0, 0);
     SDL_SetPaletteColors(src->format->palette, active_palette, 0, 256);
 
@@ -505,14 +495,14 @@ lotr_show_screen(Uint8 *newscreen)
     pixels = src->pixels;
 
 
-    // multiply width
+    /* multiply width */
     ts = tmpscreen;
     for (i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; ++i)
         for (j = 0; j < SCREEN_FACT; ++j, ++ts)
             *ts = newscreen[i];
 
 
-    // multiply height
+    /* multiply height */
     ts = tmpscreen;
     for (i = 0; i < SCREEN_HEIGHT; ++i) {
         for (j = 0; j < SCREEN_FACT; ++j) {
@@ -521,14 +511,16 @@ lotr_show_screen(Uint8 *newscreen)
         }
         ts += SCREEN_WIDTH * SCREEN_FACT;
     }
-
-    // copy to screen
-    SDL_BlitSurface(src, NULL, main_display, NULL);
-    // cleanup
-    SDL_FreeSurface(src);
 #endif
 
-    SDL_UpdateWindowSurface(main_window);
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(main_window_renderer, src);
+    SDL_RenderClear(main_window_renderer);
+    SDL_RenderCopy(main_window_renderer, texture, NULL, NULL);
+    SDL_RenderPresent(main_window_renderer);
+
+    /* cleanup */
+    SDL_DestroyTexture(texture);
+    SDL_FreeSurface(src);
 }
 
 
@@ -596,9 +588,4 @@ lotr_system_set_palette(Uint8 *palette, int firstcolor, int ncolors)
         active_palette[c].g = palette[3 * (i + firstcolor) + 1] * 4;
         active_palette[c].b = palette[3 * (i + firstcolor) + 2] * 4;
     }
-
-#ifndef USE_HQX
-    // SDL_SetPalette(main_display, SDL_PHYSPAL, &active_palette[firstcolor], firstcolor, ncolors);
-#endif
-
 }
