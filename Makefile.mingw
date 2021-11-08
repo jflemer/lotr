@@ -1,0 +1,57 @@
+
+# Lord of the Ring game engine Makefile for Linux
+
+ifeq ($(PREFIX),)
+PREFIX=data/
+endif
+
+# Version of SDL to use
+SDL_VERSION = 2
+
+# use SDL mixer?
+USE_SDL_MIXER = 1
+
+# test for HQX scaler
+USE_HQX = 1
+
+HQX_INCLUDE = .
+HQX_CFLAGS =
+HQX_LDFLAGS =
+ifeq ($(USE_HQX),1)
+  HQX_DIR = ./hqx
+  HQX_CFLAGS = -I$(HQX_DIR)/include
+  HQX_LDFLAGS = -L$(HQX_DIR)/lib -lhqx
+endif
+
+#STATIC = --static
+STATIC =
+ARCH = x86_64
+CC = $(ARCH)-w64-mingw32-gcc
+LD = $(ARCH)-w64-mingw32-gcc $(STATIC)
+
+SDL2_DIR = ./SDL2-2.0.16/$(ARCH)-w64-mingw32
+SDL_CFLAGS := -I$(SDL2_DIR)/include/SDL2
+SDL_LDFLAGS := -L$(SDL2_DIR)/lib -lSDL2main -lSDL2
+
+XML2_DIR = ./libxml2_$(ARCH)
+ICONV_DIR = ./libxml2_$(ARCH)
+XML_CFLAGS := -I$(ICONV_DIR)/include -I$(XML2_DIR)/include/libxml2
+XML_LDFLAGS := -L$(ICONV_DIR)/lib -L$(XML2_DIR)/lib -lxml2
+
+INCLUDES = $(SDL_CFLAGS) $(XML_CFLAGS)
+LIBRARIES = -lmingw32 $(SDL_LDFLAGS) $(XML_LDFLAGS)
+CFLAGS = -Wall
+CCPARAMS = $(CFLAGS) $(INCLUDES) $(DEFINITIONS)
+
+SDL2_MIXER_DIR = ./SDL2_mixer-2.0.4/$(ARCH)-w64-mingw32
+ifeq ($(USE_SDL_MIXER),1)
+  INCLUDES += -I$(SDL2_MIXER_DIR)/include/SDL2
+  LIBRARIES += -L$(SDL2_MIXER_DIR)/lib -l SDL2_mixer
+endif
+
+ifeq ($(USE_HQX),1)
+INCLUDES += -DUSE_HQX $(HQX_CFLAGS)
+LIBRARIES += $(HQX_LDFLAGS)
+endif
+
+include Makefile.common

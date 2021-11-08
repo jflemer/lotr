@@ -88,7 +88,7 @@ extern xmlNodePtr lotr_get_subnode(xmlNodePtr node, const xmlChar *name,
 extern char *lotr_data_directory(void);
 
 
-#if defined(AMIGA_OS4) || defined(_MSC_VER)
+#if defined(AMIGA_OS4) || defined(WIN32)
 #  define random() rand()
 #endif
 

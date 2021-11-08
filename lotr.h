@@ -151,7 +151,9 @@
 #ifdef WIN32
 #include <windows.h>
 
-#define HAVE_SDL_MIXER
+#  define bzero(p, s) memset(p, 0, s)
+
+// #define HAVE_SDL_MIXER
 #endif
 
 #ifdef _MSC_VER

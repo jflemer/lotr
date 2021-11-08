@@ -107,7 +107,7 @@ lotr_homedir_filename(const char *name)
 #if !defined(AMIGA_OS4) && !defined(WIN32)
     snprintf(lotr_filename, sizeof(lotr_filename), "%s/.lotr/%s", home, name);
 #else
-    snprintf(lotr_filename, sizeof(lotr_filename), "lord/%s", name);
+    snprintf(lotr_filename, sizeof(lotr_filename), "saves/%s", name);
 #endif
 
     return lotr_filename;
