@@ -1,5 +1,5 @@
 
-# Lord of the Ring game engine Makefile for Linux
+# Lord of the Ring game engine Makefile for Windows crosscompiled by mingw
 
 ifeq ($(PREFIX),)
 PREFIX=data
