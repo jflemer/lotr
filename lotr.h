@@ -67,7 +67,7 @@
 
 #ifdef DEMO
 #  if defined(WIN32)
-#    define DATA_DIRECTORY "./"
+#    define DATA_DIRECTORY PREFIX "/demo"
 #  elif defined(AMIGA_OS4)
 #    define DATA_DIRECTORY PREFIX "/"
 #  else
@@ -75,7 +75,7 @@
 #  endif
 #else
 #  if defined(WIN32)
-#    define GAME_DIRECTORY PREFIX "lotr"
+#    define GAME_DIRECTORY PREFIX
 #  elif defined(AMIGA_OS4)
 #    define GAME_DIRECTORY PREFIX "/lotr"
 #  else
@@ -83,7 +83,11 @@
 #  endif
 #  ifndef TTT
 #    ifndef CD_VERSION
-#      define DATA_DIRECTORY GAME_DIRECTORY
+#      if defined(WIN32)
+#        define DATA_DIRECTORY GAME_DIRECTORY "/lotr"
+#      else
+#        define DATA_DIRECTORY GAME_DIRECTORY
+#      endif
 #    else
 #      define DATA_DIRECTORY GAME_DIRECTORY "/cd"
 #    endif

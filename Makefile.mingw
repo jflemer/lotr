@@ -2,7 +2,7 @@
 # Lord of the Ring game engine Makefile for Linux
 
 ifeq ($(PREFIX),)
-PREFIX=data/
+PREFIX=data
 endif
 
 # Version of SDL to use
