@@ -130,7 +130,7 @@
 #  include "pythonspot.h"
 #endif
 
-#if defined(__GNUC__) && !DEBUG
+#if defined(__GNUC__) && !defined(DEBUG)
 #  define INLINE __inline__
 #else
 #  define INLINE
