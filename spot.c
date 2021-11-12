@@ -161,6 +161,7 @@
 #define COMMAND_UNKNOWNi        0x4a
 #define COMMAND_UNKNOWNl        0xff
 #define COMMAND_UNKNOWNm        0x3f
+#define COMMAND_UNKNOWNn        0xc7
 
 
 Uint8 *spot_objects;
@@ -347,6 +348,7 @@ new_parsing:
             case COMMAND_UNKNOWNe:
             case COMMAND_UNKNOWNf:
             case COMMAND_UNKNOWNi:
+            case COMMAND_UNKNOWNn:
                 i += 1;
                 break;
 
