@@ -85,7 +85,7 @@ lotr_homedir_filename(const char *name)
 
     snprintf(lotr_filename, sizeof(lotr_filename), "%s/.lotr/", home);
 #else
-    snprintf(lotr_filename, sizeof(lotr_filename), "lord/");
+    snprintf(lotr_filename, sizeof(lotr_filename), "saves/");
 #endif
     if (getcwd(cwd, 1024) == NULL) {
         perror("cannot get current directory");
