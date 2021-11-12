@@ -53,8 +53,8 @@ main(int argc, char *argv[])
     int game_num = 0;
 
     /* Check if game data is present */
-    if (!lotr_file_exists("npcs.dat")) {
-        fprintf(stderr, "Cannot find file \"npcs.dat\"\n");
+    if (!lotr_file_exists("arts.dat")) {
+        fprintf(stderr, "Cannot find file \"arts.dat\"\n");
         fprintf(stderr, "Please copy game data into the directory \"%s\"\n", DATA_DIRECTORY);
 #ifdef WIN32
         system("pause");
