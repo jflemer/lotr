@@ -123,6 +123,42 @@ int weapon_offsets[36][4][2] = { {{7, -3}, {10, 1}, {3, 5}, {0, 4},},   /*  0 */
 
 
 
+void
+character_set_shape(Character *character, int character_id, int shape_id)
+{
+    character->shape_id = shape_id;
+    character->shapes[0] = shape_get(6 * shape_id + 0);
+    character->shapes[1] = shape_get(6 * shape_id + 1);
+    character->shapes[2] = shape_get(6 * shape_id + 2);
+    character->shapes[3] = shape_get(6 * shape_id + 3);
+    character->shapes[4] = shape_get(6 * shape_id + 4);
+    character->shapes[5] = shape_get(6 * shape_id + 5);
+
+    int is_composite = FALSE;
+#ifndef TTT
+    is_composite = (character_id == 0xc3); /* Balrog */
+#else
+    is_composite = (character_id == 0x23)  /* Mumak */
+                || (character_id == 0xb6); /* Dragon */
+#endif
+    character->composite_shape = is_composite;
+    if (is_composite) {
+        character->shapes[6] =  shape_get(6 * shape_id + 6);
+        character->shapes[7] =  shape_get(6 * shape_id + 7);
+        character->shapes[8] =  shape_get(6 * shape_id + 8);
+        character->shapes[9] =  shape_get(6 * shape_id + 9);
+        character->shapes[10] = shape_get(6 * shape_id + 10);
+        character->shapes[11] = shape_get(6 * shape_id + 11);
+    } else {
+        character->shapes[6] =  NULL;
+        character->shapes[7] =  NULL;
+        character->shapes[8] =  NULL;
+        character->shapes[9] =  NULL;
+        character->shapes[10] = NULL;
+        character->shapes[11] = NULL;
+    }
+}
+
 
 /*
   init characters & portraits
@@ -171,16 +207,8 @@ characters_init()
         lotr_characters[i]->action = CHARACTER_STAY;
         lotr_characters[i]->state = 0;
 
-        lotr_characters[i]->shape_id = chardata->shape;
-        lotr_characters[i]->shapes[0] = shape_get(6 * chardata->shape + 0);
-        lotr_characters[i]->shapes[1] = shape_get(6 * chardata->shape + 1);
-        lotr_characters[i]->shapes[2] = shape_get(6 * chardata->shape + 2);
-        lotr_characters[i]->shapes[3] = shape_get(6 * chardata->shape + 3);
-        lotr_characters[i]->shapes[4] = shape_get(6 * chardata->shape + 4);
-        lotr_characters[i]->shapes[5] = shape_get(6 * chardata->shape + 5);
-
+        character_set_shape(lotr_characters[i], i, chardata->shape);
         lotr_characters[i]->horse_shape_id = chardata->horse_shape;
-
         lotr_characters[i]->portrait = chardata->portrait;
         lotr_characters[i]->direction = chardata->direction;
 #ifdef CD_VERSION
@@ -407,21 +435,8 @@ characters_load(xmlNodePtr node)
             lotr_characters[i]->direction = lotr_load_prop_int(cur, "dir");
             lotr_characters[i]->action = lotr_load_prop_int(cur, "action");
             lotr_characters[i]->state = lotr_load_prop_int(cur, "state");
-            lotr_characters[i]->shape_id = lotr_load_prop_int(cur, "shape");
 
-            lotr_characters[i]->shapes[0] =
-                shape_get(6 * lotr_characters[i]->shape_id + 0);
-            lotr_characters[i]->shapes[1] =
-                shape_get(6 * lotr_characters[i]->shape_id + 1);
-            lotr_characters[i]->shapes[2] =
-                shape_get(6 * lotr_characters[i]->shape_id + 2);
-            lotr_characters[i]->shapes[3] =
-                shape_get(6 * lotr_characters[i]->shape_id + 3);
-            lotr_characters[i]->shapes[4] =
-                shape_get(6 * lotr_characters[i]->shape_id + 4);
-            lotr_characters[i]->shapes[5] =
-                shape_get(6 * lotr_characters[i]->shape_id + 5);
-
+            character_set_shape(lotr_characters[i], i, lotr_load_prop_int(cur, "shape"));
 
             lotr_characters[i]->horse_shape_id =
                 lotr_load_prop_int(cur, "horse_shape");
@@ -744,17 +759,35 @@ character_draw(int id, int x, int y, int dir)
         return;
     }
 
+    int draw_action = character->action;
+    if (character->shapes[draw_action] == NULL)
+        draw_action = CHARACTER_STAY;
 
-    if (character->action == CHARACTER_STAY)
+    if (draw_action == CHARACTER_STAY)
         frame = dir;
     else
         frame = character->state;
 
-    if (character->shapes[character->action] == NULL)
-        shape_draw(character->shapes[CHARACTER_STAY], dir, x, y);
-    else
-        shape_draw(character->shapes[character->action], frame, x, y);
-
+    shape_draw(character->shapes[draw_action], frame, x, y);
+    if (character->composite_shape) {
+#ifndef TTT
+        if (dir == CHARACTER_UP || dir == CHARACTER_DOWN) {
+            int off = character->shapes[draw_action]->pixmaps[frame]->width;
+            shape_draw(character->shapes[draw_action + 6], frame, x + off, y);
+        } else {
+            int off = character->shapes[draw_action]->pixmaps[frame]->width;
+            shape_draw(character->shapes[draw_action + 6], frame, x, y + off);
+        }
+#else
+        if (dir == CHARACTER_UP || dir == CHARACTER_DOWN) {
+            int off = character->shapes[draw_action]->pixmaps[frame]->height;
+            shape_draw(character->shapes[draw_action + 6], frame, x, y - off);
+        } else {
+            int off = character->shapes[draw_action]->pixmaps[frame]->width;
+            shape_draw(character->shapes[draw_action + 6], frame, x + off, y);
+        }
+#endif
+    }
 }
 
 
@@ -1041,14 +1074,8 @@ character_command_npc_init(Character *character, int type, int value)
             break;
 
         case 0x06:             /* shape */
-            character->shape_id = value;
             if (value != 0xff) {
-                character->shapes[0] = shape_get(6 * character->shape_id + 0);
-                character->shapes[1] = shape_get(6 * character->shape_id + 1);
-                character->shapes[2] = shape_get(6 * character->shape_id + 2);
-                character->shapes[3] = shape_get(6 * character->shape_id + 3);
-                character->shapes[4] = shape_get(6 * character->shape_id + 4);
-                character->shapes[5] = shape_get(6 * character->shape_id + 5);
+                character_set_shape(character, character->id, value);
             }
             game_draw_map();
             break;

@@ -64,8 +64,9 @@ typedef struct
     int action;
     int state;
     int shape_id;
+    int composite_shape;
     int horse_shape_id;
-    Shape *shapes[CHARACTER_STAY + 1];
+    Shape *shapes[(CHARACTER_STAY + 1) * 2];
     int weapon_shape_id;
     int portrait;
     int dex, end, life, str, luck, will, ap;
