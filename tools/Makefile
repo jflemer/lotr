@@ -14,7 +14,7 @@ clean:
 	rm -f $(TARGETS) *.o
 
 ndxdec: ndxdec.o ../archive.o ../utils.o
-	$(LD) $(LIBRARIES) $? -o ndxdec
+	$(LD) $? $(LIBRARIES) -o ndxdec
 
 ndxdec.o: ndxdec.c
 	$(CC) $(CCPARAMS) -c $< -o $@
