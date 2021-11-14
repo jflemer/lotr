@@ -60,6 +60,7 @@ typedef struct
     int next_x, next_y;
     int map;
     int display_x, display_y;
+    int x_offset, y_offset;
     int direction;
     int action;
     int state;
