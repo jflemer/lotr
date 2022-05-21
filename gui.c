@@ -196,12 +196,16 @@ gui_init(void)
 
 
     /* init paragraphs */
-
-    if (lotr_file_exists("para.dat")) {
+#ifndef TTT
+    char *para_filename = "para.dat";
+#else
+    char *para_filename = "para2.dat";
+#endif
+    if (lotr_file_exists(para_filename)) {
         FILE *parfile;
         int parlotr_filelen;
         int pos, n;
-        parfile = lotr_fopen("para.dat", "rb");
+        parfile = lotr_fopen(para_filename, "rb");
         parlotr_filelen = lotr_filelen(parfile);
         paragraphs = lotr_malloc(parlotr_filelen);
         if (fread(paragraphs, 1, parlotr_filelen, parfile) != parlotr_filelen) {
