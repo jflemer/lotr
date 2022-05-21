@@ -322,7 +322,7 @@ map_set_fade(int fade)
         fade = DAY_FADE;
     map_fade = fade;
 
-    graphics_fade_palette(map_fade, 0x00, 0x40);
+    graphics_fade_palette(map_fade, 0x00, 0x40); // TODO faces in the water
 }
 
 
