@@ -843,7 +843,11 @@ gui_paragraph_scroll(void)
 
     gui_clear();
     game_draw_map();
+#ifndef TTT
     width = 32;
+#else
+    width = 36;
+#endif
 
     if (paragraphs[gui_paragraph_pos] == 0x5)
         ++gui_paragraph_pos;
