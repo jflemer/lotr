@@ -94,7 +94,7 @@ sound_init(void)
     FILE *adlfile;
 
     for (i = 0; i < SOUNDS_NUM; ++i) {
-        adlfile = lotr_fopen(sound_names[i], "r");
+        adlfile = lotr_fopen(sound_names[i], "rb");
         sound_sizes[i] = lotr_filelen(adlfile);
         sound_data[i] = lotr_malloc(sound_sizes[i]);
         if (fread(sound_data[i], 1, sound_sizes[i], adlfile) !=
