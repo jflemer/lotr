@@ -144,7 +144,9 @@
 #define COMMAND_02              0x02
 #ifdef TTT
 #define COMMAND_43              0x43
+#define COMMAND_END_OF_GAME     0x4c
 #else
+#define COMMAND_UNKNOWNf        0x4c
 #define COMMAND_END_OF_GAME     0x43
 #endif
 #define COMMAND_47              0x47
@@ -156,7 +158,6 @@
 #define COMMAND_UNKNOWNc        0x49
 #define COMMAND_UNKNOWNd        0x34
 #define COMMAND_UNKNOWNe        0x4b
-#define COMMAND_UNKNOWNf        0x4c
 #define COMMAND_UNKNOWNg        0x48
 #define COMMAND_UNKNOWNi        0x4a
 #define COMMAND_UNKNOWNl        0xff
@@ -186,6 +187,8 @@ char *spot_chapter_texts[15] = {
     "As the orcs converge on Helm's Deep, one of your members searches for the lost armies of Rohan to bolster its defenses.",
     "Meanwhile, a desperate search is taking place, as the Fellowship looks for help in defeating the legions of Saruman."
 };
+
+static int end_game_text_displayed = 0;
 #endif
 
 
@@ -346,7 +349,9 @@ new_parsing:
             case COMMAND_UNKNOWN1:
             case COMMAND_UNKNOWN7:
             case COMMAND_UNKNOWNe:
+#ifndef TTT
             case COMMAND_UNKNOWNf:
+#endif
             case COMMAND_UNKNOWNi:
             case COMMAND_UNKNOWNn:
                 i += 1;
@@ -478,9 +483,7 @@ new_parsing:
             case COMMAND_LOAD_POSITION:
             case COMMAND_EXIT_BUILDING:
             case COMMAND_47:
-#ifndef TTT
             case COMMAND_END_OF_GAME:
-#endif
                 i += 1;
                 break;
 
@@ -1020,11 +1023,11 @@ spot_get_string(CommandSpot *spot)
             case COMMAND_UNKNOWNc:
             case COMMAND_UNKNOWNd:
             case COMMAND_UNKNOWNe:
-            case COMMAND_UNKNOWNf:
             case COMMAND_UNKNOWNg:
             case COMMAND_UNKNOWNi:
             case COMMAND_UNKNOWNm:
 #ifndef TTT
+            case COMMAND_UNKNOWNf:
             case COMMAND_UNKNOWN42:
 #endif
 
@@ -1275,11 +1278,9 @@ spot_get_string(CommandSpot *spot)
                 spot_string_print("IF_DAY");
                 break;
 
-#ifndef TTT
             case COMMAND_END_OF_GAME:
                 spot_string_print("END_OF_GAME");
                 break;
-#endif
 
             case COMMAND_IF_REGISTER:
                 spot_string_print("IF_REGISTER: %02x", spot->data[i + 1]);
@@ -2322,10 +2323,15 @@ spot_continue(CommandSpot *spot)
             case COMMAND_END:
                 return 0;
 
-#ifndef TTT
             case COMMAND_END_OF_GAME:
-                exit(0);
+#ifdef TTT
+                if (!end_game_text_displayed) {
+                    gui_message("The game ends here. Now, go grab the books and read the rest of the story.", 0);
+                    end_game_text_displayed = 1;
+                    return 1;
+                }
 #endif
+                exit(0);
 
 #ifdef TTT
             case COMMAND_ACTIVATE_PARTY:
