@@ -38,7 +38,7 @@
 #ifndef TTT
 #define SPOT_MAX_COMMANDS 128
 #else
-#define SPOT_MAX_COMMANDS 256
+#define SPOT_MAX_COMMANDS 512
 #endif
 
 
