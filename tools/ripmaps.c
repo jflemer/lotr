@@ -47,6 +47,9 @@ main(void)
         char name[64];
         int j;
 
+#ifdef TTT
+        if (i == 7) continue;
+#endif
         game_load_map(i);
 
         sprintf(name, "map%02d.txt", i / 2);
