@@ -1805,7 +1805,7 @@ map_add_pythonspot(int map, int x, int y, int w, int h)
     CommandSpot *spot;
 
     if (map_num_pythonspots == MAX_PYTHON_SPOTS) {
-        fprintf(stderr, "lotr: too many puthon spots.");
+        fprintf(stderr, "lotr: too many python spots.");
         exit(1);
     }
 
