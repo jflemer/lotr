@@ -145,7 +145,9 @@
 #ifdef TTT
 #define COMMAND_43              0x43
 #define COMMAND_END_OF_GAME     0x4c
+#define COMMAND_IF_PARTY_ACTIVE 0x48
 #else
+#define COMMAND_UNKNOWNg        0x48
 #define COMMAND_UNKNOWNf        0x4c
 #define COMMAND_END_OF_GAME     0x43
 #endif
@@ -158,7 +160,6 @@
 #define COMMAND_UNKNOWNc        0x49
 #define COMMAND_UNKNOWNd        0x34
 #define COMMAND_UNKNOWNe        0x4b
-#define COMMAND_UNKNOWNg        0x48
 #define COMMAND_UNKNOWNi        0x4a
 #define COMMAND_UNKNOWNl        0xff
 #define COMMAND_UNKNOWNm        0x3f
@@ -342,7 +343,9 @@ new_parsing:
 
             case COMMAND_UNKNOWNd:
             case COMMAND_UNKNOWNc:
+#ifndef TTT
             case COMMAND_UNKNOWNg:
+#endif
                 i += 2;
                 break;
 
@@ -411,6 +414,10 @@ new_parsing:
                 break;
 
 #ifdef TTT
+            case COMMAND_IF_PARTY_ACTIVE:
+                i += 2;
+                break;
+
             case COMMAND_ACTIVATE_PARTY:
                 i += 3;
                 break;
@@ -1023,10 +1030,10 @@ spot_get_string(CommandSpot *spot)
             case COMMAND_UNKNOWNc:
             case COMMAND_UNKNOWNd:
             case COMMAND_UNKNOWNe:
-            case COMMAND_UNKNOWNg:
             case COMMAND_UNKNOWNi:
             case COMMAND_UNKNOWNm:
 #ifndef TTT
+            case COMMAND_UNKNOWNg:
             case COMMAND_UNKNOWNf:
             case COMMAND_UNKNOWN42:
 #endif
@@ -1410,6 +1417,10 @@ spot_get_string(CommandSpot *spot)
                 break;
 
 #ifdef TTT
+            case COMMAND_IF_PARTY_ACTIVE:
+                spot_string_print("IF_PARTY_ACTIVE %d", spot->data[i + 1]);
+                break;
+
             case COMMAND_ACTIVATE_PARTY:
                 spot_string_print("ACTIVATE_PARTY %d, text=\"%s\"",
                                   spot->data[i + 1],
@@ -2334,6 +2345,11 @@ spot_continue(CommandSpot *spot)
                 exit(0);
 
 #ifdef TTT
+            case COMMAND_IF_PARTY_ACTIVE:
+                spot->pos++;
+                spot_if_result(spot, game_get_leader()->party_id == spot->data[i + 1]);
+                break;
+
             case COMMAND_ACTIVATE_PARTY:
                 j = spot->data[i + 2];
                 game_party_activate(spot->data[i + 1]);
