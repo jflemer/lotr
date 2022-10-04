@@ -42,14 +42,15 @@ main(void)
 
     quest = fopen("questions.txt", "w");
 
+#ifndef TTT
     for (i = 0; i <= max_map; i += 2) {
+#else
+    for (i = 0; i <= max_map; i += 2) {
+#endif
         FILE *texts;
         char name[64];
         int j;
 
-#ifdef TTT
-        if (i == 7) continue;
-#endif
         game_load_map(i);
 
         sprintf(name, "map%02d.txt", i / 2);
