@@ -73,7 +73,7 @@ tools/ripmaps: $(OBJFILES) tools/ripmaps.o
 object.o: object.c $(HEADERFILES) object_names.h object_names_ttt.h object_prices.h
 	$(CC) $(CCPARAMS) -c object.c
 
-shape.o: shape.c shapes_param.h shapes_param_ttt.h $(HEADERFILES)
+shape.o: shape.c shapes_param.h shapes_param_ttt.h icons_ttt.h $(HEADERFILES)
 	$(CC) $(CCPARAMS) -c shape.c
 
 sound.o: sound.c sounds_cd.h $(HEADERFILES)

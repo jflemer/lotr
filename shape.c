@@ -54,13 +54,19 @@ Palette *shapes_palette;
 #endif
 Portrait *portraits_cache[PORTRAITS_NUM];
 
-
+/* shapes */
 #ifndef TTT
 #include "shapes_param.h"
 #else
 #include "shapes_param_ttt.h"
 #endif
 
+/* item icons */
+#ifdef TTT
+#define ICONS_NUM 160
+#include "icons_ttt.h"
+Pixmap *icons[ICONS_NUM];
+#endif
 
 /*
   init shapes
@@ -192,11 +198,29 @@ shapes_init(void)
 
     archive_close(archive);
 
+#ifdef TTT
+    archive = archive_ndx_open("icon");
 
+    if (archive->size != ICONS_NUM) {
+        fprintf(stderr, "lotr: expecting %d icons (%d found)\n", ICONS_NUM,
+                archive->size);
+        exit(1);
+    }
 
+    for (i = 0; i < archive->size; ++i) {
+        data = decompress_ndxarchive(archive, i, &size);
 
+        w = icon_width[i];
+        h = size / w;
 
+        icons[i] = pixmap_new(w, h);
+        memcpy(icons[i]->data, data, w * h);
+        pixmap_set_alpha(icons[i], 0x9e);
+        free(data);
+    }
 
+    archive_close(archive);
+#endif
 
 }
 
@@ -239,6 +263,12 @@ shapes_close(void)
     }
 
 
+#ifdef TTT
+    /* free icons */
+    for (i = 0; i < ICONS_NUM; ++i) {
+        pixmap_free(icons[i]);
+    }
+#endif
 
 }
 
@@ -327,6 +357,25 @@ portrait_draw(int index, int x, int y)
 
 }
 
+
+#ifdef TTT
+/*
+  draw icon
+*/
+
+void
+icon_draw(int index, int x, int y)
+{
+
+    if (index < 0 || index >= ICONS_NUM) {
+        fprintf(stderr, "lotr: invalid icon num %d\n", index);
+        return;
+    }
+
+    pixmap_draw(icons[index], x, y);
+
+}
+#endif
 
 
 /*

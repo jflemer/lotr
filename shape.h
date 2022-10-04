@@ -77,7 +77,10 @@ extern void shape_draw(Shape *shape, int state, int x, int y);
 /* draw portrait */
 extern void portrait_draw(int index, int x, int y);
 
-
+#ifdef TTT
+/* draw icon */
+extern void icon_draw(int index, int x, int y);
+#endif
 
 
 #endif /* _SHAPES_H */
