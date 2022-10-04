@@ -43,7 +43,7 @@ main(void)
     quest = fopen("questions.txt", "w");
 
 #ifndef TTT
-    for (i = 0; i <= max_map; i += 2) {
+    for (i = 1; i <= max_map; i += 2) {
 #else
     for (i = 0; i <= max_map; i += 2) {
 #endif
