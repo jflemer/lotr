@@ -42,7 +42,7 @@ main(void)
 
     quest = fopen("questions.txt", "w");
 
-    for (i = 1; i <= max_map; i += 2) {
+    for (i = 0; i <= max_map; i += 2) {
         FILE *texts;
         char name[64];
         int j;
