@@ -1,0 +1,13 @@
+Source: lotr
+Priority: optional
+Maintainer: James E. Flemer <jflemer@alum.rpi.edu>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libhqx-dev, libsdl2-dev, libsdl2-mixer-dev, libxml2-dev
+Standards-Version: 3.9.2
+Section: games
+Homepage: https://github.com/jflemer/lotr
+Vcs-Git: https://github.com/jflemer/lotr.git
+
+Package: lotr
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Lord of the Rings engine
