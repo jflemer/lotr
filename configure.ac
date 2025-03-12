@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.71])
-AC_INIT([LOTR],[1.0],[michal.benes@wonderland.cz])
+AC_INIT([LOTR],[0.8.0],[michal.benes@wonderland.cz])
 AM_INIT_AUTOMAKE([1.10 foreign])
 AC_CONFIG_SRCDIR([src/lotr.c])
 AC_CONFIG_HEADERS([config.h])
