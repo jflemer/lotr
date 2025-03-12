@@ -36,7 +36,9 @@
 
 
 /* memory image of the screen */
-Uint8 main_screen[SCREEN_WIDTH * SCREEN_HEIGHT];
+Uint8 *main_screen;
+int screen_width = SCREEN_WIDTH;
+int screen_height = SCREEN_HEIGHT;
 
 
 /* emulation of different graphics modes (VGA,EGA,CGA) */
@@ -50,7 +52,6 @@ Uint8 main_palette[0x300];
 /* window parameters */
 int window_x = 0, window_y = 0, window_w = SCREEN_WIDTH, window_h =
     SCREEN_HEIGHT;
-
 
 
 
@@ -231,20 +232,20 @@ pixmap_draw_to_buffer(Uint8 *buffer, Pixmap *pixmap, int x, int y)
     if (y + h > window_h)
         h = window_h - y;
 
-    s = buffer + (window_y + y) * SCREEN_WIDTH + (window_x + x);
+    s = buffer + (window_y + y) * screen_width + (window_x + x);
 
     if (pixmap->hasalpha) {
         for (i = 0; i < h; ++i) {
             for (j = 0; j < w; ++j)
                 if (data[j] != pixmap->alpha)
                     s[j] = data[j];
-            s += SCREEN_WIDTH;
+            s += screen_width;
             data += pixmap->width;
         }
     } else {
         for (i = 0; i < h; ++i) {
             memcpy(s, data, w);
-            s += SCREEN_WIDTH;
+            s += screen_width;
             data += pixmap->width;
         }
     }
@@ -349,9 +350,9 @@ pixmap_subscreen(int startx, int starty, int endx, int endy)
 
     screen = lotr_malloc(sizeof(Pixmap));
 
-    screen->width = SCREEN_WIDTH;
-    screen->height = SCREEN_HEIGHT;
-    screen->datasize = SCREEN_WIDTH * SCREEN_HEIGHT;
+    screen->width = screen_width;
+    screen->height = screen_height;
+    screen->datasize = screen_width * screen_height;
     screen->hasalpha = 0;
     screen->data = main_screen;
 
@@ -405,14 +406,14 @@ draw_rectangle(Uint8 c, int x, int y, int xx, int yy)
 
     /* upper line */
     if (y >= 0) {
-        s = main_screen + (window_y + y) * SCREEN_WIDTH + window_x + a;
+        s = main_screen + (window_y + y) * screen_width + window_x + a;
         for (i = 0; i < l; ++i, ++s)
             *s = c;
     }
 
     /* lower line */
     if (yy < window_h) {
-        s = main_screen + (window_y + yy) * SCREEN_WIDTH + window_x + a;
+        s = main_screen + (window_y + yy) * screen_width + window_x + a;
         for (i = 0; i < l; ++i, ++s)
             *s = c;
     }
@@ -427,16 +428,16 @@ draw_rectangle(Uint8 c, int x, int y, int xx, int yy)
 
     /* left */
     if (x >= 0) {
-        s = main_screen + (window_y + a) * SCREEN_WIDTH + window_x + x;
-        for (i = 0; i < l; ++i, s += SCREEN_WIDTH)
+        s = main_screen + (window_y + a) * screen_width + window_x + x;
+        for (i = 0; i < l; ++i, s += screen_width)
             *s = c;
     }
 
 
     /* right */
     if (xx < window_w) {
-        s = main_screen + (window_y + a) * SCREEN_WIDTH + window_x + xx;
-        for (i = 0; i < l; ++i, s += SCREEN_WIDTH)
+        s = main_screen + (window_y + a) * screen_width + window_x + xx;
+        for (i = 0; i < l; ++i, s += screen_width)
             *s = c;
     }
 
@@ -588,6 +589,11 @@ cartoon_font_write_text(CartoonFont *font, int x, int y, char *text)
 
 
 
+void
+graphics_init(void)
+{
+    main_screen = malloc(screen_width * screen_height * sizeof(Uint8));
+}
 
 
 /*
@@ -622,10 +628,10 @@ graphics_set_screen(int color)
 {
     Uint8 *s;
     int j;
-    s = main_screen + window_x + window_y * SCREEN_WIDTH;
+    s = main_screen + window_x + window_y * screen_width;
     for (j = 0; j < window_h; ++j) {
         memset(s, color, window_w);
-        s += SCREEN_WIDTH;
+        s += screen_width;
     }
 }
 
@@ -698,7 +704,7 @@ graphics_set_background(char *name)
 void
 graphics_save_screen(Uint8 *backupscreen)
 {
-    memcpy(backupscreen, main_screen, SCREEN_WIDTH * SCREEN_HEIGHT);
+    memcpy(backupscreen, main_screen, screen_width * screen_height);
 }
 
 /*
@@ -708,7 +714,7 @@ graphics_save_screen(Uint8 *backupscreen)
 void
 graphics_load_screen(Uint8 *backupscreen)
 {
-    memcpy(main_screen, backupscreen, SCREEN_WIDTH * SCREEN_HEIGHT);
+    memcpy(main_screen, backupscreen, screen_width * screen_height);
 }
 
 
@@ -752,23 +758,23 @@ graphics_set_window(int startx, int starty, int endx, int endy)
 
     if (window_x < 0)
         window_x = 0;
-    if (window_x >= SCREEN_WIDTH - 1) {
+    if (window_x >= screen_width - 1) {
         window_w = 0;
         window_h = 0;
         return;
     }
-    if (endx >= SCREEN_WIDTH - 1)
-        endx = SCREEN_WIDTH - 1;
+    if (endx >= screen_width - 1)
+        endx = screen_width - 1;
 
     if (window_y < 0)
         window_y = 0;
-    if (window_y >= SCREEN_HEIGHT - 1) {
+    if (window_y >= screen_height - 1) {
         window_w = 0;
         window_h = 0;
         return;
     }
-    if (endy >= SCREEN_HEIGHT - 1)
-        endy = SCREEN_HEIGHT - 1;
+    if (endy >= screen_height - 1)
+        endy = screen_height - 1;
 
     window_w = endx - startx + 1;
     window_h = endy - starty + 1;

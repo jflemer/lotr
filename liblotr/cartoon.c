@@ -134,8 +134,8 @@ printcommand(CartoonCommand * command)
 
 
 
-INLINE int
-get_command_par(CartoonCommand * command, int *registers, int index)
+static inline int
+get_command_par(const CartoonCommand * command, const int *registers, int index)
 {
     int a, b;
     a = command->data[index];

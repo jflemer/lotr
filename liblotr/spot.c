@@ -241,8 +241,8 @@ dir_to_cddir(int dir)
   read int
 */
 
-INLINE int
-readint(Uint8 *data)
+static inline int
+readint(const Uint8 *data)
 {
     return data[0] + 0x100 * data[1];
 }
@@ -1454,7 +1454,7 @@ spot_get_string(CommandSpot *spot)
                 break;
 
             default:
-                spot_string_print("UNKNOWN: ");
+                spot_string_print("UNKNOWN (len): ");
                 for (; i < spot->data_size; ++i)
                     spot_string_print("%02x ", spot->data[i]);
 

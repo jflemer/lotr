@@ -809,7 +809,7 @@ character_draw(int id, int x, int y, int dir)
   set character attack
 */
 
-INLINE void
+void
 character_attack(Character *character, int direction)
 {
     int i, weapon;

@@ -117,7 +117,7 @@ int map_characters_num;
 int map_characters[MAX_CHARACTERS][4];
 
 
-#define MAX_DISPLAYED_CHARACTERS 32
+#define MAX_DISPLAYED_CHARACTERS MAX_CHARACTERS
 int map_num_disp_char;
 int map_displayed_characters[MAX_DISPLAYED_CHARACTERS * 5];
 
@@ -662,7 +662,7 @@ map_set_spots(Archive *archive, int index)
   draws tile
  */
 
-INLINE void
+static inline void
 map_draw_tile(int tile, int x, int y)
 {
     int i, j;
@@ -679,11 +679,14 @@ map_draw_tile(int tile, int x, int y)
   draws large tile
  */
 
-INLINE void
+static inline void
 map_draw_largetile(int tile, int x, int y)
 {
     int i, j;
     int tilesize = 4 * TILESIZE;
+
+    if (tile >= LARGETILENUM)
+      tile = 0;
 
     for (j = 0; j < 4; ++j)
         for (i = 0; i < 4; ++i)

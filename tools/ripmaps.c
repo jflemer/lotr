@@ -1,11 +1,14 @@
-#include "../lotr.h"
-#include "../character.h"
-#include "../init.h"
-#include "../map.h"
-#include "../object.h"
-#include "../spot.h"
-#include "../game.h"
-#include "../utils.h"
+#include "lotr.h"
+#include "character.h"
+#include "init.h"
+#include "map.h"
+#include "object.h"
+#include "spot.h"
+#include "game.h"
+#include "utils.h"
+
+// game.c
+extern int game_maps[][4];
 
 int
 main(void)
@@ -43,11 +46,13 @@ main(void)
     quest = fopen("questions.txt", "w");
 
 #ifndef TTT
-    for (i = 1; i <= max_map; i += 2) {
+    i = 1;
 #else
-    for (i = 0; i <= max_map; i += 2) {
+    i = 0;
 #endif
+    for (; i <= max_map; i += 2) {
         FILE *texts;
+        FILE *spots;
         char name[64];
         int j;
 
@@ -62,9 +67,15 @@ main(void)
             }
         }
 
+        sprintf(name, "map%02d_spots.txt", i / 2);
+        spots = fopen(name, "w");
+
         for (j = 0; j < map_get_num_spots(); ++j) {
             CommandSpot *spot = map_get_spot_number(j);
             int k;
+
+            fputs(spot_get_string(spot), spots);
+            fputs("\n\n", spots);
 
             for (k = 0; k < spot->commands_num; ++k) {
                 Uint8 *data = spot->data + spot->command_start[k];
@@ -100,6 +111,7 @@ main(void)
                 }
             }
         }
+        fclose(spots);
 
         fclose(texts);
     }

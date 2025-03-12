@@ -48,6 +48,8 @@
 #include "pythonspot.h"
 #endif
 
+extern int screen_width;
+extern int screen_height;
 
 
 Character *choosed_character;
@@ -292,7 +294,7 @@ gui_clear(void)
     Pixmap *pixmap;
 
 
-    graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    graphics_set_window(0, 0, screen_width - 1, screen_height - 1);
     graphics_clear_screen();
 
     gui_set_full_window();
@@ -301,20 +303,20 @@ gui_clear(void)
     /* horizontal lines */
     pixmap = gui_components[GUI_CHAIN_HORIZ];
     for (i = gui_components[GUI_CHAIN_NW]->width;
-         i < SCREEN_WIDTH - gui_components[GUI_CHAIN_NE]->width;
+         i < screen_width - gui_components[GUI_CHAIN_NE]->width;
          i += pixmap->width) {
         pixmap_draw(pixmap, i, 1);
-        pixmap_draw(pixmap, i, SCREEN_HEIGHT - pixmap->height);
+        pixmap_draw(pixmap, i, screen_height - pixmap->height);
     }
 
 
     /* vertical lines */
     pixmap = gui_components[GUI_CHAIN_VERT];
     for (i = gui_components[GUI_CHAIN_NW]->height;
-         i < SCREEN_HEIGHT - gui_components[GUI_CHAIN_SW]->height;
+         i < screen_height - gui_components[GUI_CHAIN_SW]->height;
          i += pixmap->height) {
         pixmap_draw(pixmap, 0, i);
-        pixmap_draw(pixmap, SCREEN_WIDTH - pixmap->width - 1, i);
+        pixmap_draw(pixmap, screen_width - pixmap->width - 1, i);
     }
 
 
@@ -324,14 +326,14 @@ gui_clear(void)
     pixmap_draw(pixmap, 0, 0);
 
     pixmap = gui_components[GUI_CHAIN_NE];
-    pixmap_draw(pixmap, SCREEN_WIDTH - pixmap->width, 0);
+    pixmap_draw(pixmap, screen_width - pixmap->width, 0);
 
     pixmap = gui_components[GUI_CHAIN_SW];
-    pixmap_draw(pixmap, 0, SCREEN_HEIGHT - pixmap->height);
+    pixmap_draw(pixmap, 0, screen_height - pixmap->height);
 
     pixmap = gui_components[GUI_CHAIN_SE];
-    pixmap_draw(pixmap, SCREEN_WIDTH - pixmap->width,
-                SCREEN_HEIGHT - pixmap->height);
+    pixmap_draw(pixmap, screen_width - pixmap->width,
+                screen_height - pixmap->height);
 
 }
 
@@ -354,8 +356,8 @@ draw_scroll(int x, int y, int width, int height, const char *text[])
 
     if (width < 0) {
         width = -width;
-        x = SCREEN_WIDTH - 8 - size * (2 + width);
-        y = SCREEN_HEIGHT - size * (2 + height);
+        x = screen_width - 8 - size * (2 + width);
+        y = screen_height - size * (2 + height);
     }
 
     /* first draw an empty scroll */
@@ -405,19 +407,19 @@ gui_set_map_area(int *width, int *height)
 
 
     if (dialog_mode < MAIN_MENU
-        || SCREEN_WIDTH > 320 /* Draw whole map for large screens */ ) {
+        || screen_width > 320 /* Draw whole map for large screens */ ) {
 
 #if PIXEL_PRECISE
 
-        *width = SCREEN_WIDTH - 16;
-        *height = SCREEN_HEIGHT - 16;
+        *width = screen_width - 16;
+        *height = screen_height - 16;
 
         graphics_set_window(8, 8, 8 + *width - 1, 8 + *height - 1);
 
 #else
 
-        *width = SCREEN_WIDTH - 17;
-        *height = SCREEN_HEIGHT - 17;
+        *width = screen_width - 17;
+        *height = screen_height - 17;
 
         graphics_set_window(8, 9, 8 + *width - 1, 9 + *height - 1);
 
@@ -425,15 +427,15 @@ gui_set_map_area(int *width, int *height)
     } else {
 #if PIXEL_PRECISE
 
-        *width = SCREEN_WIDTH - 16;
-        *height = SCREEN_HEIGHT - 8 - gui_components[GUI_MENU]->height;
+        *width = screen_width - 16;
+        *height = screen_height - 8 - gui_components[GUI_MENU]->height;
 
         graphics_set_window(8, 8, 8 + *width - 1, 8 + *height - 1);
 
 #else
 
-        *width = SCREEN_WIDTH - 17;
-        *height = SCREEN_HEIGHT - 8 - gui_components[GUI_MENU]->height - 2;
+        *width = screen_width - 17;
+        *height = screen_height - 8 - gui_components[GUI_MENU]->height - 2;
 
         graphics_set_window(8, 9, 8 + *width - 1, 9 + *height - 1);
 
@@ -453,9 +455,9 @@ void
 gui_set_full_window(void)
 {
 #if PIXEL_PRECISE
-    graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2);
+    graphics_set_window(0, 0, screen_width - 1, screen_height - 2);
 #else
-    graphics_set_window(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    graphics_set_window(0, 0, screen_width - 1, screen_height - 1);
 #endif
 }
 
@@ -475,7 +477,7 @@ main_menu_draw(void)
 
     /* Keep x position from standard screen size */
     gui_menu_x = 0;
-    gui_menu_y = SCREEN_HEIGHT - gui_components[GUI_MENU]->height;
+    gui_menu_y = screen_height - gui_components[GUI_MENU]->height;
 
     pixmap_draw(gui_components[GUI_MENU], gui_menu_x, gui_menu_y);
 
@@ -677,7 +679,7 @@ gui_message(const char *text, int small_window)
             gui_clear();
             game_draw_map();
         }
-        width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE - 4;
+        width = screen_width / SCROLL_ELEMENT_SIZE - 4;
     }
 
     if (dialog_mode != DIALOG_BOOK)
@@ -822,8 +824,8 @@ gui_help_show()
         width = max(len, width);
     }
 
-    xoff = (SCREEN_WIDTH - (width + 2) * SCROLL_ELEMENT_SIZE) / 2;
-    yoff = (SCREEN_HEIGHT - (lines + 2) * SCROLL_ELEMENT_SIZE) / 2;
+    xoff = (screen_width - (width + 2) * SCROLL_ELEMENT_SIZE) / 2;
+    yoff = (screen_height - (lines + 2) * SCROLL_ELEMENT_SIZE) / 2;
 
     dialog_mode = DIALOG_MESSAGE;
 
@@ -867,8 +869,8 @@ gui_paragraph_scroll(void)
         lines++;
     }
 
-    x = (SCREEN_WIDTH - (width + 2) * SCROLL_ELEMENT_SIZE) / 2;
-    y = (SCREEN_HEIGHT - (lines + 2) * SCROLL_ELEMENT_SIZE) / 2;
+    x = (screen_width - (width + 2) * SCROLL_ELEMENT_SIZE) / 2;
+    y = (screen_height - (lines + 2) * SCROLL_ELEMENT_SIZE) / 2;
 
     draw_scroll(x, y, width, lines, formatted_text);
 }
@@ -972,7 +974,7 @@ dialog_print_active_spot()
     Character *leader;
     CommandSpot *spot;
     char *spot_string;
-    int screen_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE;
+    int screen_height_els = screen_height / SCROLL_ELEMENT_SIZE;
     int lines;
 
     if (dialog_mode != DIALOG_SPOT_PRINT || spot_formatted_text_lines < 0) {
@@ -1007,14 +1009,14 @@ dialog_print_active_spot()
             }
         }
 
-        spot_scroll_width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE;
+        spot_scroll_width = screen_width / SCROLL_ELEMENT_SIZE;
         for (i = 0; i < spot_formatted_text_lines; ++i)
             spot_scroll_width =
                 max(spot_scroll_width, strlen(spot_formatted_text[i]));
     }
 
     lines =
-        min(screen_height,
+        min(screen_height_els,
             spot_formatted_text_lines - spot_formatted_text_pos);
     draw_scroll(-SCROLL_ELEMENT_SIZE * (spot_print_xoff + 1),
                 -SCROLL_ELEMENT_SIZE, 256, lines,
@@ -1029,9 +1031,9 @@ dialog_print_active_spot()
 void
 dialog_print_active_spot_key(int key)
 {
-    int screen_height = SCREEN_HEIGHT / SCROLL_ELEMENT_SIZE;
-    int screen_width = SCREEN_WIDTH / SCROLL_ELEMENT_SIZE;
-    int pg_size = max(screen_height - 2, 1);
+    int screen_height_els = screen_height / SCROLL_ELEMENT_SIZE;
+    int screen_width_els = screen_width / SCROLL_ELEMENT_SIZE;
+    int pg_size = max(screen_height_els - 2, 1);
     int last_pos = spot_formatted_text_pos;
     int last_xoff = spot_print_xoff;
 
@@ -1054,14 +1056,14 @@ dialog_print_active_spot_key(int key)
         spot_print_xoff++;
     }
 
-    if (spot_formatted_text_pos + screen_height > spot_formatted_text_lines)
-        spot_formatted_text_pos = spot_formatted_text_lines - screen_height;
+    if (spot_formatted_text_pos + screen_height_els > spot_formatted_text_lines)
+        spot_formatted_text_pos = spot_formatted_text_lines - screen_height_els;
 
     if (spot_formatted_text_pos < 0)
         spot_formatted_text_pos = 0;
 
-    if (spot_print_xoff + screen_width > spot_scroll_width)
-        spot_print_xoff = spot_scroll_width - screen_width;
+    if (spot_print_xoff + screen_width_els > spot_scroll_width)
+        spot_print_xoff = spot_scroll_width - screen_width_els;
 
     if (spot_print_xoff < 0)
         spot_print_xoff = 0;

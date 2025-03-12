@@ -17,7 +17,7 @@ main(int argc, char *argv[])
 
     FILE *dat, *ndx, *data;
 
-    int l, n, p, pp;
+    int l, n, p, pp, nread;
 
     unsigned char ndxbuf[4];
     char buf[BUFLEN];
@@ -59,8 +59,8 @@ main(int argc, char *argv[])
             sprintf(dataname, "%s.%03d", datname, n);
             data = fopen(dataname, "wb");
             fseek(dat, pp, SEEK_SET);
-            fread(buf, p - pp, 1, dat);
-            fwrite(buf, p - pp, 1, data);
+            nread = fread(buf, p - pp, 1, dat);
+            fwrite(buf, p - pp, nread, data);
             fclose(data);
             pp = p;
             ++n;

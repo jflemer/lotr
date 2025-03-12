@@ -51,8 +51,6 @@ main(void)
 
     for (i = 0; i <= max_map; ++i) {
         char name[64];
-        int j;
-        int largetilesize = 4 * 4 * TILESIZE;
         SDL_Surface *surf;
 
         if (!game_maps[i][0])

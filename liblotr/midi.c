@@ -28,7 +28,7 @@
 
 #include "lotr.h"
 #include "midi.h"
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
 #include <SDL_mixer.h>
 #endif
 #include <stdio.h>
@@ -40,7 +40,7 @@
 
 int midi_disabled = 0;
 
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
 static Mix_Music *music = 0;
 #endif
 
@@ -63,7 +63,7 @@ stop_midi(void)
 {
     int was_running = music_running;
 
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
     if (!music)
         return 0;
 
@@ -104,7 +104,7 @@ play_midi(Uint8 *data, int size, int loop)
 
     stop_midi();
 
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
     Mix_HookMusicFinished(hook_music_finished);
 
 #if SDL_MAJOR_VERSION == 2

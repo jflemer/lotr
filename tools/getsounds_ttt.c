@@ -7,6 +7,7 @@ get characters data from lord.exe
 
 
 #include<stdio.h>
+#include <string.h>
 
 
 int start[4] = { 'I', 'N', 'T', 'R' };
