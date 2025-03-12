@@ -29,11 +29,11 @@
 #include "lotr.h"
 #include "lotr_sdl.h"
 #include "midi.h"
-#ifdef USE_HQX
+#ifdef HAVE_LIBHQX
 #include "hqx.h"
 #endif
 #include <SDL.h>
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
 #include <SDL_mixer.h>
 #endif
 #include <stdlib.h>
@@ -47,7 +47,7 @@ static SDL_Window *main_window = NULL;
 static SDL_Renderer *main_window_renderer = NULL;
 
 /* palette */
-static SDL_Color active_palette[256];
+SDL_Color active_palette[256];
 
 /* keyboard buffer */
 #define KEYBOARDBUFFERESIZE 16
@@ -55,7 +55,7 @@ static int lotr_keybufferpos = 0;
 static int lotr_keybuffer[KEYBOARDBUFFERESIZE];
 
 
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
 Mix_Chunk *sound_samples[MIX_CHANNELS];
 #endif
 
@@ -78,7 +78,7 @@ static int lotr_key_ctrl_pressed;
   audio
 */
 
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
 void
 hook_channel_finished(int channel)
 {
@@ -117,7 +117,7 @@ lotr_system_init(void)
     unsigned win_flags = 0;
     int win_fact = SCREEN_FACT;
 
-#ifdef USE_HQX
+#ifdef HAVE_LIBHQX
     hqxInit();
 #endif
 #ifdef FULLSCREEN
@@ -158,7 +158,7 @@ lotr_system_init(void)
     desired.userdata = NULL;
     desired.channels = 1;
 
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
     if (Mix_OpenAudio(desired.freq, desired.format, 1, desired.samples) < 0) {
         fprintf(stderr, "lotr: could not initialize mixer: %s\n",
                 SDL_GetError());
@@ -185,7 +185,7 @@ lotr_system_init(void)
 void
 lotr_system_close(void)
 {
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
     if (!midi_disabled)
         Mix_CloseAudio();
 #endif
@@ -203,7 +203,7 @@ lotr_system_close(void)
 void
 play_sample(Uint8 *data, int size)
 {
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
     Mix_Chunk *sample;
     int channel;
 
@@ -238,7 +238,7 @@ play_sample(Uint8 *data, int size)
 void
 stop_sample(Uint8 *data)
 {
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
     int i;
     for (i = 0; i < MIX_CHANNELS; ++i)
         if (sound_samples[i] && sound_samples[i]->abuf == data)
@@ -254,7 +254,7 @@ playing_sample(void)
 {
     int res = 0;
 
-#ifdef HAVE_SDL_MIXER
+#ifdef HAVE_LIBSDL_MIXER
     int i;
     for (i = 0; i < MIX_CHANNELS; ++i) {
         if (sound_samples[i]) {
@@ -459,7 +459,7 @@ lotr_show_screen(Uint8 *newscreen)
     src = SDL_CreateRGBSurfaceFrom(
         newscreen, SCREEN_WIDTH, SCREEN_HEIGHT, 8, SCREEN_WIDTH, 0, 0, 0, 0);
     SDL_SetPaletteColors(src->format->palette, active_palette, 0, 256);
-#elif defined(USE_HQX)
+#elif defined(HAVE_LIBHQX)
     /* convert pixels to 8-bit SDL surface */
     SDL_Surface *src8 = SDL_CreateRGBSurfaceFrom(
         newscreen, SCREEN_WIDTH, SCREEN_HEIGHT, 8, SCREEN_WIDTH, 0, 0, 0, 0);
@@ -477,7 +477,7 @@ lotr_show_screen(Uint8 *newscreen)
 # elif SCREEN_FACT == 4
     hq4x_32(src32->pixels, src->pixels, SCREEN_WIDTH, SCREEN_HEIGHT); 
 # else
-#  error SCREEN_FACT must be 2, 3 or 4 for USE_HQX
+#  error SCREEN_FACT must be 2, 3 or 4 for HQX
 # endif
     SDL_FreeSurface(src8);
     SDL_FreeSurface(src32);

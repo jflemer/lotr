@@ -249,8 +249,8 @@ archive_data_size(Archive *archive, int index)
   reads n-th bit from data
  */
 
-INLINE int
-readbit(Uint8 *data, int pos)
+static inline int
+readbit(const Uint8 *data, int pos)
 {
     Uint8 c = data[pos / 8];
 
@@ -281,8 +281,8 @@ readbit(Uint8 *data, int pos)
   reads n bits from data
  */
 
-INLINE int
-readnbits(Uint8 *data, int n, int pos)
+static inline int
+readnbits(const Uint8 *data, int n, int pos)
 {
     Uint8 result = 0;
     int i;

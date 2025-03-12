@@ -16,7 +16,7 @@ main(void)
 {
 
     FILE *in;
-    int n, k, p;
+    int n, p;
 
     in = fopen("lord.exe", "rb");
 

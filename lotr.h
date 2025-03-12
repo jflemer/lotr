@@ -29,6 +29,14 @@
 #ifndef _LORD_H
 #define _LORD_H
 
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
+
+#ifdef HAVE_LIBSDL2_MIXER
+# define HAVE_LIBSDL_MIXER
+#endif
+
 #ifdef __amigaos4__
 #  define AMIGA_OS4
 #endif
@@ -50,13 +58,17 @@
 /* uncomment for fullscreen */
 /* #define FULLSCREEN */
 
+/* Scaling factor for the screen */
+#ifdef HAVE_LIBHQX
+# define SCREEN_FACT 4
+#else
+# define SCREEN_FACT 1
+#endif
+
 /* not much tested with other dimensions */
 /* larger resolution is considered cheating */
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 200
-
-/* Scaling factor for the screen */
-#define SCREEN_FACT 4
 
 /* frame time in milliseconds */
 #define FRAME_TIME 50
@@ -130,12 +142,6 @@
 #  include "pythonspot.h"
 #endif
 
-#if defined(__GNUC__) && !defined(DEBUG)
-#  define INLINE __inline__
-#else
-#  define INLINE
-#endif
-
 #if !defined(_MSC_VER) && !defined(HAVE_UNISTD_H)
 #  define HAVE_UNISTD_H
 #endif
@@ -157,7 +163,7 @@
 
 #  define bzero(p, s) memset(p, 0, s)
 
-// #define HAVE_SDL_MIXER
+// #define HAVE_LIBSDL_MIXER
 #endif
 
 #ifdef _MSC_VER

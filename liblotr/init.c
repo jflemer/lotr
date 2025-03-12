@@ -31,6 +31,7 @@
 #include "shape.h"
 #include "sound.h"
 #include "init.h"
+#include "graphics.h"
 #include "gui.h"
 #include "map.h"
 #include "utils.h"
@@ -61,6 +62,7 @@ lotr_init(void)
     sound_init();
     initlevel++;
 
+    graphics_init();
     gui_init();
     initlevel++;
 

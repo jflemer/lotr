@@ -125,6 +125,8 @@ extern void cartoon_font_write_text(CartoonFont *font, int x, int y,
 
 
 
+/* initializes screen */
+extern void graphics_init(void);
 
 /* updates the screen */
 extern void graphics_update_screen(void);
