@@ -59,7 +59,11 @@
 /* #define FULLSCREEN */
 
 /* Scaling factor for the screen */
-#define SCREEN_FACT 1
+#ifdef HAVE_LIBHQX
+# define SCREEN_FACT 4
+#else
+# define SCREEN_FACT 1
+#endif
 
 /* not much tested with other dimensions */
 /* larger resolution is considered cheating */
