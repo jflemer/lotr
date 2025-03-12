@@ -33,6 +33,10 @@
 # include "config.h"
 #endif
 
+#ifdef HAVE_LIBSDL2_MIXER
+# define HAVE_LIBSDL_MIXER
+#endif
+
 #ifdef __amigaos4__
 #  define AMIGA_OS4
 #endif

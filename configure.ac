@@ -13,11 +13,11 @@ AC_PROG_CC
 LT_INIT
 
 dnl Check for SDL
-AM_PATH_SDL([1.2.0],
+AM_PATH_SDL2([],
 	[],
 	AC_MSG_ERROR([*** SDL2 not found! (libsdl2-dev?)])
 )
-AC_CHECK_LIB([SDL_mixer],[Mix_Init])
+AC_CHECK_LIB([SDL2_mixer],[Mix_Init])
 
 # Checks for libraries.
 PKG_CHECK_MODULES([XML2],[libxml-2.0])

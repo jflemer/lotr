@@ -47,7 +47,7 @@ static SDL_Window *main_window = NULL;
 static SDL_Renderer *main_window_renderer = NULL;
 
 /* palette */
-static SDL_Color active_palette[256];
+SDL_Color active_palette[256];
 
 /* keyboard buffer */
 #define KEYBOARDBUFFERESIZE 16

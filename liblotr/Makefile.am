@@ -24,7 +24,7 @@ liblotr_la_SOURCES = \
 	gui.h \
 	init.c \
 	init.h \
-	lotr_sdl.c \
+	lotr_sdl2.c \
 	lotr_sdl.h \
 	map.c \
 	map.h \

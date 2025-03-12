@@ -64,7 +64,7 @@ main(void)
 
         surf = SDL_CreateRGBSurfaceFrom(main_screen,
             screen_width, screen_height, 8, screen_width, 0, 0, 0, 0);
-        SDL_SetPalette(surf, SDL_LOGPAL, active_palette, 0, 256);
+        SDL_SetPaletteColors(surf->format->palette, active_palette, 0, 256);
 
         SDL_SaveBMP(surf, name);
         SDL_FreeSurface(surf);
