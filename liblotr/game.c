@@ -57,7 +57,7 @@ int saved_position_y = -1;
 int saved_position_dir = -1;
 int saved_position_map = -1;
 
-Character *game_party[11];
+Character *game_party[LOTR_PARTY_SIZE];
 int game_party_size;
 
 /* game registers */
@@ -573,7 +573,7 @@ game_load(int n)
     game_moving = lotr_load_prop_int(node, "moving");
     game_follow = lotr_load_prop_int(node, "follow");
 
-    game_party_size = lotr_load_prop_field(node, "party", buf, 11);
+    game_party_size = lotr_load_prop_field(node, "party", buf, LOTR_PARTY_SIZE);
 
     for (i = 0; i < game_party_size; ++i)
         game_party[i] = character_get(buf[i]);
@@ -642,7 +642,7 @@ game_convert(int game_id)
     /* give silver to Aragorn */
     character_get(0xa4)->silver = lotr_load_prop_int(node, "silver");
 
-    party_size = lotr_load_prop_field(node, "party", buf, 11);
+    party_size = lotr_load_prop_field(node, "party", buf, LOTR_PARTY_SIZE);
 
     node = lotr_get_subnode(root, (const xmlChar *)"characters", 1);
 
@@ -1221,7 +1221,7 @@ game_get_party(int codes[10])
 */
 
 int
-game_get_party_characters(Character *party[11])
+game_get_party_characters(Character *party[LOTR_PARTY_SIZE])
 {
     int i;
 
@@ -1237,7 +1237,7 @@ game_get_party_characters(Character *party[11])
 */
 
 void
-game_set_party_characters(Character *party[11], int size)
+game_set_party_characters(Character *party[LOTR_PARTY_SIZE], int size)
 {
     int i;
     int has_leader = 0;

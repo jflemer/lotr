@@ -52,7 +52,7 @@
 Character *combat_enemies[COMBAT_MAX_ENEMIES];
 int combat_enemies_num = 0;
 
-Character *combat_party[11];
+Character *combat_party[LOTR_PARTY_SIZE];
 int combat_party_size;
 
 Character *active_character;

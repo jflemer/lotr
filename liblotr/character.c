@@ -1229,7 +1229,7 @@ void
 character_set_party(int id)
 {
     int size, i;
-    Character *party[11];
+    Character *party[LOTR_PARTY_SIZE];
 
     for (i = 0, size = 0; size < 10 && i < CHARACTERS_NUM; ++i)
         if (lotr_characters[i] != NULL && lotr_characters[i]->party_id == id)

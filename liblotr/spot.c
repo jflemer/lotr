@@ -814,7 +814,7 @@ Character *
 spot_character_get(int id)
 {
 
-    Character *party[11];
+    Character *party[LOTR_PARTY_SIZE];
     int party_size;
     int i;
 
@@ -1706,7 +1706,7 @@ spot_continue(CommandSpot *spot)
     Character *leader;
     char name[20];
 
-    Character *party[11];
+    Character *party[LOTR_PARTY_SIZE];
     int party_size;
 
     if (spot == NULL)

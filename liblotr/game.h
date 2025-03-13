@@ -91,10 +91,10 @@ extern int game_in_party(Character *character);
 extern int game_get_party(int codes[10]);
 
 /* get the game party characters */
-extern int game_get_party_characters(Character *party[11]);
+extern int game_get_party_characters(Character *party[LOTR_PARTY_SIZE]);
 
 /* set game party characters */
-extern void game_set_party_characters(Character *party[11], int size);
+extern void game_set_party_characters(Character *party[LOTR_PARTY_SIZE], int size);
 
 
 /* loads a map */

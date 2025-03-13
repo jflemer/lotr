@@ -41,6 +41,8 @@
 #  define AMIGA_OS4
 #endif
 
+#define LOTR_PARTY_SIZE 11
+
 /* define this to compile The Two Towers - not working */
 /* #define TTT */
 

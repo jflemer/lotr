@@ -550,7 +550,7 @@ quit_menu()
 static void
 rotate_choosed_character(int delta)
 {
-    Character *party[11];
+    Character *party[LOTR_PARTY_SIZE];
     int num_characters;
     int choosed_index;
 
