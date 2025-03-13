@@ -1359,11 +1359,15 @@ game_dismiss(Character *character)
 
     character->action = CHARACTER_STAY;
     character->party_id = 0xff;
+    game_party[i] = NULL;
 
     for (; i + 1 < game_party_size; ++i)
         game_party[i] = game_party[i + 1];
 
     game_party_size--;
+
+    for (; i < LOTR_PARTY_SIZE; ++i)
+        game_party[i] = NULL;
 
     if (character == leader) {
         leader = game_party[0];

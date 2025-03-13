@@ -149,11 +149,15 @@ combat_enemy_remove(Character *character)
 
     map_remove_character(character->id);
     free(character);
+    combat_enemies[i] = NULL;
 
     for (; i + 1 < combat_enemies_num; ++i)
         combat_enemies[i] = combat_enemies[i + 1];
 
     combat_enemies_num--;
+
+    for (; i < COMBAT_MAX_ENEMIES; ++i)
+        combat_enemies[i] = NULL;
 
     if (combat_enemies <= 0)
         combat_won();
@@ -186,11 +190,15 @@ combat_character_remove(Character *character)
         return;
 
     map_remove_character(character->id);
+    combat_party[i] = NULL;
 
     for (; i + 1 < combat_party_size; ++i)
         combat_party[i] = combat_party[i + 1];
 
     combat_party_size--;
+
+    for (; i < LOTR_PARTY_SIZE; ++i)
+        combat_party[i] = NULL;
 
     if (combat_party_size <= 0)
         combat_loosed();
@@ -217,15 +225,23 @@ combat_next_turn(void)
     if (combat_enemies_num <= 0)
         combat_won();
 
+    for (i = 0; i < combat_party_size; ++i) {
+        if (combat_party[i]->life < 6) {
+            combat_party[i]->life--;
+        }
+    }
+    for (i = 0; i < combat_party_size; ++i) {
+        if (combat_party[i]->life <= 0) {
+            gui_player_dead(combat_party[i], 1);
+            combat_character_remove(combat_party[i]);
+            i = 0;
+        }
+    }
 
     active_chars = 0;
     for (i = 0; i < combat_party_size; ++i) {
         if (combat_party[i]->life < 6) {
-            combat_party[i]->life--;
-            if (combat_party[i]->life <= 0) {
-                combat_character_remove(combat_party[i]);
-                gui_player_dead(combat_party[i], 1);
-            }
+            continue;
         } else {
             active_chars++;
             combat_party[i]->ap = combat_party[i]->dex;
@@ -492,6 +508,7 @@ combat_genocide(void)
     for (i = 0; i < combat_enemies_num; ++i) {
         map_remove_character(combat_enemies[i]->id);
         free(combat_enemies[i]);
+        combat_enemies[i] = NULL;
     }
     combat_enemies_num = 0;
 
