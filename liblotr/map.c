@@ -1070,11 +1070,10 @@ map_add_character(Character *character)
         exit(1);
     }
 
-    map_characters[map_characters_num][MAP_CHAR_X] = character->x;
-    map_characters[map_characters_num][MAP_CHAR_Y] = character->y;
-    map_characters[map_characters_num][MAP_CHAR_DIR] = character->direction;
     map_characters[map_characters_num][MAP_CHAR_ID] = character->id;
     character->map_id = map_characters_num++;
+    character->map = map_id;
+    map_character_update(character);
 }
 
 
@@ -1091,7 +1090,7 @@ map_unique_add_character(Character *character)
             character->map_id = i;
             character->map = map_id;
             map_character_update(character);
-            break;
+            return;
         }
 
     if (i == map_characters_num)
