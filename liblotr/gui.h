@@ -114,6 +114,9 @@ extern void main_menu_draw();
 /* shows a message */
 extern void gui_message(const char *text, int small_window);
 
+/* shows a message, and waits */
+extern void gui_message_wait(const char *text, int small_window);
+
 /* shows a question */
 extern void gui_question(char *text);
 

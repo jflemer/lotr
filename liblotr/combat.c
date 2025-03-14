@@ -63,10 +63,19 @@ int combat_mode = 0;
 /* size of combat area */
 #define COMBAT_WIDTH  38
 #define COMBAT_HEIGHT 16
+#define COMBAT_IN_AREA(xx,yy) ((xx) >= 0 && (xx) < COMBAT_WIDTH && (yy) >= 0 && (yy) < COMBAT_HEIGHT)
 
 /* center of combat area */
 #define COMBAT_C_X    19
 #define COMBAT_C_Y     8
+
+
+#define COMBAT_AREA_BLOCKED 0
+#define COMBAT_AREA_MOVE 1
+#define COMBAT_AREA_OPEN 1000
+
+#define COMBAT_PARTY_AP(c) \
+    ((c && c->life >= 6 && combat_character_in_bounds(c)) ? c->ap : -1)
 
 
 int combat_area[COMBAT_WIDTH][COMBAT_HEIGHT];
@@ -79,14 +88,19 @@ int combat_leader_x;
 int combat_leader_y;
 
 
-/* turned on during attack animation */
-int combat_attack_animation;
-
-Character *combat_who_attacked = NULL;
-
 char combat_result_text[1024];
 
 int ring_not_working;
+
+
+static inline
+int combat_character_in_bounds(const Character* character)
+{
+    int x = character->x / 4 - combat_x;
+    int y = character->y / 4 - combat_y;
+    return COMBAT_IN_AREA(x, y);
+}
+
 
 /*
   combat was loosed
@@ -108,24 +122,53 @@ combat_loosed(void)
 */
 
 void
-combat_won(void)
+combat_done(void)
 {
     int i;
+    int leader_x, leader_y;
 
     combat_mode = 0;
-    music_combat_won();
-    game_set_party_characters(combat_party, combat_party_size);
 
-    if (!game_in_party(game_get_leader()))
-        game_set_leader(combat_party[0]);
+    combat_party_size = game_get_party_characters(combat_party);
+    if (combat_party_size == 0)
+    {
+        combat_loosed();
+        return;
+    }
 
-    game_get_leader()->x = combat_leader_x;
-    game_get_leader()->y = combat_leader_y;
-    map_character_update(game_get_leader());
+    if (combat_character_in_bounds(game_get_leader())) {
+        leader_x = game_get_leader()->x;
+        leader_y = game_get_leader()->y;
+    } else {
+        leader_x = combat_leader_x;
+        leader_y = combat_leader_y;
+    }
 
-    for (i = 0; i < combat_party_size; ++i)
+    for (i = 0; i < combat_party_size; ++i) {
         if (combat_party[i]->life < 6)
             combat_party[i]->life = 6;
+        if (!combat_character_in_bounds(combat_party[i])) {
+            combat_party[i]->x = leader_x;
+            combat_party[i]->y = leader_y;
+        }
+        map_unique_add_character(combat_party[i]);
+    }
+
+    if (combat_enemies_num == 0)
+    {
+        music_combat_won();
+    }
+    else
+    {
+        for (i = 0; i < combat_enemies_num; ++i)
+        {
+            free(combat_enemies[i]);
+            combat_enemies[i] = NULL;
+        }
+        combat_enemies_num = 0;
+    }
+
+    map_character_update(game_get_leader());
 
     quit_menu();
 }
@@ -159,9 +202,6 @@ combat_enemy_remove(Character *character)
     for (; i < COMBAT_MAX_ENEMIES; ++i)
         combat_enemies[i] = NULL;
 
-    if (combat_enemies <= 0)
-        combat_won();
-
 }
 
 
@@ -175,6 +215,9 @@ void
 combat_character_remove(Character *character)
 {
     int i;
+
+    character->ap = 0;
+    character->action = CHARACTER_STAY;
 
     if (!game_in_party(character)) {
         combat_enemy_remove(character);
@@ -200,10 +243,17 @@ combat_character_remove(Character *character)
     for (; i < LOTR_PARTY_SIZE; ++i)
         combat_party[i] = NULL;
 
-    if (combat_party_size <= 0)
-        combat_loosed();
+}
 
 
+void
+combat_character_killed(Character *character)
+{
+    combat_character_remove(character);
+    if (game_in_party(character)) {
+        gui_player_dead(character, 1);
+        game_dismiss(character);
+    }
 }
 
 
@@ -218,57 +268,70 @@ combat_next_turn(void)
     int i, max_action = -1;
     int active_chars;
 
+    fprintf(stderr, "lotr: combat - next turn\n");
 
-    if (combat_party_size <= 0)
-        combat_loosed();
-
-    if (combat_enemies_num <= 0)
-        combat_won();
-
-    for (i = 0; i < combat_party_size; ++i) {
-        if (combat_party[i]->life < 6) {
-            combat_party[i]->life--;
-        }
-    }
-    for (i = 0; i < combat_party_size; ++i) {
-        if (combat_party[i]->life <= 0) {
-            gui_player_dead(combat_party[i], 1);
-            combat_character_remove(combat_party[i]);
+    for (i = 0; i < combat_enemies_num; ++i) {
+        if (combat_enemies[i]->life <= 0) {
+            combat_character_killed(combat_enemies[i]);
             i = 0;
         }
+    }
+    if (combat_enemies_num <= 0) {
+        combat_done();
+        return;
     }
 
     active_chars = 0;
     for (i = 0; i < combat_party_size; ++i) {
         if (combat_party[i]->life < 6) {
-            continue;
-        } else {
+            combat_party[i]->life--;
+            fprintf(stderr, "lotr: combat - %s life drops to %d\n", combat_party[i]->name, combat_party[i]->life);
+        } else if (combat_character_in_bounds(combat_party[i])) {
             active_chars++;
-            combat_party[i]->ap = combat_party[i]->dex;
-            if (combat_party[i]->ap > max_action) {
-                max_action = combat_party[i]->ap;
-                active_character = combat_party[i];
-            }
-            while (combat_party[i]->action != CHARACTER_STAY)
-                character_frame(combat_party[i]);
         }
     }
 
-    if (active_chars <= 0)
-        combat_loosed();
+    for (i = 0; i < combat_party_size; ++i) {
+        if (combat_party[i]->life <= 0 || active_chars <= 0) {
+            combat_character_killed(combat_party[i]);
+            i = 0;
+        }
+    }
+
+    active_character = NULL;
+    for (i = 0; i < combat_party_size; ++i) {
+        if (combat_party[i]->life < 6 || !combat_character_in_bounds(combat_party[i])) {
+            combat_party[i]->ap = -1;
+        } else {
+            combat_party[i]->ap = combat_party[i]->dex;
+        }
+        fprintf(stderr, "lotr: combat - character: %s - ap %d\n", combat_party[i]->name, combat_party[i]->ap);
+        if (combat_party[i]->ap > max_action) {
+            max_action = combat_party[i]->ap;
+            active_character = combat_party[i];
+        }
+        while (combat_party[i]->action != CHARACTER_STAY)
+        {
+            character_frame(combat_party[i]);
+            map_display(0, 0);
+        }
+    }
 
     for (i = 0; i < combat_enemies_num; ++i) {
         combat_enemies[i]->ap = combat_enemies[i]->dex;
+        fprintf(stderr, "lotr: combat - enemy: %s - ap %d\n", combat_enemies[i]->name, combat_enemies[i]->ap);
         if (combat_enemies[i]->ap > max_action) {
             max_action = combat_enemies[i]->ap;
             active_character = combat_enemies[i];
         }
     }
 
-    gui_set_choosed(active_character);
-
-    if (combat_enemies_num == 0)
-        combat_won();
+    if (active_character) {
+        fprintf(stderr, "lotr: combat - active character: %s (ap %d)\n", active_character->name, active_character->ap);
+        gui_set_choosed(active_character);
+    } else {
+        combat_done();
+    }
 }
 
 /*
@@ -287,9 +350,9 @@ combat_area_init(void)
             y = combat_y + j;
             if (terrain_free(x, y + 1) &&
                 terrain_free(x + 1, y + 1) && terrain_free(x + 2, y + 1))
-                combat_area[i][j] = 1000;
+                combat_area[i][j] = COMBAT_AREA_OPEN;
             else
-                combat_area[i][j] = 0;
+                combat_area[i][j] = COMBAT_AREA_BLOCKED;
         }
 }
 
@@ -304,37 +367,28 @@ combat_area_init(void)
  */
 
 void
-combat_stack_proceed(void)
+combat_area_compute_distances(void)
 {
-    int x, y, v;
+    int x, y, d;
     while (combat_stack_start < combat_stack_size) {
         x = combat_stack[combat_stack_start][0];
         y = combat_stack[combat_stack_start][1];
-        v = combat_area[x][y];
-        if (x > 0 && combat_area[x - 1][y] > v + 1) {
-            combat_stack[combat_stack_size][0] = x - 1;
-            combat_stack[combat_stack_size][1] = y;
-            combat_area[x - 1][y] = v + 1;
-            combat_stack_size++;
+        if (COMBAT_IN_AREA(x, y))
+            d = combat_area[x][y] + 1;
+        else
+            d = COMBAT_AREA_MOVE;
+#define UPDATE(xx,yy,dd) \
+        if (COMBAT_IN_AREA(xx, yy) && combat_area[xx][yy] > dd) { \
+            combat_area[xx][yy] = dd; \
+            combat_stack[combat_stack_size][0] = xx; \
+            combat_stack[combat_stack_size][1] = yy; \
+            combat_stack_size++; \
         }
-        if (x + 1 < COMBAT_WIDTH && combat_area[x + 1][y] > v + 1) {
-            combat_stack[combat_stack_size][0] = x + 1;
-            combat_stack[combat_stack_size][1] = y;
-            combat_area[x + 1][y] = v + 1;
-            combat_stack_size++;
-        }
-        if (y > 0 && combat_area[x][y - 1] > v + 1) {
-            combat_stack[combat_stack_size][0] = x;
-            combat_stack[combat_stack_size][1] = y - 1;
-            combat_area[x][y - 1] = v + 1;
-            combat_stack_size++;
-        }
-        if (y + 1 < COMBAT_HEIGHT && combat_area[x][y + 1] > v + 1) {
-            combat_stack[combat_stack_size][0] = x;
-            combat_stack[combat_stack_size][1] = y + 1;
-            combat_area[x][y + 1] = v + 1;
-            combat_stack_size++;
-        }
+        UPDATE(x - 1, y, d);
+        UPDATE(x, y - 1, d);
+        UPDATE(x + 1, y, d);
+        UPDATE(x, y + 1, d);
+#undef UPDATE
         combat_stack_start++;
     }
 }
@@ -348,14 +402,14 @@ combat_stack_proceed(void)
 void
 combat_move_to_area(Character *character)
 {
-    int xx = -1, yy = -1, d = 1000;
+    int xx = -1, yy = -1, d;
     int x, y;
     int i, j;
 
     x = character->x / 4 - combat_x;
     y = character->y / 4 - combat_y;
 
-    if (x < 0 || y < 0 || x >= COMBAT_WIDTH || y >= COMBAT_HEIGHT) {
+    if (!combat_character_in_bounds(character)) {
         if (x < 0)
             x = 0;
         if (y < 0)
@@ -365,26 +419,33 @@ combat_move_to_area(Character *character)
         if (y >= COMBAT_HEIGHT)
             x = COMBAT_HEIGHT - 1;
     } else {
-        if (combat_area[x][y] != 0 && combat_area[x][y] < 1000)
+        /* character can reach target */
+        if (combat_area[x][y] != COMBAT_AREA_BLOCKED && combat_area[x][y] < COMBAT_AREA_OPEN)
             return;
     }
 
-    for (i = 0; i < COMBAT_WIDTH; ++i)
-        for (j = 0; j < COMBAT_HEIGHT; ++j)
-            if (combat_area[i][j] != 0 && combat_area[i][j] < 1000 &&
-                map_can_move_to(character, combat_x + i, combat_y + j) &&
-                abs(i - x) + abs(j - y) < d) {
+    d = COMBAT_AREA_OPEN;
+    for (i = 0; i < COMBAT_WIDTH; ++i) {
+        for (j = 0; j < COMBAT_HEIGHT; ++j) {
+            if (combat_area[i][j] == COMBAT_AREA_BLOCKED || combat_area[i][j] == COMBAT_AREA_OPEN)
+                continue;
+            if (abs(i - x) + abs(j - y) < d) {
                 d = abs(i - x) + abs(j - y);
                 xx = i;
                 yy = j;
             }
+        }
+    }
 
     if (xx < 0) {
         character->x = game_get_leader()->x;
         character->y = game_get_leader()->y;
+        fprintf(stderr, "lotr: combat - moved %s to leader\n", character->name);
     } else {
         character->x = (combat_x + xx) * 4;
         character->y = (combat_y + yy) * 4;
+        combat_area[xx][yy] = COMBAT_AREA_BLOCKED;
+        fprintf(stderr, "lotr: combat - moved %s near leader\n", character->name);
     }
 
     map_character_update(character);
@@ -406,10 +467,11 @@ combat_start(void)
     int i, j;
     int leader_x, leader_y;
 
+    fprintf(stderr, "lotr: combat - start\n");
     combat_mode = 1;
     music_combat_started();
     quit_menu();
-    combat_attack_animation = 0;
+    combat_result_text[0] = '\0';
 
     map_get_center(&combat_x, &combat_y);
 
@@ -439,12 +501,12 @@ combat_start(void)
 
     combat_area_init();
 
-    combat_area[leader_x][leader_y] = 1;
+    combat_area[leader_x][leader_y] = COMBAT_AREA_MOVE;
     combat_stack[0][0] = leader_x;
     combat_stack[0][1] = leader_y;
     combat_stack_size = 1;
     combat_stack_start = 0;
-    combat_stack_proceed();
+    combat_area_compute_distances();
 
 
     for (i = 0; i < combat_party_size; ++i)
@@ -489,7 +551,6 @@ combat_start(void)
 
     }
 
-    active_character = NULL;
     combat_next_turn();
 
 }
@@ -504,15 +565,8 @@ combat_start(void)
 void
 combat_genocide(void)
 {
-    int i;
-    for (i = 0; i < combat_enemies_num; ++i) {
-        map_remove_character(combat_enemies[i]->id);
-        free(combat_enemies[i]);
-        combat_enemies[i] = NULL;
-    }
-    combat_enemies_num = 0;
-
-    combat_won();
+    while (combat_enemies_num)
+        combat_character_killed(combat_enemies[0]);
 }
 
 
@@ -542,6 +596,7 @@ combat_enemy(Character *character, int x, int y, int dir, int map_id)
 
     combat_enemies[combat_enemies_num++] = new_character;
 
+    fprintf(stderr, "lotr: combat - add enemy: %s (id %d)\n", new_character->name, new_character->id);
     return new_character->id;
 }
 
@@ -578,6 +633,60 @@ combat_get_mode()
 
 
 
+int combat_select_target()
+{
+    int j;
+    int first_char;
+    int is_using_bow;
+    int active_chars;
+
+    if (combat_party_size <= 0 || active_character == NULL)
+        return -1;
+
+    is_using_bow = character_using_bow(active_character);
+    first_char = lotr_rnd(combat_party_size) - 1;
+
+    active_chars = 0;
+    for (j = 0; j < combat_party_size; ++j) {
+        int i = (first_char + j) % combat_party_size;
+        if (combat_party[i]->life < 6 || !combat_character_in_bounds(combat_party[i]))
+            continue;
+        active_chars++;
+
+        int is_near = abs(active_character->x - combat_party[i]->x) < MAP_NEAR_DISTANCE;
+        is_near = is_near && abs(active_character->y - combat_party[i]->y) < MAP_NEAR_DISTANCE;
+
+        if ((is_near || is_using_bow)
+            && (combat_party[i]->ring_mode != 2 || ring_not_working))
+        {
+            fprintf(stderr, "lotr: combat - %s targets %s\n", active_character->name, combat_party[i]->name);
+            return i;
+        }
+    }
+
+    return active_chars ? -1 : -2;
+}
+
+
+int
+combat_check_in_bounds()
+{
+    if (!combat_character_in_bounds(active_character))
+    {
+        if (game_in_party(active_character)) {
+            snprintf(combat_result_text, sizeof(combat_result_text), "%s has escaped.",
+                     active_character->name);
+        } else {
+            snprintf(combat_result_text, sizeof(combat_result_text), "%s abandons the battle.",
+                     active_character->name);
+        }
+        fprintf(stderr, "lotr: combat - %s\n", combat_result_text);
+        return 0;
+    }
+    return 1;
+}
+
+
 /*
   player moves
  */
@@ -592,31 +701,27 @@ combat_player_move()
                         active_character->y / 4)) {
         character_move_left(active_character);
         active_character->ap -= COMBAT_MOVE_COST;
-        return;
     }
 
-    if (lotr_key_right() &&
+    else if (lotr_key_right() &&
         map_can_move_to(active_character, active_character->x / 4 + 1,
                         active_character->y / 4)) {
         character_move_right(active_character);
         active_character->ap -= COMBAT_MOVE_COST;
-        return;
     }
 
-    if (lotr_key_up() &&
+    else if (lotr_key_up() &&
         map_can_move_to(active_character, active_character->x / 4,
                         active_character->y / 4 - 1)) {
         character_move_up(active_character);
         active_character->ap -= COMBAT_MOVE_COST;
-        return;
     }
 
-    if (lotr_key_down() &&
+    else if (lotr_key_down() &&
         map_can_move_to(active_character, active_character->x / 4,
                         active_character->y / 4 + 1)) {
         character_move_down(active_character);
         active_character->ap -= COMBAT_MOVE_COST;
-        return;
     }
 
 }
@@ -634,95 +739,72 @@ void
 combat_enemy_move()
 {
 
-    int first_char;
     int i, v, x, y;
-    int k, l;
-    int active_chars;
-    int is_using_bow = character_using_bow(active_character);
-
-    if (combat_party_size <= 0)
-        combat_loosed();
+    int leave;
 
     /* choose whom to attack */
 
-    first_char = lotr_rnd(combat_party_size) - 1;
-
-    for (i = first_char ;;) {
-        int is_near = abs(active_character->x - combat_party[i]->x) < MAP_NEAR_DISTANCE;
-        is_near = is_near && abs(active_character->y - combat_party[i]->y) < MAP_NEAR_DISTANCE;
-
-        if ((is_near || is_using_bow)
-            && combat_party[i]->life >= 6
-            && (combat_party[i]->ring_mode != 2 || ring_not_working))
-        {
-            break;
-        }
-
-        i = (i + 1) % combat_party_size;
-
-        if (i == first_char) {
-            /* nobody founded */
-            i = -1;
-            break;
-        }
-    }
+    i = combat_select_target();
 
     if (i >= 0) {
         combat_attack(active_character, combat_party[i]);
         return;
     }
 
+    fprintf(stderr, "lotr: combat - %s moves\n", active_character->name);
 
 
     /* choose a shortest path to our opponent */
 
     combat_area_init();
-
-    for (i = 0; i < combat_enemies_num; ++i)
-        if (active_character != combat_enemies[i]) {
-            x = combat_enemies[i]->x / 4 - combat_x;
-            y = combat_enemies[i]->y / 4 - combat_y;
-            combat_area[x][y] = 0;
-        }
+    for (i = 0; i < combat_enemies_num; ++i) {
+        if (active_character == combat_enemies[i])
+            continue;
+        x = combat_enemies[i]->x / 4 - combat_x;
+        y = combat_enemies[i]->y / 4 - combat_y;
+        if (COMBAT_IN_AREA(x, y))
+            combat_area[x][y] = COMBAT_AREA_BLOCKED;
+    }
 
     combat_stack_size = 0;
     combat_stack_start = 0;
+    leave = 0;
 
-    active_chars = 0;
-    for (i = 0; i < combat_party_size; ++i)
-        if (combat_party[i]->life >= 6) {
-            active_chars++;
-            if (combat_party[i]->ring_mode == 2 && !ring_not_working)
-                continue;
-            x = combat_party[i]->x / 4 - combat_x;
-            y = combat_party[i]->y / 4 - combat_y;
-            combat_area[x][y] = 0;
-
-            for (k = -MAP_NEAR_DISTANCE / 4; k <= MAP_NEAR_DISTANCE / 4; ++k)
-                for (l = -MAP_NEAR_DISTANCE / 4; l <= MAP_NEAR_DISTANCE / 4;
-                     ++l)
-                    if (x + k >= 0 && x + k < COMBAT_WIDTH && y + l >= 0
-                        && y + l < COMBAT_HEIGHT
-                        && combat_area[x + k][y + l] >= 1000) {
-                        combat_area[x + k][y + l] = 1;
-                        combat_stack[combat_stack_size][0] = x + k;
-                        combat_stack[combat_stack_size][1] = y + l;
-                        combat_stack_size++;
-                    }
-        }
-
-    if (active_chars == 0)
-        combat_loosed();
-
-    if (combat_stack_size == 0) {
-        active_character->x = -1;
-        snprintf(combat_result_text, sizeof(combat_result_text), "%s abandons the battle.",
-                 active_character->name);
-        gui_message(combat_result_text, 1);
-        return;
+    for (i = 0; i < combat_party_size; ++i) {
+        if (!combat_character_in_bounds(combat_party[i]) ||
+            (combat_party[i]->ring_mode == 2 && !ring_not_working))
+            continue;
+        x = combat_party[i]->x / 4 - combat_x;
+        y = combat_party[i]->y / 4 - combat_y;
+        if (COMBAT_IN_AREA(x, y))
+            combat_area[x][y] = COMBAT_AREA_BLOCKED;
+        if (combat_party[i]->life < 6)
+            continue;
+        combat_stack[combat_stack_size][0] = x;
+        combat_stack[combat_stack_size][1] = y;
+        combat_stack_size++;
     }
 
-    combat_stack_proceed();
+    if (combat_stack_size == 0) {
+        x = active_character->x / 4 - combat_x;
+        y = active_character->y / 4 - combat_y;
+        combat_stack[combat_stack_size][0] = -1;
+        combat_stack[combat_stack_size][1] = y;
+        combat_stack_size++;
+        combat_stack[combat_stack_size][0] = COMBAT_WIDTH;
+        combat_stack[combat_stack_size][1] = y;
+        combat_stack_size++;
+        combat_stack[combat_stack_size][0] = x;
+        combat_stack[combat_stack_size][1] = -1;
+        combat_stack_size++;
+        combat_stack[combat_stack_size][0] = x;
+        combat_stack[combat_stack_size][1] = COMBAT_HEIGHT;
+        combat_stack_size++;
+        active_character->ap = COMBAT_MOVE_COST * (COMBAT_WIDTH + COMBAT_HEIGHT + 1);
+	leave = 1;
+    }
+
+    combat_area_compute_distances();
 
 
 
@@ -730,39 +812,43 @@ combat_enemy_move()
     x = active_character->x / 4 - combat_x;
     y = active_character->y / 4 - combat_y;
 
-    v = combat_area[x][y];
+    if (COMBAT_IN_AREA(x, y))
+        v = combat_area[x][y];
+    else
+        v = COMBAT_AREA_OPEN;
 
-    if (x > 0 &&
-        combat_area[x - 1][y] != 0 && combat_area[x - 1][y] < v &&
-        map_can_move_to(active_character, combat_x + x - 1, combat_y + y)) {
+#define IS_CLOSER(xx,yy) \
+    ((COMBAT_IN_AREA(xx,yy) && \
+     combat_area[xx][yy] < v && \
+     map_can_move_to(active_character, combat_x + xx, combat_y + yy)) \
+     || \
+     (leave && !COMBAT_IN_AREA(xx,yy)))
+
+    if (IS_CLOSER(x - 1, y)) {
         character_move_left(active_character);
         active_character->ap -= COMBAT_MOVE_COST;
         return;
     }
 
-    if (x + 1 < COMBAT_WIDTH &&
-        combat_area[x + 1][y] != 0 && combat_area[x + 1][y] < v &&
-        map_can_move_to(active_character, combat_x + x + 1, combat_y + y)) {
+    if (IS_CLOSER(x + 1, y)) {
         character_move_right(active_character);
         active_character->ap -= COMBAT_MOVE_COST;
         return;
     }
 
-    if (y > 0 &&
-        combat_area[x][y - 1] != 0 && combat_area[x][y - 1] < v &&
-        map_can_move_to(active_character, combat_x + x, combat_y + y - 1)) {
+    if (IS_CLOSER(x, y - 1)) {
         character_move_up(active_character);
         active_character->ap -= COMBAT_MOVE_COST;
         return;
     }
 
-    if (y + 1 < COMBAT_HEIGHT &&
-        combat_area[x][y + 1] != 0 && combat_area[x][y + 1] < v &&
-        map_can_move_to(active_character, combat_x + x, combat_y + y + 1)) {
+    if (IS_CLOSER(x, y + 1)) {
         character_move_down(active_character);
         active_character->ap -= COMBAT_MOVE_COST;
         return;
     }
+
+#undef IS_CLOSER
 
 
     /* we do not know what to do */
@@ -778,6 +864,7 @@ combat_enemy_move()
 int
 combat_frame()
 {
+    int finished = 0;
 
     if (!combat_mode)
         return 0;
@@ -785,56 +872,42 @@ combat_frame()
     if (active_character->action != CHARACTER_STAY) {
         character_frame(active_character);
         map_display(0, 0);
-        goto end_combat_frame;
     }
 
-
-    if (gui_mode() == DIALOG_MESSAGE) {
-        gui_frame();
-
-        if (gui_mode() != DIALOG_MESSAGE) {
-
-            if (combat_who_attacked->life <= 0 &&
-                game_in_party(combat_who_attacked))
-                gui_player_dead(combat_who_attacked, 0);
-
-            combat_character_finished();
-
+    else if (gui_mode() == DIALOG_MESSAGE) {
+        if (gui_frame() != DIALOG_MESSAGE) {
+            finished = 1;
         }
-
-        goto end_combat_frame;
     }
 
-    if (combat_attack_animation) {
-        combat_attack_animation = 0;
-
-        /* message switches to next player */
+    else if (combat_result_text[0]) {
         gui_message(combat_result_text, 1);
-        goto end_combat_frame;
+	combat_result_text[0] = '\0';
     }
 
-    if (game_in_party(active_character)) {
-
-        if (gui_frame() != MAIN_MENU)
-            goto end_combat_frame;
-
-        if (game_get_moving())
-            combat_player_move();
-    } else {
-        combat_enemy_move();
-        if (active_character->x < 0)
-            goto end_combat_frame;
+    else if (!combat_check_in_bounds()) {
+        gui_message(combat_result_text, 1);
+	combat_result_text[0] = '\0';
     }
 
+    else if (active_character->ap <= 0) {
+        finished = 1;
+    }
 
-    if (!combat_attack_animation && active_character->ap <= 0)
-        combat_character_finished();
-
-    map_display(0, 0);
-
-end_combat_frame:
+    else {
+        if (game_in_party(active_character)) {
+            if (gui_frame() == MAIN_MENU && game_get_moving()) {
+                combat_player_move();
+            }
+        } else {
+            combat_enemy_move();
+        }
+    }
 
     map_animate_frame();
+
+    if (finished)
+        combat_character_finished();
 
     return combat_mode;
 }
@@ -853,42 +926,27 @@ end_combat_frame:
 void
 combat_character_finished()
 {
-    int i, max_action = -1;
-    int active_chars;
+    int i, max_action = 0;
+
+    fprintf(stderr, "lotr: combat - %s turn finished\n", active_character->name);
 
     if (active_character->ap < 0)
         active_character->ap = 0;
 
-    if (active_character->x < 0) {
-        combat_enemy_remove(active_character);
-        if (combat_enemies <= 0)
-            return;
-    } else {
-        while (active_character->action != CHARACTER_STAY)
-            character_frame(active_character);
+    while (active_character->action != CHARACTER_STAY) {
+        character_frame(active_character);
+        map_display(0, 0);
     }
 
-    active_chars = 0;
+    if (!combat_character_in_bounds(active_character))
+        combat_character_remove(active_character);
 
+    active_character = NULL;
     for (i = 0; i < combat_party_size; ++i)
-        if (combat_party[i]->life >= 6) {
-            ++active_chars;
-            if (combat_party[i]->ap > max_action) {
-                max_action = combat_party[i]->ap;
-                active_character = combat_party[i];
-            }
+        if (combat_party[i]->life >= 6 && combat_party[i]->ap > max_action) {
+            max_action = combat_party[i]->ap;
+            active_character = combat_party[i];
         }
-
-
-    if (active_chars <= 0) {
-        combat_loosed();
-        return;
-    }
-
-    if (combat_enemies_num <= 0) {
-        combat_won();
-        return;
-    }
 
     for (i = 0; i < combat_enemies_num; ++i)
         if (combat_enemies[i]->ap > max_action) {
@@ -896,13 +954,14 @@ combat_character_finished()
             active_character = combat_enemies[i];
         }
 
-    if (max_action <= 0) {
+    lotr_reset_keyboard();
+    if (active_character && combat_enemies_num > 0) {
+        fprintf(stderr, "lotr: combat - next active character: %s\n", active_character->name);
+        gui_set_choosed(active_character);
+    } else {
         combat_next_turn();
-        return;
     }
 
-    gui_set_choosed(active_character);
-    lotr_reset_keyboard();
 
 }
 
@@ -971,18 +1030,7 @@ combat_attack(Character *who, Character *whom)
 
     who->ap -= COMBAT_ATTACK_COST;
 
-    if (abs(who->x - whom->x) > abs(who->y - whom->y)) {
-        if (who->x > whom->x)
-            dir = CHARACTER_LEFT;
-        else
-            dir = CHARACTER_RIGHT;
-    } else {
-        if (who->y > whom->y)
-            dir = CHARACTER_UP;
-        else
-            dir = CHARACTER_DOWN;
-    }
-
+    dir = map_toward(who->x, who->y, whom->x, whom->y);
 
     character_attack(who, dir);
 
@@ -1113,14 +1161,13 @@ combat_attack(Character *who, Character *whom)
     }
 
 
-    combat_who_attacked = whom;
-
     if (hits) {
         if (damage > 0) {
             if (whom->life == 0) {
                 snprintf(combat_result_text, sizeof(combat_result_text), "%s kills %s.", who->name,
                          whom->name);
-                combat_character_remove(whom);
+                whom->ap = 0;
+                combat_character_killed(whom);
 
             } else {
                 if (whom->life >= 6 || !game_in_party(whom)) {
@@ -1131,6 +1178,7 @@ combat_attack(Character *who, Character *whom)
                     snprintf(combat_result_text, sizeof(combat_result_text),
                              "%s hits %s for %d points of damage, knocking %s out of cold.",
                              who->name, whom->name, damage, whom->name);
+                    whom->ap = 0;
                 }
             }
         } else {
@@ -1141,13 +1189,12 @@ combat_attack(Character *who, Character *whom)
         snprintf(combat_result_text, sizeof(combat_result_text), "%s %s at and misses %s.", who->name,
                  attack_type, whom->name);
     }
+    fprintf(stderr, "lotr: combat - %s\n", combat_result_text);
 
     if (hits)
         sound_play(10);
     else
         sound_play(11);
-
-    combat_attack_animation = 1;
 
 }
 
