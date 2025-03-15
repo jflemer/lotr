@@ -211,6 +211,9 @@ extern void map_set_register(int index, int value);
 extern void map_character_teleport(Character *character, int rel, int x,
                                    int y, int dir, int map);
 
+/* find direction from one point to another */
+extern int map_toward(int from_x, int from_y, int to_x, int to_y);
+
 /* turn character */
 extern void map_character_turn_to(int character_id, int x, int y);
 

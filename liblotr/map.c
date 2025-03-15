@@ -1563,6 +1563,24 @@ map_character_teleport(Character *character, int rel, int x, int y, int dir,
 }
 
 
+int
+map_toward(int from_x, int from_y, int to_x, int to_y)
+{
+    int dir;
+    if (abs(from_x - to_x) > abs(from_y - to_y)) {
+        if (to_x < from_x)
+            dir = CHARACTER_LEFT;
+        else
+            dir = CHARACTER_RIGHT;
+    } else {
+        if (to_y < from_y)
+            dir = CHARACTER_UP;
+        else
+            dir = CHARACTER_DOWN;
+    }
+    return dir;
+}
+
 
 
 /*
@@ -1579,17 +1597,7 @@ map_character_turn_to(int character_id, int x, int y)
     xx = map_characters[char_map_id][MAP_CHAR_X];
     yy = map_characters[char_map_id][MAP_CHAR_Y];
 
-    if (abs(xx - x) > abs(yy - y)) {
-        if (x < xx)
-            dir = CHARACTER_LEFT;
-        else
-            dir = CHARACTER_RIGHT;
-    } else {
-        if (y < yy)
-            dir = CHARACTER_UP;
-        else
-            dir = CHARACTER_DOWN;
-    }
+    dir = map_toward(xx, yy, x, y);
 
     map_characters[char_map_id][MAP_CHAR_DIR] = dir;
 
