@@ -780,6 +780,13 @@ gui_died_show(const char *text, int show_cartoon)
     gui_message(text, 1);
     dialog_mode = DIALOG_DIED;
     dialog_died_show_cartoon = show_cartoon;
+    while (dialog_mode == DIALOG_DIED) {
+        lotr_poll_events();
+        gui_frame();
+        map_animate_frame();
+        graphics_update_screen();
+        lotr_timer(50);
+    }
 }
 
 /*
