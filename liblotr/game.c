@@ -675,7 +675,7 @@ game_leader_movement(void)
     int w, h;
     CommandSpot *spot;
 
-    if (leader->action != CHARACTER_STAY)
+    if (leader == NULL || leader->action != CHARACTER_STAY)
         return;
 
 #ifdef DEMO
@@ -910,6 +910,8 @@ game_next_frame(void)
 #endif
 
     if (!game_spot_running) {
+        if (leader == NULL)
+            goto end_next_frame;
 
         if (game_timer > 0) {
             game_timer--;
@@ -1013,7 +1015,14 @@ end_next_frame:
 void
 game_draw_map(void)
 {
-    map_display(leader->x * 2, leader->y * 2);
+    int x, y;
+    if (leader) {
+        x = leader->x * 2;
+        y = leader->y * 2;
+    } else {
+        map_get_center(&x, &y);
+    }
+    map_display(x, y);
 }
 
 
@@ -1208,8 +1217,9 @@ game_get_party(int codes[10])
     if (s > 10)
         s = 10;
 
-    for (i = 0; i < s; ++i)
-        codes[i] = game_party[i]->id;
+    if (codes)
+        for (i = 0; i < s; ++i)
+            codes[i] = game_party[i]->id;
 
     return s;
 }
@@ -1371,10 +1381,6 @@ game_dismiss(Character *character)
 
     if (character == leader) {
         leader = game_party[0];
-        if (game_party_size == 0) {
-            fprintf(stderr, "lotr: error: empty party\n");
-            exit(1);
-        }
     }
 
     game_check_light();
