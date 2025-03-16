@@ -110,6 +110,7 @@ void
 combat_loosed(void)
 {
     combat_mode = 0;
+    fprintf(stderr, "lotr: combat - lost\n");
     gui_died_show
         ("Entire party is dead. Sauron has finally recovered the Ring. Your quest is Over.",
          TRUE);
@@ -127,6 +128,7 @@ combat_done(void)
     int i;
     int leader_x, leader_y;
 
+    fprintf(stderr, "lotr: combat - done\n");
     combat_mode = 0;
 
     combat_party_size = game_get_party_characters(combat_party);
@@ -145,6 +147,7 @@ combat_done(void)
     }
 
     for (i = 0; i < combat_party_size; ++i) {
+        fprintf(stderr, "lotr: combat - done, restoring %s\n", combat_party[i]->name);
         if (combat_party[i]->life < 6)
             combat_party[i]->life = 6;
         if (!combat_character_in_bounds(combat_party[i])) {
@@ -249,11 +252,15 @@ combat_character_remove(Character *character)
 void
 combat_character_killed(Character *character)
 {
+    fprintf(stderr, "lotr: combat - %s killed\n", character->name);
     combat_character_remove(character);
     if (game_in_party(character)) {
+        fprintf(stderr, "lotr: combat - %s dismissed\n", character->name);
         gui_player_dead(character, 1);
         game_dismiss(character);
     }
+    if (combat_party_size == 0 && game_get_party(NULL) == 0)
+        fprintf(stderr, "lotr: combat - all dead or out cold\n");
 }
 
 
@@ -1179,6 +1186,7 @@ combat_attack(Character *who, Character *whom)
                              "%s hits %s for %d points of damage, knocking %s out of cold.",
                              who->name, whom->name, damage, whom->name);
                     whom->ap = 0;
+                    fprintf(stderr, "lotr: combat - %s knocked out\n", whom->name);
                 }
             }
         } else {
