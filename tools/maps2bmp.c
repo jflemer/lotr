@@ -1,4 +1,5 @@
 #include "lotr.h"
+#include "lotr_sdl.h"
 #include "character.h"
 #include "init.h"
 #include "map.h"
@@ -22,7 +23,7 @@ extern int screen_height;
 extern int window_w;
 extern int window_h;
 // lotr_sdl.c
-extern SDL_Color *active_palette;
+extern SDL_Color active_palette[256];
 
 int
 main(void)
@@ -56,14 +57,15 @@ main(void)
         if (!game_maps[i][0])
             continue;
 
-        game_load_map(i);
-
         sprintf(name, "map%02d.bmp", i);
+        fprintf(stderr, "map %d: %s\n", i, name);
 
+        game_load_map(i);
+        map_set_frame(0x400);
         map_display(0, 0);
 
-        surf = SDL_CreateRGBSurfaceFrom(main_screen,
-            screen_width, screen_height, 8, screen_width, 0, 0, 0, 0);
+        surf = SDL_CreateRGBSurfaceWithFormatFrom(main_screen,
+            screen_width, screen_height, 8, screen_width, SDL_PIXELFORMAT_INDEX8);
         SDL_SetPaletteColors(surf->format->palette, active_palette, 0, 256);
 
         SDL_SaveBMP(surf, name);
