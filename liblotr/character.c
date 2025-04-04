@@ -609,7 +609,7 @@ character_get(int i)
 {
 
     if (!character_exists(i)) {
-        fprintf(stderr, "lotr: no such character (index=%02x)\n", i);
+        fprintf(stderr, "lotr: no such character: 0x%02x\n", i);
         exit(1);
     }
 
@@ -673,7 +673,24 @@ character_draw(int id, int x, int y, int dir)
     int horse, xoffset, yoffset;
     int char_shape;
 
-    character = character_get(id);
+#ifdef DEBUG
+    printf("drawing map character: 0x%02x at %04d,%04d\n", id, x, y);
+#endif
+
+    if (character_exists(id)) {
+        character = character_get(id);
+    } else {
+#ifdef DEBUG
+        printf("bad map character: 0x%02x at %04d,%04d, using tentacles!\n", id, x, y);
+        character = character_get(0x9e);
+        draw_rectangle(0x48, x-9, y-9, x+1, y+1);
+        draw_rectangle(0x48, x-8, y-8, x,   y);
+        draw_rectangle(0x48, x-7, y-7, x-1, y-1);
+#else
+        fprintf(stderr, "lotr: bad map character: 0x%02x at %04d,%04d\n", id, x, y);
+        exit(1);
+#endif
+    }
 
     if (dir < 0 || dir > 3) {
         fprintf(stderr, "lotr: wrong direction in character_draw.\n");
