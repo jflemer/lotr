@@ -907,35 +907,31 @@ map_display(int x, int y)
 
 
     map_num_disp_char = 0;
+    bzero(map_displayed_characters, sizeof(map_displayed_characters));
     for (i = 0; i < map_characters_num; ++i)
         if (map_characters[i][MAP_CHAR_ID]) {
-            xx = 2 * map_characters[i][MAP_CHAR_X] - (x -
-                                                      (map_width + 1) / 2) +
-                3 * TILESIZE;
-            yy = 2 * map_characters[i][MAP_CHAR_Y] - (y -
-                                                      (map_height + 1) / 2) +
-                2 * TILESIZE;
+            xx = 2 * map_characters[i][MAP_CHAR_X] - (x - (map_width + 1) / 2) + 3 * TILESIZE;
+            yy = 2 * map_characters[i][MAP_CHAR_Y] - (y - (map_height + 1) / 2) + 2 * TILESIZE;
 
-            if (xx > -100 && yy >= -100 && xx < map_width + 100
-                && yy < map_height + 100) {
+            if (xx > -100 && yy >= -100 && xx < map_width + 100 && yy < map_height + 100) {
                 if (map_num_disp_char == MAX_DISPLAYED_CHARACTERS) {
                     fprintf(stderr, "Too many chracters displayed at once\n");
                     exit(1);
                 }
 
+#ifdef DEBUG
+                printf("map display character: 0x%02x at %d,%d\n", map_characters[i][MAP_CHAR_ID], map_characters[i][MAP_CHAR_X], map_characters[i][MAP_CHAR_Y]);
+#endif
                 map_displayed_characters[map_num_disp_char * 5] = xx;
                 map_displayed_characters[map_num_disp_char * 5 + 1] = yy;
-                map_displayed_characters[map_num_disp_char * 5 + 2] =
-                    map_characters[i][MAP_CHAR_ID];
-                map_displayed_characters[map_num_disp_char * 5 + 3] =
-                    map_characters[i][MAP_CHAR_DIR];
+                map_displayed_characters[map_num_disp_char * 5 + 2] = map_characters[i][MAP_CHAR_ID];
+                map_displayed_characters[map_num_disp_char * 5 + 3] = map_characters[i][MAP_CHAR_DIR];
                 map_displayed_characters[map_num_disp_char * 5 + 4] = i;
                 ++map_num_disp_char;
             }
         }
 
-    qsort(map_displayed_characters, map_num_disp_char, sizeof(int) * 5,
-          map_compar_char_pos);
+    qsort(map_displayed_characters, map_num_disp_char, sizeof(int) * 5, map_compar_char_pos);
 
     for (i = 0; i < map_num_disp_char; ++i) {
         character_draw(map_displayed_characters[i * 5 + 2],
@@ -1069,6 +1065,9 @@ map_add_character(Character *character)
         fprintf(stderr, "lotr: too many characters\n");
         exit(1);
     }
+#ifdef DEBUG
+    printf("map add character: 0x%02x %s at %d,%d\n", character->id, character->name, character->x, character->y);
+#endif
 
     map_characters[map_characters_num][MAP_CHAR_ID] = character->id;
     character->map_id = map_characters_num++;
@@ -1107,6 +1106,7 @@ void
 map_remove_all_characters(void)
 {
     map_characters_num = 0;
+    bzero(map_characters, sizeof(map_characters));
 }
 
 
