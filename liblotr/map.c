@@ -928,7 +928,7 @@ map_display(int x, int y)
             }
 
 #ifdef DEBUG
-            printf("map display character: 0x%02x at %d,%d\n", map_characters[i][MAP_CHAR_ID], map_characters[i][MAP_CHAR_X], map_characters[i][MAP_CHAR_Y]);
+            printf("map display character: 0x%02x at %04d,%04d\n", map_characters[i][MAP_CHAR_ID], map_characters[i][MAP_CHAR_X], map_characters[i][MAP_CHAR_Y]);
 #endif
             map_displayed_characters[map_num_disp_char * 5] = xx;
             map_displayed_characters[map_num_disp_char * 5 + 1] = yy;
@@ -1074,7 +1074,7 @@ map_add_character(Character *character)
         exit(1);
     }
 #ifdef DEBUG
-    printf("map add character: 0x%02x %s at %d,%d\n", character->id, character->name, character->x, character->y);
+    printf("map add character: 0x%02x %s at %04d,%04d\n", character->id, character->name, character->x, character->y);
 #endif
 
     map_characters[map_characters_num][MAP_CHAR_ID] = character->id;
