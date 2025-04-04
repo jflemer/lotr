@@ -180,7 +180,7 @@ game_parse_texts(Archive *archive, int index)
             exit(1);
         }
 #ifdef DEBUG
-        printf("%02x %s\n", game_text_num, game_text_data + i);
+        printf("text 0x%02x: %s\n", game_text_num, game_text_data + i);
 #endif
 
         game_texts[game_text_num++] = (char *)game_text_data + i;
