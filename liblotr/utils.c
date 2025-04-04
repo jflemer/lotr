@@ -58,6 +58,7 @@ lotr_malloc(int size)
         perror(message);
         exit(1);
     }
+    memset(result, 0, size);
 
     return result;
 
