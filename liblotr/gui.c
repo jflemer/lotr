@@ -105,7 +105,7 @@ static int dialog_died_show_cartoon = FALSE;
 #define GUI_FONT         15
 #define GUI_COMP_NUM     16
 
-Pixmap *gui_components[GUI_COMP_NUM];
+Pixmap *gui_components[GUI_COMP_NUM] = { NULL };
 int gui_comp_widths[GUI_COMP_NUM] = { /*00 */ 5,
     /*01 */ 160,
     /*02 */ 320,
@@ -292,6 +292,9 @@ gui_clear(void)
 {
     int i;
     Pixmap *pixmap;
+
+    if (*gui_components == NULL)
+        return;
 
 
     graphics_set_window(0, 0, screen_width - 1, screen_height - 1);

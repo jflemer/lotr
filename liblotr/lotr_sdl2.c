@@ -453,6 +453,8 @@ lotr_input_enable(void)
 void
 lotr_show_screen(Uint8 *newscreen)
 {
+    if (main_window_renderer == NULL)
+        return;
     SDL_Surface *src;
 #if SCREEN_FACT == 1
     /* convert pixels to 8-bit SDL surface */

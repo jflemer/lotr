@@ -36,7 +36,7 @@
 
 
 /* memory image of the screen */
-Uint8 *main_screen;
+Uint8 *main_screen = NULL;
 int screen_width = SCREEN_WIDTH;
 int screen_height = SCREEN_HEIGHT;
 
@@ -191,6 +191,8 @@ pixmap_free(Pixmap *pixmap)
 void
 pixmap_draw(Pixmap *pixmap, int x, int y)
 {
+    if (main_screen == NULL)
+        return;
     pixmap_draw_to_buffer(main_screen, pixmap, x, y);
 }
 
@@ -378,6 +380,8 @@ draw_rectangle(Uint8 c, int x, int y, int xx, int yy)
     int a, b, l;
     Uint8 *s;
 
+    if (main_screen == NULL)
+        return;
 
     if (x >= window_w || y > window_h || xx < 0 || yy < 0)
         return;
@@ -603,7 +607,8 @@ graphics_init(void)
 void
 graphics_update_screen(void)
 {
-    lotr_show_screen(main_screen);
+    if (main_screen != NULL)
+        lotr_show_screen(main_screen);
 }
 
 
@@ -615,7 +620,8 @@ graphics_update_screen(void)
 void
 graphics_clear_screen(void)
 {
-    graphics_set_screen(0);
+    if (main_screen != NULL)
+        graphics_set_screen(0);
 }
 
 
