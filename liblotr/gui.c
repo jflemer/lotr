@@ -1340,7 +1340,7 @@ dialog_saveload_key(int key)
     if (key == 'x')
         quit_menu();
 
-    if (key >= '1' && key <= '5') {
+    if (key >= '1' && key <= '9') {
         n = key - '0';
 
 #if PIXEL_PRECISE
