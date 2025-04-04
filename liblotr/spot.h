@@ -102,10 +102,10 @@ extern void spot_free(CommandSpot *spot);
 
 
 /* print command spot to a buffer */
-extern char *spot_get_string(CommandSpot *spot);
+extern char *spot_get_string(const CommandSpot *spot);
 
 /* print command spot */
-extern void spot_print(CommandSpot *spot);
+extern void spot_print(const CommandSpot *spot);
 
 /* start running command spot */
 extern int spot_start(CommandSpot *spot);
