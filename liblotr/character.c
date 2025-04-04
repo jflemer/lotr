@@ -47,7 +47,7 @@
 #include "characters_pos_ttt.h"
 #endif
 
-Character *lotr_characters[CHARACTERS_NUM];
+Character *lotr_characters[CHARACTERS_NUM] = { NULL };
 
 
 
@@ -268,7 +268,7 @@ characters_init()
 
         lotr_characters[i]->ring_mode = 0;
 
-        for (j = 0; chardata->items[j] != 0xff && j < 10; ++j) {
+        for (j = 0; j < 10 && chardata->items[j] != 0xff; ++j) {
             lotr_characters[i]->items[j] = chardata->items[j];
             lotr_characters[i]->item_used[j] = 0;
             if (object_is_ring(lotr_characters[i]->items[j]))
@@ -278,19 +278,19 @@ characters_init()
         lotr_characters[i]->items_num = j;
 
 
-        for (j = 0; chardata->spells[j] != 0xff && j < 10; ++j)
+        for (j = 0; j < 10 && chardata->spells[j] != 0xff; ++j)
             lotr_characters[i]->spells[j] = chardata->spells[j];
 
         lotr_characters[i]->spells_num = j;
 
 
-        for (j = 0; chardata->skills[j] != 0xff && j < 10; ++j)
+        for (j = 0; j < 10 && chardata->skills[j] != 0xff; ++j)
             lotr_characters[i]->skills[j] = chardata->skills[j];
 
         lotr_characters[i]->skills_num = j;
 
 #ifdef DEBUG
-        printf("%02x -- %-20s", i, lotr_characters[i]->name);
+        printf("char 0x%02x(0x%02x) -- %-20s", i, lotr_characters[i]->id, lotr_characters[i]->name);
         if (lotr_characters[i]->items_num) {
             printf(" (");
             for (j = 0; j < lotr_characters[i]->items_num; ++j) {
@@ -634,7 +634,8 @@ character_fill_map(int map_num, int building)
     map_remove_all_characters();
 
     for (i = 0; characters_pos[i][0] != 0xffff; ++i) {
-        character = lotr_characters[characters_pos[i][3]];
+        const int id = characters_pos[i][3];
+        character = lotr_characters[id];
         if (!character->actived && characters_pos[i][2] == map_num)
 #ifdef TTT
             if (characters_pos[i][6] == building)
