@@ -22,11 +22,40 @@ extern int screen_width;
 extern int screen_height;
 extern int window_w;
 extern int window_h;
+// gui.c
+extern int gui_show_spots;
 // lotr_sdl.c
 extern SDL_Color active_palette[256];
 
+void
+map_render_bmp(int i, int debug)
+{
+    char name[64];
+    SDL_Surface *surf;
+
+    if (!game_maps[i][0])
+        return;
+
+    sprintf(name, "map%02d%s.bmp", i, debug ? "d" : "");
+
+    printf("==> rendering map %d: %s\n", i, name);
+
+    game_load_map(i);
+    map_set_frame(0x400);
+    map_set_light(MAP_LIGHTED);
+    gui_show_spots = debug ? 1 : 0;
+    map_display(0, 0);
+
+    surf = SDL_CreateRGBSurfaceWithFormatFrom(main_screen,
+        screen_width, screen_height, 8, screen_width, SDL_PIXELFORMAT_INDEX8);
+    SDL_SetPaletteColors(surf->format->palette, active_palette, 0, 256);
+
+    SDL_SaveBMP(surf, name);
+    SDL_FreeSurface(surf);
+}
+
 int
-main(void)
+main(int argc, char** argv)
 {
     int i;
 #ifndef TTT
@@ -50,27 +79,17 @@ main(void)
     window_w = screen_width;
     window_h = screen_height;
 
-    for (i = 0; i <= max_map; ++i) {
-        char name[64];
-        SDL_Surface *surf;
-
-        if (!game_maps[i][0])
-            continue;
-
-        sprintf(name, "map%02d.bmp", i);
-        fprintf(stderr, "map %d: %s\n", i, name);
-
-        game_load_map(i);
-        map_set_frame(0x400);
-        map_display(0, 0);
-
-        surf = SDL_CreateRGBSurfaceWithFormatFrom(main_screen,
-            screen_width, screen_height, 8, screen_width, SDL_PIXELFORMAT_INDEX8);
-        SDL_SetPaletteColors(surf->format->palette, active_palette, 0, 256);
-
-        SDL_SaveBMP(surf, name);
-        SDL_FreeSurface(surf);
+    if (argc > 1) {
+        for (i = 1; i < argc; ++i) {
+            map_render_bmp(atoi(argv[i]), 0);
+            map_render_bmp(atoi(argv[i]), 1);
+        }
+    } else {
+        for (i = 0; i <= max_map; ++i) {
+            map_render_bmp(i, 0);
+            map_render_bmp(i, 1);
+        }
     }
 
-    return 0;
+    exit(0);
 }
