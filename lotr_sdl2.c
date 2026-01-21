@@ -73,6 +73,14 @@ static int lotr_key_esc_pressed;
 static int lotr_key_shift_pressed;
 static int lotr_key_ctrl_pressed;
 
+/* Mouse state */
+static int lotr_mouse_x_pos = 0;
+static int lotr_mouse_y_pos = 0;
+static int lotr_mouse_left_button = 0;
+static int lotr_mouse_right_button = 0;
+static int lotr_mouse_left_click = 0;
+static int lotr_mouse_right_click = 0;
+
 
 /*
   audio
@@ -362,6 +370,41 @@ lotr_poll_events(void)
                 exit(0);
                 break;
 
+            case SDL_MOUSEMOTION:
+                /* Convert from window coordinates to logical 320x200 */
+                {
+                    int win_w, win_h;
+                    SDL_GetWindowSize(main_window, &win_w, &win_h);
+                    lotr_mouse_x_pos = (event.motion.x * SCREEN_WIDTH) / win_w;
+                    lotr_mouse_y_pos = (event.motion.y * SCREEN_HEIGHT) / win_h;
+                    /* Clamp to valid range */
+                    if (lotr_mouse_x_pos < 0) lotr_mouse_x_pos = 0;
+                    if (lotr_mouse_x_pos >= SCREEN_WIDTH) lotr_mouse_x_pos = SCREEN_WIDTH - 1;
+                    if (lotr_mouse_y_pos < 0) lotr_mouse_y_pos = 0;
+                    if (lotr_mouse_y_pos >= SCREEN_HEIGHT) lotr_mouse_y_pos = SCREEN_HEIGHT - 1;
+                }
+                break;
+
+            case SDL_MOUSEBUTTONDOWN:
+                if (!lotr_input_disabled) {
+                    if (event.button.button == SDL_BUTTON_LEFT) {
+                        lotr_mouse_left_button = 1;
+                        lotr_mouse_left_click = 1;
+                    }
+                    if (event.button.button == SDL_BUTTON_RIGHT) {
+                        lotr_mouse_right_button = 1;
+                        lotr_mouse_right_click = 1;
+                    }
+                }
+                break;
+
+            case SDL_MOUSEBUTTONUP:
+                if (event.button.button == SDL_BUTTON_LEFT)
+                    lotr_mouse_left_button = 0;
+                if (event.button.button == SDL_BUTTON_RIGHT)
+                    lotr_mouse_right_button = 0;
+                break;
+
             default:
                 break;
         }
@@ -388,6 +431,9 @@ lotr_reset_keyboard(void)
 
     lotr_key_esc_pressed = 0;
 
+    /* Reset mouse click state */
+    lotr_mouse_left_click = 0;
+    lotr_mouse_right_click = 0;
 }
 
 
@@ -568,6 +614,54 @@ int
 lotr_key_ctrl()
 {
     return lotr_key_ctrl_pressed;
+}
+
+
+/*
+  return mouse states
+*/
+
+int
+lotr_mouse_x(void)
+{
+    return lotr_mouse_x_pos;
+}
+
+int
+lotr_mouse_y(void)
+{
+    return lotr_mouse_y_pos;
+}
+
+int
+lotr_mouse_left_pressed(void)
+{
+    return lotr_mouse_left_button;
+}
+
+int
+lotr_mouse_right_pressed(void)
+{
+    return lotr_mouse_right_button;
+}
+
+int
+lotr_mouse_left_clicked(void)
+{
+    return lotr_mouse_left_click;
+}
+
+int
+lotr_mouse_right_clicked(void)
+{
+    return lotr_mouse_right_click;
+}
+
+void
+lotr_mouse_clear_clicks(void)
+{
+    lotr_mouse_left_click = 0;
+    lotr_mouse_right_click = 0;
 }
 
 

@@ -280,6 +280,30 @@ gui_set_palette(void)
 }
 
 
+/*
+  draw mouse cursor at current position
+*/
+void
+gui_draw_mouse_cursor(void)
+{
+    static Pixmap *cursor_icon = NULL;
+    int x = lotr_mouse_x();
+    int y = lotr_mouse_y();
+
+    /* GUI_MOUSE is a sprite sheet with 4 cursor icons in a row */
+    /* Extract just the first icon (width/4) on first call */
+    if (gui_components[GUI_MOUSE] != NULL) {
+        if (cursor_icon == NULL) {
+            int icon_width = gui_components[GUI_MOUSE]->width / 4;
+            int icon_height = gui_components[GUI_MOUSE]->height;
+            cursor_icon = pixmap_subpixmap(gui_components[GUI_MOUSE],
+                                           0, 0, icon_width - 1, icon_height - 1);
+        }
+        if (cursor_icon != NULL)
+            pixmap_draw(cursor_icon, x, y);
+    }
+}
+
 
 /*
   clears screen and draws the bounding chain
@@ -3058,6 +3082,21 @@ gui_frame(void)
 
 
     key = lotr_get_key();
+
+    /* Right-click opens menu when no dialog is active */
+    if (dialog_mode == DIALOG_NONE && lotr_mouse_right_clicked()) {
+        lotr_mouse_clear_clicks();
+        main_menu_show();
+        return dialog_mode;
+    }
+
+    /* Left-click dismisses message dialogs */
+    if ((dialog_mode == DIALOG_MESSAGE || dialog_mode == DIALOG_BOOK ||
+         dialog_mode == DIALOG_PARAGRAPH) && lotr_mouse_left_clicked()) {
+        lotr_mouse_clear_clicks();
+        dialog_message_key(KEY_ENTER);
+        return dialog_mode;
+    }
 
     if (key == 0 && !lotr_key_esc())
         return dialog_mode;

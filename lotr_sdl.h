@@ -95,7 +95,14 @@ extern int lotr_key_esc();
 extern int lotr_key_shift();
 extern int lotr_key_ctrl();
 
-
+/* Mouse state functions */
+extern int lotr_mouse_x(void);
+extern int lotr_mouse_y(void);
+extern int lotr_mouse_left_pressed(void);
+extern int lotr_mouse_right_pressed(void);
+extern int lotr_mouse_left_clicked(void);
+extern int lotr_mouse_right_clicked(void);
+extern void lotr_mouse_clear_clicks(void);
 
 
 /* shows a new screen */

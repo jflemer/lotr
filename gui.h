@@ -87,6 +87,9 @@ extern void gui_close(void);
 /* set the gui palette */
 extern void gui_set_palette(void);
 
+/* draw mouse cursor */
+extern void gui_draw_mouse_cursor(void);
+
 /* clears screen and draws the bounding chain */
 extern void gui_clear(void);
 

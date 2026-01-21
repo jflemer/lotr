@@ -136,6 +136,11 @@ int game_moving = 1;
 /* if party follows leader */
 int game_follow = 1;
 
+/* Mouse movement target */
+static int mouse_target_x = -1;
+static int mouse_target_y = -1;
+static int mouse_moving = 0;
+
 
 /* game texts */
 #define GAME_TEXTS_MAX 512
@@ -664,6 +669,102 @@ game_convert(int game_id)
 
 
 /*
+  process mouse click to set movement target
+*/
+static void
+game_process_mouse_click(void)
+{
+    int mouse_x, mouse_y;
+    int map_area_w, map_area_h;
+    int map_center_x, map_center_y;
+
+    if (!lotr_mouse_left_clicked())
+        return;
+
+    mouse_x = lotr_mouse_x();
+    mouse_y = lotr_mouse_y();
+
+    /* Get map display area bounds */
+    gui_set_map_area(&map_area_w, &map_area_h);
+
+    /* Check if click is within map area (not on GUI menu at bottom) */
+    /* Map area starts at approximately (10, 10) with chain borders */
+    if (mouse_x >= 10 && mouse_x < 10 + map_area_w &&
+        mouse_y >= 10 && mouse_y < 10 + map_area_h) {
+
+        /* Get current map center (leader position * 2 for display scale) */
+        map_center_x = leader->x * 2;
+        map_center_y = leader->y * 2;
+
+        /* Calculate click offset from screen center */
+        int click_offset_x = mouse_x - (10 + map_area_w / 2);
+        int click_offset_y = mouse_y - (10 + map_area_h / 2);
+
+        /* Convert to world coordinates and then to tile coordinates */
+        /* The map display uses 2x scale, so we divide by 2 */
+        mouse_target_x = (map_center_x / 2 + click_offset_x) / 4;
+        mouse_target_y = (map_center_y / 2 + click_offset_y) / 4;
+
+        mouse_moving = 1;
+    }
+
+    lotr_mouse_clear_clicks();
+}
+
+/*
+  move leader toward mouse target
+*/
+static void
+game_mouse_movement(void)
+{
+    int dx, dy;
+    int leader_x, leader_y;
+
+    if (!mouse_moving || mouse_target_x < 0)
+        return;
+
+    leader_x = leader->x / 4;
+    leader_y = leader->y / 4;
+
+    dx = mouse_target_x - leader_x;
+    dy = mouse_target_y - leader_y;
+
+    /* Close enough - stop */
+    if (abs(dx) <= 1 && abs(dy) <= 1) {
+        mouse_moving = 0;
+        mouse_target_x = -1;
+        mouse_target_y = -1;
+        return;
+    }
+
+    /* Prioritize the larger difference */
+    if (abs(dx) >= abs(dy)) {
+        if (dx < 0 && map_can_move_to(leader, leader_x - 1, leader_y))
+            character_move_left(leader);
+        else if (dx > 0 && map_can_move_to(leader, leader_x + 1, leader_y))
+            character_move_right(leader);
+        else if (dy < 0 && map_can_move_to(leader, leader_x, leader_y - 1))
+            character_move_up(leader);
+        else if (dy > 0 && map_can_move_to(leader, leader_x, leader_y + 1))
+            character_move_down(leader);
+        else
+            mouse_moving = 0; /* Blocked - stop */
+    } else {
+        if (dy < 0 && map_can_move_to(leader, leader_x, leader_y - 1))
+            character_move_up(leader);
+        else if (dy > 0 && map_can_move_to(leader, leader_x, leader_y + 1))
+            character_move_down(leader);
+        else if (dx < 0 && map_can_move_to(leader, leader_x - 1, leader_y))
+            character_move_left(leader);
+        else if (dx > 0 && map_can_move_to(leader, leader_x + 1, leader_y))
+            character_move_right(leader);
+        else
+            mouse_moving = 0; /* Blocked - stop */
+    }
+}
+
+
+/*
   parse keyboard movement input
 */
 
@@ -735,6 +836,10 @@ game_leader_movement(void)
 
         }
 
+        /* Cancel mouse movement if keyboard is pressed */
+        if (lotr_key_left() || lotr_key_right() || lotr_key_up() || lotr_key_down())
+            mouse_moving = 0;
+
         if (lotr_key_left()
             && map_can_move_to(leader, leader->x / 4 - 1, leader->y / 4))
             character_move_left(leader);
@@ -750,6 +855,13 @@ game_leader_movement(void)
         if (lotr_key_down()
             && map_can_move_to(leader, leader->x / 4, leader->y / 4 + 1))
             character_move_down(leader);
+
+        /* Process mouse click-to-move */
+        if (leader->action == CHARACTER_STAY) {
+            game_process_mouse_click();
+            if (mouse_moving)
+                game_mouse_movement();
+        }
 
         if (leader->action != CHARACTER_STAY && game_actual_spot != NULL)
             spot_action(game_actual_spot, SPOT_ACTION_MOVE, leader->action,
@@ -995,6 +1107,7 @@ exit_found:
 end_next_frame:
 
     map_animate_frame();
+    gui_draw_mouse_cursor();
     graphics_update_screen();
 }
 
