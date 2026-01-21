@@ -1,4 +1,6 @@
 *.o
+.DS_Store
+/Game Files/
 /pythonspot.h
 /pythonspot.c
 /lotr
